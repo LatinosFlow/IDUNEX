@@ -1,2 +1,7 @@
-# IDUNEX
-IDUNEX CORE es el sistema operativo de identidad sintética de LatinosFlow para crear, auditar y controlar personas digitales multimodales. Define un canon estable para identidad visual, edad, voz, comportamiento, cultura, movimiento, macro-realismo, trazabilidad y seguridad de marca.
+# IDUNEX CORE
+
+IDUNEX CORE is LatinosFlow’s synthetic identity operating system for controlled multimodal AI personas.
+
+It defines, audits, and compiles digital personas using a locked canon for visual identity, age, body parity, culture, voice, behavior, motion, macro-realism, QA, traceability, and legal/brand safety.
+
+The active runtime is RC8.5.7. Legacy data is reference-only and never overrides the active canon. All outputs are treated as TEST_OUTPUT_NOT_FINAL, with production blocked until final human-reviewed anchors are approved.
