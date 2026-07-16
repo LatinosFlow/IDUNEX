@@ -68,12 +68,12 @@ def main() -> int:
             if active_date_re.search(txt):
                 fail('VALIDATE_ACTIVE_DATE_NEUTRALIZATION','FAIL_ORPHAN_LEGACY_DATE',rel)
     # H263 label harmonization: active label must be singular; legacy labels may appear only in lineage/release/historical/fixture contexts.
-    label_file=root/'04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_SINGLE_SOURCE_CANON_REFERENCE.json'
+    label_file=root/'04_AGENT_FACTORY/10_AGENT_EXECUTI_7c69c542/H245_H260_SINGLE_S_dfaad80a.json'
     if not label_file.is_file():
         fail('VALIDATE_H245_H260_SINGLE_SOURCE_CANON_REFERENCE','FAIL_CANON_REFERENCE_MISSING',label_file)
     else:
         canon=load_json(label_file)
-        if canon.get('canonical_source_path')!='04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260' or len(str(canon.get('canonical_section_bundle_sha256','')))!=64:
+        if canon.get('canonical_source_path')!='04_AGENT_FACTORY/10_AGENT_EXECUTI_7c69c542' or len(str(canon.get('canonical_section_bundle_sha256','')))!=64:
             fail('VALIDATE_H245_H260_SINGLE_SOURCE_CANON_REFERENCE','FAIL_CANON_REFERENCE_INVALID',label_file)
     factory=root/'03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py'
     ftxt=factory.read_text(encoding='utf-8', errors='ignore') if factory.is_file() else ''

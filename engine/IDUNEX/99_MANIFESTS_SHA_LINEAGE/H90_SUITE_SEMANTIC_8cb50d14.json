@@ -3995,7 +3995,7 @@
     "result": "PASS",
     "validators_fail": 0,
     "fail_codes": [],
-    "source_proof": "99_MANIFESTS_SHA_LINEAGE/H62_CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT_PROOF.json",
+    "source_proof": "99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json",
     "profile360_p360_01_policy": "normalized_unique must equal model_count after H18 materialization"
   },
   "result": "PASS",

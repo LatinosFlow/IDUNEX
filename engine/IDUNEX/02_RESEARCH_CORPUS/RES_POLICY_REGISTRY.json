@@ -33,7 +33,7 @@
     "08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME",
     "05_RUNTIME_CORE_LIBRARY/16_RESEARCH_RUNTIME_LIBRARY",
     "01_CANON_REGISTRIES/PROFILE360_SYSTEM",
-    "01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10"
+    "01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1"
   ],
   "project_distillation_rule": "research-derived canon + evidence pointers + runtime-ready distilled knowledge",
   "forbidden": [

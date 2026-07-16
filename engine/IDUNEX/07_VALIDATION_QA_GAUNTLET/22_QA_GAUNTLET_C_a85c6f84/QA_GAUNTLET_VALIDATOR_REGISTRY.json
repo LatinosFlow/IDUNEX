@@ -286,7 +286,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_PROJECT_MANIFEST_SCHEMA_PRODUCTIVE')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_PROJECT_MANIFEST_SCHEMA_PRODUCTIVE productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -658,7 +658,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_COPILOT_DOCX_PARITY_DEPTH')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_COPILOT_DOCX_PARITY_DEPTH productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -1195,7 +1195,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_PROJECT_CORE_EXISTS')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_PROJECT_CORE_EXISTS productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -1248,7 +1248,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_PROJECT_CORE_NOLOSS')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_PROJECT_CORE_NOLOSS productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -1301,7 +1301,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_EXACT_10_CHATGPT_CORE_FILES')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_EXACT_10_CHATGPT_CORE_FILES productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -1354,7 +1354,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_EXACT_10_COPILOT_CORE_FILES')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_EXACT_10_COPILOT_CORE_FILES productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -1407,7 +1407,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_CORE_FILES_SOLIDITY_CHATGPT')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_CORE_FILES_SOLIDITY_CHATGPT productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -1460,7 +1460,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_CORE_FILES_SOLIDITY_COPILOT')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_CORE_FILES_SOLIDITY_COPILOT productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -1993,7 +1993,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_CHATGPT_COPILOT_PARITY')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_CHATGPT_COPILOT_PARITY productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -2046,7 +2046,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_COPILOT_NOT_DOWNGRADED')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_COPILOT_NOT_DOWNGRADED productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -2099,7 +2099,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_PROJECT_CORE_AUTHORITY')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_PROJECT_CORE_AUTHORITY productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -2152,7 +2152,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_AGENT_CONFIG_8000')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_AGENT_CONFIG_8000 productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -2205,7 +2205,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_AGENT_CONFIG_8000_NO_PADDING')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_AGENT_CONFIG_8000_NO_PADDING productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -2258,7 +2258,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_AGENT_CONFIG_8000_NOT_TRUNCATED')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_AGENT_CONFIG_8000_NOT_TRUNCATED productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -2311,7 +2311,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_AGENT_CONFIG_END_MARKER')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_AGENT_CONFIG_END_MARKER productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",
@@ -4292,7 +4292,7 @@
       "implementation_file": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "implementation_dispatch": "validate('VALIDATE_PROJECT_MANIFEST_TEMPLATE_MULTIMODAL')",
       "files_checked_scope": [
-        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0"
+        "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2"
       ],
       "rules_checked": "VALIDATE_PROJECT_MANIFEST_TEMPLATE_MULTIMODAL productive-base rule set; reads concrete files and reports evidence.",
       "expected_value": "PASS with non-empty files_checked, rules_checked, expected_value and actual_value evidence.",

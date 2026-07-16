@@ -194,20 +194,20 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         return read_json(ROOT/rel)
     expected_top={'00_INDEX','01_CANON_REGISTRIES','02_RESEARCH_CORPUS','03_PROJECT_FACTORY','04_AGENT_FACTORY','05_RUNTIME_CORE_LIBRARY','06_MULTIMODAL_CONTRACTS','07_VALIDATION_QA_GAUNTLET','08_EVIDENCE_LINEAGE','09_TEMPLATES_FIXTURES','10_INTERNAL_MANUALS','11_RELEASE_INTERNAL','12_OUTPUT_CONTRACTS','13_UPDATE_MIGRATION','14_HISTORICAL_NON_AUTHORITY','99_MANIFESTS_SHA_LINEAGE'}
     critical_reports = [
-        '11_RELEASE_INTERNAL/H205_H212_DIRECT_CANONICAL_CLOSURE_REPORT.json',
-        '11_RELEASE_INTERNAL/H213_H236_DIRECT_CANONICAL_CLOSURE_REPORT.json',
+        '11_RELEASE_INTERNAL/H205_H212_DIRECT_C_36c8d173.json',
+        '11_RELEASE_INTERNAL/H213_H236_DIRECT_C_5ef6510e.json',
         '11_RELEASE_INTERNAL/MUTATION_SUITE_H237_H244.json',
         '11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json',
         '11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX.csv',
-        '11_RELEASE_INTERNAL/ACTIVE_PROOF_AND_LEDGER_STALENESS_PURGE_H240.json',
-        '11_RELEASE_INTERNAL/PROJECT_TEST_RUNNER_DETERMINISTIC_AND_NON_HANGING_H242.json',
+        '11_RELEASE_INTERNAL/ACTIVE_PROOF_AND_L_7afeb990.json',
+        '11_RELEASE_INTERNAL/PROJECT_TEST_RUNNE_05ccffad.json',
         '11_RELEASE_INTERNAL/SIZE_AND_RETENTION_POST_H237_H244.json',
-        '11_RELEASE_INTERNAL/H237_H244_DIRECT_CANONICAL_CLOSURE_REPORT.json',
-        '11_RELEASE_INTERNAL/H245_H260_DIRECT_CANONICAL_CLOSURE_REPORT.json',
-        '11_RELEASE_INTERNAL/H269_H280_DIRECT_CANONICAL_CLOSURE_REPORT.json',
-        '11_RELEASE_INTERNAL/PROJECT_FACTORY_REGRESSION_GAUNTLET_H269_H280.json',
+        '11_RELEASE_INTERNAL/H237_H244_DIRECT_C_5f1f3abe.json',
+        '11_RELEASE_INTERNAL/H245_H260_DIRECT_C_dd5f4150.json',
+        '11_RELEASE_INTERNAL/H269_H280_DIRECT_C_79b80ed7.json',
+        '11_RELEASE_INTERNAL/PROJECT_FACTORY_RE_ca293780.json',
         '11_RELEASE_INTERNAL/AGENT_ROUTING_TESTS_H245_H260.json',
-        '99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF.json',
+        '99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_S_5015ecbe.json',
     ]
     addf('MOTOR_CANONICAL_TOP_TREE_EXACT', {p.name for p in ROOT.iterdir() if p.is_dir()}==expected_top and not [p.name for p in ROOT.iterdir() if p.is_file()])
     addf('NO_BYTECODE_ACTIVE', not list(ROOT.rglob('*.pyc')) and not [p for p in ROOT.rglob('__pycache__')])
@@ -226,7 +226,7 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         '02_RESEARCH_CORPUS/RES_POLICY_REGISTRY.json',
         '13_UPDATE_MIGRATION/UPDATE_MIGRATION_CONTRACTS.json',
         '14_HISTORICAL_NON_AUTHORITY/H_DEMOTION_REGISTRY.json',
-        '03_PROJECT_FACTORY/04_DELIVERY_GATES/ZIP_EXT_001_WHOLE_ZIP_EXTERNAL_AUTHORITY_GATE.json',
+        '03_PROJECT_FACTORY/04_DELIVERY_GATES/ZIP_EXT_001_WHOLE__0cccfebc.json',
         '07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/VALIDATE_MASTER_GOVERNANCE_NATIVE.py'
     ]
     # VALIDATE_AGENT_LOAD_NAMED_SURFACE_CONTRACT integrated into runtime validator.
@@ -248,7 +248,7 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
     # BRD-PAL-001 hard gate integrated into the existing runtime validator; no parallel validator.
     try:
         generic_surface_prefixes = (
-            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/',
+            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/',
             '06_MULTIMODAL_CONTRACTS/',
             '03_PROJECT_FACTORY/',
             '04_AGENT_FACTORY/',
@@ -269,10 +269,10 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
                 combo.append(rel)
         token_missing=[]
         for rel in [
-            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_DIAGRAM_STYLE_GUIDE.md',
-            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_DOCX_STYLE_GUIDE.md',
-            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_IDUNEX_VISUAL_RULES.md',
-            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_WATERMARK_GUIDE.md',
+            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYS_30e665af.md',
+            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYSTEM_DOCX_STYLE_GUIDE.md',
+            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYS_5c8a5d3c.md',
+            '05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYSTEM_WATERMARK_GUIDE.md',
         ]:
             tx=(ROOT/rel).read_text(encoding='utf-8', errors='ignore')
             miss=[tok for tok in required_tokens if tok not in tx]
@@ -290,11 +290,11 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         addf('CRITICAL_REPORT_PRESENT_'+q.name, q.is_file(), {'path':rel})
     # H205/H213 preserved compatibility reports remain active and PASS.
     try:
-        h205=_json_load_rel('11_RELEASE_INTERNAL/H205_H212_DIRECT_CANONICAL_CLOSURE_REPORT.json')
+        h205=_json_load_rel('11_RELEASE_INTERNAL/H205_H212_DIRECT_C_36c8d173.json')
         addf('H205_H212_PRESERVED', h205.get('result')=='PASS' and h205.get('H205-H212_APPLIED')=='PASS' and h205.get('VALIDATORS_FAIL')==0 and h205.get('CREATIVE_OUTPUT_CERTIFIED') is False)
     except Exception as e: addf('H205_H212_PRESERVED', False, {'error':str(e)})
     try:
-        h213=_json_load_rel('11_RELEASE_INTERNAL/H213_H236_DIRECT_CANONICAL_CLOSURE_REPORT.json')
+        h213=_json_load_rel('11_RELEASE_INTERNAL/H213_H236_DIRECT_C_5ef6510e.json')
         addf('H213_H236_PRESERVED', h213.get('result')=='PASS' and h213.get('H213-H236_APPLIED')=='PASS' and h213.get('PROJECT_31_FULL_MATRIX_EXECUTED')=='PASS' and h213.get('VALIDATORS_FAIL')==0 and h213.get('CREATIVE_OUTPUT_CERTIFIED') is False)
     except Exception as e: addf('H213_H236_PRESERVED', False, {'error':str(e)})
     # H237 mutation executable proof - single CLI authority, 506/506.
@@ -304,7 +304,7 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         addf('MUTATION_SUITE_EXECUTABLE_FULL_PASS', mut_ok, {'mutation_count':mut.get('mutation_count'),'cases_fail':mut.get('cases_fail')})
     except Exception as e: addf('MUTATION_SUITE_EXECUTABLE_FULL_PASS', False, {'error':str(e)})
     try:
-        proof=_json_load_rel('99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF.json')
+        proof=_json_load_rel('99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_S_5015ecbe.json')
         addf('FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF_CURRENT', proof.get('result')=='PASS' and proof.get('mutation_count')==506 and proof.get('cases_fail')==0 and proof.get('MUTATION_SUITE_FULL_PASS')=='PASS')
     except Exception as e: addf('FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF_CURRENT', False, {'error':str(e)})
     # H238 full matrix - 31/31 real cases, no representative closure.
@@ -334,10 +334,10 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
     addf('REPRESENTATIVE_EVIDENCE_TRUTHFULNESS_GATE', findings==[], {'forbidden_truthfulness_findings':findings[:20]})
     # H240-H244 reports.
     for rel,checkname,extra in [
-        ('11_RELEASE_INTERNAL/ACTIVE_PROOF_AND_LEDGER_STALENESS_PURGE_H240.json','ACTIVE_PROOF_AND_LEDGER_STALENESS_PURGE',lambda d: d.get('ACTIVE_PROOF_COUNTS_MATCH_EXECUTABLE_CLI')=='PASS' and d.get('NO_STALE_MUTATION_PROOF_ACTIVE')=='PASS' and d.get('mutation_count_active_proof')==506),
-        ('11_RELEASE_INTERNAL/PROJECT_TEST_RUNNER_DETERMINISTIC_AND_NON_HANGING_H242.json','PROJECT_TEST_RUNNER_DETERMINISTIC_AND_NON_HANGING',lambda d: d.get('runner_file')=='03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py' and d.get('no_test_output_zips_in_engine')=='PASS'),
+        ('11_RELEASE_INTERNAL/ACTIVE_PROOF_AND_L_7afeb990.json','ACTIVE_PROOF_AND_LEDGER_STALENESS_PURGE',lambda d: d.get('ACTIVE_PROOF_COUNTS_MATCH_EXECUTABLE_CLI')=='PASS' and d.get('NO_STALE_MUTATION_PROOF_ACTIVE')=='PASS' and d.get('mutation_count_active_proof')==506),
+        ('11_RELEASE_INTERNAL/PROJECT_TEST_RUNNE_05ccffad.json','PROJECT_TEST_RUNNER_DETERMINISTIC_AND_NON_HANGING',lambda d: d.get('runner_file')=='03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py' and d.get('no_test_output_zips_in_engine')=='PASS'),
         ('11_RELEASE_INTERNAL/SIZE_AND_RETENTION_POST_H237_H244.json','SIZE_AND_RETENTION_POST_H237_H244',lambda d: d.get('NO_TEMP_LOGS_IN_DELIVERY')=='PASS' and d.get('NO_TEST_OUTPUT_ZIPS_IN_ENGINE')=='PASS' and d.get('NO_FIXTURE_DATA_HARDCODE_IN_ENGINE_ACTIVE_SURFACES')=='PASS'),
-        ('11_RELEASE_INTERNAL/H237_H244_DIRECT_CANONICAL_CLOSURE_REPORT.json','H237_H244_DIRECT_CANONICAL_CLOSURE_REPORT',lambda d: d.get('DIRECT_CORRECTION_SCOPE')=='H237_H244_APPLIED_ON_H01_H236' and d.get('H237-H244_APPLIED')=='PASS' and d.get('MUTATION_SUITE_EXECUTABLE_FULL_PASS')=='PASS' and d.get('FULL_31_PROJECT_MATRIX_REAL_EXECUTION')=='PASS' and d.get('VALIDATORS_FAIL')==0 and d.get('FAIL_CODES')==[] and d.get('CREATIVE_OUTPUT_CERTIFIED') is False)
+        ('11_RELEASE_INTERNAL/H237_H244_DIRECT_C_5f1f3abe.json','H237_H244_DIRECT_CANONICAL_CLOSURE_REPORT',lambda d: d.get('DIRECT_CORRECTION_SCOPE')=='H237_H244_APPLIED_ON_H01_H236' and d.get('H237-H244_APPLIED')=='PASS' and d.get('MUTATION_SUITE_EXECUTABLE_FULL_PASS')=='PASS' and d.get('FULL_31_PROJECT_MATRIX_REAL_EXECUTION')=='PASS' and d.get('VALIDATORS_FAIL')==0 and d.get('FAIL_CODES')==[] and d.get('CREATIVE_OUTPUT_CERTIFIED') is False)
     ]:
         try:
             d=_json_load_rel(rel)
@@ -366,7 +366,7 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         for name in ['VALIDATE_AGENT_IMAGE_ROUTING_PRIORITY','VALIDATE_NO_AUXILIARY_TOOL_IMAGE_SUBSTITUTE','VALIDATE_CANDIDATE_VS_CERTIFICATION_SEPARATION','VALIDATE_NO_TEXT_IN_GENERATIVE_IMAGE_DEFAULT','VALIDATE_WATERMARK_POSTPROCESS_ONLY','VALIDATE_PLATFORM_SPECIFIC_AGENT_CONFIG','VALIDATE_YOUNG_ADULT_SAFE_DEFAULT']:
             addf(name, False, {'error':str(e)})
     try:
-        policy=(ROOT/'04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_AGENT_VISUAL_ROUTING_CANON.md').read_text(encoding='utf-8', errors='ignore')
+        policy=(ROOT/'04_AGENT_FACTORY/10_AGENT_EXECUTI_7c69c542/H245_H260_AGENT_VISUAL_ROUTING_CANON.md').read_text(encoding='utf-8', errors='ignore')
         ids=['IMAGE_FAST_ROUTE','NO_AUXILIARY_TOOL_IMAGE_SUBSTITUTE','CANDIDATE_GENERATION_NOT_CERTIFICATION','NO_TEXT_IN_IMAGE_BY_DEFAULT','IMAGE_GENERATION_CLEAN_PROMPT_MODE','WATERMARK_POSTPROCESS_ONLY','AGENT_RESPONSE_STATE_BLOCK','CHATGPT_AGENT_CONFIG_ROUTING','COPILOT_AGENT_CONFIG_CLEAN_OUTPUT','YOUNG_ADULT_DEFAULT_WARDROBE_SAFE_BASELINE','LOGO_RENDERING_ASSET_GATE','AGENT_FORENSIC_COMPANION_COMPACT','RUNTIME_RULE_SCHEMA_NORMALIZATION','FIXTURE_CONTEXTUAL_ALLOWLIST','AGENT_RUNTIME_LITE_PRIORITY_MODE']
         addf('VALIDATE_RUNTIME_RULE_SCHEMA_NORMALIZATION', all(f'CLAUSE|{i}|' in policy and '|FAIL=' in policy and '|FALLBACK=' in policy for i in ids))
         meta_terms=['project ids','age labels','certification labels','sidecar status','hashes','nationality text','QA tables']
@@ -379,7 +379,7 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         required_cases=['agent_config_chatgpt_n1','agent_config_chatgpt_n2','agent_config_copilot_n1','agent_config_copilot_n2','haz_una_imagen_n_gt_1','haz_a_modelo_canonico','hazlos_juntos_sin_antecedente','hazlos_juntos_con_modelos_explicitos','certifica_sin_evidence','logo_exacto_sin_asset','quita_watermark_sin_optout','foto_solo_pose','como_celebridad','uniforme_escolar_sexualizado','sidecar_gate_not_block_first_candidate','zip_gate_not_block_first_candidate','runtime_absent_field_trace_not_block_candidate','vendor_unsupported_not_pass','image_capability_unavailable']
         cases=report.get('cases',{})
         addf('H245_H260_AGENT_ROUTING_TESTS_PASS', report.get('result')=='PASS' and all(cases.get(k)=='PASS' for k in required_cases) and report.get('validators_fail')==0 and report.get('fail_codes')==[])
-        closure=_json_load_rel('11_RELEASE_INTERNAL/H245_H260_DIRECT_CANONICAL_CLOSURE_REPORT.json')
+        closure=_json_load_rel('11_RELEASE_INTERNAL/H245_H260_DIRECT_C_dd5f4150.json')
         addf('H245_H260_DIRECT_CANONICAL_CLOSURE_REPORT', closure.get('result')=='PASS' and closure.get('DIRECT_CORRECTION_SCOPE')=='H245_H260_APPLIED_ON_H01_H244' and closure.get('VALIDATORS_FAIL')==0 and closure.get('FAIL_CODES')==[] and closure.get('CREATIVE_OUTPUT_CERTIFIED') is False)
     except Exception as e:
         addf('H245_H260_AGENT_ROUTING_TESTS_PASS', False, {'error':str(e)})
@@ -522,7 +522,7 @@ try:
 except Exception as e: add('VERSION_MANIFEST_SCOPE_H01_H80', False, {'error':str(e)})
 try:
     pr=read_json(ROOT/'01_CANON_REGISTRIES/PROFILE360_SYSTEM/01_SCHEMA/PROFILE360_CANONICAL_REGISTRY_00_60.json')
-    tr=read_json(ROOT/'01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_FULL10_OFFICIAL_FIELD_REGISTRY.json')
+    tr=read_json(ROOT/'01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/TECHEXT_FULL10_OFF_5d877c88.json')
     add('PROFILE360_CANONICAL_REGISTRY_EXACT_EXECUTABLE_GATE', pr.get('section_count')==61 and [x.get('section_id') for x in pr.get('sections',[])]==[f'{i:02d}' for i in range(61)])
     add('TECHEXT_OFFICIAL_FIELD_REGISTRY_GATE', tr.get('field_count')==284 and len({(x.get('module_id'),x.get('field_id')) for x in tr.get('fields',[])})==284)
 except Exception as e:
@@ -532,7 +532,7 @@ except Exception as e:
 legacy_labels=['correction_scope_label=H01_H21','correction_scope_label=H01_H29','correction_scope_label=H01_H36','"correction_scope_label": "H01_H21"','"correction_scope_label":"H01_H21"','"correction_scope_label": "H01_H29"','"correction_scope_label":"H01_H29"','"correction_scope_label": "H01_H36"','"correction_scope_label":"H01_H36"','H01_H21','H01_H29','H01_H36']
 proof_hits=[]; pass_contract=[]; representative=[]
 for p,rel in text_files():
-    if rel in {'99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py','99_MANIFESTS_SHA_LINEAGE/H67_ACTIVE_PROOF_LEGACY_SCOPE_FULL_TREE_SCAN_PROOF.json'} or rel.startswith('03_PROJECT_FACTORY/02_PROTOCOLS/'):
+    if rel in {'99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py','99_MANIFESTS_SHA_LINEAGE/H67_ACTIVE_PROOF_L_e1d5c1ca.json'} or rel.startswith('03_PROJECT_FACTORY/02_PROTOCOLS/'):
         continue
     if rel.endswith('SHA256SUMS.txt') or rel in {'99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json','99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json','99_MANIFESTS_SHA_LINEAGE/MANIFEST.json','99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt','99_MANIFESTS_SHA_LINEAGE/DYNAMIC_EXCLUSIONS_MANIFEST.json'}:
         continue
@@ -548,7 +548,7 @@ for p,rel in text_files():
         representative.append(rel)
 add('ACTIVE_PROOF_LEGACY_SCOPE_FULL_TREE_SCAN', not proof_hits and not pass_contract and not representative, {'legacy_hits':proof_hits[:20], 'pass_by_contract_hits':pass_contract[:20], 'representative_hits':representative[:20]})
 try:
-    h67=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H67_ACTIVE_PROOF_LEGACY_SCOPE_FULL_TREE_SCAN_PROOF.json')
+    h67=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H67_ACTIVE_PROOF_L_e1d5c1ca.json')
     add('ACTIVE_PROOF_LEGACY_SCOPE_FULL_TREE_PROOF', h67.get('result')=='PASS' and h67.get('active_findings_count')==0 and h67.get('pass_by_contract_active_count')==0)
 except Exception as e: add('ACTIVE_PROOF_LEGACY_SCOPE_FULL_TREE_PROOF', False, {'error':str(e)})
 
@@ -585,7 +585,7 @@ def matrix_rows_ok(rows):
     expected={(level,n) for level in ('minimal','intermediate','complete') for n in range(1,11)}
     got={(r.get('level'), r.get('model_count')) for r in rows}
     return len(rows)==30 and got==expected and all(r.get('result')=='PASS' and r.get('cli_rc')==0 and r.get('output_json_written') is True and r.get('output_json_complete') is True and r.get('validators_fail')==0 and r.get('blocking_warnings')==0 and r.get('runtime_chatgpt')==10+r.get('model_count') and r.get('runtime_copilot')==10+r.get('model_count') and r.get('Profile360_per_model')==61 and r.get('TechExt_per_model')==284 and r.get('H37_H51_artifacts_present') is True and r.get('H65_H70_scanners_present') is True and re.fullmatch(r'[0-9a-f]{64}', str(r.get('zip_sha256',''))) and r.get('testzip')=='PASS' and r.get('reopened_validation')=='PASS' for r in rows)
-for name,path in [('PROJECT_GENERATION_MATRIX_N1_N10_3_LEVELS_EXECUTED_PROOF_GATE','99_MANIFESTS_SHA_LINEAGE/P034_PROJECT_GENERATION_CLI_MATRIX_1_TO_10_X3_REOPENED_PROOF.json'),('CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT','99_MANIFESTS_SHA_LINEAGE/H62_CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT_PROOF.json')]:
+for name,path in [('PROJECT_GENERATION_MATRIX_N1_N10_3_LEVELS_EXECUTED_PROOF_GATE','99_MANIFESTS_SHA_LINEAGE/P034_PROJECT_GENERATION_CLI_MATRIX_1_TO_10_X3_REOPENED_PROOF.json'),('CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT','99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json')]:
     try:
         m=read_json(ROOT/path); rows=m.get('matrix_results',[])
         add(name, matrix_rows_ok(rows) and m.get('no_pass_by_contract_used') is True, {'rows':len(rows), 'pass_count':sum(1 for r in rows if r.get('result')=='PASS'), 'no_pass_by_contract_used':m.get('no_pass_by_contract_used')})
@@ -593,23 +593,23 @@ for name,path in [('PROJECT_GENERATION_MATRIX_N1_N10_3_LEVELS_EXECUTED_PROOF_GAT
 
 # Closure proofs.
 proof_specs=[
- ('H52_H57_APPLIED','99_MANIFESTS_SHA_LINEAGE/H52_H57_DIRECT_CANONICAL_CLOSURE_PROOF.json',lambda d: d.get('result')=='PASS' and d.get('H52_H57_APPLIED')=='PASS'),
- ('H58_H64_APPLIED','99_MANIFESTS_SHA_LINEAGE/H58_H64_DIRECT_CANONICAL_CLOSURE_PROOF.json',lambda d: d.get('result')=='PASS' and d.get('H58_H64_APPLIED')=='PASS' and d.get('CREATIVE_OUTPUT_CERTIFIED') is False),
- ('H65_H70_APPLIED','99_MANIFESTS_SHA_LINEAGE/H65_H70_DIRECT_CANONICAL_CLOSURE_PROOF.json',lambda d: d.get('result')=='PASS' and d.get('H01_H64_PRESERVED')=='PASS' and d.get('H65_H70_APPLIED')=='PASS' and d.get('CREATIVE_OUTPUT_CERTIFIED') is False),
- ('GENERATED_PROJECT_NO_PENDING_MATERIALIZATION','99_MANIFESTS_SHA_LINEAGE/H65_H66_PROJECT_VALIDATOR_PENDING_NEGATIVE_PROOF.json',lambda d: d.get('result')=='PASS' and d.get('generated_project_no_pending_materialization')=='PASS' and d.get('validator_blocks_pending_in_profile360')=='PASS'),
- ('PROJECT_VALIDATOR_UNRESOLVED_STATUS_ENFORCEMENT','99_MANIFESTS_SHA_LINEAGE/H65_H66_PROJECT_VALIDATOR_PENDING_NEGATIVE_PROOF.json',lambda d: d.get('project_validator_unresolved_status_enforcement')=='PASS'),
- ('GENERATED_PROJECT_FULL_SURFACE_UNRESOLVED_SCAN','99_MANIFESTS_SHA_LINEAGE/H68_GENERATED_PROJECT_FULL_SURFACE_UNRESOLVED_SCAN_PROOF.json',lambda d: d.get('result')=='PASS' and d.get('projects_checked',0)>=30 and d.get('active_findings_total')==0),
- ('H69_PENDING_AND_PROOF_NEGATIVE_CASES_PASS','99_MANIFESTS_SHA_LINEAGE/H69_PENDING_AND_PROOF_NEGATIVE_CASES_PROOF.json',lambda d: d.get('result')=='PASS' and d.get('mutation_count',0)>=465 and d.get('H69_PENDING_AND_PROOF_NEGATIVE_CASES_PASS')=='PASS' and d.get('restoration_retest')=='PASS'),
+ ('H52_H57_APPLIED','99_MANIFESTS_SHA_LINEAGE/H52_H57_DIRECT_CAN_314d9542.json',lambda d: d.get('result')=='PASS' and d.get('H52_H57_APPLIED')=='PASS'),
+ ('H58_H64_APPLIED','99_MANIFESTS_SHA_LINEAGE/H58_H64_DIRECT_CAN_77d03b53.json',lambda d: d.get('result')=='PASS' and d.get('H58_H64_APPLIED')=='PASS' and d.get('CREATIVE_OUTPUT_CERTIFIED') is False),
+ ('H65_H70_APPLIED','99_MANIFESTS_SHA_LINEAGE/H65_H70_DIRECT_CAN_6c722e27.json',lambda d: d.get('result')=='PASS' and d.get('H01_H64_PRESERVED')=='PASS' and d.get('H65_H70_APPLIED')=='PASS' and d.get('CREATIVE_OUTPUT_CERTIFIED') is False),
+ ('GENERATED_PROJECT_NO_PENDING_MATERIALIZATION','99_MANIFESTS_SHA_LINEAGE/H65_H66_PROJECT_VA_18dac1af.json',lambda d: d.get('result')=='PASS' and d.get('generated_project_no_pending_materialization')=='PASS' and d.get('validator_blocks_pending_in_profile360')=='PASS'),
+ ('PROJECT_VALIDATOR_UNRESOLVED_STATUS_ENFORCEMENT','99_MANIFESTS_SHA_LINEAGE/H65_H66_PROJECT_VA_18dac1af.json',lambda d: d.get('project_validator_unresolved_status_enforcement')=='PASS'),
+ ('GENERATED_PROJECT_FULL_SURFACE_UNRESOLVED_SCAN','99_MANIFESTS_SHA_LINEAGE/H68_GENERATED_PROJ_6d7ec73e.json',lambda d: d.get('result')=='PASS' and d.get('projects_checked',0)>=30 and d.get('active_findings_total')==0),
+ ('H69_PENDING_AND_PROOF_NEGATIVE_CASES_PASS','99_MANIFESTS_SHA_LINEAGE/H69_PENDING_AND_PR_3bbb860e.json',lambda d: d.get('result')=='PASS' and d.get('mutation_count',0)>=465 and d.get('H69_PENDING_AND_PROOF_NEGATIVE_CASES_PASS')=='PASS' and d.get('restoration_retest')=='PASS'),
 ]
 for cname,path,fn in proof_specs:
     try: add(cname, fn(read_json(ROOT/path)))
     except Exception as e: add(cname, False, {'error':str(e)})
 try:
-    mut=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H63_MUTATION_SUITE_EXECUTABLE_BOUNDED_TIME_PROOF.json')
+    mut=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H63_MUTATION_SUITE_526503c8.json')
     add('VALIDATE_IDUNEX_PROJECT_MUTATION_SUITE_EXECUTABLE', mut.get('result')=='PASS' and mut.get('mutation_count',0)>=465 and mut.get('positive_fixture')=='PASS' and mut.get('restoration_retest')=='PASS' and mut.get('cli_rc')==0 and mut.get('output_json_complete') is True and mut.get('H69_PENDING_AND_PROOF_NEGATIVE_CASES_PASS')=='PASS')
 except Exception as e: add('VALIDATE_IDUNEX_PROJECT_MUTATION_SUITE_EXECUTABLE', False, {'error':str(e)})
 try:
-    active=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H64_ACTIVE_PROOF_TRUTHFULNESS_AND_LEGACY_DEMOTION_PROOF.json')
+    active=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H64_ACTIVE_PROOF_T_ed8f2cca.json')
     add('ACTIVE_PROOF_TRUTHFULNESS_AND_LEGACY_DEMOTION', active.get('result')=='PASS' and active.get('old_scope_active_proof_count')==0 and active.get('pass_by_contract_active_count')==0 and active.get('H67_FULL_TREE_SCANNER_GATE')=='PASS')
 except Exception as e: add('ACTIVE_PROOF_TRUTHFULNESS_AND_LEGACY_DEMOTION', False, {'error':str(e)})
 
@@ -633,8 +633,8 @@ def _contains_all(path: Path, tokens: list[str]) -> bool:
 
 # H71-H80 active gates/proofs.
 try:
-    h71=read_json(ROOT/'03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAREL_WATERMARK_AGENT10N_CANONICAL_GATES.json')
-    matrix=read_json(ROOT/'07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/H71_H80_SAFE_APPAREL_WATERMARK_VALIDATION_MATRIX.json')
+    h71=read_json(ROOT/'03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAR_988b3417.json')
+    matrix=read_json(ROOT/'07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/H71_H80_SAFE_APPAR_351dd2b1.json')
     add('H71_H80_GATE_VALIDATED_EXECUTABLY', h71.get('result')=='PASS' and matrix.get('result')=='PASS' and matrix.get('SAFE_APPAREL_WATERMARK_CONVERSATIONAL_SUITE_ES_EN')=='PASS 40/40')
 except Exception as e:
     add('H71_H80_GATE_VALIDATED_EXECUTABLY', False, {'error':str(e)})
@@ -686,7 +686,7 @@ try:
             for p in files:
                 if not _contains_all(p,tokens):
                     agent_fail.append({'fixture':n,'platform':platform,'path':p.name,'reason':'missing_tokens'})
-    h86=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H86_AGENT10N_SAFE_APPAREL_WATERMARK_FORENSIC_CLOSURE_PROOF.json')
+    h86=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H86_AGENT10N_SAFE__89896e31.json')
     add('FINAL_AGENT10N_SAFE_APPAREL_WATERMARK_FORENSIC_CLOSURE', not agent_fail and h86.get('result')=='PASS' and h86.get('CREATIVE_OUTPUT_CERTIFIED') is False, {'failures':agent_fail[:20]})
 except Exception as e:
     add('FINAL_AGENT10N_SAFE_APPAREL_WATERMARK_FORENSIC_CLOSURE', False, {'error':str(e)})
@@ -705,7 +705,7 @@ except Exception as e:
     add('SAFE_APPAREL_SUITE_SEMANTIC_CONSISTENCY_VALIDATOR', False, {'error':str(e)})
     add('ADULT_EDITORIAL_NON_EXPLICIT_CASE_RESOLUTION', False, {'error':str(e)})
 try:
-    mut=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H90_SUITE_SEMANTIC_MISMATCH_NEGATIVE_CASES_PROOF.json')
+    mut=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H90_SUITE_SEMANTIC_8cb50d14.json')
     add('H90_SUITE_SEMANTIC_MISMATCH_NEGATIVE_CASES_PASS', mut.get('result')=='PASS' and mut.get('H90_SUITE_SEMANTIC_MISMATCH_NEGATIVE_CASES_PASS')=='PASS' and mut.get('restoration_retest')=='PASS')
 except Exception as e:
     add('H90_SUITE_SEMANTIC_MISMATCH_NEGATIVE_CASES_PASS', False, {'error':str(e)})
@@ -721,7 +721,7 @@ except Exception as e:
     add('ACTIVE_PROOF_STATUS_LABEL_NORMALIZATION', False, {'error':str(e)})
 
 try:
-    h93=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H93_H98_UPDATE_DRIFT_FAILCODE_CLOSURE_PROOF.json')
+    h93=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H93_H98_UPDATE_DRI_7d694462.json')
     add('H93_SAME_VERSION_SET_WARDROBE_TARGET_ISOLATION_GATE', h93.get('H93_SAME_VERSION_SET_WARDROBE_TARGET_ISOLATION_GATE')=='PASS' and h93.get('set_wardrobe_target_model_2')=='PASS' and h93.get('non_target_drift_count')==0)
     add('H94_UPDATE_NO_DRIFT_SHARED_TRACE_DECOLLISION_GATE', h93.get('H94_UPDATE_NO_DRIFT_SHARED_TRACE_DECOLLISION_GATE')=='PASS' and h93.get('UPDATE_NO_DRIFT_UNREQUESTED_FIELDS')=='PASS')
     add('H95_FAILCODE_TRUTHFULNESS_NO_EMPTY_FAIL_GATE', h93.get('H95_FAILCODE_TRUTHFULNESS_NO_EMPTY_FAIL_GATE')=='PASS' and h93.get('FAIL_EMPTY_FAILCODES_SURFACE_SCAN')=='PASS')
@@ -774,7 +774,7 @@ def _collect_matrix_files_for_h105():
         walk(payload)
         if found:
             paths.append(p)
-    target=ROOT/'03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAREL_WATERMARK_AGENT10N_CANONICAL_GATES.json'
+    target=ROOT/'03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAR_988b3417.json'
     if target.is_file() and target not in paths:
         paths.append(target)
     return sorted(set(paths))
@@ -786,7 +786,7 @@ try:
         cases=factory._active_matrix_cases_from_payload(payload) if factory_loaded and hasattr(factory,'_active_matrix_cases_from_payload') else []
         scanned_cases += len(cases)
         matrix_fail.extend(factory.validate_active_normative_matrix_payload(payload, rel) if factory_loaded and hasattr(factory,'validate_active_normative_matrix_payload') else [{'fail_code':'FAIL_H106_DELIVERY_GATES_MATRIX_VALIDATOR_MISSING','detail':rel}])
-    target_rel='03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAREL_WATERMARK_AGENT10N_CANONICAL_GATES.json'
+    target_rel='03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAR_988b3417.json'
     add('DELIVERY_GATES_ACTIVE_MATRIX_VALIDATOR_EXTENSION', factory_loaded and hasattr(factory, 'validate_active_normative_matrix_payload') and target_rel in scanned and scanned_cases>=40, {'scanned_files':len(scanned),'scanned_cases':scanned_cases,'scanned':scanned[:30]})
     add('DELIVERY_GATE_SAFE_APPAREL_WATERMARK_MATRIX_REPAIR', not matrix_fail, {'findings_count':len(matrix_fail),'findings':matrix_fail[:30]})
     add('ACTIVE_MATRIX_GLOBAL_SEMANTIC_SCAN', not matrix_fail and len(scanned)>0, {'scanned_files':len(scanned),'scanned_cases':scanned_cases,'findings_count':len(matrix_fail)})
@@ -811,19 +811,19 @@ except Exception as e:
     add('ACTIVE_RUNTIME_PROOF_REGENERATION_OR_DEMOTION', False, {'error':str(e)})
     add('ACTIVE_PROOF_STALE_SURFACE_SCAN', False, {'error':str(e)})
 try:
-    h99=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H99_H104_ACTIVE_MATRIX_SEMANTIC_VALIDATION_CLOSURE_PROOF.json')
+    h99=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H99_H104_ACTIVE_MA_de0e3a71.json')
     add('H99_H104_NEGATIVE_MUTATION_CASES_PASS', h99.get('H99_H104_NEGATIVE_MUTATION_CASES_PASS')=='PASS' and h99.get('negative_mutation_count')==10 and h99.get('restoration_retest')=='PASS')
     add('SUNO_CONTRACT_DUPLICATE_CONTENT_CLEANUP', h99.get('SUNO_CONTRACT_DUPLICATE_CONTENT_CLEANUP') in {'PASS','NOT_REQUIRED_EXECUTED_SCAN_PASS'})
 except Exception as e:
     add('H99_H104_NEGATIVE_MUTATION_CASES_PASS', False, {'error':str(e)})
     add('SUNO_CONTRACT_DUPLICATE_CONTENT_CLEANUP', False, {'error':str(e)})
 try:
-    h108=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H108_DELIVERY_GATE_MATRIX_NEGATIVE_MUTATION_PROOF.json')
+    h108=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H108_DELIVERY_GATE_204a7477.json')
     add('H108_DELIVERY_GATE_MATRIX_NEGATIVE_MUTATION_CASES_PASS', h108.get('H108_DELIVERY_GATE_MATRIX_NEGATIVE_MUTATION_CASES_PASS')=='PASS' and h108.get('negative_mutation_count')==10 and h108.get('restoration_retest')=='PASS')
 except Exception as e:
     add('H108_DELIVERY_GATE_MATRIX_NEGATIVE_MUTATION_CASES_PASS', False, {'error':str(e)})
 try:
-    h109=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H109_N2_N10_GENERATION_AGENT10N_RECONFIRMATION_PROOF.json')
+    h109=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H109_N2_N10_GENERA_cda2101c.json')
     add('N2_N10_GENERATION_AGENT10N_RECONFIRMED', h109.get('N2_N10_GENERATION_AGENT10N_RECONFIRMED')=='PASS' and h109.get('N2_complete_project')=='PASS' and h109.get('N10_complete_project')=='PASS' and h109.get('agent10n_safe_apparel_watermark')=='PASS')
 except Exception as e:
     add('N2_N10_GENERATION_AGENT10N_RECONFIRMED', False, {'error':str(e)})
@@ -839,7 +839,7 @@ except Exception as e:
 
 # H113-H118 project export forensic hardening checks.
 try:
-    proof=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H113_H118_PROJECT_EXPORT_FORENSIC_HARDENING_CLOSURE_PROOF.json')
+    proof=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H113_H118_PROJECT__a36d6571.json')
 except Exception:
     proof={}
 add('H01-H112_PRESERVED', proof.get('H01-H112_PRESERVED')=='PASS')
@@ -850,19 +850,19 @@ add('DEMO_PROJECT_REGENERATION_POST_H113_H118', proof.get('DEMO_PROJECT_REGENERA
 
 # H119-H126 project SHA/proof truthfulness closure checks.
 try:
-    proof119=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H119_H126_PROJECT_SHA_PROOF_TRUTHFULNESS_CLOSURE_PROOF.json')
+    proof119=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H119_H126_PROJECT__9337dad9.json')
 except Exception:
     proof119={}
 for name in ['H01-H118_PRESERVED','H119-H126_APPLIED','PROJECT_EXTERNAL_SHA_COMPANION_PARITY','NO_PROJECT_INTERNAL_SHA_EXTERNAL_MISMATCH','ACTIVE_PROOF_PASS_CONTAINS_PENDING_OR_FAIL_SCANNER','NO_ACTIVE_PROOF_PASS_WITH_PENDING_OR_FAIL','GLOBAL_ACTIVE_STALE_PENDING_TOKEN_SCAN','NO_PASS_RECOMPUTED_TOKENS_ACTIVE','SIDECAR_LINEAGE_PROJECT_ZIP_SHA_STRICT','EXPECTED_BLOCK_STDOUT_AND_SUMMARY_PARITY','INCREMENTAL_MUTATION_SUITE_TRANSPARENCY','N1_N10_PROJECT_REGENERATION_SHA_PROOF_MATRIX','DEMO_PROJECT_REGENERATION_POST_H119_H126','H119_H126_NEGATIVE_MUTATION_CASES_PASS']:
     add(name, proof119.get(name)=='PASS', proof119.get(name))
 # Scan reports must be present and PASS/non-opaque.
-for nm,path in [('PROJECT_EXTERNAL_SHA_COMPANION_PARITY','99_MANIFESTS_SHA_LINEAGE/PROJECT_EXTERNAL_SHA_COMPANION_PARITY_SCAN.json'),('ACTIVE_PROOF_PASS_CONTAINS_PENDING_OR_FAIL_SCANNER','99_MANIFESTS_SHA_LINEAGE/ACTIVE_PROOF_PASS_CONTRADICTION_SCAN.json'),('GLOBAL_ACTIVE_STALE_PENDING_TOKEN_SCAN','99_MANIFESTS_SHA_LINEAGE/GLOBAL_ACTIVE_STALE_PENDING_TOKEN_SCAN.json'),('SIDECAR_LINEAGE_PROJECT_ZIP_SHA_STRICT','99_MANIFESTS_SHA_LINEAGE/SIDECAR_LINEAGE_PROJECT_ZIP_SHA_STRICT_SCAN.json')]:
+for nm,path in [('PROJECT_EXTERNAL_SHA_COMPANION_PARITY','99_MANIFESTS_SHA_LINEAGE/PROJECT_EXTERNAL_SHA_COMPANION_PARITY_SCAN.json'),('ACTIVE_PROOF_PASS_CONTAINS_PENDING_OR_FAIL_SCANNER','99_MANIFESTS_SHA_LINEAGE/ACTIVE_PROOF_PASS_CONTRADICTION_SCAN.json'),('GLOBAL_ACTIVE_STALE_PENDING_TOKEN_SCAN','99_MANIFESTS_SHA_LINEAGE/GLOBAL_ACTIVE_STAL_b095a27c.json'),('SIDECAR_LINEAGE_PROJECT_ZIP_SHA_STRICT','99_MANIFESTS_SHA_LINEAGE/SIDECAR_LINEAGE_PR_4da95fde.json')]:
     try:
         rpt=read_json(ROOT/path); add(nm+'_REPORT_FILE', rpt.get('result')=='PASS' and not rpt.get('fail_codes'), rpt)
     except Exception as e:
         add(nm+'_REPORT_FILE', False, {'error':str(e)})
 try:
-    mut=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H119_H126_INCREMENTAL_MUTATION_SUITE_REPORT.json')
+    mut=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H119_H126_INCREMEN_da5f355d.json')
     cases=mut.get('cases',[])
     add('H119_H126_INCREMENTAL_MUTATION_SUITE_REPORT', mut.get('result')=='PASS' and len(cases)>=9 and all(c.get('result')=='PASS' and c.get('restore_result')=='PASS' and c.get('elapsed_ms') is not None for c in cases), {'case_count':len(cases)})
 except Exception as e:
@@ -878,17 +878,17 @@ except Exception as e:
 
 # H127-H134 companion self-reference closure checks.
 try:
-    proof127=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H127_H134_COMPANION_SELF_REFERENCE_FINAL_CLOSURE_PROOF.json')
+    proof127=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H127_H134_COMPANIO_cf25f622.json')
 except Exception as e:
     proof127={'result':'FAIL','fail_codes':['FAIL_H127_H134_CLOSURE_PROOF_MISSING'],'error':str(e)}
 for name in ['H01-H126_PRESERVED','H127-H134_APPLIED','EXTERNAL_COMPANION_SHA_SELF_REFERENCE_SENTINEL','NO_EXTERNAL_COMPANION_SHA_CONCRETE_INSIDE_PROJECT_ZIP','ALL_ZIP_COMPANION_SHA_CLAIMS_GLOBAL_SCANNER','ALL_ZIP_COMPANION_SHA_CLAIMS_FINDINGS_ZERO','ZIP_SHA_FIXED_POINT_OR_SELF_REFERENCE_BLOCK','ZIP_SHA_SELF_REFERENCE_POLICY','DEMO_AND_N1_N10_ALL_SHA_CLAIMS_REVALIDATION','DEMO_PROJECT_REGENERATION_POST_H127_H134','N1_N10_SHA_CLAIM_REVALIDATION_MATRIX','ACTIVE_FIXTURE_NEGATIVE_PROOF_AUTHORITY_CLASSIFICATION','CONTROL_CENTER_PASS_RECOMPUTED_DEMOTION','NO_PASS_RECOMPUTED_TOKENS_ACTIVE','EXTERNAL_COMPANION_SHA_MUTATION_SUITE','H133_EXTERNAL_COMPANION_SHA_MUTATION_SUITE_REPORT','H127_H134_NEGATIVE_MUTATION_CASES_PASS']:
     add(name, proof127.get(name)=='PASS', proof127.get(name))
 for nm,path in [
- ('EXTERNAL_COMPANION_SHA_SELF_REFERENCE_SENTINEL','99_MANIFESTS_SHA_LINEAGE/EXTERNAL_COMPANION_SHA_SELF_REFERENCE_SENTINEL_SCAN.json'),
+ ('EXTERNAL_COMPANION_SHA_SELF_REFERENCE_SENTINEL','99_MANIFESTS_SHA_LINEAGE/EXTERNAL_COMPANION_3069da05.json'),
  ('ALL_ZIP_COMPANION_SHA_CLAIMS_GLOBAL_SCANNER','99_MANIFESTS_SHA_LINEAGE/ALL_ZIP_COMPANION_SHA_CLAIMS_SCAN.json'),
  ('ZIP_SHA_SELF_REFERENCE_POLICY','99_MANIFESTS_SHA_LINEAGE/ZIP_SHA_SELF_REFERENCE_POLICY.json'),
  ('DEMO_AND_N1_N10_ALL_SHA_CLAIMS_REVALIDATION','99_MANIFESTS_SHA_LINEAGE/DEMO_AND_N1_N10_ALL_SHA_CLAIMS_REVALIDATION_MATRIX.json'),
- ('ACTIVE_FIXTURE_NEGATIVE_PROOF_AUTHORITY_CLASSIFICATION','99_MANIFESTS_SHA_LINEAGE/ACTIVE_FIXTURE_NEGATIVE_PROOF_AUTHORITY_CLASSIFICATION_REPORT.json'),
+ ('ACTIVE_FIXTURE_NEGATIVE_PROOF_AUTHORITY_CLASSIFICATION','99_MANIFESTS_SHA_LINEAGE/ACTIVE_FIXTURE_NEG_35a017c7.json'),
  ('CONTROL_CENTER_PASS_RECOMPUTED_DEMOTION','99_MANIFESTS_SHA_LINEAGE/CONTROL_CENTER_PASS_RECOMPUTED_DEMOTION_REPORT.json'),
  ('EXTERNAL_COMPANION_SHA_MUTATION_SUITE','99_MANIFESTS_SHA_LINEAGE/H133_EXTERNAL_COMPANION_SHA_MUTATION_SUITE_REPORT.json')]:
     try:
@@ -937,19 +937,19 @@ add('MOTOR_CORREGIDO_DIRECTO_CANONICO_H127_H134_COMPANION_SELF_REFERENCE_FINAL_C
 
 # H135-H142 expected-block CLI truthfulness closure gates.
 try:
-    proof135=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H135_H142_EXPECTED_BLOCK_CLI_TRUTHFULNESS_CLOSURE_PROOF.json')
+    proof135=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H135_H142_EXPECTED_372f59e1.json')
 except Exception as e:
     proof135={'result':'FAIL','fail_codes':['FAIL_H135_H142_CLOSURE_PROOF_MISSING'],'error':str(e)}
 for name in ['H01-H134_PRESERVED','H135-H142_APPLIED','UNIVERSAL_EXPECTED_BLOCK_PAYLOAD_NORMALIZER','ALL_CLI_SUBCOMMAND_EXPECTED_BLOCK_PARITY','STDOUT_SUMMARY_JSON_EXPECTED_BLOCK_NO_NULL','EXPECTED_BLOCK_NEGATIVE_MUTATION_SUITE','UPDATE_AND_MIGRATION_EXPECTED_BLOCK_REGRESSION_MATRIX','SUMMARY_PAYLOAD_TRUTHFULNESS_CONTRACT','GENERATED_PROJECT_AND_CLI_REVALIDATION_POST_H135_H140','H135_H142_NEGATIVE_MUTATION_CASES_PASS']:
     add(name, proof135.get(name)=='PASS', proof135.get(name))
 try:
-    mut135=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H138_EXPECTED_BLOCK_NEGATIVE_MUTATION_SUITE_REPORT.json')
+    mut135=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H138_EXPECTED_BLOC_fb4bb50a.json')
     cases135=mut135.get('cases',[])
     add('H138_EXPECTED_BLOCK_NEGATIVE_MUTATION_SUITE_REPORT', mut135.get('result')=='PASS' and len(cases135)>=10 and all(c.get('result')=='PASS' and c.get('restore_result')=='PASS' and c.get('elapsed_ms') is not None and c.get('stdout_hash') and c.get('stderr_hash') for c in cases135), {'case_count':len(cases135)})
 except Exception as e:
     add('H138_EXPECTED_BLOCK_NEGATIVE_MUTATION_SUITE_REPORT', False, {'error':str(e)})
 try:
-    matrix139=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/UPDATE_AND_MIGRATION_EXPECTED_BLOCK_REGRESSION_MATRIX.json')
+    matrix139=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/UPDATE_AND_MIGRATI_b5fc6e9e.json')
     rows139=matrix139.get('matrix_results',[]) or matrix139.get('rows',[])
     add('UPDATE_AND_MIGRATION_EXPECTED_BLOCK_REGRESSION_MATRIX_REPORT', matrix139.get('result')=='PASS' and len(rows139)>=11 and all(r.get('result')=='PASS' for r in rows139), {'rows':len(rows139)})
 except Exception as e:
@@ -1008,7 +1008,7 @@ except Exception as e:
 
 # H143-H150 schema/runtime parity closure reports.
 try:
-    scan=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/ACTIVE_JSON_NULL_BLANK_ZERO_TOLERANCE_SCAN.json')
+    scan=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/ACTIVE_JSON_NULL_B_772420e5.json')
     add('ACTIVE_JSON_NULL_BLANK_ZERO_TOLERANCE', scan.get('result')=='PASS' and scan.get('null_values')==0 and scan.get('blank_values')==0 and scan.get('block_fail_code_null_on_delivery_pass')==0, {'report':scan.get('report_id'),'null_values':scan.get('null_values'),'blank_values':scan.get('blank_values'),'block_fail_code_null_on_delivery_pass':scan.get('block_fail_code_null_on_delivery_pass')})
     add('NO_ACTIVE_JSON_NULL_VALUES', scan.get('null_values')==0, scan.get('null_values'))
     add('NO_ACTIVE_JSON_BLANK_VALUES', scan.get('blank_values')==0, scan.get('blank_values'))
@@ -1017,18 +1017,18 @@ except Exception as e:
     add('NO_ACTIVE_JSON_NULL_VALUES', False, {'error':str(e)})
     add('NO_ACTIVE_JSON_BLANK_VALUES', False, {'error':str(e)})
 try:
-    sent=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/SUMMARY_REPORT_OPTIONAL_FIELD_SENTINEL_POLICY.json')
+    sent=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/SUMMARY_REPORT_OPT_a0ea1b20.json')
     allowed={'NOT_APPLICABLE_NON_BLOCKING_DELIVERY','NOT_APPLICABLE_NO_BLOCK','NOT_APPLICABLE_NO_PROJECT_CONTEXT','NOT_APPLICABLE_NO_RUNTIME_COUNT','NOT_APPLICABLE_NO_VALIDATOR_FAILURE'}
     add('SUMMARY_REPORT_OPTIONAL_FIELD_SENTINEL_POLICY', sent.get('result')=='PASS' and set(sent.get('sentinel_registry',[]))==allowed, {'sentinel_count':len(sent.get('sentinel_registry',[]))})
 except Exception as e:
     add('SUMMARY_REPORT_OPTIONAL_FIELD_SENTINEL_POLICY', False, {'error':str(e)})
 try:
-    parity=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/VALIDATOR_PARITY_SELF_CONSISTENCY_REPORT.json')
+    parity=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/VALIDATOR_PARITY_S_3108f82b.json')
     add('VALIDATOR_PARITY_SELF_CONSISTENCY', parity.get('result')=='PASS' and parity.get('runtime_masks_schema_fail') is False, {'report':parity.get('report_id'),'case_count':len(parity.get('commands',[]))})
 except Exception as e:
     add('VALIDATOR_PARITY_SELF_CONSISTENCY', False, {'error':str(e)})
 try:
-    mut=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H148_SCHEMA_RUNTIME_PARITY_NEGATIVE_MUTATION_SUITE_REPORT.json')
+    mut=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H148_SCHEMA_RUNTIM_85eafe6a.json')
     cases=mut.get('cases',[])
     add('SCHEMA_RUNTIME_PARITY_NEGATIVE_MUTATION_SUITE', mut.get('result')=='PASS' and len(cases)>=8 and all(c.get('result')=='PASS' and c.get('restore_result')=='PASS' for c in cases), {'case_count':len(cases)})
     add('H143_H150_NEGATIVE_MUTATION_CASES_PASS', mut.get('H143_H150_NEGATIVE_MUTATION_CASES_PASS')=='PASS', mut.get('H143_H150_NEGATIVE_MUTATION_CASES_PASS'))
@@ -1045,7 +1045,7 @@ except Exception as e:
     add('RELEASE_DOCS_SCHEMA_RUNTIME_PARITY', False, {'error':str(e)})
     add('RELEASE_DOCS_EXECUTABLE_PARITY_H143_H149', False, {'error':str(e)})
 try:
-    matrix=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/FINAL_REOPENED_ZIP_FULL_VALIDATION_MATRIX_H143_H150.json')
+    matrix=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/FINAL_REOPENED_ZIP_cec38f2a.json')
     add('FINAL_REOPENED_ZIP_FULL_VALIDATION_MATRIX', matrix.get('result')=='PASS' and matrix.get('creative_output_certified') is False, {'control_count':len(matrix.get('controls',[]))})
 except Exception as e:
     add('FINAL_REOPENED_ZIP_FULL_VALIDATION_MATRIX', False, {'error':str(e)})
@@ -1055,7 +1055,7 @@ add('MOTOR_CORREGIDO_DIRECTO_CANONICO_H143_H150_SCHEMA_RUNTIME_PARITY_CIERRE_100
 
 # H151-H156 CLI summary/output-json no-null parity closure.
 try:
-    h151=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/CLI_SUMMARY_OUTPUT_JSON_NO_NULL_PARITY_SCAN_H151_H156.json')
+    h151=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/CLI_SUMMARY_OUTPUT_36ef7fe6.json')
     required_cmds={'generate','validate','validate-update-contract','update-project','migrate-project','update-project-by-engine','mutation-self-test'}
     observed={row.get('command') for row in h151.get('commands_scanned',{}).values()} if isinstance(h151.get('commands_scanned'),dict) else set()
     add('CLI_SUMMARY_NO_NULL_ALL_COMMANDS', h151.get('H151_CLI_SUMMARY_NO_NULL_ALL_COMMANDS')=='PASS' and required_cmds.issubset(observed), {'observed_commands':sorted(observed)})
@@ -1095,17 +1095,17 @@ try:
 except Exception as e:
     add('HISTORICAL_NON_AUTHORITY_COMPACTED_OR_JUSTIFIED', False, {'error':str(e)})
 try:
-    dup=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/DUPLICATE_AND_REDUNDANCY_AUDIT_H157_H164.json')
+    dup=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/DUPLICATE_AND_REDU_9aa330f9.json')
     add('DUPLICATE_AND_REDUNDANCY_AUDIT', dup.get('result')=='PASS' and dup.get('removable_duplicates_without_treatment')==0 and dup.get('SRC_049_preserved')=='PASS', {'exact_duplicate_group_count':dup.get('exact_duplicate_group_count'), 'semantic_duplicate_groups':len(dup.get('semantic_duplicate_groups',[]))})
 except Exception as e:
     add('DUPLICATE_AND_REDUNDANCY_AUDIT', False, {'error':str(e)})
 try:
-    gen=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS_H157_H164.json')
+    gen=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/FRESH_PROJECT_GENE_90d744d4.json')
     add('FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS', gen.get('result')=='PASS' and gen.get('fresh_executed') is True and gen.get('preserved_evidence') is False and gen.get('expected_cases')==30 and gen.get('executed_cases')==30 and gen.get('pass_count')==30 and gen.get('all_cases_sha_companion_match')=='PASS' and gen.get('all_cases_zip_testzip')=='PASS' and gen.get('all_cases_agpt_readiness')=='PASS', {'pass_count':gen.get('pass_count'), 'executed_cases':gen.get('executed_cases')})
 except Exception as e:
     add('FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS', False, {'error':str(e)})
 try:
-    mat=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_ATOMIC_REGRESSION_MATRIX_H157_H164.json')
+    mat=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_A_e6388b93.json')
     add('UPDATE_MIGRATION_ATOMIC_REGRESSION_MATRIX', mat.get('result')=='PASS' and mat.get('fresh_executed') is True and mat.get('preserved_evidence') is False and int(mat.get('case_count') or 0)>=9 and int(mat.get('pass_count') or 0)==int(mat.get('case_count') or 0) and mat.get('no_profile360_loss')=='PASS' and mat.get('no_techext_loss')=='PASS' and mat.get('lock_integrity')=='PASS', {'pass_count':mat.get('pass_count')})
 except Exception as e:
     add('UPDATE_MIGRATION_ATOMIC_REGRESSION_MATRIX', False, {'error':str(e)})
@@ -1116,7 +1116,7 @@ try:
 except Exception as e:
     add('ATOMIC_PROJECT_FINALIZER', False, {'error':str(e)}); add('NO_PARTIAL_ZIP_ON_TIMEOUT', False, {'error':str(e)})
 try:
-    h163=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/RUNTIME_SLA_AND_EVIDENCE_TRUTHFULNESS_H157_H164.json')
+    h163=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/RUNTIME_SLA_AND_EV_d696dcd2.json')
     add('RUNTIME_SLA_BOUNDED_EXECUTION', h163.get('RUNTIME_SLA_BOUNDED_EXECUTION')=='PASS')
     add('FRESH_VS_PRESERVED_EVIDENCE_TRUTHFULNESS', h163.get('FRESH_VS_PRESERVED_EVIDENCE_TRUTHFULNESS')=='PASS')
 except Exception as e:
@@ -1135,7 +1135,7 @@ add('MOTOR_CORREGIDO_DIRECTO_CANONICO_H157_H164_SIZE_PERFORMANCE_ATOMIC_GENERATI
 
 # H165-H180 creative canon/safety/realism direct closure.
 try:
-    h165=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H165_H180_CREATIVE_CANON_SAFETY_REALISM_CLOSURE_PROOF.json')
+    h165=read_json(ROOT/'99_MANIFESTS_SHA_LINEAGE/H165_H180_CREATIVE_bc21788f.json')
     exact='Restricciones: Politica adulta editorial segura: permite ropa de bano, lenceria, glamour adulto y pose sensual con ropa para adultos ficticios; bloquea desnudez, sexo explicito, pornografia, exposicion intima, apariencia menor, school-coded sexualizado, coercion, copia real no autorizada y evasion de politicas.'
     required_h165=['UNIVERSAL_SAFE_INTENT_CLAUSE_ALL_MEDIA', 'CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS', 'PROFILE360_TECHEXT_ALL_MEDIA_BINDING', 'HUMAN_REALISM_ANTI_DOLL_ALL_CHARACTER_PROMPTS', 'BRAND_LOGO_RIGHTS_ROUTER_NO_TOTAL_BLOCK', 'LEGAL_WATERMARK_ROUTER_PASS', 'CONTEXT_AUTHENTICITY_NO_GENERIC_ENVIRONMENT', 'CROSS_MEDIA_CANON_READ_BEFORE_OUTPUT', 'PROMPT_PACK_STRUCTURE_ALL_OUTPUTS', 'GENERATED_PROJECT_FIRST_RUN_READY_10_10', 'UPDATE_SELF_HEALING_NO_DEPRECATED_RESIDUE', 'CREATIVE_QA_EXPECTED_ACTUAL_MATRIX', 'ADVERSARIAL_CREATIVE_MISINTERPRETATION_SUITE', 'H165_H180_SIZE_DELTA_WITHIN_POLICY', 'VALIDATOR_RUNTIME_SCHEMA_PARITY_H165_H180']
     add('UNIVERSAL_SAFE_INTENT_CLAUSE_ALL_MEDIA', h165.get('UNIVERSAL_SAFE_INTENT_CLAUSE_ALL_MEDIA')=='PASS' and h165.get('universal_safe_intent_clause_exact')==exact)
@@ -1153,7 +1153,7 @@ try:
     add('ADVERSARIAL_CREATIVE_MISINTERPRETATION_SUITE', h165.get('ADVERSARIAL_CREATIVE_MISINTERPRETATION_SUITE')=='PASS' and len(h165.get('adversarial_cases',[]))>=12)
     add('H165_H180_SIZE_DELTA_WITHIN_POLICY', h165.get('H165_H180_SIZE_DELTA_WITHIN_POLICY')=='PASS' and h165.get('size_delta_policy',{}).get('recommended_net_growth_bytes')==512000)
     add('VALIDATOR_RUNTIME_SCHEMA_PARITY_H165_H180', h165.get('VALIDATOR_RUNTIME_SCHEMA_PARITY_H165_H180')=='PASS' and 'H165_H180' in (ROOT/'99_MANIFESTS_SHA_LINEAGE/VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py').read_text(encoding='utf-8', errors='ignore') and 'H165_H180' in (ROOT/'99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_PROJECT.py').read_text(encoding='utf-8', errors='ignore'))
-    adapter_targets=['06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/IMAGE_PROMPT_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VIDEO_PROMPT_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/ELEVENLABS_VOICE_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/SUNO_MUSIC_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/TEXT_SCRIPT_COPY_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/COPILOT_DOCX_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/SIDECAR_METADATA_ADAPTER.md']
+    adapter_targets=['06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/IMAGE_PROMPT_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VIDEO_PROMPT_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/ELEVENLABS_VOICE_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/SUNO_MUSIC_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/TEXT_SCRIPT_COPY_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/COPILOT_DOCX_ADAPTER.md','06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/SIDECAR_METADATA_ADAPTER.md']
     missing_adapter=[rel for rel in adapter_targets if exact not in (ROOT/rel).read_text(encoding='utf-8', errors='ignore')]
     add('H165_H180_ADAPTER_SURFACE_COVERAGE', not missing_adapter, {'missing_adapter_safe_clause':missing_adapter})
     docs='\n'.join((ROOT/p).read_text(encoding='utf-8', errors='ignore') for p in ['00_INDEX/RELEASE_CERTIFICATE.txt','11_RELEASE_INTERNAL/RELEASE_CERTIFICATE.txt','00_INDEX/CHANGELOG.md','11_RELEASE_INTERNAL/CHANGELOG.md'] if (ROOT/p).is_file())
@@ -1170,12 +1170,12 @@ add('MOTOR_CORREGIDO_DIRECTO_CANONICO_H165_H180_CREATIVE_CANON_SAFETY_REALISM_CI
 
 # H181-H188 direct closure checks.
 try:
-    h181=read_json(ROOT/'11_RELEASE_INTERNAL/FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS_H165_H180.json')
+    h181=read_json(ROOT/'11_RELEASE_INTERNAL/FRESH_PROJECT_GENE_49518118.json')
     add('FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS_H165_H180', h181.get('fresh_executed') is True and h181.get('preserved_evidence') is False and h181.get('executed_cases')==30 and h181.get('pass_count')==30 and h181.get('result')=='PASS')
 except Exception as e:
     add('FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS_H165_H180', False, {'error':str(e)})
 try:
-    h182=read_json(ROOT/'11_RELEASE_INTERNAL/BRAND_LOGO_POLICY_ALIAS_NORMALIZATION_H182_TESTS.json')
+    h182=read_json(ROOT/'11_RELEASE_INTERNAL/BRAND_LOGO_POLICY__6b0f0d4b.json')
     add('BRAND_LOGO_POLICY_ALIAS_NORMALIZATION', h182.get('BRAND_LOGO_POLICY_ALIAS_NORMALIZATION')=='PASS' and h182.get('NO_TOTAL_BLOCK_BRAND_LOGO_ROUTER_TESTS')=='PASS' and h182.get('pass_count')==4)
 except Exception as e:
     add('BRAND_LOGO_POLICY_ALIAS_NORMALIZATION', False, {'error':str(e)})
@@ -1187,12 +1187,12 @@ try:
 except Exception as e:
     add('STALE_STAGE_CLEANUP_ON_START', False, {'error':str(e)}); add('NO_STALE_STAGE_IN_DELIVERY_OUTPUT', False); add('HARD_TIMEOUT_NO_FINAL_ZIP_AND_NO_DELIVERY_CONFUSION', False)
 try:
-    h184=read_json(ROOT/'11_RELEASE_INTERNAL/VISUAL_ANCHOR_DESCRIPTOR_NO_RAW_TOKEN_SCAN_H181_H188.json')
+    h184=read_json(ROOT/'11_RELEASE_INTERNAL/VISUAL_ANCHOR_DESC_70acfa4b.json')
     add('VISUAL_ANCHOR_DESCRIPTOR_NO_RAW_TOKEN_SCAN', h184.get('VISUAL_ANCHOR_DESCRIPTOR_NO_RAW_TOKEN_SCAN')=='PASS' and h184.get('raw_token_findings_count')==0)
 except Exception as e:
     add('VISUAL_ANCHOR_DESCRIPTOR_NO_RAW_TOKEN_SCAN', False, {'error':str(e)})
 try:
-    h185=read_json(ROOT/'11_RELEASE_INTERNAL/CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS_EXTENDED_H185_SCAN.json')
+    h185=read_json(ROOT/'11_RELEASE_INTERNAL/CREATIVE_SURFACE_N_28cedb3a.json')
     add('CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS_EXTENDED', h185.get('CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS_EXTENDED')=='PASS' and h185.get('forbidden_findings_count')==0)
 except Exception as e:
     add('CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS_EXTENDED', False, {'error':str(e)})
@@ -1205,13 +1205,13 @@ except Exception as e:
 # H189-H196 direct finalizer truthfulness/timeout closure checks.
 CRITICAL_INTERNAL_REPORTS_H189_H196=[
     '11_RELEASE_INTERNAL/PROJECT_SMOKE_STRESS_H165_H180_H186.json',
-    '11_RELEASE_INTERNAL/FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS_H165_H180.json',
-    '11_RELEASE_INTERNAL/H181_H188_DIRECT_CANONICAL_CLOSURE_REPORT.json',
-    '11_RELEASE_INTERNAL/BRAND_LOGO_POLICY_ALIAS_NORMALIZATION_H182_TESTS.json',
+    '11_RELEASE_INTERNAL/FRESH_PROJECT_GENE_49518118.json',
+    '11_RELEASE_INTERNAL/H181_H188_DIRECT_C_72e364bc.json',
+    '11_RELEASE_INTERNAL/BRAND_LOGO_POLICY__6b0f0d4b.json',
     '11_RELEASE_INTERNAL/FINALIZER_STALE_STAGE_CLEANUP_H183_REPORT.json',
-    '11_RELEASE_INTERNAL/VISUAL_ANCHOR_DESCRIPTOR_NO_RAW_TOKEN_SCAN_H181_H188.json',
-    '11_RELEASE_INTERNAL/CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS_EXTENDED_H185_SCAN.json',
-    '11_RELEASE_INTERNAL/H189_H196_DIRECT_CANONICAL_CLOSURE_REPORT.json',
+    '11_RELEASE_INTERNAL/VISUAL_ANCHOR_DESC_70acfa4b.json',
+    '11_RELEASE_INTERNAL/CREATIVE_SURFACE_N_28cedb3a.json',
+    '11_RELEASE_INTERNAL/H189_H196_DIRECT_C_0d9f7b24.json',
     '11_RELEASE_INTERNAL/CLI_FULL_MATRIX_EQUIVALENCE_H189_H196.json',
 ]
 
@@ -1261,7 +1261,7 @@ try:
 except Exception as e:
     add('CLI_FULL_MATRIX_EQUIVALENCE', False, {'error':str(e)})
 try:
-    closure=read_json(ROOT/'11_RELEASE_INTERNAL/H189_H196_DIRECT_CANONICAL_CLOSURE_REPORT.json')
+    closure=read_json(ROOT/'11_RELEASE_INTERNAL/H189_H196_DIRECT_C_0d9f7b24.json')
     required=['H01-H188_PRESERVED','H189-H196_APPLIED','INTERNAL_CRITICAL_REPORT_FAIL_PROPAGATION','PROJECT_SMOKE_STRESS_H165_H180_H186','HARD_KILL_NO_DELIVERY_CONFUSION','DELIVERY_COMPLETION_MANIFEST_PRESENT','NO_FINAL_ZIP_WITHOUT_COMPLETION_SIGNAL','NO_STALE_STAGE_AFTER_PASS','ROOT_CAUSE_FAILCODE_PRESERVATION','CLI_FULL_MATRIX_EQUIVALENCE','DOCUMENT_TRUTHFULNESS_PARITY_H189_H196','VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL','VALIDATE_IDUNEX_RUNTIME']
     add('H189-H196_APPLIED', closure.get('result')=='PASS' and all(closure.get(k)=='PASS' for k in required) and closure.get('VALIDATORS_FAIL')==0 and closure.get('BLOCKING_WARNINGS')==0 and closure.get('FAIL_CODES')==[] and closure.get('CREATIVE_OUTPUT_CERTIFIED') is False)
     add('HARD_KILL_NO_DELIVERY_CONFUSION', closure.get('HARD_KILL_NO_DELIVERY_CONFUSION')=='PASS')
