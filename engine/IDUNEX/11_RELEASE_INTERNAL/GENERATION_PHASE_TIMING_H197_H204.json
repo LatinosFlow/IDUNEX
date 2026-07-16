@@ -1,0 +1,209 @@
+{
+  "gate_id": "H198_GENERATION_PHASE_TIMING_LEDGER",
+  "report_name": "GENERATION_PHASE_TIMING_H197_H204",
+  "fresh_executed": true,
+  "preserved_evidence": false,
+  "source": "fresh H199 A-E generate executions after H197 watchdog patch",
+  "case_count": 5,
+  "sla_seconds_by_n": {
+    "N1": 120,
+    "N2_N5": 180,
+    "N6_N10": 300
+  },
+  "n10_warning_threshold_seconds": 60,
+  "cases": [
+    {
+      "case_id": "A",
+      "case_name": "N10 minimal con perfil generico/autofill",
+      "result": "PASS",
+      "sla_seconds": 300,
+      "elapsed_seconds": 60.497,
+      "model_count": 10,
+      "phase_warning_count": 0,
+      "phase_warnings": [],
+      "phase_timing_ledger": {
+        "gate_id": "H198_GENERATION_PHASE_TIMING_LEDGER",
+        "model_count": 10,
+        "sla_seconds": 300,
+        "elapsed_seconds": 60.497,
+        "current_or_last_phase": "final_reopen",
+        "input_normalization_seconds": 0.0,
+        "make_project_seconds": 17.101,
+        "refresh_ledgers_seconds": 4.509,
+        "precheck_seconds": 0.399,
+        "first_zip_seconds": 3.407,
+        "first_reopen_seconds": 0.221,
+        "content_tree_seconds": 8.057,
+        "final_zip_seconds": 3.438,
+        "final_reopen_seconds": 1.018,
+        "atomic_rename_seconds": 0.003,
+        "completion_manifest_seconds": 22.32,
+        "cleanup_seconds": 0.0,
+        "n10_phase_warning_threshold_seconds": 60,
+        "warnings": [],
+        "result": "PASS",
+        "fail_codes": [],
+        "creative_output_certified": false
+      }
+    },
+    {
+      "case_id": "B",
+      "case_name": "N10 complete PROJECT_BRAND_ENTITY OWN_VERIFIED",
+      "result": "PASS",
+      "sla_seconds": 300,
+      "elapsed_seconds": 110.035,
+      "model_count": 10,
+      "phase_warning_count": 1,
+      "phase_warnings": [
+        "WARN_H198_PHASE_OVER_60S:make_project_seconds"
+      ],
+      "phase_timing_ledger": {
+        "gate_id": "H198_GENERATION_PHASE_TIMING_LEDGER",
+        "model_count": 10,
+        "sla_seconds": 300,
+        "elapsed_seconds": 110.035,
+        "current_or_last_phase": "final_reopen",
+        "input_normalization_seconds": 0.0,
+        "make_project_seconds": 78.319,
+        "refresh_ledgers_seconds": 3.323,
+        "precheck_seconds": 0.274,
+        "first_zip_seconds": 2.647,
+        "first_reopen_seconds": 0.163,
+        "content_tree_seconds": 6.223,
+        "final_zip_seconds": 2.484,
+        "final_reopen_seconds": 0.56,
+        "atomic_rename_seconds": 0.004,
+        "completion_manifest_seconds": 16.014,
+        "cleanup_seconds": 0.0,
+        "n10_phase_warning_threshold_seconds": 60,
+        "warnings": [
+          "WARN_H198_PHASE_OVER_60S:make_project_seconds"
+        ],
+        "result": "PASS",
+        "fail_codes": [],
+        "creative_output_certified": false
+      }
+    },
+    {
+      "case_id": "C",
+      "case_name": "N10 complete third_party_verified_asset / THIRD_PARTY_ASSET_DECLARED",
+      "result": "PASS",
+      "sla_seconds": 300,
+      "elapsed_seconds": 110.033,
+      "model_count": 10,
+      "phase_warning_count": 1,
+      "phase_warnings": [
+        "WARN_H198_PHASE_OVER_60S:make_project_seconds"
+      ],
+      "phase_timing_ledger": {
+        "gate_id": "H198_GENERATION_PHASE_TIMING_LEDGER",
+        "model_count": 10,
+        "sla_seconds": 300,
+        "elapsed_seconds": 110.033,
+        "current_or_last_phase": "final_reopen",
+        "input_normalization_seconds": 0.0,
+        "make_project_seconds": 78.483,
+        "refresh_ledgers_seconds": 3.346,
+        "precheck_seconds": 0.243,
+        "first_zip_seconds": 2.612,
+        "first_reopen_seconds": 0.17,
+        "content_tree_seconds": 6.036,
+        "final_zip_seconds": 2.502,
+        "final_reopen_seconds": 0.539,
+        "atomic_rename_seconds": 0.004,
+        "completion_manifest_seconds": 16.073,
+        "cleanup_seconds": 0.0,
+        "n10_phase_warning_threshold_seconds": 60,
+        "warnings": [
+          "WARN_H198_PHASE_OVER_60S:make_project_seconds"
+        ],
+        "result": "PASS",
+        "fail_codes": [],
+        "creative_output_certified": false
+      }
+    },
+    {
+      "case_id": "D",
+      "case_name": "N10 complete third_party_unverified safe-degrade",
+      "result": "PASS",
+      "sla_seconds": 300,
+      "elapsed_seconds": 109.983,
+      "model_count": 10,
+      "phase_warning_count": 1,
+      "phase_warnings": [
+        "WARN_H198_PHASE_OVER_60S:make_project_seconds"
+      ],
+      "phase_timing_ledger": {
+        "gate_id": "H198_GENERATION_PHASE_TIMING_LEDGER",
+        "model_count": 10,
+        "sla_seconds": 300,
+        "elapsed_seconds": 109.983,
+        "current_or_last_phase": "final_reopen",
+        "input_normalization_seconds": 0.0,
+        "make_project_seconds": 78.046,
+        "refresh_ledgers_seconds": 3.45,
+        "precheck_seconds": 0.285,
+        "first_zip_seconds": 2.61,
+        "first_reopen_seconds": 0.193,
+        "content_tree_seconds": 5.963,
+        "final_zip_seconds": 2.491,
+        "final_reopen_seconds": 0.596,
+        "atomic_rename_seconds": 0.004,
+        "completion_manifest_seconds": 16.323,
+        "cleanup_seconds": 0.0,
+        "n10_phase_warning_threshold_seconds": 60,
+        "warnings": [
+          "WARN_H198_PHASE_OVER_60S:make_project_seconds"
+        ],
+        "result": "PASS",
+        "fail_codes": [],
+        "creative_output_certified": false
+      }
+    },
+    {
+      "case_id": "E",
+      "case_name": "N10 complete roles delegados sin roles manuales",
+      "result": "PASS",
+      "sla_seconds": 300,
+      "elapsed_seconds": 105.12,
+      "model_count": 10,
+      "phase_warning_count": 1,
+      "phase_warnings": [
+        "WARN_H198_PHASE_OVER_60S:make_project_seconds"
+      ],
+      "phase_timing_ledger": {
+        "gate_id": "H198_GENERATION_PHASE_TIMING_LEDGER",
+        "model_count": 10,
+        "sla_seconds": 300,
+        "elapsed_seconds": 105.12,
+        "current_or_last_phase": "final_reopen",
+        "input_normalization_seconds": 0.0,
+        "make_project_seconds": 73.612,
+        "refresh_ledgers_seconds": 2.664,
+        "precheck_seconds": 0.276,
+        "first_zip_seconds": 2.477,
+        "first_reopen_seconds": 0.214,
+        "content_tree_seconds": 6.052,
+        "final_zip_seconds": 2.51,
+        "final_reopen_seconds": 0.583,
+        "atomic_rename_seconds": 0.004,
+        "completion_manifest_seconds": 16.704,
+        "cleanup_seconds": 0.0,
+        "n10_phase_warning_threshold_seconds": 60,
+        "warnings": [
+          "WARN_H198_PHASE_OVER_60S:make_project_seconds"
+        ],
+        "result": "PASS",
+        "fail_codes": [],
+        "creative_output_certified": false
+      }
+    }
+  ],
+  "all_explicit_within_sla": "PASS",
+  "GENERATION_PHASE_TIMING_LEDGER": "PASS",
+  "result": "PASS",
+  "validators_fail": 0,
+  "blocking_warnings": 0,
+  "fail_codes": [],
+  "creative_output_certified": false
+}

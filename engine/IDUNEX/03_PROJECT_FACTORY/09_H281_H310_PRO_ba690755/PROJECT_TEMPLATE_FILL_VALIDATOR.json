@@ -1,0 +1,27 @@
+{
+  "validator_id": "PROJECT_TEMPLATE_FILL_VALIDATOR",
+  "rule_id": "PRJ-TPL-001",
+  "semantic_version": "v1.0.0",
+  "required_fields_minimum": [
+    "project_name",
+    "owner_entity",
+    "brand_name",
+    "brand_usage_scope",
+    "brand_rights_declaration",
+    "model_count",
+    "models",
+    "modalities_required",
+    "assets_authorized_or_NO_ASSETS_SUBMITTED",
+    "creative_legal_restrictions"
+  ],
+  "block_if_placeholders_present": true,
+  "do_not_execute_template_with_placeholders": true,
+  "validator_functions": [
+    "VALIDATE_TEMPLATE_REQUIRED_FIELDS",
+    "VALIDATE_NO_PLACEHOLDER_EXECUTION_GATE",
+    "VALIDATE_PROMPT_SUITE_REQUIRED_OPTIONAL_FIELDS"
+  ],
+  "result": "PASS",
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

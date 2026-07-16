@@ -1,0 +1,156 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "validation_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "release_state": "prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "visual_sources": [
+    {
+      "visual_source_id": "SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY",
+      "name": "GENERIC_VISUAL_SYSTEM_TOKEN visual system",
+      "source_type": "visual_system_runtime_trace",
+      "field_ids_impacted": [
+        "brand_visual_identity",
+        "presentation_style",
+        "documentation_style",
+        "copilot_docx_branding",
+        "project_pack_visual_consistency"
+      ],
+      "runtime_domains": [
+        "visual_governance",
+        "documentation",
+        "copilot_docx",
+        "project_packaging"
+      ],
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rules": [
+        "QA_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_TRACE"
+      ],
+      "fail_codes": [
+        "FAIL_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_DRIFT"
+      ],
+      "fallbacks": [
+        "FALLBACK_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_RESTORE_CANON"
+      ],
+      "coverage_score": 9,
+      "coverage_score_10_allowed": false,
+      "evidence_status": "baseline_visual_trace",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM",
+      "name": "PROJECT_BRAND_ENTITY color system",
+      "source_type": "visual_system_runtime_trace",
+      "field_ids_impacted": [
+        "color_policy",
+        "presentation_style",
+        "documentation_style",
+        "copilot_docx_branding",
+        "project_pack_visual_consistency"
+      ],
+      "runtime_domains": [
+        "visual_governance",
+        "documentation",
+        "copilot_docx",
+        "project_packaging"
+      ],
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rules": [
+        "QA_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_TRACE"
+      ],
+      "fail_codes": [
+        "FAIL_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_DRIFT"
+      ],
+      "fallbacks": [
+        "FALLBACK_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_RESTORE_CANON"
+      ],
+      "coverage_score": 9,
+      "coverage_score_10_allowed": false,
+      "evidence_status": "baseline_visual_trace",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM",
+      "name": "GENERIC_VISUAL_SYSTEM_TOKEN typography system",
+      "source_type": "visual_system_runtime_trace",
+      "field_ids_impacted": [
+        "typography_policy",
+        "presentation_style",
+        "documentation_style",
+        "copilot_docx_branding",
+        "project_pack_visual_consistency"
+      ],
+      "runtime_domains": [
+        "visual_governance",
+        "documentation",
+        "copilot_docx",
+        "project_packaging"
+      ],
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rules": [
+        "QA_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_TRACE"
+      ],
+      "fail_codes": [
+        "FAIL_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_DRIFT"
+      ],
+      "fallbacks": [
+        "FALLBACK_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_RESTORE_CANON"
+      ],
+      "coverage_score": 9,
+      "coverage_score_10_allowed": false,
+      "evidence_status": "baseline_visual_trace",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM",
+      "name": "GENERIC_VISUAL_SYSTEM_TOKEN tone/language system",
+      "source_type": "visual_system_runtime_trace",
+      "field_ids_impacted": [
+        "tone_language_policy",
+        "presentation_style",
+        "documentation_style",
+        "copilot_docx_branding",
+        "project_pack_visual_consistency"
+      ],
+      "runtime_domains": [
+        "visual_governance",
+        "documentation",
+        "copilot_docx",
+        "project_packaging"
+      ],
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rules": [
+        "QA_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_TRACE"
+      ],
+      "fail_codes": [
+        "FAIL_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_DRIFT"
+      ],
+      "fallbacks": [
+        "FALLBACK_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_RESTORE_CANON"
+      ],
+      "coverage_score": 9,
+      "coverage_score_10_allowed": false,
+      "evidence_status": "baseline_visual_trace",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    }
+  ]
+}

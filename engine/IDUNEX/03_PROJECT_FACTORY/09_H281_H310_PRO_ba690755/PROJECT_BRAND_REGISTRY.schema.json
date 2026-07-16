@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PROJECT_BRAND_REGISTRY",
+  "semantic_version": "v1.0.0",
+  "correction_scope": "H391_H410",
+  "type": "object",
+  "required": [
+    "schema",
+    "semantic_version",
+    "project_id",
+    "brand_entity",
+    "owner_entity",
+    "rights_holder_entity",
+    "logo_asset_policy",
+    "LOGO_ASSET_NOT_VERIFIED",
+    "producer",
+    "consumer",
+    "retention_rule",
+    "validation_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "PROJECT_BRAND_REGISTRY"
+    },
+    "semantic_version": {
+      "const": "v1.0.0"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brand_entity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "LOGO_ASSET_NOT_VERIFIED": {
+      "type": "boolean"
+    },
+    "producer": {
+      "type": "string"
+    },
+    "consumer": {
+      "type": "array"
+    },
+    "retention_rule": {
+      "type": "string"
+    },
+    "validation_gate": {
+      "const": "PROJECT_BRAND_REGISTRY_MISSING"
+    },
+    "owner_entity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rights_holder_entity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "logo_asset_policy": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

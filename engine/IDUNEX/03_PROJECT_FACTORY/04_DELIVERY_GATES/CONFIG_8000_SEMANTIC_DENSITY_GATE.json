@@ -1,0 +1,72 @@
+{
+  "gate_id": "CONFIG_8000_SEMANTIC_DENSITY_GATE",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "fail_codes": [
+    "BLOCKED_CONFIG_8000_VALIDATOR_FALSE_POSITIVE",
+    "BLOCKED_CONFIG_8000_PADDING_LOOP",
+    "BLOCKED_CONFIG_8000_BY_CONTENT_FAIL"
+  ],
+  "contract": "Checks PROJECT-CONFIGURACION-AGENT.txt by semantic content. Normative anti-padding references, fail codes and metrics are not filler. Real duplicated lines/blocks, artificial loops and semantically empty filler are blocked.",
+  "blocking": true,
+  "actual_value_required": true,
+  "pass_by_count_only_allowed": false,
+  "delivery_allowed_if_fail": false,
+  "char_count_exact": 8000,
+  "semantic_sections_min": 12,
+  "max_repeated_line_count": 3,
+  "repeated_block_max": 1,
+  "actual_padding_loop_count_required": 0,
+  "filler_ratio_max": 0.05,
+  "metrics_required": [
+    "normative_padding_reference_count",
+    "actual_padding_loop_count",
+    "repeated_line_max",
+    "repeated_block_max",
+    "filler_ratio",
+    "semantic_sections_count",
+    "required_tokens_present"
+  ],
+  "do_not_count_as_filler": [
+    "padding inside anti-padding rule",
+    "BLOCKED_CONFIG_8000_PADDING_LOOP",
+    "no padding loops",
+    "repeated_padding_blocks = 0",
+    "gate names",
+    "metric names",
+    "normative instructions"
+  ],
+  "count_as_filler": [
+    "identical lines repeated",
+    "blocks repeated to reach 8000 chars",
+    "phrases with no functional authority",
+    "textual loops",
+    "semantically empty filler",
+    "artificial repetition",
+    "duplicated text without authority purpose"
+  ],
+  "required_tokens": [
+    "IDUNEX_MOTOR_v1.0.0",
+    "10 core IDUNEX",
+    "MODEL_RUNTIME_PROFILE_FULL per model",
+    "max 20 files per agent",
+    "max 10 models",
+    "no split agents",
+    "no destructive summary",
+    "PROJECT_RUNTIME_COVERAGE_MAP required",
+    "TechExt field-level materialization required",
+    "alias resolver from Profile360",
+    "legacy contamination blocked",
+    "PROJECT_PACKAGE_10_10 != OUTPUT_REAL_10_10",
+    "OUTPUT_REAL_10_10 requires asset + sidecar + prompt_hash + output_hash + QA + reviewer + lineage",
+    "actual_value required",
+    "no PASS with empty actual_value",
+    "truthfulness gate",
+    "independent audit FAIL blocks delivery",
+    "runtime upload set manifest required",
+    "single active model authority required",
+    "self-referential manifest exclusion required"
+  ]
+}

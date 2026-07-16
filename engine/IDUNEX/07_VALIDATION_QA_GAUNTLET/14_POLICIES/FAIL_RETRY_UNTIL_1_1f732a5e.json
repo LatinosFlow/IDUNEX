@@ -1,0 +1,33 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "policy_id": "FAIL_RETRY_UNTIL_100_PERCENT_PASS_GLOBAL",
+  "status": "ACTIVE_PASS",
+  "steps": [
+    "root_cause",
+    "surgical_fix",
+    "regression_scope",
+    "rebuild_affected_files",
+    "rewrite_paths_if_needed",
+    "rebuild_all_affected_manifests",
+    "rebuild_zip",
+    "reopen_final_zip",
+    "run_full_independent_audit_not_partial",
+    "repeat_until_0_FAIL"
+  ],
+  "applies_to": [
+    "motor_generation",
+    "motor_update",
+    "motor_downgrade",
+    "motor_removal",
+    "project_create",
+    "project_update_by_motor",
+    "project_update_only",
+    "project_downgrade",
+    "project_retire",
+    "project_reissue",
+    "project_regenerate",
+    "GENERIC_PROJECT_FIXTURE"
+  ],
+  "actual_value": "steps=10; applies_to=12; max_fail_allowed=0"
+}

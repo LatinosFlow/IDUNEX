@@ -1,0 +1,91 @@
+{
+  "map_id": "IDUNEX_ROOT_STRUCTURE_EQUIVALENCE_MAP",
+  "semantic_version": "v1.0.0",
+  "physical_renumbering": "OPTION_A_PHYSICAL_RENUMBERING_APPLIED",
+  "reason": "Se renumeraron fisicamente las carpetas raiz para eliminar duplicados de prefijo y alinear estructura, politica activa, manifests, imports y validators.",
+  "official_structure": [
+    {
+      "official_root": "00_INDEX",
+      "active_physical_root": "00_INDEX",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "01_CANON_REGISTRIES",
+      "active_physical_root": "01_CANON_REGISTRIES",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "02_RESEARCH_CORPUS",
+      "active_physical_root": "02_RESEARCH_CORPUS",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "03_PROJECT_FACTORY",
+      "active_physical_root": "03_PROJECT_FACTORY",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "04_AGENT_FACTORY",
+      "active_physical_root": "04_AGENT_FACTORY",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "05_RUNTIME_CORE_LIBRARY",
+      "active_physical_root": "05_RUNTIME_CORE_LIBRARY",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "06_MULTIMODAL_CONTRACTS",
+      "active_physical_root": "06_MULTIMODAL_CONTRACTS",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "07_VALIDATION_QA_GAUNTLET",
+      "active_physical_root": "07_VALIDATION_QA_GAUNTLET",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "08_EVIDENCE_LINEAGE",
+      "active_physical_root": "08_EVIDENCE_LINEAGE",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "09_TEMPLATES_FIXTURES",
+      "active_physical_root": "09_TEMPLATES_FIXTURES",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "10_INTERNAL_MANUALS",
+      "active_physical_root": "10_INTERNAL_MANUALS",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "11_RELEASE_INTERNAL",
+      "active_physical_root": "11_RELEASE_INTERNAL",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "12_OUTPUT_CONTRACTS",
+      "active_physical_root": "12_OUTPUT_CONTRACTS",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "13_UPDATE_MIGRATION",
+      "active_physical_root": "13_UPDATE_MIGRATION",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "14_HISTORICAL_NON_AUTHORITY",
+      "active_physical_root": "14_HISTORICAL_NON_AUTHORITY",
+      "status": "PHYSICAL_MATCH"
+    },
+    {
+      "official_root": "99_MANIFESTS_SHA_LINEAGE",
+      "active_physical_root": "99_MANIFESTS_SHA_LINEAGE",
+      "status": "PHYSICAL_MATCH"
+    }
+  ],
+  "validator": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+  "fail_code": "FAIL_ENG_STR_001",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

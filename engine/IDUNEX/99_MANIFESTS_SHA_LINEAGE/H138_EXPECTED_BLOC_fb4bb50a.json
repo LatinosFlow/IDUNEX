@@ -1,0 +1,278 @@
+{
+  "result": "PASS",
+  "case_count": 18,
+  "H135_H142_NEGATIVE_MUTATION_CASES_PASS": "PASS",
+  "cases": [
+    {
+      "case": "human_readable_null",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "87702da15d1fa336075a98d237c89ad14832dec8cd34c3154aeb623a71cfee4a",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "expected_block_null",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "3bb894a45a14c4fcc5b29d7f0b8ac47913abb28772cad9f55bb677fada3ff6cc",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "expected_block_false",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "b8ed4eebdf7026c1cf5e514b61dcc52fe0e0dc11cc7059f918b8a0bb90cbf0eb",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "block_fail_code_null",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "ebe10359e6c590f704b8750e99487d8557252f3bc65c18d91ad4c70b58c9ee0a",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "fail_codes_empty",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "02abacd4816609caf1226a2070d841c77d7274b45d33fbf61206423d332489ef",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "stdout_locked_update_without_label",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "5c6722595f89f23cb83f81e254aa308c80e96e4bc6dd315a71f3350c5f7bc58c",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "stdout_unknown_engine_without_label",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "43e5ff0d93458d3a30dbd3d57cbccee86a442c7019478060a498e1fc57b38cd8",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "summary_eliminates_expected_block",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "e6f71dc4073ce720bcb4b721722211327cdd30f438da799667e1b5293acb78bd",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "output_json_stdout_divergence",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "ef957ab63004dc9f56bd3290c6dbdedd1310f523787270d2168f2f28cb834f3c",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "docs_pass_without_matrix",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "H135-H142 mutation assertion",
+      "stdout_hash": "957c2e0b0e5cdeb7a7d9226499ccc617b4122e072f40690aeac49b3a59aeb548",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_H138_EXPECTED_BLOCK_FAILCODE_NOT_OBSERVED"
+      ]
+    },
+    {
+      "case": "stdout_summary_generate_N0",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "executed_cli_case_generate_N0",
+      "stdout_hash": "b9ef852dfb4944d7437c705d405b741a727159c141cec35e493f2ca8b93871cd",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_MODEL_COUNT_MIN"
+      ]
+    },
+    {
+      "case": "stdout_summary_generate_N11",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "executed_cli_case_generate_N11",
+      "stdout_hash": "b3892fc317351b7897c53371eb732461d7d2c7490a03608eed1e42bbb16c9e27",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_MODEL_COUNT_MAX"
+      ]
+    },
+    {
+      "case": "stdout_summary_generate_without_models",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "executed_cli_case_generate_without_models",
+      "stdout_hash": "110860e5381efb37d3ecbd894f7190379b542a19ae91291bf3572cdaeb75ca99",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD"
+      ]
+    },
+    {
+      "case": "stdout_summary_validate_update_contract_locked_face",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "executed_cli_case_validate_update_contract_locked_face",
+      "stdout_hash": "60e72339e69cae2b7237a666175b4627ffe060b9ecfb37dcab0c364cb37729fd",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ]
+    },
+    {
+      "case": "stdout_summary_update_project_locked_face",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "executed_cli_case_update_project_locked_face",
+      "stdout_hash": "675b02ee5f4a5206503d6752979622c5390eae29ddc490ea37adc153380c46ad",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ]
+    },
+    {
+      "case": "stdout_summary_update_project_selector_ambiguous_N2",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "executed_cli_case_update_project_selector_ambiguous_N2",
+      "stdout_hash": "3c31aead287df455cf852609140893259aab73c90b80caa6ddb72f31847992b9",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "FAIL_UPDATE_TARGET_MODEL_NOT_FOUND"
+      ]
+    },
+    {
+      "case": "stdout_summary_migrate_project_unknown_engine",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "executed_cli_case_migrate_project_unknown_engine",
+      "stdout_hash": "63ccc6de0ec714cb2a3a8811792943750693e6fdbc57cf62c708904d351630e6",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+      ]
+    },
+    {
+      "case": "stdout_summary_update_project_by_engine_unknown_engine",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1,
+      "touched_files": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "command": "executed_cli_case_update_project_by_engine_unknown_engine",
+      "stdout_hash": "58ea5f36c73d348e21a0363803ad717569cc2eaa79ba158769480fd1503854aa",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_fail_codes": [
+        "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+      ]
+    }
+  ],
+  "fail_codes": []
+}

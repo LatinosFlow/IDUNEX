@@ -1,0 +1,18 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "checks": [
+    "10_core_files",
+    "1_full_profile_per_model",
+    "total_files<=20",
+    "critical_rules_present",
+    "no_destructive_summary",
+    "coverage_map_present",
+    "alias_resolver_present",
+    "source_ledger_present",
+    "truthfulness_gate_present",
+    "output_separation_present",
+    "no_legacy_contamination"
+  ],
+  "fallback_fix": "Block export and rebuild agent pack until ChatGPT and Copilot parity pass."
+}

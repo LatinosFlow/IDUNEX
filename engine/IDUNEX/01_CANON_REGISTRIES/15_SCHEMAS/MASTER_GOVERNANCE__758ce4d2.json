@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MASTER_GOVERNANCE_RULE_REGISTRY",
+  "type": "object",
+  "required": [
+    "registry_id",
+    "semantic_version",
+    "families",
+    "rules",
+    "required_rule_ids",
+    "CREATIVE_OUTPUT_CERTIFIED"
+  ],
+  "properties": {
+    "registry_id": {
+      "type": "string"
+    },
+    "semantic_version": {
+      "type": "string"
+    },
+    "version_bump": {
+      "type": "string"
+    },
+    "correction_mode": {
+      "type": "string"
+    },
+    "authority_model": {
+      "type": "string"
+    },
+    "required_family_count": {
+      "type": "integer"
+    },
+    "families": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "required_rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rule_id",
+          "family",
+          "title",
+          "statement",
+          "active_paths",
+          "implementation_type",
+          "validator_or_factory_affected",
+          "status",
+          "fail_code"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string"
+          },
+          "family": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          },
+          "active_paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "implementation_type": {
+            "type": "string"
+          },
+          "validator_or_factory_affected": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "object"
+          },
+          "status": {
+            "type": "string"
+          },
+          "fail_code": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CREATIVE_OUTPUT_CERTIFIED": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,14 @@
+{
+  "gate_id": "PROJECT_FACTORY_RETRY_LOOP_FOR_PACKAGING",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "fail_code": "BLOCKED_PROJECT_FACTORY_RETRY_LOOP_NOT_EXECUTED",
+  "contract": "If a packaging gate fails, correct root cause, recalc manifests/SHA, re-emit ZIP, reopen ZIP and re-audit until 100% PASS.",
+  "blocking": true,
+  "actual_value_required": true,
+  "pass_by_count_only_allowed": false,
+  "delivery_allowed_if_fail": false,
+  "correction_action": "Identify root_cause, correct surgically, recalculate manifests/SHA, reemit ZIP, reopen ZIP and reaudIT complete scope before delivery."
+}

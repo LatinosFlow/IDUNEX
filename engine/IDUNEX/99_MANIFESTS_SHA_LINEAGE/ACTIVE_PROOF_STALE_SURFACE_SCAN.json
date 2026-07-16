@@ -1,0 +1,12 @@
+{
+  "report": "ACTIVE_PROOF_STALE_SURFACE_SCAN",
+  "correction_scope_label": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80_PLUS_H81_H86_PLUS_H87_H92_PLUS_H93_H98_PLUS_H99_H104_PLUS_H105_H112",
+  "active_proofs_scanned": [
+    "99_MANIFESTS_SHA_LINEAGE/P034_RUNTIME_VALIDATION_RESULT.json"
+  ],
+  "active_stale_proofs": [],
+  "scope_mismatch_count": 0,
+  "gate_count_mismatch_count": 0,
+  "result": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

@@ -1,0 +1,14 @@
+{
+  "report_id": "ACTIVE_JSON_NULL_BLANK_ZERO_TOLERANCE_SCAN_H143_H150",
+  "result": "PASS",
+  "executed_from": "ACTIVE_TREE_PRE_FINAL_REOPEN",
+  "scan_scope": "IDUNEX_ACTIVE_JSON_EXCLUDING_HISTORICAL_FIXTURES_LEGACY",
+  "null_values": 0,
+  "blank_values": 0,
+  "block_fail_code_null_on_delivery_pass": 0,
+  "required_field_empty": 0,
+  "sentinel_applied": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+  "target_file": "99_MANIFESTS_SHA_LINEAGE/GENERATED_PROJECT_AND_CLI_REVALIDATION_POST_H135_H140.json",
+  "fail_codes": [],
+  "generated_at": "2026-07-01 PROJECT_DECLARED_TIMEZONE"
+}

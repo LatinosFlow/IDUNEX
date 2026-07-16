@@ -1,0 +1,660 @@
+{
+  "map_id": "IDUNEX_MASTER_GOVERNANCE_MAP",
+  "semantic_version": "v1.0.0",
+  "version_bump": "NO",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "source": "Informe Maestro distilled into executable governance, no raw PDF copied into engine",
+  "authority_priority": [
+    "active_stable_rule_registry",
+    "major_contracts",
+    "schemas",
+    "validators",
+    "factory_logic",
+    "compact_evidence_lineage",
+    "historical_H_lineage_non_authority"
+  ],
+  "rules": [
+    {
+      "rule_id": "GOV-CORE-001",
+      "family": "GOV",
+      "title": "Master Governance Native",
+      "statement": "El Informe Maestro se destila como mapa, políticas, contratos, schemas, validators y factory logic activos; no se copia como documento bruto.",
+      "active_paths": [
+        "00_INDEX/MASTER_GOVERNANCE_MAP.json",
+        "01_CANON_REGISTRIES/MASTER_GOVERNANCE_RULE_REGISTRY.json",
+        "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/VALIDATE_MASTER_GOVERNANCE_NATIVE.py"
+      ],
+      "implementation_type": "policy+contract+schema+validator+factory_logic",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_GOV_CORE_001"
+    },
+    {
+      "rule_id": "GOV-LVL-001",
+      "family": "GOV",
+      "title": "ENGINE_LEVEL != PROJECT_LEVEL != AGENT_LEVEL",
+      "statement": "Bloquea contaminación entre motor, proyecto y agente; el agente opera sobre runtime de proyecto, no sobre ZIP completo del motor.",
+      "active_paths": [
+        "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json"
+      ],
+      "implementation_type": "policy+contract+schema+validator+factory_logic",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_GOV_LVL_001"
+    },
+    {
+      "rule_id": "VER-SEM-001",
+      "family": "VER",
+      "title": "Semantic version clean",
+      "statement": "SEMANTIC_VERSION=v1.0.0 sin sufijos semánticos; VERSION_BUMP=NO para corrección directa canónica sobre la misma versión.",
+      "active_paths": [
+        "00_INDEX/ACTIVE_VERSION.txt",
+        "00_INDEX/00_CONTROL_CENTER/VERSION_SCOPE_LOCK.md"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_IDUNEX_RUNTIME",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_VER_SEM_001"
+    },
+    {
+      "rule_id": "VER-COR-001",
+      "family": "VER",
+      "title": "Direct canonical no patch",
+      "statement": "No rollback, fork, hotfix, patch externo, factory paralelo, validator paralelo, sufijo ni salida derivada.",
+      "active_paths": [
+        "00_INDEX/00_CONTROL_CENTER/MOTOR_UPDATE_HARD_GATE.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_VER_COR_001"
+    },
+    {
+      "rule_id": "ENG-CORE-001",
+      "family": "ENG",
+      "title": "Engine governs, project materializes, agent executes",
+      "statement": "El motor contiene reglas, factories, validators, schemas, research canon y contratos; no contiene defaults de proyectos reales.",
+      "active_paths": [
+        "00_INDEX/MASTER_GOVERNANCE_MAP.json",
+        "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_ENG_CORE_001"
+    },
+    {
+      "rule_id": "ENG-STR-001",
+      "family": "ENG",
+      "title": "Official structure equivalence map",
+      "statement": "No se renumera físicamente para evitar riesgo; existe mapping canónico activo a la estructura oficial del Informe Maestro.",
+      "active_paths": [
+        "00_INDEX/00_CONTROL_CENTER/ROOT_STRUCTURE_EQUIVALENCE_MAP.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_ENG_STR_001"
+    },
+    {
+      "rule_id": "PRJ-CON-001",
+      "family": "PRJ",
+      "title": "Project output contract",
+      "statement": "Todo proyecto cierra con ZIP, companion, certificado, auditoría, README, runtime 10+N, manifests y QA recomputado.",
+      "active_paths": [
+        "12_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_PRJ_CON_001"
+    },
+    {
+      "rule_id": "PRJ-DEMO-001",
+      "family": "PRJ",
+      "title": "Proyecto Demo posterior no default",
+      "statement": "Proyecto 000 Demo/LatinosFlow queda como validación posterior externa; no es fixture ni default activo del motor.",
+      "active_paths": [
+        "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_PRJ_DEMO_001"
+    },
+    {
+      "rule_id": "AGT-LOAD-001",
+      "family": "AGT",
+      "title": "Agent load contract",
+      "statement": "Cada agente recibe runtime de proyecto: 10 archivos base + 1 full runtime canon por modelo para ChatGPT y Copilot.",
+      "active_paths": [
+        "12_OUTPUT_CONTRACTS/AGENT_LOAD_CONTRACT.json",
+        "04_AGENT_FACTORY/12_H281_H310_RUNTIME_10_PLUS_N"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_AGT_LOAD_001"
+    },
+    {
+      "rule_id": "CAN-P360-001",
+      "family": "CAN",
+      "title": "Profile360 61/61",
+      "statement": "Profile360 preserva 61 secciones por modelo y trazabilidad a canon/runtime.",
+      "active_paths": [
+        "01_CANON_REGISTRIES/PROFILE360_SYSTEM/01_SCHEMA/PROFILE360_CANONICAL_REGISTRY_00_60.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_CAN_P360_001"
+    },
+    {
+      "rule_id": "CAN-TEXT-001",
+      "family": "CAN",
+      "title": "TechExt 284/284",
+      "statement": "TechExt preserva 284 campos técnicos por modelo.",
+      "active_paths": [
+        "01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_FULL10_OFFICIAL_FIELD_REGISTRY.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_CAN_TEXT_001"
+    },
+    {
+      "rule_id": "RES-CORPUS-001",
+      "family": "RES",
+      "title": "Research corpus normalized/distilled",
+      "statement": "Research corpus queda gobernado por RES; proyectos reciben canon derivado, evidence pointers y distilled knowledge, no corpus bruto completo.",
+      "active_paths": [
+        "02_RESEARCH_CORPUS/RES_POLICY_REGISTRY.json",
+        "08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_RES_CORPUS_001"
+    },
+    {
+      "rule_id": "RUN-10N-001",
+      "family": "RUN",
+      "title": "Runtime ChatGPT/Copilot 10+N",
+      "statement": "Runtime por proyecto: ChatGPT 10+N y Copilot 10+N; archivo por modelo completo, no resumen.",
+      "active_paths": [
+        "04_AGENT_FACTORY/12_H281_H310_RUNTIME_10_PLUS_N",
+        "05_RUNTIME_CORE_LIBRARY/20_MOTOR_CORE_10"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_IDUNEX_RUNTIME",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_RUN_10N_001"
+    },
+    {
+      "rule_id": "PMT-AJ-001",
+      "family": "PMT",
+      "title": "Prompt Pack A-J universal contract",
+      "statement": "Todo prompt pack exige HEADER, SCENE, COMPOSITION, LIGHTING, WARDROBE/PROPS, CAMERA/TECH, NEGATIVE/AVOID, PARAMS, QC CHECKLIST y FALLBACK FIXES.",
+      "active_paths": [
+        "05_RUNTIME_CORE_LIBRARY/20_MOTOR_CORE_10",
+        "06_MULTIMODAL_CONTRACTS/06_MULTIMODAL_CONTRACTS"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_PROMPT_PACK_STRUCTURE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_PMT_AJ_001"
+    },
+    {
+      "rule_id": "VAL-REC-001",
+      "family": "VAL",
+      "title": "Recomputation not declared PASS",
+      "statement": "Los PASS deben ser recomputados con retorno real, ZIP reopen, companion match, CRC/testzip y fail_codes limpios.",
+      "active_paths": [
+        "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/VALIDATE_MASTER_GOVERNANCE_NATIVE.py",
+        "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py"
+      ],
+      "implementation_type": "policy+contract+schema+validator+factory_logic",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_VAL_REC_001"
+    },
+    {
+      "rule_id": "AUD-MAX-001",
+      "family": "AUD",
+      "title": "Maximum audit matrix",
+      "statement": "Cierre de motor exige N1..N10 x low/intermediate/full, update matrix, migration matrix, mutation/self-test y CLI lifecycle.",
+      "active_paths": [
+        "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
+        "11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_AUD_MAX_001"
+    },
+    {
+      "rule_id": "UPD-MAT-001",
+      "family": "UPD",
+      "title": "Update matrix complete",
+      "statement": "Updates soportan age_delta, age_evolution, set_wardrobe, update_model_field, brand_update, runtime_regeneration, add_model, remove_model y zero guard.",
+      "active_paths": [
+        "13_UPDATE_MIGRATION/UPDATE_MIGRATION_CONTRACTS.json",
+        "03_PROJECT_FACTORY/08_UPDATE_MIGRATION"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_UPD_MAT_001"
+    },
+    {
+      "rule_id": "MIG-MAT-001",
+      "family": "MIG",
+      "title": "Migration matrix complete",
+      "statement": "Migraciones soportan misma versión, versión compatible, update-project-by-engine, migrate-project y revalidación por número/nivel de modelos.",
+      "active_paths": [
+        "13_UPDATE_MIGRATION/UPDATE_MIGRATION_CONTRACTS.json",
+        "03_PROJECT_FACTORY/08_UPDATE_MIGRATION"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_MIG_MAT_001"
+    },
+    {
+      "rule_id": "BRD-DEF-001",
+      "family": "BRD",
+      "title": "No brand defaults in engine",
+      "statement": "LatinosFlow, logos, paletas, clientes, modelos demo y rutas de proyectos no pueden ser defaults activos del motor.",
+      "active_paths": [
+        "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json",
+        "12_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_BRD_DEF_001"
+    },
+    {
+      "rule_id": "BRD-PAL-001",
+      "family": "BRD",
+      "title": "No active project brand palette leakage in generic runtime surfaces",
+      "statement": "Las superficies activas genéricas del motor no pueden materializar paletas reales de marca, nombres reales de proyecto/marca ni valores hex concretos como default activo bajo PROJECT_BRAND_ENTITY. Deben usar PROJECT_BRAND_PRIMARY_COLOR, PROJECT_BRAND_SECONDARY_COLOR, PROJECT_BRAND_ACCENT_COLOR, PROJECT_BRAND_TEXT_COLOR, PROJECT_BRAND_BACKGROUND_COLOR y PROJECT_BRAND_CONTRAST_PAIR_AA; los valores reales se resuelven solo desde PROJECT_BRAND_REGISTRY del proyecto generado o input externo autorizado.",
+      "active_paths": [
+        "05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_DIAGRAM_STYLE_GUIDE.md",
+        "05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_DOCX_STYLE_GUIDE.md",
+        "05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_IDUNEX_VISUAL_RULES.md",
+        "05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_WATERMARK_GUIDE.md",
+        "00_INDEX/MASTER_GOVERNANCE_MAP.json",
+        "01_CANON_REGISTRIES/MASTER_GOVERNANCE_RULE_REGISTRY.json",
+        "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json",
+        "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/VALIDATE_MASTER_GOVERNANCE_NATIVE.py",
+        "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py"
+      ],
+      "implementation_type": "policy+contract+validator+runtime_visual_tokens",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE; VALIDATE_IDUNEX_RUNTIME",
+      "evidence": {
+        "allowed_scope": [
+          "PROJECT_LEVEL with authorized PROJECT_BRAND_REGISTRY",
+          "external user documentation not embedded as active engine runtime",
+          "NON_AUTHORITY fixtures outside active runtime"
+        ],
+        "runtime_scan": "BRD_PAL_001_ACTIVE_PROJECT_BRAND_PALETTE_DEFAULT_LEAKAGE",
+        "prohibited_fingerprints": [
+          "#FFBA06",
+          "#332727",
+          "#FF0000",
+          "#FFBA06 + #FF0000 + PROJECT_BRAND_ENTITY",
+          "real project/brand names as active defaults"
+        ]
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_BRD_PAL_001_ACTIVE_PROJECT_BRAND_PALETTE_DEFAULT_LEAKAGE"
+    },
+    {
+      "rule_id": "REF-SAFE-001",
+      "family": "REF",
+      "title": "Reference visual safe boundary",
+      "statement": "La referencia visual permite pose/ropa/composición/cámara/iluminación/energía; prohíbe identidad real, logo no autorizado y cuerpo identificable.",
+      "active_paths": [
+        "06_MULTIMODAL_CONTRACTS/06_MULTIMODAL_CONTRACTS"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_REF_SAFE_001"
+    },
+    {
+      "rule_id": "SAF-ADULT-001",
+      "family": "SAF",
+      "title": "Adult editorial safety",
+      "statement": "Modelos ficticios adultos: permitido editorial seguro; bloqueado desnudez, sexo explícito, apariencia menor, school-coded sexualizado y coerción.",
+      "active_paths": [
+        "06_MULTIMODAL_CONTRACTS/06_MULTIMODAL_CONTRACTS",
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_SAF_ADULT_001"
+    },
+    {
+      "rule_id": "ZIP-EXT-001",
+      "family": "ZIP",
+      "title": "Whole ZIP external authority",
+      "statement": "SHA256 integral y bytes absolutos del ZIP final tienen autoridad externa: .zip.sha256, certificado y companion externos; ningún archivo interno autocertifica el ZIP que lo contiene. Origen histórico: H382R.",
+      "active_paths": [
+        "03_PROJECT_FACTORY/04_DELIVERY_GATES/ZIP_EXT_001_WHOLE_ZIP_EXTERNAL_AUTHORITY_GATE.json",
+        "12_OUTPUT_CONTRACTS/ENGINE_OUTPUT_CONTRACT.json"
+      ],
+      "implementation_type": "policy+contract+schema+validator+factory_logic",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_ZIP_EXT_001"
+    },
+    {
+      "rule_id": "DUP-EXA-001",
+      "family": "DUP",
+      "title": "Exact duplicate allowlist real",
+      "statement": "Todo duplicado exacto debe estar cubierto por allowlist recomputada con authority_path, mirror_paths, reason_code y consumidor.",
+      "active_paths": [
+        "07_VALIDATION_QA_GAUNTLET/14_POLICIES/EXACT_DUPLICATE_ALLOWLIST.json",
+        "99_MANIFESTS_SHA_LINEAGE/ENGINE_EXACT_DUPLICATE_ALLOWLIST.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_DUP_EXA_001"
+    },
+    {
+      "rule_id": "LIN-HDEM-001",
+      "family": "LIN",
+      "title": "H milestones demoted to non-authority lineage",
+      "statement": "Los hitos H quedan como origen/lineage compacto no autoritativo; la autoridad activa principal son IDs estables.",
+      "active_paths": [
+        "14_HISTORICAL_NON_AUTHORITY/H_DEMOTION_REGISTRY.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_LIN_HDEM_001"
+    },
+    {
+      "rule_id": "BLT-NBH-001",
+      "family": "BLT",
+      "title": "No-bloat / no-history active gate",
+      "statement": "Bloquea logs largos, staging, temp, heartbeat, ZIPs intermedios, auditorías humanas completas y proyecto Demo materializado como motor.",
+      "active_paths": [
+        "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/NO_BLOAT_NO_HISTORY_POLICY.json"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_BLT_NBH_001"
+    },
+    {
+      "rule_id": "CRT-FALSE-001",
+      "family": "CRT",
+      "title": "Creative output not certified by engine",
+      "statement": "El motor declara CREATIVE_OUTPUT_CERTIFIED=FALSE; outputs creativos solo se certifican a nivel proyecto/output con asset, sidecar, hash, reviewer, lineage y QA ejecutado.",
+      "active_paths": [
+        "12_OUTPUT_CONTRACTS/ENGINE_OUTPUT_CONTRACT.json",
+        "00_INDEX/RELEASE_CERTIFICATE.txt"
+      ],
+      "implementation_type": "policy+contract+validator",
+      "validator_or_factory_affected": "VALIDATE_CREATIVE_CERTIFICATION_TRUTHFULNESS",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "source_master_section": "Informe Maestro distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_CRT_FALSE_001"
+    },
+    {
+      "rule_id": "PRJ-NAME-001",
+      "family": "PRJ",
+      "title": "Project filename canon from project_name",
+      "statement": "Si existe project_name válido, el filename externo es IDUNEX_PROJECT_<PROJECT_NAME_SLUG>_<SEMANTIC_VERSION>.zip; PROJECT_UID es metadata interna y no reemplaza el nombre.",
+      "active_paths": [
+        "03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_FILENAME_CANON.json",
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+      ],
+      "implementation_type": "policy+factory_logic+validator",
+      "validator_or_factory_affected": "VALIDATE_PROJECT_FILENAME_CANON",
+      "status": "PASS",
+      "fail_code": "FAIL_PRJ_NAME_001",
+      "evidence": {
+        "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
+      }
+    },
+    {
+      "rule_id": "PRJ-TPL-001",
+      "family": "PRJ",
+      "title": "Project template placeholders execution gate",
+      "statement": "Las plantillas pueden contener placeholders solo en template_mode no ejecutable; proyectos ejecutables bloquean placeholders y sentinels.",
+      "active_paths": [
+        "03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_NO_PLACEHOLDER_EXECUTION_GATE.json",
+        "03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_TEMPLATE_FILL_VALIDATOR.json"
+      ],
+      "implementation_type": "policy+validator+factory_logic",
+      "validator_or_factory_affected": "VALIDATE_NO_PLACEHOLDER_EXECUTION_GATE",
+      "status": "PASS",
+      "fail_code": "FAIL_PRJ_TPL_001",
+      "evidence": {
+        "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
+      }
+    },
+    {
+      "rule_id": "PRJ-SKEL-001",
+      "family": "PRJ",
+      "title": "Generic skeleton non-authority",
+      "statement": "Datos incompletos o genéricos clasifican el proyecto como GENERIC_SKELETON_NON_AUTHORITY y bloquean production, agent load pass y demo pass.",
+      "active_paths": [
+        "03_PROJECT_FACTORY/04_DELIVERY_GATES/GENERIC_SKELETON_NON_AUTHORITY_GATE.json"
+      ],
+      "implementation_type": "policy+validator+factory_logic",
+      "validator_or_factory_affected": "VALIDATE_GENERIC_SKELETON_NON_AUTHORITY",
+      "status": "PASS",
+      "fail_code": "FAIL_PRJ_SKEL_001",
+      "evidence": {
+        "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
+      }
+    },
+    {
+      "rule_id": "PRJ-STAT-001",
+      "family": "PRJ",
+      "title": "Project status contract",
+      "statement": "Todo proyecto tiene estados explícitos. Motor productivo no convierte proyecto en producción; proyecto futuro requiere auditoría recomputacional propia.",
+      "active_paths": [
+        "03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_STATUS_CONTRACT.json"
+      ],
+      "implementation_type": "contract+validator",
+      "validator_or_factory_affected": "VALIDATE_PROJECT_STATUS_CONTRACT",
+      "status": "PASS",
+      "fail_code": "FAIL_PRJ_STAT_001",
+      "evidence": {
+        "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
+      }
+    },
+    {
+      "rule_id": "PRJ-DEMO-GATE-001",
+      "family": "PRJ",
+      "title": "Project Demo pass gate",
+      "statement": "Proyecto 000 Demo solo declara PROJECT_DEMO_PASS tras auditoría de proyecto, runtime ChatGPT/Copilot 10+N y carga real auditada o vendor limitation documentada.",
+      "active_paths": [
+        "03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_DEMO_PASS_GATE.json"
+      ],
+      "implementation_type": "gate+validator",
+      "validator_or_factory_affected": "VALIDATE_PROJECT_DEMO_PASS_GATE",
+      "status": "PASS",
+      "fail_code": "FAIL_PRJ_DEMO_GATE_001",
+      "evidence": {
+        "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
+      }
+    },
+    {
+      "rule_id": "PRJ-LIFE-001",
+      "family": "PRJ",
+      "title": "N10 full-info completion manifest lifecycle",
+      "statement": "El factory debe distinguir worker vivo, worker completo con manifest final, worker colgado, worker fallido y output parcial no entregable. N10 full-info solo puede entregar si existe completion manifest real, ZIP final reabierto, companion SHA externo y validacion final PASS; los timeouts de supervisor no se convierten en PASS.",
+      "active_paths": [
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
+        "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
+        "11_RELEASE_INTERNAL/DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY_EVIDENCE.json"
+      ],
+      "implementation_type": "factory_logic+supervisor_state_machine+completion_manifest_gate+validator_evidence",
+      "validator_or_factory_affected": "IDUNEX_PROJECT_FACTORY_v1.0.0.py",
+      "evidence": {
+        "required_paths_exist": "RECOMPUTED_BY_POST_CORRECTION_TESTS",
+        "source_master_section": "Informe Maestro sections 9, 12, 13, 16, 17, 18 distilled, not copied raw"
+      },
+      "status": "PASS",
+      "fail_code": "FAIL_PRJ_LIFE_001"
+    }
+  ],
+  "contracts": {
+    "ENGINE_LEVEL": "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json#ENGINE_LEVEL",
+    "PROJECT_LEVEL": "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json#PROJECT_LEVEL",
+    "AGENT_LEVEL": "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json#AGENT_LEVEL",
+    "ENGINE_OUTPUT_CONTRACT": "12_OUTPUT_CONTRACTS/ENGINE_OUTPUT_CONTRACT.json",
+    "PROJECT_OUTPUT_CONTRACT": "12_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json",
+    "AGENT_LOAD_CONTRACT": "12_OUTPUT_CONTRACTS/AGENT_LOAD_CONTRACT.json",
+    "UPDATE_MIGRATION_CONTRACTS": "13_UPDATE_MIGRATION/UPDATE_MIGRATION_CONTRACTS.json"
+  },
+  "validators": [
+    "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/VALIDATE_MASTER_GOVERNANCE_NATIVE.py",
+    "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
+    "99_MANIFESTS_SHA_LINEAGE/VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py"
+  ],
+  "hard_gates": {
+    "MAX_MATRIX_CURRENT_RUN": "PASS",
+    "N1_TO_N10_X3_MATRIX": "PASS",
+    "VALIDATORS_FAIL": 0,
+    "BLOCKING_WARNINGS": 0,
+    "FAIL_CODES": [],
+    "SCORE": "10/10",
+    "CREATIVE_OUTPUT_CERTIFIED": false,
+    "CLOSURE_DECISION": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION"
+  },
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "correction_scope": "RENORMALIZACION_VERSION_OFICIAL_v1.0.0_Y_DEMO_000_2_MODELOS",
+  "truthfulness_parity": "DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY_PASS",
+  "max_matrix_current_run": "PASS",
+  "n1_to_n10_x3_matrix": "PASS",
+  "closure_decision": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
+  "MAX_MATRIX_CURRENT_RUN": "PASS",
+  "N1_TO_N10_X3_MATRIX": "PASS",
+  "VALIDATORS_FAIL": 0,
+  "validators_fail": 0,
+  "BLOCKING_WARNINGS": 0,
+  "blocking_warnings": 0,
+  "FAIL_CODES": [],
+  "fail_codes": [],
+  "SCORE": "10/10",
+  "result": "PASS",
+  "CLOSURE_DECISION": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
+  "completed_count": 31,
+  "pass_count": 31,
+  "fail_count": 0,
+  "unexecuted_count": 0,
+  "creative_output_certified": false
+}

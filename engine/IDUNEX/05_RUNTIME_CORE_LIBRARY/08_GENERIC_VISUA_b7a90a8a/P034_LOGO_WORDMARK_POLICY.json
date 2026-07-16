@@ -1,0 +1,12 @@
+{
+  "exact_logo_requires": [
+    "png_transparent",
+    "svg",
+    "pdf_vector"
+  ],
+  "url_reference_documental_only": true,
+  "url_not_opened_status": "LOGO_URL_NOT_EVIDENCED",
+  "text_wordmark_generated_allowed": true,
+  "official_logo_match": false,
+  "postproduction_overlay_preferred": true
+}

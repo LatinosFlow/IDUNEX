@@ -1,0 +1,41 @@
+{
+  "schema": "IDUNEX_VENDOR_CAPABILITY_DECLARATIONS_H71_H80_SAFE_APPAREL_WATERMARK",
+  "CORRECTION_SCOPE_LABEL": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80",
+  "SAFE_APPAREL_TAXONOMY": "ALLOW|CONDITIONAL_REWRITE|BLOCK",
+  "ADULT_REVEALING_APPAREL_NOT_NUDITY": true,
+  "VENDOR_PROMPT_SANITIZATION_SAFE_APPAREL": true,
+  "WATERMARK_DEFAULT_ON": true,
+  "watermark_text": "idunex",
+  "watermark_position": "bottom_center",
+  "EXPLICIT_IDUNEX_OPTOUT_ONLY": true,
+  "POSTPROCESS_OVERLAY_REQUIRED": true,
+  "vendors": {
+    "ChatGPT": {
+      "safe_apparel_rewrite": "SUPPORTED_RUNTIME_PROMPT_COMPILER",
+      "watermark_exact_text": "NOT_GUARANTEED_BY_VENDOR",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center"
+    },
+    "Copilot365": {
+      "safe_apparel_rewrite": "SUPPORTED_RUNTIME_PROMPT_COMPILER",
+      "watermark_exact_text": "NOT_GUARANTEED_BY_VENDOR",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center"
+    }
+  },
+  "negative_prompt_required": [
+    "no nudity",
+    "no exposed intimate areas",
+    "no topless",
+    "no intimate act",
+    "no pornographic framing",
+    "no minor-coded styling",
+    "no school-coded sexualization",
+    "no real-person copying",
+    "no logos unless official asset",
+    "no text artifacts except required idunex watermark unless explicitly opted out"
+  ],
+  "no_invented_pass": true
+}

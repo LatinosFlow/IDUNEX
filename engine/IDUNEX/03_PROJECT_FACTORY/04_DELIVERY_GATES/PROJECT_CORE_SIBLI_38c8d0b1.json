@@ -1,0 +1,27 @@
+{
+  "gate_id": "PROJECT_CORE_SIBLING_PREFIX_CANON_GATE",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "fail_code": "BLOCKED_PROJECT_CORE_PREFIX_DUPLICATE",
+  "contract": "Blocks duplicate numeric prefixes among siblings and enforces PROJECT_CORE canonical tree policy.",
+  "blocking": true,
+  "actual_value_required": true,
+  "pass_by_count_only_allowed": false,
+  "delivery_allowed_if_fail": false,
+  "correction_action": "Identify root_cause, correct surgically, recalculate manifests/SHA, reemit ZIP, reopen ZIP and reaudIT complete scope before delivery.",
+  "project_core_canon": [
+    "01_PROJECT_CONTROL_CENTER",
+    "02_PROFILE360_FULL60",
+    "03_TECHEXT_FULL10",
+    "04_MODEL_RUNTIME_PROFILES",
+    "06_MULTIMODAL_CONTRACTS",
+    "06_AGENT_RUNTIME",
+    "07_SOURCE_TRACE",
+    "08_QA_FAILCODES_FALLBACKS",
+    "09_SIDECARS_EVIDENCE_TRACEABILITY",
+    "10_VENDOR_GUIDES_HANDOFFS"
+  ],
+  "duplicate_prefix_rule": "No two sibling files/folders may share the same numeric prefix at any level."
+}

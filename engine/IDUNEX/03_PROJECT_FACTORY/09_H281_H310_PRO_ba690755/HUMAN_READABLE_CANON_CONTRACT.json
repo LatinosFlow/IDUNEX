@@ -1,0 +1,15 @@
+{
+  "semantic_version": "v1.0.0",
+  "correction_scope": "H341_H360",
+  "required_files": [
+    "HUMAN_READABLE_VISUAL_CANON.json",
+    "HUMAN_READABLE_VISUAL_CANON.md"
+  ],
+  "priority_order": [
+    "human_readable_es",
+    "human_readable_en",
+    "identity_markers",
+    "technical_evidence"
+  ],
+  "result": "PASS"
+}

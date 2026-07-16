@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_id",
+    "engine_version",
+    "agent_type",
+    "load_order",
+    "required_files",
+    "required_source_ids",
+    "required_field_ids",
+    "required_adapter_targets",
+    "readback",
+    "no_imagination_policy",
+    "forbidden_actions",
+    "qa_before_output",
+    "handoff_protocol",
+    "failure_protocol"
+  ],
+  "properties": {
+    "package_id": {
+      "type": "string"
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "agent_type": {
+      "type": "string"
+    },
+    "load_order": {
+      "type": "array"
+    },
+    "required_files": {
+      "type": "array"
+    },
+    "required_source_ids": {
+      "type": "array"
+    },
+    "required_field_ids": {
+      "type": "array"
+    },
+    "required_adapter_targets": {
+      "type": "array"
+    },
+    "readback": {
+      "type": "object"
+    },
+    "no_imagination_policy": {
+      "type": "string"
+    },
+    "forbidden_actions": {
+      "type": "array"
+    },
+    "qa_before_output": {
+      "type": "array"
+    },
+    "handoff_protocol": {
+      "type": "string"
+    },
+    "failure_protocol": {
+      "type": "string"
+    }
+  }
+}

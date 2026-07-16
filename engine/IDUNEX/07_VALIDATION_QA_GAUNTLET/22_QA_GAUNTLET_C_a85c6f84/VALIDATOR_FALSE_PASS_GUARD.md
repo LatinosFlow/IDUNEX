@@ -1,0 +1,23 @@
+# VALIDATOR_EVIDENCE_STANDARD — IDUNEX MOTOR v1.0.0
+
+DECLARED_PASS_WITHOUT_EVIDENCE = FAIL_FALSE_PASS
+
+Cada validator PASS debe registrar:
+- validator_id
+- files_checked
+- rules_checked
+- expected_value
+- actual_value
+- result
+- timestamp
+- severity
+- retest_rule
+- evidence
+
+ENGINE_PHASE_4_CORRECTION = PASS
+ENGINE_FINAL_RELEASE_GATE = PASS_BY_EXTERNAL_COMPANION_AUTHORITY
+DELIVERY_STATUS = DELIVERY_ALLOWED_WITH_VALID_EXTERNAL_COMPANION_SHA256
+MICRO_CLEANUP_DOCUMENTARY_COHERENCE = PASS
+
+## Scope
+Aplica a validators estructurales, semánticos, no-loss, manifest, hash, source trace, Profile360, Project Factory, Agent Factory y multimodal contracts.

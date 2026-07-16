@@ -1,0 +1,734 @@
+{
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "semantic_version": "v1.0.0",
+  "gate_count": 40,
+  "gates": [
+    {
+      "gate_id": "P034_G01",
+      "gate_name": "PROJECT_ENTITY_PROFILE_GATE",
+      "group": "ENTITY_RIGHTS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G01",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair PROJECT_ENTITY_PROFILE_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G02",
+      "gate_name": "PROJECT_ENTITY_REQUIRED_INTERACTION_GATE",
+      "group": "ENTITY_RIGHTS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G02",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair PROJECT_ENTITY_REQUIRED_INTERACTION_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G03",
+      "gate_name": "MODEL_OWNERSHIP_BINDING_GATE",
+      "group": "ENTITY_RIGHTS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G03",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair MODEL_OWNERSHIP_BINDING_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G04",
+      "gate_name": "BRAND_USAGE_SCOPE_GATE",
+      "group": "ENTITY_RIGHTS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G04",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair BRAND_USAGE_SCOPE_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G05",
+      "gate_name": "RIGHTS_AND_LICENSE_LEDGER_GATE",
+      "group": "ENTITY_RIGHTS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G05",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair RIGHTS_AND_LICENSE_LEDGER_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G06",
+      "gate_name": "BRAND_ASSET_REGISTRY_GATE",
+      "group": "ENTITY_RIGHTS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G06",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair BRAND_ASSET_REGISTRY_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G07",
+      "gate_name": "LOGO_ASSET_REQUIREMENT_GATE",
+      "group": "LOGO_BRAND",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G07",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair LOGO_ASSET_REQUIREMENT_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G08",
+      "gate_name": "BRAND_LOGO_URL_REFERENCE_GATE",
+      "group": "LOGO_BRAND",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G08",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair BRAND_LOGO_URL_REFERENCE_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G09",
+      "gate_name": "LOGO_RENDERING_POLICY_GATE",
+      "group": "LOGO_BRAND",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G09",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair LOGO_RENDERING_POLICY_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G10",
+      "gate_name": "GENERIC_VISUAL_SYSTEM_TEXT_WORDMARK_GATE",
+      "group": "LOGO_BRAND",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G10",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair GENERIC_VISUAL_SYSTEM_TEXT_WORDMARK_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G11",
+      "gate_name": "BRAND_PLACEMENT_QA_GATE",
+      "group": "LOGO_BRAND",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G11",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair BRAND_PLACEMENT_QA_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G12",
+      "gate_name": "TEXT_TO_IMAGE_CREATE_FIRST_VISUAL_GATE",
+      "group": "LOGO_BRAND",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G12",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair TEXT_TO_IMAGE_CREATE_FIRST_VISUAL_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G13",
+      "gate_name": "MASTER_VISUAL_ASSET_STATE_GATE",
+      "group": "IMAGE_DELIVERY",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G13",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair MASTER_VISUAL_ASSET_STATE_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G14",
+      "gate_name": "IMAGE_DELIVERY_CONTROLLER",
+      "group": "IMAGE_DELIVERY",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G14",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair IMAGE_DELIVERY_CONTROLLER, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G15",
+      "gate_name": "TARGET_FILENAME_ENFORCEMENT_GATE",
+      "group": "IMAGE_DELIVERY",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G15",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair TARGET_FILENAME_ENFORCEMENT_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G16",
+      "gate_name": "OUTPUT_SIDECAR_REQUIRED_GATE",
+      "group": "IMAGE_DELIVERY",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G16",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair OUTPUT_SIDECAR_REQUIRED_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G17",
+      "gate_name": "OUTPUT_CERTIFICATION_LEDGER_REQUIRED_FOR_TRUE",
+      "group": "IMAGE_DELIVERY",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G17",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair OUTPUT_CERTIFICATION_LEDGER_REQUIRED_FOR_TRUE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G18",
+      "gate_name": "IMAGE_TOOL_ROUTE_STATUS_GATE",
+      "group": "IMAGE_DELIVERY",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G18",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair IMAGE_TOOL_ROUTE_STATUS_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G19",
+      "gate_name": "DERIVED_ASSET_DISCLOSURE_GATE",
+      "group": "SAFE_APPAREL",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G19",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair DERIVED_ASSET_DISCLOSURE_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G20",
+      "gate_name": "SAFE_APPAREL_REWRITE_GATE",
+      "group": "SAFE_APPAREL",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G20",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair SAFE_APPAREL_REWRITE_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G21",
+      "gate_name": "APPAREL_TERMS_VENDOR_COMPATIBILITY_MATRIX",
+      "group": "SAFE_APPAREL",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G21",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair APPAREL_TERMS_VENDOR_COMPATIBILITY_MATRIX, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G22",
+      "gate_name": "ADULT_NON_EXPLICIT_FASHION_CLASSIFIER_GATE",
+      "group": "SAFE_APPAREL",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G22",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair ADULT_NON_EXPLICIT_FASHION_CLASSIFIER_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G23",
+      "gate_name": "POSE_AND_FRAMING_SAFETY_GATE",
+      "group": "SAFE_APPAREL",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G23",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair POSE_AND_FRAMING_SAFETY_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G24",
+      "gate_name": "POLICY_FALSE_POSITIVE_RECOVERY_GATE",
+      "group": "SAFE_APPAREL",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G24",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair POLICY_FALSE_POSITIVE_RECOVERY_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G25",
+      "gate_name": "MODEL_SELECTOR_PRECHECK_GATE",
+      "group": "ROUTER_ALIAS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G25",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair MODEL_SELECTOR_PRECHECK_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G26",
+      "gate_name": "ALIAS_CANONICALITY_GATE",
+      "group": "ROUTER_ALIAS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G26",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair ALIAS_CANONICALITY_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G27",
+      "gate_name": "ALIAS_NEGATIVE_TEST_SUITE",
+      "group": "ROUTER_ALIAS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G27",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair ALIAS_NEGATIVE_TEST_SUITE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G28",
+      "gate_name": "FACTORY_ALIAS_DERIVATION_POLICY",
+      "group": "ROUTER_ALIAS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G28",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair FACTORY_ALIAS_DERIVATION_POLICY, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G29",
+      "gate_name": "ENGINE_PROJECT_VERSION_LINEAGE_GATE",
+      "group": "ROUTER_ALIAS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G29",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair ENGINE_PROJECT_VERSION_LINEAGE_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G30",
+      "gate_name": "PROJECT_EXTERNAL_FILENAME_CANON_GATE",
+      "group": "ROUTER_ALIAS",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G30",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair PROJECT_EXTERNAL_FILENAME_CANON_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G31",
+      "gate_name": "RUNTIME_UPLOAD_EVIDENCE_MINIPACK_OPTIONAL",
+      "group": "VERSION_RUNTIME",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G31",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair RUNTIME_UPLOAD_EVIDENCE_MINIPACK_OPTIONAL, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G32",
+      "gate_name": "UPDATE_LEDGER_LABEL_CONSISTENCY_GATE",
+      "group": "VERSION_RUNTIME",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G32",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair UPDATE_LEDGER_LABEL_CONSISTENCY_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G33",
+      "gate_name": "FINAL_PROJECT_CLOSURE_VISIBILITY_BANNER",
+      "group": "VERSION_RUNTIME",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G33",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair FINAL_PROJECT_CLOSURE_VISIBILITY_BANNER, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G34",
+      "gate_name": "VENDOR_CAPABILITY_DECLARATION_GATE",
+      "group": "VERSION_RUNTIME",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G34",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair VENDOR_CAPABILITY_DECLARATION_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G35",
+      "gate_name": "VENDOR_FALLBACK_STATUS_GATE",
+      "group": "VERSION_RUNTIME",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G35",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair VENDOR_FALLBACK_STATUS_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G36",
+      "gate_name": "REGRESSION_TEST_SUITE_P034",
+      "group": "VERSION_RUNTIME",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G36",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair REGRESSION_TEST_SUITE_P034, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G37",
+      "gate_name": "PAIRWISE_HUMAN_DISTINCTIVENESS_GATE",
+      "group": "VENDOR_REGRESSION",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G37",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair PAIRWISE_HUMAN_DISTINCTIVENESS_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G38",
+      "gate_name": "CITY_SCENE_CANON_MINIMUM_GATE",
+      "group": "VENDOR_REGRESSION",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G38",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair CITY_SCENE_CANON_MINIMUM_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G39",
+      "gate_name": "ANCHOR_ASSET_REALITY_GATE",
+      "group": "VENDOR_REGRESSION",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G39",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair ANCHOR_ASSET_REALITY_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    },
+    {
+      "gate_id": "P034_G40",
+      "gate_name": "VISUAL_ANCHOR_REGISTRATION_GATE",
+      "group": "VENDOR_REGRESSION",
+      "implementation_surface": [
+        "factory",
+        "validator",
+        "runtime",
+        "schema",
+        "golden_tests",
+        "mutation_suite"
+      ],
+      "validator_binding": "validate_project::P034_G40",
+      "status": "ACTIVE_VALIDATED",
+      "text_only": false,
+      "not_applicable": false,
+      "fallback_fix": "Repair VISUAL_ANCHOR_REGISTRATION_GATE, rebuild project ledgers, refresh hashes, rerun P034 regression suite."
+    }
+  ],
+  "creative_output_certified": false,
+  "blocked_status_counts": {
+    "NI": 0,
+    "TNV": 0,
+    "UT": 0,
+    "PT": 0
+  }
+}

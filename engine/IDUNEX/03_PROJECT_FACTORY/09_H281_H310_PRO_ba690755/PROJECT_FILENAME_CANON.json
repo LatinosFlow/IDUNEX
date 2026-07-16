@@ -1,0 +1,18 @@
+{
+  "contract_id": "PROJECT_FILENAME_CANON",
+  "rule_id": "PRJ-NAME-001",
+  "semantic_version": "v1.0.0",
+  "filename_when_project_name_exists": "IDUNEX_PROJECT_<PROJECT_NAME_SLUG>_<SEMANTIC_VERSION>.zip",
+  "demo_example": "IDUNEX_PROJECT_PROYECTO_000_DEMO_v1.0.0.zip",
+  "PROJECT_UID_role": [
+    "metadata_internal",
+    "collision_suffix",
+    "manifest_field"
+  ],
+  "project_uid_may_replace_project_name": false,
+  "if_no_project_name": "block executable generation or classify only as GENERIC_SKELETON_NON_AUTHORITY",
+  "validator": "VALIDATE_PROJECT_FILENAME_CANON",
+  "result": "PASS",
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

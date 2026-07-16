@@ -1,0 +1,9 @@
+{
+  "SEMANTIC_VERSION": "v1.0.0",
+  "status": "COMPACTED",
+  "producer": "H341_H360_DIRECT_CANONICAL_CLEANUP",
+  "consumer": "human_audit_reference_only",
+  "retention_rule": "compact_digest_only",
+  "validation_gate": "HISTORICAL_BLOAT_ACTIVE_BLOCKER",
+  "long_route_inventory_retained": false
+}

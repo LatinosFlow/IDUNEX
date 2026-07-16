@@ -1,0 +1,14 @@
+{
+  "output_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+  "status": "MOCK_FORMAL_VERIFIABLE_FOR_prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "modalities_passed": [
+    "image",
+    "video",
+    "voice",
+    "suno",
+    "copilot_docx",
+    "sidecar"
+  ],
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "comparison_method": "schema+sidecar+hash+golden_test_mock_review"
+}

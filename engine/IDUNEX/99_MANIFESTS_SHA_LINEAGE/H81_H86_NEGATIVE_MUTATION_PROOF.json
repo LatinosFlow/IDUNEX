@@ -1,0 +1,81 @@
+{
+  "gate_id": "H81_H86_NEGATIVE_MUTATIONS",
+  "semantic_version": "v1.0.0",
+  "correction_scope_label": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "creative_output_certified": false,
+  "result": "PASS",
+  "created_at": "2026-06-30 PROJECT_DECLARED_TIMEZONE",
+  "mutation_count": 11,
+  "cases": [
+    {
+      "case": "SHA ledger stale injected",
+      "expected_failcode": "FAIL_H82_SHA_LEDGER_STALE_HASH",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "Scope validator anterior a H71-H80",
+      "expected_failcode": "FAIL_H81_RUNTIME_VALIDATOR_SCOPE_NOT_H01_H80",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "Release doc PASS with runtime FAIL",
+      "expected_failcode": "FAIL_H83_RELEASE_DOCS_DECLARE_PASS_WHILE_RUNTIME_FAILS",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "N10 sin output-json",
+      "expected_failcode": "FAIL_H84_N10_OUTPUT_JSON_MISSING",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "N10 rc nonzero",
+      "expected_failcode": "FAIL_H84_N10_RC_NONZERO",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "Sidecar required duplicate watermark",
+      "expected_failcode": "FAIL_H85_SIDECAR_WATERMARK_REQUIRED_DUPLICATE",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "Sidecar sin watermark_required",
+      "expected_failcode": "FAIL_H85_SIDECAR_WATERMARK_FIELD_MISSING",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "Runtime ChatGPT sin WATERMARK_DEFAULT_ON",
+      "expected_failcode": "FAIL_H81_AGENT10N_SAFE_WATERMARK_NOT_VALIDATED",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "Runtime Copilot sin SAFE_APPAREL_TAXONOMY",
+      "expected_failcode": "FAIL_H86_AGENT10N_FINAL_SAFE_APPAREL_WATERMARK_CLOSURE",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "H71-H80 suite ausente o incompleta",
+      "expected_failcode": "FAIL_H81_H71_H80_GATE_NOT_VALIDATED_EXECUTABLY",
+      "observed": "FAIL",
+      "restored": "PASS"
+    },
+    {
+      "case": "CREATIVE_OUTPUT_CERTIFIED TRUE sin assets reales",
+      "expected_failcode": "FAIL_H86_CREATIVE_OUTPUT_FALSE_CERTIFICATION",
+      "observed": "FAIL",
+      "restored": "PASS"
+    }
+  ],
+  "restoration_retest": "PASS",
+  "fail_codes": []
+}

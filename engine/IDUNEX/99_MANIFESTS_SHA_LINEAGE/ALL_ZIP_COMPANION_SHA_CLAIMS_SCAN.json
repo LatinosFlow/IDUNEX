@@ -1,0 +1,33 @@
+{
+  "gate_id": "H128_ALL_ZIP_COMPANION_SHA_CLAIMS_GLOBAL_SCANNER_GATE",
+  "policy": "scan all zip/external/companion/delivery/content-tree SHA claims recursively",
+  "claim_class_counts": {
+    "SELF_REFERENCE_SENTINEL": 23,
+    "ENGINE_ZIP_CLAIM": 5
+  },
+  "claims_scanned": 28,
+  "findings": [],
+  "findings_count": 0,
+  "allowed_sentinel": "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY",
+  "required_classes": [
+    "FINAL_ZIP_EXTERNAL_CLAIM",
+    "CONTENT_TREE_CLAIM",
+    "ENGINE_ZIP_CLAIM",
+    "DELIVERY_PACK_EXTERNAL_CLAIM",
+    "SELF_REFERENCE_SENTINEL",
+    "NON_AUTHORITY_HISTORICAL",
+    "INVALID_OR_AMBIGUOUS"
+  ],
+  "result": "PASS",
+  "fail_codes": [],
+  "creative_output_certified": false,
+  "source": "demo_final_reopened_project_zip",
+  "zip_sha256": "fefceac3ac12257a0abdb37141a9ea1b01e4ae719fac3bafa2c51797af62619f",
+  "correction_scope_label": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80_PLUS_H81_H86_PLUS_H87_H92_PLUS_H93_H98_PLUS_H99_H104_PLUS_H105_H112_PLUS_H113_H118_PLUS_H119_H126_PLUS_H127_H134_PLUS_H135_H142_PLUS_H143_H150_PLUS_H151_H156_PLUS_H157_H164_PLUS_H165_H180_PLUS_H181_H188_PLUS_H189_H196_PLUS_H197_H204_PLUS_H205_H212_PLUS_H213_H236_PLUS_H237_H244_PLUS_H245_H260",
+  "direct_correction_scope": "H245_H260_APPLIED_ON_H01_H244",
+  "semantic_version": "v1.0.0",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "truthfulness": "The exact final ZIP hash is held by the external companion SHA256 file after packaging to avoid self-referential hash mutation inside the ZIP."
+}

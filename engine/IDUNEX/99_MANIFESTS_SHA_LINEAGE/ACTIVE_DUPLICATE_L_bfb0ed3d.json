@@ -1,0 +1,17 @@
+{
+  "gate_id": "ACTIVE_DUPLICATE_LEDGER_SELF_EXCEPTION_GOVERNANCE",
+  "semantic_version": "v1.0.0",
+  "version_bump": "NO",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "correction_scope": "RENORMALIZACION_VERSION_OFICIAL_v1.0.0_Y_DEMO_000_2_MODELOS",
+  "result": "PASS",
+  "DUPLICATE_LEDGER_SELF_EXCEPTION_OR_DEDUP": "PASS",
+  "mode": "DEDUP_BY_NON_IDENTICAL_SURFACE_ROLE_METADATA",
+  "canonical_authority_path": "99_MANIFESTS_SHA_LINEAGE/ENGINE_EXACT_DUPLICATE_ALLOWLIST.json",
+  "compatibility_alias_path": "99_MANIFESTS_SHA_LINEAGE/EXACT_DUPLICATE_ALLOWLIST.json",
+  "qa_policy_mirror_path": "07_VALIDATION_QA_GAUNTLET/14_POLICIES/EXACT_DUPLICATE_ALLOWLIST.json",
+  "excluded_historical_non_authority_prefix": "14_HISTORICAL_NON_AUTHORITY/",
+  "no_stale_group_ungoverned": true,
+  "no_duplicate_real_issue_hidden": true,
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

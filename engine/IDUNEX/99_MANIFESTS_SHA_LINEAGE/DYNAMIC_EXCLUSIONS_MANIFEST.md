@@ -1,0 +1,13 @@
+# Dynamic Exclusions Manifest
+
+Policy: `NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY`.
+
+Excluded only for internal manifest self-hash avoidance:
+- `99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json`
+- `99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json`
+- `99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json`
+- `99_MANIFESTS_SHA_LINEAGE/MANIFEST.json`
+- `99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt`
+- `99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt`
+
+All non-excluded files must be listed with current bytes and SHA256. Fail code: `FAIL_INTERNAL_MANIFEST_STALE_OR_INCOMPLETE`.

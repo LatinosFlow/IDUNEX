@@ -1,0 +1,153 @@
+{
+  "result": "PASS",
+  "semantic_version": "v1.0.0",
+  "root_unico": "IDUNEX",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "DIRECT_CORRECTION_SCOPE": "H135_H142_APPLIED_ON_H01_H134",
+  "H01-H134_PRESERVED": "PASS",
+  "H135-H142_APPLIED": "PASS",
+  "UNIVERSAL_EXPECTED_BLOCK_PAYLOAD_NORMALIZER": "PASS",
+  "ALL_CLI_SUBCOMMAND_EXPECTED_BLOCK_PARITY": "PASS",
+  "STDOUT_SUMMARY_JSON_EXPECTED_BLOCK_NO_NULL": "PASS",
+  "EXPECTED_BLOCK_NEGATIVE_MUTATION_SUITE": "PASS",
+  "UPDATE_AND_MIGRATION_EXPECTED_BLOCK_REGRESSION_MATRIX": "PASS",
+  "SUMMARY_PAYLOAD_TRUTHFULNESS_CONTRACT": "PASS",
+  "GENERATED_PROJECT_AND_CLI_REVALIDATION_POST_H135_H140": "PASS",
+  "H135_H142_NEGATIVE_MUTATION_CASES_PASS": "PASS",
+  "VALIDATE_IDUNEX_RUNTIME": "PASS",
+  "VALIDATORS_FAIL": 0,
+  "BLOCKING_WARNINGS": 0,
+  "FAIL_CODES": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "MOTOR_CORREGIDO_DIRECTO_CANONICO_H135_H142_EXPECTED_BLOCK_CLI_TRUTHFULNESS_CIERRE_100": "PASS",
+  "cli_cases": [
+    {
+      "case": "generate_N0",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_MODEL_COUNT_MIN",
+      "fail_codes": [
+        "FAIL_MODEL_COUNT_MIN"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_generate_N0",
+      "stdout_hash": "b9ef852dfb4944d7437c705d405b741a727159c141cec35e493f2ca8b93871cd",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "generate_N11",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_MODEL_COUNT_MAX",
+      "fail_codes": [
+        "FAIL_MODEL_COUNT_MAX"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_generate_N11",
+      "stdout_hash": "b3892fc317351b7897c53371eb732461d7d2c7490a03608eed1e42bbb16c9e27",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "generate_without_models",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD",
+      "fail_codes": [
+        "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_generate_without_models",
+      "stdout_hash": "110860e5381efb37d3ecbd894f7190379b542a19ae91291bf3572cdaeb75ca99",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "validate_update_contract_locked_face",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "fail_codes": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_validate_update_contract_locked_face",
+      "stdout_hash": "60e72339e69cae2b7237a666175b4627ffe060b9ecfb37dcab0c364cb37729fd",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "update_project_locked_face",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "fail_codes": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_update_project_locked_face",
+      "stdout_hash": "675b02ee5f4a5206503d6752979622c5390eae29ddc490ea37adc153380c46ad",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "update_project_selector_ambiguous_N2",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_UPDATE_TARGET_MODEL_NOT_FOUND",
+      "fail_codes": [
+        "FAIL_UPDATE_TARGET_MODEL_NOT_FOUND"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_update_project_selector_ambiguous_N2",
+      "stdout_hash": "3c31aead287df455cf852609140893259aab73c90b80caa6ddb72f31847992b9",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "migrate_project_unknown_engine",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED_TARGET_ENGINE_ABSENT",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "fail_codes": [
+        "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_migrate_project_unknown_engine",
+      "stdout_hash": "63ccc6de0ec714cb2a3a8811792943750693e6fdbc57cf62c708904d351630e6",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "update_project_by_engine_unknown_engine",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED_TARGET_ENGINE_ABSENT",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "fail_codes": [
+        "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_update_project_by_engine_unknown_engine",
+      "stdout_hash": "58ea5f36c73d348e21a0363803ad717569cc2eaa79ba158769480fd1503854aa",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    }
+  ]
+}

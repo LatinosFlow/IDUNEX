@@ -1,0 +1,20 @@
+{
+  "semantic_version": "v1.0.0",
+  "runtime_formula": "10+N",
+  "base_files": [
+    "CORE_01.md",
+    "CORE_02.md",
+    "CORE_03.md",
+    "CORE_04.md",
+    "CORE_05.md",
+    "CORE_06.md",
+    "CORE_07.md",
+    "CORE_08.md",
+    "CORE_09.md",
+    "CORE_10.md"
+  ],
+  "per_model_file": "MODEL_<MODEL_NAME>_FULL_RUNTIME_CANON",
+  "human_readable_canon_first": true,
+  "technical_tokens_secondary": true,
+  "result": "PASS"
+}

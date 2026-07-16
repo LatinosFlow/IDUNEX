@@ -1,0 +1,13 @@
+{
+  "hash_input": "sha256:1519adc6b28f0a3fd97708bdf23073fdc985568cc91e7db24b6108c697aaabce",
+  "input_file_or_payload": "SMOKE_INPUT_FIXTURE.json",
+  "hash_output": "sha256:7d2fa6c49b31389d7884fc3a98927d3ca506ebce2904a67b0e5aa20f1283fd55",
+  "output_file_or_payload": "SMOKE_OUTPUT_MOCK_RESULT.json",
+  "hash_algorithm": "sha256 over exact file bytes; validator recalculates referenced files without canonical JSON normalization",
+  "validation_status": "PASS",
+  "reviewer": "IDUNEX_QA_AUDITOR",
+  "timestamp": "NEUTRALIZED_ACTIVE_SCOPE",
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "evidence_recalculation_policy": "FAIL_BLOCKER_HASH_EVIDENCE_MISMATCH if declared input/output hash differs from current referenced file bytes.",
+  "hash_evidence_checked": true
+}

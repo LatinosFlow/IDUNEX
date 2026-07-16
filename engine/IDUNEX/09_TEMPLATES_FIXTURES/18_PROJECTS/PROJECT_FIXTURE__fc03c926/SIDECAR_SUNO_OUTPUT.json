@@ -1,0 +1,47 @@
+{
+  "sidecar_schema_version": "v1.0.0",
+  "output_id": "IDUNEX_REAL_VALIDATION_001_SUNO_OUTPUT",
+  "project_id": "IDUNEX_PROJECT_FIXTURE_VALIDATION_001",
+  "model_id": "IDUNEX_HUMANIZED_DIGITAL_VALIDATION_MODEL_001",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "profile360_version": "PROFILE360_REAL_TEST_v1.0.0",
+  "promptpack_version": "v1.0.0",
+  "source_ids_used": [
+    "SRC_001_Ontolog_a_IDUNEX_360",
+    "SRC_025_Golden_Tests_de_identidad"
+  ],
+  "field_ids_used": [
+    "P360_IDENTITY_0001",
+    "P360_QA_2001"
+  ],
+  "adapter_used": "suno_music_adapter",
+  "vendor": "formal_non_production_validation_fixture",
+  "vendor_params": {
+    "adapter": "suno_music_adapter",
+    "mode": "formal_non_production_validation_evidence",
+    "modality": "suno"
+  },
+  "locks_active": [
+    "JSON_LOCK",
+    "ANCHOR_LOCK",
+    "AGE_LOCK",
+    "ID_LOCK",
+    "GLOBAL_GO_FALSE"
+  ],
+  "qa_status": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "qa_fail_codes": [],
+  "fallbacks_applied": [],
+  "hash_input": "sha256:37cd4c8bc30b3c1d2c2aa0d418605cc6a75efd93327312bb14d2da2337057f72",
+  "hash_output": "sha256:5ead77cd438e5ed7054dd9e12b82f6cc11c4040c27acb5fb178920c5921640e7",
+  "created_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "reviewed_by": "IDUNEX_QA_AUDITOR",
+  "production_state": "prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "evidence_type": "formal_non_production_validation_evidence",
+  "productive_output": false,
+  "project_10_authorized": false,
+  "global_go_authorized": false,
+  "motor_baseline_10_authorized": true,
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "legacy_project_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "legacy_project_10_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+}

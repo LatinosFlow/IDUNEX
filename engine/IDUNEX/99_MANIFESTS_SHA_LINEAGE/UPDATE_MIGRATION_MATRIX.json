@@ -1,0 +1,11 @@
+{
+  "gate_id": "IDUNEX_UPDATE_MIGRATION_MATRIX_REAL_EXECUTION",
+  "case_count": 12,
+  "pass_count": 12,
+  "fail_count": 0,
+  "UPDATE_MATRIX": "PASS",
+  "MIGRATION_MATRIX": "PASS",
+  "result": "PASS",
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

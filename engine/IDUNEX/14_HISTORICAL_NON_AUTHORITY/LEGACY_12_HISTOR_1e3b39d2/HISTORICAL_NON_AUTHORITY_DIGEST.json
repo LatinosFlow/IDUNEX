@@ -1,0 +1,13 @@
+{
+  "SEMANTIC_VERSION": "v1.1.0",
+  "authority": "NON_AUTHORITY_DIGEST_ONLY",
+  "retention_rule": "compact_digest_only",
+  "producer": "H281_H310_DIRECT_CANONICAL_CLEANUP",
+  "consumer": "human_audit_reference_only",
+  "validation_gate": "HISTORICAL_BLOAT_ACTIVE_BLOCKER",
+  "source_classification": "obsolete_history_compacted",
+  "runtime_consumed": false,
+  "factory_consumed": false,
+  "validator_active_consumed": false,
+  "long_route_inventory_retained": false
+}

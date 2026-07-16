@@ -1,0 +1,14 @@
+{
+  "engine": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "gate_id": "SOURCE_LEDGER_TO_COVERAGE_PARITY_GATE",
+  "result": "PASS_POLICY_INSTALLED",
+  "source_range": "SRC_001-SRC_049",
+  "coverage_required": "row per source or explicit source-level justification",
+  "failcodes": [
+    "BLOCKED_SOURCE_LEDGER_CLAIMS_NOT_REFLECTED_IN_COVERAGE_ROWS",
+    "BLOCKED_COVERAGE_MAP_SOURCE_COLLAPSE",
+    "BLOCKED_SCORECARD_PASS_WITH_UNMAPPED_SOURCES"
+  ]
+}

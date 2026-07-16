@@ -1,0 +1,14 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "rule": "search_existing_authority_before_adding_files",
+  "required_actions": [
+    "extend_existing_authority_when_equivalent",
+    "record_why_new_authority_is_needed",
+    "create_migration_equivalence_map",
+    "update_references",
+    "recalculate_manifests",
+    "audit_no_duplicate_policy"
+  ],
+  "blocked_code": "BLOCKED_POLICY_DUPLICATE_AUTHORITY"
+}

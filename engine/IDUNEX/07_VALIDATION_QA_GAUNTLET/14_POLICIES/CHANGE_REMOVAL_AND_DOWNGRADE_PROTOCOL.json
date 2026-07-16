@@ -1,0 +1,51 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "protocol_id": "CHANGE_REMOVAL_AND_DOWNGRADE_PROTOCOL",
+  "required_change_record_fields": [
+    "CHANGE_ID",
+    "change_title",
+    "reason",
+    "files_touched",
+    "fields_added",
+    "validators_added",
+    "sidecar_fields_added",
+    "source_mappings_affected",
+    "documentation_affected",
+    "manifests_affected",
+    "hash_certificate_reissue",
+    "retest_scope",
+    "zero_active_trace_check",
+    "anti_regression_after_downgrade",
+    "rollback_owner",
+    "approval_state"
+  ],
+  "zero_active_trace_after_removal": [
+    "remove active docs",
+    "remove exported templates",
+    "remove validator registry entries",
+    "remove sidecar fields",
+    "remove source mappings",
+    "remove manifests references",
+    "replace active docs with historical-only record if lineage required",
+    "rerun grep for CHANGE_ID and removed symbols"
+  ],
+  "mandatory_retest": [
+    "json_validity",
+    "sha_ledgers",
+    "config_8000",
+    "source_runtime",
+    "project_factory_export",
+    "agent_autoload",
+    "golden_tests_policy",
+    "manual_certificate_consistency"
+  ],
+  "blocked_if": [
+    "removed field still active",
+    "validator references missing file",
+    "manifest stale",
+    "sidecar still declares removed field",
+    "documentation recommends removed change",
+    "any FAIL remains"
+  ]
+}

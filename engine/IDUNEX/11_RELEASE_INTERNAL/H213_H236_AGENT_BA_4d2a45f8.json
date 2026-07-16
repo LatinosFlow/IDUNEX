@@ -1,0 +1,15 @@
+{
+  "artifact_templates": [
+    "AGENT_BATCH_TEST_PROMPTS.json",
+    "AGENT_BATCH_TEST_PROMPTS.md",
+    "AGENT_BATCH_EXPECTED_RESULTS.json",
+    "AGENT_BATCH_EXPECTED_RESULTS.md",
+    "AGENT_BATCH_REPORT_TEMPLATE.md",
+    "AGENT_BATCH_SCORING_MATRIX.csv",
+    "AGENT_BATCH_SCORING_MATRIX.json"
+  ],
+  "fixture_hardcode": "NO",
+  "gate": "H228",
+  "parameterized_by": "MODEL_001..MODEL_N",
+  "result": "PASS"
+}

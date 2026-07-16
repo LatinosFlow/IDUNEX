@@ -1,0 +1,13 @@
+{
+  "gate_id": "H127_EXTERNAL_COMPANION_SHA_SELF_REFERENCE_SENTINEL_GATE",
+  "policy": "external companion SHA for the same ZIP must not be embedded as concrete 64-hex inside the ZIP",
+  "allowed_sentinel": "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY",
+  "authority_location": "TOP_LEVEL_PROJECT_ZIP_SHA256_COMPANION_FILE",
+  "findings_count": 0,
+  "findings": [],
+  "result": "PASS",
+  "fail_codes": [],
+  "creative_output_certified": false,
+  "source": "demo_final_reopened_project_zip",
+  "zip_sha256": "fefceac3ac12257a0abdb37141a9ea1b01e4ae719fac3bafa2c51797af62619f"
+}

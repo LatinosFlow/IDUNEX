@@ -1,0 +1,71 @@
+{
+  "proof": "H108_DELIVERY_GATE_MATRIX_NEGATIVE_MUTATION_PROOF",
+  "correction_scope_label": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80_PLUS_H81_H86_PLUS_H87_H92_PLUS_H93_H98_PLUS_H99_H104_PLUS_H105_H112",
+  "negative_mutation_count": 10,
+  "mutations": [
+    {
+      "id": "M01",
+      "mutation": "ALLOW_REWRITE + BLOCKED_UNSAFE_CONTENT + result=PASS",
+      "expected_failcode": "FAIL_H105_ALLOW_REWRITE_BLOCKED_OUTPUT",
+      "detected": "PASS"
+    },
+    {
+      "id": "M02",
+      "mutation": "CONDITIONAL_REWRITE + vendor_prompt_final=BLOCKED + result=PASS",
+      "expected_failcode": "FAIL_H105_VENDOR_PROMPT_BLOCKED_FOR_ALLOWED_CASE",
+      "detected": "PASS"
+    },
+    {
+      "id": "M03",
+      "mutation": "BLOCK + failcode=NONE + result=PASS",
+      "expected_failcode": "FAIL_H105_BLOCK_WITH_NONE_FAILCODE",
+      "detected": "PASS"
+    },
+    {
+      "id": "M04",
+      "mutation": "watermark_required=false without explicit idunex opt-out",
+      "expected_failcode": "FAIL_H105_DELIVERY_GATE_WATERMARK_INCONSISTENT",
+      "detected": "PASS"
+    },
+    {
+      "id": "M05",
+      "mutation": "optout_detected=true without explicit idunex text",
+      "expected_failcode": "FAIL_H105_DELIVERY_GATE_WATERMARK_INCONSISTENT",
+      "detected": "PASS"
+    },
+    {
+      "id": "M06",
+      "mutation": "delivery gate matrix not scanned",
+      "expected_failcode": "FAIL_H106_DELIVERY_GATES_MATRIX_NOT_SCANNED",
+      "detected": "PASS"
+    },
+    {
+      "id": "M07",
+      "mutation": "active runtime proof stale",
+      "expected_failcode": "FAIL_H107_ACTIVE_RUNTIME_PROOF_STALE",
+      "detected": "PASS"
+    },
+    {
+      "id": "M08",
+      "mutation": "active proof old H71-H80 scope",
+      "expected_failcode": "FAIL_H107_RUNTIME_PROOF_SCOPE_MISMATCH",
+      "detected": "PASS"
+    },
+    {
+      "id": "M09",
+      "mutation": "active proof old gate count",
+      "expected_failcode": "FAIL_H107_RUNTIME_PROOF_GATE_COUNT_MISMATCH",
+      "detected": "PASS"
+    },
+    {
+      "id": "M10",
+      "mutation": "result=FAIL with fail_codes=[]",
+      "expected_failcode": "FAIL_H95_FAIL_WITH_EMPTY_FAIL_CODES",
+      "detected": "PASS"
+    }
+  ],
+  "restoration_retest": "PASS",
+  "H108_DELIVERY_GATE_MATRIX_NEGATIVE_MUTATION_CASES_PASS": "PASS",
+  "result": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

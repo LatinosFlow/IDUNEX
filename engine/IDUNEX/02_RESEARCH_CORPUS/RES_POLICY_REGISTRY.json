@@ -1,0 +1,49 @@
+{
+  "policy_id": "RES_POLICY_REGISTRY",
+  "semantic_version": "v1.0.0",
+  "RES_CORPUS_001": "Research corpus connected, normalized and distilled per project",
+  "domains": [
+    "Profile360",
+    "TechExt",
+    "identidad_visual",
+    "fisica_corporal",
+    "rostro",
+    "piel",
+    "cabello",
+    "edad_ficticia_adulta",
+    "ropa",
+    "ambientes",
+    "camara",
+    "iluminacion",
+    "voz",
+    "musica",
+    "Suno",
+    "ElevenLabs",
+    "texto_persona",
+    "psicologia",
+    "conducta",
+    "branding",
+    "seguridad",
+    "prompt_engineering",
+    "agent_readiness",
+    "vendor_handoff"
+  ],
+  "active_corpus_pointers": [
+    "08_EVIDENCE_LINEAGE/01_RESEARCH_BASELINE_LOCKED",
+    "08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME",
+    "05_RUNTIME_CORE_LIBRARY/16_RESEARCH_RUNTIME_LIBRARY",
+    "01_CANON_REGISTRIES/PROFILE360_SYSTEM",
+    "01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10"
+  ],
+  "project_distillation_rule": "research-derived canon + evidence pointers + runtime-ready distilled knowledge",
+  "forbidden": [
+    "copy_raw_full_corpus_to_each_project",
+    "duplicate_research_multiple_active_folders",
+    "obsolete_research_as_current",
+    "unrelated_corpus_in_agent_runtime",
+    "imagined_profile_without_corpus_support"
+  ],
+  "validator": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+  "fail_code": "FAIL_RES_CORPUS_001",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

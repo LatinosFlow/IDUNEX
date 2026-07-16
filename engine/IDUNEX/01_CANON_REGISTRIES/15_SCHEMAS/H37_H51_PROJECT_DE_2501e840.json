@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IDUNEX H37-H51 Project Delivery Artifacts",
+  "type": "object",
+  "required": [
+    "project_id",
+    "engine_version",
+    "status",
+    "creative_output_certified"
+  ],
+  "properties": {
+    "project_id": {
+      "type": "string"
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "creative_output_certified": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

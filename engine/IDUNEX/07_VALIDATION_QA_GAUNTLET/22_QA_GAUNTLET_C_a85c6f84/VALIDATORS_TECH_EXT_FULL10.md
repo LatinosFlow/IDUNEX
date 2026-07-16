@@ -1,0 +1,35 @@
+# VALIDATORS_TECH_EXT_FULL10
+
+- VALIDATE_PROFILE360_TECH_EXT_EXISTS: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_BODY360_MEASURABLES_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_FACE360_LANDMARK_TOLERANCE_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_SKIN360_LIGHT_RESPONSE_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_HAIR360_TECHNICAL_PROFILE_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_HANDS_FEET360_DETAIL_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_WARDROBE360_SIZE_SYSTEM_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_MOTION360_VIDEO_BIOMECHANICS_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_VOICE360_ADVANCED_AUDIO_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_EXPRESSION360_FACS_LITE_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_CAMERA360_MODEL_RULES_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_LIGHTING360_MODEL_RESPONSE_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_ENVIRONMENT360_COMPATIBILITY_FULL10: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_PAIRWISE360_DIFFERENTIATION_MATRIX: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_MASTER_VISUAL_ANCHORS_MANIFEST: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_ACTIVATION_AND_INPUT_ROUTING: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_PROMPT_INPUT_MODES_4WAY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_OUTPUT_STATUS_AND_APPROVAL_GATE: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_METADATA_WATERMARK_POLICY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_WATERMARK_DEFAULT_ON_POLICY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_AGENT_FULL_CONTEXT_LOAD_POLICY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_RUNTIME_FILE_REQUIRED_MATRIX: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_NO_SUMMARY_RUNTIME_POLICY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_CANON_DATA_ACCESS_GATE: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_NO_IMAGINATION_CANON_POLICY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_FACTORY_DEFINED_PROPOSED_POLICY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_REFERENCE_IMAGE_TRANSFER_STRICTER: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_VENDOR_EXECUTION_CHECKLISTS: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_OUTPUT_ASSET_PROVENANCE_POLICY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_CANON_COMPLETENESS_SCORECARD: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_MISSING_DATA_BEHAVIOR: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_AGENT_PACK_NOLOSS_COMPILATION_POLICY: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.
+- VALIDATE_FINAL_PROJECT_REGENERATION_VALIDATORS: PASS requires real file evidence, expected_value, actual_value, timestamp and retest rule.

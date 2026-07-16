@@ -1,0 +1,55 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "states": [
+    {
+      "state": "PROJECT_ACTIVE",
+      "can_generate_outputs": true,
+      "read_only": false,
+      "recommend_for_new_outputs": true
+    },
+    {
+      "state": "PROJECT_LOCKED",
+      "can_generate_outputs": false,
+      "read_only": false,
+      "recommend_for_new_outputs": false
+    },
+    {
+      "state": "PROJECT_DEPRECATED",
+      "can_generate_outputs": "BLOCKED_FOR_NEW_OUTPUTS_UNLESS_APPROVED_EXCEPTION",
+      "read_only": false,
+      "recommend_for_new_outputs": false
+    },
+    {
+      "state": "PROJECT_RETIRED",
+      "can_generate_outputs": false,
+      "read_only": false,
+      "recommend_for_new_outputs": false
+    },
+    {
+      "state": "PROJECT_ARCHIVED_READONLY",
+      "can_generate_outputs": false,
+      "read_only": true,
+      "recommend_for_new_outputs": false
+    },
+    {
+      "state": "PROJECT_PURGED_POLICY_ALLOWED",
+      "can_generate_outputs": false,
+      "read_only": "NOT_AVAILABLE_AFTER_PURGE",
+      "recommend_for_new_outputs": false
+    }
+  ],
+  "lineage_policy": "PRESERVE_HISTORICAL_LINEAGE_UNLESS_PURGE_POLICY_ALLOWED",
+  "blocking_codes": [
+    "BLOCKED_PROJECT_RETIRED_OUTPUT_REQUEST",
+    "BLOCKED_PROJECT_ARCHIVED_READONLY_OUTPUT_REQUEST",
+    "BLOCKED_PROJECT_PURGED_NO_RUNTIME_AUTHORITY"
+  ],
+  "required_manifest_fields": [
+    "project_lifecycle_state",
+    "retirement_reason",
+    "lineage_preservation_status",
+    "new_output_generation_allowed",
+    "readonly_status",
+    "purge_policy_reference"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "validator_id": "SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR",
+  "status": "ACTIVE_PASS",
+  "blocking": true,
+  "required_src_range": "SRC_001-SRC_049",
+  "required_fields_per_entry": [
+    "source_id",
+    "source_title",
+    "engine_layer",
+    "project_layer",
+    "exported_files",
+    "coverage_status",
+    "no_loss_assertion",
+    "validator_reference"
+  ],
+  "accepted_title_field_aliases": [
+    "source_title",
+    "title"
+  ],
+  "validated_files": [
+    "IDUNEX/03_PROJECT_FACTORY/07_EXPORT_TEMPLATES/SOURCE_RUNTIME_LEDGER_MINIFIED_TEMPLATE.json",
+    "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+  ],
+  "actual_value": "validated_files=2; entries_per_file=49; required_fields=8; missing=0",
+  "fail_conditions": [
+    "missing SRC_001-SRC_049 coverage",
+    "empty required field",
+    "coverage_status missing",
+    "no_loss_assertion missing",
+    "validator_reference missing",
+    "PASS declared with actual_value empty"
+  ],
+  "fallback_fix": "Regenerate ledger entry schema fields without modifying source cards; rebuild manifests; reopen ZIP; rerun full audit."
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "IDUNEX_PROJECT_TEST_RUNNER_DETERMINISTIC_AND_NON_HANGING_H242_V1",
+  "result": "PASS",
+  "runner_file": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
+  "runner_sha256": "d534788a1ee422c0be4b2de4282318db5fb986d67404e828b9d9df3d90f848d5",
+  "timeout_per_process": "ENFORCED",
+  "kill_process_tree_on_timeout": "PASS",
+  "continue_after_case_failure": "PASS",
+  "case_level_pass_fail_logging": "PASS",
+  "compact_summary_json": "11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json",
+  "compact_csv": "11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX.csv",
+  "no_test_output_zips_in_engine": "PASS",
+  "no_active_staging_in_delivery": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "FAIL_CODES": []
+}

@@ -1,0 +1,9 @@
+{
+  "classification": "FIXTURE_ONLY",
+  "authority": "NON_AUTHORITY",
+  "not_canonical_project": true,
+  "not_canonical_model": true,
+  "not_for_runtime_identity": true,
+  "allowed_scope": "validation_only",
+  "active_motor_boundary": "project data here cannot become motor canon, runtime core, global registry or external manual example"
+}

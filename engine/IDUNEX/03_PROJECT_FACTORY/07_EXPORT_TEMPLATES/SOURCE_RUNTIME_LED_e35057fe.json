@@ -1,0 +1,2754 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "ledger_type": "SOURCE_RUNTIME_LEDGER_MINIFIED_TEMPLATE_P03_STRICT_SCHEMA_COMPLETE",
+  "source_count": 49,
+  "no_loss_policy": "PORTABLE_MINIFIED_EXTRACT_DOES_NOT_REPLACE_PARENT_ENGINE",
+  "entries": [
+    {
+      "source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "source_title": "Ontología IDUNEX 360",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_001_Ontolog_a_IDUNEX_360.md",
+      "runtime_domains": [
+        "profile360_identity"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_IDENTITY_0011",
+        "QA_IDENTITY_0012",
+        "QA_IDENTITY_0014",
+        "QA_IDENTITY_0015",
+        "QA_IDENTITY_0020"
+      ],
+      "fail_code": [
+        "FAIL_IDENTITY_0011_IMMUTABLE_SCOPE",
+        "FAIL_IDENTITY_0012_IDENTITY_STATUS",
+        "FAIL_IDENTITY_0014_PERSONA_BOUNDARY",
+        "FAIL_IDENTITY_0015_PRIVATE_PUBLIC_BOUNDARY",
+        "FAIL_IDENTITY_0020_WORK_TRACE"
+      ],
+      "fallback_fix": [
+        "Si falla aliases_prompt_effect, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0452_ALIASES_PROMPT_EFFECT, aplicar retest GT_IDENTITY_0452 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla aliases_vendor_repair, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_1350_ALIASES_VENDOR_REPAIR, aplicar retest GT_IDENTITY_1350 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla artist_imitation_blocker, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0255_ARTIST_IMITATION_BLOCKER, aplicar retest GT_IDENTITY_0255 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_002_Biometr_a_facial_forense",
+      "source_title": "Biometría facial forense",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_002_Biometr_a_facial_forense.md",
+      "runtime_domains": [
+        "profile360_face"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_FACE_0059",
+        "QA_FACE_0060",
+        "QA_FACE_0061",
+        "QA_FACE_0062",
+        "QA_FACE_0064"
+      ],
+      "fail_code": [
+        "FAIL_FACE_0059_CRANIAL_VISUAL_VOLUME",
+        "FAIL_FACE_0060_VERTICAL_THIRDS",
+        "FAIL_FACE_0061_HORIZONTAL_FIFTHS",
+        "FAIL_FACE_0062_FOREHEAD_HEIGHT",
+        "FAIL_FACE_0064_TEMPLE_WIDTH"
+      ],
+      "fallback_fix": [
+        "Si falla age_face_signature, recargar primary_source_id SRC_002_Biometr_a_facial_forense, cruzar supporting_source_ids SRC_011_Microexpresiones_y_FACS, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_FACE_0073_AGE_FACE_SIGNATURE, aplicar retest GT_FACE_0073 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla age_face_signature_prompt_effect, recargar primary_source_id SRC_002_Biometr_a_facial_forense, cruzar supporting_source_ids SRC_011_Microexpresiones_y_FACS, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_FACE_0522_AGE_FACE_SIGNATURE_PROMPT_EFFECT, aplicar retest GT_FACE_0522 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla age_face_signature_vendor_repair, recargar primary_source_id SRC_002_Biometr_a_facial_forense, cruzar supporting_source_ids SRC_011_Microexpresiones_y_FACS, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_FACE_1420_AGE_FACE_SIGNATURE_VENDOR_REPAIR, aplicar retest GT_FACE_1420 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_003_Antropometr_a_corporal_avanzada",
+      "source_title": "Antropometr a corporal avanzada",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_003_Antropometr_a_corporal_avanzada.md",
+      "runtime_domains": [
+        "profile360_body"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_BODY_0115",
+        "QA_BODY_0116",
+        "QA_BODY_0118",
+        "QA_BODY_0119",
+        "QA_BODY_0121"
+      ],
+      "fail_code": [
+        "FAIL_BODY_0115_BODY_BUILD",
+        "FAIL_BODY_0116_VISUAL_MASS",
+        "FAIL_BODY_0118_NECK_LENGTH",
+        "FAIL_BODY_0119_CLAVICLE_VISIBILITY",
+        "FAIL_BODY_0121_TORSO_LEG_RATIO"
+      ],
+      "fallback_fix": [
+        "Si falla adult_age_prompt_effect, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0453_ADULT_AGE_PROMPT_EFFECT, aplicar retest GT_BODY_0453 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla adult_age_vendor_repair, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_1351_ADULT_AGE_VENDOR_REPAIR, aplicar retest GT_BODY_1351 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla adult_body_safety_rule, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0162_ADULT_BODY_SAFETY_RULE, aplicar retest GT_BODY_0162 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_004_Dermatolog_a_visual_realista",
+      "source_title": "Dermatolog a visual realista",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_004_Dermatolog_a_visual_realista.md",
+      "runtime_domains": [
+        "profile360_skin"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_SKIN_0170",
+        "QA_SKIN_0171",
+        "QA_SKIN_0173",
+        "QA_SKIN_0174",
+        "QA_SKIN_0175"
+      ],
+      "fail_code": [
+        "FAIL_SKIN_0170_MATTE_ZONES",
+        "FAIL_SKIN_0171_MAKEUP_RULES",
+        "FAIL_SKIN_0173_SKIN_CLIMATE_RESPONSE",
+        "FAIL_SKIN_0174_SKIN_AGE_RESPONSE",
+        "FAIL_SKIN_0175_ANTI_DOLL_MARKERS"
+      ],
+      "fallback_fix": [
+        "Si falla anti_doll_markers, recargar primary_source_id SRC_004_Dermatolog_a_visual_realista, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_SKIN_0175_ANTI_DOLL_MARKERS, aplicar retest GT_SKIN_0175 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla anti_doll_markers_prompt_effect, recargar primary_source_id SRC_004_Dermatolog_a_visual_realista, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_SKIN_0624_ANTI_DOLL_MARKERS_PROMPT_EFFECT, aplicar retest GT_SKIN_0624 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla anti_doll_markers_vendor_repair, recargar primary_source_id SRC_004_Dermatolog_a_visual_realista, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_SKIN_1522_ANTI_DOLL_MARKERS_VENDOR_REPAIR, aplicar retest GT_SKIN_1522 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_005_Cabello_peinados_y_f_sica_capilar",
+      "source_title": "Cabello peinados y física capilar",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_005_Cabello_peinados_y_f_sica_capilar.md",
+      "runtime_domains": [
+        "profile360_hair"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_HAIR_0178",
+        "QA_HAIR_0179",
+        "QA_HAIR_0180",
+        "QA_HAIR_0182",
+        "QA_HAIR_0183"
+      ],
+      "fail_code": [
+        "FAIL_HAIR_0178_HAIR_COLOR_BASE",
+        "FAIL_HAIR_0179_HAIR_SUBTONE",
+        "FAIL_HAIR_0180_HAIR_DENSITY",
+        "FAIL_HAIR_0182_HAIRLINE_SHAPE",
+        "FAIL_HAIR_0183_HAIR_LENGTH"
+      ],
+      "fallback_fix": [
+        "Si falla baby_hairs, recargar primary_source_id SRC_005_Cabello_peinados_y_f_sica_capilar, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_HAIR_0188_BABY_HAIRS, aplicar retest GT_HAIR_0188 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla baby_hairs_prompt_effect, recargar primary_source_id SRC_005_Cabello_peinados_y_f_sica_capilar, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_HAIR_0637_BABY_HAIRS_PROMPT_EFFECT, aplicar retest GT_HAIR_0637 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla baby_hairs_vendor_repair, recargar primary_source_id SRC_005_Cabello_peinados_y_f_sica_capilar, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_HAIR_1535_BABY_HAIRS_VENDOR_REPAIR, aplicar retest GT_HAIR_1535 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos",
+      "source_title": "Etnia descendencia y fenotipo sin estereotipos",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos.md",
+      "runtime_domains": [
+        "profile360_culture"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "text_script_copy_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_CULTURE_0051",
+        "QA_CULTURE_0407",
+        "QA_CULTURE_0466",
+        "QA_CULTURE_0467",
+        "QA_CULTURE_0484"
+      ],
+      "fail_code": [
+        "FAIL_CULTURE_0051_PERUVIAN_LATAM_USAGE",
+        "FAIL_CULTURE_0407_MIGRATION_STATE",
+        "FAIL_CULTURE_0466_FAMILY_STRUCTURE_PROMPT_EFFECT",
+        "FAIL_CULTURE_0467_MIGRATION_TRACE_PROMPT_EFFECT",
+        "FAIL_CULTURE_0484_VALUES_MAP_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla family_structure_prompt_effect, recargar primary_source_id SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, reemitir solo adapters text_script_copy_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_CULTURE_0466_FAMILY_STRUCTURE_PROMPT_EFFECT, aplicar retest GT_CULTURE_0466 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla family_structure_vendor_repair, recargar primary_source_id SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, reemitir solo adapters text_script_copy_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_CULTURE_1364_FAMILY_STRUCTURE_VENDOR_REPAIR, aplicar retest GT_CULTURE_1364 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla migration_state, recargar primary_source_id SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, reemitir solo adapters text_script_copy_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_CULTURE_0407_MIGRATION_STATE, aplicar retest GT_CULTURE_0407 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_007_Biograf_a_familiar_y_migratoria",
+      "source_title": "Biografía familiar y migratoria",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_007_Biograf_a_familiar_y_migratoria.md",
+      "runtime_domains": [
+        "profile360_culture",
+        "profile360_identity"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter",
+        "text_script_copy_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_RULE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fail_code": [
+        "FAIL_CODE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fallback_fix": [
+        "FALLBACK_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_008_Moral_valores_y_tica_personal",
+      "source_title": "Moral valores y tica personal",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_008_Moral_valores_y_tica_personal.md",
+      "runtime_domains": [
+        "profile360_psychology"
+      ],
+      "adapter_targets": [
+        "sidecar_metadata_adapter",
+        "suno_music_adapter",
+        "text_script_copy_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_PSYCHOLOGY_0036",
+        "QA_PSYCHOLOGY_0039",
+        "QA_PSYCHOLOGY_0040",
+        "QA_PSYCHOLOGY_0042",
+        "QA_PSYCHOLOGY_0482"
+      ],
+      "fail_code": [
+        "FAIL_PSYCHOLOGY_0036_MORAL_BOUNDARIES",
+        "FAIL_PSYCHOLOGY_0039_HUMOR_STYLE",
+        "FAIL_PSYCHOLOGY_0040_DECISION_STYLE",
+        "FAIL_PSYCHOLOGY_0042_CONFLICT_RESPONSE",
+        "FAIL_PSYCHOLOGY_0482_FEAR_STACK_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla conflict_response, recargar primary_source_id SRC_008_Moral_valores_y_tica_personal, cruzar supporting_source_ids SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_024_Escritura_pensamiento_y_voz_interna, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters text_script_copy_adapter, video_prompt_adapter, suno_music_adapter, sidecar_metadata_adapter, registrar FAIL_PSYCHOLOGY_0042_CONFLICT_RESPONSE, aplicar retest GT_PSYCHOLOGY_0042 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla conflict_response_prompt_effect, recargar primary_source_id SRC_008_Moral_valores_y_tica_personal, cruzar supporting_source_ids SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_024_Escritura_pensamiento_y_voz_interna, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters text_script_copy_adapter, video_prompt_adapter, suno_music_adapter, sidecar_metadata_adapter, registrar FAIL_PSYCHOLOGY_0491_CONFLICT_RESPONSE_PROMPT_EFFECT, aplicar retest GT_PSYCHOLOGY_0491 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla conflict_response_vendor_repair, recargar primary_source_id SRC_008_Moral_valores_y_tica_personal, cruzar supporting_source_ids SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_024_Escritura_pensamiento_y_voz_interna, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters text_script_copy_adapter, video_prompt_adapter, suno_music_adapter, sidecar_metadata_adapter, registrar FAIL_PSYCHOLOGY_1389_CONFLICT_RESPONSE_VENDOR_REPAIR, aplicar retest GT_PSYCHOLOGY_1389 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_009_Religi_n_espiritualidad_y_cosmovisi_n",
+      "source_title": "Religi n espiritualidad y cosmovisi n",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_009_Religi_n_espiritualidad_y_cosmovisi_n.md",
+      "runtime_domains": [
+        "profile360_culture",
+        "profile360_psychology"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "suno_music_adapter",
+        "text_script_copy_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_RULE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fail_code": [
+        "FAIL_CODE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fallback_fix": [
+        "FALLBACK_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_010_Psicolog_a_avanzada",
+      "source_title": "Psicología avanzada",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_010_Psicolog_a_avanzada.md",
+      "runtime_domains": [
+        "profile360_psychology"
+      ],
+      "adapter_targets": [
+        "sidecar_metadata_adapter",
+        "suno_music_adapter",
+        "text_script_copy_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_PSYCHOLOGY_0026",
+        "QA_PSYCHOLOGY_0029",
+        "QA_PSYCHOLOGY_0032",
+        "QA_PSYCHOLOGY_0033",
+        "QA_PSYCHOLOGY_0475"
+      ],
+      "fail_code": [
+        "FAIL_PSYCHOLOGY_0026_MEMORY_TRIGGERS",
+        "FAIL_PSYCHOLOGY_0029_CONFLICT_HISTORY",
+        "FAIL_PSYCHOLOGY_0032_MOTIVATION_STACK",
+        "FAIL_PSYCHOLOGY_0033_FEAR_STACK",
+        "FAIL_PSYCHOLOGY_0475_MEMORY_TRIGGERS_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla conflict_history, recargar primary_source_id SRC_008_Moral_valores_y_tica_personal, cruzar supporting_source_ids SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_024_Escritura_pensamiento_y_voz_interna, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters text_script_copy_adapter, video_prompt_adapter, suno_music_adapter, sidecar_metadata_adapter, registrar FAIL_PSYCHOLOGY_0029_CONFLICT_HISTORY, aplicar retest GT_PSYCHOLOGY_0029 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla conflict_history_prompt_effect, recargar primary_source_id SRC_008_Moral_valores_y_tica_personal, cruzar supporting_source_ids SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_024_Escritura_pensamiento_y_voz_interna, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters text_script_copy_adapter, video_prompt_adapter, suno_music_adapter, sidecar_metadata_adapter, registrar FAIL_PSYCHOLOGY_0478_CONFLICT_HISTORY_PROMPT_EFFECT, aplicar retest GT_PSYCHOLOGY_0478 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla conflict_history_vendor_repair, recargar primary_source_id SRC_008_Moral_valores_y_tica_personal, cruzar supporting_source_ids SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_024_Escritura_pensamiento_y_voz_interna, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters text_script_copy_adapter, video_prompt_adapter, suno_music_adapter, sidecar_metadata_adapter, registrar FAIL_PSYCHOLOGY_1376_CONFLICT_HISTORY_VENDOR_REPAIR, aplicar retest GT_PSYCHOLOGY_1376 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_011_Microexpresiones_y_FACS",
+      "source_title": "Microexpresiones y FACS",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_011_Microexpresiones_y_FACS.md",
+      "runtime_domains": [
+        "profile360_acting"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_ACTING_0089",
+        "QA_ACTING_0090",
+        "QA_ACTING_0091",
+        "QA_ACTING_0092",
+        "QA_ACTING_0099"
+      ],
+      "fail_code": [
+        "FAIL_ACTING_0089_BROW_DENSITY",
+        "FAIL_ACTING_0090_BROW_ARC",
+        "FAIL_ACTING_0091_BROW_HEIGHT",
+        "FAIL_ACTING_0092_BROW_EYE_DISTANCE",
+        "FAIL_ACTING_0099_LIP_RATIO"
+      ],
+      "fallback_fix": [
+        "Si falla acting_intention_per_shot, recargar primary_source_id SRC_011_Microexpresiones_y_FACS, cruzar supporting_source_ids SRC_019_Motion_bible_y_caminada, SRC_020_Acting_bible, SRC_035_Acting_poses_y_microgestos_por_personalidad, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, reemitir solo adapters video_prompt_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_ACTING_0291_ACTING_INTENTION_PER_SHOT, aplicar retest GT_ACTING_0291 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla acting_intention_per_shot_prompt_effect, recargar primary_source_id SRC_011_Microexpresiones_y_FACS, cruzar supporting_source_ids SRC_019_Motion_bible_y_caminada, SRC_020_Acting_bible, SRC_035_Acting_poses_y_microgestos_por_personalidad, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, reemitir solo adapters video_prompt_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_ACTING_0740_ACTING_INTENTION_PER_SHOT_PROMPT_EFFECT, aplicar retest GT_ACTING_0740 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla acting_intention_per_shot_vendor_repair, recargar primary_source_id SRC_011_Microexpresiones_y_FACS, cruzar supporting_source_ids SRC_019_Motion_bible_y_caminada, SRC_020_Acting_bible, SRC_035_Acting_poses_y_microgestos_por_personalidad, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, reemitir solo adapters video_prompt_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_ACTING_1638_ACTING_INTENTION_PER_SHOT_VENDOR_REPAIR, aplicar retest GT_ACTING_1638 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_012_Lenguaje_acento_y_voz_escrita",
+      "source_title": "Lenguaje acento y voz escrita",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_012_Lenguaje_acento_y_voz_escrita.md",
+      "runtime_domains": [
+        "profile360_language",
+        "profile360_voice"
+      ],
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "elevenlabs_voice_adapter",
+        "sidecar_metadata_adapter",
+        "text_script_copy_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_LANGUAGE_0232",
+        "QA_LANGUAGE_0235",
+        "QA_LANGUAGE_0254",
+        "QA_LANGUAGE_0501",
+        "QA_LANGUAGE_0681"
+      ],
+      "fail_code": [
+        "FAIL_LANGUAGE_0232_CAPTION_STYLE",
+        "FAIL_LANGUAGE_0235_SCRIPT_STYLE",
+        "FAIL_LANGUAGE_0254_GENERIC_CAPTION_BLOCKER",
+        "FAIL_LANGUAGE_0501_SOCIOLECT_LIMIT_PROMPT_EFFECT",
+        "FAIL_LANGUAGE_0681_CAPTION_STYLE_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla accent_caricature_blocker, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0253_ACCENT_CARICATURE_BLOCKER, aplicar retest GT_VOICE_0253 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla accent_caricature_blocker_prompt_effect, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0702_ACCENT_CARICATURE_BLOCKER_PROMPT_EFFECT, aplicar retest GT_VOICE_0702 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla accent_caricature_blocker_vendor_repair, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_1600_ACCENT_CARICATURE_BLOCKER_VENDOR_REPAIR, aplicar retest GT_VOICE_1600 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+      "source_title": "Formación profesional de modelaje premium",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_013_Formaci_n_profesional_de_modelaje_premium.md",
+      "runtime_domains": [
+        "profile360_acting",
+        "profile360_camera",
+        "profile360_identity"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_ACTING_0278",
+        "QA_ACTING_0279",
+        "QA_ACTING_0281",
+        "QA_ACTING_0730",
+        "QA_ACTING_1628"
+      ],
+      "fail_code": [
+        "FAIL_ACTING_0278_POSE_ENERGY",
+        "FAIL_ACTING_0279_POSE_RANGE",
+        "FAIL_ACTING_0281_RUNWAY_PRESENCE",
+        "FAIL_ACTING_0730_RUNWAY_PRESENCE_PROMPT_EFFECT",
+        "FAIL_ACTING_1628_RUNWAY_PRESENCE_VENDOR_REPAIR"
+      ],
+      "fallback_fix": [
+        "Si falla camera_presence, recargar primary_source_id SRC_013_Formaci_n_profesional_de_modelaje_premium, cruzar supporting_source_ids SRC_018_Lighting_bible_por_modelo, SRC_021_Video_IA_y_continuidad_entre_planos, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_CAMERA_0282_CAMERA_PRESENCE, aplicar retest GT_CAMERA_0282 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla camera_reaction_pattern, recargar primary_source_id SRC_013_Formaci_n_profesional_de_modelaje_premium, cruzar supporting_source_ids SRC_018_Lighting_bible_por_modelo, SRC_021_Video_IA_y_continuidad_entre_planos, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_CAMERA_0269_CAMERA_REACTION_PATTERN, aplicar retest GT_CAMERA_0269 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla education_trace, recargar primary_source_id SRC_013_Formaci_n_profesional_de_modelaje_premium, cruzar supporting_source_ids SRC_001_Ontolog_a_IDUNEX_360, SRC_007_Biograf_a_familiar_y_migratoria, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, SRC_014_Profesi_n_principal_y_CV_realista, reemitir adapter chatgpt_json_txt_adapter, registrar FAIL_IDENTITY_0019_EDUCATION_TRACE, aplicar retest GT_IDENTITY_0019 y bloquear PROJECT_INSTANCE_GO hasta evidencia real."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_014_Profesi_n_principal_y_CV_realista",
+      "source_title": "Profesión principal y CV realista",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_014_Profesi_n_principal_y_CV_realista.md",
+      "runtime_domains": [
+        "profile360_identity"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_RULE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fail_code": [
+        "FAIL_CODE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fallback_fix": [
+        "FALLBACK_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_015_Wardrobe_bible_y_moda_realista",
+      "source_title": "Wardrobe bible y moda realista",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_015_Wardrobe_bible_y_moda_realista.md",
+      "runtime_domains": [
+        "profile360_props",
+        "profile360_wardrobe"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_PROPS_0334",
+        "QA_PROPS_0337",
+        "QA_PROPS_0341",
+        "QA_PROPS_0431",
+        "QA_PROPS_0783"
+      ],
+      "fail_code": [
+        "FAIL_PROPS_0334_BRAND_LOGO_RESTRICTIONS",
+        "FAIL_PROPS_0337_PROP_LINEAGE_RULE",
+        "FAIL_PROPS_0341_BRAND_LOGO_BLOCKER",
+        "FAIL_PROPS_0431_BRAND_LOGO_REVIEW",
+        "FAIL_PROPS_0783_BRAND_LOGO_RESTRICTIONS_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla accessory_rules, recargar primary_source_id SRC_015_Wardrobe_bible_y_moda_realista, cruzar supporting_source_ids SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito, SRC_034_Wardrobe_premium_por_modelo_y_cuerpo, SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_WARDROBE_0327_ACCESSORY_RULES, aplicar retest GT_WARDROBE_0327 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla accessory_rules_prompt_effect, recargar primary_source_id SRC_015_Wardrobe_bible_y_moda_realista, cruzar supporting_source_ids SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito, SRC_034_Wardrobe_premium_por_modelo_y_cuerpo, SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_WARDROBE_0776_ACCESSORY_RULES_PROMPT_EFFECT, aplicar retest GT_WARDROBE_0776 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla accessory_rules_vendor_repair, recargar primary_source_id SRC_015_Wardrobe_bible_y_moda_realista, cruzar supporting_source_ids SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito, SRC_034_Wardrobe_premium_por_modelo_y_cuerpo, SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_WARDROBE_1674_ACCESSORY_RULES_VENDOR_REPAIR, aplicar retest GT_WARDROBE_1674 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito",
+      "source_title": "Lencer abodywear editorial adulto no expl cito",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito.md",
+      "runtime_domains": [
+        "profile360_body",
+        "profile360_wardrobe"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_RULE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fail_code": [
+        "FAIL_CODE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fallback_fix": [
+        "FALLBACK_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_017_C_mara_sensor_lente_y_fotograf_a_premium",
+      "source_title": "Cámara sensor lente y fotograf a premium",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_017_C_mara_sensor_lente_y_fotograf_a_premium.md",
+      "runtime_domains": [
+        "profile360_camera"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_CAMERA_0323",
+        "QA_CAMERA_0346",
+        "QA_CAMERA_0347",
+        "QA_CAMERA_0348",
+        "QA_CAMERA_0349"
+      ],
+      "fail_code": [
+        "FAIL_CAMERA_0323_CAMERA_ANGLE_SAFETY",
+        "FAIL_CAMERA_0346_SHOT_TYPE",
+        "FAIL_CAMERA_0347_CAMERA_DISTANCE",
+        "FAIL_CAMERA_0348_CAMERA_HEIGHT",
+        "FAIL_CAMERA_0349_CAMERA_ANGLE"
+      ],
+      "fallback_fix": [
+        "Si falla aperture_range, recargar primary_source_id SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, cruzar supporting_source_ids SRC_018_Lighting_bible_por_modelo, SRC_021_Video_IA_y_continuidad_entre_planos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_CAMERA_0351_APERTURE_RANGE, aplicar retest GT_CAMERA_0351 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla aperture_range_prompt_effect, recargar primary_source_id SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, cruzar supporting_source_ids SRC_018_Lighting_bible_por_modelo, SRC_021_Video_IA_y_continuidad_entre_planos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_CAMERA_0800_APERTURE_RANGE_PROMPT_EFFECT, aplicar retest GT_CAMERA_0800 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla aperture_range_vendor_repair, recargar primary_source_id SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, cruzar supporting_source_ids SRC_018_Lighting_bible_por_modelo, SRC_021_Video_IA_y_continuidad_entre_planos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_CAMERA_1698_APERTURE_RANGE_VENDOR_REPAIR, aplicar retest GT_CAMERA_1698 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_018_Lighting_bible_por_modelo",
+      "source_title": "Lighting bible por modelo",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_018_Lighting_bible_por_modelo.md",
+      "runtime_domains": [
+        "profile360_camera",
+        "profile360_lighting",
+        "profile360_skin"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_CAMERA_0111",
+        "QA_CAMERA_0159",
+        "QA_LIGHTING_0362",
+        "QA_SKIN_0172"
+      ],
+      "fail_code": [
+        "FAIL_CAMERA_0111_LENS_FACE_DISTORTION_RULE",
+        "FAIL_CAMERA_0159_BODY_LENS_DISTORTION_RULE",
+        "FAIL_LIGHTING_0362_KEY_LIGHT",
+        "FAIL_SKIN_0172_SKIN_LIGHT_RESPONSE"
+      ],
+      "fallback_fix": [
+        "Si falla body_lens_distortion_rule, recargar primary_source_id SRC_018_Lighting_bible_por_modelo, cruzar supporting_source_ids SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_021_Video_IA_y_continuidad_entre_planos, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_CAMERA_0159_BODY_LENS_DISTORTION_RULE, aplicar retest GT_CAMERA_0159 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla key_light, recargar primary_source_id SRC_018_Lighting_bible_por_modelo, cruzar supporting_source_ids SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_021_Video_IA_y_continuidad_entre_planos, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar lighting bible para key/fill/rim/catchlight/shadow logic y ENV_PHYSICS_FULL10 como soporte de coherencia física/espacial, registrar FAIL_LIGHTING_0362_KEY_LIGHT, aplicar retest GT_LIGHTING_0362 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla lens_face_distortion_rule, recargar primary_source_id SRC_018_Lighting_bible_por_modelo, cruzar supporting_source_ids SRC_021_Video_IA_y_continuidad_entre_planos, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_CAMERA_0111_LENS_FACE_DISTORTION_RULE, aplicar retest GT_CAMERA_0111 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_019_Motion_bible_y_caminada",
+      "source_title": "Motion bible y caminada",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_019_Motion_bible_y_caminada.md",
+      "runtime_domains": [
+        "profile360_video"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_VIDEO_0219",
+        "QA_VIDEO_0262",
+        "QA_VIDEO_0268",
+        "QA_VIDEO_0270",
+        "QA_VIDEO_0271"
+      ],
+      "fail_code": [
+        "FAIL_VIDEO_0219_EMOTIONAL_COLOR",
+        "FAIL_VIDEO_0262_EYE_EMOTION_MAP",
+        "FAIL_VIDEO_0268_EMOTION_TRANSITION_RULE",
+        "FAIL_VIDEO_0270_EMOTION_TO_POSE_MAP",
+        "FAIL_VIDEO_0271_WALKING_RHYTHM"
+      ],
+      "fallback_fix": [
+        "Si falla emotion_mismatch_rule, recargar primary_source_id SRC_019_Motion_bible_y_caminada, cruzar supporting_source_ids SRC_021_Video_IA_y_continuidad_entre_planos, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_0299_EMOTION_MISMATCH_RULE, aplicar retest GT_VIDEO_0299 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla emotion_mismatch_rule_prompt_effect, recargar primary_source_id SRC_019_Motion_bible_y_caminada, cruzar supporting_source_ids SRC_021_Video_IA_y_continuidad_entre_planos, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_0748_EMOTION_MISMATCH_RULE_PROMPT_EFFECT, aplicar retest GT_VIDEO_0748 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla emotion_mismatch_rule_vendor_repair, recargar primary_source_id SRC_019_Motion_bible_y_caminada, cruzar supporting_source_ids SRC_021_Video_IA_y_continuidad_entre_planos, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_1646_EMOTION_MISMATCH_RULE_VENDOR_REPAIR, aplicar retest GT_VIDEO_1646 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_020_Acting_bible",
+      "source_title": "Acting bible",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_020_Acting_bible.md",
+      "runtime_domains": [
+        "profile360_acting",
+        "profile360_video"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_ACTING_0068",
+        "QA_ACTING_0069",
+        "QA_ACTING_0085",
+        "QA_VIDEO_0027"
+      ],
+      "fail_code": [
+        "FAIL_ACTING_0068_JAW_ANGLE",
+        "FAIL_ACTING_0069_JAW_SOFTNESS",
+        "FAIL_ACTING_0085_BLINK_PATTERN",
+        "FAIL_VIDEO_0027_EMOTIONAL_ANCHORS"
+      ],
+      "fallback_fix": [
+        "Si falla blink_pattern, recargar primary_source_id SRC_011_Microexpresiones_y_FACS, cruzar supporting_source_ids SRC_019_Motion_bible_y_caminada, SRC_020_Acting_bible, SRC_035_Acting_poses_y_microgestos_por_personalidad, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, reemitir solo adapters video_prompt_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_ACTING_0085_BLINK_PATTERN, aplicar retest GT_ACTING_0085 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla emotional_anchors, recargar primary_source_id SRC_020_Acting_bible, cruzar supporting_source_ids SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, SRC_019_Motion_bible_y_caminada, SRC_021_Video_IA_y_continuidad_entre_planos, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_035_Acting_poses_y_microgestos_por_personalidad, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_0027_EMOTIONAL_ANCHORS, aplicar retest GT_VIDEO_0027 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla jaw_angle, recargar primary_source_id SRC_011_Microexpresiones_y_FACS, cruzar supporting_source_ids SRC_019_Motion_bible_y_caminada, SRC_020_Acting_bible, SRC_035_Acting_poses_y_microgestos_por_personalidad, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, reemitir solo adapters video_prompt_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_ACTING_0068_JAW_ANGLE, aplicar retest GT_ACTING_0068 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_021_Video_IA_y_continuidad_entre_planos",
+      "source_title": "Video IA y continuidad entre planos",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_021_Video_IA_y_continuidad_entre_planos.md",
+      "runtime_domains": [
+        "profile360_video"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_VIDEO_0284",
+        "QA_VIDEO_0285",
+        "QA_VIDEO_0293",
+        "QA_VIDEO_0733",
+        "QA_VIDEO_0734"
+      ],
+      "fail_code": [
+        "FAIL_VIDEO_0284_VIDEO_CONTINUITY_LOCK",
+        "FAIL_VIDEO_0285_FRAME_TO_FRAME_IDENTITY",
+        "FAIL_VIDEO_0293_VIDEO_PROMPT_TIMELINE",
+        "FAIL_VIDEO_0733_VIDEO_CONTINUITY_LOCK_PROMPT_EFFECT",
+        "FAIL_VIDEO_0734_FRAME_TO_FRAME_IDENTITY_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla frame_to_frame_identity, recargar primary_source_id SRC_021_Video_IA_y_continuidad_entre_planos, cruzar supporting_source_ids SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_019_Motion_bible_y_caminada, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_0285_FRAME_TO_FRAME_IDENTITY, aplicar retest GT_VIDEO_0285 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla frame_to_frame_identity_prompt_effect, recargar primary_source_id SRC_021_Video_IA_y_continuidad_entre_planos, cruzar supporting_source_ids SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_019_Motion_bible_y_caminada, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_0734_FRAME_TO_FRAME_IDENTITY_PROMPT_EFFECT, aplicar retest GT_VIDEO_0734 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla frame_to_frame_identity_vendor_repair, recargar primary_source_id SRC_021_Video_IA_y_continuidad_entre_planos, cruzar supporting_source_ids SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_019_Motion_bible_y_caminada, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_1632_FRAME_TO_FRAME_IDENTITY_VENDOR_REPAIR, aplicar retest GT_VIDEO_1632 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_022_Voz_hablada_para_ElevenLabs",
+      "source_title": "Voz hablada para ElevenLabs",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_022_Voz_hablada_para_ElevenLabs.md",
+      "runtime_domains": [
+        "profile360_culture",
+        "profile360_voice"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "text_script_copy_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_CULTURE_0035",
+        "QA_VOICE_0053",
+        "QA_VOICE_0223",
+        "QA_VOICE_0236",
+        "QA_VOICE_0502"
+      ],
+      "fail_code": [
+        "FAIL_CULTURE_0035_VALUES_MAP",
+        "FAIL_VOICE_0053_INTERVIEW_VOICE",
+        "FAIL_VOICE_0223_VOICE_IDENTITY_LOCK",
+        "FAIL_VOICE_0236_NARRATION_STYLE",
+        "FAIL_VOICE_0502_INTERVIEW_VOICE_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla interview_voice, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0053_INTERVIEW_VOICE, aplicar retest GT_VOICE_0053 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla interview_voice_prompt_effect, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0502_INTERVIEW_VOICE_PROMPT_EFFECT, aplicar retest GT_VOICE_0502 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla interview_voice_vendor_repair, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_1400_INTERVIEW_VOICE_VENDOR_REPAIR, aplicar retest GT_VOICE_1400 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_023_Voz_cantada_y_Suno",
+      "source_title": "Voz cantada y Suno",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_023_Voz_cantada_y_Suno.md",
+      "runtime_domains": [
+        "profile360_music"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "sidecar_metadata_adapter",
+        "suno_music_adapter",
+        "text_script_copy_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_MUSIC_0258",
+        "QA_MUSIC_0690",
+        "QA_MUSIC_0707",
+        "QA_MUSIC_1137",
+        "QA_MUSIC_1139"
+      ],
+      "fail_code": [
+        "FAIL_MUSIC_0258_MUSIC_OUTPUT_REPAIR",
+        "FAIL_MUSIC_0690_SUNO_GENRE_RANGE_PROMPT_EFFECT",
+        "FAIL_MUSIC_0707_MUSIC_OUTPUT_REPAIR_PROMPT_EFFECT",
+        "FAIL_MUSIC_1137_SONG_VOCAL_TEXTURE_QA_MATRIX",
+        "FAIL_MUSIC_1139_SUNO_GENRE_RANGE_QA_MATRIX"
+      ],
+      "fallback_fix": [
+        "Si falla music_output_repair, recargar primary_source_id SRC_023_Voz_cantada_y_Suno, cruzar supporting_source_ids SRC_036_Identidad_musical_Suno_por_modelo, SRC_044_SUNO_CHARACTER_SONGWRITING, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, SRC_012_Lenguaje_acento_y_voz_escrita, reemitir solo adapters suno_music_adapter, text_script_copy_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_MUSIC_0258_MUSIC_OUTPUT_REPAIR, aplicar retest GT_MUSIC_0258 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla music_output_repair_prompt_effect, recargar primary_source_id SRC_023_Voz_cantada_y_Suno, cruzar supporting_source_ids SRC_036_Identidad_musical_Suno_por_modelo, SRC_044_SUNO_CHARACTER_SONGWRITING, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, SRC_012_Lenguaje_acento_y_voz_escrita, reemitir solo adapters suno_music_adapter, text_script_copy_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_MUSIC_0707_MUSIC_OUTPUT_REPAIR_PROMPT_EFFECT, aplicar retest GT_MUSIC_0707 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla music_output_repair_qa_matrix, recargar primary_source_id SRC_023_Voz_cantada_y_Suno, cruzar supporting_source_ids SRC_036_Identidad_musical_Suno_por_modelo, SRC_044_SUNO_CHARACTER_SONGWRITING, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, SRC_012_Lenguaje_acento_y_voz_escrita, reemitir solo adapters suno_music_adapter, text_script_copy_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_MUSIC_1156_MUSIC_OUTPUT_REPAIR_QA_MATRIX, aplicar retest GT_MUSIC_1156 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_024_Escritura_pensamiento_y_voz_interna",
+      "source_title": "Escritura pensamiento y voz interna",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_024_Escritura_pensamiento_y_voz_interna.md",
+      "runtime_domains": [
+        "profile360_culture",
+        "profile360_identity"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter",
+        "text_script_copy_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_CULTURE_0017",
+        "QA_CULTURE_0018",
+        "QA_IDENTITY_0016"
+      ],
+      "fail_code": [
+        "FAIL_CULTURE_0017_FAMILY_STRUCTURE",
+        "FAIL_CULTURE_0018_MIGRATION_TRACE",
+        "FAIL_IDENTITY_0016_BIRTH_CONTEXT"
+      ],
+      "fallback_fix": [
+        "Si falla birth_context, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0016_BIRTH_CONTEXT, aplicar retest GT_IDENTITY_0016 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla family_structure, recargar primary_source_id SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, reemitir solo adapters text_script_copy_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_CULTURE_0017_FAMILY_STRUCTURE, aplicar retest GT_CULTURE_0017 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla migration_trace, recargar primary_source_id SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, reemitir solo adapters text_script_copy_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_CULTURE_0018_MIGRATION_TRACE, aplicar retest GT_CULTURE_0018 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_025_Golden_Tests_de_identidad",
+      "source_title": "Golden Tests de identidad",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_025_Golden_Tests_de_identidad.md",
+      "runtime_domains": [
+        "profile360_qa"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_QA_0301",
+        "QA_QA_0423",
+        "QA_QA_0425",
+        "QA_QA_0562",
+        "QA_QA_0750"
+      ],
+      "fail_code": [
+        "FAIL_QA_0301_VIDEO_REGRESSION_TEST",
+        "FAIL_QA_0423_QA_SNAPSHOT",
+        "FAIL_QA_0425_REGRESSION_TEST_LINK",
+        "FAIL_QA_0562_FACE_REGRESSION_TEST_PROMPT_EFFECT",
+        "FAIL_QA_0750_VIDEO_REGRESSION_TEST_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla accent_caricature_blocker_qa_matrix, recargar primary_source_id SRC_025_Golden_Tests_de_identidad, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_038_PAIRWISE_UNIQUENESS_METRICS, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_QA_1151_ACCENT_CARICATURE_BLOCKER_QA_MATRIX, aplicar retest GT_QA_1151 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla accent_profile_qa_matrix, recargar primary_source_id SRC_025_Golden_Tests_de_identidad, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_038_PAIRWISE_UNIQUENESS_METRICS, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_QA_1123_ACCENT_PROFILE_QA_MATRIX, aplicar retest GT_QA_1123 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla acceptance_gate_qa_matrix, recargar primary_source_id SRC_025_Golden_Tests_de_identidad, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_038_PAIRWISE_UNIQUENESS_METRICS, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_QA_1311_ACCEPTANCE_GATE_QA_MATRIX, aplicar retest GT_QA_1311 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_026_Gobernanza_legal_Per_PROJECT_BRAND_ENTITY",
+      "source_title": "Gobernanza legal PROJECT_DECLARED_COUNTRY PROJECT_BRAND_ENTITY",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_026_Gobernanza_legal_Per_PROJECT_BRAND_ENTITY.md",
+      "runtime_domains": [
+        "profile360_legal"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_LEGAL_0427",
+        "QA_LEGAL_0435",
+        "QA_LEGAL_0775",
+        "QA_LEGAL_0876",
+        "QA_LEGAL_0883"
+      ],
+      "fail_code": [
+        "FAIL_LEGAL_0427_PRIVACY_REVIEW",
+        "FAIL_LEGAL_0435_COMMERCIAL_USE_FLAG",
+        "FAIL_LEGAL_0775_COMMERCIAL_SAFE_REWRITE_PROMPT_EFFECT",
+        "FAIL_LEGAL_0876_PRIVACY_REVIEW_PROMPT_EFFECT",
+        "FAIL_LEGAL_0883_CONSENT_TRACE_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla commercial_safe_rewrite_prompt_effect, recargar primary_source_id SRC_026_Gobernanza_legal_Per_PROJECT_BRAND_ENTITY, cruzar supporting_source_ids SRC_027_C2PA_watermark_y_sidecar, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, project_factory_adapter, agent_factory_adapter, registrar FAIL_LEGAL_0775_COMMERCIAL_SAFE_REWRITE_PROMPT_EFFECT, aplicar retest GT_LEGAL_0775 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla commercial_safe_rewrite_vendor_repair, recargar primary_source_id SRC_026_Gobernanza_legal_Per_PROJECT_BRAND_ENTITY, cruzar supporting_source_ids SRC_027_C2PA_watermark_y_sidecar, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, project_factory_adapter, agent_factory_adapter, registrar FAIL_LEGAL_1673_COMMERCIAL_SAFE_REWRITE_VENDOR_REPAIR, aplicar retest GT_LEGAL_1673 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla commercial_use_flag, recargar primary_source_id SRC_026_Gobernanza_legal_Per_PROJECT_BRAND_ENTITY, cruzar supporting_source_ids SRC_027_C2PA_watermark_y_sidecar, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, project_factory_adapter, agent_factory_adapter, registrar FAIL_LEGAL_0435_COMMERCIAL_USE_FLAG, aplicar retest GT_LEGAL_0435 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_027_C2PA_watermark_y_sidecar",
+      "source_title": "C2PA watermark y sidecar",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_027_C2PA_watermark_y_sidecar.md",
+      "runtime_domains": [
+        "profile360_sidecar"
+      ],
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "copilot_docx_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_SIDECAR_0401",
+        "QA_SIDECAR_0403",
+        "QA_SIDECAR_0408",
+        "QA_SIDECAR_0410",
+        "QA_SIDECAR_0411"
+      ],
+      "fail_code": [
+        "FAIL_SIDECAR_0401_COMPATIBLE_WITH",
+        "FAIL_SIDECAR_0403_SOURCE_CLASSIFICATION",
+        "FAIL_SIDECAR_0408_NO_LOSS_EVIDENCE",
+        "FAIL_SIDECAR_0410_FINAL_ONLY_GATE",
+        "FAIL_SIDECAR_0411_READBACK_GATE"
+      ],
+      "fallback_fix": [
+        "Si falla acceptance_gate, recargar primary_source_id SRC_027_C2PA_watermark_y_sidecar, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, chatgpt_json_txt_adapter, copilot_docx_adapter, registrar FAIL_SIDECAR_0413_ACCEPTANCE_GATE, aplicar retest GT_SIDECAR_0413 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla acceptance_gate_prompt_effect, recargar primary_source_id SRC_027_C2PA_watermark_y_sidecar, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, chatgpt_json_txt_adapter, copilot_docx_adapter, registrar FAIL_SIDECAR_0862_ACCEPTANCE_GATE_PROMPT_EFFECT, aplicar retest GT_SIDECAR_0862 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla acceptance_gate_vendor_repair, recargar primary_source_id SRC_027_C2PA_watermark_y_sidecar, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, chatgpt_json_txt_adapter, copilot_docx_adapter, registrar FAIL_SIDECAR_1760_ACCEPTANCE_GATE_VENDOR_REPAIR, aplicar retest GT_SIDECAR_1760 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_028_Optimizaci_n_ChatGPT_JSONTXT",
+      "source_title": "Optimizaci n ChatGPT JSONTXT",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_028_Optimizaci_n_ChatGPT_JSONTXT.md",
+      "runtime_domains": [
+        "profile360_qa",
+        "profile360_sidecar"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "copilot_docx_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_QA_0438",
+        "QA_SIDECAR_0442",
+        "QA_SIDECAR_0443",
+        "QA_SIDECAR_0444",
+        "QA_SIDECAR_0445"
+      ],
+      "fail_code": [
+        "FAIL_QA_0438_FAIL_CODE_SCHEMA",
+        "FAIL_SIDECAR_0442_PADDING_LINTER",
+        "FAIL_SIDECAR_0443_NAMING_LINTER",
+        "FAIL_SIDECAR_0444_SOURCE_RUNTIME_GATE",
+        "FAIL_SIDECAR_0445_PROFILE_FULLNESS_GATE"
+      ],
+      "fallback_fix": [
+        "Si falla chatgpt_load_gate, recargar primary_source_id SRC_028_Optimizaci_n_ChatGPT_JSONTXT, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_027_C2PA_watermark_y_sidecar, reemitir adapter sidecar_metadata_adapter, registrar FAIL_SIDECAR_0447_CHATGPT_LOAD_GATE, aplicar retest GT_SIDECAR_0447 y bloquear PROJECT_INSTANCE_GO hasta evidencia real.",
+        "Si falla chatgpt_load_gate_prompt_effect, recargar primary_source_id SRC_028_Optimizaci_n_ChatGPT_JSONTXT, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_027_C2PA_watermark_y_sidecar, reemitir adapter sidecar_metadata_adapter, registrar FAIL_SIDECAR_0896_CHATGPT_LOAD_GATE_PROMPT_EFFECT, aplicar retest GT_SIDECAR_0896 y bloquear PROJECT_INSTANCE_GO hasta evidencia real.",
+        "Si falla chatgpt_load_gate_vendor_repair, recargar primary_source_id SRC_028_Optimizaci_n_ChatGPT_JSONTXT, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_027_C2PA_watermark_y_sidecar, reemitir adapter sidecar_metadata_adapter, registrar FAIL_SIDECAR_1794_CHATGPT_LOAD_GATE_VENDOR_REPAIR, aplicar retest GT_SIDECAR_1794 y bloquear PROJECT_INSTANCE_GO hasta evidencia real."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat",
+      "source_title": "Optimizaci n DOCX para Copilot M365 Chat",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat.md",
+      "runtime_domains": [
+        "profile360_export"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "copilot_docx_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_EXPORT_0418",
+        "QA_EXPORT_0419",
+        "QA_EXPORT_0421",
+        "QA_EXPORT_0422",
+        "QA_EXPORT_0867"
+      ],
+      "fail_code": [
+        "FAIL_EXPORT_0418_PROMPT_HASH",
+        "FAIL_EXPORT_0419_OUTPUT_HASH",
+        "FAIL_EXPORT_0421_MODEL_PROFILE_HASH",
+        "FAIL_EXPORT_0422_PROJECT_HASH",
+        "FAIL_EXPORT_0867_PROMPT_HASH_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla audit_sidecar_hash_1805, recargar primary_source_id SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON, reemitir solo adapters copilot_docx_adapter, chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_EXPORT_1805_AUDIT_SIDECAR_HASH_1805, aplicar retest GT_EXPORT_1805 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla audit_sidecar_hash_1865, recargar primary_source_id SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON, reemitir solo adapters copilot_docx_adapter, chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_EXPORT_1865_AUDIT_SIDECAR_HASH_1865, aplicar retest GT_EXPORT_1865 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla audit_sidecar_hash_1925, recargar primary_source_id SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON, reemitir solo adapters copilot_docx_adapter, chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_EXPORT_1925_AUDIT_SIDECAR_HASH_1925, aplicar retest GT_EXPORT_1925 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_030_No-loss_migration_y_compatibilidad",
+      "source_title": "No-loss migration y compatibilidad",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_030_No-loss_migration_y_compatibilidad.md",
+      "runtime_domains": [
+        "profile360_export",
+        "profile360_identity",
+        "profile360_qa",
+        "profile360_sidecar"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "copilot_docx_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_RULE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fail_code": [
+        "FAIL_CODE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fallback_fix": [
+        "FALLBACK_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_031_Proporciones_fitness_por_edad_adulta",
+      "source_title": "Proporciones fitness por edad adulta",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_031_Proporciones_fitness_por_edad_adulta.md",
+      "runtime_domains": [
+        "profile360_body"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_RULE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fail_code": [
+        "FAIL_CODE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fallback_fix": [
+        "FALLBACK_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_032_Anti_same-face_anti_same-body_para_10_modelos",
+      "source_title": "Anti same-face anti same-body para 10 modelos",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_032_Anti_same-face_anti_same-body_para_10_modelos.md",
+      "runtime_domains": [
+        "profile360_body"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_BODY_0005",
+        "QA_BODY_0006",
+        "QA_BODY_0013"
+      ],
+      "fail_code": [
+        "FAIL_BODY_0005_VISUAL_AGE",
+        "FAIL_BODY_0006_BODY_AGE",
+        "FAIL_BODY_0013_RELATIONSHIP_TO_PROJECT"
+      ],
+      "fallback_fix": [
+        "Si falla body_age, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0006_BODY_AGE, aplicar retest GT_BODY_0006 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla relationship_to_project, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0013_RELATIONSHIP_TO_PROJECT, aplicar retest GT_BODY_0013 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla visual_age, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0005_VISUAL_AGE, aplicar retest GT_BODY_0005 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+      "source_title": "Causalidad edad-origen-psicolog a-voz",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_033_Causalidad_edad-origen-psicolog_a-voz.md",
+      "runtime_domains": [
+        "profile360_body",
+        "profile360_identity"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "image_prompt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_BODY_0004",
+        "QA_IDENTITY_0001",
+        "QA_IDENTITY_0002",
+        "QA_IDENTITY_0003"
+      ],
+      "fail_code": [
+        "FAIL_BODY_0004_ADULT_AGE",
+        "FAIL_IDENTITY_0001_CANONICAL_NAME",
+        "FAIL_IDENTITY_0002_MODEL_CODE",
+        "FAIL_IDENTITY_0003_ALIASES"
+      ],
+      "fallback_fix": [
+        "Si falla adult_age, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0004_ADULT_AGE, aplicar retest GT_BODY_0004 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla aliases, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0003_ALIASES, aplicar retest GT_IDENTITY_0003 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla canonical_name, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0001_CANONICAL_NAME, aplicar retest GT_IDENTITY_0001 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_034_Wardrobe_premium_por_modelo_y_cuerpo",
+      "source_title": "Wardrobe premium por modelo y cuerpo",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_034_Wardrobe_premium_por_modelo_y_cuerpo.md",
+      "runtime_domains": [
+        "profile360_props",
+        "profile360_wardrobe"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_RULE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fail_code": [
+        "FAIL_CODE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fallback_fix": [
+        "FALLBACK_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_035_Acting_poses_y_microgestos_por_personalidad",
+      "source_title": "Acting poses y microgestos por personalidad",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_035_Acting_poses_y_microgestos_por_personalidad.md",
+      "runtime_domains": [
+        "profile360_acting",
+        "profile360_video"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_RULE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fail_code": [
+        "FAIL_CODE_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "fallback_fix": [
+        "FALLBACK_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_036_Identidad_musical_Suno_por_modelo",
+      "source_title": "Identidad musical Suno por modelo",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_036_Identidad_musical_Suno_por_modelo.md",
+      "runtime_domains": [
+        "profile360_voice"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "sidecar_metadata_adapter",
+        "text_script_copy_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_VOICE_0007"
+      ],
+      "fail_code": [
+        "FAIL_VOICE_0007_VOCAL_AGE"
+      ],
+      "fallback_fix": [
+        "Si falla vocal_age, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0007_VOCAL_AGE, aplicar retest GT_VOICE_0007 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA",
+      "source_title": "MEMORIA EPISODICA AUTOBIOGRAFICA",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA.md",
+      "runtime_domains": [
+        "profile360_identity"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_IDENTITY_0008",
+        "QA_IDENTITY_0009",
+        "QA_IDENTITY_0010"
+      ],
+      "fail_code": [
+        "FAIL_IDENTITY_0008_PROJECT_ROLE",
+        "FAIL_IDENTITY_0009_CANON_SCOPE",
+        "FAIL_IDENTITY_0010_MUTABLE_SCOPE"
+      ],
+      "fallback_fix": [
+        "Si falla canon_scope, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0009_CANON_SCOPE, aplicar retest GT_IDENTITY_0009 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla mutable_scope, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0010_MUTABLE_SCOPE, aplicar retest GT_IDENTITY_0010 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla project_role, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0008_PROJECT_ROLE, aplicar retest GT_IDENTITY_0008 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_038_PAIRWISE_UNIQUENESS_METRICS",
+      "source_title": "PAIRWISE UNIQUENESS METRICS",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_038_PAIRWISE_UNIQUENESS_METRICS.md",
+      "runtime_domains": [
+        "profile360_body",
+        "profile360_face",
+        "profile360_qa"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "image_prompt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_BODY_0156",
+        "QA_BODY_0605",
+        "QA_BODY_1503",
+        "QA_FACE_0058",
+        "QA_FACE_0107"
+      ],
+      "fail_code": [
+        "FAIL_BODY_0156_SAME_BODY_BLOCKER",
+        "FAIL_BODY_0605_SAME_BODY_BLOCKER_PROMPT_EFFECT",
+        "FAIL_BODY_1503_SAME_BODY_BLOCKER_VENDOR_REPAIR",
+        "FAIL_FACE_0058_FACE_SHAPE",
+        "FAIL_FACE_0107_SAME_FACE_BLOCKER"
+      ],
+      "fallback_fix": [
+        "Si falla face_shape, recargar primary_source_id SRC_002_Biometr_a_facial_forense, cruzar supporting_source_ids SRC_011_Microexpresiones_y_FACS, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_FACE_0058_FACE_SHAPE, aplicar retest GT_FACE_0058 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla face_shape_prompt_effect, recargar primary_source_id SRC_002_Biometr_a_facial_forense, cruzar supporting_source_ids SRC_011_Microexpresiones_y_FACS, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_FACE_0507_FACE_SHAPE_PROMPT_EFFECT, aplicar retest GT_FACE_0507 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla face_shape_qa_matrix, recargar primary_source_id SRC_025_Golden_Tests_de_identidad, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_038_PAIRWISE_UNIQUENESS_METRICS, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_QA_0956_FACE_SHAPE_QA_MATRIX, aplicar retest GT_QA_0956 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT",
+      "source_title": "BODY BEAUTY FITNESS EDITORIAL NON EXPLICIT",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT.md",
+      "runtime_domains": [
+        "profile360_body"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_BODY_0114",
+        "QA_BODY_0117",
+        "QA_BODY_0120",
+        "QA_BODY_0122",
+        "QA_BODY_0571"
+      ],
+      "fail_code": [
+        "FAIL_BODY_0114_HEIGHT_RANGE",
+        "FAIL_BODY_0117_SHOULDER_WIDTH",
+        "FAIL_BODY_0120_TORSO_LENGTH",
+        "FAIL_BODY_0122_WAIST_HIP_RELATION",
+        "FAIL_BODY_0571_WAIST_HIP_RELATION_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla height_range, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0114_HEIGHT_RANGE, aplicar retest GT_BODY_0114 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla shoulder_width, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0117_SHOULDER_WIDTH, aplicar retest GT_BODY_0117 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla torso_length, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0120_TORSO_LENGTH, aplicar retest GT_BODY_0120 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE",
+      "source_title": "ETHNO PHENOTYPE CAUSALITY SAFE",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE.md",
+      "runtime_domains": [
+        "profile360_hair",
+        "profile360_skin"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_HAIR_0063",
+        "QA_SKIN_0110",
+        "QA_SKIN_0163",
+        "QA_SKIN_0164",
+        "QA_SKIN_0165"
+      ],
+      "fail_code": [
+        "FAIL_HAIR_0063_HAIRLINE_RELATION",
+        "FAIL_SKIN_0110_MAKEUP_FACE_DRIFT_RULE",
+        "FAIL_SKIN_0163_SKIN_TONE",
+        "FAIL_SKIN_0164_SKIN_SUBTONE",
+        "FAIL_SKIN_0165_PORE_DENSITY"
+      ],
+      "fallback_fix": [
+        "Si falla fine_lines, recargar primary_source_id SRC_004_Dermatolog_a_visual_realista, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_SKIN_0168_FINE_LINES, aplicar retest GT_SKIN_0168 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla hairline_relation, recargar primary_source_id SRC_005_Cabello_peinados_y_f_sica_capilar, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_HAIR_0063_HAIRLINE_RELATION, aplicar retest GT_HAIR_0063 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla makeup_face_drift_rule, recargar primary_source_id SRC_004_Dermatolog_a_visual_realista, cruzar supporting_source_ids SRC_040_ETHNO_PHENOTYPE_CAUSALITY_SAFE, SRC_032_Anti_same-face_anti_same-body_para_10_modelos, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_SKIN_0110_MAKEUP_FACE_DRIFT_RULE, aplicar retest GT_SKIN_0110 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT",
+      "source_title": "PERUVIAN SPANISH ACCENT SOCIOLECT",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT.md",
+      "runtime_domains": [
+        "profile360_culture",
+        "profile360_language",
+        "profile360_voice"
+      ],
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "text_script_copy_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_CULTURE_0037",
+        "QA_LANGUAGE_0052",
+        "QA_LANGUAGE_0226",
+        "QA_LANGUAGE_0228",
+        "QA_LANGUAGE_0675"
+      ],
+      "fail_code": [
+        "FAIL_CULTURE_0037_WORLDVIEW",
+        "FAIL_LANGUAGE_0052_SOCIOLECT_LIMIT",
+        "FAIL_LANGUAGE_0226_PERUVIAN_SPANISH_LEVEL",
+        "FAIL_LANGUAGE_0228_SOCIOLECT_RULES",
+        "FAIL_LANGUAGE_0675_PERUVIAN_SPANISH_LEVEL_PROMPT_EFFECT"
+      ],
+      "fallback_fix": [
+        "Si falla accent_profile, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0225_ACCENT_PROFILE, aplicar retest GT_VOICE_0225 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla accent_profile_prompt_effect, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0674_ACCENT_PROFILE_PROMPT_EFFECT, aplicar retest GT_VOICE_0674 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla peruvian_spanish_level, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_024_Escritura_pensamiento_y_voz_interna, SRC_028_Optimizaci_n_ChatGPT_JSONTXT, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, reemitir solo adapters text_script_copy_adapter, elevenlabs_voice_adapter, chatgpt_json_txt_adapter, sidecar_metadata_adapter, registrar FAIL_LANGUAGE_0226_PERUVIAN_SPANISH_LEVEL, aplicar retest GT_LANGUAGE_0226 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY",
+      "source_title": "VIDEO BIOMECHANICS ACTING CONTINUITY",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY.md",
+      "runtime_domains": [
+        "profile360_acting",
+        "profile360_video"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_ACTING_0137",
+        "QA_VIDEO_0086",
+        "QA_VIDEO_0152",
+        "QA_VIDEO_0192",
+        "QA_VIDEO_0289"
+      ],
+      "fail_code": [
+        "FAIL_ACTING_0137_HAND_GESTURE_REST",
+        "FAIL_VIDEO_0086_EYE_EMOTION_MAP",
+        "FAIL_VIDEO_0152_WALKING_WEIGHT",
+        "FAIL_VIDEO_0192_STRAND_MOTION",
+        "FAIL_VIDEO_0289_WARDROBE_MOTION_CONTINUITY"
+      ],
+      "fallback_fix": [
+        "Si falla eye_emotion_map, recargar primary_source_id SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, cruzar supporting_source_ids SRC_019_Motion_bible_y_caminada, SRC_021_Video_IA_y_continuidad_entre_planos, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_0086_EYE_EMOTION_MAP, aplicar retest GT_VIDEO_0086 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla hand_gesture_rest, recargar primary_source_id SRC_011_Microexpresiones_y_FACS, cruzar supporting_source_ids SRC_019_Motion_bible_y_caminada, SRC_020_Acting_bible, SRC_035_Acting_poses_y_microgestos_por_personalidad, SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, reemitir solo adapters video_prompt_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_ACTING_0137_HAND_GESTURE_REST, aplicar retest GT_ACTING_0137 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla strand_motion, recargar primary_source_id SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY, cruzar supporting_source_ids SRC_019_Motion_bible_y_caminada, SRC_021_Video_IA_y_continuidad_entre_planos, SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_VIDEO_0192_STRAND_MOTION, aplicar retest GT_VIDEO_0192 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY",
+      "source_title": "VOICE AGE PROSODY SPEAKER IDENTITY",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY.md",
+      "runtime_domains": [
+        "profile360_voice"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "sidecar_metadata_adapter",
+        "text_script_copy_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_VOICE_0210",
+        "QA_VOICE_0211",
+        "QA_VOICE_0212",
+        "QA_VOICE_0214",
+        "QA_VOICE_0216"
+      ],
+      "fail_code": [
+        "FAIL_VOICE_0210_VOCAL_AGE",
+        "FAIL_VOICE_0211_TIMBRE",
+        "FAIL_VOICE_0212_PITCH_RANGE",
+        "FAIL_VOICE_0214_BREATH_PATTERN",
+        "FAIL_VOICE_0216_PROSODY_CURVE"
+      ],
+      "fallback_fix": [
+        "Si falla breath_pattern, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0214_BREATH_PATTERN, aplicar retest GT_VOICE_0214 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla diction_style, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0218_DICTION_STYLE, aplicar retest GT_VOICE_0218 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla pause_signature, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0217_PAUSE_SIGNATURE, aplicar retest GT_VOICE_0217 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_044_SUNO_CHARACTER_SONGWRITING",
+      "source_title": "SUNO CHARACTER SONGWRITING",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_044_SUNO_CHARACTER_SONGWRITING.md",
+      "runtime_domains": [
+        "profile360_music"
+      ],
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "sidecar_metadata_adapter",
+        "suno_music_adapter",
+        "text_script_copy_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_MUSIC_0239",
+        "QA_MUSIC_0241",
+        "QA_MUSIC_0243",
+        "QA_MUSIC_0244",
+        "QA_MUSIC_0245"
+      ],
+      "fail_code": [
+        "FAIL_MUSIC_0239_SONG_VOCAL_TEXTURE",
+        "FAIL_MUSIC_0241_SUNO_GENRE_RANGE",
+        "FAIL_MUSIC_0243_INSTRUMENTATION_PALETTE",
+        "FAIL_MUSIC_0244_LYRIC_PERSPECTIVE",
+        "FAIL_MUSIC_0245_HOOK_STYLE"
+      ],
+      "fallback_fix": [
+        "If chorus_energy fails, reload primary_source_id SRC_044_SUNO_CHARACTER_SONGWRITING, cross-check supporting_source_ids SRC_023_Voz_cantada_y_Suno, SRC_036_Identidad_musical_Suno_por_modelo, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, SRC_012_Lenguaje_acento_y_voz_escrita, re-emit only allowed adapters suno_music_adapter, text_script_copy_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, log FAIL_MUSIC_0246_CHORUS_ENERGY and retest GT_MUSIC_0246 before PROJECT_GO.",
+        "If chorus_energy_prompt_effect fails, reload primary_source_id SRC_044_SUNO_CHARACTER_SONGWRITING, cross-check supporting_source_ids SRC_023_Voz_cantada_y_Suno, SRC_036_Identidad_musical_Suno_por_modelo, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, SRC_012_Lenguaje_acento_y_voz_escrita, re-emit only allowed adapters suno_music_adapter, text_script_copy_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, log FAIL_MUSIC_0695_CHORUS_ENERGY_PROMPT_EFFECT and retest GT_MUSIC_0695 before PROJECT_GO.",
+        "If chorus_energy_qa_matrix fails, reload primary_source_id SRC_044_SUNO_CHARACTER_SONGWRITING, cross-check supporting_source_ids SRC_023_Voz_cantada_y_Suno, SRC_036_Identidad_musical_Suno_por_modelo, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, SRC_012_Lenguaje_acento_y_voz_escrita, re-emit only allowed adapters suno_music_adapter, text_script_copy_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, log FAIL_MUSIC_1144_CHORUS_ENERGY_QA_MATRIX and retest GT_MUSIC_1144 before PROJECT_GO."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS",
+      "source_title": "WARDROBE TEXTILE BODYWEAR PHYSICS",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS.md",
+      "runtime_domains": [
+        "profile360_wardrobe"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_WARDROBE_0302",
+        "QA_WARDROBE_0305",
+        "QA_WARDROBE_0306",
+        "QA_WARDROBE_0307",
+        "QA_WARDROBE_0308"
+      ],
+      "fail_code": [
+        "FAIL_WARDROBE_0302_WARDROBE_SIGNATURE",
+        "FAIL_WARDROBE_0305_FABRIC_PREFERENCES",
+        "FAIL_WARDROBE_0306_FABRIC_WEIGHT",
+        "FAIL_WARDROBE_0307_FABRIC_TEXTURE",
+        "FAIL_WARDROBE_0308_FIT_RULES"
+      ],
+      "fallback_fix": [
+        "Si falla bodywear_editorial_limits, recargar primary_source_id SRC_015_Wardrobe_bible_y_moda_realista, cruzar supporting_source_ids SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito, SRC_034_Wardrobe_premium_por_modelo_y_cuerpo, SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_WARDROBE_0318_BODYWEAR_EDITORIAL_LIMITS, aplicar retest GT_WARDROBE_0318 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla drape_behavior, recargar primary_source_id SRC_015_Wardrobe_bible_y_moda_realista, cruzar supporting_source_ids SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito, SRC_034_Wardrobe_premium_por_modelo_y_cuerpo, SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_WARDROBE_0310_DRAPE_BEHAVIOR, aplicar retest GT_WARDROBE_0310 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla fabric_preferences, recargar primary_source_id SRC_015_Wardrobe_bible_y_moda_realista, cruzar supporting_source_ids SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito, SRC_034_Wardrobe_premium_por_modelo_y_cuerpo, SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_WARDROBE_0305_FABRIC_PREFERENCES, aplicar retest GT_WARDROBE_0305 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE",
+      "source_title": "C2PA SIDECAR WATERMARK OUTPUT GOVERNANCE",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE.md",
+      "runtime_domains": [
+        "profile360_legal",
+        "profile360_sidecar"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "copilot_docx_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_LEGAL_0434",
+        "QA_SIDECAR_0400",
+        "QA_SIDECAR_0402",
+        "QA_SIDECAR_0415",
+        "QA_SIDECAR_0417"
+      ],
+      "fail_code": [
+        "FAIL_LEGAL_0434_CONSENT_TRACE",
+        "FAIL_SIDECAR_0400_POLICY_SET",
+        "FAIL_SIDECAR_0402_SOURCE_TRACE",
+        "FAIL_SIDECAR_0415_WATERMARK_STATE",
+        "FAIL_SIDECAR_0417_C2PA_CONCEPTUAL_NOTE"
+      ],
+      "fallback_fix": [
+        "Si falla c2pa_conceptual_note, recargar primary_source_id SRC_027_C2PA_watermark_y_sidecar, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, chatgpt_json_txt_adapter, copilot_docx_adapter, registrar FAIL_SIDECAR_0417_C2PA_CONCEPTUAL_NOTE, aplicar retest GT_SIDECAR_0417 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla c2pa_conceptual_note_prompt_effect, recargar primary_source_id SRC_027_C2PA_watermark_y_sidecar, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, chatgpt_json_txt_adapter, copilot_docx_adapter, registrar FAIL_SIDECAR_0866_C2PA_CONCEPTUAL_NOTE_PROMPT_EFFECT, aplicar retest GT_SIDECAR_0866 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla consent_trace, recargar primary_source_id SRC_026_Gobernanza_legal_Per_PROJECT_BRAND_ENTITY, cruzar supporting_source_ids SRC_027_C2PA_watermark_y_sidecar, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, project_factory_adapter, agent_factory_adapter, registrar FAIL_LEGAL_0434_CONSENT_TRACE, aplicar retest GT_LEGAL_0434 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_047_JSON_SCHEMA_LINTER_NOLOSS",
+      "source_title": "JSON SCHEMA LINTER NOLOSS",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_047_JSON_SCHEMA_LINTER_NOLOSS.md",
+      "runtime_domains": [
+        "profile360_legal",
+        "profile360_qa"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_LEGAL_0326",
+        "QA_QA_0113",
+        "QA_QA_0409",
+        "QA_QA_0440",
+        "QA_QA_0441"
+      ],
+      "fail_code": [
+        "FAIL_LEGAL_0326_COMMERCIAL_SAFE_REWRITE",
+        "FAIL_QA_0113_FACE_REGRESSION_TEST",
+        "FAIL_QA_0409_AUDIT_CYCLE",
+        "FAIL_QA_0440_GOLDEN_TEST_SCHEMA",
+        "FAIL_QA_0441_REGRESSION_TEST_SCHEMA"
+      ],
+      "fallback_fix": [
+        "Si falla audit_cycle, recargar primary_source_id SRC_025_Golden_Tests_de_identidad, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_038_PAIRWISE_UNIQUENESS_METRICS, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_QA_0409_AUDIT_CYCLE, aplicar retest GT_QA_0409 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla audit_cycle_prompt_effect, recargar primary_source_id SRC_025_Golden_Tests_de_identidad, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_038_PAIRWISE_UNIQUENESS_METRICS, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_QA_0858_AUDIT_CYCLE_PROMPT_EFFECT, aplicar retest GT_QA_0858 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla commercial_safe_rewrite, recargar primary_source_id SRC_026_Gobernanza_legal_Per_PROJECT_BRAND_ENTITY, cruzar supporting_source_ids SRC_027_C2PA_watermark_y_sidecar, SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, reemitir solo adapters sidecar_metadata_adapter, project_factory_adapter, agent_factory_adapter, registrar FAIL_LEGAL_0326_COMMERCIAL_SAFE_REWRITE, aplicar retest GT_LEGAL_0326 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON",
+      "source_title": "COPILOT DOCX GROUNDING LARGE CANON",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON.md",
+      "runtime_domains": [
+        "profile360_export"
+      ],
+      "adapter_targets": [
+        "agent_factory_adapter",
+        "chatgpt_json_txt_adapter",
+        "copilot_docx_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_EXPORT_0406",
+        "QA_EXPORT_0446",
+        "QA_EXPORT_0855",
+        "QA_EXPORT_0895",
+        "QA_EXPORT_1304"
+      ],
+      "fail_code": [
+        "FAIL_EXPORT_0406_VERSION_SEMVER",
+        "FAIL_EXPORT_0446_COPILOT_RENDER_GATE",
+        "FAIL_EXPORT_0855_VERSION_SEMVER_PROMPT_EFFECT",
+        "FAIL_EXPORT_0895_COPILOT_RENDER_GATE_PROMPT_EFFECT",
+        "FAIL_EXPORT_1304_VERSION_SEMVER_QA_MATRIX"
+      ],
+      "fallback_fix": [
+        "Si falla copilot_render_gate, recargar primary_source_id SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON, reemitir solo adapters copilot_docx_adapter, chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_EXPORT_0446_COPILOT_RENDER_GATE, aplicar retest GT_EXPORT_0446 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla copilot_render_gate_prompt_effect, recargar primary_source_id SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON, reemitir solo adapters copilot_docx_adapter, chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_EXPORT_0895_COPILOT_RENDER_GATE_PROMPT_EFFECT, aplicar retest GT_EXPORT_0895 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+        "Si falla copilot_render_gate_qa_matrix, recargar primary_source_id SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat, cruzar supporting_source_ids SRC_030_No-loss_migration_y_compatibilidad, SRC_047_JSON_SCHEMA_LINTER_NOLOSS, SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON, reemitir solo adapters copilot_docx_adapter, chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_EXPORT_1344_COPILOT_RENDER_GATE_QA_MATRIX, aplicar retest GT_EXPORT_1344 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    },
+    {
+      "source_id": "SRC_049_ENV_PHYSICS_FULL10",
+      "source_title": "Physics & Mise-en-Scène Enhancer",
+      "source_card_path": "05_SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_049_ENV_PHYSICS_FULL10.md",
+      "runtime_domains": [
+        "profile360_lighting",
+        "profile360_props",
+        "profile360_scene"
+      ],
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "sidecar_metadata_adapter",
+        "video_prompt_adapter"
+      ],
+      "profile360_sections_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "techext_modules_affected": [
+        "mapped_by_parent_engine"
+      ],
+      "qa_rule_id": [
+        "QA_LIGHTING_0083",
+        "QA_LIGHTING_0354",
+        "QA_LIGHTING_0363",
+        "QA_LIGHTING_0364",
+        "QA_LIGHTING_0365"
+      ],
+      "fail_code": [
+        "FAIL_LIGHTING_0083_CATCHLIGHT_RULE",
+        "FAIL_LIGHTING_0354_WHITE_BALANCE",
+        "FAIL_LIGHTING_0363_FILL_LIGHT",
+        "FAIL_LIGHTING_0364_RIM_LIGHT",
+        "FAIL_LIGHTING_0365_CATCHLIGHT_PATTERN"
+      ],
+      "fallback_fix": [
+        "Si falla ambient_light, recargar primary_source_id SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, cruzar supporting_source_ids SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_018_Lighting_bible_por_modelo, SRC_021_Video_IA_y_continuidad_entre_planos, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_LIGHTING_0370_AMBIENT_LIGHT, aplicar retest GT_LIGHTING_0370 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla ambient_light_prompt_effect, recargar primary_source_id SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, cruzar supporting_source_ids SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_018_Lighting_bible_por_modelo, SRC_021_Video_IA_y_continuidad_entre_planos, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_LIGHTING_0819_AMBIENT_LIGHT_PROMPT_EFFECT, aplicar retest GT_LIGHTING_0819 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales.",
+        "Si falla ambient_light_vendor_repair, recargar primary_source_id SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10, cruzar supporting_source_ids SRC_017_C_mara_sensor_lente_y_fotograf_a_premium, SRC_018_Lighting_bible_por_modelo, SRC_021_Video_IA_y_continuidad_entre_planos, aplicar ENV_PHYSICS_FULL10 para gravedad visual, contacto, escala, oclusión, sombras/reflejos, props y continuidad, registrar FAIL_LIGHTING_1717_AMBIENT_LIGHT_VENDOR_REPAIR, aplicar retest GT_LIGHTING_1717 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used, field_ids_used y phys_checklist reales."
+      ],
+      "sidecar_field": [
+        "SIDECAR_FIELD_REGISTERED_IN_PARENT_ENGINE"
+      ],
+      "project_activation_status": "EXPORT_MINIFIED_NOLOSS_TRACE_TO_PROJECT_CORE_07_SOURCE_TRACE",
+      "engine_layer": "05_SOURCE_TO_RUNTIME_CANONICAL_SOURCE_CARD_LAYER",
+      "project_layer": "PROJECT_CORE/07_SOURCE_TRACE",
+      "exported_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "derived_project_files": [
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.md",
+        "PROJECT_CORE/07_SOURCE_TRACE/SOURCE_RUNTIME_LEDGER_MINIFIED.json"
+      ],
+      "coverage_status": "STRICT_SCHEMA_COMPLETE_SRC_001_SRC_049_COVERED",
+      "no_loss_assertion": "NO_SOURCE_CARD_MODIFIED; MINIFIED_LEDGER_IS_PORTABLE_TRACE_ONLY; PARENT_ENGINE_REMAINS_AUTHORITY",
+      "validator_reference": "IDUNEX/05_SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "schema_completion_p03": "PASS"
+    }
+  ],
+  "strict_schema_required_fields": [
+    "source_id",
+    "source_title",
+    "engine_layer",
+    "project_layer",
+    "exported_files",
+    "coverage_status",
+    "no_loss_assertion",
+    "validator_reference"
+  ],
+  "p03_schema_completion_status": "PASS",
+  "actual_value": "entries=49; required_fields_per_entry=8; missing_required_fields=0",
+  "LEGACY_PATCH": {
+    "status": "ACTIVE_BLOCKING",
+    "runtime_formula": "10 core IDUNEX + 1 MODEL_RUNTIME_PROFILE_FULL per model",
+    "max_files_per_agent": 20,
+    "max_models": 10,
+    "no_split_agents": true,
+    "no_destructive_summary": true,
+    "required": "PROJECT_RUNTIME_COVERAGE_MAP required; TechExt materialization required; LEGACY_NON_AUTHORITY embedded inside actual runtime core files",
+    "blockers": [
+      "BLOCKED_TECH_EXT_NULL_INHERITANCE",
+      "BLOCKED_RUNTIME_CORE_LEGACY_NON_AUTHORITY",
+      "BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT"
+    ]
+  }
+}

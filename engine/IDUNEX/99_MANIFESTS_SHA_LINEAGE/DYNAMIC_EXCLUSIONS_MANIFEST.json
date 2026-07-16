@@ -1,0 +1,57 @@
+{
+  "manifest_id": "DYNAMIC_EXCLUSIONS_MANIFEST",
+  "semantic_version": "v1.0.0",
+  "policy": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+  "reason_human": "The internal manifests listed here are deliberately excluded from their own hash listing to avoid fixed-point/self-certification drift. All other active files are hashed and byte-counted in the final internal manifests.",
+  "excluded_count": 6,
+  "excluded_paths": [
+    "99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json",
+    "99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json",
+    "99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json",
+    "99_MANIFESTS_SHA_LINEAGE/MANIFEST.json",
+    "99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt",
+    "99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt"
+  ],
+  "exclusions": [
+    {
+      "path": "99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json",
+      "reason_code": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+      "scope": "INTERNAL_MANIFEST_ONLY",
+      "blocking_if_missing_reason": true
+    },
+    {
+      "path": "99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json",
+      "reason_code": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+      "scope": "INTERNAL_MANIFEST_ONLY",
+      "blocking_if_missing_reason": true
+    },
+    {
+      "path": "99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json",
+      "reason_code": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+      "scope": "INTERNAL_MANIFEST_ONLY",
+      "blocking_if_missing_reason": true
+    },
+    {
+      "path": "99_MANIFESTS_SHA_LINEAGE/MANIFEST.json",
+      "reason_code": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+      "scope": "INTERNAL_MANIFEST_ONLY",
+      "blocking_if_missing_reason": true
+    },
+    {
+      "path": "99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt",
+      "reason_code": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+      "scope": "INTERNAL_MANIFEST_ONLY",
+      "blocking_if_missing_reason": true
+    },
+    {
+      "path": "99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt",
+      "reason_code": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+      "scope": "INTERNAL_MANIFEST_ONLY",
+      "blocking_if_missing_reason": true
+    }
+  ],
+  "validator_expectation": "INTERNAL_MANIFEST_SYNC=PASS only when every non-excluded file is listed with current bytes and SHA256 and no excluded manifest appears in the file list.",
+  "fail_code": "FAIL_INTERNAL_MANIFEST_STALE_OR_INCOMPLETE",
+  "result": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

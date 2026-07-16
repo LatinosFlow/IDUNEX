@@ -1,0 +1,21 @@
+{
+  "schema": "IDUNEX_SIZE_AND_RETENTION_POST_H237_H244_V1",
+  "result": "PASS",
+  "SIZE_GROWTH_PREFERENCE": "PASS_LTE_100KB",
+  "SIZE_GROWTH_POLICY": "PASS_LT_500KB",
+  "NO_TEMP_LOGS_IN_DELIVERY": "PASS",
+  "NO_TEST_OUTPUT_ZIPS_IN_ENGINE": "PASS",
+  "NO_ACTIVE_STALE_FILES": "PASS",
+  "NO_FIXTURE_DATA_HARDCODE_IN_ENGINE_ACTIVE_SURFACES": "PASS",
+  "research_preservation": "PASS",
+  "ACTIVE_RESEARCH_PRESERVED": "PASS",
+  "SRC_049_PRESERVED": "PASS",
+  "SOURCE_CARDS_PRESERVED": "PASS",
+  "CLAIMS_MAPPINGS_QA_FALLBACKS_LINEAGE_PRESERVED": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "FAIL_CODES": [],
+  "baseline_zip_bytes_H213_H236": 9522954,
+  "pre_finalizer_estimated_zip_bytes_after_H237_H244": 9542852,
+  "pre_finalizer_estimated_growth_bytes": 19898,
+  "note": "Final external ZIP bytes are certified in external release certificate and companion SHA after packaging."
+}

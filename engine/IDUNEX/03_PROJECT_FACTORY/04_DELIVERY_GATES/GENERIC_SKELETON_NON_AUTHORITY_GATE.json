@@ -1,0 +1,29 @@
+{
+  "gate_id": "GENERIC_SKELETON_NON_AUTHORITY",
+  "rule_id": "PRJ-SKEL-001",
+  "semantic_version": "v1.0.0",
+  "trigger_tokens": [
+    "GENERIC_PROJECT_OWNER_ENTITY",
+    "GENERIC_PROJECT_BRAND_ENTITY",
+    "GENERIC_PROJECT_CLIENT_ENTITY",
+    "GENERIC_NON_AUTHORITY_UNTIL_USER_SUPPLIED"
+  ],
+  "required_classification": "GENERIC_SKELETON_NON_AUTHORITY",
+  "allowed_states": [
+    "PROJECT_GENERATED_NOT_AUDITED",
+    "GENERIC_SKELETON_NON_AUTHORITY",
+    "PROJECT_AUDIT_REQUIRED"
+  ],
+  "blocked_states": [
+    "PROJECT_READY_FOR_PRODUCTION",
+    "PROJECT_AGENT_LOAD_PASS",
+    "PROJECT_DEMO_PASS",
+    "PROJECT_READY_FOR_CONTROLLED_USE"
+  ],
+  "blocks_official_demo_use": true,
+  "validator": "VALIDATE_GENERIC_SKELETON_NON_AUTHORITY",
+  "status": "ACTIVE_NATIVE",
+  "result": "PASS",
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

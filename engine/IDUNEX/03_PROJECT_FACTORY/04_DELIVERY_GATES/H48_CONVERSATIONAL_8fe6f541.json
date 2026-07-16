@@ -1,0 +1,27 @@
+{
+  "gate_id": "H48",
+  "gate_name": "CONVERSATIONAL_AGENT_TEST_HARNESS_GATE",
+  "status": "ACTIVE_VALIDATED",
+  "correction_scope_label": "H01_H51",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "normative_policy": "Gate is integrated into the active Project Factory runtime, not delivered as a decorative patch. Project delivery blocks on missing required materialization, trace, validator result, failcode or fallback.",
+  "schema_or_json_contract": "Project artifact must be valid JSON when applicable and must expose concrete evidence fields required by the gate.",
+  "validator_integration": "Validated by validate_h37_h51_artifacts() and generate_end_to_end() inside IDUNEX_PROJECT_FACTORY_v1.0.0.py.",
+  "golden_tests": {
+    "positive": "canonical generated project with required artifact and PASS status",
+    "negative": "missing/empty/generic artifact or unsupported PASS must emit failcode"
+  },
+  "failcodes": [
+    "FAIL_H48_CONVERSATIONAL_TEST_SUITE_MISSING",
+    "FAIL_H48_REQUIRED_CONVERSATIONAL_CASE_MISSING",
+    "FAIL_H48_PROMPT_SHORT_LOWERED_DEPTH",
+    "FAIL_H48_FALSE_CERTIFICATION_NOT_BLOCKED"
+  ],
+  "fallback_fixes": [
+    "propagate explicit field to canon/profile/runtime/QA/fallback/trace",
+    "regenerate impacted manifests/ledgers/certificates",
+    "block official delivery when evidence is not executable or re-openable"
+  ],
+  "project_artifact": "CONVERSATIONAL_TEST_SUITE_ES_EN.json",
+  "no_regression": "H01-H36 preserved; creative output remains uncertified globally."
+}

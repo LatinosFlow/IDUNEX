@@ -1,0 +1,36 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "matrix_id": "ANTI_REGRESSION_AFTER_DOWNGRADE_MATRIX",
+  "controls": [
+    {
+      "control": "Profile360 FULL60",
+      "expected": "NO_LOSS",
+      "severity": "P0"
+    },
+    {
+      "control": "TechExt FULL10",
+      "expected": "NO_LOSS",
+      "severity": "P0"
+    },
+    {
+      "control": "Agent Runtime Governance FULL10",
+      "expected": "NO_LOSS",
+      "severity": "P0"
+    },
+    {
+      "control": "Project Factory export",
+      "expected": "NO_STALE_REMOVED_FIELDS",
+      "severity": "P0"
+    },
+    {
+      "control": "Agent configs 8000",
+      "expected": "EXACT_8000_AND_TOKENS_PRESENT",
+      "severity": "P0"
+    },
+    {
+      "control": "Golden Tests policy",
+      "expected": "ENGINE_FRAMEWORK_PASS_NOT_OUTPUT_EXECUTION_PASS",
+      "severity": "P0"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "profile_id": "PROFILE360_REAL_TEST_MINIMAL",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "project_id": "IDUNEX_PROJECT_FIXTURE_VALIDATION_001",
+  "locks": [
+    "JSON_LOCK",
+    "ANCHOR_LOCK",
+    "AGE_LOCK",
+    "ID_LOCK"
+  ],
+  "field_ids_required": [
+    "P360_FACE_0058",
+    "P360_SKIN_0163",
+    "P360_HAIR_0178",
+    "P360_WARDROBE_0302",
+    "P360_VIDEO_0027",
+    "P360_VIDEO_0086",
+    "P360_VIDEO_0152",
+    "P360_ACTING_0068",
+    "P360_VOICE_0007",
+    "P360_VOICE_0211",
+    "P360_VOICE_0216",
+    "P360_VOICE_0223",
+    "P360_MUSIC_0239",
+    "P360_MUSIC_0241",
+    "P360_MUSIC_0245",
+    "P360_MUSIC_0249",
+    "P360_EXPORT_0406",
+    "P360_EXPORT_0446",
+    "P360_QA_0409",
+    "P360_SIDECAR_0414"
+  ],
+  "source_trace_required": true,
+  "sidecar_trace_required": true,
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+}

@@ -1,0 +1,26 @@
+{
+  "policy_id": "BLT_NBH_001_NO_BLOAT_NO_HISTORY",
+  "allowed": [
+    "compact_changelog",
+    "compact_evidence",
+    "non_authority_lineage",
+    "distilled_master_governance",
+    "minimal_fixtures_marked_non_authority"
+  ],
+  "forbidden": [
+    "raw_master_pdf_inside_engine",
+    "long_logs",
+    "staging",
+    "temp",
+    "heartbeat",
+    "intermediate_zips",
+    "generated_projects",
+    "active_old_versions",
+    "backups",
+    "deprecated_active",
+    "test_outputs",
+    "active_history_as_authority"
+  ],
+  "hard_gate": "NO_ACTIVE_BLOAT_AND_NO_ACTIVE_HISTORY_AUTHORITY",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

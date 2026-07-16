@@ -1,0 +1,14 @@
+{
+  "semantic_version": "v1.0.0",
+  "source_path": "IDUNEX/03_PROJECT_FACTORY/07_EXPORT_TEMPLATES/SOURCE_RUNTIME_LEDGER_MINIFIED_TEMPLATE.json",
+  "source_sha256": "4a49584ac89bd13df63a73f06caa3dfca9249d65495f61229704675bc6dc4357",
+  "row_count": 10,
+  "coverage_profile360": "CONTRACT_POINTER",
+  "coverage_techext": "CONTRACT_POINTER",
+  "derivation_mode": "compact_pointer_to_source_template",
+  "validation_result": "PASS",
+  "forbidden_empty_modes": [
+    "NOT_APPLICABLE",
+    "SOURCE_POINTER_EXTERNAL_OR_NON_AUTHORITY"
+  ]
+}

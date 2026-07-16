@@ -1,0 +1,29 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "gates": [
+    "LOCAL_SHA_LEDGER_RECALCULATION_GATE",
+    "ALL_SHA_LEDGER_SCOPE_CONSISTENCY_GATE",
+    "CONFIG_8000_SEMANTIC_DENSITY_VALIDATOR_FIX",
+    "CONFIG_8000_SELF_TEST_GATE",
+    "GENERIC_PROJECT_FIXTURE_POSITIVE_GATE",
+    "POSITIVE_FIXTURE_VALIDATOR_PASS_GATE",
+    "SIMPLE_PROJECT_RUNTIME_PACKAGING_SIMULATION_REPAIR_GATE",
+    "ACTUAL_VALUE_FINALITY_GATE",
+    "INTERNAL_EVIDENCE_CERTIFICATE_CONSISTENCY_GATE",
+    "TRUTHFULNESS_GATE_HARD_FAIL_ON_INTERNAL_CONTRADICTION",
+    "GENERIC_PROJECT_POLICY_HARDENING_GATE",
+    "NOLOSS_PRESERVATION_GATE",
+    "FINAL_REOPENED_ZIP_REAUDIT_LOOP"
+  ],
+  "truthfulness_hard_fail_conditions": [
+    "validator_internal_fail",
+    "positive_simulation_fail",
+    "local_sha_ledger_fail",
+    "nonfinal_actual_value",
+    "certificate_evidence_contradiction",
+    "project_specific_active_hardcode"
+  ]
+}

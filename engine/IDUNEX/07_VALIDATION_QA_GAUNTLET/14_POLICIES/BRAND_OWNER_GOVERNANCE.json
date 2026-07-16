@@ -1,0 +1,11 @@
+{
+  "brand_owner": "PROJECT_OWNER_ENTITY",
+  "brand_context": "PROJECT_DECLARED_COUNTRY",
+  "legal_privacy_reference": "Ley 29733",
+  "commercial_use_scope": "synthetic_identity_project_level",
+  "brand_logo_policy": "no unauthorized logo use",
+  "watermark_policy": "project_defined",
+  "c2pa_policy": "sidecar_required_when_applicable",
+  "legacy_global_go_historical": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "legacy_global_go_note": "Former global_go policy value was historized and is not an active runtime/governance field: prohibited until project golden tests pass"
+}

@@ -1,0 +1,26 @@
+{
+  "proof_id": "H58_ALIAS_CANONICALIZATION_EXECUTED_PROOF",
+  "date": "2026-06-30 PROJECT_DECLARED_TIMEZONE",
+  "result": "PASS",
+  "canonical_name_preserved": "PASS",
+  "origin_context_preserved": "PASS",
+  "role_candidate_materialized": "PASS",
+  "input_field_normalization_ledger": "01_CANON/INPUT_FIELD_NORMALIZATION_LEDGER.json",
+  "normalization_records": 14,
+  "materialized_surfaces_checked": [
+    "PROJECT_MODEL_INDEX",
+    "PROJECT_ENTITY_PROFILE",
+    "Profile360",
+    "TechExt",
+    "Runtime ChatGPT/Copilot",
+    "QA",
+    "fallback fixes",
+    "source/runtime trace"
+  ],
+  "evidence": {
+    "project_model_index_sha256": "9639ec6fd9699acdd4c2f1b81d362bd13a880e7329f147bf7a01afb4d35fa4ff",
+    "normalization_ledger_sha256": "0b079f3833ae3bd61ab4c10f7d0c191d32acc3ff72489320144b9b57add3946c",
+    "h37_ledger_sha256": "9061d1a3ab1df1fe4e2595846a9e1caa945f18f318396852af1d1da493ca688d",
+    "alias_project_validation_json": "/mnt/data/h58_alias_validate_after_validator_patch.json"
+  }
+}

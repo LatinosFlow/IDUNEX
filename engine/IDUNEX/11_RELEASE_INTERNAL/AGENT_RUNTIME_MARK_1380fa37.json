@@ -1,0 +1,8 @@
+{
+  "BAD_RUNTIME_CLAUSES": 0,
+  "CLAUSE_FAIL_FALLBACK_COVERAGE": "100%",
+  "fixture_dependency_policy": "BLOCK",
+  "gate": "H213",
+  "result": "PASS",
+  "schema": "CLAUSE|<ID>|<contenido>|FAIL=<failcode>|FALLBACK=<fallback_action>"
+}

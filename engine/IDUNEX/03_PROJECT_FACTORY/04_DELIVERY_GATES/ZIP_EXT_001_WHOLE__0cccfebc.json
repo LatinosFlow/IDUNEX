@@ -1,0 +1,32 @@
+{
+  "gate_id": "ZIP_EXT_001_WHOLE_ZIP_EXTERNAL_AUTHORITY_GATE",
+  "rule_id": "ZIP-EXT-001",
+  "historical_origin": "H382R_EXTERNAL_WHOLE_ZIP_AUTHORITY",
+  "status": "INTEGRATED_INTO_ACTIVE_STABLE_CANON",
+  "external_authority": [
+    "IDUNEX_MOTOR_v1.0.0.zip.sha256",
+    "IDUNEX_MOTOR_v1.0.0_RELEASE_CERTIFICATE.txt",
+    "external companion surface"
+  ],
+  "internal_allowed": [
+    "file_count",
+    "entry_count",
+    "directory_count",
+    "stored_count",
+    "compression",
+    "internal_file_manifests",
+    "duplicate_groups",
+    "allowlist",
+    "CRC_testzip",
+    "runtime_contracts",
+    "prompt_packs",
+    "no_sentinels"
+  ],
+  "internal_forbidden": [
+    "self_certifies_whole_zip_sha256",
+    "self_certifies_final_zip_bytes_as_authority"
+  ],
+  "validator": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+  "fail_code": "FAIL_ZIP_EXT_001",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

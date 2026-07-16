@@ -1,0 +1,129 @@
+{
+  "proof_id": "H99_H104_ACTIVE_MATRIX_SEMANTIC_VALIDATION_CLOSURE_PROOF",
+  "SEMANTIC_VERSION": "v1.0.0",
+  "ROOT_UNICO": "IDUNEX",
+  "CORRECTION_MODE": "DIRECT_CANONICAL_NO_PATCH",
+  "DIRECT_CORRECTION_SCOPE": "H99_H104_APPLIED_ON_H01_H98",
+  "H01-H98_PRESERVED": "PASS",
+  "H99-H104_APPLIED": "PASS",
+  "ACTIVE_SAFE_APPAREL_WATERMARK_MATRIX_SEMANTIC_REPAIR": "PASS",
+  "ACTIVE_NORMATIVE_MATRIX_VALIDATOR_EXTENSION": "PASS",
+  "BLOCK_FAILCODE_EXPLICITNESS": "PASS",
+  "ADULT_EDITORIAL_NON_EXPLICIT_MATRIX_RESOLUTION": "PASS",
+  "SUNO_CONTRACT_DUPLICATE_CONTENT_CLEANUP": "PASS",
+  "SUNO_CONTRACT_DUPLICATE_CONTENT_CLEANUP_DETAIL": "active SUNO_MODEL_POV_CONTRACT repeated generic required line replaced with unique heading-specific requirements; no unique rule removed; CREATIVE_OUTPUT_CERTIFIED remains FALSE",
+  "ACTIVE_MATRIX_PASS_MISMATCH_SURFACE_SCAN": "PASS",
+  "BLOCK_NONE_FAILCODE_SURFACE_SCAN": "PASS",
+  "ALLOW_REWRITE_BLOCKED_OUTPUT_SURFACE_SCAN": "PASS",
+  "FAIL_EMPTY_FAILCODES_SURFACE_SCAN": "PASS",
+  "H99_H104_NEGATIVE_MUTATION_CASES_PASS": "PASS",
+  "negative_mutation_count": 10,
+  "restoration_retest": "PASS",
+  "mutation_cases": [
+    {
+      "case": "ALLOW_REWRITE + BLOCKED_UNSAFE_CONTENT + PASS",
+      "expected_failcode": "FAIL_H99_ALLOW_REWRITE_BLOCKED_OUTPUT",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H99_ALLOW_REWRITE_BLOCKED_OUTPUT",
+        "FAIL_H100_ACTIVE_MATRIX_PASS_MISMATCH_NOT_BLOCKED",
+        "FAIL_H102_ADULT_EDITORIAL_FALSE_BLOCK"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "CONDITIONAL_REWRITE + vendor_prompt_final empty + PASS",
+      "expected_failcode": "FAIL_H99_CONDITIONAL_REWRITE_MISSING_VENDOR_PROMPT",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H99_CONDITIONAL_REWRITE_MISSING_VENDOR_PROMPT"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "expected_action BLOCK + failcode NONE + PASS",
+      "expected_failcode": "FAIL_H101_BLOCK_FAILCODE_NONE",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H101_BLOCK_FAILCODE_NONE"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "classification BLOCK + failcode NONE + PASS",
+      "expected_failcode": "FAIL_H101_BLOCK_FAILCODE_NONE",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H101_BLOCK_FAILCODE_NONE"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "watermark_required false without explicit idunex opt-out",
+      "expected_failcode": "FAIL_H99_WATERMARK_REQUIRED_INCONSISTENT",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H99_WATERMARK_REQUIRED_INCONSISTENT"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "optout_detected true without explicit idunex text",
+      "expected_failcode": "FAIL_H99_WATERMARK_REQUIRED_INCONSISTENT",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H99_WATERMARK_REQUIRED_INCONSISTENT"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "result FAIL + fail_codes empty",
+      "expected_failcode": "FAIL_H100_ACTIVE_MATRIX_PASS_MISMATCH_NOT_BLOCKED",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H100_ACTIVE_MATRIX_PASS_MISMATCH_NOT_BLOCKED"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "active matrix not scanned by runtime validator",
+      "expected_failcode": "FAIL_H100_ACTIVE_MATRIX_NOT_SCANNED",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H100_ACTIVE_MATRIX_NOT_SCANNED"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "adult editorial covered non-explicit false blocked",
+      "expected_failcode": "FAIL_H102_ADULT_EDITORIAL_FALSE_BLOCK",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H102_ADULT_EDITORIAL_FALSE_BLOCK"
+      ],
+      "restored": "PASS",
+      "pass": true
+    },
+    {
+      "case": "unsafe content incorrectly allowed",
+      "expected_failcode": "FAIL_H100_ACTIVE_MATRIX_PASS_MISMATCH_NOT_BLOCKED",
+      "observed": "FAIL",
+      "observed_failcodes": [
+        "FAIL_H100_ACTIVE_MATRIX_PASS_MISMATCH_NOT_BLOCKED"
+      ],
+      "restored": "PASS",
+      "pass": true
+    }
+  ],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "MOTOR_CORREGIDO_DIRECTO_CANONICO_H99_H104_ACTIVE_MATRIX_SEMANTIC_VALIDATION_CIERRE_100": "PASS",
+  "result": "PASS"
+}

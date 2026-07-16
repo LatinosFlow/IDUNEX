@@ -1,0 +1,161 @@
+{
+  "evidence_id": "N10_FULL_INFO_FACTORY_COMPLETION_MANIFEST_LIFECYCLE_FIX_UPDATE_MIGRATION_TESTS",
+  "semantic_version": "v1.0.0",
+  "version_bump": "NO",
+  "correction_scope": "N10_FULL_INFO_FACTORY_COMPLETION_MANIFEST_LIFECYCLE_FIX",
+  "required_tests": [
+    "age_delta_years",
+    "age_evolution",
+    "set_wardrobe",
+    "update_model_field",
+    "brand_update",
+    "runtime_regeneration",
+    "add_model",
+    "remove_model",
+    "migrate-project same version",
+    "update-project-by-engine same version",
+    "N10 migration after N10 generation PASS"
+  ],
+  "test_count": 12,
+  "pass_count": 12,
+  "fail_count": 0,
+  "result": "PASS",
+  "records": [
+    {
+      "test_id": "generate_update_base_N2",
+      "operation": "generate",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 17.885,
+      "fail_codes": []
+    },
+    {
+      "test_id": "validate_update_contract_operations",
+      "operation": "validate-update-contract",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 1.665,
+      "fail_codes": []
+    },
+    {
+      "test_id": "age_delta_years",
+      "operation": "update-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 6.111,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 2,
+      "runtime_upload_count": 12
+    },
+    {
+      "test_id": "age_evolution",
+      "operation": "update-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 5.812,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 2,
+      "runtime_upload_count": 12
+    },
+    {
+      "test_id": "set_wardrobe",
+      "operation": "update-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 4.875,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 2,
+      "runtime_upload_count": 12
+    },
+    {
+      "test_id": "update_model_field",
+      "operation": "update-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 4.289,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 2,
+      "runtime_upload_count": 12
+    },
+    {
+      "test_id": "brand_update",
+      "operation": "update-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": "rerun_clean",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 2,
+      "runtime_upload_count": 12,
+      "rerun_reason": "original input used unsupported logo_asset_policy; rerun used canonical NONE without changing engine logic"
+    },
+    {
+      "test_id": "runtime_regeneration",
+      "operation": "update-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 4.617,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 2,
+      "runtime_upload_count": 12
+    },
+    {
+      "test_id": "add_model",
+      "operation": "update-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 15.614,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 3,
+      "runtime_upload_count": 13
+    },
+    {
+      "test_id": "remove_model",
+      "operation": "update-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 10.803,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 1,
+      "runtime_upload_count": 11
+    },
+    {
+      "test_id": "migrate-project_same_version_N10_after_generation",
+      "operation": "migrate-project",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 12.302,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 10
+    },
+    {
+      "test_id": "update-project-by-engine_same_version_N10_after_generation",
+      "operation": "update-project-by-engine",
+      "result": "PASS",
+      "rc": 0,
+      "seconds": 11.377,
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "model_count": 10
+    }
+  ],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

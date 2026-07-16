@@ -1,0 +1,24 @@
+name: IDUNEX Package Engine
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Semantic version, e.g. v1.0.0'
+        required: true
+        default: 'v1.0.0'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Package engine
+        run: python tools/package/package_engine.py --repo-root . --version ${{ github.event.inputs.version }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: idunex-engine-package
+          path: dist/

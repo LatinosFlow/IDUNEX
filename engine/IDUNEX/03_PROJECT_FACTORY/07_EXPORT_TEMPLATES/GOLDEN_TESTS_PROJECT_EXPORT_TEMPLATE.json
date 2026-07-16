@@ -1,0 +1,91 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "project_id": "PROJECT_ID_TO_FILL",
+  "state": "PROJECT_TESTS_DEFINED",
+  "tests": [
+    {
+      "test_id": "TEST_001_IMAGE_PORTRAIT",
+      "title": "Imagen retrato",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Face360, Skin360, Lighting360, sidecar/hash/lineage",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_002_IMAGE_FULL_BODY",
+      "title": "Imagen cuerpo completo",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Body360, Wardrobe360, Camera360, contact shadows",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_003_IMAGE_GROUP",
+      "title": "Imagen grupo",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Pairwise360, anti-merge, scale",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_004_VIDEO_CONTINUITY",
+      "title": "Video continuidad",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Motion360, Environment360, frame continuity",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_005_VOICE_PROFILE",
+      "title": "Voz hablada",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Voice360, F0, WPM, register",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_006_SUNO_MODEL_POV",
+      "title": "Suno/model POV",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Voice360, psychology, POV, song identity",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_007_TEXT_PERSONA_CHAT",
+      "title": "Texto/persona chat",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Dialogue persona, memory boundaries",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_008_ENVIRONMENT_PHYSICS",
+      "title": "Entorno/física",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Scene physics, lighting, reflections",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_009_AUDIO_SFX_FOLEY",
+      "title": "Audio/SFX/Foley",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Foley sync, acoustic realism",
+      "sidecar_hash_lineage_required": true
+    },
+    {
+      "test_id": "TEST_010_VENDOR_HANDOFF",
+      "title": "Vendor handoff",
+      "required_state_before_output_go_true": "EXECUTED_PASS_WITH_EVIDENCE",
+      "evidence": "Vendor checklist, settings, lineage",
+      "sidecar_hash_lineage_required": true
+    }
+  ],
+  "LEGACY_PATCH": {
+    "status": "ACTIVE_BLOCKING",
+    "runtime_formula": "10 core IDUNEX + 1 MODEL_RUNTIME_PROFILE_FULL per model",
+    "max_files_per_agent": 20,
+    "max_models": 10,
+    "no_split_agents": true,
+    "no_destructive_summary": true,
+    "required": "PROJECT_RUNTIME_COVERAGE_MAP required; TechExt materialization required; LEGACY_NON_AUTHORITY embedded inside actual runtime core files",
+    "blockers": [
+      "BLOCKED_TECH_EXT_NULL_INHERITANCE",
+      "BLOCKED_RUNTIME_CORE_LEGACY_NON_AUTHORITY",
+      "BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT"
+    ]
+  }
+}

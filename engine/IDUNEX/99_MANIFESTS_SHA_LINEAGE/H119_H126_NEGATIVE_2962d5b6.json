@@ -1,0 +1,282 @@
+{
+  "creative_output_certified": false,
+  "timestamp": "2026-07-01 PROJECT_DECLARED_TIMEZONE",
+  "H119_H126_NEGATIVE_MUTATION_CASES_PASS": "PASS",
+  "case_count": 17,
+  "cases": [
+    {
+      "case_id": "H119_001",
+      "injected_failure": "internal project ZIP SHA differs from companion",
+      "expected_failcode": "FAIL_H119_PROJECT_ZIP_EXTERNAL_SHA_COMPANION_MISMATCH",
+      "observed_failcode": "FAIL_H119_PROJECT_ZIP_EXTERNAL_SHA_COMPANION_MISMATCH",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 38,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "de7ebc96d5fff42964a7586a448c92b855f08dadd365a48f25e2db6d61674f17",
+      "stderr_hash": "de96b594d7df6d906480110c884687e05d1e5b42d6f33a0f545c8beae1dee029",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H119_002",
+      "injected_failure": "content tree hash mislabeled as final ZIP SHA",
+      "expected_failcode": "FAIL_H119_CONTENT_TREE_SHA_MISLABELED_AS_ZIP_SHA",
+      "observed_failcode": "FAIL_H119_CONTENT_TREE_SHA_MISLABELED_AS_ZIP_SHA",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 39,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "b7ca31f044e7a9ca0947dddd3314ed0b8239b392236e6f8870aab59d608d9e08",
+      "stderr_hash": "14a75fa647da9844dd706d2e39f8ef6d0495f7eb2ebc90f0a07d5eb404dcb1b3",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H120_001",
+      "injected_failure": "active closure proof says PASS while containing pending token",
+      "expected_failcode": "FAIL_H120_ACTIVE_PROOF_PASS_CONTAINS_PENDING",
+      "observed_failcode": "FAIL_H120_ACTIVE_PROOF_PASS_CONTAINS_PENDING",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 40,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "624fd2c7708dbaf51377ea8a6b0c90f4d09783b038a05b2406671b5bc988d454",
+      "stderr_hash": "76c1dc5cd221908c2fa1ed96a86b2270c0156f6dc33a1be0be1778d6a6feceed",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H120_002",
+      "injected_failure": "active closure proof says PASS while containing fixture failure value",
+      "expected_failcode": "FAIL_H120_ACTIVE_PROOF_PASS_CONTAINS_FAIL",
+      "observed_failcode": "FAIL_H120_ACTIVE_PROOF_PASS_CONTAINS_FAIL",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 41,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "095fd951e56d2e70fb961301de627c970757db2c1d4f56ada36032ee2e1142c9",
+      "stderr_hash": "732a05e483f931ee232986c81ba548daaae70eec60ed81d9c466fabce37b30d7",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H121_001",
+      "injected_failure": "active stale deferred token in non-historical surface",
+      "expected_failcode": "FAIL_H121_ACTIVE_STALE_PENDING_TOKEN",
+      "observed_failcode": "FAIL_H121_ACTIVE_STALE_PENDING_TOKEN",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 42,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "75439515e5655d5865b03a235717b0cdd9d063b93b148171b54c445f6ca260de",
+      "stderr_hash": "d3233194317fb3924638435dce2cd75b5ba1094462000ebb99e9fa9c7c0f0e99",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H122_001",
+      "injected_failure": "sidecar lineage project ZIP SHA equals abc",
+      "expected_failcode": "FAIL_H122_SIDECAR_LINEAGE_PROJECT_ZIP_SHA_INVALID",
+      "observed_failcode": "FAIL_H122_SIDECAR_LINEAGE_PROJECT_ZIP_SHA_INVALID",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 43,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "7395d0e339461d1e8c88ed24ba2daba9b74a012534e5a34eb6898c4f9089b4ea",
+      "stderr_hash": "49ae52aac70788de9c2743110aeba1abab1784b30d9335c452948b067e39e0d1",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H122_002",
+      "injected_failure": "sidecar lineage project ZIP SHA is numeric",
+      "expected_failcode": "FAIL_H122_SIDECAR_LINEAGE_PROJECT_ZIP_SHA_INVALID",
+      "observed_failcode": "FAIL_H122_SIDECAR_LINEAGE_PROJECT_ZIP_SHA_INVALID",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 44,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "6f4fbd533cb1c307b07349672fbd1f914110d02629697ac7a6493327f7d65ce3",
+      "stderr_hash": "a782f45752152af025b03e44ac93dd75141358619ca0df1eed68ad7faf3e63ab",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H122_003",
+      "injected_failure": "EXECUTED_PASS sentinel without external companion",
+      "expected_failcode": "FAIL_H122_SENTINEL_WITHOUT_EXTERNAL_COMPANION",
+      "observed_failcode": "FAIL_H122_SENTINEL_WITHOUT_EXTERNAL_COMPANION",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 45,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "e4fe17f3a242c3bc458cd167ad7df65c8c46c19a035aca9095876372f5a658f3",
+      "stderr_hash": "16a627f618e2ec6a0e771ef814aa887949016c6b2d017554da0020befc598b1a",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H123_001",
+      "injected_failure": "expected block stdout omits BLOCK_EXPECTED_PASS",
+      "expected_failcode": "FAIL_H123_BLOCK_EXPECTED_NOT_VISIBLE_IN_STDOUT",
+      "observed_failcode": "FAIL_H123_BLOCK_EXPECTED_NOT_VISIBLE_IN_STDOUT",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 46,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "f64d162998ab3af9b6bef5a3870d0489c1136f4782d6f9ae4da14ccb0d961fa9",
+      "stderr_hash": "d4cab4d55093d4a2b593e83c25c51c62e8b743f2ecb21b7ad4d46c3ad591b49c",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H124_001",
+      "injected_failure": "mutation suite case detail removed",
+      "expected_failcode": "FAIL_H124_MUTATION_CASE_MISSING_DETAIL",
+      "observed_failcode": "FAIL_H124_MUTATION_CASE_MISSING_DETAIL",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 47,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "be9992cfce50b163e2586293eba60a73b4ab286d2ad45bd1db55fc56097136f4",
+      "stderr_hash": "2e2d72a5544ba987f64b3bc7ba6353dac7794566ee17bbcef580b4a013802b07",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H117_001",
+      "injected_failure": "N10 export timeout without failcode",
+      "expected_failcode": "FAIL_H117_N10_EXPORT_TIMEOUT_WITHOUT_FAILCODE",
+      "observed_failcode": "FAIL_H117_N10_EXPORT_TIMEOUT_WITHOUT_FAILCODE",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 48,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "0bd511cd409d8f0027b90f23f5a47f7ff083a81b5491b6bce6793f1ce8cf0bd5",
+      "stderr_hash": "882881c94ef2e65eee071c614ad5923e6d6acf351d513c915f3cea3d84307b8d",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H116_001",
+      "injected_failure": "forensic report too superficial",
+      "expected_failcode": "FAIL_H116_FORENSIC_REPORT_TOO_SHORT",
+      "observed_failcode": "FAIL_H116_FORENSIC_REPORT_TOO_SHORT",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 49,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "e723d3c3cfe52ea9498311d5ed70b793476bb18d8eab5be49ca2a744a0d9f5bd",
+      "stderr_hash": "6451ee5c1e4736b36709f4f3804d7c4f424a0afec9d6814ec4aba4e86bc26b0f",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H115_001",
+      "injected_failure": "agent config padding hash instead of semantic content",
+      "expected_failcode": "FAIL_H115_AGENT_CONFIG_HASH_PADDING",
+      "observed_failcode": "FAIL_H115_AGENT_CONFIG_HASH_PADDING",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 50,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "b4246ed1feb94aa579de8b228044da0211b0bf5e501fef911a16b08dec708ec4",
+      "stderr_hash": "3a1482600e2f3e4df2dea6c889757973d35fde62f1bda3bad483d0bb63bc2b9d",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H113_001",
+      "injected_failure": "deferred engine package SHA remains active",
+      "expected_failcode": "FAIL_H113_DEFERRED_ENGINE_SHA_ACTIVE",
+      "observed_failcode": "FAIL_H113_DEFERRED_ENGINE_SHA_ACTIVE",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 51,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "4db695ffcb67126c9faa04c84dbe104b286f406f504b71ce1baad76f266bdb1b",
+      "stderr_hash": "0654f1cd13ee4c2f4eebf768f896e10b3d0cf597630f0cb3de9b886c3d7527bf",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H125_001",
+      "injected_failure": "N10 precheck presented as final delivery",
+      "expected_failcode": "FAIL_H125_N10_EXPORT_SLA_FAILED",
+      "observed_failcode": "FAIL_H125_N10_EXPORT_SLA_FAILED",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 52,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "543866d004446a47867746ea0a60d1aad633b7e39a4639b0d0f39746219c7db9",
+      "stderr_hash": "4f1ef996fce9a9294ca56e2d1e598f0ad55c08c6b51aa1d4fe2c0f5b63848a79",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "H126_001",
+      "injected_failure": "release docs declare PASS without evidence JSON",
+      "expected_failcode": "FAIL_H126_CERTIFICATE_DECLARED_PASS_WITH_VALIDATOR_FAIL",
+      "observed_failcode": "FAIL_H126_CERTIFICATE_DECLARED_PASS_WITH_VALIDATOR_FAIL",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 53,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "e2ead08480aa513d0e646e8f615fcb7dcca265fd8b11bc151bd606a8a951431c",
+      "stderr_hash": "32f1bd2fe97b32e0e366317cbce92e152bc4cdbbdd03b4f2dd58285b41bd0480",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    },
+    {
+      "case_id": "GEN_001",
+      "injected_failure": "result is fail but fail_codes is empty",
+      "expected_failcode": "FAIL_EMPTY_FAILCODES_SURFACE_SCAN",
+      "observed_failcode": "FAIL_EMPTY_FAILCODES_SURFACE_SCAN",
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 54,
+      "touched_files": [
+        "CONTROLLED_MUTATION_SANDBOX_NOT_RELEASE_SURFACE"
+      ],
+      "validator_command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX / controlled fixture validator",
+      "stdout_hash": "9c276958bc43a27bc658a9b704a30d226f8a485e1c989293b170c340da25cb30",
+      "stderr_hash": "47007babeda50b01ad888fa5f762081581aaffb0eb49033c2410365fe4bd7b3c",
+      "trace": "inject -> validator failcode observed -> restore -> validator pass"
+    }
+  ],
+  "result": "PASS",
+  "fail_codes": []
+}

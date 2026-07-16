@@ -1,0 +1,51 @@
+{
+  "contract_id": "PROJECT_OUTPUT_CONTRACT",
+  "semantic_version": "v1.0.0",
+  "minimum_external_artifacts": [
+    "IDUNEX_PROJECT_<PROJECT_CODE>_<SEMANTIC_VERSION>.zip",
+    "IDUNEX_PROJECT_<PROJECT_CODE>_<SEMANTIC_VERSION>.zip.sha256",
+    "IDUNEX_PROJECT_<PROJECT_CODE>_<SEMANTIC_VERSION>_RELEASE_CERTIFICATE.txt",
+    "IDUNEX_PROJECT_<PROJECT_CODE>_<SEMANTIC_VERSION>_FINAL_AUDIT_REPORT.md",
+    "IDUNEX_PROJECT_<PROJECT_CODE>_<SEMANTIC_VERSION>_README_FOR_HUMAN_OPERATOR.md"
+  ],
+  "required_internal_surfaces": [
+    "PROJECT_MANIFEST",
+    "PROJECT_BRAND_REGISTRY",
+    "MODEL_REGISTRY",
+    "FULL_PROFILE360_by_model",
+    "TECHEXT_by_model",
+    "HUMAN_READABLE_VISUAL_CANON_by_model",
+    "RUNTIME_CHATGPT_10_PLUS_N",
+    "RUNTIME_COPILOT_10_PLUS_N",
+    "PROMPT_PACKS_A_J",
+    "EVIDENCE_LINEAGE",
+    "FIELD_SOURCE_TRACE_LEDGERS",
+    "NO_DRIFT_LEDGERS",
+    "DUPLICATE_ALLOWLIST",
+    "MANIFESTS_SHA",
+    "FINAL_MACHINE_AUDIT_SUMMARY",
+    "AGENT_LOAD_PROTOCOL",
+    "AGENT_LOAD_AUDIT_CHECKLIST"
+  ],
+  "blocked": [
+    "engine_full_copy_unnecessary",
+    "staging",
+    "temp",
+    "heartbeat",
+    "logs_long",
+    "logos_invented",
+    "PASS_declared_without_recompute",
+    "project_demo_as_engine_default"
+  ],
+  "validator": "VALIDATE_IDUNEX_PROJECT",
+  "fail_code": "FAIL_PROJECT_OUTPUT_CONTRACT",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "PROJECT_FILENAME_CANON": "IDUNEX_PROJECT_<PROJECT_NAME_SLUG>_<SEMANTIC_VERSION>.zip",
+  "PROJECT_UID_ROLE": [
+    "metadata_internal",
+    "collision_suffix",
+    "manifest_field"
+  ],
+  "PROJECT_UID_MAY_REPLACE_PROJECT_NAME": false,
+  "PROJECT_STATUS_CONTRACT": "03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_STATUS_CONTRACT.json"
+}

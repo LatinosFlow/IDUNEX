@@ -1,0 +1,15 @@
+{
+  "source_zip_filename": "IDUNEX_MOTOR_v1.0.0.zip",
+  "source_zip_sha256": "bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6",
+  "source_zip_bytes": 4277381,
+  "source_zip_entry_count": 977,
+  "source_zip_directories": 0,
+  "source_zip_stored_entries": 0,
+  "source_zip_internal_zip_entries": 0,
+  "source_zip_testzip": "PASS",
+  "engine_root_in_zip": "IDUNEX",
+  "repo_engine_path": "engine/IDUNEX",
+  "status": "EN_REVISION",
+  "authority_note": "Integridad fisica validada. PASS funcional pendiente de auditoria maxima independiente.",
+  "generated_utc": "2026-07-16T16:05:20.723980+00:00"
+}

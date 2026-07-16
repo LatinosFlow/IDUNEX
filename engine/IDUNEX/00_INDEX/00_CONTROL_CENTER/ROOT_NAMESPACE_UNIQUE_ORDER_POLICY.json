@@ -1,0 +1,25 @@
+{
+  "policy_id": "P0.2-001",
+  "name": "ROOT_NAMESPACE_UNIQUE_ORDER_POLICY",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "status": "ACTIVE_BLOCKING",
+  "date": "NEUTRALIZED_ACTIVE_SCOPE",
+  "actual_value": "root_prefix_duplicates=0 required; sibling_scope_duplicates=0 blocking required",
+  "rules": {
+    "root_scope_unique_numeric_prefix": true,
+    "sibling_scope_unique_numeric_prefix": true,
+    "rename_requires_path_rewrite": true,
+    "rename_requires_manifest_rebuild": true,
+    "no_loss_rename_only": true
+  },
+  "audit_scope": [
+    "IDUNEX root",
+    "all sibling directories with ^\\d{2}_ prefix"
+  ],
+  "fail_condition": "any duplicate NN_ within same parent directory unless explicitly non-blocking local numeration evidence exists",
+  "last_recomputed_strategy": "OPTION_A_PHYSICAL_RENUMBERING",
+  "root_prefix_duplicates": 0,
+  "sibling_scope_duplicates": 0,
+  "result": "PASS",
+  "fail_codes": []
+}

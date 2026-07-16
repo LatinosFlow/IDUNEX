@@ -1,0 +1,15 @@
+{
+  "engine": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "gate_id": "IMAGE_DELIVERY_RUNTIME_GATE",
+  "result": "PASS_POLICY_INSTALLED",
+  "states": [
+    "PREVIEW_RENDER",
+    "IDUNEX_DELIVERY_WITH_SIDECAR",
+    "OUTPUT_REAL_10_10"
+  ],
+  "empty_response_failcode": "FAIL_AGENT_DELIVERY_MESSAGE_EMPTY",
+  "spinner_no_asset_failcode": "BLOCKED_IMAGE_TOOL_SPINNER_NO_ASSET_NO_STATUS",
+  "preview_not_delivered_failcode": "BLOCKED_PREVIEW_RENDER_NOT_DELIVERED"
+}

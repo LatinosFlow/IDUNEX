@@ -1,0 +1,23 @@
+{
+  "gate_id": "H85",
+  "semantic_version": "v1.0.0",
+  "correction_scope_label": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "creative_output_certified": false,
+  "result": "PASS",
+  "created_at": "2026-06-30 PROJECT_DECLARED_TIMEZONE",
+  "SIDECAR_IMAGE_WATERMARK_FIELD_DEDUPLICATION": "PASS",
+  "required_fields_once": [
+    "watermark_required",
+    "watermark_text",
+    "watermark_position",
+    "watermark_method",
+    "watermark_optout_state",
+    "watermark_vendor_capability"
+  ],
+  "negative_duplicate_required_injected": "FAIL_EXPECTED_FAIL_H85_SIDECAR_WATERMARK_REQUIRED_DUPLICATE",
+  "negative_missing_watermark_required": "FAIL_EXPECTED_FAIL_H85_SIDECAR_WATERMARK_FIELD_MISSING",
+  "restoration_retest": "PASS",
+  "fail_codes": []
+}

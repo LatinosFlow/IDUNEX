@@ -1,0 +1,43 @@
+{
+  "sidecar_schema_version": "v1.0.0",
+  "output_id": "OUTPUT_TEMPLATE_ID",
+  "project_id": "PROJECT_TEMPLATE_ID",
+  "model_id": "MODEL_TEMPLATE_ID",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0_20260614",
+  "profile360_version": "v1.0.0",
+  "promptpack_version": "v1.0.0",
+  "source_ids_used": [
+    "SRC_TEMPLATE_ID"
+  ],
+  "field_ids_used": [
+    "P360_TEMPLATE_0000"
+  ],
+  "adapter_used": "ADAPTER_TEMPLATE",
+  "vendor": "VENDOR_PLACEHOLDER",
+  "vendor_params": {
+    "mode": "template_only",
+    "adapter": "ADAPTER_TEMPLATE"
+  },
+  "locks_active": [
+    "JSON_LOCK",
+    "ANCHOR_LOCK"
+  ],
+  "qa_status": "TEMPLATE_ONLY",
+  "qa_fail_codes": [],
+  "fallbacks_applied": [],
+  "hash_input": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "hash_output": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "created_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "reviewed_by": "REVIEWER_PLACEHOLDER",
+  "production_state": "TEMPLATE_ONLY",
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "validation_state": "TEMPLATE_ONLY_NO_GLOBAL_GO",
+  "release_state": "prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "lineage": {
+    "source_trace": "ALL_ACTIVE_SOURCES_001_049",
+    "hash_lineage": "REQUIRED",
+    "qa_evidence": "REQUIRED",
+    "output_go": "false_until_output_QA_SIDECAR_HASH_LINEAGE"
+  },
+  "x-lineage-required": true
+}

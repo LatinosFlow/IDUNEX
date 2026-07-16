@@ -1,0 +1,87 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "current_patch_policy": "KEEP_IDUNEX_MOTOR_v1.0.0_BECAUSE_PRE_CLOSURE_P0_SURGICAL_PATCH",
+  "forbidden_alternate_versions": [
+    "v1.0.1",
+    "v1.0.0-final",
+    "v1.0.0-fixed",
+    "v1.0.0-new",
+    "RC",
+    "fork",
+    "alternate semantic version"
+  ],
+  "decisions": [
+    {
+      "case": "PRE_CIERRE_SURGICAL_P0",
+      "decision": "KEEP_VERSION",
+      "engine_version_after": "IDUNEX_MOTOR_v1.0.0",
+      "example": "P0 patch applied before final closure; same artifact names reissued externally",
+      "requires_sha_reissue": true,
+      "requires_certificate_reissue": true
+    },
+    {
+      "case": "PATCH_MICRO",
+      "decision": "BUMP_PATCH",
+      "engine_version_after": "1.0.1 / 1.0.2",
+      "example": "post-closure compatible bug fix, no schema break, no output contract break",
+      "requires_sha_reissue": true,
+      "requires_certificate_reissue": true
+    },
+    {
+      "case": "MINOR_INTERMEDIATE",
+      "decision": "BUMP_MINOR",
+      "engine_version_after": "1.1.0 / 1.2.0",
+      "example": "new optional capability, backward compatible factory export",
+      "requires_project_migration_review": true
+    },
+    {
+      "case": "MAJOR_BREAKING",
+      "decision": "BUMP_MAJOR",
+      "engine_version_after": "2.0.0",
+      "example": "schema/layout/agent runtime incompatible change",
+      "requires_project_migration_review": true,
+      "requires_recertification": true
+    },
+    {
+      "case": "DOWNGRADE_OR_REMOVAL",
+      "decision": "CHANGE_REMOVAL_PROTOCOL",
+      "engine_version_after": "same pre-close or formal patch after closure",
+      "example": "surgical removal of a bad change with zero active trace and anti-regression",
+      "requires_zero_active_trace": true
+    },
+    {
+      "case": "ENGINE_UPDATE",
+      "decision": "ENGINE_UPDATE_PROTOCOL",
+      "engine_version_after": "matrix-driven",
+      "example": "motor-level improvement; update projects only through Project Factory migration gates"
+    },
+    {
+      "case": "PROJECT_UPDATE_BY_ENGINE_UPDATE",
+      "decision": "PROJECT_REEXPORT_OR_MIGRATE",
+      "project_version_after": "project patch/minor based on impact",
+      "example": "project inherits new runtime/golden test templates without altering model locks"
+    },
+    {
+      "case": "PROJECT_UPDATE_ONLY",
+      "decision": "PROJECT_ONLY_CHANGE",
+      "project_version_after": "project semantic version only",
+      "example": "new model/outfit/promptpack without motor change"
+    },
+    {
+      "case": "PROJECT_RETIREMENT",
+      "decision": "LIFECYCLE_STATE_CHANGE",
+      "project_version_after": "state metadata update",
+      "example": "PROJECT_RETIRED blocks new outputs while lineage remains historical"
+    }
+  ],
+  "closure_gates": [
+    "external_sha_companion_match",
+    "certificate_reissued",
+    "manuals_reissued",
+    "json_valid",
+    "configs_8000_exact",
+    "no_loss_baseline_pass",
+    "golden_test_policy_engine_project_output_split"
+  ]
+}

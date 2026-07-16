@@ -1,0 +1,42 @@
+{
+  "project_id": "IDUNEX_PROJECT_CANONICAL_SMOKE_TEST_v1.0.0",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "modalities": [
+    "image",
+    "video",
+    "voice",
+    "suno",
+    "copilot_docx",
+    "sidecar"
+  ],
+  "locks": [
+    "JSON_LOCK",
+    "ANCHOR_LOCK",
+    "AGE_LOCK",
+    "ID_LOCK"
+  ],
+  "profile360_fields_sample": [
+    "P360_IDENTITY_0001",
+    "P360_IDENTITY_0002",
+    "P360_IDENTITY_0003",
+    "P360_BODY_0004",
+    "P360_BODY_0005",
+    "P360_BODY_0006",
+    "P360_VOICE_0007",
+    "P360_IDENTITY_0008",
+    "P360_IDENTITY_0009",
+    "P360_IDENTITY_0010",
+    "P360_IDENTITY_0011",
+    "P360_IDENTITY_0012"
+  ],
+  "source_ids_sample": [
+    "SRC_001_Ontolog_a_IDUNEX_360",
+    "SRC_002_Biometr_a_facial_forense",
+    "SRC_003_Antropometr_a_corporal_avanzada",
+    "SRC_004_Dermatolog_a_visual_realista",
+    "SRC_005_Cabello_peinados_y_f_sica_capilar",
+    "SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos",
+    "SRC_007_Biograf_a_familiar_y_migratoria",
+    "SRC_008_Moral_valores_y_tica_personal"
+  ]
+}

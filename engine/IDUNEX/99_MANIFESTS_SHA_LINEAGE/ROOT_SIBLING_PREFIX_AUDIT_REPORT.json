@@ -1,0 +1,14 @@
+{
+  "gate_id": "ROOT_SIBLING_NUMERIC_PREFIX_POLICY_AUDIT",
+  "strategy": "OPTION_A_PHYSICAL_RENUMBERING",
+  "numeric_prefix_scope": "DIRECTORIES_MATCHING_^[0-9]+_ ONLY",
+  "root_prefix_duplicates": 0,
+  "sibling_scope_duplicates": 0,
+  "root_scope_unique_numeric_prefix": true,
+  "sibling_scope_unique_numeric_prefix": true,
+  "exception_policy": "NO_EXCEPTION_ACTIVE",
+  "root_duplicates": [],
+  "sibling_duplicates": [],
+  "result": "PASS",
+  "fail_codes": []
+}

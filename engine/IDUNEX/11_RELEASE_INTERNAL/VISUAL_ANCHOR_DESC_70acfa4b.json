@@ -1,0 +1,20 @@
+{
+  "gate_id": "H184",
+  "DIRECT_CORRECTION_SCOPE": "H181_H188_APPLIED_ON_H01_H180",
+  "VISUAL_ANCHOR_DESCRIPTOR_NO_RAW_TOKEN_SCAN": "PASS",
+  "scanned_anchor_files": 3,
+  "scanned_textual_descriptors": 260,
+  "allowed_internal_token_fields": [
+    "internal_identity_token_map",
+    "technical_json",
+    "lineage",
+    "QA",
+    "hashes"
+  ],
+  "raw_token_findings_count": 0,
+  "findings": [
+    "NONE"
+  ],
+  "fail_codes": [],
+  "result": "PASS"
+}

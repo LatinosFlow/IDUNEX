@@ -1,0 +1,30 @@
+{
+  "semantic_version": "v1.0.0",
+  "FILE_CONNECTEDNESS_RULES": true,
+  "required_fields": [
+    "file_path",
+    "authority_class",
+    "producer",
+    "consumer",
+    "source_inputs",
+    "update_trigger",
+    "retention_rule",
+    "validation_gate",
+    "connectedness_status"
+  ],
+  "allowed_authority_classes": [
+    "ACTIVE_AUTHORITY",
+    "RUNTIME_UPLOAD",
+    "EVIDENCE",
+    "REFERENCE",
+    "HISTORICAL_NON_AUTHORITY",
+    "TEMP_NON_DELIVERY"
+  ],
+  "rules": [
+    "TEMP_NON_DELIVERY never enters final ZIP",
+    "active file without consumer blocks delivery",
+    "full human audits are not active authority",
+    "temporary logs, staging, intermediate ZIPs and test outputs are not delivered",
+    "do not create a file unless connected to manifest, runtime, validator, report or schema"
+  ]
+}

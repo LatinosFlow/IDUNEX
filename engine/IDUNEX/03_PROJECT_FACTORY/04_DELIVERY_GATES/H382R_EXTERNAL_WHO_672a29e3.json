@@ -1,0 +1,31 @@
+{
+  "gate_id": "H382R_EXTERNAL_WHOLE_ZIP_AUTHORITY",
+  "semantic_version": "v1.0.0",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "whole_zip_sha256_authority": "EXTERNAL_COMPANION",
+  "whole_zip_bytes_authority": "EXTERNAL_RELEASE_SURFACE",
+  "internal_self_hash_materialization_forbidden": true,
+  "required_internal_surface_fields": [
+    "WHOLE_ZIP_SHA256_AUTHORITY",
+    "WHOLE_ZIP_BYTES_AUTHORITY",
+    "TOP_LEVEL_COMPANION_FILE_MATCHES_REOPENED_ZIP"
+  ],
+  "finalizer_converges_on": [
+    "entry_count",
+    "internal_file_count",
+    "directory_count",
+    "stored_count",
+    "compression_policy",
+    "CRC_testzip",
+    "duplicate_groups",
+    "duplicate_allowlist",
+    "companion_ledgers",
+    "prompt_packs_A_J",
+    "runtime_ChatGPT_Copilot_10_plus_N",
+    "output_contract",
+    "sentinel_zero"
+  ],
+  "result": "PASS",
+  "fail_codes": [],
+  "creative_output_certified": false
+}

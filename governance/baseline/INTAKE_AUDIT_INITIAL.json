@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "scope": "repository_intake_only_not_full_motor_audit",
+  "file_count": 1026,
+  "bytes_total": 47421094,
+  "failures": [],
+  "warnings": []
+}

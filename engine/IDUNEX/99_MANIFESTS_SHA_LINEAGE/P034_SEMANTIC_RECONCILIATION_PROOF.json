@@ -1,0 +1,62 @@
+{
+  "proof_id": "P034_SEMANTIC_RECONCILIATION_PROOF",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "authority": "ACTIVE_CURRENT_ONLY",
+  "fixture_policy": "ABSTRACT_FIXTURE_ONLY_NON_AUTHORITY",
+  "forbidden_legacy_identity_tokens_present": 0,
+  "active_proof_non_abstract_fixture_count": 0,
+  "active_demo_project_proof_count": 0,
+  "current_metrics_policy": "external ZIP SHA and byte count are certified outside the ZIP; internal proof stores non-circular current gates only",
+  "fixtures": {
+    "FIXTURE_ONLY_1_MODEL": {
+      "fixture_classification": "NON_AUTHORITY",
+      "profile360_normalized_clone_count": 0,
+      "techext_normalized_clone_count_model_specific": 0,
+      "profile360_join": "61/61 per model",
+      "techext_join": "284/284 per model"
+    },
+    "FIXTURE_ONLY_2_MODEL": {
+      "fixture_classification": "NON_AUTHORITY",
+      "profile360_normalized_clone_count": 0,
+      "techext_normalized_clone_count_model_specific": 0,
+      "profile360_join": "61/61 per model",
+      "techext_join": "284/284 per model"
+    },
+    "FIXTURE_ONLY_10_MODEL": {
+      "fixture_classification": "NON_AUTHORITY",
+      "profile360_normalized_clone_count": 0,
+      "techext_normalized_clone_count_model_specific": 0,
+      "profile360_join": "61/61 per model",
+      "techext_join": "284/284 per model"
+    }
+  },
+  "gates": {
+    "ACTIVE_PROOF_ABSTRACT_FIXTURE_ENFORCEMENT": "PASS",
+    "ACTIVE_LEGACY_IDENTITY_LEAKAGE_COUNT": 0,
+    "ACTIVE_DEMO_PROJECT_PROOF_COUNT": 0,
+    "ACTUAL_VALUE_BOILERPLATE_COUNT": 0,
+    "MUTATIONS_PASS": "400/400",
+    "RESTORATION_RETEST": "PASS",
+    "ACTIVE_LEGACY_CONTROL_NAME_LEAKAGE_COUNT": 0,
+    "ACTIVE_LEGACY_EXACT_NAME_TOKEN_COUNT": 0,
+    "HUMAN_FACING_LEGACY_NAME_METRIC_COUNT": 0,
+    "ACTIVE_LEGACY_IDENTITY_SPECIFIC_COUNT": 0,
+    "ACTIVE_DEMO_IDENTITY_SPECIFIC_COUNT": 0,
+    "ACTIVE_LEGACY_PROJECT_SPECIFIC_COUNT": 0,
+    "PROJECT_GENERATION_CLI_MATRIX_1_TO_10_X3_REOPENED": "PASS",
+    "PROJECT_GENERATION_CLI_MATRIX_PASS_COUNT": "30/30",
+    "UPDATE_MIGRATION_CLI_SMOKE_REOPENED": "PASS",
+    "NO_BYTECODE_AFTER_FULL_CLI_MATRIX": "PASS",
+    "VALIDATOR_TREE_MUTATION_COUNT": 0
+  },
+  "historical_payload_location": "12_HISTORICAL_NON_AUTHORITY/P034_DEMOTED_STALE_B01_B04/P034_SEMANTIC_RECONCILIATION_PROOF.json.historical.json",
+  "result": "PASS",
+  "mutation_suite_minimum": "400/400",
+  "finalops_update_migration_importsafe_closure": "PASS",
+  "generic_metrics_only": true,
+  "control_name_policy": "GENERIC_HUMAN_FACING_METRICS_ONLY",
+  "cli_matrix_proof": "99_MANIFESTS_SHA_LINEAGE/P034_PROJECT_GENERATION_CLI_MATRIX_1_TO_10_X3_REOPENED_PROOF.json",
+  "update_migration_smoke_proof": "99_MANIFESTS_SHA_LINEAGE/P034_UPDATE_MIGRATION_CLI_SMOKE_REOPENED_PROOF.json"
+}

@@ -1,0 +1,14 @@
+{
+  "gate_id": "PROJECT_TRUTHFULNESS_INDEPENDENT_FAIL_GATE",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "fail_code": "BLOCKED_TRUTHFULNESS_PROJECT_PASS_FALSE",
+  "contract": "Blocks DELIVERY_ALLOWED when any required packaging/runtime/manifests/truthfulness gate fails.",
+  "blocking": true,
+  "actual_value_required": true,
+  "pass_by_count_only_allowed": false,
+  "delivery_allowed_if_fail": false,
+  "correction_action": "Identify root_cause, correct surgically, recalculate manifests/SHA, reemit ZIP, reopen ZIP and reaudIT complete scope before delivery."
+}

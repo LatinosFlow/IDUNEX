@@ -1,0 +1,34 @@
+{
+  "proof_id": "P034_MOTOR_PROJECT_BOUNDARY_RECONCILIATION_PROOF",
+  "created": "2026-06-26 PROJECT_DECLARED_TIMEZONE",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "no_new_label_created": true,
+  "no_p0337_created": true,
+  "motor_is_not_project": true,
+  "project_model_range": {
+    "min": 1,
+    "max": 10
+  },
+  "boundary_counts": {
+    "MOTOR_CONCRETE_PROJECT_NAME_COUNT_ACTIVE": 0,
+    "MOTOR_CONCRETE_MODEL_NAME_COUNT_ACTIVE": 0,
+    "MOTOR_CONCRETE_AGE_ORIGIN_IDENTITY_COUNT_ACTIVE": 0,
+    "MOTOR_CONCRETE_IDENTITY_VALUE_COUNT_ACTIVE": 0,
+    "PROJECT_DEMO_CANON_LEAKAGE_COUNT": 0,
+    "FIXTURE_NOT_MARKED_NON_AUTHORITY_COUNT": 0,
+    "CANON_REGISTRY_PROJECT_DATA_COUNT": 0,
+    "RUNTIME_CORE_CONCRETE_MODEL_EXAMPLE_COUNT": 0,
+    "MANUAL_CANONICAL_DEMO_IDENTITY_COUNT": 0
+  },
+  "actions": [
+    "Removed concrete model names from active image router activators.",
+    "Replaced demo E2E proof names with FIXTURE_ONLY_1/2/10_MODEL proof companions.",
+    "Rebuilt fixture projects with abstract MODEL_FIXTURE_N identity tokens and SYNTH_ORIGIN_N project-origin tokens.",
+    "Added mandatory fixture boundary markers: FIXTURE_ONLY, NON_AUTHORITY, NOT_CANONICAL_PROJECT, NOT_CANONICAL_MODEL, NOT_FOR_RUNTIME_IDENTITY.",
+    "Extended active runtime validator with Motor != Project boundary gates.",
+    "Extended mutation suite to 400/400 with TechExt physical numeric stress gates and restoration retest PASS.",
+    "Removed actual_value semantic-differentiator wording from project materializer output."
+  ],
+  "truthfulness": "PASS certifies package integrity, not external creative asset quality."
+}

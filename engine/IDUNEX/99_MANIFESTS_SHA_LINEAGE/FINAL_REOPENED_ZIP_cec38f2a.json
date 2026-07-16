@@ -1,0 +1,224 @@
+{
+  "report_id": "FINAL_REOPENED_ZIP_FULL_VALIDATION_MATRIX_H143_H150",
+  "result": "PASS",
+  "execution_basis": "FINAL_ZIP_REOPEN_RECOMPUTED_AT_EXTERNAL_DELIVERY_STAGE",
+  "zip_sha256_authority": "EXTERNAL_COMPANION_FILE_AUTHORITY",
+  "controls": [
+    {
+      "control_id": "H149_01",
+      "control": "sha256sum IDUNEX_MOTOR_v1.0.0.zip matches companion",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_02",
+      "control": "zipfile.testzip",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_03",
+      "control": "ROOT_UNICO",
+      "result": "IDUNEX"
+    },
+    {
+      "control_id": "H149_04",
+      "control": "FINAL_ZIP_DIRECTORIES",
+      "result": "0"
+    },
+    {
+      "control_id": "H149_05",
+      "control": "JSON_INVALID",
+      "result": "0"
+    },
+    {
+      "control_id": "H149_06",
+      "control": "JSON_SCHEMA_INVALID",
+      "result": "0"
+    },
+    {
+      "control_id": "H149_07",
+      "control": "VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_08",
+      "control": "VALIDATE_IDUNEX_RUNTIME",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_09",
+      "control": "VALIDATOR_PARITY_SELF_CONSISTENCY",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_10",
+      "control": "VALIDATORS_FAIL",
+      "result": "0"
+    },
+    {
+      "control_id": "H149_11",
+      "control": "BLOCKING_WARNINGS",
+      "result": "0"
+    },
+    {
+      "control_id": "H149_12",
+      "control": "FAIL_CODES",
+      "result": "[]"
+    },
+    {
+      "control_id": "H149_13",
+      "control": "H01-H142_PRESERVED",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_14",
+      "control": "H143-H150_APPLIED",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_15",
+      "control": "ACTIVE_JSON_NULL_BLANK_ZERO_TOLERANCE",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_16",
+      "control": "NO_ACTIVE_JSON_NULL_VALUES",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_17",
+      "control": "NO_ACTIVE_JSON_BLANK_VALUES",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_18",
+      "control": "RUNTIME_SUBVALIDATOR_FAILURE_PROPAGATION",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_19",
+      "control": "NO_RUNTIME_MASKED_SCHEMA_VALIDATOR_FAIL",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_20",
+      "control": "SUMMARY_REPORT_OPTIONAL_FIELD_SENTINEL_POLICY",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_21",
+      "control": "VALIDATOR_PARITY_SELF_CONSISTENCY_DUPLICATE_CONFIRMATION",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_22",
+      "control": "RELEASE_DOCS_SCHEMA_RUNTIME_PARITY",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_23",
+      "control": "SCHEMA_RUNTIME_PARITY_NEGATIVE_MUTATION_SUITE",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_24",
+      "control": "FINAL_REOPENED_ZIP_FULL_VALIDATION_MATRIX",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_25",
+      "control": "VALIDATE_IDUNEX_PROJECT_MUTATION_SUITE_EXECUTABLE",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_26",
+      "control": "FACTORY_MUTATION_SELF_TEST",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_27",
+      "control": "PROJECT_GENERATION_MATRIX_N1_N10_3_LEVELS_EXECUTED_PROOF_GATE",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_28",
+      "control": "CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_29",
+      "control": "FIXTURE_PROJECT_VALIDATE_N1",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_30",
+      "control": "FIXTURE_PROJECT_VALIDATE_N2",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_31",
+      "control": "FIXTURE_PROJECT_VALIDATE_N10",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_32",
+      "control": "SAFE_APPAREL_SUITE_SEMANTIC_CONSISTENCY_VALIDATOR",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_33",
+      "control": "ADULT_EDITORIAL_NON_EXPLICIT_CASE_RESOLUTION",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_34",
+      "control": "AGENT10N_PROPAGATION_LINTER_SAFE_APPAREL_WATERMARK",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_35",
+      "control": "ACTIVE_MATRIX_GLOBAL_SEMANTIC_SCAN",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_36",
+      "control": "ACTIVE_PROOF_STALE_SURFACE_SCAN",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_37",
+      "control": "FINAL_NO_ACTIVE_STALE_PROOFS_OR_MATRICES_CLOSURE",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_38",
+      "control": "DUPLICATE_CONSECUTIVE_LINES_SCAN",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_39",
+      "control": "ACTIVE_NUMERIC_SIBLING_PREFIXES_DUPLICATE_SCAN",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_40",
+      "control": "OFFICIAL_DOCS_COHERENCE",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_41",
+      "control": "EXTERNAL_DELIVERY_7_OF_7_EXACT",
+      "result": "PASS"
+    },
+    {
+      "control_id": "H149_42",
+      "control": "CREATIVE_OUTPUT_CERTIFIED",
+      "result": "FALSE"
+    }
+  ],
+  "validators_fail": 0,
+  "blocking_warnings": 0,
+  "fail_codes": [],
+  "creative_output_certified": false,
+  "MOTOR_CORREGIDO_DIRECTO_CANONICO_H143_H150_SCHEMA_RUNTIME_PARITY_CIERRE_100": "PASS",
+  "generated_at": "2026-07-01 PROJECT_DECLARED_TIMEZONE"
+}

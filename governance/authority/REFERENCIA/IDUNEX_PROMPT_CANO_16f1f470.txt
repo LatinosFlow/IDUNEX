@@ -1,0 +1,173 @@
+GPT-5 correcto - Alonso.
+
+IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO_AUTORIDAD_MOTOR
+SEMANTIC_VERSION=v1.0.0
+VERSION_BUMP=NO
+CORRECTION_MODE=DIRECT_CANONICAL_NO_PATCH
+CORRECTION_SCOPE=RENORMALIZACION_VERSION_OFICIAL_v1.0.0_Y_DEMO_000_2_MODELOS
+ZIP-EXT-001=ACTIVE
+CREATIVE_OUTPUT_CERTIFIED=FALSE
+MOTOR_ACTIVE_STATUS=ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION
+
+ACTUA COMO GENERADOR DE PROYECTO IDUNEX USANDO AUTORIDAD DEL MOTOR v1.0.0.
+
+AUTORIDAD DE ENTRADA
+Para generar el Proyecto 000 Demo, el operador adjuntara exactamente:
+1. IDUNEX_MOTOR_v1.0.0.zip.
+2. Informe Maestro vigente.
+3. Este prompt canonico corregido.
+
+Reglas de autoridad:
+- El motor IDUNEX v1.0.0 + Informe Maestro gobiernan la tecnica, estructura, validadores, runtime, prompt packs, salida y cierre.
+- Este prompt solo entrega input externo del Demo para una generacion posterior.
+- Si este prompt contradice al motor o al Informe Maestro, prevalecen motor + Informe Maestro.
+- No fijes rutas internas inventadas, hashes finales, conteos finales, estados finales no recomputados, validators_fail, fail_codes ni cierre productivo desde este prompt.
+- No certifiques outputs creativos desde el motor ni desde este prompt.
+
+DEMO_READY_INPUT_BLOCK
+project_name = Proyecto 000 Demo
+project_name_slug = PROYECTO_000_DEMO
+project_id = IDUNEX_PROJECT_PROYECTO_000_DEMO_v1.0.0
+owner_entity = LatinosFlow
+owner_entity_role = input externo solo para validacion posterior
+brand_name = LatinosFlow
+brand_usage_scope = demo/internal_validation/non_commercial_testing
+brand_rights_declaration = owner-provided demo validation input; not engine default
+model_count = 2
+models = [
+  {
+    model_index: 1,
+    model_type: mujer ficticia adulta,
+    fictional_age: 20,
+    full_name: Valeria Rios Andrade,
+    pseudonym: Vale,
+    real_person_status: fictitious adult model; not based on a real identifiable person; any coincidence is incidental,
+    active_modalities: imagen, video, voz/audio, musica/Suno, sonido, texto/copy, QA/agente
+  },
+  {
+    model_index: 2,
+    model_type: hombre ficticio adulto,
+    fictional_age: 30,
+    full_name: Mateo Vargas Salinas,
+    pseudonym: Mateo,
+    real_person_status: fictitious adult model; not based on a real identifiable person; any coincidence is incidental,
+    active_modalities: imagen, video, voz/audio, musica/Suno, sonido, texto/copy, QA/agente
+  }
+]
+modalities_required = imagen, video, voz/audio, musica/Suno, sonido, texto/copy, QA/agente
+assets_authorized = NO_ASSETS_SUBMITTED
+logo_asset_policy = LOGO_ASSET_NOT_VERIFIED
+creative_legal_restrictions = modelos ficticios adultos, sin identidad real, sin celebridades, sin menores, sin desnudez, sin sexo explicito, sin marcas no autorizadas, sin logo inventado
+CREATIVE_OUTPUT_CERTIFIED = FALSE
+
+ACLARACION DEMO
+- LatinosFlow es input externo del Proyecto Demo, no default activo del motor.
+- Proyecto 000 Demo no es fixture activo del motor.
+- Los dos nombres demo no son canon activo del motor.
+- El Demo no se genera durante la correccion del motor.
+- El Demo solo puede avanzar despues de auditoria recomputacional propia y carga real ChatGPT/Copilot cuando aplique.
+- Proyecto Demo validado no convierte proyectos futuros en cierre automatico.
+
+INSTRUCCION DE GENERACION DEMO
+Genera el proyecto completo delegando toda autoridad tecnica al motor. El proyecto generado debe contener como minimo:
+- PROJECT_BRAND_REGISTRY.json.
+- README_FOR_HUMAN_OPERATOR.md.
+- TEST_PROMPTS_BY_MODALITY.
+- STATIC_SMOKE_TEST_MATRIX.
+- HUMAN_READABLE_VISUAL_CANON por modelo.
+- Profile360 61/61 por modelo.
+- TechExt 284/284 por modelo.
+- Runtime ChatGPT 10+N.
+- Runtime Copilot 10+N.
+- Companion ledgers reales.
+- Prompt packs A-J.
+- Release surfaces.
+- Validadores.
+- PROJECT_STATUS_CONTRACT.
+- CREATIVE_OUTPUT_CERTIFIED=FALSE.
+
+VALIDACION OBLIGATORIA DEL DEMO GENERADO
+Despues de generar el ZIP del Demo, reabrir el ZIP final y recomputar:
+- companion SHA externo.
+- CRC/testzip.
+- ZIP_STORED=0.
+- duplicate allowlist real.
+- runtime ChatGPT/Copilot 10+N.
+- Profile360 61/61 por modelo.
+- TechExt 284/284 por modelo.
+- prompt packs A-J.
+- no sentinels finales.
+- no staging/temp/heartbeat.
+- no GENERIC_PROJECT_* en proyecto ejecutable.
+- no placeholders finales.
+- no outputs creativos certificados.
+- PROJECT_STATUS_CONTRACT.
+- CREATIVE_OUTPUT_CERTIFIED=FALSE.
+
+EDITABLE_FIELDS_FOR_CUSTOM_PROJECTS
+Cambiar obligatoriamente para proyectos futuros:
+- project_name.
+- owner_entity.
+- brand_name.
+- brand_usage_scope.
+- brand_rights_declaration.
+- model_count.
+- models.
+- modalities_required.
+- assets_authorized o NO_ASSETS_SUBMITTED.
+- logo_asset_policy.
+- creative_legal_restrictions.
+
+NEGATIVE / AVOID
+- No default de marca real.
+- No Demo como fixture activo.
+- No nombres demo como canon activo del motor.
+- No rutas/hashes inventados.
+- No PASS declarado sin recomputar.
+- No validators_fail ni fail_codes fijados desde el prompt.
+- No estados finales no recomputados.
+- No outputs creativos certificados sin QA real.
+- No placeholders finales.
+- No GENERIC_PROJECT_* en proyecto ejecutable.
+- No PRODUCTIVE_CLOSURE sin auditoria propia.
+- No celebridades, no identidad real verificable, no menores, no desnudez, no sexo explicito, no marcas no autorizadas.
+- No lectura de modelos no involucrados salvo escena grupal, comparacion o solicitud explicita.
+
+QC CHECKLIST
+[ ] Motor adjunto: IDUNEX_MOTOR_v1.0.0.zip.
+[ ] Informe Maestro vigente adjunto.
+[ ] Prompt Demo canonico adjunto.
+[ ] project_name = Proyecto 000 Demo.
+[ ] project_name_slug = PROYECTO_000_DEMO.
+[ ] project_id = IDUNEX_PROJECT_PROYECTO_000_DEMO_v1.0.0.
+[ ] model_count = 2.
+[ ] Modelo 1: mujer ficticia adulta de 20 anos.
+[ ] Modelo 2: hombre ficticio adulto de 30 anos.
+[ ] Todas las modalidades activas por modelo: imagen, video, voz/audio, musica/Suno, sonido, texto/copy, QA/agente.
+[ ] LatinosFlow tratado como input externo del Demo, no default del motor.
+[ ] Proyecto 000 Demo no materializado dentro del motor.
+[ ] PROJECT_BRAND_REGISTRY presente.
+[ ] PROJECT_STATUS_CONTRACT presente.
+[ ] Profile360 61/61 por modelo.
+[ ] TechExt 284/284 por modelo.
+[ ] Runtime ChatGPT 10+N.
+[ ] Runtime Copilot 10+N.
+[ ] Prompt packs A-J.
+[ ] CREATIVE_OUTPUT_CERTIFIED=FALSE.
+[ ] Auditoria recomputacional propia del proyecto.
+
+FALLBACK FIXES
+- Si falta un campo obligatorio, bloquear generacion o completar antes de ejecutar.
+- Si hay placeholder final, bloquear con PROJECT_NO_PLACEHOLDER_EXECUTION_GATE.
+- Si el proyecto queda generico, reclasificar como GENERIC_SKELETON_NON_AUTHORITY y no entregarlo como ejecutable.
+- Si LatinosFlow queda como default del motor, bloquear, moverlo a PROJECT_BRAND_REGISTRY del proyecto Demo y revalidar no-leakage.
+- Si falta runtime 10+N, reconstruir paquetes ChatGPT/Copilot y reabrir ZIP final.
+- Si falta evidence lineage, reconstruir pointers antes de cierre.
+- Si se detecta PASS declarativo, recomputar o bloquear.
+- Si el filename sale como IDUNEX_PROJECT_<HASH>.zip, reforzar PROJECT_FILENAME_CANON y PROJECT_UID_NOT_FILENAME_REPLACEMENT.
+- Si falla ZIP-EXT-001, regenerar ZIP final, companion externo y certificado externo; no autocertificar whole-ZIP SHA dentro del ZIP.
+
+COPILOT 365
+App: Word.
+Carpeta sugerida: documentacion operativa IDUNEX en OneDrive/SharePoint.
+Prompt Copilot: Revisa este prompt IDUNEX conservando la autoridad del motor v1.0.0 + Informe Maestro. Completa solo campos de entrada del proyecto; no fijes rutas, hashes, conteos, validators_fail, fail_codes ni cierres no recomputados. Verifica model_count=2, Proyecto 000 Demo como input externo, CREATIVE_OUTPUT_CERTIFIED=FALSE, runtime 10+N, Profile360/TechExt completos y PROJECT_STATUS_CONTRACT.

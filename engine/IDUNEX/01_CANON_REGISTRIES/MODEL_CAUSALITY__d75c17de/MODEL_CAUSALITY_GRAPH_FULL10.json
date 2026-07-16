@@ -1,0 +1,1392 @@
+{
+  "engine": "MODEL_CAUSALITY_ENGINE_FULL10",
+  "state": "PRODUCTIVE_BASE_ENGINE_VALIDATED",
+  "graph_specificity_policy": "NODE_PAYLOAD_MUST_BE_SPECIFIC_NOT_REPEATED",
+  "nodes": [
+    {
+      "node_id": "PROJECT_PURPOSE",
+      "purpose": "Define objetivo comercial/editorial del proyecto y límites de uso.",
+      "upstream_dependencies": [
+        "PROJECT_BRIEF_FROM_ALONSO_OR_FACTORY_DEFINED"
+      ],
+      "downstream_effects": [
+        "MODEL_ROLE_IN_PROJECT"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "00_PROFILE_HEADER_AND_LOCKS"
+      ],
+      "required_fields": [
+        "brief",
+        "mercado",
+        "outputs",
+        "tono"
+      ],
+      "prompt_effect": "Todo prompt hereda finalidad; bloquea belleza genérica sin rol.",
+      "QA_rule": "PASS solo si PROJECT_PURPOSE tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_PROJECT_PURPOSE: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "project_purpose_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "PROJECT_PURPOSE: PASS cuando el output conserva 00_PROFILE_HEADER_AND_LOCKS, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "PROJECT_PURPOSE: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "PROJECT_PURPOSE no puede usar payload repetido; debe producir una decisión específica conectada a 00_PROFILE_HEADER_AND_LOCKS.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "MODEL_ROLE_IN_PROJECT",
+      "purpose": "Asigna rol narrativo, visual y comercial único por modelo.",
+      "upstream_dependencies": [
+        "PROJECT_PURPOSE"
+      ],
+      "downstream_effects": [
+        "MODEL_UNIQUENESS_SLOT"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "02_PROJECT_ROLE_AND_UNIQUENESS"
+      ],
+      "required_fields": [
+        "project_purpose",
+        "slot",
+        "audiencia"
+      ],
+      "prompt_effect": "Evita modelos intercambiables; cada rol cambia poses, texto y escenas.",
+      "QA_rule": "PASS solo si MODEL_ROLE_IN_PROJECT tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_MODEL_ROLE_IN_PROJECT: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "model_role_in_project_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "MODEL_ROLE_IN_PROJECT: PASS cuando el output conserva 02_PROJECT_ROLE_AND_UNIQUENESS, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "MODEL_ROLE_IN_PROJECT: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "MODEL_ROLE_IN_PROJECT no puede usar payload repetido; debe producir una decisión específica conectada a 02_PROJECT_ROLE_AND_UNIQUENESS.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "MODEL_UNIQUENESS_SLOT",
+      "purpose": "Reserva rasgos diferenciales contra same-face/body/voice.",
+      "upstream_dependencies": [
+        "MODEL_ROLE_IN_PROJECT"
+      ],
+      "downstream_effects": [
+        "IDENTITY_CANON"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "53_DRIFT_PREVENTION_AND_PAIRWISE_UNIQUENESS"
+      ],
+      "required_fields": [
+        "matriz de comparación",
+        "edad visible",
+        "voz"
+      ],
+      "prompt_effect": "Activa contraste par-a-par y anchors irrepetibles.",
+      "QA_rule": "PASS solo si MODEL_UNIQUENESS_SLOT tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_MODEL_UNIQUENESS_SLOT: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "model_uniqueness_slot_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "MODEL_UNIQUENESS_SLOT: PASS cuando el output conserva 53_DRIFT_PREVENTION_AND_PAIRWISE_UNIQUENESS, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "MODEL_UNIQUENESS_SLOT: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "MODEL_UNIQUENESS_SLOT no puede usar payload repetido; debe producir una decisión específica conectada a 53_DRIFT_PREVENTION_AND_PAIRWISE_UNIQUENESS.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "IDENTITY_CANON",
+      "purpose": "Fija nombre, identidad operativa y límites de mutabilidad.",
+      "upstream_dependencies": [
+        "MODEL_UNIQUENESS_SLOT"
+      ],
+      "downstream_effects": [
+        "BIRTHPLACE_COUNTRY_CITY_DISTRICT"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "01_MODEL_IDENTITY_CANON"
+      ],
+      "required_fields": [
+        "locks",
+        "canon",
+        "alias permitidos"
+      ],
+      "prompt_effect": "Bloquea cambios de identidad salvo changelog formal.",
+      "QA_rule": "PASS solo si IDENTITY_CANON tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_IDENTITY_CANON: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "identity_canon_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "IDENTITY_CANON: PASS cuando el output conserva 01_MODEL_IDENTITY_CANON, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "IDENTITY_CANON: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "IDENTITY_CANON no puede usar payload repetido; debe producir una decisión específica conectada a 01_MODEL_IDENTITY_CANON.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "BIRTHPLACE_COUNTRY_CITY_DISTRICT",
+      "purpose": "Ancla origen geográfico sin estereotipo.",
+      "upstream_dependencies": [
+        "IDENTITY_CANON"
+      ],
+      "downstream_effects": [
+        "LOCALITY_SOCIAL_ENVIRONMENT"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "04_BIRTHPLACE_COUNTRY_CITY_DISTRICT"
+      ],
+      "required_fields": [
+        "país",
+        "ciudad",
+        "distrito",
+        "ruta migratoria"
+      ],
+      "prompt_effect": "Inserta microdetalles locales coherentes cuando aportan escena o voz.",
+      "QA_rule": "PASS solo si BIRTHPLACE_COUNTRY_CITY_DISTRICT tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_BIRTHPLACE_COUNTRY_CITY_DISTRICT: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "birthplace_country_city_district_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "BIRTHPLACE_COUNTRY_CITY_DISTRICT: PASS cuando el output conserva 04_BIRTHPLACE_COUNTRY_CITY_DISTRICT, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "BIRTHPLACE_COUNTRY_CITY_DISTRICT: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "BIRTHPLACE_COUNTRY_CITY_DISTRICT no puede usar payload repetido; debe producir una decisión específica conectada a 04_BIRTHPLACE_COUNTRY_CITY_DISTRICT.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "LOCALITY_SOCIAL_ENVIRONMENT",
+      "purpose": "Define entorno social, hábitos y códigos urbanos reales.",
+      "upstream_dependencies": [
+        "BIRTHPLACE_COUNTRY_CITY_DISTRICT"
+      ],
+      "downstream_effects": [
+        "DESCENDANCE_SAFE_PHENOTYPE"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "05_LOCALITY_SOCIAL_ENVIRONMENT"
+      ],
+      "required_fields": [
+        "barrio",
+        "red social",
+        "espacios frecuentes"
+      ],
+      "prompt_effect": "Modula sociolecto, ropa, props y ambientes compatibles.",
+      "QA_rule": "PASS solo si LOCALITY_SOCIAL_ENVIRONMENT tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_LOCALITY_SOCIAL_ENVIRONMENT: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "locality_social_environment_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "LOCALITY_SOCIAL_ENVIRONMENT: PASS cuando el output conserva 05_LOCALITY_SOCIAL_ENVIRONMENT, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "LOCALITY_SOCIAL_ENVIRONMENT: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "LOCALITY_SOCIAL_ENVIRONMENT no puede usar payload repetido; debe producir una decisión específica conectada a 05_LOCALITY_SOCIAL_ENVIRONMENT.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "DESCENDANCE_SAFE_PHENOTYPE",
+      "purpose": "Conecta descendencia segura con fenotipo visible sin caricatura.",
+      "upstream_dependencies": [
+        "LOCALITY_SOCIAL_ENVIRONMENT"
+      ],
+      "downstream_effects": [
+        "FAMILY_HISTORY_MIGRATION_MEMORY"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "06_DESCENDANCE_AND_SAFE_PHENOTYPE_CAUSALITY"
+      ],
+      "required_fields": [
+        "origen familiar",
+        "piel",
+        "rostro",
+        "cabello"
+      ],
+      "prompt_effect": "Preserva rasgos causales, no clichés ni racialización explícita.",
+      "QA_rule": "PASS solo si DESCENDANCE_SAFE_PHENOTYPE tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_DESCENDANCE_SAFE_PHENOTYPE: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "descendance_safe_phenotype_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "DESCENDANCE_SAFE_PHENOTYPE: PASS cuando el output conserva 06_DESCENDANCE_AND_SAFE_PHENOTYPE_CAUSALITY, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "DESCENDANCE_SAFE_PHENOTYPE: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "DESCENDANCE_SAFE_PHENOTYPE no puede usar payload repetido; debe producir una decisión específica conectada a 06_DESCENDANCE_AND_SAFE_PHENOTYPE_CAUSALITY.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "FAMILY_HISTORY_MIGRATION_MEMORY",
+      "purpose": "Da memoria familiar que influye en valores, acento y aspiraciones.",
+      "upstream_dependencies": [
+        "DESCENDANCE_SAFE_PHENOTYPE"
+      ],
+      "downstream_effects": [
+        "CHILDHOOD_FORMATIVE_CONTEXT"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "07_FAMILY_HISTORY_AND_MIGRATION_MEMORY"
+      ],
+      "required_fields": [
+        "familia",
+        "migración",
+        "hitos"
+      ],
+      "prompt_effect": "Agrega humanidad sin inventar trauma decorativo.",
+      "QA_rule": "PASS solo si FAMILY_HISTORY_MIGRATION_MEMORY tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_FAMILY_HISTORY_MIGRATION_MEMORY: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "family_history_migration_memory_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "FAMILY_HISTORY_MIGRATION_MEMORY: PASS cuando el output conserva 07_FAMILY_HISTORY_AND_MIGRATION_MEMORY, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "FAMILY_HISTORY_MIGRATION_MEMORY: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "FAMILY_HISTORY_MIGRATION_MEMORY no puede usar payload repetido; debe producir una decisión específica conectada a 07_FAMILY_HISTORY_AND_MIGRATION_MEMORY.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "CHILDHOOD_FORMATIVE_CONTEXT",
+      "purpose": "Crea formación temprana causal para disciplina y postura.",
+      "upstream_dependencies": [
+        "FAMILY_HISTORY_MIGRATION_MEMORY"
+      ],
+      "downstream_effects": [
+        "EDUCATION_TRAINING_DISCIPLINE"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "08_CHILDHOOD_AND_FORMATIVE_CONTEXT"
+      ],
+      "required_fields": [
+        "infancia",
+        "actividades",
+        "referentes"
+      ],
+      "prompt_effect": "Explica microgestos, confianza y estilo de movimiento.",
+      "QA_rule": "PASS solo si CHILDHOOD_FORMATIVE_CONTEXT tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_CHILDHOOD_FORMATIVE_CONTEXT: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "childhood_formative_context_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "CHILDHOOD_FORMATIVE_CONTEXT: PASS cuando el output conserva 08_CHILDHOOD_AND_FORMATIVE_CONTEXT, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "CHILDHOOD_FORMATIVE_CONTEXT: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "CHILDHOOD_FORMATIVE_CONTEXT no puede usar payload repetido; debe producir una decisión específica conectada a 08_CHILDHOOD_AND_FORMATIVE_CONTEXT.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "EDUCATION_TRAINING_DISCIPLINE",
+      "purpose": "Define entrenamiento verificable: danza, foto, música, actuación o negocio.",
+      "upstream_dependencies": [
+        "CHILDHOOD_FORMATIVE_CONTEXT"
+      ],
+      "downstream_effects": [
+        "PROFESSION_CREATIVE_PATH"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "09_EDUCATION_TRAINING_AND_DISCIPLINE"
+      ],
+      "required_fields": [
+        "estudios",
+        "práctica",
+        "certificaciones internas"
+      ],
+      "prompt_effect": "Evita talentos mágicos; cada habilidad exige origen.",
+      "QA_rule": "PASS solo si EDUCATION_TRAINING_DISCIPLINE tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_EDUCATION_TRAINING_DISCIPLINE: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "education_training_discipline_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "EDUCATION_TRAINING_DISCIPLINE: PASS cuando el output conserva 09_EDUCATION_TRAINING_AND_DISCIPLINE, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "EDUCATION_TRAINING_DISCIPLINE: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "EDUCATION_TRAINING_DISCIPLINE no puede usar payload repetido; debe producir una decisión específica conectada a 09_EDUCATION_TRAINING_AND_DISCIPLINE.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "PROFESSION_CREATIVE_PATH",
+      "purpose": "Ordena trayectoria profesional y credibilidad creativa.",
+      "upstream_dependencies": [
+        "EDUCATION_TRAINING_DISCIPLINE"
+      ],
+      "downstream_effects": [
+        "VALUES_ETHICS_LIMITS"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "10_PROFESSION_ROLE_AND_CREATIVE_PATH"
+      ],
+      "required_fields": [
+        "ocupación",
+        "portafolio",
+        "rutina"
+      ],
+      "prompt_effect": "Condiciona vestuario laboral, lenguaje y props.",
+      "QA_rule": "PASS solo si PROFESSION_CREATIVE_PATH tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_PROFESSION_CREATIVE_PATH: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "profession_creative_path_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "PROFESSION_CREATIVE_PATH: PASS cuando el output conserva 10_PROFESSION_ROLE_AND_CREATIVE_PATH, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "PROFESSION_CREATIVE_PATH: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "PROFESSION_CREATIVE_PATH no puede usar payload repetido; debe producir una decisión específica conectada a 10_PROFESSION_ROLE_AND_CREATIVE_PATH.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "VALUES_ETHICS_LIMITS",
+      "purpose": "Fija límites editoriales, consentimiento y valores.",
+      "upstream_dependencies": [
+        "PROFESSION_CREATIVE_PATH"
+      ],
+      "downstream_effects": [
+        "PSYCHOLOGY_EMOTIONAL_BASELINE"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "11_VALUES_ETHICS_AND_PERSONAL_LIMITS"
+      ],
+      "required_fields": [
+        "valores",
+        "do-not-say",
+        "boundaries"
+      ],
+      "prompt_effect": "Reformula pedidos riesgosos a versión adulta editorial segura.",
+      "QA_rule": "PASS solo si VALUES_ETHICS_LIMITS tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_VALUES_ETHICS_LIMITS: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "values_ethics_limits_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "VALUES_ETHICS_LIMITS: PASS cuando el output conserva 11_VALUES_ETHICS_AND_PERSONAL_LIMITS, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "VALUES_ETHICS_LIMITS: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "VALUES_ETHICS_LIMITS no puede usar payload repetido; debe producir una decisión específica conectada a 11_VALUES_ETHICS_AND_PERSONAL_LIMITS.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "PSYCHOLOGY_EMOTIONAL_BASELINE",
+      "purpose": "Establece temperamento, motivación y respuesta emocional base.",
+      "upstream_dependencies": [
+        "VALUES_ETHICS_LIMITS"
+      ],
+      "downstream_effects": [
+        "INNER_CONFLICTS_ASPIRATIONS"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "12_PSYCHOLOGY_PERSONALITY_AND_EMOTIONAL_BASELINE"
+      ],
+      "required_fields": [
+        "rasgos",
+        "baseline",
+        "activadores"
+      ],
+      "prompt_effect": "Evita actuación plana y modula mirada, postura y voz.",
+      "QA_rule": "PASS solo si PSYCHOLOGY_EMOTIONAL_BASELINE tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_PSYCHOLOGY_EMOTIONAL_BASELINE: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "psychology_emotional_baseline_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "PSYCHOLOGY_EMOTIONAL_BASELINE: PASS cuando el output conserva 12_PSYCHOLOGY_PERSONALITY_AND_EMOTIONAL_BASELINE, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "PSYCHOLOGY_EMOTIONAL_BASELINE: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "PSYCHOLOGY_EMOTIONAL_BASELINE no puede usar payload repetido; debe producir una decisión específica conectada a 12_PSYCHOLOGY_PERSONALITY_AND_EMOTIONAL_BASELINE.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "INNER_CONFLICTS_ASPIRATIONS",
+      "purpose": "Conecta deseo, conflicto y objetivo de escena.",
+      "upstream_dependencies": [
+        "PSYCHOLOGY_EMOTIONAL_BASELINE"
+      ],
+      "downstream_effects": [
+        "WORLDVIEW_CULTURAL_REFERENCES"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "13_INTERNAL_CONFLICTS_ASPIRATIONS_AND_DRIVES"
+      ],
+      "required_fields": [
+        "aspiración",
+        "miedo",
+        "drive"
+      ],
+      "prompt_effect": "Da subtexto al acting y copy sin melodrama genérico.",
+      "QA_rule": "PASS solo si INNER_CONFLICTS_ASPIRATIONS tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_INNER_CONFLICTS_ASPIRATIONS: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "inner_conflicts_aspirations_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "INNER_CONFLICTS_ASPIRATIONS: PASS cuando el output conserva 13_INTERNAL_CONFLICTS_ASPIRATIONS_AND_DRIVES, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "INNER_CONFLICTS_ASPIRATIONS: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "INNER_CONFLICTS_ASPIRATIONS no puede usar payload repetido; debe producir una decisión específica conectada a 13_INTERNAL_CONFLICTS_ASPIRATIONS_AND_DRIVES.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "WORLDVIEW_CULTURAL_REFERENCES",
+      "purpose": "Selecciona referencias culturales seguras y locales cuando aplica.",
+      "upstream_dependencies": [
+        "INNER_CONFLICTS_ASPIRATIONS"
+      ],
+      "downstream_effects": [
+        "FACE_FORENSIC_STRUCTURE"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "15_WORLDVIEW_AND_CULTURAL_REFERENCES"
+      ],
+      "required_fields": [
+        "música",
+        "estética",
+        "referentes",
+        "PROJECT_DECLARED_LOCALITY"
+      ],
+      "prompt_effect": "Aporta textura cultural sin estereotipos ni marcas.",
+      "QA_rule": "PASS solo si WORLDVIEW_CULTURAL_REFERENCES tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_WORLDVIEW_CULTURAL_REFERENCES: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "worldview_cultural_references_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "WORLDVIEW_CULTURAL_REFERENCES: PASS cuando el output conserva 15_WORLDVIEW_AND_CULTURAL_REFERENCES, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "WORLDVIEW_CULTURAL_REFERENCES: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "WORLDVIEW_CULTURAL_REFERENCES no puede usar payload repetido; debe producir una decisión específica conectada a 15_WORLDVIEW_AND_CULTURAL_REFERENCES.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "FACE_FORENSIC_STRUCTURE",
+      "purpose": "Define landmarks faciales, asimetrías y marcadores.",
+      "upstream_dependencies": [
+        "WORLDVIEW_CULTURAL_REFERENCES"
+      ],
+      "downstream_effects": [
+        "SKIN_HAIR_GROOMING_REALISM"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "16_FACE_FORENSIC_LANDMARKS"
+      ],
+      "required_fields": [
+        "ojos",
+        "nariz",
+        "boca",
+        "simetría",
+        "marcas"
+      ],
+      "prompt_effect": "Bloquea same-face y drift de rostro.",
+      "QA_rule": "PASS solo si FACE_FORENSIC_STRUCTURE tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "FACE-DRIFT",
+        "SAME-FACE"
+      ],
+      "fallback_fix": "FALLBACK_FACE_FORENSIC_STRUCTURE: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "face_forensic_structure_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "FACE_FORENSIC_STRUCTURE: PASS cuando el output conserva 16_FACE_FORENSIC_LANDMARKS, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "FACE_FORENSIC_STRUCTURE: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "FACE_FORENSIC_STRUCTURE no puede usar payload repetido; debe producir una decisión específica conectada a 16_FACE_FORENSIC_LANDMARKS.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "SKIN_HAIR_GROOMING_REALISM",
+      "purpose": "Controla piel, subtone, cabello, marcas y grooming físico.",
+      "upstream_dependencies": [
+        "FACE_FORENSIC_STRUCTURE"
+      ],
+      "downstream_effects": [
+        "BODY_ANTHROPOMETRY_FITNESS"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "20_SKIN_TONE_SUBTONE_TEXTURE_AND_MARKS"
+      ],
+      "required_fields": [
+        "piel",
+        "textura",
+        "cabello",
+        "cuidado"
+      ],
+      "prompt_effect": "Evita piel plástica, cabello imposible y cambios de tono.",
+      "QA_rule": "PASS solo si SKIN_HAIR_GROOMING_REALISM tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_SKIN_HAIR_GROOMING_REALISM: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "skin_hair_grooming_realism_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "SKIN_HAIR_GROOMING_REALISM: PASS cuando el output conserva 20_SKIN_TONE_SUBTONE_TEXTURE_AND_MARKS, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "SKIN_HAIR_GROOMING_REALISM: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "SKIN_HAIR_GROOMING_REALISM no puede usar payload repetido; debe producir una decisión específica conectada a 20_SKIN_TONE_SUBTONE_TEXTURE_AND_MARKS.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "BODY_ANTHROPOMETRY_FITNESS",
+      "purpose": "Fija proporciones, fitness y silueta adulta no genérica.",
+      "upstream_dependencies": [
+        "SKIN_HAIR_GROOMING_REALISM"
+      ],
+      "downstream_effects": [
+        "POSTURE_BALANCE_MOVEMENT"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "22_BODY_ANTHROPOMETRY_PROPORTIONS_AND_FITNESS"
+      ],
+      "required_fields": [
+        "estatura",
+        "masa",
+        "cintura/cadera/hombros"
+      ],
+      "prompt_effect": "Bloquea same-body y anatomía inconsistente.",
+      "QA_rule": "PASS solo si BODY_ANTHROPOMETRY_FITNESS tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "BODY-DRIFT",
+        "SAME-BODY",
+        "ENV-GRAV"
+      ],
+      "fallback_fix": "FALLBACK_BODY_ANTHROPOMETRY_FITNESS: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "body_anthropometry_fitness_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "BODY_ANTHROPOMETRY_FITNESS: PASS cuando el output conserva 22_BODY_ANTHROPOMETRY_PROPORTIONS_AND_FITNESS, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "BODY_ANTHROPOMETRY_FITNESS: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "BODY_ANTHROPOMETRY_FITNESS no puede usar payload repetido; debe producir una decisión específica conectada a 22_BODY_ANTHROPOMETRY_PROPORTIONS_AND_FITNESS.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "POSTURE_BALANCE_MOVEMENT",
+      "purpose": "Define centro de gravedad, postura y biomecánica.",
+      "upstream_dependencies": [
+        "BODY_ANTHROPOMETRY_FITNESS"
+      ],
+      "downstream_effects": [
+        "VOICE_ACCENT_SOCIOLECT"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "23_POSTURE_BALANCE_CENTER_OF_GRAVITY"
+      ],
+      "required_fields": [
+        "postura",
+        "walk cycle",
+        "balance"
+      ],
+      "prompt_effect": "Evita poses flotantes, manos sin intención y contacto falso.",
+      "QA_rule": "PASS solo si POSTURE_BALANCE_MOVEMENT tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "BODY-DRIFT",
+        "SAME-BODY",
+        "ENV-GRAV"
+      ],
+      "fallback_fix": "FALLBACK_POSTURE_BALANCE_MOVEMENT: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "posture_balance_movement_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "POSTURE_BALANCE_MOVEMENT: PASS cuando el output conserva 23_POSTURE_BALANCE_CENTER_OF_GRAVITY, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "POSTURE_BALANCE_MOVEMENT: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "POSTURE_BALANCE_MOVEMENT no puede usar payload repetido; debe producir una decisión específica conectada a 23_POSTURE_BALANCE_CENTER_OF_GRAVITY.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "VOICE_ACCENT_SOCIOLECT",
+      "purpose": "Crea timbre, acento, prosodia y ritmo verbal.",
+      "upstream_dependencies": [
+        "POSTURE_BALANCE_MOVEMENT"
+      ],
+      "downstream_effects": [
+        "DIALOGUE_PERSONA_FIRST_PERSON"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_036_VOZ_DIALOGO_PERSONA"
+      ],
+      "Profile360_sections": [
+        "27_VOICE_TIMBRE_AGE_ACCENT_AND_PROSODY"
+      ],
+      "required_fields": [
+        "voz",
+        "edad vocal",
+        "sociolecto"
+      ],
+      "prompt_effect": "Bloquea same-voice y frases sin personalidad.",
+      "QA_rule": "PASS solo si VOICE_ACCENT_SOCIOLECT tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "VOICE-DRIFT",
+        "SAME-VOICE"
+      ],
+      "fallback_fix": "FALLBACK_VOICE_ACCENT_SOCIOLECT: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "voice_accent_sociolect_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "VOICE_ACCENT_SOCIOLECT: PASS cuando el output conserva 27_VOICE_TIMBRE_AGE_ACCENT_AND_PROSODY, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "VOICE_ACCENT_SOCIOLECT: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "VOICE_ACCENT_SOCIOLECT no puede usar payload repetido; debe producir una decisión específica conectada a 27_VOICE_TIMBRE_AGE_ACCENT_AND_PROSODY.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "DIALOGUE_PERSONA_FIRST_PERSON",
+      "purpose": "Permite conversar como modelo sin afirmar conciencia real.",
+      "upstream_dependencies": [
+        "VOICE_ACCENT_SOCIOLECT"
+      ],
+      "downstream_effects": [
+        "WARDROBE_TEXTILE_FIT"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_036_VOZ_DIALOGO_PERSONA"
+      ],
+      "Profile360_sections": [
+        "29_DIALOGUE_PERSONA_AND_FIRST_PERSON_RULES"
+      ],
+      "required_fields": [
+        "persona_voice",
+        "límites",
+        "ejemplos"
+      ],
+      "prompt_effect": "Da primera persona consistente y salida de personaje para QA.",
+      "QA_rule": "PASS solo si DIALOGUE_PERSONA_FIRST_PERSON tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_DIALOGUE_PERSONA_FIRST_PERSON: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "dialogue_persona_first_person_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "DIALOGUE_PERSONA_FIRST_PERSON: PASS cuando el output conserva 29_DIALOGUE_PERSONA_AND_FIRST_PERSON_RULES, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "DIALOGUE_PERSONA_FIRST_PERSON: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "DIALOGUE_PERSONA_FIRST_PERSON no puede usar payload repetido; debe producir una decisión específica conectada a 29_DIALOGUE_PERSONA_AND_FIRST_PERSON_RULES.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "WARDROBE_TEXTILE_FIT",
+      "purpose": "Sistema de ropa, textiles, fit, gravedad y capas.",
+      "upstream_dependencies": [
+        "DIALOGUE_PERSONA_FIRST_PERSON"
+      ],
+      "downstream_effects": [
+        "ACCESSORIES_PROPS_ANCHORING"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "Profile360_sections": [
+        "36_WARDROBE_IDENTITY_STYLE_SYSTEM"
+      ],
+      "required_fields": [
+        "ropa",
+        "tela",
+        "clima",
+        "cuerpo"
+      ],
+      "prompt_effect": "Evita clipping, talla imposible y outfit sin identidad.",
+      "QA_rule": "PASS solo si WARDROBE_TEXTILE_FIT tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_WARDROBE_TEXTILE_FIT: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "wardrobe_textile_fit_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "WARDROBE_TEXTILE_FIT: PASS cuando el output conserva 36_WARDROBE_IDENTITY_STYLE_SYSTEM, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "WARDROBE_TEXTILE_FIT: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "WARDROBE_TEXTILE_FIT no puede usar payload repetido; debe producir una decisión específica conectada a 36_WARDROBE_IDENTITY_STYLE_SYSTEM.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "ACCESSORIES_PROPS_ANCHORING",
+      "purpose": "Ancla accesorios y props con contacto físico real.",
+      "upstream_dependencies": [
+        "WARDROBE_TEXTILE_FIT"
+      ],
+      "downstream_effects": [
+        "ENVIRONMENTS_COMPATIBLE"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "Profile360_sections": [
+        "39_ACCESSORIES_PROPS_AND_PHYSICAL_ANCHORING"
+      ],
+      "required_fields": [
+        "props",
+        "joyería",
+        "lentes",
+        "soporte"
+      ],
+      "prompt_effect": "Exige sombra, oclusión, escala y puntos de agarre.",
+      "QA_rule": "PASS solo si ACCESSORIES_PROPS_ANCHORING tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "ENV-SCALE",
+        "ENV-PERSP",
+        "ENV-LIGHT",
+        "ENV-COLL"
+      ],
+      "fallback_fix": "FALLBACK_ACCESSORIES_PROPS_ANCHORING: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "accessories_props_anchoring_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "ACCESSORIES_PROPS_ANCHORING: PASS cuando el output conserva 39_ACCESSORIES_PROPS_AND_PHYSICAL_ANCHORING, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "ACCESSORIES_PROPS_ANCHORING: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "ACCESSORIES_PROPS_ANCHORING no puede usar payload repetido; debe producir una decisión específica conectada a 39_ACCESSORIES_PROPS_AND_PHYSICAL_ANCHORING.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "ENVIRONMENTS_COMPATIBLE",
+      "purpose": "Lista ambientes compatibles y restricciones de coherencia.",
+      "upstream_dependencies": [
+        "ACCESSORIES_PROPS_ANCHORING"
+      ],
+      "downstream_effects": [
+        "SCENE_ARCHITECTURE_PRODUCTION_DESIGN"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "Profile360_sections": [
+        "40_ENVIRONMENTS_COMPATIBLE_WITH_MODEL"
+      ],
+      "required_fields": [
+        "escena",
+        "localidad",
+        "actividad"
+      ],
+      "prompt_effect": "Reduce fondos aleatorios y mejora continuity.",
+      "QA_rule": "PASS solo si ENVIRONMENTS_COMPATIBLE tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "ENV-SCALE",
+        "ENV-PERSP",
+        "ENV-LIGHT",
+        "ENV-COLL"
+      ],
+      "fallback_fix": "FALLBACK_ENVIRONMENTS_COMPATIBLE: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "environments_compatible_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "ENVIRONMENTS_COMPATIBLE: PASS cuando el output conserva 40_ENVIRONMENTS_COMPATIBLE_WITH_MODEL, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "ENVIRONMENTS_COMPATIBLE: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "ENVIRONMENTS_COMPATIBLE no puede usar payload repetido; debe producir una decisión específica conectada a 40_ENVIRONMENTS_COMPATIBLE_WITH_MODEL.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "SCENE_ARCHITECTURE_PRODUCTION_DESIGN",
+      "purpose": "Controla piso, pared, techo, escala, set dressing y blocking.",
+      "upstream_dependencies": [
+        "ENVIRONMENTS_COMPATIBLE"
+      ],
+      "downstream_effects": [
+        "CAMERA_LIGHT_COMPOSITION"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "Profile360_sections": [
+        "42_SCENE_ARCHITECTURE_SPACE_AND_PRODUCTION_DESIGN"
+      ],
+      "required_fields": [
+        "arquitectura",
+        "props",
+        "planos"
+      ],
+      "prompt_effect": "Activa SRC049 y fail codes ENV-* para escena física.",
+      "QA_rule": "PASS solo si SCENE_ARCHITECTURE_PRODUCTION_DESIGN tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "ENV-SCALE",
+        "ENV-PERSP",
+        "ENV-LIGHT",
+        "ENV-COLL"
+      ],
+      "fallback_fix": "FALLBACK_SCENE_ARCHITECTURE_PRODUCTION_DESIGN: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "scene_architecture_production_design_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "SCENE_ARCHITECTURE_PRODUCTION_DESIGN: PASS cuando el output conserva 42_SCENE_ARCHITECTURE_SPACE_AND_PRODUCTION_DESIGN, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "SCENE_ARCHITECTURE_PRODUCTION_DESIGN: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "SCENE_ARCHITECTURE_PRODUCTION_DESIGN no puede usar payload repetido; debe producir una decisión específica conectada a 42_SCENE_ARCHITECTURE_SPACE_AND_PRODUCTION_DESIGN.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "CAMERA_LIGHT_COMPOSITION",
+      "purpose": "Define cámara, lente, encuadre, luz, sombras y reflejos.",
+      "upstream_dependencies": [
+        "SCENE_ARCHITECTURE_PRODUCTION_DESIGN"
+      ],
+      "downstream_effects": [
+        "IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "Profile360_sections": [
+        "43_CAMERA_LENS_FRAMING_AND_COMPOSITION"
+      ],
+      "required_fields": [
+        "focal",
+        "ángulo",
+        "key/fill/rim",
+        "WB"
+      ],
+      "prompt_effect": "Evita perspectiva rota y luz imposible.",
+      "QA_rule": "PASS solo si CAMERA_LIGHT_COMPOSITION tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "ENV-SCALE",
+        "ENV-PERSP",
+        "ENV-LIGHT",
+        "ENV-COLL"
+      ],
+      "fallback_fix": "FALLBACK_CAMERA_LIGHT_COMPOSITION: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "camera_light_composition_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "CAMERA_LIGHT_COMPOSITION: PASS cuando el output conserva 43_CAMERA_LENS_FRAMING_AND_COMPOSITION, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "CAMERA_LIGHT_COMPOSITION: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "CAMERA_LIGHT_COMPOSITION no puede usar payload repetido; debe producir una decisión específica conectada a 43_CAMERA_LENS_FRAMING_AND_COMPOSITION.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS",
+      "purpose": "Compila outputs multimodales con voz de modelo y QA.",
+      "upstream_dependencies": [
+        "CAMERA_LIGHT_COMPOSITION"
+      ],
+      "downstream_effects": [
+        "QA_FAILCODES_FALLBACKS"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_049_ENV_PHYSICS_FULL10",
+        "SRC_036_VOZ_DIALOGO_PERSONA"
+      ],
+      "Profile360_sections": [
+        "47_IMAGE_PROMPT_MASTER_RULES"
+      ],
+      "required_fields": [
+        "modality",
+        "vendor",
+        "prompt pack"
+      ],
+      "prompt_effect": "Mantiene consistencia entre imagen, video, voz, Suno, texto.",
+      "QA_rule": "PASS solo si IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING",
+        "VOICE-DRIFT",
+        "SAME-VOICE"
+      ],
+      "fallback_fix": "FALLBACK_IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "image_video_voice_music_text_outputs_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS: PASS cuando el output conserva 47_IMAGE_PROMPT_MASTER_RULES, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS no puede usar payload repetido; debe producir una decisión específica conectada a 47_IMAGE_PROMPT_MASTER_RULES.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "QA_FAILCODES_FALLBACKS",
+      "purpose": "Ejecuta QA, fail codes y fallback fixes por modalidad.",
+      "upstream_dependencies": [
+        "IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS"
+      ],
+      "downstream_effects": [
+        "SIDECAR_HASH_LINEAGE"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "55_FAIL_CODES_AND_FALLBACK_FIXES"
+      ],
+      "required_fields": [
+        "qa",
+        "validator",
+        "evidencia"
+      ],
+      "prompt_effect": "Ningún PASS sin evidencia ejecutable.",
+      "QA_rule": "PASS solo si QA_FAILCODES_FALLBACKS tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_QA_FAILCODES_FALLBACKS: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "qa_failcodes_fallbacks_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "QA_FAILCODES_FALLBACKS: PASS cuando el output conserva 55_FAIL_CODES_AND_FALLBACK_FIXES, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "QA_FAILCODES_FALLBACKS: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "QA_FAILCODES_FALLBACKS no puede usar payload repetido; debe producir una decisión específica conectada a 55_FAIL_CODES_AND_FALLBACK_FIXES.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    },
+    {
+      "node_id": "SIDECAR_HASH_LINEAGE",
+      "purpose": "Registra trazabilidad, sidecar, hashes y changelog.",
+      "upstream_dependencies": [
+        "QA_FAILCODES_FALLBACKS"
+      ],
+      "downstream_effects": [
+        "FINAL_OUTPUT_QA_GATE_AND_DELIVERY_DECISION"
+      ],
+      "source_ids": [
+        "SRC_001_ONTOLOG_A_IDUNEX_360",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz"
+      ],
+      "Profile360_sections": [
+        "56_SIDECAR_REQUIRED_FIELDS"
+      ],
+      "required_fields": [
+        "sidecar",
+        "SHA",
+        "source trace"
+      ],
+      "prompt_effect": "No permite entrega sin lineage reproducible.",
+      "QA_rule": "PASS solo si SIDECAR_HASH_LINEAGE tiene source_trace, efecto visible/audible y sidecar evidence; FAIL si opera como texto genérico.",
+      "fail_codes": [
+        "ID-DRIFT",
+        "SOURCE-TRACE-MISSING"
+      ],
+      "fallback_fix": "FALLBACK_SIDECAR_HASH_LINEAGE: volver al Project Core, resolver campos requeridos, bloquear drift y regenerar solo la cláusula afectada.",
+      "sidecar_fields": [
+        "sidecar_hash_lineage_evidence",
+        "source_ids_used",
+        "field_ids_used",
+        "qa_result",
+        "fallbacks_applied"
+      ],
+      "PASS_example": "SIDECAR_HASH_LINEAGE: PASS cuando el output conserva 56_SIDECAR_REQUIRED_FIELDS, usa SRC_001_ONTOLOG_A_IDUNEX_360 y registra evidencia en sidecar.",
+      "FAIL_example": "SIDECAR_HASH_LINEAGE: FAIL cuando dos modelos comparten rasgos/voz/escena o el prompt no muestra causa verificable.",
+      "anti_generic_rule": "SIDECAR_HASH_LINEAGE no puede usar payload repetido; debe producir una decisión específica conectada a 56_SIDECAR_REQUIRED_FIELDS.",
+      "anti_same_face_body_voice_effect": "Aplica según dimensión: rostro/body/voice deben diferenciarse por anchors, proporciones, prosodia y sidecar de unicidad; no usar plantillas idénticas."
+    }
+  ],
+  "edges": [
+    {
+      "from": "PROJECT_PURPOSE",
+      "to": "MODEL_ROLE_IN_PROJECT",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "MODEL_ROLE_IN_PROJECT",
+      "to": "MODEL_UNIQUENESS_SLOT",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "MODEL_UNIQUENESS_SLOT",
+      "to": "IDENTITY_CANON",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "IDENTITY_CANON",
+      "to": "BIRTHPLACE_COUNTRY_CITY_DISTRICT",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "BIRTHPLACE_COUNTRY_CITY_DISTRICT",
+      "to": "LOCALITY_SOCIAL_ENVIRONMENT",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "LOCALITY_SOCIAL_ENVIRONMENT",
+      "to": "DESCENDANCE_SAFE_PHENOTYPE",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "DESCENDANCE_SAFE_PHENOTYPE",
+      "to": "FAMILY_HISTORY_MIGRATION_MEMORY",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "FAMILY_HISTORY_MIGRATION_MEMORY",
+      "to": "CHILDHOOD_FORMATIVE_CONTEXT",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "CHILDHOOD_FORMATIVE_CONTEXT",
+      "to": "EDUCATION_TRAINING_DISCIPLINE",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "EDUCATION_TRAINING_DISCIPLINE",
+      "to": "PROFESSION_CREATIVE_PATH",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "PROFESSION_CREATIVE_PATH",
+      "to": "VALUES_ETHICS_LIMITS",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "VALUES_ETHICS_LIMITS",
+      "to": "PSYCHOLOGY_EMOTIONAL_BASELINE",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "PSYCHOLOGY_EMOTIONAL_BASELINE",
+      "to": "INNER_CONFLICTS_ASPIRATIONS",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "INNER_CONFLICTS_ASPIRATIONS",
+      "to": "WORLDVIEW_CULTURAL_REFERENCES",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "WORLDVIEW_CULTURAL_REFERENCES",
+      "to": "FACE_FORENSIC_STRUCTURE",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "FACE_FORENSIC_STRUCTURE",
+      "to": "SKIN_HAIR_GROOMING_REALISM",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "SKIN_HAIR_GROOMING_REALISM",
+      "to": "BODY_ANTHROPOMETRY_FITNESS",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "BODY_ANTHROPOMETRY_FITNESS",
+      "to": "POSTURE_BALANCE_MOVEMENT",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "POSTURE_BALANCE_MOVEMENT",
+      "to": "VOICE_ACCENT_SOCIOLECT",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "VOICE_ACCENT_SOCIOLECT",
+      "to": "DIALOGUE_PERSONA_FIRST_PERSON",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "DIALOGUE_PERSONA_FIRST_PERSON",
+      "to": "WARDROBE_TEXTILE_FIT",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "WARDROBE_TEXTILE_FIT",
+      "to": "ACCESSORIES_PROPS_ANCHORING",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "ACCESSORIES_PROPS_ANCHORING",
+      "to": "ENVIRONMENTS_COMPATIBLE",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "ENVIRONMENTS_COMPATIBLE",
+      "to": "SCENE_ARCHITECTURE_PRODUCTION_DESIGN",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "SCENE_ARCHITECTURE_PRODUCTION_DESIGN",
+      "to": "CAMERA_LIGHT_COMPOSITION",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "CAMERA_LIGHT_COMPOSITION",
+      "to": "IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "IMAGE_VIDEO_VOICE_MUSIC_TEXT_OUTPUTS",
+      "to": "QA_FAILCODES_FALLBACKS",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    },
+    {
+      "from": "QA_FAILCODES_FALLBACKS",
+      "to": "SIDECAR_HASH_LINEAGE",
+      "rule": "causal_order_required",
+      "block_if_missing": true
+    }
+  ],
+  "pairwise_uniqueness": {
+    "no_same_face": true,
+    "no_same_body": true,
+    "no_same_voice": true,
+    "comparison_rule": "cada modelo se compara contra todos los demás antes de lock; si comparte marcador principal, FAIL.",
+    "sidecar_evidence_field": "pairwise_uniqueness_matrix"
+  },
+  "updated_at": "NEUTRALIZED_ACTIVE_SCOPE"
+}

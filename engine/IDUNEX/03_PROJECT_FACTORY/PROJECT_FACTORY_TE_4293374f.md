@@ -1,0 +1,27 @@
+# PROJECT_FACTORY_TECH_EXT_EXPORT_CONTRACT
+
+Project Factory must export Profile360 Technical Extensions FULL10 into every generated project.
+
+## Required project folders
+- PROJECT_CORE/09_PROFILE360_TECH_EXT/
+- PROJECT_CORE/10_AGENT_RUNTIME_GOVERNANCE/
+- PROJECT_CORE/11_MASTER_VISUAL_ANCHORS/
+- PROJECT_CORE/12_OUTPUT_PROVENANCE/
+- PROJECT_CORE/13_VENDOR_EXECUTION_CHECKLISTS/
+
+## Per-model JSON export
+For each MODEL_###, export BODY360, FACE360, SKIN360, HAIR360, HANDS_FEET360, WARDROBE360, MOTION360, VOICE360, EXPRESSION360, CAMERA360, LIGHTING360 and ENVIRONMENT360 JSON.
+
+## Runtime file count
+TechExt JSON files are Project Core evidence and do not count toward AGENT_RUNTIME_FILES_MAX=20.
+CHATGPT remains 10 core .md + 1 Profile360 .md per model.
+COPILOT remains 10 core .docx + 1 Profile360 .docx per model.
+
+## Validators
+- VALIDATE_PROJECT_FACTORY_TECH_EXT_EXPORT
+- VALIDATE_FINAL_PROJECT_REGENERATION_VALIDATORS
+- VALIDATE_AGENT_PACK_NOLOSS_COMPILATION_POLICY
+
+## P0 pre-cierre export additions
+
+Project Factory must export PROJECT_CORE/07_SOURCE_TRACE with SOURCE_RUNTIME_LEDGER_MINIFIED files, PROJECT_CORE/14_GOLDEN_TESTS with project golden tests, and MODEL_ALIAS_RESOLVER_AND_AUTOLOAD into runtime governance.

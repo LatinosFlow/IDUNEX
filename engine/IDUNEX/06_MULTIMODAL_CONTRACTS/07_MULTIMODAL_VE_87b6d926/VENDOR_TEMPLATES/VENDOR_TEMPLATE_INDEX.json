@@ -1,0 +1,13 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "vendors": [
+    "ELEVENLABS",
+    "SUNO",
+    "RUNWAY",
+    "PIKA",
+    "KLING",
+    "LUMA",
+    "HEYGEN"
+  ],
+  "sidecar_hash_lineage_required": true
+}

@@ -1,0 +1,28 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "states": [
+    "ENGINE_PRE_CLOSURE_PATCHABLE",
+    "ENGINE_FINAL_RELEASE_GATE_PENDING",
+    "ENGINE_FINAL_RELEASE_GATE_PASS",
+    "ENGINE_FINAL_RELEASE_GATE_BLOCKED",
+    "ENGINE_ARCHIVED_READONLY"
+  ],
+  "current_state_after_p0": "ENGINE_FINAL_RELEASE_GATE_PASS_RECOMPUTED_EXTERNAL_COMPANION_VALIDATION",
+  "forbidden_states_for_this_patch": [
+    "RC",
+    "v1.0.1",
+    "v1.0.0-final",
+    "v1.0.0-fixed",
+    "fork"
+  ],
+  "transition_requirements": {
+    "to_pass": [
+      "0_fail",
+      "0_empty_required_fields",
+      "all_json_valid",
+      "agent_configs_8000",
+      "sha_companion_match",
+      "manual_certificate_consistent"
+    ]
+  }
+}

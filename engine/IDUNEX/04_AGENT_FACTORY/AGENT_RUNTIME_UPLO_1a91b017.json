@@ -1,0 +1,20 @@
+{
+  "contract_id": "AGENT_RUNTIME_UPLOAD_SET_MANIFEST_CONTRACT",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "manifest_paths_required": [
+    "03_CHATGPT_AGENT/AGENT_RUNTIME_UPLOAD_SET_MANIFEST.json",
+    "04_COPILOT_AGENT/AGENT_RUNTIME_UPLOAD_SET_MANIFEST.json"
+  ],
+  "entry_contract": {
+    "file_role": "required",
+    "active_runtime": "must be true for upload manifest entries",
+    "model_id": "required for model profiles only",
+    "sha256": "required",
+    "source_path": "required",
+    "contract_gate_status": "PASS required"
+  },
+  "exact_formula": "10 core IDUNEX + N MODEL_RUNTIME_PROFILE_FULL",
+  "non_runtime_manifest_required": "AGENT_NON_RUNTIME_REFERENCE_MANIFEST.json"
+}

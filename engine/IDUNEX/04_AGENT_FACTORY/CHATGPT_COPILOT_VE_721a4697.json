@@ -1,0 +1,9 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "tools": [
+    "ChatGPT",
+    "Copilot 365",
+    "external_vendor"
+  ],
+  "rule": "choose tool by artifact and evidence requirement"
+}

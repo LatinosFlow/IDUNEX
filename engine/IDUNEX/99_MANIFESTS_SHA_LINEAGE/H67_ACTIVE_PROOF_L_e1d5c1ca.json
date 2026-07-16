@@ -1,0 +1,73 @@
+{
+  "proof_id": "H67_ACTIVE_PROOF_LEGACY_SCOPE_FULL_TREE_SCAN_PROOF",
+  "gate": "H67_ACTIVE_PROOF_LEGACY_SCOPE_FULL_TREE_SCANNER_GATE",
+  "scanner_scope": "full_active_tree_with_historical_non_authority_classification",
+  "result": "PASS",
+  "scanned_files": 1776,
+  "active_findings": [],
+  "active_findings_count": 0,
+  "historical_findings": [
+    {
+      "path": "12_HISTORICAL_NON_AUTHORITY/H67_DEMOTED_LEGACY_PROOFS/H22_H29_GENERICITY_AUDIT_PROOF.json.historical.json",
+      "tokens": [
+        "\"correction_scope_label\": \"H01_H29\""
+      ],
+      "authority_status": "historical_non_authority"
+    },
+    {
+      "path": "12_HISTORICAL_NON_AUTHORITY/H67_DEMOTED_LEGACY_PROOFS/H30_H36_FINAL_CANONICAL_AUDIT_PROOF.json.historical.json",
+      "tokens": [
+        "\"correction_scope_label\": \"H01_H36\""
+      ],
+      "authority_status": "historical_non_authority"
+    },
+    {
+      "path": "12_HISTORICAL_NON_AUTHORITY/H67_DEMOTED_LEGACY_PROOFS/P034_CHANGED_FILES_LEDGER.json.historical.json",
+      "tokens": [
+        "\"correction_scope_label\": \"H01_H36\""
+      ],
+      "authority_status": "historical_non_authority"
+    },
+    {
+      "path": "12_HISTORICAL_NON_AUTHORITY/H67_DEMOTED_LEGACY_PROOFS/P034_DIRECT_CORRECTIONS_H10_H14_PROOF.json.historical.json",
+      "tokens": [
+        "\"correction_scope_label\": \"H01_H21\""
+      ],
+      "authority_status": "historical_non_authority"
+    },
+    {
+      "path": "12_HISTORICAL_NON_AUTHORITY/H67_DEMOTED_LEGACY_PROOFS/P034_H18_H21_ADVERSARIAL_N10_GENERIC_COMPLETE_CLI_PROOF.json.historical.json",
+      "tokens": [
+        "\"correction_scope_label\": \"H01_H21\""
+      ],
+      "authority_status": "historical_non_authority"
+    },
+    {
+      "path": "12_HISTORICAL_NON_AUTHORITY/H67_DEMOTED_LEGACY_PROOFS/P034_MUTATION_TEST_RESULT.json.historical.json",
+      "tokens": [
+        "\"correction_scope_label\": \"H01_H29\""
+      ],
+      "authority_status": "historical_non_authority"
+    },
+    {
+      "path": "12_HISTORICAL_NON_AUTHORITY/H67_DEMOTED_LEGACY_PROOFS/P034_UPDATE_MIGRATION_CLI_SMOKE_REOPENED_PROOF.json.historical.json",
+      "tokens": [
+        "\"correction_scope_label\": \"H01_H21\""
+      ],
+      "authority_status": "historical_non_authority"
+    }
+  ],
+  "historical_findings_count": 7,
+  "pass_by_contract_active_findings": [],
+  "pass_by_contract_active_count": 0,
+  "representative_only_active_findings": [],
+  "representative_only_active_count": 0,
+  "allowed_metadata_surfaces": [
+    "VALIDATE_IDUNEX_RUNTIME.py",
+    "IDUNEX_PROJECT_FACTORY_v1.0.0.py constants/mutation fixtures",
+    "PROJECT_*_SCAN.json blocked token dictionaries",
+    "this H67 scanner proof"
+  ],
+  "authority_rule": "legacy scopes are allowed only under 12_HISTORICAL_NON_AUTHORITY with authority_status=historical_non_authority; active proof surfaces must not carry old scope labels as active authority",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

@@ -1,0 +1,41 @@
+{
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "visual_asset_states": [
+    "TEXTUAL_CANON_ONLY",
+    "CANDIDATE_VISUAL_ASSET",
+    "APPROVED_MASTER_VISUAL_ASSET",
+    "REGRESSION_READY_ANCHOR"
+  ],
+  "delivery_states": [
+    "NOT_EXECUTED",
+    "TOOL_ROUTING_FAILED",
+    "GENERATED_VISIBLE",
+    "GENERATED_VISIBLE_NOT_PACKAGED",
+    "DERIVED_ASSET_PENDING_REVIEW",
+    "TARGET_FILE_CREATED_PENDING_QA",
+    "EXECUTED_PENDING_REVIEW",
+    "EXECUTED_PASS",
+    "EXECUTED_FAIL",
+    "REPAIR_REQUIRED",
+    "BLOCKED_CANON_CONFLICT"
+  ],
+  "target_filename_enforcement": true,
+  "derived_asset_disclosure_required": true,
+  "creative_output_certified_global": false,
+  "asset_states_h248": [
+    "CANDIDATE_GENERATION",
+    "GENERATED_VISIBLE",
+    "GENERATED_VISIBLE_NOT_PACKAGED",
+    "TARGET_FILE_CREATED_PENDING_QA",
+    "EXECUTED_PENDING_REVIEW",
+    "EXECUTED_PASS",
+    "EXECUTED_FAIL",
+    "NOT_CERTIFIED"
+  ],
+  "watermark_postprocess_only": true,
+  "visible_watermark_not_verified_state": "VISIBLE_WATERMARK_NOT_VERIFIED",
+  "metadata_inside_generated_image_allowed": false,
+  "creative_output_certified": false,
+  "result": "PASS",
+  "fail_codes": []
+}

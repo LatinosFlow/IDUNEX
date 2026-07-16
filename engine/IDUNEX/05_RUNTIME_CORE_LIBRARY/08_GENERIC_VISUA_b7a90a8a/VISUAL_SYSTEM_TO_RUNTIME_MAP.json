@@ -1,0 +1,308 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "validation_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "release_state": "prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "mappings": [
+    {
+      "visual_source_id": "SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY",
+      "field_id": "brand_visual_identity",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_TRACE",
+      "fail_code": "FAIL_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY",
+      "field_id": "presentation_style",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_TRACE",
+      "fail_code": "FAIL_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY",
+      "field_id": "documentation_style",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_TRACE",
+      "fail_code": "FAIL_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY",
+      "field_id": "copilot_docx_branding",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_TRACE",
+      "fail_code": "FAIL_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY",
+      "field_id": "project_pack_visual_consistency",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_TRACE",
+      "fail_code": "FAIL_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_001_GENERIC_VISUAL_SYSTEM_LIBRARY_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM",
+      "field_id": "color_policy",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM",
+      "field_id": "presentation_style",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM",
+      "field_id": "documentation_style",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM",
+      "field_id": "copilot_docx_branding",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM",
+      "field_id": "project_pack_visual_consistency",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_002_PROJECT_BRAND_COLOR_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM",
+      "field_id": "typography_policy",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM",
+      "field_id": "presentation_style",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM",
+      "field_id": "documentation_style",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM",
+      "field_id": "copilot_docx_branding",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM",
+      "field_id": "project_pack_visual_consistency",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_003_GENERIC_VISUAL_SYSTEM_TYPOGRAPHY_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM",
+      "field_id": "tone_language_policy",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM",
+      "field_id": "presentation_style",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM",
+      "field_id": "documentation_style",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM",
+      "field_id": "copilot_docx_branding",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    {
+      "visual_source_id": "SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM",
+      "field_id": "project_pack_visual_consistency",
+      "runtime_domain": "visual_governance",
+      "adapter_targets": [
+        "copilot_docx",
+        "presentation",
+        "diagram",
+        "watermark"
+      ],
+      "qa_rule_id": "QA_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_TRACE",
+      "fail_code": "FAIL_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_DRIFT",
+      "fallback_id": "FALLBACK_SRC_VIS_004_GENERIC_VISUAL_SYSTEM_TONE_LANGUAGE_SYSTEM_RESTORE_CANON",
+      "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    }
+  ]
+}

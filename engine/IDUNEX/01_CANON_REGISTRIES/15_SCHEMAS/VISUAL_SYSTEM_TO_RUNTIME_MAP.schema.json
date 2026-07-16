@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-idunex-schema-policy": "PRODUCTIVE_BASE_ENGINE_SCHEMA; accepts current runtime fields, requires productive keys, forbids weakening by deleting useful JSON properties.",
+  "x-base-sha-audited": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-updated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "$id": "IDUNEX/15_SCHEMAS/VISUAL_SYSTEM_TO_RUNTIME_MAP.schema.json",
+  "title": "VISUAL_SYSTEM_TO_RUNTIME_MAP productive schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "engine_version",
+    "validation_state",
+    "release_state",
+    "legacy_global_go_policy",
+    "mappings"
+  ],
+  "properties": {
+    "engine_version": {
+      "const": "IDUNEX_MOTOR_v1.0.0"
+    },
+    "validation_state": {
+      "type": "string",
+      "minLength": 3
+    },
+    "release_state": {
+      "type": "string",
+      "minLength": 3
+    },
+    "legacy_global_go_policy": {
+      "type": "string",
+      "pattern": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    "mappings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "visual_source_id",
+          "field_id",
+          "runtime_domain",
+          "adapter_targets",
+          "qa_rule_id",
+          "fail_code",
+          "fallback_id",
+          "legacy_global_go_policy"
+        ]
+      }
+    }
+  },
+  "x-previous-base-sha256": "NON_OPERATIONAL_PREVIOUS_BASES_RECORDED_IN_REPORTS",
+  "x-previous-base-policy": "HISTORICAL_PREVIOUS_BASE_NOT_OPERATIONAL",
+  "x-correction-base-sha256": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-previous-base-marker": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-previous-base-do-not-use": "DO_NOT_USE_AS_BASE"
+}

@@ -1,0 +1,32 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "required_fields_per_model": [
+    "fictitious_full_name",
+    "model_id",
+    "model_code",
+    "aliases",
+    "visible_adult_age",
+    "role",
+    "unique_visual_differentiators",
+    "Face360_non_generic",
+    "Body360_complete",
+    "Voice360",
+    "Wardrobe360",
+    "Motion360",
+    "Scene_affinity",
+    "Suno_POV",
+    "anti_same_face",
+    "anti_age_ambiguity",
+    "anti_generic_beauty"
+  ],
+  "risk_metrics": [
+    "PAIRWISE_UNIQUENESS_SCORE",
+    "SAME_FACE_COLLAPSE_RISK",
+    "AGE_AMBIGUITY_RISK",
+    "GENERIC_MODEL_RISK",
+    "MODEL_DISTINCTIVENESS_PASS"
+  ],
+  "minimum_pairwise_uniqueness_score": "0.85_or_higher",
+  "fallback_fix": "If same-face or generic beauty risk rises, increase face landmarks, silhouette, origin-safe phenotype, voice, wardrobe and motion differentiators."
+}

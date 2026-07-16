@@ -1,0 +1,12 @@
+{
+  "gate_id": "H238_FULL_31_PROJECT_MATRIX_REAL_EXECUTION",
+  "case_count": 31,
+  "pass_count": 31,
+  "fail_count": 0,
+  "PROJECT_31_FULL_MATRIX_EXECUTED": "PASS",
+  "PROJECT_31_FULL_MATRIX_PASS_COUNT": "31/31",
+  "FULL_31_PROJECT_MATRIX_REAL_EXECUTION": "PASS",
+  "result": "PASS",
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

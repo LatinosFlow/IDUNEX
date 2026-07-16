@@ -1,0 +1,207 @@
+{
+  "status": "PASS",
+  "semantic_version": "v1.0.0",
+  "correction_scope_label": "H01_H51",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "gates": [
+    {
+      "gate_id": "H37",
+      "gate_name": "INPUT_RICH_DIRECTION_FIELDS_MATERIALIZATION_GATE",
+      "project_artifact": "INPUT_PROMPT_FIDELITY_LEDGER.json",
+      "failcodes": [
+        "FAIL_H37_INPUT_FIELD_NOT_MATERIALIZED",
+        "FAIL_H37_INPUT_FIELD_SUMMARIZED_AWAY",
+        "FAIL_H37_INPUT_FIELD_LOST_IN_RUNTIME",
+        "FAIL_H37_INPUT_FIELD_NO_QA_TRACE",
+        "FAIL_H37_INPUT_FIELD_PLACEHOLDER_ACTIVE"
+      ]
+    },
+    {
+      "gate_id": "H38",
+      "gate_name": "AGENT_UPLOAD_MANIFEST_GATE",
+      "project_artifact": "AGENT_RUNTIME_UPLOAD_SET_MANIFEST_CHATGPT.json",
+      "failcodes": [
+        "FAIL_H38_AGENT_RUNTIME_MANIFEST_MISSING",
+        "FAIL_H38_AGENT_RUNTIME_FILE_COUNT_MISMATCH",
+        "FAIL_H38_AGENT_RUNTIME_SHA_MISSING",
+        "FAIL_H38_NON_RUNTIME_MIXED_AS_RUNTIME",
+        "FAIL_H38_CHATGPT_COPILOT_UPLOAD_PARITY_BROKEN"
+      ]
+    },
+    {
+      "gate_id": "H39",
+      "gate_name": "GATE_TO_RUNTIME_CLAUSE_MAP_GATE",
+      "project_artifact": "ENGINE_GATE_TO_PROJECT_RUNTIME_CLAUSE_MAP.json",
+      "failcodes": [
+        "FAIL_H39_GATE_WITHOUT_RUNTIME_CLAUSE",
+        "FAIL_H39_GATE_WITHOUT_TEST_CASE",
+        "FAIL_H39_GATE_WITHOUT_FALLBACK",
+        "FAIL_H39_GATE_TRACE_NOT_PROJECT_MATERIALIZED"
+      ]
+    },
+    {
+      "gate_id": "H40",
+      "gate_name": "PROFILE360_TECHEXT_DENSITY_GATE",
+      "project_artifact": "PROFILE360_FIELD_DENSITY_AUDIT_ALL_MODELS.json",
+      "failcodes": [
+        "FAIL_H40_PROFILE360_DENSITY_LOW",
+        "FAIL_H40_TECHEXT_DENSITY_LOW",
+        "FAIL_H40_COUNT_ONLY_PASS_ATTEMPT",
+        "FAIL_H40_GENERIC_FIELD_VALUE",
+        "FAIL_H40_FIELD_NOT_PROMPT_USABLE",
+        "FAIL_H40_FIELD_NOT_QA_USABLE"
+      ]
+    },
+    {
+      "gate_id": "H41",
+      "gate_name": "PAIRWISE360_EXTERNAL_MATRIX_GATE",
+      "project_artifact": "PAIRWISE360_ALL_MODEL_PAIRS_MATRIX.json",
+      "failcodes": [
+        "FAIL_H41_PAIRWISE_MATRIX_MISSING",
+        "FAIL_H41_PAIRWISE_PAIR_COUNT_MISMATCH",
+        "FAIL_H41_PAIRWISE_DOMAIN_MISSING",
+        "FAIL_H41_PAIRWISE_DELTA_NOT_EXPLICIT",
+        "FAIL_H41_PAIRWISE_ANTI_BLEND_FALLBACK_MISSING"
+      ]
+    },
+    {
+      "gate_id": "H42",
+      "gate_name": "SOURCE_RUNTIME_LEDGER_MINIFIED_GATE",
+      "project_artifact": "SOURCE_RUNTIME_LEDGER_MINIFIED.json",
+      "failcodes": [
+        "FAIL_H42_SOURCE_LEDGER_MINIFIED_MISSING",
+        "FAIL_H42_SOURCE_ID_USED_WITHOUT_TRACE",
+        "FAIL_H42_SOURCE_HASH_MISSING",
+        "FAIL_H42_SOURCE_AUTHORITY_STATUS_MISSING",
+        "FAIL_H42_SOURCE_RUNTIME_REFERENCE_MISSING"
+      ]
+    },
+    {
+      "gate_id": "H43",
+      "gate_name": "PROJECT_ENTITY_BRAND_REGISTRY_GATE",
+      "project_artifact": "PROJECT_ENTITY_PROFILE.resolved.json",
+      "failcodes": [
+        "FAIL_H43_PROJECT_ENTITY_PROFILE_MISSING",
+        "FAIL_H43_BRAND_SCOPE_UNRESOLVED",
+        "FAIL_H43_RIGHTS_HOLDER_MISSING",
+        "FAIL_H43_COMMERCIAL_SCOPE_WITHOUT_RIGHTS",
+        "FAIL_H43_LOGO_EXACT_WITHOUT_OFFICIAL_ASSET_HASH"
+      ]
+    },
+    {
+      "gate_id": "H44",
+      "gate_name": "ROUTING_DECISION_RECORD_GATE",
+      "project_artifact": "ROUTING_DECISION_RECORD_TEMPLATE.json",
+      "failcodes": [
+        "FAIL_H44_ROUTING_DECISION_RECORD_MISSING",
+        "FAIL_H44_SELECTOR_AMBIGUITY_NOT_RECORDED",
+        "FAIL_H44_RANDOM_MODEL_SELECTION",
+        "FAIL_H44_DECISION_WITHOUT_REASON"
+      ]
+    },
+    {
+      "gate_id": "H45",
+      "gate_name": "VISUAL_ANCHOR_LIFECYCLE_GATE",
+      "project_artifact": "MASTER_VISUAL_ANCHOR_REGISTER_ALL_MODELS.json",
+      "failcodes": [
+        "FAIL_H45_VISUAL_ANCHOR_REGISTER_MISSING",
+        "FAIL_H45_APPROVED_ANCHOR_WITHOUT_HASH",
+        "FAIL_H45_APPROVED_ANCHOR_WITHOUT_REVIEWER",
+        "FAIL_H45_TEXTUAL_ANCHOR_FALSELY_CERTIFIED_AS_VISUAL"
+      ]
+    },
+    {
+      "gate_id": "H46",
+      "gate_name": "VENDOR_CAPABILITY_MATRIX_GATE",
+      "project_artifact": "VENDOR_CAPABILITY_DECLARATION_MATRIX.json",
+      "failcodes": [
+        "FAIL_H46_VENDOR_CAPABILITY_MATRIX_MISSING",
+        "FAIL_H46_UNSUPPORTED_VENDOR_FEATURE_DECLARED_PASS",
+        "FAIL_H46_VENDOR_LIMITATION_NOT_EVIDENCED",
+        "FAIL_H46_VENDOR_TRUTHFULNESS_BROKEN"
+      ]
+    },
+    {
+      "gate_id": "H47",
+      "gate_name": "SAFE_APPAREL_REWRITE_LEDGER_GATE",
+      "project_artifact": "SAFE_APPAREL_REWRITE_LEDGER.json",
+      "failcodes": [
+        "FAIL_H47_SAFE_APPAREL_LEDGER_MISSING",
+        "FAIL_H47_SAFE_APPAREL_REWRITE_NOT_RECORDED",
+        "FAIL_H47_MINOR_CODING_RISK",
+        "FAIL_H47_EXPLICIT_OR_EROTICIZED_OUTPUT_RISK"
+      ]
+    },
+    {
+      "gate_id": "H48",
+      "gate_name": "CONVERSATIONAL_AGENT_TEST_HARNESS_GATE",
+      "project_artifact": "CONVERSATIONAL_TEST_SUITE_ES_EN.json",
+      "failcodes": [
+        "FAIL_H48_CONVERSATIONAL_TEST_SUITE_MISSING",
+        "FAIL_H48_REQUIRED_CONVERSATIONAL_CASE_MISSING",
+        "FAIL_H48_PROMPT_SHORT_LOWERED_DEPTH",
+        "FAIL_H48_FALSE_CERTIFICATION_NOT_BLOCKED"
+      ]
+    },
+    {
+      "gate_id": "H49",
+      "gate_name": "PROJECT_REOPENED_ZIP_PROOF_GATE",
+      "project_artifact": "PROJECT_REOPENED_ZIP_PROOF.json",
+      "failcodes": [
+        "FAIL_H49_PROJECT_REOPENED_ZIP_PROOF_MISSING",
+        "FAIL_H49_PROJECT_ZIP_TESTZIP_FAIL",
+        "FAIL_H49_PROJECT_SHA_COMPANION_MISMATCH",
+        "FAIL_H49_REOPENED_VALIDATION_NOT_EXECUTED"
+      ]
+    },
+    {
+      "gate_id": "H50",
+      "gate_name": "RUNTIME_PARITY_AND_MINIFICATION_SAFETY_GATE",
+      "project_artifact": "CHATGPT_RUNTIME_PARITY_AUDIT.json",
+      "failcodes": [
+        "FAIL_H50_RUNTIME_PARITY_AUDIT_MISSING",
+        "FAIL_H50_CHATGPT_COPILOT_PARITY_BROKEN",
+        "FAIL_H50_MINIFICATION_DROPPED_CRITICAL_GATE",
+        "FAIL_H50_RUNTIME_HAS_NON_RUNTIME_AUTHORITY_FILE"
+      ]
+    },
+    {
+      "gate_id": "H51",
+      "gate_name": "PROJECT_CERTIFICATE_COMPLETENESS_GATE",
+      "project_artifact": "IDUNEX_PROJECT_CERTIFICATE.json",
+      "failcodes": [
+        "FAIL_H51_PROJECT_CERTIFICATE_INCOMPLETE",
+        "FAIL_H51_PROJECT_CERTIFICATE_SHA_MISSING",
+        "FAIL_H51_PROJECT_CERTIFICATE_RUNTIME_COUNTS_MISSING",
+        "FAIL_H51_PROJECT_CERTIFICATE_CREATIVE_STATE_MISSING"
+      ]
+    }
+  ],
+  "project_required_artifacts": [
+    "INPUT_PROMPT_FIDELITY_LEDGER.json",
+    "AGENT_RUNTIME_UPLOAD_SET_MANIFEST_CHATGPT.json",
+    "AGENT_RUNTIME_UPLOAD_SET_MANIFEST_COPILOT.json",
+    "AGENT_NON_RUNTIME_REFERENCE_MANIFEST.json",
+    "ENGINE_GATE_TO_PROJECT_RUNTIME_CLAUSE_MAP.json",
+    "PROFILE360_FIELD_DENSITY_AUDIT_ALL_MODELS.json",
+    "TECHEXT_FIELD_DENSITY_AUDIT_ALL_MODELS.json",
+    "PAIRWISE360_ALL_MODEL_PAIRS_MATRIX.json",
+    "SOURCE_RUNTIME_LEDGER_MINIFIED.json",
+    "PROJECT_ENTITY_PROFILE.resolved.json",
+    "BRAND_ASSET_REGISTRY.json",
+    "RIGHTS_AND_USAGE_SCOPE_LEDGER.json",
+    "ROUTING_DECISION_RECORD_TEMPLATE.json",
+    "MASTER_VISUAL_ANCHOR_REGISTER_ALL_MODELS.json",
+    "ANCHOR_APPROVAL_LEDGER.json",
+    "VENDOR_CAPABILITY_DECLARATION_MATRIX.json",
+    "SAFE_APPAREL_REWRITE_LEDGER.json",
+    "CONVERSATIONAL_TEST_SUITE_ES_EN.json",
+    "PROJECT_REOPENED_ZIP_PROOF.json",
+    "CHATGPT_RUNTIME_PARITY_AUDIT.json",
+    "COPILOT_RUNTIME_PARITY_AUDIT.json",
+    "IDUNEX_PROJECT_CERTIFICATE.json",
+    "PROJECT_CHANGELOG.md",
+    "FINAL_PROJECT_REPORT.md"
+  ],
+  "creative_output_certified": false
+}

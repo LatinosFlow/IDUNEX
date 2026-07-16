@@ -1,0 +1,17 @@
+{
+  "report_id": "P034_BLOAT_AND_WEIGHT_REPORT",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "authority": "ACTIVE_CURRENT_ONLY",
+  "previous_candidate_comparisons": "NOT_EMBEDDED_ACTIVE_TREE",
+  "current_package_sha_policy": "EXTERNAL_COMPANION_AFTER_PACKAGING",
+  "current_package_size_policy": "EXTERNAL_CERTIFICATE_AFTER_PACKAGING",
+  "stale_release_metric_count": 0,
+  "legacy_identity_leakage_count": 0,
+  "nonexistent_path_reference_count": 0,
+  "active_internal_stale_report_count": 0,
+  "P034_BLOAT_AND_WEIGHT_REPORT_CURRENT_ONLY": "PASS",
+  "historical_payload_location": "12_HISTORICAL_NON_AUTHORITY/P034_DEMOTED_STALE_B01_B04/P034_BLOAT_AND_WEIGHT_REPORT.json.historical.json",
+  "result": "PASS"
+}

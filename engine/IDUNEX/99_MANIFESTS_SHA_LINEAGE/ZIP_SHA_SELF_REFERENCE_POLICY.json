@@ -1,0 +1,10 @@
+{
+  "gate_id": "H129_ZIP_SHA_FIXED_POINT_OR_SELF_REFERENCE_BLOCK_GATE",
+  "policy": "EXTERNAL_COMPANION_AUTHORITY_SENTINEL_INTERNAL",
+  "result": "PASS",
+  "fail_codes": [],
+  "allowed_internal_sentinel": "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY",
+  "external_authority": ".zip.sha256 top-level companion",
+  "content_tree_policy": "CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA may hold content_tree_sha256 only when not mislabeled as final/companion ZIP SHA",
+  "creative_output_certified": false
+}

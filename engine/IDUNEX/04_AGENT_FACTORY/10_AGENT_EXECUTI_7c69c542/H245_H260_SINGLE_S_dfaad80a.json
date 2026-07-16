@@ -1,0 +1,9 @@
+{
+  "canonical_source_path": "04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260",
+  "canonical_source_file_count": 2,
+  "canonical_section_bundle_sha256": "aef86a526e38ca0176befec77d8f40f8c32838aac5b0aa6b3e83d23ba7ff61f5",
+  "mirror_policy": "Mirrors may contain compact summary + path/hash reference only; long-copy canonical source is this path.",
+  "single_source_validator": "VALIDATE_H245_H260_SINGLE_SOURCE_CANON_REFERENCE",
+  "result": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

@@ -1,0 +1,32 @@
+{
+  "all_pass": true,
+  "fixtures": [
+    {
+      "fixture": "FIXTURE_ONLY_1_MODEL",
+      "final_reopened_validation": {
+        "model_count": 1,
+        "result": "PASS",
+        "runtime_upload_count": 11
+      },
+      "fail_codes": []
+    },
+    {
+      "fixture": "FIXTURE_ONLY_2_MODEL",
+      "final_reopened_validation": {
+        "model_count": 2,
+        "result": "PASS",
+        "runtime_upload_count": 12
+      },
+      "fail_codes": []
+    },
+    {
+      "fixture": "FIXTURE_ONLY_10_MODEL",
+      "final_reopened_validation": {
+        "model_count": 10,
+        "result": "PASS",
+        "runtime_upload_count": 20
+      },
+      "fail_codes": []
+    }
+  ]
+}

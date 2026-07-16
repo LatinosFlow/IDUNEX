@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "engine_go",
+    "audit_status",
+    "critical_errors",
+    "evidence_bundle",
+    "failed_schema_files",
+    "go_no_go_decision",
+    "golden_tests",
+    "production_state",
+    "schema_validation_results",
+    "smoke_test_scope",
+    "warnings",
+    "hash_evidence_status",
+    "modality_hashes",
+    "project_instance_go",
+    "output_go"
+  ],
+  "properties": {
+    "audit_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "critical_errors": {
+      "type": "array",
+      "items": {},
+      "uniqueItems": true
+    },
+    "evidence_bundle": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "modality_results": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "actual_result_or_mock",
+              "comparison_method",
+              "expected_result",
+              "fail_codes_triggered",
+              "fallback_applied",
+              "hash_input",
+              "hash_output",
+              "input_fixture",
+              "modality",
+              "pass_fail_decision",
+              "retest_result",
+              "sidecar_id"
+            ],
+            "properties": {
+              "actual_result_or_mock": {
+                "type": "string",
+                "minLength": 1
+              },
+              "comparison_method": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expected_result": {
+                "type": "string",
+                "minLength": 1
+              },
+              "fail_codes_triggered": {
+                "type": "array",
+                "items": {},
+                "uniqueItems": true
+              },
+              "fallback_applied": {
+                "type": [
+                  "string",
+                  "array"
+                ],
+                "minLength": 1,
+                "items": {},
+                "uniqueItems": true
+              },
+              "hash_input": {
+                "type": "string",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              },
+              "hash_output": {
+                "type": "string",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              },
+              "input_fixture": {
+                "type": "string",
+                "minLength": 1
+              },
+              "modality": {
+                "type": "string",
+                "minLength": 1
+              },
+              "pass_fail_decision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "retest_result": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sidecar_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "modality_results"
+      ]
+    },
+    "evidence_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "failed_schema_files": {
+      "type": "array",
+      "items": {},
+      "uniqueItems": true
+    },
+    "global_go_authorized": {
+      "type": "boolean"
+    },
+    "go_no_go_decision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "golden_tests": {
+      "type": "array",
+      "items": {},
+      "uniqueItems": true
+    },
+    "motor_baseline_10_authorized": {
+      "type": "boolean"
+    },
+    "production_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "productive_output": {
+      "type": "boolean"
+    },
+    "project_10": {
+      "type": "boolean"
+    },
+    "project_10_authorized": {
+      "type": "boolean"
+    },
+    "release_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_validation_results": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "smoke_test_scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "warnings": {
+      "type": "array",
+      "items": {},
+      "uniqueItems": true
+    },
+    "hash_evidence_status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "REVIEW_REQUIRED"
+      ]
+    },
+    "modality_hashes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "modality",
+          "hash_input",
+          "hash_output",
+          "validation_status"
+        ],
+        "properties": {
+          "modality": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hash_input": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "hash_output": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "validation_status": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL",
+              "REVIEW_REQUIRED"
+            ]
+          }
+        }
+      }
+    },
+    "engine_go": {
+      "const": true,
+      "description": "Engine factory gate is active; not a project/output release bypass."
+    },
+    "project_instance_go": {
+      "type": "string",
+      "const": "false_until_project_QA",
+      "description": "Project instance remains blocked until its own QA passes."
+    },
+    "output_go": {
+      "type": "string",
+      "enum": [
+        "false_until_output_QA",
+        "false_until_output_QA_SIDECAR_HASH_LINEAGE"
+      ],
+      "description": "Real output remains blocked until output QA + sidecar + hash lineage pass."
+    },
+    "legacy_global_go_policy": {
+      "type": "string",
+      "const": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    "legacy_project_10_policy": {
+      "type": "string",
+      "const": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    "qa_policy_split": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "x-updated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "x-historical-ca146-surgical-fix-note": "P0-03 active global_go removed; ENGINE/PROJECT/OUTPUT split required; legacy policies allowed only as historical markers.",
+  "x-historical-ca146-surgical-fix-policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-historical-ca146-surgical-fix-do-not-use-as-base": "DO_NOT_USE_AS_BASE"
+}

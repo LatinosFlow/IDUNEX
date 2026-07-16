@@ -1,0 +1,12 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "control": "MOTOR_UPDATE_HARD_GATE",
+  "status": "ACTIVE_P03",
+  "blocking": true,
+  "actual_value": "MOTOR_UPDATE_HARD_GATE=ACTIVE",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "project_factory_regression_required": true,
+  "required_regression_gate": "MOTOR_UPDATE_CONTRACT_VALIDATION_GATE",
+  "blocked_code": "BLOCKED_MOTOR_UPDATE_PROJECT_FACTORY_REGRESSION"
+}

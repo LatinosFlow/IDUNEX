@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-idunex-schema-policy": "PRODUCTIVE_BASE_ENGINE_SCHEMA; accepts current runtime fields, requires productive keys, forbids weakening by deleting useful JSON properties.",
+  "x-base-sha-audited": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-updated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "$id": "IDUNEX/15_SCHEMAS/PROJECT_PACKAGE_MANIFEST.schema.json",
+  "title": "PROJECT_PACKAGE_MANIFEST productive schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "project_type",
+    "model_count_min",
+    "model_count_max",
+    "project_core_required",
+    "chatgpt_core_files_exact",
+    "copilot_core_files_exact",
+    "agent_runtime_files_max",
+    "output_modalities",
+    "source_scope",
+    "commercial_scope",
+    "real_output_policy",
+    "identity_language_policy",
+    "production_state",
+    "project_instance_go",
+    "output_go",
+    "chatgpt_core_files",
+    "copilot_core_files",
+    "models_required",
+    "config_rule"
+  ],
+  "properties": {
+    "project_type": {
+      "const": "multimodal_idunex_project"
+    },
+    "model_count_min": {
+      "const": 1
+    },
+    "model_count_max": {
+      "const": 10
+    },
+    "project_core_required": {
+      "const": true
+    },
+    "chatgpt_core_files_exact": {
+      "const": 10
+    },
+    "copilot_core_files_exact": {
+      "const": 10
+    },
+    "agent_runtime_files_max": {
+      "const": 20
+    },
+    "output_modalities": {
+      "type": "array",
+      "contains": {
+        "const": "audio_sfx_foley"
+      },
+      "minItems": 10
+    },
+    "source_scope": {
+      "const": "ALL_ACTIVE_SOURCES_001_049"
+    },
+    "commercial_scope": {
+      "const": "PRODUCTIVE_BASE_ENGINE_PROJECT_FACTORY"
+    },
+    "real_output_policy": {
+      "const": "OUTPUT_REQUIRES_QA_SIDECAR_HASH_LINEAGE"
+    },
+    "identity_language_policy": {
+      "const": "HUMANIZED_DIGITAL_MODEL"
+    },
+    "production_state": {
+      "const": "PRODUCTIVE_BASE_ENGINE"
+    },
+    "project_instance_go": {
+      "const": "false_until_project_QA"
+    },
+    "output_go": {
+      "const": "false_until_output_QA_SIDECAR_HASH_LINEAGE"
+    },
+    "chatgpt_core_files": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "pattern": "\\.md$"
+      }
+    },
+    "copilot_core_files": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "pattern": "\\.docx$"
+      }
+    },
+    "models_required": {
+      "type": "string",
+      "minLength": 5
+    },
+    "config_rule": {
+      "type": "string",
+      "pattern": "8000"
+    }
+  },
+  "x-previous-base-sha256": "NON_OPERATIONAL_PREVIOUS_BASES_RECORDED_IN_REPORTS",
+  "x-previous-base-policy": "HISTORICAL_PREVIOUS_BASE_NOT_OPERATIONAL",
+  "x-correction-base-sha256": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-previous-base-marker": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-previous-base-do-not-use": "DO_NOT_USE_AS_BASE"
+}

@@ -1,0 +1,15 @@
+{
+  "gate_id": "H191_HARD_KILL_DELIVERY_CONFUSION_GUARD",
+  "DIRECT_CORRECTION_SCOPE": "H189_H196_APPLIED_ON_H01_H188",
+  "HARD_KILL_NO_DELIVERY_CONFUSION": "PASS",
+  "DELIVERY_COMPLETION_MANIFEST_PRESENT": "PASS",
+  "NO_FINAL_ZIP_WITHOUT_COMPLETION_SIGNAL": "PASS",
+  "NO_STALE_STAGE_AFTER_PASS": "PASS",
+  "stale_stage_cleanup_on_start": "PASS",
+  "pass_count": 4,
+  "validators_fail": 0,
+  "blocking_warnings": 0,
+  "fail_codes": [],
+  "result": "PASS",
+  "creative_output_certified": false
+}

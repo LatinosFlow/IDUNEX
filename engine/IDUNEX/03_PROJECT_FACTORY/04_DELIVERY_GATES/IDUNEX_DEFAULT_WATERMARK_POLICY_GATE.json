@@ -1,0 +1,18 @@
+{
+  "engine": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "gate_id": "IDUNEX_DEFAULT_WATERMARK_POLICY_GATE",
+  "result": "PASS_POLICY_INSTALLED",
+  "default": "ON",
+  "exact_text": "idunex",
+  "position": "lower-center",
+  "style": "simple, discreet, clean, premium, generic visual system-style text only",
+  "omit_only_phrases": [
+    "sin marca idunex",
+    "sin watermark idunex",
+    "sin marca de agua idunex",
+    "no pongas idunex"
+  ],
+  "negative_prompt": "no text, no logos, no watermark except the exact small lower-center text “idunex”"
+}

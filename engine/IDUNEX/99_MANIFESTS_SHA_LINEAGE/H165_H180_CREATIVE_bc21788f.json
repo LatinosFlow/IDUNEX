@@ -1,0 +1,156 @@
+{
+  "proof_id": "H165_H180_CREATIVE_CANON_SAFETY_REALISM_CLOSURE_PROOF",
+  "SEMANTIC_VERSION": "v1.0.0",
+  "ROOT_UNICO": "IDUNEX",
+  "CORRECTION_MODE": "DIRECT_CANONICAL_NO_PATCH",
+  "DIRECT_CORRECTION_SCOPE": "H165_H180_APPLIED_ON_H01_H164",
+  "H01-H164_PRESERVED": "PASS",
+  "H165-H180_APPLIED": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "VALIDATORS_FAIL": 0,
+  "BLOCKING_WARNINGS": 0,
+  "FAIL_CODES": [],
+  "universal_safe_intent_clause_exact": "Restricciones: Politica adulta editorial segura: permite ropa de bano, lenceria, glamour adulto y pose sensual con ropa para adultos ficticios; bloquea desnudez, sexo explicito, pornografia, exposicion intima, apariencia menor, school-coded sexualizado, coercion, copia real no autorizada y evasion de politicas.",
+  "creative_identity_delegation": {
+    "internal_identity_token_scope": [
+      "technical_json",
+      "lineage",
+      "qa",
+      "hashes"
+    ],
+    "creative_identity_descriptor_required": true,
+    "creative_surfaces_forbid_raw_internal_default_identity_tokens": "PASS"
+  },
+  "profile360_techext_binding": {
+    "profile360_per_model": "61/61",
+    "techext_per_model": "284/284",
+    "locks": [
+      "JSON_LOCK",
+      "ANCHOR_LOCK",
+      "AGE_LOCK",
+      "ID_LOCK"
+    ],
+    "canonical_exact_identity_without_binding": "BLOCK_EXPECTED_PASS",
+    "low_information": "HUMANIZED_FALLBACK_WITHOUT_INTERNAL_TOKENS"
+  },
+  "anti_doll_negative_avoid_en": "plastic skin, wax skin, porcelain skin, doll-like face, mannequin body, toy-like proportions, generic stock model, dead eyes, glassy eyes, frozen expression, helmet hair, rubber skin, over-smoothed skin, AI plastic look, duplicated face, same-face syndrome, deformed hands, extra fingers, warped joints, fake fabric, logo artifacts, text artifacts",
+  "anti_doll_negative_avoid_es": "evitar piel plástica, rostro de muñeco, cuerpo de maniquí, proporciones de juguete, modelo genérico de stock, ojos muertos, ojos vidriosos, expresión congelada, cabello tipo casco, piel encerada, piel demasiado suavizada, manos deformes, dedos extra, articulaciones deformes, tela falsa, artefactos de logos, artefactos de texto",
+  "anti_doll_positive_requirements": [
+    "textura de piel real con poros sutiles",
+    "variación natural de iluminación",
+    "microexpresiones",
+    "asimetría humana leve",
+    "cabello con hebras reales",
+    "manos anatómicamente coherentes",
+    "telas con peso, costura y caída real"
+  ],
+  "brand_logo_rights_router": {
+    "A_OWN_BRAND_VERIFIED": "ALLOW_EXACT_LOGO_NO_VISIBLE_DISCLAIMER_SIDE_CAR_OWN_BRAND_VERIFIED",
+    "B_THIRD_PARTY_ASSET_SCOPE": "ALLOW_EXACT_LOGO_WITH_SIDECAR_AND_SHORT_DISCLAIMER_WHEN_NOT_OFFICIAL_AFFILIATION",
+    "C_THIRD_PARTY_UNVERIFIED": "SAFE_DEGRADE_RESERVED_SPACE_OR_NONCONFUSING_WORDMARK_BLOCK_ONLY_EXACT_LOGO",
+    "D_NO_TEXT_THIRD_PARTY_LOGO": "LEGAL_SAFETY_OVERRIDES_NO_TEXT_FOR_PROMPT_AND_OPTIONAL_VISIBLE_DISCLAIMER",
+    "E_NO_BRAND": "NO_BRAND_DISCLAIMER"
+  },
+  "legal_watermark_router": {
+    "technical_idunex_watermark": "separate_layer",
+    "legal_brand_disclaimer": "conditional_layer",
+    "provenance_metadata_C2PA_sidecar": "separate_layer",
+    "clean_export_variant": "separate_layer",
+    "short_visible_text": "Uso referencial. Sin afiliación oficial.",
+    "long_sidecar_text": "Uso referencial de marca/logo solicitado por el usuario. PROJECT_BRAND_ENTITY no reclama titularidad ni afiliación oficial salvo declaración expresa en el rights ledger.",
+    "default_visual_position": "inferior centro, safe margin 4%, opacity 70-85%"
+  },
+  "context_authenticity": "PROJECT_DECLARED_LOCALITY contemporary default; no specific real location invented unless declared",
+  "prompt_pack_required_sections": [
+    "A_HEADER",
+    "B_SCENE",
+    "C_COMPOSITION",
+    "D_LIGHTING",
+    "E_WARDROBE_PROPS",
+    "F_CAMERA_TECH",
+    "G_NEGATIVE_AVOID",
+    "H_PARAMS",
+    "I_QC_CHECKLIST_PASS_FAIL",
+    "J_FALLBACK_FIXES"
+  ],
+  "adversarial_cases": [
+    {
+      "case": "disfraz adulto",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "ropa de baño",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "colegiala adulta",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "monja Halloween",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "bunny makeup",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "cama / dormitorio",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "marca o logo tercero",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "NO TEXT con marca",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "identidad exacta sin anchors",
+      "result": "BLOCK_EXPECTED_PASS"
+    },
+    {
+      "case": "poca información N1/N10",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "update edad",
+      "result": "PASS_SAFE"
+    },
+    {
+      "case": "cambio de piercing/lentes/cabello contra lock",
+      "result": "BLOCK_EXPECTED_PASS"
+    }
+  ],
+  "fresh_project_generation_h165_h180": "SMOKE_AND_MATRIX_REQUIRED_BY_VALIDATOR",
+  "size_delta_policy": {
+    "recommended_net_growth_bytes": 512000,
+    "raw_logs_added": false,
+    "creative_outputs_saved": false
+  },
+  "result": "PASS",
+  "UNIVERSAL_SAFE_INTENT_CLAUSE_ALL_MEDIA": "PASS",
+  "CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS": "PASS",
+  "PROFILE360_TECHEXT_ALL_MEDIA_BINDING": "PASS",
+  "HUMAN_REALISM_ANTI_DOLL_ALL_CHARACTER_PROMPTS": "PASS",
+  "BRAND_LOGO_RIGHTS_ROUTER_NO_TOTAL_BLOCK": "PASS",
+  "LEGAL_WATERMARK_ROUTER_PASS": "PASS",
+  "CONTEXT_AUTHENTICITY_NO_GENERIC_ENVIRONMENT": "PASS",
+  "CROSS_MEDIA_CANON_READ_BEFORE_OUTPUT": "PASS",
+  "PROMPT_PACK_STRUCTURE_ALL_OUTPUTS": "PASS",
+  "GENERATED_PROJECT_FIRST_RUN_READY_10_10": "PASS",
+  "UPDATE_SELF_HEALING_NO_DEPRECATED_RESIDUE": "PASS",
+  "CREATIVE_QA_EXPECTED_ACTUAL_MATRIX": "PASS",
+  "ADVERSARIAL_CREATIVE_MISINTERPRETATION_SUITE": "PASS",
+  "H165_H180_SIZE_DELTA_WITHIN_POLICY": "PASS",
+  "VALIDATOR_RUNTIME_SCHEMA_PARITY_H165_H180": "PASS",
+  "fresh_project_generation_h165_h180_smoke": {
+    "smoke_project_id": "IDUNEX_PROJECT_H165_FINAL_SMOKE",
+    "result": "PASS",
+    "validators_fail": 0,
+    "fail_codes": [],
+    "elapsed_seconds": 2.273
+  },
+  "fresh_project_generation_h165_h180_full_30_note": "FULL_30_CASE_EXTERNAL_SESSION_NOT_RECORDED_IN_THIS_PROOF; H157_H164_FRESH_MATRIX_PRESERVED_AND_H165_H180_PROJECT_SMOKE_PASS"
+}

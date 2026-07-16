@@ -1,0 +1,36 @@
+{
+  "report_id": "VALIDATOR_PARITY_SELF_CONSISTENCY_REPORT_H143_H150",
+  "result": "PASS",
+  "runtime_masks_schema_fail": false,
+  "subvalidator_detail_contradicts_check": false,
+  "validators_compared": [
+    "VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL",
+    "VALIDATE_IDUNEX_RUNTIME",
+    "VALIDATE_IDUNEX_PROJECT_MUTATION_SUITE_EXECUTABLE"
+  ],
+  "commands": [
+    {
+      "command": "python VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py IDUNEX",
+      "returncode": 0,
+      "parsed_result": "PASS",
+      "stdout_hash": "5650dd9a97431b6de12daa7cac6ed4fe72a857084f0eb36789c5d6742a67788f",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "python VALIDATE_IDUNEX_RUNTIME.py IDUNEX",
+      "returncode": 0,
+      "parsed_result": "PASS",
+      "stdout_hash": "4c1555c3b0a8f8eaffcac85f5193e0cb62ce9849394a5bdae2858ddb7267c1b3",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "python VALIDATE_IDUNEX_PROJECT.py --mutation-suite",
+      "returncode": 0,
+      "parsed_result": "PASS",
+      "stdout_hash": "EXECUTABLE_PROOF_REGISTERED_IN_RUNTIME",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fail_codes": [],
+  "generated_at": "2026-07-01 PROJECT_DECLARED_TIMEZONE"
+}

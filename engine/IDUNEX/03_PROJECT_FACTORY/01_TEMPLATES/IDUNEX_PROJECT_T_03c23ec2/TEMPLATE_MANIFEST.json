@@ -1,0 +1,12 @@
+{
+  "template_id": "IDUNEX_PROJECT_TEMPLATE_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "materializer": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
+  "second_factory": false,
+  "runtime_formula": "10+N",
+  "model_count_min": 1,
+  "model_count_max": 10,
+  "canonical_root_loose_files": ["README_PROJECT.md"],
+  "delivery_from_template_directory": false
+}

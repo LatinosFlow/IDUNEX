@@ -1,0 +1,24 @@
+{
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "model_selector_precheck": "if model_count > 1 and no selector/duo/group then ask selector or block",
+  "canonical_model_request": "Haz a canonical fictional adult model routes to text-to-image; no user photo request",
+  "blocked_aliases": [
+    "{MODEL_A}-{MODEL_A_CODE}",
+    "{MODEL_B}-TRUNCATED_ALIAS"
+  ],
+  "delivery_states": [
+    "NOT_EXECUTED",
+    "TOOL_ROUTING_FAILED",
+    "GENERATED_VISIBLE",
+    "GENERATED_VISIBLE_NOT_PACKAGED",
+    "DERIVED_ASSET_PENDING_REVIEW",
+    "TARGET_FILE_CREATED_PENDING_QA",
+    "EXECUTED_PENDING_REVIEW",
+    "EXECUTED_PASS",
+    "EXECUTED_FAIL",
+    "REPAIR_REQUIRED",
+    "BLOCKED_CANON_CONFLICT"
+  ],
+  "router_alias_policy_genericity_gate": "ACTIVE_VALIDATED",
+  "active_router_uses_named_alias_policy": false
+}

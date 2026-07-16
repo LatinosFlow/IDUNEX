@@ -1,0 +1,37 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "minimum_fields": [
+    "project_id_or_name",
+    "model_count_1_to_10",
+    "general_purpose",
+    "adult_fictional_non_real_non_celebrity_policy_when_applicable"
+  ],
+  "decision_rules": [
+    {
+      "if": "sufficient_data_and_auto_authorized",
+      "then": "generate_project"
+    },
+    {
+      "if": "critical_data_missing_not_inferable",
+      "then": "ask_minimum_questions"
+    },
+    {
+      "if": "low_personalization",
+      "then": "BASIC_GUIDED_TEMPLATE"
+    },
+    {
+      "if": "high_detail_requested",
+      "then": "DETAILED_TEMPLATE"
+    },
+    {
+      "if": "lock_or_policy_conflict",
+      "then": "block_or_request_correction"
+    },
+    {
+      "if": "model_count_gt_10",
+      "then": "BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT"
+    }
+  ],
+  "fallback_fix": "Resolve only missing critical inputs; do not over-question when AUTO is authorized."
+}

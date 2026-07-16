@@ -1,0 +1,29 @@
+{
+  "contract_id": "ENGINE_OUTPUT_CONTRACT",
+  "semantic_version": "v1.0.0",
+  "external_output_contract": "EXACT_7_OF_7",
+  "required_external_artifacts": [
+    "IDUNEX_MOTOR_v1.0.0.zip",
+    "IDUNEX_MOTOR_v1.0.0.zip.sha256",
+    "IDUNEX_MOTOR_v1.0.0_RELEASE_CERTIFICATE.txt",
+    "IDUNEX_MOTOR_v1.0.0_MANUAL_TECNICO_ALCANCE_LATINOSFLOW.pdf",
+    "IDUNEX_MOTOR_v1.0.0_MANUAL_DE_TRABAJO_LATINOSFLOW.pdf",
+    "IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO_AUTORIDAD_MOTOR.txt",
+    "IDUNEX_PROMPT_SUITE_PLANTILLAS_PROYECTOS_AUTORIDAD_MOTOR_.docx"
+  ],
+  "forbidden_external_artifacts": [
+    "extra_release_file",
+    "external_changelog_active",
+    "patch_zip",
+    "hotfix_zip",
+    "derived_suffix_package",
+    "IDUNEX_MOTOR_v1.0.1.zip",
+    "prior_candidate_semantic_filename"
+  ],
+  "ZIP_EXT_001": "whole_zip_sha256_and_bytes_are_external_authority_only",
+  "internal_self_certification": "FORBIDDEN_FOR_WHOLE_ZIP_SHA256",
+  "creative_output_certified": false,
+  "project_demo_materialized_in_engine": false,
+  "latinosflow_default_active": false,
+  "fail_code": "FAIL_ENGINE_OUTPUT_CONTRACT"
+}

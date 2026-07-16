@@ -1,0 +1,27 @@
+{
+  "semantic_version": "v1.0.0",
+  "correction_scope": "H341_H360",
+  "sections": [
+    "A_HEADER",
+    "B_SCENE",
+    "C_COMPOSITION",
+    "D_LIGHTING",
+    "E_WARDROBE_PROPS",
+    "F_CAMERA_TECH",
+    "G_NEGATIVE_AVOID",
+    "H_PARAMS",
+    "I_QC_CHECKLIST_PASS_FAIL",
+    "J_FALLBACK_FIXES"
+  ],
+  "modalities": [
+    "IMAGE",
+    "VIDEO",
+    "VOICE",
+    "MUSIC_SUNO",
+    "TEXT_PERSONA",
+    "REFERENCE",
+    "QA",
+    "CERTIFICATION"
+  ],
+  "result": "PASS"
+}

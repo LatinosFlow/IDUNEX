@@ -1,0 +1,17 @@
+name: IDUNEX Security Lite
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Secret pattern scan
+        run: python tools/audit/security_lite_scan.py --repo-root .

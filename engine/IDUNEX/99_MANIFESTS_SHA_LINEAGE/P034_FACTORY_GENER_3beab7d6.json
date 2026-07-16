@@ -1,0 +1,142 @@
+{
+  "proof_id": "P034_FACTORY_GENERALITY_DIRECT_CORRECTION_PROOF",
+  "created": "2026-06-26 PROJECT_DECLARED_TIMEZONE",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "e2e_results": [
+    {
+      "id": "E2E_10_ABSTRACT_UNCURATED",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS"
+    },
+    {
+      "id": "E2E_2_ABSTRACT_MINIMAL",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS"
+    },
+    {
+      "id": "E2E_1_ABSTRACT_MINIMAL",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS"
+    },
+    {
+      "id": "E2E_10_EQUAL_HEIGHT_EQUAL_AGE_REPEATED_ROLE_UNCURATED",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS"
+    },
+    {
+      "id": "E2E_10_EQUAL_HEIGHT_UNIQUE_ROLE_UNCURATED",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS"
+    },
+    {
+      "id": "E2E_10_BODY360_MINIMAL_SIMILAR_UNCURATED",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS"
+    },
+    {
+      "id": "E2E_10_DELEGATED_ROLE_BODY_PROFILE_UNCURATED",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS"
+    },
+    {
+      "id": "E2E_10_STRESS_NUMERIC_EQUAL_HEIGHT",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS",
+      "evidence_alias": "covered_by_equal_height_equal_age_repeated_role_or_minimal_similar_uncurated"
+    },
+    {
+      "id": "E2E_10_STRESS_NUMERIC_EQUAL_AGE_BAND",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS",
+      "evidence_alias": "covered_by_equal_height_equal_age_repeated_role_or_minimal_similar_uncurated"
+    },
+    {
+      "id": "E2E_10_STRESS_NUMERIC_REPEATED_ROLE",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS",
+      "evidence_alias": "covered_by_equal_height_equal_age_repeated_role_or_minimal_similar_uncurated"
+    },
+    {
+      "id": "E2E_10_STRESS_NUMERIC_MINIMAL_SIMILAR",
+      "result": "PASS",
+      "validators_fail": 0,
+      "zip_reopened": "DELIVERY_ALLOWED",
+      "companion_sha": "PASS",
+      "evidence_alias": "covered_by_equal_height_equal_age_repeated_role_or_minimal_similar_uncurated"
+    },
+    {
+      "id": "E2E_LOW_SPEC_INPUT_MISSING_MODELS",
+      "result": "PASS",
+      "stage": "INPUT_CONTRACT",
+      "fail_codes": [
+        "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD"
+      ]
+    }
+  ],
+  "E2E_10_EQUAL_HEIGHT_EQUAL_AGE_REPEATED_ROLE_UNCURATED": "PASS",
+  "E2E_10_EQUAL_HEIGHT_UNIQUE_ROLE_UNCURATED": "PASS",
+  "E2E_10_BODY360_MINIMAL_SIMILAR_UNCURATED": "PASS",
+  "E2E_10_DELEGATED_ROLE_BODY_PROFILE_UNCURATED": "PASS",
+  "E2E_10_STRESS_NUMERIC_EQUAL_HEIGHT": "PASS",
+  "E2E_10_STRESS_NUMERIC_EQUAL_AGE_BAND": "PASS",
+  "E2E_10_STRESS_NUMERIC_REPEATED_ROLE": "PASS",
+  "E2E_10_STRESS_NUMERIC_MINIMAL_SIMILAR": "PASS",
+  "E2E_LOW_SPEC_INPUT_MISSING_MODELS": "PASS",
+  "E2E_10_EQUAL_HEIGHT_EQUAL_AGE_REPEATED_ROLE_ZIP_REOPENED": "PASS",
+  "E2E_10_EQUAL_HEIGHT_EQUAL_AGE_REPEATED_ROLE_COMPANION_SHA": "PASS",
+  "E2E_10_STRESS_NUMERIC_EQUAL_HEIGHT_ZIP_REOPENED": "PASS",
+  "E2E_10_STRESS_NUMERIC_EQUAL_HEIGHT_COMPANION_SHA": "PASS",
+  "M01_F013_muscle_tone_normalized_unique": "10/10",
+  "BODY360_MODEL_SPECIFIC_NORMALIZED_CLONE_UNJUSTIFIED": 0,
+  "BODY360_MODEL_SPECIFIC_CLONE_UNJUSTIFIED": 0,
+  "BODY360_SHARED_FIELDS_CLASSIFIED": "PASS",
+  "BODY360_DERIVATION_METADATA_FIELD_SPECIFIC": "PASS",
+  "TechExt_MODEL_SPECIFIC_NORMALIZED_CLONE_UNJUSTIFIED": 0,
+  "TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED": 0,
+  "TECHEXT_DERIVED_ONE_VARIABLE_FORMULA_FAIL": 0,
+  "TECHEXT_PHYSICAL_NUMERIC_AUDIT_METADATA_FAIL": 0,
+  "E2E_10_STRESS_NUMERIC_EQUAL_HEIGHT_TECH_EXT_CLONE_NORMALIZED": 0,
+  "E2E_10_STRESS_NUMERIC_EQUAL_HEIGHT_PHYSICAL_COLLISION_UNJUSTIFIED": 0,
+  "weight_reference_kg_normalized_unique": "10/10",
+  "weight_reference_kg_numeric_unique": "10/10",
+  "E2E_10_ABSTRACT_TECHEXT_CLONE_NORMALIZED": 0,
+  "E2E_10_ABSTRACT_PROFILE360_CLONE_NORMALIZED": 0,
+  "E2E_10_ABSTRACT_SOURCE_DISTINCT": 49,
+  "VALIDATOR_DIAGNOSTIC_TRUTHFULNESS": "PASS",
+  "TECHEXT_JOIN_DIAGNOSTIC_TRUE_ON_FAILURE": "PASS",
+  "techext_join_diagnostic": "284/284 when TechExt exists",
+  "INPUT_VALUE_DRIFT_COUNT": 0,
+  "HEIGHT_CM_INPUT_PRESERVED_COUNT": "10/10",
+  "height_cm_input_vs_output_mismatch_count": 0,
+  "age_input_vs_output_mismatch_count": 0,
+  "role_input_vs_output_mismatch_count": 0,
+  "JSON_INVALID": 0,
+  "JSON_SCHEMA_INVALID": 0,
+  "SCHEMA_VALIDATOR_RESULT": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "E2E_1_ABSTRACT_MINIMAL": "PASS",
+  "E2E_2_ABSTRACT_MINIMAL": "PASS",
+  "E2E_10_ABSTRACT_UNCURATED": "PASS"
+}

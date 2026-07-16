@@ -1,0 +1,2 @@
+SHA256SUMS authority: 99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt
+ZIP-EXT-001 external companion remains authoritative for whole ZIP SHA256.

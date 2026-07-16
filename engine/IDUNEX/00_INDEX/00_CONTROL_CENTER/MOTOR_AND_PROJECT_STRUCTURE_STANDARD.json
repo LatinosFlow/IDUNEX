@@ -1,0 +1,71 @@
+{
+  "policy_id": "P0.2-010",
+  "name": "MOTOR_AND_PROJECT_STRUCTURE_STANDARD",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "status": "ACTIVE",
+  "date": "NEUTRALIZED_ACTIVE_SCOPE",
+  "actual_value": "10 core IDUNEX + 1 MODEL_RUNTIME_PROFILE_FULL per model; max 20 files per agent; max 10 models per project/agent; 11+ models = BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT; no split agents; no destructive summary",
+  "motor_root_namespace": [
+    "00_CONTROL_CENTER",
+    "01_RESEARCH_BASELINE_LOCKED",
+    "03_PROJECT_FACTORY",
+    "04_AGENT_FACTORY",
+    "04_PROFILE360_SYSTEM",
+    "05_SOURCE_TO_RUNTIME",
+    "06_MULTIMODAL_CONTRACTS",
+    "07_MULTIMODAL_VENDOR_ADAPTERS",
+    "08_GENERIC_VISUAL_SYSTEM_LIBRARY",
+    "09_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10",
+    "10_MODEL_CAUSALITY_ENGINE_FULL10",
+    "11_PROFILE360_TECHNICAL_EXTENSIONS_FULL10",
+    "12_AGENT_RUNTIME_GOVERNANCE_FULL10",
+    "13_QA_GAUNTLET",
+    "14_POLICIES",
+    "15_SCHEMAS",
+    "16_RESEARCH_RUNTIME_LIBRARY",
+    "17_EXPORT_PACKER",
+    "18_PROJECTS",
+    "19_DOCUMENTATION",
+    "20_MOTOR_CORE_10",
+    "21_MANIFESTS_LINEAGE",
+    "22_QA_GAUNTLET_CANONICAL_BRIDGE",
+    "99_MANIFESTS_SHA_LINEAGE"
+  ],
+  "runtime_limits": {
+    "core_files_per_agent": 10,
+    "model_runtime_profile_full_files_per_model": 1,
+    "max_files_per_agent": 20,
+    "max_models_per_project_agent": 10,
+    "eleven_plus_models_policy": "BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT",
+    "split_agents_policy": "FORBIDDEN_NO_SPLIT_AGENTS",
+    "destructive_summary_policy": "FORBIDDEN_NO_DESTRUCTIVE_SUMMARY"
+  },
+  "separation": [
+    "knowledge",
+    "configs",
+    "manifests",
+    "outputs",
+    "evidence"
+  ],
+  "no_loss_rule": "never summarize MODEL_RUNTIME_PROFILE_FULL or any Profile360 FULL60/TechExt FULL10 component to fit runtime file limits; no destructive summary as completeness",
+  "internal_label_latest_surgical_cleanup": "LEGACY_NON_AUTHORITY",
+  "authority_cleanup_status": "ACTIVE_STALE_RULES_REMOVED",
+  "runtime_formula": "10 core IDUNEX + 1 MODEL_RUNTIME_PROFILE_FULL per model",
+  "model_runtime_profile_full_contract": [
+    "Profile360 FULL60",
+    "TechExt FULL10",
+    "Master Visual Anchors",
+    "aliases",
+    "source trace",
+    "sidecar mapping",
+    "QA/fallbacks",
+    "runtime evidence",
+    "no null/blanks/placeholders",
+    "no FACTORY_DEFINED_PROPOSED pendiente en entrega final"
+  ],
+  "blocked_conditions": {
+    "models_11_or_more": "BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT",
+    "user_requests_divide_same_project_into_agents": "BLOCKED_NO_SPLIT_AGENTS",
+    "digest_or_summary_as_full_profile": "BLOCKED_NO_DESTRUCTIVE_SUMMARY"
+  }
+}

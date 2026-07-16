@@ -1,0 +1,33 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "formula": "total_agent_files=10+model_count",
+  "input": "model_count",
+  "checks": [
+    "model_count<=10",
+    "total_agent_files<=20",
+    "one_chatgpt_agent_per_project",
+    "one_copilot_agent_per_project",
+    "no_split_agents",
+    "no_destructive_summary"
+  ],
+  "blocked_code": "BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT",
+  "examples": [
+    {
+      "models": 1,
+      "total_files": 11
+    },
+    {
+      "models": 2,
+      "total_files": 12
+    },
+    {
+      "models": 5,
+      "total_files": 15
+    },
+    {
+      "models": 10,
+      "total_files": 20
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-idunex-schema-policy": "PRODUCTIVE_BASE_ENGINE_SCHEMA; accepts current runtime fields, requires productive keys, forbids weakening by deleting useful JSON properties.",
+  "x-base-sha-audited": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-updated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "$id": "IDUNEX/15_SCHEMAS/SOURCE_TO_RUNTIME_MASTER_MAP.schema.json",
+  "title": "SOURCE_TO_RUNTIME_MASTER_MAP productive schema",
+  "type": "array",
+  "minItems": 1000,
+  "items": {
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "source_id",
+      "source_ids",
+      "runtime_domain",
+      "adapter_targets",
+      "field_id",
+      "field_name",
+      "qa_rule_id",
+      "fail_code",
+      "fallback_fix",
+      "runtime_rule",
+      "qa",
+      "fallback",
+      "sidecar_trace",
+      "project_core_rule",
+      "chatgpt_rule",
+      "copilot_rule",
+      "model_profile_field",
+      "prompt_effect",
+      "retest_rule",
+      "severity",
+      "output_go",
+      "source_id_canonical",
+      "runtime_module",
+      "source_alias"
+    ],
+    "properties": {
+      "source_id": {
+        "type": "string",
+        "minLength": 3
+      },
+      "source_ids": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string"
+        }
+      },
+      "runtime_domain": {
+        "type": "string",
+        "minLength": 3
+      },
+      "adapter_targets": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string"
+        }
+      },
+      "field_id": {
+        "type": "string",
+        "minLength": 3
+      },
+      "field_name": {
+        "type": "string",
+        "minLength": 2
+      },
+      "qa_rule_id": {
+        "type": "string",
+        "minLength": 3
+      },
+      "fail_code": {
+        "type": "string",
+        "minLength": 3
+      },
+      "fallback_fix": {
+        "type": "string",
+        "minLength": 5
+      },
+      "runtime_rule": {
+        "type": "string",
+        "minLength": 5
+      },
+      "qa": {
+        "type": "string",
+        "minLength": 5
+      },
+      "fallback": {
+        "type": "string",
+        "minLength": 5
+      },
+      "sidecar_trace": {
+        "type": [
+          "string",
+          "boolean",
+          "object",
+          "array"
+        ],
+        "description": "productive runtime may store sidecar trace as boolean flag or detailed string/object/list"
+      },
+      "project_core_rule": {
+        "type": "string",
+        "minLength": 5
+      },
+      "chatgpt_rule": {
+        "type": "string",
+        "minLength": 5
+      },
+      "copilot_rule": {
+        "type": "string",
+        "minLength": 5
+      },
+      "model_profile_field": {
+        "type": "string",
+        "minLength": 3
+      },
+      "prompt_effect": {
+        "type": "string",
+        "minLength": 5
+      },
+      "retest_rule": {
+        "type": "string",
+        "minLength": 5
+      },
+      "severity": {
+        "type": "string",
+        "enum": [
+          "INFO",
+          "LOW",
+          "MEDIUM",
+          "HIGH",
+          "BLOCKER",
+          "CRITICAL"
+        ]
+      },
+      "output_go": {
+        "type": "string",
+        "pattern": "false_until_output_QA"
+      },
+      "source_id_canonical": {
+        "type": "string",
+        "minLength": 3
+      },
+      "runtime_module": {
+        "type": "string",
+        "minLength": 3
+      },
+      "source_alias": {
+        "type": "string",
+        "minLength": 3,
+        "description": "NO_ALIAS for SRC_001-SRC_048; ENV_PHYSICS_FULL10 only for SRC_049_ENV_PHYSICS_FULL10."
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "source_id_canonical": {
+              "const": "SRC_049_ENV_PHYSICS_FULL10"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "source_alias": {
+              "const": "ENV_PHYSICS_FULL10"
+            },
+            "runtime_module": {
+              "const": "SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "contains": {
+    "type": "object",
+    "properties": {
+      "source_id": {
+        "pattern": "SRC_049|ENV_PHYSICS_FULL10"
+      }
+    }
+  },
+  "x-correction-base-sha256": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-previous-base-sha256": "NON_OPERATIONAL_PREVIOUS_BASES_RECORDED_IN_REPORTS",
+  "x-previous-base-policy": "HISTORICAL_PREVIOUS_BASE_NOT_OPERATIONAL",
+  "x-previous-base-marker": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-previous-base-do-not-use": "DO_NOT_USE_AS_BASE"
+}

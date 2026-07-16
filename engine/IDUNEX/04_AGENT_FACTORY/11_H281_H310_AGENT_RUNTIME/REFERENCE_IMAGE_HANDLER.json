@@ -1,0 +1,29 @@
+{
+  "semantic_version": "v1.0.0",
+  "reference_image_handler_required": true,
+  "mapping_policy": "Map each person/figure to indicated IDUNEX model; ask if mapping is unclear with multiple people/models.",
+  "copy_by_default": [
+    "pose",
+    "wardrobe",
+    "composition",
+    "framing",
+    "lighting",
+    "energy"
+  ],
+  "do_not_copy": [
+    "real facial identity",
+    "real skin identity",
+    "real age",
+    "identifiable real body",
+    "unauthorized third-party logos"
+  ],
+  "reconstruct_from_canon": [
+    "face",
+    "skin",
+    "hair",
+    "body",
+    "gestures",
+    "visible age"
+  ],
+  "equal_to_photo_interpretation": "same pose, clothing, composition and attitude; not real facial identity."
+}

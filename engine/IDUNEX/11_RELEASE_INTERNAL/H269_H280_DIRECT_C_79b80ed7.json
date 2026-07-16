@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "semantic_version": "v1.0.0",
+  "version_bump": "NO",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "correction_scope": "CLI_LIFECYCLE_AND_MATRIX_VERSION_LINEAGE_PARITY",
+  "B01_CLI_LIFECYCLE_AGGREGATE_VALIDATOR_NOT_BOUNDED": "PASS_RECOMPUTED",
+  "child_validator_timeout_seconds": "EXPLICIT_PER_PROCESS",
+  "kill_tree": "PROCESS_GROUP_SIGTERM_SIGKILL",
+  "stdout_stderr_capture": "NON_BLOCKING_BOUNDED",
+  "fail_code_on_timeout": "FAIL_CHILD_VALIDATOR_TIMEOUT_OR_STUCK_PROCESS",
+  "wrapper_observes_real_child_rc": true,
+  "no_live_processes_after_pass": true,
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

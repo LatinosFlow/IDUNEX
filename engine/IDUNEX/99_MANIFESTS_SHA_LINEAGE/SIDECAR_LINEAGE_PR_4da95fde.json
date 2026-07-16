@@ -1,0 +1,16 @@
+{
+  "creative_output_certified": false,
+  "timestamp": "2026-07-01 PROJECT_DECLARED_TIMEZONE",
+  "gate_id": "H122_SIDECAR_LINEAGE_PROJECT_ZIP_SHA_STRICT_GATE",
+  "schemas_checked": "ACTIVE_SIDECAR_SCHEMAS_AND_TEMPLATES",
+  "negative_tests": [
+    "abc",
+    "123",
+    "DEFERRED_ENGINE_PACKAGE_SHA_AT_EXPORT",
+    "sentinel_without_external_companion"
+  ],
+  "findings_count": 0,
+  "findings": [],
+  "result": "PASS",
+  "fail_codes": []
+}

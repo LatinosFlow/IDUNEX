@@ -1,0 +1,12 @@
+{
+  "report_id": "NOLOSS_CHAIN_CURRENT_AUTHORITY",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "authority": "ACTIVE_CURRENT_ONLY",
+  "historical_payload_location": "12_HISTORICAL_NON_AUTHORITY/P034_DEMOTED_PATH_REFERENCE_B03/00_INDEX__00_CONTROL_CENTER__NOLOSS_CHAIN_P0_P01_P02_P03.json.historical.json",
+  "active_path_reference_policy": "No active report may cite a path unless it exists in the reopened ZIP. Historical path maps are demoted.",
+  "noloss_closure": "PASS",
+  "active_report_nonexistent_path_count": 0,
+  "result": "PASS"
+}

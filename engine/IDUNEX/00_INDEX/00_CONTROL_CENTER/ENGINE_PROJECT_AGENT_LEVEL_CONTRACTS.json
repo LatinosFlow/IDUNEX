@@ -1,0 +1,99 @@
+{
+  "contract_id": "ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS",
+  "semantic_version": "v1.0.0",
+  "GOV_LVL_001": "ENGINE_LEVEL != PROJECT_LEVEL != AGENT_LEVEL",
+  "ENGINE_LEVEL": {
+    "responsibility": "governs",
+    "must_contain": [
+      "policies",
+      "schemas",
+      "validators",
+      "factories",
+      "contracts",
+      "research_canon",
+      "runtime_templates",
+      "prompt_pack_templates",
+      "update_migration_logic",
+      "compact_evidence",
+      "manuals",
+      "release_surfaces"
+    ],
+    "must_not_contain": [
+      "real_company_default",
+      "project_default",
+      "Proyecto_Demo_as_active_fixture",
+      "LatinosFlow_as_default",
+      "brand_palette_default",
+      "real_logo_default",
+      "generated_project_zip",
+      "long_logs",
+      "staging",
+      "temp",
+      "heartbeat",
+      "rollback",
+      "fork",
+      "parallel_factory",
+      "parallel_validator"
+    ]
+  },
+  "PROJECT_LEVEL": {
+    "responsibility": "materializes",
+    "must_contain": [
+      "owner",
+      "brand",
+      "assets",
+      "models",
+      "canon",
+      "runtime",
+      "evidence",
+      "manifests",
+      "audit",
+      "release_surfaces"
+    ],
+    "must_not_contain": [
+      "full_engine_copy_unnecessary",
+      "engine_factories_duplicated",
+      "engine_validators_duplicated_unless_runtime_audit_required",
+      "other_project_data",
+      "unauthorized_assets",
+      "declared_PASS_without_recompute"
+    ]
+  },
+  "AGENT_LEVEL": {
+    "responsibility": "executes",
+    "must_receive": "project_runtime_only_10_base_plus_1_full_runtime_canon_per_model",
+    "must_not_receive": [
+      "whole_engine_zip_as_agent_runtime",
+      "memory_external_dependency",
+      "undocumented_interpretation",
+      "models_not_involved_unless_group_scene_or_explicit_request"
+    ]
+  },
+  "blocked_defaults": [
+    "Proyecto 000 Demo active fixture",
+    "LatinosFlow active brand default",
+    "brand palettes/logos/clients/models demo as engine defaults",
+    "agents reading full engine instead of project runtime",
+    "active generic PROJECT_BRAND_ENTITY palette hex defaults",
+    "BRD-PAL-001 blocked brand palette fingerprints in active runtime"
+  ],
+  "validator": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+  "fail_code": "FAIL_GOV_LVL_001",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "BRD_PAL_001": {
+    "rule": "Generic engine runtime surfaces must keep PROJECT_BRAND_* tokens; real brand values resolve only from authorized PROJECT_BRAND_REGISTRY at project level.",
+    "blocked_fingerprints": [
+      "#FFBA06",
+      "#332727",
+      "#FF0000",
+      "#FFBA06+#FF0000+PROJECT_BRAND_ENTITY",
+      "real project/brand names as active defaults"
+    ],
+    "allowed_scope": [
+      "PROJECT_LEVEL_AUTHORIZED_PROJECT_BRAND_REGISTRY",
+      "EXTERNAL_USER_DOC_NON_EMBEDDED",
+      "NON_AUTHORITY_FIXTURE_NOT_ACTIVE_RUNTIME"
+    ],
+    "validator": "VALIDATE_MASTER_GOVERNANCE_NATIVE"
+  }
+}

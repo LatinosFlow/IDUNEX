@@ -1,0 +1,57 @@
+{
+  "contract_id": "UPDATE_MIGRATION_CONTRACTS",
+  "semantic_version": "v1.0.0",
+  "UPD_MAT_001": {
+    "required_update_types": [
+      "age_delta_years",
+      "age_evolution",
+      "set_wardrobe",
+      "update_model_field",
+      "brand_update",
+      "runtime_regeneration",
+      "add_model",
+      "remove_model"
+    ],
+    "accepted_shapes": [
+      "top_level_alias",
+      "operations_array",
+      "single_operation"
+    ],
+    "hard_guards": [
+      "no_drift_unrequested_fields",
+      "zero_model_remove_block",
+      "runtime_10_plus_N_recomputed",
+      "companion_recomputed",
+      "zip_reopened"
+    ]
+  },
+  "MIG_MAT_001": {
+    "required_migration_cases": [
+      "same_version_to_same_version",
+      "previous_compatible_to_current",
+      "update_project_by_engine",
+      "migrate_project",
+      "N1",
+      "N2",
+      "N10",
+      "low_info",
+      "full_info"
+    ],
+    "hard_guards": [
+      "target_engine_known",
+      "no_rollback",
+      "no_project_leakage",
+      "runtime_revalidation",
+      "fail_codes_clean"
+    ]
+  },
+  "active_logic_pointers": [
+    "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
+    "03_PROJECT_FACTORY/08_UPDATE_MIGRATION",
+    "99_MANIFESTS_SHA_LINEAGE/UPDATE_AND_MIGRATION_EXPECTED_BLOCK_REGRESSION_MATRIX.json",
+    "99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_ATOMIC_REGRESSION_MATRIX_H157_H164.json"
+  ],
+  "validator": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+  "fail_code": "FAIL_UPDATE_MIGRATION_CONTRACTS",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

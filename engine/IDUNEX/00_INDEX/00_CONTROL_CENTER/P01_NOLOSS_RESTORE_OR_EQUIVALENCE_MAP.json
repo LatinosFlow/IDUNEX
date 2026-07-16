@@ -1,0 +1,13 @@
+{
+  "report_id": "NOLOSS_RESTORE_OR_EQUIVALENCE_MAP_CURRENT",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "authority": "ACTIVE_CURRENT_ONLY",
+  "historical_payload_location": "12_HISTORICAL_NON_AUTHORITY/P034_DEMOTED_PATH_REFERENCE_B03/00_INDEX__00_CONTROL_CENTER__P01_NOLOSS_RESTORE_OR_EQUIVALENCE_MAP.json.historical.json",
+  "restore_policy": "Current restoration relies on active validators, active manifests, companion SHA and reopened-ZIP tests. Historical self-referential path maps are non-authoritative.",
+  "validator_tree_mutation_count": 0,
+  "restoration_retest": "PASS",
+  "active_report_nonexistent_path_count": 0,
+  "result": "PASS"
+}

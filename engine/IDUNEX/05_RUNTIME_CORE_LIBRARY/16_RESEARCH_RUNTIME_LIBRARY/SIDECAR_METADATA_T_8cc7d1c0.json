@@ -1,0 +1,69 @@
+{
+  "sidecar_schema_version": "v1.0.0",
+  "output_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+  "project_id": "IDUNEX_PROJECT_CANONICAL_SMOKE_TEST_v1.0.0_20260614",
+  "model_id": "MODEL_TEMPLATE_SMOKE",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0_20260614",
+  "profile360_version": "v1.0.0",
+  "promptpack_version": "v1.0.0",
+  "source_ids_used": [
+    "SRC_001_Ontolog_a_IDUNEX_360",
+    "SRC_002_Biometr_a_facial_forense",
+    "SRC_003_Antropometr_a_corporal_avanzada",
+    "SRC_004_Dermatolog_a_visual_realista",
+    "SRC_005_Cabello_peinados_y_f_sica_capilar",
+    "SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos",
+    "SRC_007_Biograf_a_familiar_y_migratoria",
+    "SRC_008_Moral_valores_y_tica_personal",
+    "SRC_009_Religi_n_espiritualidad_y_cosmovisi_n",
+    "SRC_010_Psicolog_a_avanzada"
+  ],
+  "field_ids_used": [
+    "P360_IDENTITY_0001",
+    "P360_IDENTITY_0002",
+    "P360_IDENTITY_0003",
+    "P360_BODY_0004",
+    "P360_BODY_0005",
+    "P360_BODY_0006",
+    "P360_VOICE_0007",
+    "P360_IDENTITY_0008",
+    "P360_IDENTITY_0009",
+    "P360_IDENTITY_0010"
+  ],
+  "adapter_used": "sidecar_metadata_adapter",
+  "vendor": "internal_smoke_test",
+  "vendor_params": {
+    "mode": "smoke_test",
+    "adapter": "sidecar_metadata_adapter",
+    "modalities": [
+      "image",
+      "video",
+      "voice",
+      "suno",
+      "copilot_docx",
+      "sidecar"
+    ]
+  },
+  "locks_active": [
+    "JSON_LOCK",
+    "ANCHOR_LOCK",
+    "AGE_LOCK",
+    "ID_LOCK"
+  ],
+  "qa_status": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "qa_fail_codes": [],
+  "fallbacks_applied": [
+    "NO_FALLBACK_REQUIRED_AFTER_RETEST_PASS"
+  ],
+  "hash_input": "sha256:4a3af41189908c42927f7f591f0ed9c8099746aa214d48d5cc97bb48f2a6a50e",
+  "hash_output": "sha256:f8e34febaf18eb57f295adfb6cf7fb5018a0ad1ea79344b282f7d5670ccffa45",
+  "created_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "reviewed_by": "IDUNEX_QA_AUDITOR",
+  "production_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "this_output_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "project_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "state_scope_reason": "Output is non-commercial smoke evidence for prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE; GLOBAL_GO remains prohibited.",
+  "output_modality": "sidecar",
+  "evidence_bundle_ref": "18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/HASH_EVIDENCE.json",
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+}

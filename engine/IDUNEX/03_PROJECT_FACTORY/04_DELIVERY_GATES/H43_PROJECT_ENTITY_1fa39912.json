@@ -1,0 +1,28 @@
+{
+  "gate_id": "H43",
+  "gate_name": "PROJECT_ENTITY_BRAND_REGISTRY_GATE",
+  "status": "ACTIVE_VALIDATED",
+  "correction_scope_label": "H01_H51",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "normative_policy": "Gate is integrated into the active Project Factory runtime, not delivered as a decorative patch. Project delivery blocks on missing required materialization, trace, validator result, failcode or fallback.",
+  "schema_or_json_contract": "Project artifact must be valid JSON when applicable and must expose concrete evidence fields required by the gate.",
+  "validator_integration": "Validated by validate_h37_h51_artifacts() and generate_end_to_end() inside IDUNEX_PROJECT_FACTORY_v1.0.0.py.",
+  "golden_tests": {
+    "positive": "canonical generated project with required artifact and PASS status",
+    "negative": "missing/empty/generic artifact or unsupported PASS must emit failcode"
+  },
+  "failcodes": [
+    "FAIL_H43_PROJECT_ENTITY_PROFILE_MISSING",
+    "FAIL_H43_BRAND_SCOPE_UNRESOLVED",
+    "FAIL_H43_RIGHTS_HOLDER_MISSING",
+    "FAIL_H43_COMMERCIAL_SCOPE_WITHOUT_RIGHTS",
+    "FAIL_H43_LOGO_EXACT_WITHOUT_OFFICIAL_ASSET_HASH"
+  ],
+  "fallback_fixes": [
+    "propagate explicit field to canon/profile/runtime/QA/fallback/trace",
+    "regenerate impacted manifests/ledgers/certificates",
+    "block official delivery when evidence is not executable or re-openable"
+  ],
+  "project_artifact": "PROJECT_ENTITY_PROFILE.resolved.json",
+  "no_regression": "H01-H36 preserved; creative output remains uncertified globally."
+}

@@ -1,0 +1,11 @@
+# FINAL_REOPENED_PROJECT_ZIP_EXECUTION_PROOF_GATE
+
+Motor: IDUNEX_MOTOR_v1.0.0
+Versión semántica: v1.0.0
+Etiqueta interna: P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN
+Preserva: LEGACY_NON_AUTHORITY; LEGACY_NON_AUTHORITY
+Fecha: NEUTRALIZED_ACTIVE_SCOPE
+
+- `required_file`: FINAL_REOPENED_PROJECT_ZIP_EXECUTION_PROOF.json
+- `actual_value_required`: final reopened zip, not prepackage tree
+- `self_hash_policy`: zip_sha256 authority is the external companion after final packaging; embedded self-hash is prohibited

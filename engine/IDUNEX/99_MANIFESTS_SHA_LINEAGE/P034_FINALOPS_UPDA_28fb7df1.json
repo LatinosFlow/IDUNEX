@@ -1,0 +1,42 @@
+{
+  "report_id": "P034_FINALOPS_UPDATE_MIGRATION_IMPORTSAFE_CLOSURE",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "commands": [
+    "update-project",
+    "validate-update-contract",
+    "migrate-project",
+    "update-project-by-engine"
+  ],
+  "import_safe_policy": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "sys_dont_write_bytecode": true,
+    "active_tree_bytecode_count": 0,
+    "temporary_workdir": "PASS",
+    "launcher_present": "PASS"
+  },
+  "project_generation_matrix": "1..10 x minimal/intermediate/complete PASS from reopened ZIP",
+  "same_version_update": "1/2/10 PASS",
+  "future_engine_migration_simulation": "PASS",
+  "human_facing_metric_policy": [
+    "ACTIVE_LEGACY_IDENTITY_SPECIFIC_COUNT",
+    "ACTIVE_DEMO_IDENTITY_SPECIFIC_COUNT",
+    "ACTIVE_LEGACY_PROJECT_SPECIFIC_COUNT"
+  ],
+  "mutation_suite": "442/442",
+  "creative_output_certified": false,
+  "result": "PASS",
+  "import_safe_launcher": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_IMPORT_SAFE.sh",
+  "PROJECT_GENERATION_CLI_MATRIX_1_TO_10_X3_REOPENED": "PASS",
+  "PROJECT_GENERATION_CLI_MATRIX_PASS_COUNT": "30/30",
+  "cli_matrix_proof": "99_MANIFESTS_SHA_LINEAGE/P034_PROJECT_GENERATION_CLI_MATRIX_1_TO_10_X3_REOPENED_PROOF.json",
+  "update_migration_smoke_proof": "99_MANIFESTS_SHA_LINEAGE/P034_UPDATE_MIGRATION_CLI_SMOKE_REOPENED_PROOF.json",
+  "locked_identity_update": "BLOCKED_EARLY_EXPECTED",
+  "unknown_target_engine_blocked_early": "BLOCKED_EARLY_EXPECTED_TARGET_ENGINE_ABSENT",
+  "post_matrix_import_safe": "PASS",
+  "NO_BYTECODE_AFTER_FULL_CLI_MATRIX": "PASS",
+  "BYTECODE_ACTIVE_TREE_COUNT": 0,
+  "h10_h14_revalidated": "PASS",
+  "direct_correction_gates": "H01-H14"
+}

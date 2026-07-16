@@ -1,0 +1,9 @@
+{
+  "gate_id": "H132_CONTROL_CENTER_PASS_RECOMPUTED_DEMOTION_GATE",
+  "result": "PASS",
+  "fail_codes": [],
+  "pass_pending_tokens_active": 0,
+  "pending_tokens_active": 0,
+  "demotion_policy": "historical tokens must carry AUTHORITY_STATUS=NON_AUTHORITY_HISTORICAL or live under historical/non-authority surfaces",
+  "creative_output_certified": false
+}

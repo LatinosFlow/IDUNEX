@@ -1,0 +1,240 @@
+{
+  "scene_environment_spatial_physics": [
+    {
+      "fail_code": "ENV-STYLE",
+      "definition": "Scene style, art direction or mise-en-scene contradicts the model, project, locality or editorial tone.",
+      "trigger": "ENV-STYLE triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-STYLE.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-STYLE failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-STYLE; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-STYLE.",
+      "sidecar_evidence_field": "env_style_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-STYLE_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-COMP",
+      "definition": "Composition, blocking, lens height, thirds, depth or visual hierarchy fails.",
+      "trigger": "ENV-COMP triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-COMP.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-COMP failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-COMP; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-COMP.",
+      "sidecar_evidence_field": "env_comp_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-COMP_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-COLL",
+      "definition": "Body-object collision, clipping or impossible contact appears.",
+      "trigger": "ENV-COLL triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-COLL.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-COLL failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-COLL; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-COLL.",
+      "sidecar_evidence_field": "env_coll_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-COLL_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-PROP",
+      "definition": "Props are incoherent, floating, branded, culturally wrong or physically unanchored.",
+      "trigger": "ENV-PROP triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-PROP.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-PROP failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-PROP; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-PROP.",
+      "sidecar_evidence_field": "env_prop_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-PROP_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-GRAV",
+      "definition": "Gravity, textile fall, hair, accessories, straps or object weight is implausible.",
+      "trigger": "ENV-GRAV triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-GRAV.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-GRAV failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-GRAV; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-GRAV.",
+      "sidecar_evidence_field": "env_grav_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-GRAV_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-OCCL",
+      "definition": "Occlusion order, overlaps, foreground/background or contact shadows are wrong.",
+      "trigger": "ENV-OCCL triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-OCCL.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-OCCL failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-OCCL; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-OCCL.",
+      "sidecar_evidence_field": "env_occl_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-OCCL_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-SCALE",
+      "definition": "Human-to-object, room, furniture or architecture scale is inconsistent.",
+      "trigger": "ENV-SCALE triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-SCALE.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-SCALE failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-SCALE; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-SCALE.",
+      "sidecar_evidence_field": "env_scale_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-SCALE_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-PERSP",
+      "definition": "Architectural perspective, vanishing lines, floor/wall/ceiling depth or camera position fails.",
+      "trigger": "ENV-PERSP triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-PERSP.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-PERSP failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-PERSP; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-PERSP.",
+      "sidecar_evidence_field": "env_persp_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-PERSP_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-LIGHT",
+      "definition": "Key/fill/rim, color temperature, catchlights, shadow direction or exposure is incoherent.",
+      "trigger": "ENV-LIGHT triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-LIGHT.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-LIGHT failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-LIGHT; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-LIGHT.",
+      "sidecar_evidence_field": "env_light_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-LIGHT_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-REFL",
+      "definition": "Reflections, mirrors, glass, metal, water or specular response mismatch the scene.",
+      "trigger": "ENV-REFL triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-REFL.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-REFL failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-REFL; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-REFL.",
+      "sidecar_evidence_field": "env_refl_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-REFL_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-CONT",
+      "definition": "Image-video continuity, temporal consistency, position, wardrobe or prop continuity fails.",
+      "trigger": "ENV-CONT triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-CONT.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-CONT failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-CONT; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-CONT.",
+      "sidecar_evidence_field": "env_cont_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-CONT_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-CULT",
+      "definition": "Locality, cultural context, social environment or PROJECT_DECLARED_LOCALITY cues are incoherent or generic.",
+      "trigger": "ENV-CULT triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-CULT.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-CULT failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-CULT; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-CULT.",
+      "sidecar_evidence_field": "env_cult_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-CULT_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    },
+    {
+      "fail_code": "ENV-EDIT",
+      "definition": "Adult editorial safety or non-explicit boundary fails.",
+      "trigger": "ENV-EDIT triggers when QA detects a visible violation in output, prompt, sidecar or reference transfer evidence.",
+      "affected_fields": [
+        "Profile360 sections 40-49",
+        "Profile360 sections 52,54,55,56,57,60",
+        "Project Core 03_SCENE_ENV_PHYSICS_FULL10",
+        "source SRC_049_ENV_PHYSICS_FULL10"
+      ],
+      "prompt_fix": "Rewrite scene clause with explicit camera height, lens, floor/wall/ceiling geometry, body-object contact, scale, light direction and locality anchors for ENV-EDIT.",
+      "negative_prompt_fix": "Add NEGATIVE / AVOID: ENV-EDIT failure, floating objects, clipping, wrong occlusion, scale mismatch, broken perspective, inconsistent shadows, unsafe editorial drift.",
+      "qa_fix": "Run PASS/FAIL checklist for ENV-EDIT; require sidecar evidence field and image/video retest before output_go.",
+      "manual_fallback": "Simplify the scene to one subject, one primary prop and one plane; lock contact points, then rebuild environment layers for ENV-EDIT.",
+      "sidecar_evidence_field": "env_edit_evidence",
+      "severity": "BLOCKER",
+      "retest_rule": "RETEST_ENV-EDIT_AFTER_PROMPT_FIX_AND_SIDECAR_EVIDENCE"
+    }
+  ],
+  "profile360_fail_codes": "see 04_PROFILE360_SYSTEM/05_QA_FAILCODES/PROFILE360_FAILCODES.json",
+  "status": "PRODUCTIVE_BASE_ENGINE_VALIDATED"
+}

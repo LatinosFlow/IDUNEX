@@ -1,0 +1,10 @@
+{
+  "validator": "VALIDATE_AGENT_RUNTIME_MARKDOWN_STRICT",
+  "root": "/mnt/data/idunex_work/IDUNEX",
+  "clauses_checked": 46,
+  "bad_runtime_clauses": 0,
+  "CLAUSE_FAIL_FALLBACK_COVERAGE": "100%",
+  "AGENT_RUNTIME_MARKDOWN_STRICT_CLAUSE_SCHEMA": "PASS",
+  "errors": [],
+  "result": "PASS"
+}

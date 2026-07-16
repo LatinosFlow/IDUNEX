@@ -1,0 +1,25 @@
+{
+  "proof_id": "FINAL_REOPENED_MOTOR_ZIP_PROOF",
+  "semantic_version": "v1.0.0",
+  "correction_scope_label": "BRD-PAL-001_ACTIVE_PROJECT_BRAND_PALETTE_DEFAULT_LEAKAGE_DIRECT_CANONICAL",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "final_zip_sha256_authority": "external_companion_IDUNEX_MOTOR_v1.0.0.zip.sha256_after_packaging",
+  "final_zip_testzip_required": "PASS",
+  "reopened_validation_required": "PASS",
+  "runtime_validator_required": "PASS",
+  "project_mutation_suite_required": "PASS",
+  "creative_output_certified": false,
+  "truthfulness": "The exact final ZIP hash is held by the external companion SHA256 file after packaging to avoid self-referential hash mutation inside the ZIP.",
+  "direct_correction_scope": "BRD-PAL-001_NATIVE_GOVERNANCE_CLEAN",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "BRD_PAL_001": "ACTIVE",
+  "blocked_fingerprints": [
+    "#FFBA06",
+    "#332727",
+    "#FF0000",
+    "#FFBA06 + #FF0000 + PROJECT_BRAND_ENTITY",
+    "real project or brand names as active defaults"
+  ],
+  "runtime_visual_surfaces": "PROJECT_BRAND_* neutral tokens only; values resolved from PROJECT_BRAND_REGISTRY or authorized external input"
+}

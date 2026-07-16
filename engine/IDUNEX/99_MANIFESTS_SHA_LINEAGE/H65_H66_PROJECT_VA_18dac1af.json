@@ -1,0 +1,22 @@
+{
+  "proof_id": "H65_H66_PROJECT_VALIDATOR_PENDING_NEGATIVE_PROOF",
+  "gates": [
+    "H65_GENERATED_PROJECT_NO_PENDING_MATERIALIZATION_GATE",
+    "H66_PROJECT_VALIDATOR_UNRESOLVED_STATUS_ENFORCEMENT_GATE"
+  ],
+  "result": "PASS",
+  "generated_project_no_pending_materialization": "PASS",
+  "project_validator_unresolved_status_enforcement": "PASS",
+  "validator_blocks_pending_in_profile360": "PASS",
+  "negative_injection_target": "02_MODELS/*/PROFILE360_FULL60.json",
+  "negative_failcodes": [
+    "FAIL_PROFILE_SEMANTIC_VALUE",
+    "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH",
+    "FAIL_PACKAGE_SHA",
+    "FAIL_H65_PENDING_MATERIALIZATION_ACTIVE_SURFACE",
+    "FAIL_H66_PENDING_MATERIALIZATION_NOT_BLOCKED"
+  ],
+  "restoration_retest": "PASS",
+  "clean_generation_result": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

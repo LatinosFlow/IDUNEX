@@ -1,0 +1,29 @@
+{
+  "gate_id": "CORE_NO_BOILERPLATE_EXECUTION_GATE",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "fail_code": "BLOCKED_CORE_BOILERPLATE_RUNTIME",
+  "contract": "Executes similarity and domain distinctness metrics over the 10 core files; no clone-like core pack is deliverable.",
+  "blocking": true,
+  "actual_value_required": true,
+  "pass_by_count_only_allowed": false,
+  "delivery_allowed_if_fail": false,
+  "correction_action": "Identify root_cause, correct surgically, recalculate manifests/SHA, reemit ZIP, reopen ZIP and reaudIT complete scope before delivery.",
+  "core_similarity_avg_max": 0.8,
+  "core_similarity_max_max": 0.88,
+  "domain_distinctness_score_min": 0.85,
+  "required_core_domains": {
+    "01_PROJECT_CONTROL_CENTER": "control/router/startup/intake",
+    "02_PROJECT_GOVERNANCE_LOCKS": "governance/locks/version/identity/risk",
+    "03_PROJECT_MULTIMODAL_CORE": "model registry/Profile360/TechExt/alias resolver",
+    "04_MODEL_DIALOGUE_PERSONA_CORE": "image/video/generation/reference contracts",
+    "05_IMAGE_VIDEO_REFERENCE_CONTRACTS": "voice/audio/music/Suno/ElevenLabs",
+    "06_VOICE_AUDIO_MUSIC_SUNO_CONTRACTS": "scene/environment/wardrobe/object physics",
+    "07_WARDROBE_SCENE_OBJECT_PHYSICS": "coverage map/source ledger/evidence bundle",
+    "08_QA_FAILCODES_FALLBACKS": "QA/failcodes/fallback/golden tests",
+    "09_SIDECARS_EVIDENCE_TRACEABILITY": "sidecars/hash/lineage/truthfulness",
+    "10_VENDOR_GUIDES_AND_HANDOFFS": "vendor handoff/export/delivery gates"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "semantic_version": "v1.0.0",
+  "identity_fields_canon_precedence": [
+    "physical_identity",
+    "visible_age",
+    "skin",
+    "hair",
+    "face",
+    "body",
+    "voice"
+  ],
+  "user_overridable_if_safe": [
+    "wardrobe",
+    "pose",
+    "place",
+    "camera",
+    "environment",
+    "mood"
+  ],
+  "missing_premium_identity_data_policy": "ASK_OR_FAIL_EXPLICIT",
+  "safe_autofill_marker": "MOTOR_AUTOFILL_SAFE"
+}

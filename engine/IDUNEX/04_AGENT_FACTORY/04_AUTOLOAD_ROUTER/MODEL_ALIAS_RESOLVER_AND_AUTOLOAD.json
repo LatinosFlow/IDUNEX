@@ -1,0 +1,39 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "resolver_id": "MODEL_ALIAS_RESOLVER_AND_AUTOLOAD",
+  "alias_inputs_supported": [
+    "short_name",
+    "full_name",
+    "artistic_name",
+    "MODEL_NNN",
+    "MODEL_NNN_NAME",
+    "project_defined_aliases"
+  ],
+  "autoload_sequence": [
+    "READ_PROJECT_FILES_BEFORE_OUTPUT",
+    "RESOLVE_ALIAS",
+    "LOAD_10_CORE_FILES",
+    "LOAD_FULL_PROFILE360_PER_MODEL",
+    "LOAD_TECHEXT_IF_MODALITY_REQUIRES",
+    "LOAD_MASTER_ANCHORS_IF_MODALITY_REQUIRES",
+    "LOAD_AGENT_RUNTIME_GOVERNANCE",
+    "LOAD_QA_SIDECAR_HASH_LINEAGE",
+    "APPLY_OUTPUT_STATUS_GATE"
+  ],
+  "blocking_codes": [
+    "BLOCKED_MODEL_ALIAS_NOT_RESOLVED",
+    "BLOCKED_PROFILE360_NOT_LOADED",
+    "BLOCKED_TECHEXT_NOT_AVAILABLE",
+    "BLOCKED_MASTER_ANCHORS_NOT_AVAILABLE",
+    "BLOCKED_RUNTIME_CORE_NOT_LOADED",
+    "BLOCKED_OUTPUT_GO_TRUE_WITHOUT_SIDECAR_HASH_LINEAGE",
+    "BLOCKED_PROJECT_CLOSE_WITHOUT_GOLDEN_TESTS_DEFINED"
+  ],
+  "runtime_file_policy": {
+    "core_files_required": 10,
+    "profile360_full_per_model": 1,
+    "max_knowledge_files": 20,
+    "never_summarize_profile360_to_fit_limit": true
+  },
+  "project_factory_export_path": "PROJECT_CORE/10_AGENT_RUNTIME_GOVERNANCE/MODEL_ALIAS_RESOLVER_AND_AUTOLOAD.json"
+}

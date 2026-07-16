@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-idunex-schema-policy": "PRODUCTIVE_BASE_ENGINE_SCHEMA; accepts current runtime fields, requires productive keys, forbids weakening by deleting useful JSON properties.",
+  "x-base-sha-audited": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-updated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "$id": "IDUNEX/15_SCHEMAS/PROFILE360_FIELD_REGISTRY.schema.json",
+  "title": "PROFILE360_FIELD_REGISTRY productive schema",
+  "type": "array",
+  "minItems": 1000,
+  "items": {
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "field_id",
+      "domain",
+      "field_name",
+      "definition",
+      "allowed_values",
+      "forbidden_values",
+      "depends_on",
+      "affects",
+      "qa_check",
+      "fail_code",
+      "fallback_fix",
+      "runtime_domain",
+      "source_ids",
+      "primary_source_id",
+      "adapter_targets",
+      "required",
+      "field_type",
+      "runtime_use",
+      "qa_rule_id",
+      "sidecar_trace",
+      "engine_version",
+      "validation_state",
+      "release_state",
+      "production_gate",
+      "profile360_full60_section",
+      "project_core_rule",
+      "chatgpt_rule",
+      "copilot_rule",
+      "null_policy",
+      "source_trace_required",
+      "qa_sidecar_required"
+    ],
+    "properties": {
+      "field_id": {
+        "type": "string",
+        "minLength": 3
+      },
+      "domain": {
+        "type": "string",
+        "minLength": 3
+      },
+      "field_name": {
+        "type": "string",
+        "minLength": 2
+      },
+      "definition": {
+        "type": "string",
+        "minLength": 20
+      },
+      "allowed_values": {
+        "type": "array",
+        "minItems": 1
+      },
+      "forbidden_values": {
+        "type": "array",
+        "minItems": 1
+      },
+      "depends_on": {
+        "type": "array",
+        "minItems": 1
+      },
+      "affects": {
+        "type": "array",
+        "minItems": 1
+      },
+      "qa_check": {
+        "type": "string",
+        "minLength": 5
+      },
+      "fail_code": {
+        "type": "string",
+        "minLength": 3
+      },
+      "fallback_fix": {
+        "type": "string",
+        "minLength": 5
+      },
+      "runtime_domain": {
+        "type": "string",
+        "minLength": 3
+      },
+      "source_ids": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string"
+        }
+      },
+      "primary_source_id": {
+        "type": "string",
+        "minLength": 3
+      },
+      "adapter_targets": {
+        "type": "array",
+        "minItems": 1
+      },
+      "required": {
+        "type": "boolean"
+      },
+      "field_type": {
+        "type": "string",
+        "minLength": 3
+      },
+      "runtime_use": {
+        "type": [
+          "string",
+          "array",
+          "object"
+        ],
+        "description": "productive runtime usage instruction"
+      },
+      "qa_rule_id": {
+        "type": "string",
+        "minLength": 3
+      },
+      "sidecar_trace": {
+        "type": [
+          "string",
+          "boolean",
+          "object",
+          "array"
+        ],
+        "description": "productive runtime may store sidecar trace as boolean flag or detailed string/object/list"
+      },
+      "engine_version": {
+        "const": "IDUNEX_MOTOR_v1.0.0"
+      },
+      "validation_state": {
+        "type": "string",
+        "minLength": 3
+      },
+      "release_state": {
+        "type": "string",
+        "minLength": 3
+      },
+      "production_gate": {
+        "type": "string",
+        "minLength": 3
+      },
+      "profile360_full60_section": {
+        "type": "string",
+        "minLength": 2
+      },
+      "project_core_rule": {
+        "type": "string",
+        "minLength": 5
+      },
+      "chatgpt_rule": {
+        "type": "string",
+        "minLength": 5
+      },
+      "copilot_rule": {
+        "type": "string",
+        "minLength": 5
+      },
+      "null_policy": {
+        "type": "string",
+        "minLength": 5
+      },
+      "source_trace_required": {
+        "const": true
+      },
+      "qa_sidecar_required": {
+        "const": true
+      },
+      "legacy_global_go_historical": {
+        "const": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+        "description": "Legacy trace only. This is not an active GLOBAL_GO/governance field."
+      }
+    },
+    "not": {
+      "required": [
+        "global_go"
+      ]
+    }
+  },
+  "x-previous-base-sha256": "NON_OPERATIONAL_PREVIOUS_BASES_RECORDED_IN_REPORTS",
+  "x-previous-base-policy": "HISTORICAL_PREVIOUS_BASE_NOT_OPERATIONAL",
+  "x-correction-base-sha256": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-previous-base-marker": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-previous-base-do-not-use": "DO_NOT_USE_AS_BASE"
+}

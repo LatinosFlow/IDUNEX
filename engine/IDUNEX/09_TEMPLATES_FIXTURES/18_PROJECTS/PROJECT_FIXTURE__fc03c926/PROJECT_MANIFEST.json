@@ -1,0 +1,70 @@
+{
+  "project_id": "IDUNEX_PROJECT_FIXTURE_VALIDATION_001",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "project_version": "v1.0.0",
+  "project_type": "multi_modal_real_validation_fixture",
+  "output_modalities": [
+    "image",
+    "video",
+    "voice",
+    "suno",
+    "copilot_docx"
+  ],
+  "source_scope": "48/48 runtime sources available; modality fixtures use selected field/source subsets and record evidence hashes.",
+  "identity_lock_scope": [
+    "JSON_LOCK",
+    "ANCHOR_LOCK",
+    "AGE_LOCK",
+    "ID_LOCK"
+  ],
+  "legal_scope": "synthetic_identity_project_level_no_global_go",
+  "commercial_scope": "non-production validation fixture; no commercial release",
+  "platform_scope": [
+    "chatgpt",
+    "copilot_docx",
+    "image",
+    "video",
+    "voice",
+    "suno",
+    "sidecar"
+  ],
+  "vendor_scope": [
+    "image_prompt_adapter",
+    "video_prompt_adapter",
+    "elevenlabs_voice_adapter",
+    "suno_music_adapter",
+    "copilot_docx_adapter"
+  ],
+  "qa_scope": [
+    "schema_validation",
+    "source_trace",
+    "field_trace",
+    "golden_tests",
+    "hash_evidence",
+    "sidecar_validation",
+    "fallback_retest"
+  ],
+  "delivery_scope": [
+    "sidecars_by_modality",
+    "qa_result_real",
+    "golden_test_results_real",
+    "hash_evidence_real",
+    "rollback_note"
+  ],
+  "validation_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "release_state": "prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "real_output_policy": "high_fidelity_mock_formal_until external vendor outputs are attached; PROJECT_GO requires real vendor artifacts.",
+  "production_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "fixture_only": true,
+  "fixture_not_authority": true,
+  "fixture_not_default": true,
+  "fixture_can_be_used_for_tests_only": true,
+  "fixture_source": "synthetic_test_case",
+  "fixture_scope": "isolated_golden_test_fixture",
+  "not_used_as_default": true,
+  "fixture_mode_required": true,
+  "active_runtime_feed_allowed": false,
+  "authority_status": "NON_AUTHORITY_FIXTURE_ONLY",
+  "fixture_project_id": "PROJECT_FIXTURE_VALIDATION_001"
+}

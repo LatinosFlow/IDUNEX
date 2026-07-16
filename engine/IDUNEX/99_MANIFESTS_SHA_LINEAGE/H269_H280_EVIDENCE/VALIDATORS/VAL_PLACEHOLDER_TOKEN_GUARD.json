@@ -1,0 +1,8 @@
+{
+  "validator": "VALIDATE_ACTIVE_PLACEHOLDER_AND_AMBIGUOUS_TOKEN_GUARD",
+  "scope": "H269_H280_APPLIED_ON_H01_H268",
+  "result": "PASS",
+  "fail_codes": [],
+  "blocking_warnings": 0,
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

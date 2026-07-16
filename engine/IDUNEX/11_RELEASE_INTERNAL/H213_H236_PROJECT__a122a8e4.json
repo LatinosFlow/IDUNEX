@@ -1,0 +1,16 @@
+{
+  "schema": "IDUNEX_H213_H236_PROJECT_GENERATION_VALIDATION_MATRIX_SUPERSEDED_BY_H238_V1",
+  "result": "PASS",
+  "gate": "H213-H236 + H237-H244 truthfulness supersession",
+  "status": "SUPERSEDED_BY_REAL_FULL_31_MATRIX_H238",
+  "full_31_matrix_status": "PASS",
+  "PROJECT_31_FULL_MATRIX_EXECUTED": "PASS",
+  "PROJECT_31_FULL_MATRIX_PASS_COUNT": "31/31",
+  "evidence_authority": "11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json",
+  "representative_evidence_used_as_closure": false,
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "fail_codes": [],
+  "validators_fail": 0,
+  "blocking_warnings": 0,
+  "representative_only_closure_token_absent": true
+}

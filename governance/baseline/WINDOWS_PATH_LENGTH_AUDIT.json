@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "file_count": 1030,
+  "max_relative_path_length": 125,
+  "longest_paths": [
+    {
+      "length": 125,
+      "path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_N2_MIN_VALIDATE_H261_H268.json"
+    },
+    {
+      "length": 125,
+      "path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_N2_MIN_GENERATE_H261_H268.json"
+    },
+    {
+      "length": 125,
+      "path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_N1_MIN_VALIDATE_H261_H268.json"
+    },
+    {
+      "length": 125,
+      "path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_N1_MIN_GENERATE_H261_H268.json"
+    },
+    {
+      "length": 125,
+      "path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/P034_RUNTIME_VALIDATION_RESULT.json"
+    },
+    {
+      "length": 124,
+      "path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json"
+    },
+    {
+      "length": 124,
+      "path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json"
+    },
+    {
+      "length": 123,
+      "path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/DEMO_N1_N10_SHA_REVALIDATION.json"
+    },
+    {
+      "length": 123,
+      "path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/11_RELEASE_INTERNAL/MINIMAL_MATRIX_N1_N2_N10_POST_FIX.json"
+    },
+    {
+      "length": 120,
+      "path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_31_H261_H268_PARTIAL.json"
+    }
+  ],
+  "windows_safe_target": 125
+}

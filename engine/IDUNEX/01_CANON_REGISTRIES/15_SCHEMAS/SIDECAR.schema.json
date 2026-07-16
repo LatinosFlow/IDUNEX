@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-idunex-schema-policy": "PRODUCTIVE_BASE_ENGINE_SCHEMA; accepts current runtime fields, requires productive keys, forbids weakening by deleting useful JSON properties.",
+  "x-base-sha-audited": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-updated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "$id": "IDUNEX/15_SCHEMAS/SIDECAR.schema.json",
+  "title": "SIDECAR productive schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "sidecar_schema_version",
+    "output_id",
+    "project_id",
+    "model_id",
+    "engine_version",
+    "source_ids_used",
+    "field_ids_used",
+    "adapter_used",
+    "vendor",
+    "vendor_params",
+    "locks_active",
+    "qa_status",
+    "qa_fail_codes",
+    "fallbacks_applied",
+    "hash_input",
+    "hash_output",
+    "watermark_required",
+    "watermark_method",
+    "watermark_text",
+    "watermark_position",
+    "watermark_optout_state"
+  ],
+  "properties": {
+    "sidecar_schema_version": {
+      "type": "string",
+      "minLength": 3
+    },
+    "output_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "engine_version": {
+      "type": "string",
+      "pattern": "IDUNEX_MOTOR_v1\\.0\\.0"
+    },
+    "source_ids_used": {
+      "type": "array",
+      "minItems": 1
+    },
+    "field_ids_used": {
+      "type": "array",
+      "minItems": 1
+    },
+    "adapter_used": {
+      "type": "string",
+      "minLength": 3
+    },
+    "vendor": {
+      "type": "string",
+      "minLength": 3
+    },
+    "vendor_params": {
+      "type": "object"
+    },
+    "locks_active": {
+      "type": "array",
+      "minItems": 1
+    },
+    "qa_status": {
+      "type": "string",
+      "minLength": 3
+    },
+    "qa_fail_codes": {
+      "type": "array"
+    },
+    "fallbacks_applied": {
+      "type": "array"
+    },
+    "hash_input": {
+      "type": "string",
+      "pattern": "^sha256:[a-fA-F0-9]{64}$"
+    },
+    "hash_output": {
+      "type": "string",
+      "pattern": "^sha256:[a-fA-F0-9]{64}$"
+    },
+    "legacy_global_go_policy": {
+      "type": "string",
+      "pattern": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    "lineage": {
+      "type": "object",
+      "required": [
+        "engine_sha256",
+        "project_zip_sha256",
+        "model_ids",
+        "created_at"
+      ],
+      "properties": {
+        "engine_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "project_zip_sha256": {
+          "type": "string",
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "const": "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY"
+            }
+          ]
+        },
+        "model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MODEL_.+"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "watermark_required": {
+      "type": "boolean"
+    },
+    "watermark_method": {
+      "type": "string"
+    },
+    "watermark_text": {
+      "type": "string"
+    },
+    "watermark_position": {
+      "type": "string"
+    },
+    "watermark_optout_state": {
+      "type": "string"
+    }
+  },
+  "x-previous-base-sha256": "NON_OPERATIONAL_PREVIOUS_BASES_RECORDED_IN_REPORTS",
+  "x-previous-base-policy": "HISTORICAL_PREVIOUS_BASE_NOT_OPERATIONAL",
+  "x-correction-base-sha256": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "lineage": {
+    "source_trace": "ALL_ACTIVE_SOURCES_001_049",
+    "hash_lineage": "REQUIRED",
+    "qa_evidence": "REQUIRED",
+    "output_go": "false_until_output_QA_SIDECAR_HASH_LINEAGE"
+  },
+  "x-lineage-required": true,
+  "x-previous-base-marker": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-previous-base-do-not-use": "DO_NOT_USE_AS_BASE",
+  "x-h71-h80-safe-apparel-watermark": [
+    "SAFE_APPAREL_TAXONOMY",
+    "ADULT_REVEALING_APPAREL_NOT_NUDITY",
+    "VENDOR_PROMPT_SANITIZATION_SAFE_APPAREL",
+    "WATERMARK_DEFAULT_ON=true",
+    "watermark_text=idunex",
+    "watermark_position=bottom_center",
+    "EXPLICIT_IDUNEX_OPTOUT_ONLY",
+    "POSTPROCESS_OVERLAY_REQUIRED"
+  ]
+}

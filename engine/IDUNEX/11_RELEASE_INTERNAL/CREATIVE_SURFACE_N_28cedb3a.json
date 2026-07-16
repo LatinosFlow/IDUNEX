@@ -1,0 +1,37 @@
+{
+  "gate_id": "H185",
+  "DIRECT_CORRECTION_SCOPE": "H181_H188_APPLIED_ON_H01_H180",
+  "CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS_EXTENDED": "PASS",
+  "scanned_surfaces": [
+    "ChatGPT runtime uploads",
+    "Copilot DOCX runtime uploads",
+    "AGPT prompt packs",
+    "multimodal contracts",
+    "multimodal contracts root",
+    "prompt pack structures",
+    "sidecar handoff instructions",
+    "vendor handoffs",
+    "visual anchor textual descriptors"
+  ],
+  "scanned_files_count": 38,
+  "forbidden_tokens": [
+    "SYNTH_",
+    "generic_model"
+  ],
+  "allowed_fields": [
+    "internal_identity_token",
+    "internal_identity_token_map",
+    "MODEL_IDENTITY_AND_LOCKS",
+    "PROFILE360_FULL60",
+    "TECHEXT_FULL10",
+    "QA",
+    "lineage",
+    "hashes"
+  ],
+  "forbidden_findings_count": 0,
+  "findings": [
+    "NONE"
+  ],
+  "fail_codes": [],
+  "result": "PASS"
+}

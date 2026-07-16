@@ -1,0 +1,17 @@
+{
+  "schema": "IDUNEX_ACTIVE_PROOF_AND_LEDGER_STALENESS_PURGE_H240_V1",
+  "result": "PASS",
+  "ACTIVE_PROOF_COUNTS_MATCH_EXECUTABLE_CLI": "PASS",
+  "NO_STALE_MUTATION_PROOF_ACTIVE": "PASS",
+  "NO_PRE_FINALIZER_PROOF_AS_FINAL": "PASS",
+  "POST_FINALIZER_HASH_RECALCULATION": "PASS",
+  "mutation_count_authority": 506,
+  "mutation_count_active_proof": 506,
+  "mutation_proof_authority": "99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF.json",
+  "h238_matrix_authority": "11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json",
+  "forbidden_truthfulness_findings": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "VALIDATORS_FAIL": 0,
+  "BLOCKING_WARNINGS": 0,
+  "FAIL_CODES": []
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "IDUNEX_SIZE_AND_RETENTION_POST_H245_H260_V1",
+  "result": "PASS",
+  "NO_TEMP_LOGS_IN_DELIVERY": "PASS",
+  "NO_TEST_OUTPUT_ZIPS_IN_ENGINE": "PASS",
+  "NO_AUDIT_DOCS_COPIED_AS_ACTIVE_AUTHORITY": "PASS",
+  "NO_FIXTURE_DATA_HARDCODE_IN_ENGINE_ACTIVE_SURFACES": "PASS",
+  "growth_policy": "MINIMAL_AND_JUSTIFIED",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "fail_codes": [],
+  "post_h245_h260_matrix_evidence_compact": true,
+  "matrix_output_files_retained_in_engine": [
+    "H238_FULL_31_PROJECT_MATRIX_SUMMARY.json",
+    "H238_FULL_31_PROJECT_MATRIX.csv"
+  ],
+  "no_matrix_generated_project_zips_in_engine": true
+}

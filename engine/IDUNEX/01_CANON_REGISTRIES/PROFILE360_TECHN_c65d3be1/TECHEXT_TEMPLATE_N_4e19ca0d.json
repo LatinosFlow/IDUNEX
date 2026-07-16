@@ -1,0 +1,229 @@
+{
+  "audit_id": "TECHEXT_TEMPLATE_NULL_INHERITANCE_AUDIT",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "PASS",
+  "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE",
+  "rule": "Project final cannot contain JSON null value, blanks, placeholders, FACTORY_DEFINED_PROPOSED pending or FACTORY_FILL_REQUIRED_NON_EXPORTABLE in mandatory TechExt fields. Template JSON is schema-only/non-exportable until Project Factory materializes unique model values inside MODEL_RUNTIME_PROFILE_FULL.",
+  "audited_files": 24,
+  "json_null_after_total": 0,
+  "lowercase_null_text_after_total": 0,
+  "rows": [
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_BODY360_MEASURABLES.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_CAMERA360_MODEL_RULES.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_ENVIRONMENT360_COMPATIBILITY.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_EXPRESSION360_FACS_LITE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_FACE360_LANDMARK_TOLERANCE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_HAIR360_TECHNICAL_PROFILE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_HANDS_FEET360_DETAIL.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_LIGHTING360_MODEL_RESPONSE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_MOTION360_VIDEO_BIOMECHANICS.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_SKIN360_LIGHT_RESPONSE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_VOICE360_ADVANCED_AUDIO.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_001_WARDROBE360_SIZE_SYSTEM.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_BODY360_MEASURABLES.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_CAMERA360_MODEL_RULES.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_ENVIRONMENT360_COMPATIBILITY.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_EXPRESSION360_FACS_LITE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_FACE360_LANDMARK_TOLERANCE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_HAIR360_TECHNICAL_PROFILE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_HANDS_FEET360_DETAIL.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_LIGHTING360_MODEL_RESPONSE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_MOTION360_VIDEO_BIOMECHANICS.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_SKIN360_LIGHT_RESPONSE.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_VOICE360_ADVANCED_AUDIO.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    },
+    {
+      "path": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/09_PROFILE360_TECH_EXT/MODEL_002_WARDROBE360_SIZE_SYSTEM.json",
+      "json_null_before": 0,
+      "json_null_after": 0,
+      "lowercase_null_text_before": 1,
+      "lowercase_null_text_after": 0,
+      "status": "PASS",
+      "blocker": "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+    }
+  ]
+}

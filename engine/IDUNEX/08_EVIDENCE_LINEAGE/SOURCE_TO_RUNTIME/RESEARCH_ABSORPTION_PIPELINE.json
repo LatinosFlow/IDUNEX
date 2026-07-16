@@ -1,0 +1,50 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "pipeline_id": "RESEARCH_ABSORPTION_PIPELINE",
+  "input_modes": [
+    "ZIP_GROUPED",
+    "PDF",
+    "DOCX",
+    "TXT",
+    "MD",
+    "JSON",
+    "CSV",
+    "AUDIT_REPORT",
+    "GENERIC_VISUAL_SYSTEM_PACKAGE",
+    "IDUNEX_DOCUMENTATION"
+  ],
+  "stages": [
+    "SOURCE_PACKAGE_INTAKE",
+    "SOURCE_IDENTIFICATION",
+    "SOURCE_CARD_CREATION",
+    "CLAIM_EXTRACTION",
+    "SOURCE_TO_RUNTIME_MAPPING",
+    "IMPACT_ANALYSIS",
+    "NOLOSS_APPLICATION",
+    "MANIFESTS_HASH_REGENERATION",
+    "INDEPENDENT_AUDIT",
+    "CLOSURE_DECISION"
+  ],
+  "runtime_impact_domains": [
+    "Profile360_FULL60",
+    "Profile360_TechExt_FULL10",
+    "Agent_Runtime_Governance_FULL10",
+    "GENERIC_VISUAL_SYSTEM_TOKEN",
+    "QA_Gauntlet",
+    "Project_Factory",
+    "Agent_Factory",
+    "Vendor_Adapters",
+    "Sidecars",
+    "Manifests_SHA_Lineage"
+  ],
+  "closed_research_rule": "DO_NOT_TOUCH_SRC_001_SRC_049_WITHOUT_NEW_DOCUMENTED_SOURCE_AND_CHANGELOG",
+  "blocked_if": [
+    "source_hash_missing",
+    "claims_not_mapped",
+    "validator_missing",
+    "fallback_missing",
+    "json_invalid",
+    "manifest_not_regenerated",
+    "no_loss_not_proven"
+  ]
+}

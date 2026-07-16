@@ -1,0 +1,64 @@
+{
+  "gate_id": "H182",
+  "DIRECT_CORRECTION_SCOPE": "H181_H188_APPLIED_ON_H01_H180",
+  "BRAND_LOGO_POLICY_ALIAS_NORMALIZATION": "PASS",
+  "NO_TOTAL_BLOCK_BRAND_LOGO_ROUTER_TESTS": "PASS",
+  "aliases_normalized": {
+    "own_verified": "OWN_VERIFIED",
+    "own_brand_verified": "OWN_VERIFIED",
+    "own_brand_verified": "OWN_VERIFIED",
+    "third_party_asset_declared": "THIRD_PARTY_ASSET_DECLARED",
+    "third_party_verified_asset": "THIRD_PARTY_ASSET_DECLARED",
+    "third_party_unverified": "THIRD_PARTY_UNVERIFIED",
+    "unverified_third_party": "THIRD_PARTY_UNVERIFIED",
+    "no_logo": "NONE",
+    "none": "NONE",
+    "url_reference": "THIRD_PARTY_UNVERIFIED",
+    "uploaded_asset_required": "THIRD_PARTY_ASSET_DECLARED",
+    "postproduction_only": "THIRD_PARTY_UNVERIFIED"
+  },
+  "legacy_values_preserved": [
+    "none",
+    "url_reference",
+    "uploaded_asset_required",
+    "postproduction_only"
+  ],
+  "router_tests": [
+    {
+      "case_id": "A",
+      "input_policy": "own_verified",
+      "normalized_policy": "OWN_VERIFIED",
+      "expected": "exact logo allowed; no visible legal disclaimer; sidecar rights ledger required",
+      "actual": "exact_logo_allowed=True; visible_disclaimer_required=False; sidecar_rights_ledger=PASS",
+      "result": "PASS"
+    },
+    {
+      "case_id": "B",
+      "input_policy": "third_party_verified_asset",
+      "normalized_policy": "THIRD_PARTY_ASSET_DECLARED",
+      "expected": "exact logo allowed with sidecar and short visible disclaimer if no official affiliation",
+      "actual": "exact_logo_allowed=True; sidecar_required=True; visible_disclaimer_decision=short_if_no_official_affiliation",
+      "result": "PASS"
+    },
+    {
+      "case_id": "C",
+      "input_policy": "third_party_unverified",
+      "normalized_policy": "THIRD_PARTY_UNVERIFIED",
+      "expected": "block only exact logo and safe-degrade to reserved space/non-confusing wordmark; no total output block",
+      "actual": "exact_logo_allowed=False; safe_degrade=reserved_space_or_non_confusing_wordmark; total_output_block=False",
+      "result": "PASS"
+    },
+    {
+      "case_id": "D",
+      "input_policy": "third_party_unverified + NO TEXT",
+      "normalized_policy": "THIRD_PARTY_UNVERIFIED",
+      "expected": "legal/safety router overrides NO TEXT only for disclaimer decision",
+      "actual": "no_text_visual_output_preserved_for_creative_content=True; legal_disclaimer_decision_override=True; total_output_block=False",
+      "result": "PASS"
+    }
+  ],
+  "executed_cases": 4,
+  "pass_count": 4,
+  "fail_codes": [],
+  "result": "PASS"
+}

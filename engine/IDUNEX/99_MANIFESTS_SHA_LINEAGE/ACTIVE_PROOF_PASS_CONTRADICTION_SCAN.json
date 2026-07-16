@@ -1,0 +1,9 @@
+{
+  "creative_output_certified": false,
+  "timestamp": "2026-07-01 PROJECT_DECLARED_TIMEZONE",
+  "gate_id": "H120_ACTIVE_PROOF_PASS_CONTAINS_PENDING_OR_FAIL_SCANNER_GATE",
+  "active_findings_count": 0,
+  "findings": [],
+  "result": "PASS",
+  "fail_codes": []
+}

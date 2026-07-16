@@ -1,0 +1,68 @@
+{
+  "proof_id": "P034_DIRECT_CORRECTIONS_H06_H09_PROOF",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "P034_DIRECT_ENGINE_CORRECTIONS_H06_H09_APPLIED": true,
+  "H06_SAME_VERSION_UPDATE_FULL_PROPAGATION_GATE": "ACTIVE_VALIDATED",
+  "H07_UPDATE_ROLE_GENDER_AGREEMENT_GATE": "ACTIVE_VALIDATED",
+  "H08_UPDATE_STALE_SURFACE_DETECTOR_GATE": "ACTIVE_VALIDATED",
+  "H09_BRAND_USAGE_SCOPE_MIXED_COMMERCIAL_POLICY_GATE": "ACTIVE_VALIDATED",
+  "update_surface_contract": {
+    "surfaces_expected": [
+      "00_PROJECT_INDEX/PROJECT_MODEL_INDEX.json",
+      "01_CANON/PROJECT_INPUT_FIDELITY_LEDGER.json",
+      "01_CANON/ROLE_GENDER_AWARE_DELEGATION_LEDGER.json",
+      "01_CANON/PAIRWISE360_MATERIALIZATION_MATRIX.json",
+      "01_CANON/PROJECT_RUNTIME_COVERAGE_MAP.json",
+      "02_MODELS/*/MODEL_IDENTITY_AND_LOCKS.json",
+      "02_MODELS/*/PROFILE360_FULL60.json",
+      "02_MODELS/*/TECHEXT_FULL10.json",
+      "03_AGENTS/CHATGPT/01_RUNTIME_UPLOAD/MODEL_RUNTIME_PROFILE_FULL_*.md",
+      "03_AGENTS/COPILOT/01_RUNTIME_UPLOAD/MODEL_RUNTIME_PROFILE_FULL_*.docx",
+      "07_QA_VALIDATORS/EVIDENCE_BUNDLE/*",
+      "09_MANIFESTS_SHA/*"
+    ],
+    "surface_absence_rule": "surface_not_present_requires_reason",
+    "pass_without_scanner": "BLOCKED_WITH_FAIL_UPDATE_REVALIDATION_EVIDENCE_MISSING"
+  },
+  "positive_tests": {
+    "same_version_update_age_25_to_26": "PASS",
+    "same_version_update_role_feminine_nuvia": "PASS",
+    "same_version_update_wardrobe": "PASS",
+    "same_version_update_project_environment": "PASS",
+    "commercial_test_scope_priority": "PASS",
+    "campaign_internal_scope_priority": "PASS",
+    "editorial_testing_scope_priority": "PASS",
+    "demo_internal_test_preserved": "PASS"
+  },
+  "negative_tests": {
+    "runtime_stale_value_blocked": "PASS",
+    "canon_ledger_stale_value_blocked": "PASS",
+    "model_json_stale_value_blocked": "PASS",
+    "index_model_mismatch_blocked": "PASS",
+    "pairwise_stale_evidence_blocked": "PASS",
+    "revalidation_evidence_missing_blocked": "PASS",
+    "new_value_not_materialized_blocked": "PASS",
+    "nuvia_masculine_role_update_blocked": "PASS",
+    "commercial_scope_downgrade_blocked": "PASS"
+  },
+  "failcodes_validated": [
+    "FAIL_UPDATE_RUNTIME_STALE_VALUE",
+    "FAIL_UPDATE_CANON_LEDGER_STALE_VALUE",
+    "FAIL_UPDATE_MODEL_JSON_STALE_VALUE",
+    "FAIL_UPDATE_INDEX_MODEL_MISMATCH",
+    "FAIL_UPDATE_PAIRWISE_STALE_EVIDENCE",
+    "FAIL_UPDATE_REVALIDATION_EVIDENCE_MISSING",
+    "FAIL_UPDATE_NEW_VALUE_NOT_MATERIALIZED",
+    "FAIL_ROLE_GENDER_AGREEMENT_UPDATE",
+    "FAIL_BRAND_USAGE_SCOPE_AMBIGUOUS_MIXED_COMMERCIAL_INTERNAL"
+  ],
+  "H01_H05_PRESERVED": "PASS",
+  "MUTATIONS_PASS": "426/426",
+  "PROJECT_GENERATION_CLI_MATRIX_PASS_COUNT": "30/30",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "NO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE": true,
+  "truthfulness": "Package PASS covers engine/factory/runtime/validators/schemas/source lineage/sidecars/golden tests/regression only; creative assets remain uncertified until executed and reviewed."
+}

@@ -1,0 +1,30 @@
+{
+  "gate_id": "AGENT_RUNTIME_UPLOAD_SET_GATE",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "fail_code": "BLOCKED_AGENT_RUNTIME_UPLOAD_SET_INVALID",
+  "contract": "Validates exact upload set per agent: 10 core IDUNEX + N MODEL_RUNTIME_PROFILE_FULL, max 20 files, max 10 models, no split agents, no runtime extras.",
+  "blocking": true,
+  "actual_value_required": true,
+  "pass_by_count_only_allowed": false,
+  "delivery_allowed_if_fail": false,
+  "correction_action": "Identify root_cause, correct surgically, recalculate manifests/SHA, reemit ZIP, reopen ZIP and reaudIT complete scope before delivery.",
+  "formula": "runtime_upload_files_expected = 10 + model_count",
+  "max_files_per_agent": 20,
+  "max_models": 10,
+  "no_split_agents": true,
+  "blocked_runtime_extras": [
+    "README active inside MODELS",
+    "summary md/docx active beside FULL",
+    "JSON full + summary active",
+    "unclassified auxiliary files",
+    "evidence in upload set",
+    "duplicate authority for same model"
+  ],
+  "blocked_code_overrides": [
+    "BLOCKED_AGENT_RUNTIME_UPLOAD_SET_INVALID",
+    "BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT"
+  ]
+}

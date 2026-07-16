@@ -1,0 +1,18 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "artifact": "MOTOR_SELF_TEST_PROJECT_FACTORY_SIMULATION",
+  "status": "RESTORED_BY_P03_NOLOSS_SURGICAL_FIX",
+  "blocking": true,
+  "actual_value": "artifact=MOTOR_SELF_TEST_PROJECT_FACTORY_SIMULATION; restored=true; blocking=true",
+  "audit_scope": [
+    "motor",
+    "project_factory",
+    "agent_factory",
+    "project_exports",
+    "final_zip_reopened"
+  ],
+  "delivery_rule": "DELIVERY_ALLOWED only when independent audit from final reopened ZIP has 0 FAIL",
+  "validator_reference": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATION_REPORT_TRUTHFULNESS_GATE.json",
+  "fail_behavior": "BLOCK_DELIVERY_AND_RETRY_UNTIL_PASS"
+}

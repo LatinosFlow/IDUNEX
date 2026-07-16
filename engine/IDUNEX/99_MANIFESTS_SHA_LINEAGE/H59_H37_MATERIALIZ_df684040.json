@@ -1,0 +1,47 @@
+{
+  "proof_id": "H59_H37_MATERIALIZATION_TRUTHFULNESS_EXECUTED_PROOF",
+  "date": "2026-06-30 PROJECT_DECLARED_TIMEZONE",
+  "result": "PASS",
+  "self_reference_false_pass_blocked": "PASS",
+  "actual_materialization_rows_checked": 19,
+  "all_rows_have_non_ledger_evidence": "PASS",
+  "ledger_self_reference_excluded": "PASS",
+  "negative_test": {
+    "mutation": "removed materialization_evidence_paths and set ledger_self_reference_excluded=false on one explicit row",
+    "validator_result": "FAIL",
+    "fail_codes": [
+      "FAIL_PACKAGE_SHA",
+      "FAIL_H37_INPUT_FIELD_NOT_MATERIALIZED",
+      "FAIL_H37_LEDGER_SELF_REFERENCE_FALSE_PASS"
+    ],
+    "output_json": "/mnt/data/h59_selfpass_mutation.json"
+  },
+  "evidence_paths_sample": [
+    [
+      "00_PROJECT_INDEX/PROJECT_ALIAS_RESOLVER.json",
+      "00_PROJECT_INDEX/PROJECT_MODEL_INDEX.json",
+      "01_CANON/INPUT_FIELD_NORMALIZATION_LEDGER.json"
+    ],
+    [
+      "00_PROJECT_INDEX/PROJECT_MODEL_INDEX.json",
+      "01_CANON/INPUT_FIELD_NORMALIZATION_LEDGER.json",
+      "01_CANON/P034_GATE_IMPLEMENTATION_MATRIX.json"
+    ],
+    [
+      "00_PROJECT_INDEX/PROJECT_MODEL_INDEX.json",
+      "01_CANON/INPUT_FIELD_NORMALIZATION_LEDGER.json",
+      "01_CANON/PROJECT_INPUT_FIDELITY_LEDGER.json"
+    ],
+    [
+      "00_PROJECT_INDEX/PROJECT_MODEL_INDEX.json",
+      "01_CANON/PROJECT_INPUT_FIDELITY_LEDGER.json",
+      "01_CANON/ROLE_GENDER_AWARE_DELEGATION_LEDGER.json"
+    ],
+    [
+      "00_PROJECT_INDEX/PROJECT_MODEL_INDEX.json",
+      "01_CANON/INPUT_FIELD_NORMALIZATION_LEDGER.json",
+      "01_CANON/PROJECT_INPUT_FIDELITY_LEDGER.json"
+    ]
+  ],
+  "h37_ledger_sha256": "9061d1a3ab1df1fe4e2595846a9e1caa945f18f318396852af1d1da493ca688d"
+}

@@ -1,0 +1,29 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "gate_id": "TECHEXT_FIELD_LEVEL_CONTRACT_GATE",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "required": "TechExt FULL10 must be field-level materialized inside every MODEL_RUNTIME_PROFILE_FULL before project export.",
+  "official_contract_registry": "IDUNEX/11_PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_FULL10_FIELD_CONTRACT_REGISTRY.json",
+  "required_modules_total": 18,
+  "required_fields_total": 284,
+  "fail_when": [
+    "techext_count_only",
+    "cited_but_not_loaded",
+    "summarized_without_fields",
+    "digest_only",
+    "generic_fields_substitute",
+    "merged_modules_without_authority",
+    "FACTORY_DEFINED_PROPOSED_pending",
+    "null_blank_placeholder",
+    "missing_technical_modules",
+    "missing_sidecar_or_QA_or_fallback_mapping"
+  ],
+  "blocked_code": "BLOCKED_TECHEXT_FIELD_CONTRACT_MISSING",
+  "legacy_blockers_preserved": [
+    "BLOCKED_TECH_EXT_NOT_MATERIALIZED",
+    "BLOCKED_TECH_EXT_NULL_INHERITANCE"
+  ],
+  "delivery_rule": "If any official TechExt field is incomplete, project delivery is blocked and retry loop must correct root cause before reauditing from reopened ZIP."
+}

@@ -1,0 +1,17 @@
+{
+  "creative_output_certified": false,
+  "timestamp": "LEGACY_DATE_REDACTED PROJECT_DECLARED_TIMEZONE",
+  "gate_id": "H119_PROJECT_EXTERNAL_SHA_COMPANION_PARITY_GATE",
+  "scope": "MOTOR_RUNTIME_FACTORY_AND_GENERATED_PROJECT_POLICY",
+  "companion_sha256_real": "TOP_LEVEL_IDUNEX_MOTOR_ZIP_SHA256_COMPANION_FILE",
+  "external_companion_sha256_authority_location": "TOP_LEVEL_IDUNEX_MOTOR_V1_0_0_ZIP_SHA256",
+  "allowed_sentinels": [
+    "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY"
+  ],
+  "internal_sha_claims_count": "SCANNED_BY_GENERATED_PROJECT_VALIDATOR",
+  "mismatches": [],
+  "demoted_claims_policy": "SELF_REFERENTIAL_INTERNAL_ZIP_SHA_FIELDS_USE_SENTINEL",
+  "invalid_claims": [],
+  "result": "PASS",
+  "fail_codes": []
+}

@@ -1,0 +1,41 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "modes": [
+    {
+      "mode": "PROJECT_CREATE_MINIMAL",
+      "example": "Crear 2 hombres y 2 mujeres para proyecto X",
+      "user_data_status": "NO_USER_DETAIL_BEYOND_COUNT_AND_PROJECT",
+      "factory_behavior": "complete all required fields as FACTORY_DEFINED_PROPOSED",
+      "blank_policy": "FORBID_BLANKS"
+    },
+    {
+      "mode": "PROJECT_CREATE_SEMI_SPECIFIED",
+      "example": "Crear una mujer project-declared de 29 años, ejecutiva",
+      "user_data_status": "PARTIAL_USER_DETAIL",
+      "factory_behavior": "preserve supplied data and fill gaps as FACTORY_DEFINED_PROPOSED",
+      "blank_policy": "FORBID_BLANKS"
+    },
+    {
+      "mode": "PROJECT_CREATE_FULL_SPECIFIED",
+      "example": "perfiles completos/JSON/datos exactos",
+      "user_data_status": "COMPLETE_USER_SPEC",
+      "factory_behavior": "mark supplied data as USER_APPROVED_LOCKED",
+      "blank_policy": "FORBID_BLANKS"
+    },
+    {
+      "mode": "PROJECT_CREATE_FROM_REFERENCE_SET",
+      "example": "anchors, presets, fotos, JSON_LOCK, identidad bloqueada",
+      "user_data_status": "REFERENCE_LOCKED",
+      "factory_behavior": "do not alter identity, age, traits, hair, accessories or locks",
+      "blank_policy": "FORBID_BLANKS_AND_BLOCK_IF_LOCK_MISSING_SOURCE"
+    }
+  ],
+  "required_status_values": [
+    "FACTORY_DEFINED_PROPOSED",
+    "USER_APPROVED_LOCKED",
+    "MISSING_REQUIRED_TECH_FIELD"
+  ],
+  "profile360_full60_required": true,
+  "techext_full10_required": true,
+  "no_blank_required_fields": true
+}

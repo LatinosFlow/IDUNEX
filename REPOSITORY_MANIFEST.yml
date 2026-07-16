@@ -1,0 +1,24 @@
+repository: idunex
+system: IDUNEX
+area: IA
+status: EN_REVISION
+semantic_version: v1.0.0
+source_zip:
+  filename: IDUNEX_MOTOR_v1.0.0.zip
+  sha256: bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6
+  bytes: 4277381
+  entry_count: 977
+  directories: 0
+  stored_entries: 0
+  internal_zip_entries: 0
+  testzip: PASS
+paths:
+  engine_root: engine/IDUNEX
+  reference_authority: governance/authority/REFERENCIA
+  audit_tools: tools/audit
+  package_tools: tools/package
+policy:
+  no_pass_declarativo: true
+  project_demo_blocked_until_motor_audit: true
+  future_projects_blocked_until_demo_100: true
+  creative_output_certified: false

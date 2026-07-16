@@ -1,0 +1,23 @@
+{
+  "gate_id": "PROJECT_NO_PLACEHOLDER_EXECUTION_GATE",
+  "rule_id": "PRJ-TPL-001",
+  "semantic_version": "v1.0.0",
+  "template_mode_allows_placeholders_only_as_non_executable_template": true,
+  "executable_project_blocks": [
+    "[...]",
+    "[N]",
+    "{{...}}",
+    "TODO",
+    "TBD",
+    "PLACEHOLDER",
+    "PENDING_USER",
+    "GENERIC_PROJECT_*",
+    "GENERIC_NON_AUTHORITY_UNTIL_USER_SUPPLIED"
+  ],
+  "exception": "GENERIC_SKELETON_NON_AUTHORITY only, with production/agent/demo pass blocked",
+  "validator": "VALIDATE_NO_PLACEHOLDER_EXECUTION_GATE",
+  "status": "ACTIVE_NATIVE",
+  "result": "PASS",
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

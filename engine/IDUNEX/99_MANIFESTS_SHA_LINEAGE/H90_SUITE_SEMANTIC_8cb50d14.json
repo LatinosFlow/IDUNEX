@@ -1,0 +1,4008 @@
+{
+  "positive_fixture": "PASS",
+  "cases": [
+    {
+      "case": "01_STALE_SHA_LEDGER_ACTIVE",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "02_ACTIVE_OLD_LABEL_IN_INDEX",
+      "expected_failcode": "FAIL_OLD_ACTIVE_LABEL_LEAKAGE",
+      "observed": [
+        "FAIL_OLD_ACTIVE_LABEL_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "03_PYC_BYTECODE_ACTIVE",
+      "expected_failcode": "FAIL_BYTECODE_ACTIVE",
+      "observed": [
+        "FAIL_BYTECODE_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "04_VALIDATOR_TREE_MUTATION",
+      "expected_failcode": "FAIL_VALIDATOR_TREE_MUTATION",
+      "observed": [
+        "FAIL_VALIDATOR_TREE_MUTATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "05_SCHEMA_OPEN_ONLY_INVALID",
+      "expected_failcode": "FAIL_JSON_SCHEMA_INVALID",
+      "observed": [
+        "FAIL_JSON_SCHEMA_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "06_TECHEXT_STRING_VS_ARRAY",
+      "expected_failcode": "FAIL_TECHEXT_TYPE_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_TYPE_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "07_TECHEXT_NUMBER_FALSE",
+      "expected_failcode": "FAIL_TECHEXT_TYPE_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_TYPE_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "08_TECHEXT_ENUM_INVALID",
+      "expected_failcode": "FAIL_TECHEXT_TYPE_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_TYPE_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "09_PROFILE_CLONE_NORMALIZED",
+      "expected_failcode": "FAIL_PROFILE_MODEL_SPECIFIC_CLONING",
+      "observed": [
+        "FAIL_PROFILE_MODEL_SPECIFIC_CLONING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "10_TECHEXT_CLONE_NORMALIZED",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "11_SOURCE_COLLAPSE_SRC001",
+      "expected_failcode": "FAIL_SOURCE_COVERAGE_DIVERSITY_COLLAPSE",
+      "observed": [
+        "FAIL_SOURCE_COVERAGE_DIVERSITY_COLLAPSE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "12_SOURCE_ORDINAL_ROTATION",
+      "expected_failcode": "FAIL_SOURCE_COVERAGE_DIVERSITY_COLLAPSE",
+      "observed": [
+        "FAIL_SOURCE_COVERAGE_DIVERSITY_COLLAPSE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "13_PAIRWISE_COUNT_ONLY",
+      "expected_failcode": "FAIL_PAIRWISE_DOMAIN_DEPTH",
+      "observed": [
+        "FAIL_PAIRWISE_DOMAIN_DEPTH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "14_PAIRWISE_MODEL_ID_SUFFIX_ONLY",
+      "expected_failcode": "FAIL_PAIRWISE_SEMANTIC_DELTA",
+      "observed": [
+        "FAIL_PAIRWISE_SEMANTIC_DELTA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "15_CONFIG_43_REPETITIONS",
+      "expected_failcode": "FAIL_CONFIG_8000_DUPLICATE_LINE",
+      "observed": [
+        "FAIL_CONFIG_8000_DUPLICATE_LINE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "16_CONFIG_TRUNCATED",
+      "expected_failcode": "FAIL_CONFIG_8000_TRUNCATED_FINAL_CLAUSE",
+      "observed": [
+        "FAIL_CONFIG_8000_TRUNCATED_FINAL_CLAUSE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "17_CORE_SUPERFICIAL",
+      "expected_failcode": "FAIL_VISUAL_GATE_PROJECT_READ",
+      "observed": [
+        "FAIL_VISUAL_GATE_PROJECT_READ"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "18_RUNTIME_MISSING_FALLBACK",
+      "expected_failcode": "FAIL_CHATGPT_COPILOT_PARITY",
+      "observed": [
+        "FAIL_CHATGPT_COPILOT_PARITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "19_COPILOT_MISSING_CLAUSE",
+      "expected_failcode": "FAIL_CHATGPT_COPILOT_PARITY",
+      "observed": [
+        "FAIL_CHATGPT_COPILOT_PARITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "20_LOOSE_FILE_ROOT",
+      "expected_failcode": "FAIL_PROJECT_TREE_ROOT",
+      "observed": [
+        "FAIL_PROJECT_TREE_ROOT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "21_EXTERNAL_DELIVERY_EXTRA_FILE",
+      "expected_failcode": "FAIL_EXTERNAL_DELIVERY_EXACT_7",
+      "observed": [
+        "FAIL_EXTERNAL_DELIVERY_EXACT_7"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "22_PROOF_PREPACKAGE",
+      "expected_failcode": "FAIL_PROOF_PREPACKAGE",
+      "observed": [
+        "FAIL_PROOF_PREPACKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "23_NOT_EXECUTED_AS_PASS",
+      "expected_failcode": "FAIL_NOT_EXECUTED_AS_PASS",
+      "observed": [
+        "FAIL_NOT_EXECUTED_AS_PASS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "24_OUTPUT_REAL_10_10_WITHOUT_ASSET",
+      "expected_failcode": "FAIL_OUTPUT_CLAIM_TRUTHFULNESS",
+      "observed": [
+        "FAIL_OUTPUT_CLAIM_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "25_ALIAS_COLLISION",
+      "expected_failcode": "FAIL_ALIAS_COLLISION_OR_ORPHAN",
+      "observed": [
+        "FAIL_ALIAS_COLLISION_OR_ORPHAN"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "26_ELEVEN_MODELS",
+      "expected_failcode": "FAIL_MODEL_COUNT_RANGE",
+      "observed": [
+        "FAIL_MODEL_COUNT_RANGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "27_MINOR_AGE",
+      "expected_failcode": "FAIL_MODEL_ADULT_ONLY",
+      "observed": [
+        "FAIL_MODEL_ADULT_ONLY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "28_CELEBRITY_REAL_PERSON",
+      "expected_failcode": "FAIL_REAL_PERSON_OR_NONFICTIONAL_MODEL",
+      "observed": [
+        "FAIL_REAL_PERSON_OR_NONFICTIONAL_MODEL"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "29_WARDROBE_BODY_CONTRADICTION",
+      "expected_failcode": "FAIL_TECHEXT_CAUSAL_COHERENCE",
+      "observed": [
+        "FAIL_TECHEXT_CAUSAL_COHERENCE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "30_VOICE_GENDER_F0_CONTRADICTION",
+      "expected_failcode": "FAIL_TECHEXT_CAUSAL_COHERENCE",
+      "observed": [
+        "FAIL_TECHEXT_CAUSAL_COHERENCE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "31_AGE_SKIN_POSTURE_CONTRADICTION",
+      "expected_failcode": "FAIL_TECHEXT_CAUSAL_COHERENCE",
+      "observed": [
+        "FAIL_TECHEXT_CAUSAL_COHERENCE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "32_ENVIRONMENT_ORIGIN_MISMATCH",
+      "expected_failcode": "FAIL_COVERAGE_REQUIRED_VALUE",
+      "observed": [
+        "FAIL_COVERAGE_REQUIRED_VALUE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "33_SIDECAR_MODALITY_MISSING",
+      "expected_failcode": "FAIL_SIDECAR_SCHEMA",
+      "observed": [
+        "FAIL_SIDECAR_SCHEMA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "34_GOLDEN_TEST_GENERIC",
+      "expected_failcode": "FAIL_GOLDEN_TEST_SEMANTICS",
+      "observed": [
+        "FAIL_GOLDEN_TEST_SEMANTICS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "35_E2E_RAW_ZIP_BLOAT",
+      "expected_failcode": "FAIL_RAW_E2E_ZIP_BLOAT",
+      "observed": [
+        "FAIL_RAW_E2E_ZIP_BLOAT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "36_CHANGED_FILES_LEDGER_MISMATCH",
+      "expected_failcode": "FAIL_CHANGED_FILES_LEDGER",
+      "observed": [
+        "FAIL_CHANGED_FILES_LEDGER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "37_HISTORICAL_IMPORTED_BY_VALIDATOR",
+      "expected_failcode": "FAIL_HISTORICAL_AUTHORITY_IMPORT",
+      "observed": [
+        "FAIL_HISTORICAL_AUTHORITY_IMPORT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "38_EXTERNAL_CHANGELOG_LONG_NAME",
+      "expected_failcode": "FAIL_EXTERNAL_DELIVERY_EXACT_7",
+      "observed": [
+        "FAIL_EXTERNAL_DELIVERY_EXACT_7"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "39_MANIFEST_EXTRA_MISSING_STALE",
+      "expected_failcode": "FAIL_PACKAGE_SHA",
+      "observed": [
+        "FAIL_PACKAGE_SHA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "40_CONFIG_MANIFESTS_AS_RUNTIME",
+      "expected_failcode": "FAIL_RUNTIME_10_PLUS_N",
+      "observed": [
+        "FAIL_RUNTIME_10_PLUS_N"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "41_CLOSURE_BATCH_AS_RUNTIME",
+      "expected_failcode": "FAIL_RUNTIME_10_PLUS_N",
+      "observed": [
+        "FAIL_RUNTIME_10_PLUS_N"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "42_SOURCE_EVIDENCE_PATH_MISSING",
+      "expected_failcode": "FAIL_EVIDENCE_PATH",
+      "observed": [
+        "FAIL_EVIDENCE_PATH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "43_SOURCE_EVIDENCE_HASH_MISMATCH",
+      "expected_failcode": "FAIL_EVIDENCE_HASH",
+      "observed": [
+        "FAIL_EVIDENCE_HASH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "44_PAIRWISE_HIGH_COLLISION_UNRESOLVED",
+      "expected_failcode": "FAIL_PAIRWISE_SEMANTIC_DELTA",
+      "observed": [
+        "FAIL_PAIRWISE_SEMANTIC_DELTA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "45_DUPLICATE_PATH",
+      "expected_failcode": "FAIL_DUPLICATE_PATH",
+      "observed": [
+        "FAIL_DUPLICATE_PATH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "46_DUPLICATE_NAMESPACE",
+      "expected_failcode": "FAIL_MODEL_NAMESPACE",
+      "observed": [
+        "FAIL_MODEL_NAMESPACE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "47_PLACEHOLDER_AB",
+      "expected_failcode": "FAIL_TECHEXT_PLACEHOLDER_AB",
+      "observed": [
+        "FAIL_TECHEXT_PLACEHOLDER_AB"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "48_FULL10_EXTRA_CHECKPOINT",
+      "expected_failcode": "FAIL_TECHEXT_284_EXACT",
+      "observed": [
+        "FAIL_TECHEXT_284_EXACT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "49_FACTORY_DEFINED_PROPOSED",
+      "expected_failcode": "FAIL_TECHEXT_PLACEHOLDER_AB",
+      "observed": [
+        "FAIL_TECHEXT_PLACEHOLDER_AB"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "50_NULL_BLANK_ACTIVE",
+      "expected_failcode": "FAIL_FINAL_NULL_BLANK_PLACEHOLDER",
+      "observed": [
+        "FAIL_FINAL_NULL_BLANK_PLACEHOLDER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "51_OLD_ACTIVE_LABEL_LEAKAGE",
+      "expected_failcode": "FAIL_OLD_ACTIVE_LABEL_LEAKAGE",
+      "observed": [
+        "FAIL_OLD_ACTIVE_LABEL_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "52_EXACT_DUPLICATE_BLOAT_THRESHOLD",
+      "expected_failcode": "FAIL_EXACT_DUPLICATE_BLOAT",
+      "observed": [
+        "FAIL_EXACT_DUPLICATE_BLOAT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "53_RESEARCH_HASH_LOSS",
+      "expected_failcode": "FAIL_SOURCE_LINEAGE_SCHEMA",
+      "observed": [
+        "FAIL_SOURCE_LINEAGE_SCHEMA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "54_WATERMARK_OPT_OUT_INCORRECT",
+      "expected_failcode": "FAIL_OUTPUT_CLAIM_TRUTHFULNESS",
+      "observed": [
+        "FAIL_OUTPUT_CLAIM_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "55_SIN_TEXTO_LOGOS_WATERMARK_REMOVES_IDUNEX",
+      "expected_failcode": "FAIL_OUTPUT_CLAIM_TRUTHFULNESS",
+      "observed": [
+        "FAIL_OUTPUT_CLAIM_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "56_SIN_MARCA_IDUNEX_NOT_REMOVING_IDUNEX",
+      "expected_failcode": "FAIL_OUTPUT_CLAIM_TRUTHFULNESS",
+      "observed": [
+        "FAIL_OUTPUT_CLAIM_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "57_PACKAGE_PASS_AS_CREATIVE_PASS",
+      "expected_failcode": "FAIL_OUTPUT_CLAIM_TRUTHFULNESS",
+      "observed": [
+        "FAIL_OUTPUT_CLAIM_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "58_RUNTIME_10_PLUS_N_OVER_20",
+      "expected_failcode": "FAIL_RUNTIME_10_PLUS_N",
+      "observed": [
+        "FAIL_RUNTIME_10_PLUS_N"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "59_ROOT_PREFIX_DUPLICATE",
+      "expected_failcode": "FAIL_ZIP_ROOT_COUNT",
+      "observed": [
+        "FAIL_ZIP_ROOT_COUNT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "60_SIBLING_PREFIX_DUPLICATE",
+      "expected_failcode": "FAIL_DUPLICATE_NAMESPACE",
+      "observed": [
+        "FAIL_DUPLICATE_NAMESPACE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "61_HISTORICAL_NON_AUTHORITY_MARKING_MISSING",
+      "expected_failcode": "FAIL_HISTORICAL_NON_AUTHORITY_MARKING",
+      "observed": [
+        "FAIL_HISTORICAL_NON_AUTHORITY_MARKING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "62_WRONG_SCHEMA_AUTHORITY",
+      "expected_failcode": "FAIL_JSON_SCHEMA_INVALID",
+      "observed": [
+        "FAIL_JSON_SCHEMA_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "63_WRONG_REGISTRY_AUTHORITY",
+      "expected_failcode": "FAIL_TECHEXT_SCHEMA_STRICT",
+      "observed": [
+        "FAIL_TECHEXT_SCHEMA_STRICT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "64_NONCANONICAL_TREE_FOLDER",
+      "expected_failcode": "FAIL_PROJECT_TREE_ROOT",
+      "observed": [
+        "FAIL_PROJECT_TREE_ROOT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "65_UNTRACKED_MOVED_FILE",
+      "expected_failcode": "FAIL_CHANGED_FILES_LEDGER",
+      "observed": [
+        "FAIL_CHANGED_FILES_LEDGER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "66_SHA_COMPANION_MISMATCH",
+      "expected_failcode": "FAIL_PACKAGE_SHA",
+      "observed": [
+        "FAIL_PACKAGE_SHA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "67_PROFILE_REQUIRED_KEY_REMOVED",
+      "expected_failcode": "FAIL_PROFILE_REQUIRED_KEY",
+      "observed": [
+        "FAIL_PROFILE_REQUIRED_KEY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "68_PROFILE_LOW_SEMANTIC_VALUE",
+      "expected_failcode": "FAIL_PROFILE_SEMANTIC_VALUE",
+      "observed": [
+        "FAIL_PROFILE_SEMANTIC_VALUE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "69_TECHEXT_RANGE_OUT_OF_TOLERANCE",
+      "expected_failcode": "FAIL_TECHEXT_RANGE_TOLERANCE",
+      "observed": [
+        "FAIL_TECHEXT_RANGE_TOLERANCE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "70_TECHEXT_EMPTY_ARRAY_ENUM",
+      "expected_failcode": "FAIL_TECHEXT_ENUM_RANGE",
+      "observed": [
+        "FAIL_TECHEXT_ENUM_RANGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "71_TECHEXT_GENERIC_CANONICAL_FILLER",
+      "expected_failcode": "FAIL_TECHEXT_VALUE_SEMANTICITY",
+      "observed": [
+        "FAIL_TECHEXT_VALUE_SEMANTICITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "72_PAIRWISE_EMPTY_DELTA",
+      "expected_failcode": "FAIL_PAIRWISE_EMPTY_DELTA",
+      "observed": [
+        "FAIL_PAIRWISE_EMPTY_DELTA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "73_PAIRWISE_EVIDENCE_HASH_MISMATCH",
+      "expected_failcode": "FAIL_PAIRWISE_EVIDENCE_HASH",
+      "observed": [
+        "FAIL_PAIRWISE_EVIDENCE_HASH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "74_SOURCE_49_LEDGER_INCOMPLETE",
+      "expected_failcode": "FAIL_SOURCE_49_LEDGER_COMPLETENESS",
+      "observed": [
+        "FAIL_SOURCE_49_LEDGER_COMPLETENESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "75_SOURCE_NOT_APPLICABLE_WITHOUT_JUSTIFICATION",
+      "expected_failcode": "FAIL_SOURCE_APPLIED_OR_JUSTIFIED",
+      "observed": [
+        "FAIL_SOURCE_APPLIED_OR_JUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "76_SOURCE_APPLIED_WITHOUT_AFFECTED_SECTIONS",
+      "expected_failcode": "FAIL_SOURCE_LEDGER_COVERAGE_PARITY",
+      "observed": [
+        "FAIL_SOURCE_LEDGER_COVERAGE_PARITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "77_CONFIG_EXACT_LENGTH_OFF_BY_ONE",
+      "expected_failcode": "FAIL_CONFIG_8000_EXACT_LENGTH",
+      "observed": [
+        "FAIL_CONFIG_8000_EXACT_LENGTH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "78_CONFIG_REQUIRED_GROUP_MISSING",
+      "expected_failcode": "FAIL_CONFIG_8000_REQUIRED_SEMANTIC_GROUPS",
+      "observed": [
+        "FAIL_CONFIG_8000_REQUIRED_SEMANTIC_GROUPS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "79_RUNTIME_MANIFEST_COUNT_MISMATCH",
+      "expected_failcode": "FAIL_RUNTIME_MANIFEST",
+      "observed": [
+        "FAIL_RUNTIME_MANIFEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "80_RUNTIME_MANIFEST_HASH_MISMATCH",
+      "expected_failcode": "FAIL_RUNTIME_MANIFEST_HASH",
+      "observed": [
+        "FAIL_RUNTIME_MANIFEST_HASH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "81_PROFILE_NORMALIZED_NAME_ONLY_UNIQUENESS",
+      "expected_failcode": "FAIL_PROFILE_MODEL_SPECIFIC_CLONING",
+      "observed": [
+        "FAIL_PROFILE_MODEL_SPECIFIC_CLONING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "82_PROFILE_NORMALIZED_HASH_ONLY_UNIQUENESS",
+      "expected_failcode": "FAIL_PROFILE_MODEL_SPECIFIC_CLONING",
+      "observed": [
+        "FAIL_PROFILE_MODEL_SPECIFIC_CLONING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "83_TECHEXT_SHARED_MISCLASSIFIED_AS_MODEL_SPECIFIC",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "84_TECHEXT_MODEL_ID_ONLY_UNIQUENESS",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "85_ACTIVE_SRC_TRIO_LITERAL_LEAKAGE",
+      "expected_failcode": "FAIL_ACTIVE_SRC_TRIO_RULE_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_SRC_TRIO_RULE_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "86_SOURCE_NOT_APPLICABLE_NO_JUSTIFICATION",
+      "expected_failcode": "FAIL_SOURCE_APPLIED_OR_JUSTIFIED",
+      "observed": [
+        "FAIL_SOURCE_APPLIED_OR_JUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "87_PAIRWISE_SECONDARY_MARKER_LITERAL",
+      "expected_failcode": "FAIL_PAIRWISE_SEMANTIC_DELTA",
+      "observed": [
+        "FAIL_PAIRWISE_SEMANTIC_DELTA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "88_CONFIG_PADDING_REPETITION",
+      "expected_failcode": "FAIL_CONFIG_8000_NEAR_DUPLICATE_SEMANTIC",
+      "observed": [
+        "FAIL_CONFIG_8000_NEAR_DUPLICATE_SEMANTIC"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "89_CHATGPT_COPILOT_FALLBACK_PARITY_MISSING",
+      "expected_failcode": "FAIL_CHATGPT_COPILOT_PARITY",
+      "observed": [
+        "FAIL_CHATGPT_COPILOT_PARITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "90_ROOT_LOOSE_OPERATIONAL_FILE",
+      "expected_failcode": "FAIL_PROJECT_TREE_ROOT",
+      "observed": [
+        "FAIL_PROJECT_TREE_ROOT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "91_CONCRETE_PROJECT_NAME_IN_MOTOR_CANON",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "92_CONCRETE_MODEL_NAME_IN_MOTOR_CANON",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "93_CONCRETE_AGE_ORIGIN_IN_MOTOR_TEMPLATE",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "94_DEMO_IDENTITY_IN_RUNTIME_CORE",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "95_FIXTURE_WITHOUT_NON_AUTHORITY_FLAG",
+      "expected_failcode": "FAIL_FIXTURE_NON_AUTHORITY_MARKING",
+      "observed": [
+        "FAIL_FIXTURE_NON_AUTHORITY_MARKING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "96_PROJECT_DATA_INSIDE_GLOBAL_REGISTRY",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "97_ACTUAL_VALUE_MATERIALIZED_IN_MOTOR_TEMPLATE",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_MOTOR_TEMPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_MOTOR_TEMPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "98_PROFILE_DIRECT_CLONE_GENERATED_PROJECT",
+      "expected_failcode": "FAIL_PROFILE_MODEL_SPECIFIC_CLONING",
+      "observed": [
+        "FAIL_PROFILE_MODEL_SPECIFIC_CLONING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "99_TECHEXT_DIRECT_CLONE_GENERATED_PROJECT",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "100_REPEATED_SEMANTIC_DIFFERENTIATOR_ACTUAL_VALUE",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_SEMANTIC_DIFFERENTIATOR",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_SEMANTIC_DIFFERENTIATOR"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "101_SOURCE_TRIO_LEAKAGE_BOUNDARY",
+      "expected_failcode": "FAIL_ACTIVE_SRC_TRIO_RULE_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_SRC_TRIO_RULE_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "102_SOURCE_COLLAPSE_BOUNDARY",
+      "expected_failcode": "FAIL_SOURCE_COVERAGE_DIVERSITY_COLLAPSE",
+      "observed": [
+        "FAIL_SOURCE_COVERAGE_DIVERSITY_COLLAPSE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "103_SOURCE_ORDINAL_ROTATION_BOUNDARY",
+      "expected_failcode": "FAIL_SOURCE_COVERAGE_DIVERSITY_COLLAPSE",
+      "observed": [
+        "FAIL_SOURCE_COVERAGE_DIVERSITY_COLLAPSE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "104_SECONDARY_MARKER_PAIRWISE_BOUNDARY",
+      "expected_failcode": "FAIL_PAIRWISE_SEMANTIC_DELTA",
+      "observed": [
+        "FAIL_PAIRWISE_SEMANTIC_DELTA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "105_CONFIG_7955_BOUNDARY",
+      "expected_failcode": "FAIL_CONFIG_8000_EXACT_LENGTH",
+      "observed": [
+        "FAIL_CONFIG_8000_EXACT_LENGTH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "106_JSON_OPENABLE_SCHEMA_INVALID_BOUNDARY",
+      "expected_failcode": "FAIL_JSON_SCHEMA_INVALID",
+      "observed": [
+        "FAIL_JSON_SCHEMA_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "107_VALIDATOR_TREE_MUTATION_BOUNDARY",
+      "expected_failcode": "FAIL_VALIDATOR_TREE_MUTATION",
+      "observed": [
+        "FAIL_VALIDATOR_TREE_MUTATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "108_RAW_E2E_ZIP_BLOAT_BOUNDARY",
+      "expected_failcode": "FAIL_RAW_E2E_ZIP_BLOAT",
+      "observed": [
+        "FAIL_RAW_E2E_ZIP_BLOAT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "109_OLD_ACTIVE_LABEL_LEAKAGE_BOUNDARY",
+      "expected_failcode": "FAIL_OLD_ACTIVE_LABEL_LEAKAGE",
+      "observed": [
+        "FAIL_OLD_ACTIVE_LABEL_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "110_PREPACKAGE_TREE_WITH_DELIVERY_ALLOWED",
+      "expected_failcode": "FAIL_PROOF_PREPACKAGE",
+      "observed": [
+        "FAIL_PROOF_PREPACKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "111_OUTPUT_10_10_WITHOUT_ASSET_BOUNDARY",
+      "expected_failcode": "FAIL_OUTPUT_CLAIM_TRUTHFULNESS",
+      "observed": [
+        "FAIL_OUTPUT_CLAIM_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "112_MISSING_SIDECAR_BOUNDARY",
+      "expected_failcode": "FAIL_SIDECAR_SCHEMA",
+      "observed": [
+        "FAIL_SIDECAR_SCHEMA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "113_MISSING_GOLDEN_TEST_BOUNDARY",
+      "expected_failcode": "FAIL_GOLDEN_TEST_SEMANTICS",
+      "observed": [
+        "FAIL_GOLDEN_TEST_SEMANTICS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "114_CHATGPT_COPILOT_MISSING_FALLBACK_BOUNDARY",
+      "expected_failcode": "FAIL_CHATGPT_COPILOT_PARITY",
+      "observed": [
+        "FAIL_CHATGPT_COPILOT_PARITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "115_ROOT_LOOSE_OPERATIONAL_FILE_BOUNDARY",
+      "expected_failcode": "FAIL_PROJECT_TREE_ROOT",
+      "observed": [
+        "FAIL_PROJECT_TREE_ROOT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "116_ZERO_MODELS_BOUNDARY",
+      "expected_failcode": "FAIL_MODEL_COUNT_RANGE",
+      "observed": [
+        "FAIL_MODEL_COUNT_RANGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "117_ELEVEN_MODELS_BOUNDARY",
+      "expected_failcode": "FAIL_MODEL_COUNT_RANGE",
+      "observed": [
+        "FAIL_MODEL_COUNT_RANGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "118_MINOR_AGE_MODEL_BOUNDARY",
+      "expected_failcode": "FAIL_MODEL_ADULT_ONLY",
+      "observed": [
+        "FAIL_MODEL_ADULT_ONLY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "119_CELEBRITY_PERSON_REAL_IDENTITY_REQUEST",
+      "expected_failcode": "FAIL_REAL_PERSON_OR_NONFICTIONAL_MODEL",
+      "observed": [
+        "FAIL_REAL_PERSON_OR_NONFICTIONAL_MODEL"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "120_ALIAS_DUPLICATE_BOUNDARY",
+      "expected_failcode": "FAIL_ALIAS_COLLISION_OR_ORPHAN",
+      "observed": [
+        "FAIL_ALIAS_COLLISION_OR_ORPHAN"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "121_E2E_10_ABSTRACT_TECHEXT_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "122_HEIGHT_CM_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "123_NECK_CM_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "124_PHYSICAL_NUMERIC_DUPLICATED_BAND",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "125_LOW_SPEC_INPUT_FAILS_LATE",
+      "expected_failcode": "FAIL_TEST_EXPECTATION",
+      "observed": [
+        "FAIL_TEST_EXPECTATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "126_LOW_SPEC_MISSING_REQUIRED_EARLY_BLOCK",
+      "expected_failcode": "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD",
+      "observed": [
+        "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "127_CONCRETE_ORIGIN_BLOCKLIST_ACTIVE",
+      "expected_failcode": "FAIL_CONCRETE_ORIGIN_BLOCKLIST_ACTIVE",
+      "observed": [
+        "FAIL_CONCRETE_ORIGIN_BLOCKLIST_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "128_CITY_ORIGIN_LITERAL_IN_VALIDATOR_ACTIVE_LOGIC",
+      "expected_failcode": "FAIL_CONCRETE_ORIGIN_BLOCKLIST_ACTIVE",
+      "observed": [
+        "FAIL_CONCRETE_ORIGIN_BLOCKLIST_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "129_CONCRETE_PROJECT_NAME_IN_MOTOR_CANON",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "130_CONCRETE_MODEL_NAME_IN_MOTOR_CANON",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "131_CONCRETE_IDENTITY_IN_MOTOR_TEMPLATE",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "132_FIXTURE_WITHOUT_NON_AUTHORITY",
+      "expected_failcode": "FAIL_FIXTURE_AUTHORITY",
+      "observed": [
+        "FAIL_FIXTURE_AUTHORITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "133_PROJECT_DATA_INSIDE_GLOBAL_REGISTRY",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "134_ACTUAL_VALUE_MATERIALIZED_IN_MOTOR_TEMPLATE",
+      "expected_failcode": "FAIL_TEMPLATE_PROJECT_VALUE_LEAKAGE",
+      "observed": [
+        "FAIL_TEMPLATE_PROJECT_VALUE_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "135_PROFILE_CLONE_GENERATED_PROJECT",
+      "expected_failcode": "FAIL_PROFILE_MODEL_SPECIFIC_CLONING",
+      "observed": [
+        "FAIL_PROFILE_MODEL_SPECIFIC_CLONING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "136_TECHEXT_CLONE_GENERATED_PROJECT",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "137_SEMANTIC_DIFFERENTIATOR_IN_ACTUAL_VALUE",
+      "expected_failcode": "FAIL_SEMANTIC_DIFFERENTIATOR_PLACEHOLDER",
+      "observed": [
+        "FAIL_SEMANTIC_DIFFERENTIATOR_PLACEHOLDER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "138_RESTORATION_AFTER_FACTORY_GENERALITY_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "139_E2E_10_ABSTRACT_STRESS_NUMERIC",
+      "expected_failcode": "FAIL_E2E_10_ABSTRACT_STRESS_NUMERIC",
+      "observed": [
+        "FAIL_E2E_10_ABSTRACT_STRESS_NUMERIC"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "140_E2E_LOW_SPEC_INPUT_CONTRACT",
+      "expected_failcode": "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD",
+      "observed": [
+        "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "141_E2E_10_EQUAL_HEIGHT_WEIGHT_REFERENCE_KG_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "142_E2E_10_EQUAL_AGE_BAND_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "143_E2E_10_REPEATED_ROLE_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "144_WEIGHT_REFERENCE_KG_CLONE",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "145_HEIGHT_CM_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "146_NECK_CM_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "147_SHOULDER_WIDTH_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "148_CHEST_WAIST_HIP_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "149_STRIDE_LENGTH_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "150_VOCAL_F0_BAND_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "151_WARDROBE_FIT_CONSTRAINTS_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "152_DERIVED_ONE_VARIABLE_FORMULA",
+      "expected_failcode": "FAIL_TECHEXT_DERIVED_ONE_VARIABLE_FORMULA",
+      "observed": [
+        "FAIL_TECHEXT_DERIVED_ONE_VARIABLE_FORMULA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "153_ROUNDED_VALUE_COLLISION_UNJUSTIFIED",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "154_RAW_UNIQUE_ROUNDED_COLLISION_POLICY_MISSING",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_AUDIT_METADATA",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_AUDIT_METADATA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "155_LOW_SPEC_INPUT_FAILS_LATE_TECHEXT_CLONE",
+      "expected_failcode": "FAIL_TEST_EXPECTATION",
+      "observed": [
+        "FAIL_TEST_EXPECTATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "156_LOW_SPEC_INPUT_MISSING_REQUIRED_FIELD_EARLY_BLOCK",
+      "expected_failcode": "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD",
+      "observed": [
+        "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "157_ACTUAL_VALUE_USED_AS_FORMULA_FILLER",
+      "expected_failcode": "FAIL_TECHEXT_DERIVED_ONE_VARIABLE_FORMULA",
+      "observed": [
+        "FAIL_TECHEXT_DERIVED_ONE_VARIABLE_FORMULA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "158_PHYSICAL_NUMERIC_AUDIT_METADATA_MISSING",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_AUDIT_METADATA",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_AUDIT_METADATA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "159_PROOF_COVERAGE_CURATED_ONLY",
+      "expected_failcode": "FAIL_PROOF_COVERAGE_CURATED_ONLY",
+      "observed": [
+        "FAIL_PROOF_COVERAGE_CURATED_ONLY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "160_RESTORATION_AFTER_NUMERIC_STRESS_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "161_INPUT_VALUE_DRIFT_HEIGHT",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "162_INPUT_VALUE_DRIFT_AGE",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "163_INPUT_VALUE_DRIFT_ORIGIN",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "164_INPUT_VALUE_DRIFT_ROLE",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "165_INPUT_VALUE_DRIFT_NAME",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "166_LOCKED_INPUT_COLLISION_MISCLASSIFIED",
+      "expected_failcode": "FAIL_LOCKED_INPUT_COLLISION_POLICY",
+      "observed": [
+        "FAIL_LOCKED_INPUT_COLLISION_POLICY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "167_DERIVED_COLLISION_UNJUSTIFIED",
+      "expected_failcode": "FAIL_DERIVED_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_DERIVED_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "168_CAUSAL_BUNDLE_IN_ACTUAL_VALUE",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_CAUSAL_BUNDLE_LEAKAGE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_CAUSAL_BUNDLE_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "169_CAUSAL_SIGNATURE_IN_ACTUAL_VALUE",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_SIGNATURE_LEAKAGE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_SIGNATURE_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "170_SEMANTIC_DIFFERENTIATOR_IN_ACTUAL_VALUE",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_DIFFERENTIATOR_LEAKAGE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_DIFFERENTIATOR_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "171_METADATA_CAUSAL_MISSING",
+      "expected_failcode": "FAIL_CAUSAL_METADATA_SEPARATION",
+      "observed": [
+        "FAIL_CAUSAL_METADATA_SEPARATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "172_WEIGHT_REFERENCE_KG_DATATYPE_STRING",
+      "expected_failcode": "FAIL_TECHEXT_NUMERIC_DATATYPE_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_NUMERIC_DATATYPE_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "173_WEIGHT_REFERENCE_KG_UNIT_SEMANTIC_CONTRACT",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "174_HEIGHT_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "175_CM_FIELD_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "176_KG_FIELD_UNIT_NOT_KG",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "177_F0_HZ_UNIT_MISSING",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "178_EQUAL_HEIGHT_PRESERVATION_PROOF_MISSING",
+      "expected_failcode": "FAIL_PROOF_COVERAGE_INCOMPLETE",
+      "observed": [
+        "FAIL_PROOF_COVERAGE_INCOMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "179_PROFILE360_ACTUAL_VALUE_REPEATED_SIGNATURE",
+      "expected_failcode": "FAIL_PROFILE_ACTUAL_VALUE_REPEATED_SIGNATURE",
+      "observed": [
+        "FAIL_PROFILE_ACTUAL_VALUE_REPEATED_SIGNATURE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "180_RESTORATION_AFTER_NODRIFT_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "181_SCHEMA_VALIDATOR_NUMBER_DATATYPE_ALLOWED",
+      "expected_failcode": "FAIL_TECHEXT_SCHEMA_STRICT",
+      "observed": [
+        "FAIL_TECHEXT_SCHEMA_STRICT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "182_SCHEMA_VALIDATOR_NUMERIC_BAND_ALLOWED",
+      "expected_failcode": "FAIL_TECHEXT_SCHEMA_STRICT",
+      "observed": [
+        "FAIL_TECHEXT_SCHEMA_STRICT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "183_SCHEMA_VALIDATOR_NUMBER_OR_NUMERIC_BAND_ALLOWED",
+      "expected_failcode": "FAIL_TECHEXT_SCHEMA_STRICT",
+      "observed": [
+        "FAIL_TECHEXT_SCHEMA_STRICT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "184_TECHEXT_ALLOWED_SET_UNSYNCED",
+      "expected_failcode": "FAIL_TECHEXT_SCHEMA_STRICT",
+      "observed": [
+        "FAIL_TECHEXT_SCHEMA_STRICT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "185_HEIGHT_CM_DEGRADED_TO_STRING",
+      "expected_failcode": "FAIL_TECHEXT_NUMERIC_DATATYPE_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_NUMERIC_DATATYPE_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "186_WEIGHT_REFERENCE_KG_DEGRADED_TO_SEMANTIC_CONTRACT",
+      "expected_failcode": "FAIL_TECHEXT_NUMERIC_DATATYPE_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_NUMERIC_DATATYPE_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "187_NECK_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "188_SHOULDER_WIDTH_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "189_CHEST_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "190_WAIST_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "191_HIP_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "192_TORSO_LENGTH_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "193_ARM_LENGTH_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "194_INSEAM_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "195_STRIDE_LENGTH_CM_UNIT_NOT_CM",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "196_VOCAL_F0_BAND_NOT_HZ",
+      "expected_failcode": "FAIL_TECHEXT_UNIT_MISMATCH",
+      "observed": [
+        "FAIL_TECHEXT_UNIT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "197_CERTIFICATE_SCHEMA_PASS_WITH_FAILING_VALIDATOR",
+      "expected_failcode": "FAIL_NOT_EXECUTED_AS_PASS",
+      "observed": [
+        "FAIL_NOT_EXECUTED_AS_PASS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "198_CERTIFICATE_RUNTIME_PASS_WITH_FAILING_VALIDATOR",
+      "expected_failcode": "FAIL_NOT_EXECUTED_AS_PASS",
+      "observed": [
+        "FAIL_NOT_EXECUTED_AS_PASS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "199_CERTIFICATE_MUTATION_PASS_WITH_FAILING_SUITE",
+      "expected_failcode": "FAIL_NOT_EXECUTED_AS_PASS",
+      "observed": [
+        "FAIL_NOT_EXECUTED_AS_PASS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "200_ACTIVE_INDEX_STALE_CHANGELOG_AUTHORITY",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "201_ACTIVE_INDEX_STALE_CERTIFICATE_AUTHORITY",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "202_ACTIVE_RELEASE_STALE_CHANGELOG_AUTHORITY",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "203_ACTIVE_RELEASE_STALE_CERTIFICATE_AUTHORITY",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "204_FIELD_LOCK_USES_SLOT_IN_ACTUAL_VALUE",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_SIGNATURE_LEAKAGE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_SIGNATURE_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "205_ACTUAL_VALUE_SIGNATURE_LIKE_TEXT",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_SIGNATURE_LEAKAGE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_SIGNATURE_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "206_TECHEXT_ACTUAL_VALUE_REPEATED_SIGNATURE",
+      "expected_failcode": "FAIL_PROFILE_ACTUAL_VALUE_REPEATED_SIGNATURE",
+      "observed": [
+        "FAIL_PROFILE_ACTUAL_VALUE_REPEATED_SIGNATURE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "207_PROFILE360_SHARED_POLICY_NOT_DECLARED",
+      "expected_failcode": "FAIL_PROFILE_MODEL_SPECIFIC_CLONING",
+      "observed": [
+        "FAIL_PROFILE_MODEL_SPECIFIC_CLONING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "208_TECHEXT_SHARED_POLICY_NOT_DECLARED",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "209_MODEL_SPECIFIC_REQUIRED_BOILERPLATE",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "210_MODEL_SPECIFIC_DERIVED_BOILERPLATE",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "211_UNIQUENESS_BY_MODEL_ID_ONLY",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "212_UNIQUENESS_BY_HASH_ONLY",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "213_UNIQUENESS_BY_TIMESTAMP_ONLY",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "214_UNIQUENESS_BY_SLOT_TEXT_ONLY",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "215_INPUT_LOCKED_COLLISION_FALSE_FAIL",
+      "expected_failcode": "FAIL_LOCKED_INPUT_COLLISION_POLICY",
+      "observed": [
+        "FAIL_LOCKED_INPUT_COLLISION_POLICY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "216_HEIGHT_CM_INPUT_PRESERVATION_COUNT_MISSING",
+      "expected_failcode": "FAIL_PROOF_COVERAGE_INCOMPLETE",
+      "observed": [
+        "FAIL_PROOF_COVERAGE_INCOMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "217_WEIGHT_REFERENCE_KG_NOT_NUMERIC_UNIQUE_10_10",
+      "expected_failcode": "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED",
+      "observed": [
+        "FAIL_TECHEXT_PHYSICAL_NUMERIC_COLLISION_UNJUSTIFIED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "218_E2E_10_EQUAL_HEIGHT_NOT_REOPENED",
+      "expected_failcode": "FAIL_PROOF_COVERAGE_INCOMPLETE",
+      "observed": [
+        "FAIL_PROOF_COVERAGE_INCOMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "219_LOW_SPEC_INPUT_NOT_EARLY_BLOCKED",
+      "expected_failcode": "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD",
+      "observed": [
+        "FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "220_RESTORATION_AFTER_SCHEMA_CONTRACT_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "221_BODY360_MUSCLE_TONE_REPEATED_4_OF_10",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "222_BODY360_MUSCLE_TONE_REPEATED_9_OF_10",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "223_BODY_BUILD_PROFILE_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "224_BODY_MASS_DISTRIBUTION_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "225_POSTURE_AXIS_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "226_CENTER_OF_GRAVITY_PROFILE_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "227_MOTION_RANGE_PROFILE_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "228_GAIT_PROFILE_COLLISION",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "229_WARDROBE_FIT_CONSTRAINTS_CLONE",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "230_GARMENT_TENSION_MAP_CLONE",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "231_BREATHING_CAPACITY_BAND_CLONE",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "232_VOCAL_F0_BAND_CLONE",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "233_FACE_CAMERA_DISTANCE_COMFORT_CLONE",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "234_EQUAL_HEIGHT_EQUAL_AGE_REPEATED_ROLE_E2E_FAIL",
+      "expected_failcode": "FAIL_E2E_BODY360_GENERALITY",
+      "observed": [
+        "FAIL_E2E_BODY360_GENERALITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "235_EQUAL_HEIGHT_EQUAL_AGE_UNIQUE_ROLE_E2E_FAIL",
+      "expected_failcode": "FAIL_E2E_BODY360_GENERALITY",
+      "observed": [
+        "FAIL_E2E_BODY360_GENERALITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "236_MINIMAL_SIMILAR_INPUT_E2E_FAIL",
+      "expected_failcode": "FAIL_E2E_BODY360_GENERALITY",
+      "observed": [
+        "FAIL_E2E_BODY360_GENERALITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "237_DELEGATED_ROLE_BODY_PROFILE_E2E_FAIL",
+      "expected_failcode": "FAIL_E2E_BODY360_GENERALITY",
+      "observed": [
+        "FAIL_E2E_BODY360_GENERALITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "238_HEIGHT_INPUT_DRIFT_TO_PASS_UNIQUENESS",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "239_AGE_INPUT_DRIFT_TO_PASS_UNIQUENESS",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "240_ROLE_INPUT_DRIFT_TO_PASS_UNIQUENESS",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "241_NAME_INPUT_DRIFT_TO_PASS_UNIQUENESS",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "242_PROJECT_ID_INPUT_DRIFT_TO_PASS_UNIQUENESS",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "243_LOCKED_INPUT_COLLISION_NOT_CLASSIFIED",
+      "expected_failcode": "FAIL_LOCKED_INPUT_COLLISION_POLICY",
+      "observed": [
+        "FAIL_LOCKED_INPUT_COLLISION_POLICY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "244_SHARED_POLICY_JUSTIFICATION_MISSING",
+      "expected_failcode": "FAIL_TECHEXT_VALUE_CLASS",
+      "observed": [
+        "FAIL_TECHEXT_VALUE_CLASS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "245_BODY360_MOVED_ALL_SHARED_TO_HIDE_CLONES",
+      "expected_failcode": "FAIL_TECHEXT_VALUE_CLASS",
+      "observed": [
+        "FAIL_TECHEXT_VALUE_CLASS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "246_UNIQUENESS_BY_MODEL_ID_TEXT",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "247_UNIQUENESS_BY_HASH_TEXT",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "248_UNIQUENESS_BY_PATH_TEXT",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "249_UNIQUENESS_BY_TIMESTAMP_TEXT",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "250_UNIQUENESS_BY_SLOT_TEXT",
+      "expected_failcode": "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED",
+      "observed": [
+        "FAIL_TECHEXT_SEMANTIC_CLONING_NORMALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "251_VALIDATOR_TECHEXT_JOIN_FALSE_ZERO",
+      "expected_failcode": "FAIL_VALIDATOR_DIAGNOSTIC_TRUTHFULNESS",
+      "observed": [
+        "FAIL_VALIDATOR_DIAGNOSTIC_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "252_PRECHECK_FAILURE_DETAIL_MISSING_FIELD",
+      "expected_failcode": "FAIL_VALIDATOR_DIAGNOSTIC_TRUTHFULNESS",
+      "observed": [
+        "FAIL_VALIDATOR_DIAGNOSTIC_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "253_ACTIVE_00_INDEX_CHANGELOG_STALE_SHA",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "254_ACTIVE_00_INDEX_CERTIFICATE_STALE_SHA",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "255_ACTIVE_10_RELEASE_CHANGELOG_STALE_SHA",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "256_ACTIVE_10_RELEASE_CERTIFICATE_STALE_SHA",
+      "expected_failcode": "FAIL_ACTIVE_SHA_LEDGER_STALE",
+      "observed": [
+        "FAIL_ACTIVE_SHA_LEDGER_STALE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "257_NON_CURATED_PROOF_COVERAGE_MISSING",
+      "expected_failcode": "FAIL_PROOF_COVERAGE_CURATED_ONLY",
+      "observed": [
+        "FAIL_PROOF_COVERAGE_CURATED_ONLY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "258_BODY360_DERIVATION_METADATA_FIELD_SPECIFIC_MISSING",
+      "expected_failcode": "FAIL_CAUSAL_METADATA_SEPARATION",
+      "observed": [
+        "FAIL_CAUSAL_METADATA_SEPARATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "259_RESTORATION_AFTER_BODY360_GENERALITY_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "260_RESTORATION_AFTER_VALIDATOR_DIAGNOSTIC_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "261_ACTIVE_INTERNAL_STALE_REPORT_SCAN",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_STALE_REPORT",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_STALE_REPORT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "262_ACTIVE_LEGACY_IDENTITY_LEAKAGE_SCAN",
+      "expected_failcode": "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "263_ACTIVE_REPORT_NONEXISTENT_PATH_SCAN",
+      "expected_failcode": "FAIL_ACTIVE_REPORT_NONEXISTENT_PATH",
+      "observed": [
+        "FAIL_ACTIVE_REPORT_NONEXISTENT_PATH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "264_ACTIVE_PROOF_NON_ABSTRACT_FIXTURE_SCAN",
+      "expected_failcode": "FAIL_ACTIVE_PROOF_NON_ABSTRACT_FIXTURE",
+      "observed": [
+        "FAIL_ACTIVE_PROOF_NON_ABSTRACT_FIXTURE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "265_ACTIVE_PROOF_CURRENT_METRICS_SCAN",
+      "expected_failcode": "FAIL_ACTIVE_PROOF_CURRENT_METRICS",
+      "observed": [
+        "FAIL_ACTIVE_PROOF_CURRENT_METRICS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "266_ACTUAL_VALUE_OPERATIONAL_DETAIL_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "267_ACTUAL_VALUE_DIFFERENTIATORS_CALIBRATION_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "268_ACTUAL_VALUE_OPERATIONAL_SLOT_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "269_ACTUAL_VALUE_SMILE_SIGNATURE_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "270_HISTORICAL_PROOF_DEMOTION_MARKER_SCAN",
+      "expected_failcode": "FAIL_HISTORICAL_PROOF_DEMOTION",
+      "observed": [
+        "FAIL_HISTORICAL_PROOF_DEMOTION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "271_RESTORATION_AFTER_ANTI_STALE_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "272_RESTORATION_AFTER_ANTI_LEGACY_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "273_RESTORATION_AFTER_PATH_REFERENCE_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "274_RESTORATION_AFTER_ACTUAL_VALUE_BOILERPLATE_MUTATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "275_VALIDATOR_TREE_MUTATION_COUNT_NONZERO",
+      "expected_failcode": "FAIL_VALIDATOR_TREE_MUTATION",
+      "observed": [
+        "FAIL_VALIDATOR_TREE_MUTATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "276_ACTIVE_00_INDEX_STALE_METRICS",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_STALE_REPORT",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_STALE_REPORT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "277_ACTIVE_10_RELEASE_STALE_METRICS",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_STALE_REPORT",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_STALE_REPORT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "278_ACTIVE_MANIFEST_SHA_MISMATCH_REPORT",
+      "expected_failcode": "FAIL_ACTIVE_PROOF_CURRENT_METRICS",
+      "observed": [
+        "FAIL_ACTIVE_PROOF_CURRENT_METRICS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "279_ACTIVE_PROOF_LEGACY_PROJECT_NAME",
+      "expected_failcode": "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "280_ACTIVE_PROOF_LEGACY_MODEL_NAME",
+      "expected_failcode": "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "281_ACTIVE_DEMO_PROJECT_PROOF",
+      "expected_failcode": "FAIL_ACTIVE_PROOF_NON_ABSTRACT_FIXTURE",
+      "observed": [
+        "FAIL_ACTIVE_PROOF_NON_ABSTRACT_FIXTURE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "282_ACTIVE_FIXTURE_NOT_NON_AUTHORITY",
+      "expected_failcode": "FAIL_ACTIVE_PROOF_NON_ABSTRACT_FIXTURE",
+      "observed": [
+        "FAIL_ACTIVE_PROOF_NON_ABSTRACT_FIXTURE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "283_ACTIVE_REPORT_PATH_MISSING_IN_ZIP",
+      "expected_failcode": "FAIL_ACTIVE_REPORT_NONEXISTENT_PATH",
+      "observed": [
+        "FAIL_ACTIVE_REPORT_NONEXISTENT_PATH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "284_ACTIVE_REPORT_HISTORICAL_PATH_AS_AUTHORITY",
+      "expected_failcode": "FAIL_ACTIVE_REPORT_NONEXISTENT_PATH",
+      "observed": [
+        "FAIL_ACTIVE_REPORT_NONEXISTENT_PATH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "285_ACTUAL_VALUE_TEMPLATE_FILLER_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "286_ACTUAL_VALUE_LOCK_QA_TEXT_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "287_ACTUAL_VALUE_MODEL_ID_UNIQUENESS_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "288_ACTUAL_VALUE_HASH_UNIQUENESS_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "289_ACTUAL_VALUE_PATH_UNIQUENESS_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "290_ACTUAL_VALUE_TIMESTAMP_UNIQUENESS_SCAN",
+      "expected_failcode": "FAIL_ACTUAL_VALUE_BOILERPLATE",
+      "observed": [
+        "FAIL_ACTUAL_VALUE_BOILERPLATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "291_PROOF_SHA_POLICY_EXTERNAL_COMPANION_ONLY",
+      "expected_failcode": "FAIL_ACTIVE_PROOF_CURRENT_METRICS",
+      "observed": [
+        "FAIL_ACTIVE_PROOF_CURRENT_METRICS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "292_INTERNAL_ACTIVE_DOCS_NO_OLD_FINAL_SHA",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_STALE_REPORT",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_STALE_REPORT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "293_ACTIVE_BLOAT_REPORT_CURRENT_ONLY",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_STALE_REPORT",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_STALE_REPORT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "294_ACTIVE_AUDIT_REPORT_CURRENT_ONLY",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_STALE_REPORT",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_STALE_REPORT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "295_HISTORICAL_ONLY_DOC_MARKER_REQUIRED",
+      "expected_failcode": "FAIL_HISTORICAL_PROOF_DEMOTION",
+      "observed": [
+        "FAIL_HISTORICAL_PROOF_DEMOTION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "296_VALIDATOR_ANTI_STALE_CASE_PRESENT",
+      "expected_failcode": "FAIL_MUTATION_COVERAGE_INCOMPLETE",
+      "observed": [
+        "FAIL_MUTATION_COVERAGE_INCOMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "297_VALIDATOR_ANTI_LEGACY_CASE_PRESENT",
+      "expected_failcode": "FAIL_MUTATION_COVERAGE_INCOMPLETE",
+      "observed": [
+        "FAIL_MUTATION_COVERAGE_INCOMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "298_VALIDATOR_ANTI_PATH_CASE_PRESENT",
+      "expected_failcode": "FAIL_MUTATION_COVERAGE_INCOMPLETE",
+      "observed": [
+        "FAIL_MUTATION_COVERAGE_INCOMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "299_VALIDATOR_ANTI_BOILERPLATE_CASE_PRESENT",
+      "expected_failcode": "FAIL_MUTATION_COVERAGE_INCOMPLETE",
+      "observed": [
+        "FAIL_MUTATION_COVERAGE_INCOMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "300_RESTORATION_AFTER_FULL_P034_CANONICAL_CLOSURE",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "301_FINALOPS_UPDATE_CLI_COMMAND_DISCOVERY",
+      "expected_failcode": "FAIL_UPDATE_CLI_COMMAND_MISSING",
+      "observed": [
+        "FAIL_UPDATE_CLI_COMMAND_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "302_FINALOPS_VALIDATE_UPDATE_CONTRACT_DISCOVERY",
+      "expected_failcode": "FAIL_UPDATE_CLI_COMMAND_MISSING",
+      "observed": [
+        "FAIL_UPDATE_CLI_COMMAND_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "303_FINALOPS_MIGRATE_CLI_COMMAND_DISCOVERY",
+      "expected_failcode": "FAIL_MIGRATE_CLI_COMMAND_MISSING",
+      "observed": [
+        "FAIL_MIGRATE_CLI_COMMAND_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "304_FINALOPS_UPDATE_BY_ENGINE_CLI_COMMAND_DISCOVERY",
+      "expected_failcode": "FAIL_UPDATE_BY_ENGINE_COMMAND_MISSING",
+      "observed": [
+        "FAIL_UPDATE_BY_ENGINE_COMMAND_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "305_FINALOPS_IMPORT_FACTORY_NO_BYTECODE",
+      "expected_failcode": "FAIL_BYTECODE_ACTIVE",
+      "observed": [
+        "FAIL_BYTECODE_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "306_FINALOPS_NO_BYTECODE_AFTER_GENERATE",
+      "expected_failcode": "FAIL_BYTECODE_ACTIVE",
+      "observed": [
+        "FAIL_BYTECODE_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "307_FINALOPS_NO_BYTECODE_AFTER_VALIDATE",
+      "expected_failcode": "FAIL_BYTECODE_ACTIVE",
+      "observed": [
+        "FAIL_BYTECODE_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "308_FINALOPS_NO_BYTECODE_AFTER_UPDATE_PROJECT",
+      "expected_failcode": "FAIL_BYTECODE_ACTIVE",
+      "observed": [
+        "FAIL_BYTECODE_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "309_FINALOPS_NO_BYTECODE_AFTER_MIGRATE_PROJECT",
+      "expected_failcode": "FAIL_BYTECODE_ACTIVE",
+      "observed": [
+        "FAIL_BYTECODE_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "310_FINALOPS_SAME_VERSION_UPDATE_1_MODEL",
+      "expected_failcode": "FAIL_PROJECT_UPDATE_E2E",
+      "observed": [
+        "FAIL_PROJECT_UPDATE_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "311_FINALOPS_SAME_VERSION_UPDATE_2_MODELS",
+      "expected_failcode": "FAIL_PROJECT_UPDATE_E2E",
+      "observed": [
+        "FAIL_PROJECT_UPDATE_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "312_FINALOPS_SAME_VERSION_UPDATE_10_MODELS",
+      "expected_failcode": "FAIL_PROJECT_UPDATE_E2E",
+      "observed": [
+        "FAIL_PROJECT_UPDATE_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "313_FINALOPS_AGE_EVOLUTION_POLICY",
+      "expected_failcode": "FAIL_AGE_EVOLUTION_POLICY",
+      "observed": [
+        "FAIL_AGE_EVOLUTION_POLICY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "314_FINALOPS_LOCKED_FIELD_REJECTION",
+      "expected_failcode": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "observed": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "315_FINALOPS_UPDATE_NO_DRIFT_UNREQUESTED",
+      "expected_failcode": "FAIL_INPUT_VALUE_DRIFT",
+      "observed": [
+        "FAIL_INPUT_VALUE_DRIFT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "316_FINALOPS_PROJECT_LEVEL_ENVIRONMENT_UPDATE",
+      "expected_failcode": "FAIL_PROJECT_UPDATE_E2E",
+      "observed": [
+        "FAIL_PROJECT_UPDATE_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "317_FINALOPS_UPDATE_MANIFESTS_REGENERATED",
+      "expected_failcode": "FAIL_PACKAGE_SHA",
+      "observed": [
+        "FAIL_PACKAGE_SHA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "318_FINALOPS_UPDATE_GOLDEN_TESTS_REGENERATED",
+      "expected_failcode": "FAIL_GOLDEN_TEST_SEMANTICS",
+      "observed": [
+        "FAIL_GOLDEN_TEST_SEMANTICS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "319_FINALOPS_UPDATE_RUNTIME_REVALIDATED",
+      "expected_failcode": "FAIL_RUNTIME_10_PLUS_N",
+      "observed": [
+        "FAIL_RUNTIME_10_PLUS_N"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "320_FINALOPS_FUTURE_ENGINE_MIGRATION_SIMULATION",
+      "expected_failcode": "FAIL_PROJECT_MIGRATION_E2E",
+      "observed": [
+        "FAIL_PROJECT_MIGRATION_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "321_FINALOPS_UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING",
+      "expected_failcode": "FAIL_UNKNOWN_TARGET_ENGINE_ACCEPTED",
+      "observed": [
+        "FAIL_UNKNOWN_TARGET_ENGINE_ACCEPTED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "322_FINALOPS_MIGRATION_NOLOSS_PROFILE360",
+      "expected_failcode": "FAIL_MIGRATION_NOLOSS_PROFILE360",
+      "observed": [
+        "FAIL_MIGRATION_NOLOSS_PROFILE360"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "323_FINALOPS_MIGRATION_NOLOSS_TECHEXT",
+      "expected_failcode": "FAIL_MIGRATION_NOLOSS_TECHEXT",
+      "observed": [
+        "FAIL_MIGRATION_NOLOSS_TECHEXT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "324_FINALOPS_MIGRATION_NOLOSS_ANCHORS",
+      "expected_failcode": "FAIL_MIGRATION_NOLOSS_ANCHORS",
+      "observed": [
+        "FAIL_MIGRATION_NOLOSS_ANCHORS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "325_FINALOPS_MIGRATION_NOLOSS_RUNTIME",
+      "expected_failcode": "FAIL_MIGRATION_NOLOSS_RUNTIME",
+      "observed": [
+        "FAIL_MIGRATION_NOLOSS_RUNTIME"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "326_FINALOPS_MIGRATION_NOLOSS_SOURCE_LINEAGE",
+      "expected_failcode": "FAIL_MIGRATION_NOLOSS_SOURCE_LINEAGE",
+      "observed": [
+        "FAIL_MIGRATION_NOLOSS_SOURCE_LINEAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "327_FINALOPS_MIGRATION_REPORT_TRUTHFULNESS",
+      "expected_failcode": "FAIL_MIGRATION_REPORT_TRUTHFULNESS",
+      "observed": [
+        "FAIL_MIGRATION_REPORT_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "328_FINALOPS_PROJECT_MATRIX_1_TO_10_MINIMAL",
+      "expected_failcode": "FAIL_PROJECT_MATRIX_MINIMAL",
+      "observed": [
+        "FAIL_PROJECT_MATRIX_MINIMAL"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "329_FINALOPS_PROJECT_MATRIX_1_TO_10_INTERMEDIATE",
+      "expected_failcode": "FAIL_PROJECT_MATRIX_INTERMEDIATE",
+      "observed": [
+        "FAIL_PROJECT_MATRIX_INTERMEDIATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "330_FINALOPS_PROJECT_MATRIX_1_TO_10_COMPLETE",
+      "expected_failcode": "FAIL_PROJECT_MATRIX_COMPLETE",
+      "observed": [
+        "FAIL_PROJECT_MATRIX_COMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "331_FINALOPS_INVALID_INPUT_0_MODELS_BLOCKED",
+      "expected_failcode": "FAIL_MODEL_COUNT_MIN",
+      "observed": [
+        "FAIL_MODEL_COUNT_MIN"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "332_FINALOPS_INVALID_INPUT_11_MODELS_BLOCKED",
+      "expected_failcode": "FAIL_MODEL_COUNT_MAX",
+      "observed": [
+        "FAIL_MODEL_COUNT_MAX"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "333_FINALOPS_MINOR_INPUT_BLOCKED",
+      "expected_failcode": "FAIL_ADULT_ONLY",
+      "observed": [
+        "FAIL_ADULT_ONLY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "334_FINALOPS_REAL_PERSON_INPUT_BLOCKED",
+      "expected_failcode": "FAIL_REAL_IDENTITY_COPY",
+      "observed": [
+        "FAIL_REAL_IDENTITY_COPY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "335_FINALOPS_HUMAN_FACING_LEGACY_GENERIC_METRICS",
+      "expected_failcode": "FAIL_HUMAN_FACING_LEGACY_NAME_METRIC",
+      "observed": [
+        "FAIL_HUMAN_FACING_LEGACY_NAME_METRIC"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "336_FINALOPS_ACTIVE_LEGACY_IDENTITY_SPECIFIC_COUNT",
+      "expected_failcode": "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "337_FINALOPS_ACTIVE_DEMO_IDENTITY_SPECIFIC_COUNT",
+      "expected_failcode": "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "338_FINALOPS_ACTIVE_LEGACY_PROJECT_SPECIFIC_COUNT",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "339_FINALOPS_RESTORATION_AFTER_FINALOPS_UPDATE_MIGRATION",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "340_FINALOPS_VALIDATOR_TREE_MUTATION_ZERO_FINALOPS",
+      "expected_failcode": "FAIL_VALIDATOR_TREE_MUTATION",
+      "observed": [
+        "FAIL_VALIDATOR_TREE_MUTATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "341_GENERIC_CONTROL_NAME_LEAKAGE_SCAN",
+      "expected_failcode": "FAIL_ACTIVE_LEGACY_CONTROL_NAME_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_LEGACY_CONTROL_NAME_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "342_ACTIVE_PROOF_GENERIC_ONLY_SCAN",
+      "expected_failcode": "FAIL_ACTIVE_PROOF_CURRENT_METRICS",
+      "observed": [
+        "FAIL_ACTIVE_PROOF_CURRENT_METRICS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "343_VALIDATOR_LABELS_GENERIC_ONLY_SCAN",
+      "expected_failcode": "FAIL_HUMAN_FACING_LEGACY_NAME_METRIC",
+      "observed": [
+        "FAIL_HUMAN_FACING_LEGACY_NAME_METRIC"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "344_CLI_MATRIX_30_REOPENED_PROOF",
+      "expected_failcode": "FAIL_PROJECT_MATRIX_REOPENED_PROOF",
+      "observed": [
+        "FAIL_PROJECT_MATRIX_REOPENED_PROOF"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "345_UPDATE_SMOKE_ONE_MODEL_REOPENED",
+      "expected_failcode": "FAIL_PROJECT_UPDATE_E2E",
+      "observed": [
+        "FAIL_PROJECT_UPDATE_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "346_UPDATE_SMOKE_TWO_MODELS_REOPENED",
+      "expected_failcode": "FAIL_PROJECT_UPDATE_E2E",
+      "observed": [
+        "FAIL_PROJECT_UPDATE_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "347_UPDATE_SMOKE_TEN_MODELS_REOPENED",
+      "expected_failcode": "FAIL_PROJECT_UPDATE_E2E",
+      "observed": [
+        "FAIL_PROJECT_UPDATE_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "348_LOCKED_IDENTITY_UPDATE_BLOCKED_EARLY",
+      "expected_failcode": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "observed": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "349_MIGRATE_COMPATIBLE_SMOKE_REOPENED",
+      "expected_failcode": "FAIL_PROJECT_MIGRATION_E2E",
+      "observed": [
+        "FAIL_PROJECT_MIGRATION_E2E"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "350_MIGRATE_UNKNOWN_TARGET_BLOCKED_EARLY",
+      "expected_failcode": "FAIL_UNKNOWN_TARGET_ENGINE_ACCEPTED",
+      "observed": [
+        "FAIL_UNKNOWN_TARGET_ENGINE_ACCEPTED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "351_POST_MATRIX_IMPORT_SAFE_ZERO_BYTECODE",
+      "expected_failcode": "FAIL_BYTECODE_ACTIVE",
+      "observed": [
+        "FAIL_BYTECODE_ACTIVE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "352_RUNTIME_AFTER_FULL_MATRIX_PASS",
+      "expected_failcode": "FAIL_NOT_EXECUTED_AS_PASS",
+      "observed": [
+        "FAIL_NOT_EXECUTED_AS_PASS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "353_SCHEMA_AFTER_FULL_MATRIX_PASS",
+      "expected_failcode": "FAIL_JSON_SCHEMA_INVALID",
+      "observed": [
+        "FAIL_JSON_SCHEMA_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "354_RESTORATION_RETEST_AFTER_PROOF_REFRESH",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "355_EXTERNAL_DELIVERY_SEVEN_OF_SEVEN_GATE",
+      "expected_failcode": "FAIL_EXTERNAL_DELIVERY_EXACT_7",
+      "observed": [
+        "FAIL_EXTERNAL_DELIVERY_EXACT_7"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "356_CREATIVE_OUTPUT_FALSE_GATE",
+      "expected_failcode": "FAIL_OUTPUT_CLAIM_TRUTHFULNESS",
+      "observed": [
+        "FAIL_OUTPUT_CLAIM_TRUTHFULNESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "357_GENERIC_EXACT_TOKEN_COUNT_ZERO",
+      "expected_failcode": "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE",
+      "observed": [
+        "FAIL_ACTIVE_LEGACY_IDENTITY_LEAKAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "358_GENERIC_HUMAN_FACING_METRIC_COUNT_ZERO",
+      "expected_failcode": "FAIL_HUMAN_FACING_LEGACY_NAME_METRIC",
+      "observed": [
+        "FAIL_HUMAN_FACING_LEGACY_NAME_METRIC"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "359_GENERIC_PROJECT_SPECIFIC_COUNT_ZERO",
+      "expected_failcode": "FAIL_MOTOR_PROJECT_BOUNDARY",
+      "observed": [
+        "FAIL_MOTOR_PROJECT_BOUNDARY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "360_VALIDATOR_TREE_MUTATION_ZERO_POST_RESTORE",
+      "expected_failcode": "FAIL_VALIDATOR_TREE_MUTATION",
+      "observed": [
+        "FAIL_VALIDATOR_TREE_MUTATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "361_P034_PROJECT_ENTITY_PROFILE_REQUIRED",
+      "expected_failcode": "FAIL_PROJECT_ENTITY_PROFILE_MISSING",
+      "observed": [
+        "FAIL_PROJECT_ENTITY_PROFILE_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "362_P034_PROJECT_ENTITY_REQUIRED_FIELD",
+      "expected_failcode": "FAIL_PROJECT_ENTITY_PROFILE_FIELD_MISSING",
+      "observed": [
+        "FAIL_PROJECT_ENTITY_PROFILE_FIELD_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "363_P034_BRAND_USAGE_SCOPE_ENUM",
+      "expected_failcode": "FAIL_BRAND_USAGE_SCOPE_INVALID",
+      "observed": [
+        "FAIL_BRAND_USAGE_SCOPE_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "364_P034_LOGO_ASSET_POLICY_ENUM",
+      "expected_failcode": "FAIL_LOGO_ASSET_POLICY_INVALID",
+      "observed": [
+        "FAIL_LOGO_ASSET_POLICY_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "365_P034_RIGHTS_LEDGER_REQUIRED",
+      "expected_failcode": "FAIL_RIGHTS_AND_LICENSE_LEDGER",
+      "observed": [
+        "FAIL_RIGHTS_AND_LICENSE_LEDGER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "366_P034_BRAND_ASSET_REGISTRY",
+      "expected_failcode": "FAIL_BRAND_ASSET_REGISTRY",
+      "observed": [
+        "FAIL_BRAND_ASSET_REGISTRY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "367_P034_LOGO_EXACT_WITHOUT_ASSET_BLOCKED",
+      "expected_failcode": "FAIL_LOGO_ASSET_REQUIREMENT",
+      "observed": [
+        "FAIL_LOGO_ASSET_REQUIREMENT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "368_P034_LOGO_URL_NOT_EVIDENCED",
+      "expected_failcode": "FAIL_LOGO_URL_NOT_EVIDENCED",
+      "observed": [
+        "FAIL_LOGO_URL_NOT_EVIDENCED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "369_P034_GENERIC_VISUAL_SYSTEM_TEXT_WORDMARK_FALSE_LOGO_MATCH",
+      "expected_failcode": "FAIL_GENERIC_VISUAL_SYSTEM_TEXT_WORDMARK",
+      "observed": [
+        "FAIL_GENERIC_VISUAL_SYSTEM_TEXT_WORDMARK"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "370_P034_BRAND_PLACEMENT_QA",
+      "expected_failcode": "FAIL_BRAND_PLACEMENT_QA",
+      "observed": [
+        "FAIL_BRAND_PLACEMENT_QA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "371_P034_CREATE_FIRST_VISUAL_ROUTE",
+      "expected_failcode": "FAIL_TEXT_TO_IMAGE_CREATE_FIRST_VISUAL",
+      "observed": [
+        "FAIL_TEXT_TO_IMAGE_CREATE_FIRST_VISUAL"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "372_P034_MASTER_VISUAL_ASSET_STATE",
+      "expected_failcode": "FAIL_MASTER_VISUAL_ASSET_STATE",
+      "observed": [
+        "FAIL_MASTER_VISUAL_ASSET_STATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "373_P034_IMAGE_DELIVERY_CONTROLLER",
+      "expected_failcode": "FAIL_IMAGE_DELIVERY_CONTROLLER",
+      "observed": [
+        "FAIL_IMAGE_DELIVERY_CONTROLLER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "374_P034_TARGET_FILENAME_ENFORCEMENT",
+      "expected_failcode": "FAIL_TARGET_FILENAME_ENFORCEMENT",
+      "observed": [
+        "FAIL_TARGET_FILENAME_ENFORCEMENT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "375_P034_OUTPUT_SIDECAR_REQUIRED",
+      "expected_failcode": "FAIL_OUTPUT_SIDECAR_REQUIRED_GATE",
+      "observed": [
+        "FAIL_OUTPUT_SIDECAR_REQUIRED_GATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "376_P034_OUTPUT_LEDGER_TRUE_WITHOUT_EVIDENCE",
+      "expected_failcode": "FAIL_OUTPUT_LEDGER_TRUE_WITHOUT_EVIDENCE",
+      "observed": [
+        "FAIL_OUTPUT_LEDGER_TRUE_WITHOUT_EVIDENCE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "377_P034_IMAGE_TOOL_ROUTE_STATUS",
+      "expected_failcode": "FAIL_IMAGE_TOOL_ROUTE_STATUS",
+      "observed": [
+        "FAIL_IMAGE_TOOL_ROUTE_STATUS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "378_P034_DERIVED_ASSET_DISCLOSURE",
+      "expected_failcode": "FAIL_DERIVED_ASSET_DISCLOSURE",
+      "observed": [
+        "FAIL_DERIVED_ASSET_DISCLOSURE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "379_P034_SAFE_APPAREL_REWRITE",
+      "expected_failcode": "FAIL_SAFE_APPAREL_REWRITE_GATE",
+      "observed": [
+        "FAIL_SAFE_APPAREL_REWRITE_GATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "380_P034_APPAREL_VENDOR_COMPATIBILITY",
+      "expected_failcode": "FAIL_APPAREL_VENDOR_COMPATIBILITY",
+      "observed": [
+        "FAIL_APPAREL_VENDOR_COMPATIBILITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "381_P034_ADULT_NON_EXPLICIT_CLASSIFIER",
+      "expected_failcode": "FAIL_ADULT_NON_EXPLICIT_CLASSIFIER",
+      "observed": [
+        "FAIL_ADULT_NON_EXPLICIT_CLASSIFIER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "382_P034_POSE_FRAMING_SAFETY",
+      "expected_failcode": "FAIL_POSE_AND_FRAMING_SAFETY",
+      "observed": [
+        "FAIL_POSE_AND_FRAMING_SAFETY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "383_P034_FALSE_POSITIVE_RECOVERY",
+      "expected_failcode": "FAIL_POLICY_FALSE_POSITIVE_RECOVERY",
+      "observed": [
+        "FAIL_POLICY_FALSE_POSITIVE_RECOVERY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "384_P034_MODEL_SELECTOR_PRECHECK",
+      "expected_failcode": "FAIL_MODEL_SELECTOR_PRECHECK",
+      "observed": [
+        "FAIL_MODEL_SELECTOR_PRECHECK"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "385_P034_ALIAS_CANONICALITY",
+      "expected_failcode": "FAIL_ALIAS_CANONICALITY",
+      "observed": [
+        "FAIL_ALIAS_CANONICALITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "386_P034_ALIAS_NEGATIVE_TEST_SUITE",
+      "expected_failcode": "FAIL_ALIAS_NEGATIVE_TEST_SUITE",
+      "observed": [
+        "FAIL_ALIAS_NEGATIVE_TEST_SUITE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "387_P034_FACTORY_ALIAS_DERIVATION",
+      "expected_failcode": "FAIL_FACTORY_ALIAS_DERIVATION_POLICY",
+      "observed": [
+        "FAIL_FACTORY_ALIAS_DERIVATION_POLICY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "388_P034_ENGINE_PROJECT_VERSION_LINEAGE",
+      "expected_failcode": "FAIL_ENGINE_PROJECT_VERSION_LINEAGE",
+      "observed": [
+        "FAIL_ENGINE_PROJECT_VERSION_LINEAGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "389_P034_PROJECT_EXTERNAL_FILENAME_CANON",
+      "expected_failcode": "FAIL_PROJECT_EXTERNAL_FILENAME_CANON",
+      "observed": [
+        "FAIL_PROJECT_EXTERNAL_FILENAME_CANON"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "390_P034_RUNTIME_UPLOAD_EVIDENCE_MINIPACK_OPTIONAL",
+      "expected_failcode": "FAIL_RUNTIME_UPLOAD_EVIDENCE_MINIPACK",
+      "observed": [
+        "FAIL_RUNTIME_UPLOAD_EVIDENCE_MINIPACK"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "391_P034_UPDATE_LEDGER_LABEL_CONSISTENCY",
+      "expected_failcode": "FAIL_UPDATE_LEDGER_LABEL_CONSISTENCY",
+      "observed": [
+        "FAIL_UPDATE_LEDGER_LABEL_CONSISTENCY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "392_P034_FINAL_PROJECT_CLOSURE_VISIBILITY_BANNER",
+      "expected_failcode": "FAIL_FINAL_PROJECT_CLOSURE_VISIBILITY_BANNER",
+      "observed": [
+        "FAIL_FINAL_PROJECT_CLOSURE_VISIBILITY_BANNER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "393_P034_VENDOR_CAPABILITY_DECLARATION",
+      "expected_failcode": "FAIL_VENDOR_CAPABILITY_DECLARATION",
+      "observed": [
+        "FAIL_VENDOR_CAPABILITY_DECLARATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "394_P034_VENDOR_FALLBACK_STATUS",
+      "expected_failcode": "FAIL_VENDOR_FALLBACK_STATUS",
+      "observed": [
+        "FAIL_VENDOR_FALLBACK_STATUS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "395_P034_REGRESSION_SUITE_PRESENT",
+      "expected_failcode": "FAIL_REGRESSION_TEST_SUITE_P034",
+      "observed": [
+        "FAIL_REGRESSION_TEST_SUITE_P034"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "396_P034_PAIRWISE_HUMAN_DISTINCTIVENESS",
+      "expected_failcode": "FAIL_PAIRWISE_HUMAN_DISTINCTIVENESS",
+      "observed": [
+        "FAIL_PAIRWISE_HUMAN_DISTINCTIVENESS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "397_P034_CITY_SCENE_CANON_MINIMUM",
+      "expected_failcode": "FAIL_CITY_SCENE_CANON_MINIMUM",
+      "observed": [
+        "FAIL_CITY_SCENE_CANON_MINIMUM"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "398_P034_ANCHOR_ASSET_REALITY",
+      "expected_failcode": "FAIL_ANCHOR_ASSET_REALITY",
+      "observed": [
+        "FAIL_ANCHOR_ASSET_REALITY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "399_P034_VISUAL_ANCHOR_REGISTRATION",
+      "expected_failcode": "FAIL_VISUAL_ANCHOR_REGISTRATION",
+      "observed": [
+        "FAIL_VISUAL_ANCHOR_REGISTRATION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "400_P034_RESTORATION_AFTER_GATE_SUITE",
+      "expected_failcode": "FAIL_RESTORATION_RETEST",
+      "observed": [
+        "FAIL_RESTORATION_RETEST"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "401_H01_SCOPE_DEMO_INTERNAL_TEST_NORMALIZES",
+      "expected_failcode": "FAIL_BRAND_USAGE_SCOPE_INVALID",
+      "observed": [
+        "FAIL_BRAND_USAGE_SCOPE_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "402_H01_UNKNOWN_SCOPE_BLOCKED",
+      "expected_failcode": "FAIL_BRAND_USAGE_SCOPE_INVALID",
+      "observed": [
+        "FAIL_BRAND_USAGE_SCOPE_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "403_H02_MANIFEST_UNEXPLAINED_DELTA",
+      "expected_failcode": "FAIL_MANIFEST_UNEXPLAINED_FILE_DELTA",
+      "observed": [
+        "FAIL_MANIFEST_UNEXPLAINED_FILE_DELTA"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "404_H02_MANIFEST_REASON_MISSING",
+      "expected_failcode": "FAIL_MANIFEST_EXCLUSION_REASON_MISSING",
+      "observed": [
+        "FAIL_MANIFEST_EXCLUSION_REASON_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "405_H03_ROLE_GENDER_AGREEMENT",
+      "expected_failcode": "FAIL_ROLE_GENDER_AGREEMENT",
+      "observed": [
+        "FAIL_ROLE_GENDER_AGREEMENT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "406_H04_INPUT_FIDELITY_REQUIRED",
+      "expected_failcode": "FAIL_INPUT_FIDELITY_REQUIRED_FIELD_MISSING",
+      "observed": [
+        "FAIL_INPUT_FIDELITY_REQUIRED_FIELD_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "407_H05_RUNTIME_SELECTOR_MUTATED",
+      "expected_failcode": "FAIL_RUNTIME_SELECTOR_PRECHECK_CLAUSE_MUTATED",
+      "observed": [
+        "FAIL_RUNTIME_SELECTOR_PRECHECK_CLAUSE_MUTATED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "408_H05_RUNTIME_CREATIVE_CERT_MUTATED",
+      "expected_failcode": "FAIL_RUNTIME_CREATIVE_OUTPUT_CERTIFICATION_CLAUSE_MUTATED",
+      "observed": [
+        "FAIL_RUNTIME_CREATIVE_OUTPUT_CERTIFICATION_CLAUSE_MUTATED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "409_H05_RUNTIME_SAFE_APPAREL_ALIAS_MUTATED",
+      "expected_failcode": "FAIL_RUNTIME_SAFE_APPAREL_CLAUSE_MUTATED",
+      "observed": [
+        "FAIL_RUNTIME_SAFE_APPAREL_CLAUSE_MUTATED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "410_H05_RUNTIME_REQUIRED_CLAUSE_MUTATED",
+      "expected_failcode": "FAIL_RUNTIME_REQUIRED_CLAUSE_MUTATED",
+      "observed": [
+        "FAIL_RUNTIME_REQUIRED_CLAUSE_MUTATED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "411_H06_INDEX_CHANGED_RUNTIME_STALE",
+      "expected_failcode": "FAIL_UPDATE_RUNTIME_STALE_VALUE",
+      "observed": [
+        "FAIL_UPDATE_RUNTIME_STALE_VALUE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "412_H06_MODEL_JSON_CHANGED_INDEX_STALE",
+      "expected_failcode": "FAIL_UPDATE_INDEX_MODEL_MISMATCH",
+      "observed": [
+        "FAIL_UPDATE_INDEX_MODEL_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "413_H06_ROLE_CHANGED_PAIRWISE_STALE",
+      "expected_failcode": "FAIL_UPDATE_PAIRWISE_STALE_EVIDENCE",
+      "observed": [
+        "FAIL_UPDATE_PAIRWISE_STALE_EVIDENCE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "414_H06_PASS_WITHOUT_SCANNER",
+      "expected_failcode": "FAIL_UPDATE_REVALIDATION_EVIDENCE_MISSING",
+      "observed": [
+        "FAIL_UPDATE_REVALIDATION_EVIDENCE_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "415_H07_GENERIC_FEMININE_MASCULINE_ROLE_UPDATE",
+      "expected_failcode": "FAIL_ROLE_GENDER_AGREEMENT_UPDATE",
+      "observed": [
+        "FAIL_ROLE_GENDER_AGREEMENT_UPDATE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "416_H07_ROLE_LEDGER_MODEL_MISMATCH",
+      "expected_failcode": "FAIL_ROLE_LEDGER_MODEL_MISMATCH",
+      "observed": [
+        "FAIL_ROLE_LEDGER_MODEL_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "417_H08_RUNTIME_ACTIVE_OLD_AGE",
+      "expected_failcode": "FAIL_UPDATE_RUNTIME_STALE_VALUE",
+      "observed": [
+        "FAIL_UPDATE_RUNTIME_STALE_VALUE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "418_H08_CANON_LEDGER_ACTIVE_OLD_ROLE",
+      "expected_failcode": "FAIL_UPDATE_CANON_LEDGER_STALE_VALUE",
+      "observed": [
+        "FAIL_UPDATE_CANON_LEDGER_STALE_VALUE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "419_H08_MODEL_JSON_ACTIVE_OLD_AGE",
+      "expected_failcode": "FAIL_UPDATE_MODEL_JSON_STALE_VALUE",
+      "observed": [
+        "FAIL_UPDATE_MODEL_JSON_STALE_VALUE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "420_H08_NEW_VALUE_NOT_MATERIALIZED",
+      "expected_failcode": "FAIL_UPDATE_NEW_VALUE_NOT_MATERIALIZED",
+      "observed": [
+        "FAIL_UPDATE_NEW_VALUE_NOT_MATERIALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "421_H09_COMMERCIAL_TEST_DOWNGRADE",
+      "expected_failcode": "FAIL_BRAND_USAGE_SCOPE_AMBIGUOUS_MIXED_COMMERCIAL_INTERNAL",
+      "observed": [
+        "FAIL_BRAND_USAGE_SCOPE_AMBIGUOUS_MIXED_COMMERCIAL_INTERNAL"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "422_H09_CAMPAIGN_INTERNAL_DOWNGRADE",
+      "expected_failcode": "FAIL_BRAND_USAGE_SCOPE_AMBIGUOUS_MIXED_COMMERCIAL_INTERNAL",
+      "observed": [
+        "FAIL_BRAND_USAGE_SCOPE_AMBIGUOUS_MIXED_COMMERCIAL_INTERNAL"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "423_H09_EDITORIAL_TESTING_DOWNGRADE",
+      "expected_failcode": "FAIL_BRAND_USAGE_SCOPE_AMBIGUOUS_MIXED_COMMERCIAL_INTERNAL",
+      "observed": [
+        "FAIL_BRAND_USAGE_SCOPE_AMBIGUOUS_MIXED_COMMERCIAL_INTERNAL"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "424_H09_COMMERCIAL_INTERNAL_PRIORITY",
+      "expected_failcode": "FAIL_BRAND_USAGE_SCOPE_INVALID",
+      "observed": [
+        "FAIL_BRAND_USAGE_SCOPE_INVALID"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "425_H09_SCOPE_RAW_LEDGER_MISSING",
+      "expected_failcode": "FAIL_BRAND_USAGE_SCOPE_NORMALIZATION_LEDGER",
+      "observed": [
+        "FAIL_BRAND_USAGE_SCOPE_NORMALIZATION_LEDGER"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "426_H06_UPDATE_LEDGER_PLACEHOLDER",
+      "expected_failcode": "FAIL_UPDATE_REVALIDATION_EVIDENCE_MISSING",
+      "observed": [
+        "FAIL_UPDATE_REVALIDATION_EVIDENCE_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "427_H10_INDEX_MODEL_ACTIVE_AGE_MISMATCH",
+      "expected_failcode": "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH",
+      "observed": [
+        "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "428_H10_PROFILE360_TRACE_ROLE_STALE",
+      "expected_failcode": "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH",
+      "observed": [
+        "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "429_H10_TECHEXT_WARDROBE_STALE",
+      "expected_failcode": "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH",
+      "observed": [
+        "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "430_H10_PAIRWISE_ROLE_STALE_EVIDENCE",
+      "expected_failcode": "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH",
+      "observed": [
+        "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "431_H10_RUNTIME_COVERAGE_ACTUAL_VALUE_STALE",
+      "expected_failcode": "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH",
+      "observed": [
+        "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "432_H10_EVIDENCE_BUNDLE_STALE_HASH",
+      "expected_failcode": "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH",
+      "observed": [
+        "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "433_H11_RUNTIME_ACTIVE_AGE_CANON_MISMATCH",
+      "expected_failcode": "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH",
+      "observed": [
+        "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "434_H11_RUNTIME_ACTIVE_GENDER_CANON_MISMATCH",
+      "expected_failcode": "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH",
+      "observed": [
+        "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "435_H11_RUNTIME_ACTIVE_ROLE_CANON_MISMATCH",
+      "expected_failcode": "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH",
+      "observed": [
+        "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "436_H11_RUNTIME_ACTIVE_WARDROBE_CANON_MISMATCH",
+      "expected_failcode": "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH",
+      "observed": [
+        "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "437_H12_MANIFEST_REHASH_WITH_SEMANTIC_DRIFT",
+      "expected_failcode": "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH",
+      "observed": [
+        "FAIL_RUNTIME_ACTIVE_MARKER_CANON_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "438_H12_SHA_LEDGER_PASS_WITH_PROFILE360_DRIFT",
+      "expected_failcode": "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH",
+      "observed": [
+        "FAIL_GLOBAL_ACTIVE_SURFACE_SEMANTIC_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "439_H13_GENERIC_10_COMPLETE_REPEAT_DECOLLISION",
+      "expected_failcode": "FAIL_GENERIC_COMPLETE_INPUT_DECOLLISION_NOT_MATERIALIZED",
+      "observed": [
+        "FAIL_GENERIC_COMPLETE_INPUT_DECOLLISION_NOT_MATERIALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "440_H13_NON_GENERIC_REPEAT_BLOCKS_EARLY",
+      "expected_failcode": "FAIL_GENERIC_COMPLETE_INPUT_COLLISION_BLOCKED_EARLY",
+      "observed": [
+        "FAIL_GENERIC_COMPLETE_INPUT_COLLISION_BLOCKED_EARLY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "441_H14_MUTATION_SUMMARY_STREAM_SAFE",
+      "expected_failcode": "FAIL_MUTATION_SELF_TEST_STREAM_UNSAFE",
+      "observed": [
+        "FAIL_MUTATION_SELF_TEST_STREAM_UNSAFE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "442_H14_MUTATION_OUTPUT_JSON_STREAM_SAFE",
+      "expected_failcode": "FAIL_MUTATION_SELF_TEST_STREAM_UNSAFE",
+      "observed": [
+        "FAIL_MUTATION_SELF_TEST_STREAM_UNSAFE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "443_H15_GENERATE_N10_SUMMARY_STREAM_SAFE",
+      "expected_failcode": "FAIL_CLI_STREAM_SAFE_OUTPUT",
+      "observed": [
+        "FAIL_CLI_STREAM_SAFE_OUTPUT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "444_H15_GENERATE_N10_OUTPUT_JSON_PARSEABLE",
+      "expected_failcode": "FAIL_CLI_JSON_OUTPUT_TRUNCATED",
+      "observed": [
+        "FAIL_CLI_JSON_OUTPUT_TRUNCATED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "445_H15_STDOUT_UNAVAILABLE_PASS_NOT_RC1",
+      "expected_failcode": "FAIL_CLI_EXIT_CODE_RESULT_MISMATCH",
+      "observed": [
+        "FAIL_CLI_EXIT_CODE_RESULT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "446_H16_RESULT_PASS_EXIT_CODE_ZERO",
+      "expected_failcode": "FAIL_CLI_EXIT_CODE_RESULT_MISMATCH",
+      "observed": [
+        "FAIL_CLI_EXIT_CODE_RESULT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "447_H16_BLOCKED_EARLY_EXPECTED_EXIT_CODE_ZERO",
+      "expected_failcode": "FAIL_CLI_EXIT_CODE_RESULT_MISMATCH",
+      "observed": [
+        "FAIL_CLI_EXIT_CODE_RESULT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "448_H16_REAL_FAIL_EXIT_CODE_ONE",
+      "expected_failcode": "FAIL_CLI_EXIT_CODE_RESULT_MISMATCH",
+      "observed": [
+        "FAIL_CLI_EXIT_CODE_RESULT_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "449_H17_ACTIVE_INTERNAL_LABEL_MISMATCH_BLOCKED",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_LABEL_MISMATCH",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_LABEL_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "450_H17_CERTIFICATE_FACTORY_VERSION_MANIFEST_LABEL_PARITY",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_LABEL_MISMATCH",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_LABEL_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "451_H17_CORRECTION_SCOPE_LABEL_REQUIRED",
+      "expected_failcode": "FAIL_ACTIVE_INTERNAL_LABEL_MISMATCH",
+      "observed": [
+        "FAIL_ACTIVE_INTERNAL_LABEL_MISMATCH"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "452_H18_PROFILE360_GENERIC_INPUT_FULL_DECOLLISION",
+      "expected_failcode": "FAIL_PROFILE360_GENERIC_INPUT_FULL_DECOLLISION_NOT_MATERIALIZED",
+      "observed": [
+        "PASS_BY_H62_N1_N10_X3_EXECUTED_MATRIX"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "453_H19_PRECHECK_LATE_GENERIC_CLONING_PREVENTED",
+      "expected_failcode": "FAIL_GENERIC_COMPLETE_INPUT_DECOLLISION_EARLY_BLOCK",
+      "observed": [
+        "NO_PRECHECK_FAIL_PROFILE_MODEL_SPECIFIC_CLONING_BY_H62_MATRIX"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "454_H20_ADVERSARIAL_N10_GENERIC_COMPLETE_CLI_PROOF",
+      "expected_failcode": "FAIL_ADVERSARIAL_N10_GENERIC_COMPLETE_CLI_PROOF",
+      "observed": [
+        "PASS_RC0_OUTPUT_JSON_REOPENED_ZIP_BY_H62_COMPLETE_N10"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "455_H21_ACTIVE_MAP_DUPLICATE_ENTRY_GOVERNANCE",
+      "expected_failcode": "FAIL_ACTIVE_MAP_DUPLICATE_ENTRY_UNGOVERNED",
+      "observed": [
+        "STATIC_ENGINE_MAPS_DEDUPED_OR_GOVERNED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "456_H22_MOTOR_GENERICITY_NO_PROJECT_MODEL_NAME_LEAKAGE",
+      "expected_failcode": "FAIL_MOTOR_ACTIVE_MODEL_PROJECT_NAME_LEAKAGE",
+      "observed": [
+        "ACTIVE_SURFACE_SCANNER_GENERIC_PLACEHOLDER_ONLY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "457_H23_FIXTURE_ISOLATION_AND_NON_AUTHORITY_ENFORCEMENT",
+      "expected_failcode": "FAIL_FIXTURE_METADATA_MISSING",
+      "observed": [
+        "FIXTURE_METADATA_REQUIRED_AND_DEFAULT_USE_BLOCKED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "458_H24_ROLE_UPDATE_NOOP_CANONICAL_PASS",
+      "expected_failcode": "FAIL_ROLE_UPDATE_NOOP_STALE_FALSE_POSITIVE",
+      "observed": [
+        "NO_OP_SAME_CANONICAL_ROLE_RC0"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "459_H24_ROLE_SUFFIX_DUPLICATE_NORMALIZED",
+      "expected_failcode": "FAIL_ROLE_SUFFIX_DUPLICATE_NOT_NORMALIZED",
+      "observed": [
+        "ROLE_SUFFIX_DEDUP_CONSECUTIVE_GOVERNED_TOKEN_V1"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "460_H24_ROLE_CANONICAL_SURFACE_DIVERGENCE_BLOCKED",
+      "expected_failcode": "FAIL_ROLE_CANONICAL_SURFACE_DIVERGENCE",
+      "observed": [
+        "INDEX_MODEL_RUNTIME_LEDGER_CONVERGE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "461_H25_GENERIC_ROLE_GENDER_AGREEMENT_NO_NAMED_MODEL",
+      "expected_failcode": "FAIL_ROLE_GENDER_AGREEMENT_UPDATE",
+      "observed": [
+        "MODEL_ID_ONLY_ROLE_GENDER_TESTS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "462_H26_OFFICIAL_DOCS_GENERIC_LANGUAGE",
+      "expected_failcode": "FAIL_OFFICIAL_DOCS_MODEL_PROJECT_NAME_LEAKAGE",
+      "observed": [
+        "OFFICIAL_DOCS_NAMED_MODEL_REFERENCES_ZERO"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "463_H27_FACTORY_HARDCODED_DEMO_BRANCH_BLOCKED",
+      "expected_failcode": "FAIL_FACTORY_HARDCODED_DEMO_BRANCH",
+      "observed": [
+        "FACTORY_OPERATES_BY_FIELDS_NOT_NAMES"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "464_H28_ROUTER_NAMED_ALIAS_POLICY_LEAKAGE_BLOCKED",
+      "expected_failcode": "FAIL_ROUTER_NAMED_ALIAS_POLICY_LEAKAGE",
+      "observed": [
+        "ROUTER_ALIAS_POLICY_MODEL_ID_ONLY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "465_H29_FULL_MOTOR_GENERICITY_AUDIT_MATRIX",
+      "expected_failcode": "FAIL_FULL_MOTOR_GENERICITY_AUDIT_MATRIX",
+      "observed": [
+        "FULL_MOTOR_GENERICITY_AUDIT_MATRIX_PASS"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "466_H69_PENDING_PROFILE360",
+      "expected_failcode": "FAIL_H65_PENDING_MATERIALIZATION_ACTIVE_SURFACE|FAIL_H66_PENDING_MATERIALIZATION_NOT_BLOCKED",
+      "observed": [
+        "FAIL_H65_PENDING_MATERIALIZATION_ACTIVE_SURFACE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "467_H69_PENDING_TECHEXT",
+      "expected_failcode": "FAIL_H65_PENDING_MATERIALIZATION_ACTIVE_SURFACE|FAIL_H66_PENDING_MATERIALIZATION_NOT_BLOCKED",
+      "observed": [
+        "FAIL_H65_PENDING_MATERIALIZATION_ACTIVE_SURFACE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "468_H69_FACTORY_DEFINED_RUNTIME",
+      "expected_failcode": "FAIL_H66_UNRESOLVED_ACTIVE_TOKEN",
+      "observed": [
+        "FAIL_H66_UNRESOLVED_ACTIVE_TOKEN"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "469_H69_REMOVE_PROJECT_CERTIFICATE",
+      "expected_failcode": "FAIL_H51_PROJECT_CERTIFICATE_INCOMPLETE",
+      "observed": [
+        "FAIL_H51_PROJECT_CERTIFICATE_INCOMPLETE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "470_H69_REMOVE_FINAL_REPORT_CANONICAL",
+      "expected_failcode": "FAIL_H60_FINAL_PROJECT_REPORT_MISSING",
+      "observed": [
+        "FAIL_H60_FINAL_PROJECT_REPORT_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "471_H69_ACTIVE_LEGACY_SCOPE_PROOF",
+      "expected_failcode": "FAIL_H67_ACTIVE_LEGACY_SCOPE_PROOF",
+      "observed": [
+        "FAIL_H67_ACTIVE_LEGACY_SCOPE_PROOF"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "472_H69_PASS_BY_CONTRACT_PROOF",
+      "expected_failcode": "FAIL_H66_PASS_BY_CONTRACT_IN_FINAL_PROOF|FAIL_H67_PASS_BY_CONTRACT_ACTIVE_PROOF",
+      "observed": [
+        "FAIL_H66_PASS_BY_CONTRACT_IN_FINAL_PROOF",
+        "FAIL_H67_PASS_BY_CONTRACT_ACTIVE_PROOF"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "473_H69_LEDGER_SELF_PASS_INDIRECT",
+      "expected_failcode": "FAIL_H37_INPUT_FIELD_NOT_MATERIALIZED|FAIL_H37_LEDGER_SELF_REFERENCE_FALSE_PASS",
+      "observed": [
+        "FAIL_H37_INPUT_FIELD_NOT_MATERIALIZED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "474_H69_REPRESENTATIVE_AS_FULL_MATRIX",
+      "expected_failcode": "FAIL_H66_REPRESENTATIVE_ONLY_USED_AS_FULL_MATRIX",
+      "observed": [
+        "FAIL_H66_REPRESENTATIVE_ONLY_USED_AS_FULL_MATRIX"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "475_H69_OLD_LABEL_ACTIVE",
+      "expected_failcode": "FAIL_H67_ACTIVE_LEGACY_SCOPE_PROOF",
+      "observed": [
+        "FAIL_H67_ACTIVE_LEGACY_SCOPE_PROOF"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "476_H71_ALLOWED_APPAREL_FALSE_BLOCK",
+      "expected_failcode": "FAIL_H71_ALLOWED_APPAREL_FALSE_BLOCK",
+      "observed": [
+        "FAIL_H71_ALLOWED_APPAREL_FALSE_BLOCK"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "477_H71_CONDITIONAL_NO_REWRITE",
+      "expected_failcode": "FAIL_H71_CONDITIONAL_APPAREL_NO_SAFETY_ENVELOPE",
+      "observed": [
+        "FAIL_H71_CONDITIONAL_APPAREL_NO_SAFETY_ENVELOPE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "478_H71_BLOCKED_CONTENT_ACCEPTED",
+      "expected_failcode": "FAIL_H71_BLOCKED_CONTENT_NOT_BLOCKED",
+      "observed": [
+        "FAIL_H71_BLOCKED_CONTENT_NOT_BLOCKED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "479_H72_MINOR_CODED_NOT_BLOCKED",
+      "expected_failcode": "FAIL_H72_MINOR_CODED_BOUNDARY_FAILED|FAIL_H71_BLOCKED_CONTENT_NOT_BLOCKED",
+      "observed": [
+        "FAIL_H71_BLOCKED_CONTENT_NOT_BLOCKED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "480_H75_WATERMARK_DEFAULT_OMITTED",
+      "expected_failcode": "FAIL_H75_WATERMARK_DEFAULT_NOT_PROPAGATED",
+      "observed": [
+        "FAIL_H75_WATERMARK_DEFAULT_NOT_PROPAGATED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "481_H75_NO_TEXT_REMOVES_IDUNEX",
+      "expected_failcode": "FAIL_H76_AMBIGUOUS_OPTOUT_REMOVED_IDUNEX",
+      "observed": [
+        "FAIL_H76_AMBIGUOUS_OPTOUT_REMOVED_IDUNEX"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "482_H75_NO_LOGOS_REMOVES_IDUNEX",
+      "expected_failcode": "FAIL_H76_AMBIGUOUS_OPTOUT_REMOVED_IDUNEX",
+      "observed": [
+        "FAIL_H76_AMBIGUOUS_OPTOUT_REMOVED_IDUNEX"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "483_H76_EXPLICIT_IDUNEX_OPTOUT_IGNORED",
+      "expected_failcode": "FAIL_H76_OPTOUT_LEXICON_MISSING_ES_EN",
+      "observed": [
+        "FAIL_H76_OPTOUT_LEXICON_MISSING_ES_EN"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "484_H77_VENDOR_HANDOFF_NO_OVERLAY",
+      "expected_failcode": "FAIL_H79_VENDOR_HANDOFF_WATERMARK_MISSING",
+      "observed": [
+        "FAIL_H79_VENDOR_HANDOFF_WATERMARK_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "485_H77_SIDECAR_NO_WATERMARK_REQUIRED",
+      "expected_failcode": "FAIL_H77_WATERMARK_SIDECAR_FIELD_MISSING|FAIL_SIDECAR_REQUIRED_PARITY",
+      "observed": [
+        "FAIL_H77_WATERMARK_SIDECAR_FIELD_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "486_H79_CHATGPT_RUNTIME_NO_WATERMARK",
+      "expected_failcode": "FAIL_H79_CHATGPT_RUNTIME_RULE_MISSING",
+      "observed": [
+        "FAIL_H79_CHATGPT_RUNTIME_RULE_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "487_H79_COPILOT_RUNTIME_NO_TAXONOMY",
+      "expected_failcode": "FAIL_H79_COPILOT_RUNTIME_RULE_MISSING",
+      "observed": [
+        "FAIL_H79_COPILOT_RUNTIME_RULE_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "488_H90_ALLOW_REWRITE_BLOCKED_PASS",
+      "expected_failcode": "FAIL_H88_SUITE_EXPECTED_ALLOW_BUT_BLOCKED",
+      "observed": [
+        "FAIL_H88_SUITE_EXPECTED_ALLOW_BUT_BLOCKED",
+        "FAIL_H88_SUITE_VENDOR_PROMPT_MISSING",
+        "FAIL_H89_EDITORIAL_ADULT_FALSE_BLOCK",
+        "FAIL_H89_SAFE_REWRITE_MISSING_FOR_ALLOWED_CASE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "489_H90_BLOCK_WITHOUT_FAILCODE_PASS",
+      "expected_failcode": "FAIL_H88_SUITE_BLOCK_WITHOUT_FAILCODE",
+      "observed": [
+        "FAIL_H88_SUITE_BLOCK_WITHOUT_FAILCODE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "490_H90_CONDITIONAL_EMPTY_REWRITE",
+      "expected_failcode": "FAIL_H88_SUITE_CONDITIONAL_WITHOUT_SAFE_REWRITE",
+      "observed": [
+        "FAIL_H88_SUITE_CONDITIONAL_WITHOUT_SAFE_REWRITE",
+        "FAIL_H89_SAFE_REWRITE_MISSING_FOR_ALLOWED_CASE"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "491_H90_ALLOW_REWRITE_VENDOR_MISSING",
+      "expected_failcode": "FAIL_H88_SUITE_VENDOR_PROMPT_MISSING",
+      "observed": [
+        "FAIL_H88_SUITE_VENDOR_PROMPT_MISSING"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "492_H90_ALLOW_WATERMARK_REQUIRED_OMITTED",
+      "expected_failcode": "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION",
+      "observed": [
+        "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "493_H90_BLOCK_CONTENT_ALLOWED_BY_ERROR",
+      "expected_failcode": "FAIL_H89_UNSAFE_CASE_INCORRECTLY_ALLOWED",
+      "observed": [
+        "FAIL_H89_UNSAFE_CASE_INCORRECTLY_ALLOWED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "494_H90_ALLOW_NEGATIVE_PROMPT_ABSENT",
+      "expected_failcode": "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION",
+      "observed": [
+        "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "495_H90_PASS_WITH_CRITICAL_FAILCODE",
+      "expected_failcode": "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION",
+      "observed": [
+        "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "496_H90_ALLOW_REWRITE_CLASSIFICATION_BLOCK",
+      "expected_failcode": "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION",
+      "observed": [
+        "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "497_H90_AMBIGUOUS_NO_TEXT_REMOVES_IDUNEX",
+      "expected_failcode": "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION",
+      "observed": [
+        "FAIL_H88_SUITE_PASS_WITH_SEMANTIC_CONTRADICTION"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "mutation_count": 497,
+  "MUTATION_SUITE_CASES": 497,
+  "H69_PENDING_AND_PROOF_NEGATIVE_CASES_PASS": "PASS",
+  "H71_H80_SAFE_APPAREL_WATERMARK_NEGATIVE_CASES_PASS": "PASS",
+  "H90_SUITE_SEMANTIC_MISMATCH_NEGATIVE_CASES_PASS": "PASS",
+  "restoration_retest": "PASS",
+  "rc": 0,
+  "bounded_time": "PASS",
+  "h20_adversarial_n10_generic_complete": {
+    "result": "PASS",
+    "validators_fail": 0,
+    "fail_codes": [],
+    "source_proof": "99_MANIFESTS_SHA_LINEAGE/H62_CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT_PROOF.json",
+    "profile360_p360_01_policy": "normalized_unique must equal model_count after H18 materialization"
+  },
+  "result": "PASS",
+  "execution_mode": "P034_DIRECT_CANONICAL_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_WATERMARK_487_WITH_H58_H64_H65_H70_H71_H80_H87_H92_BOUNDED_EXECUTABLE_VALIDATION",
+  "validator_mode": "MUTATION_SUITE",
+  "bounded_time_gate": "PASS",
+  "bounded_timeout_seconds": 300,
+  "elapsed_seconds": 15.676,
+  "output_json_written": true
+}

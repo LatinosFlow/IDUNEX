@@ -1,0 +1,214 @@
+{
+  "gate_id": "H391_H410_EXECUTED_VALIDATION_COMPACT_EVIDENCE",
+  "semantic_version": "v1.0.0",
+  "version_bump": "NO",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "correction_scope": "H391_H410",
+  "creative_output_certified": false,
+  "h382r_authority": "WHOLE_ZIP_SHA256_AND_BYTES_EXTERNAL_COMPANION_OR_RELEASE_SURFACE",
+  "generation_validate": {
+    "N1_LOW_generate": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "project_zip": "/mnt/data/idunex_work/h382r_validation2/out_N1/IDUNEX_PROJECT_TEST_N1_LOW.zip",
+      "companion": "/mnt/data/idunex_work/h382r_validation2/out_N1/IDUNEX_PROJECT_TEST_N1_LOW.zip.sha256",
+      "bounded_execution_timeout_seconds": 120,
+      "elapsed_seconds": 16.797
+    },
+    "N1_LOW_validate": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_ALLOWED",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": []
+    },
+    "N2_INTERMEDIATE_generate": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "project_zip": "/mnt/data/idunex_work/h382r_validation2/out_N2/IDUNEX_PROJECT_TEST_N2_INTERMEDIATE.zip",
+      "companion": "/mnt/data/idunex_work/h382r_validation2/out_N2/IDUNEX_PROJECT_TEST_N2_INTERMEDIATE.zip.sha256",
+      "bounded_execution_timeout_seconds": 180,
+      "elapsed_seconds": 25.053
+    },
+    "N2_INTERMEDIATE_validate": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_ALLOWED",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": []
+    },
+    "N10_FULL_generate": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": [],
+      "project_zip": "/mnt/data/idunex_work/h382r_validation2/out_N10/IDUNEX_PROJECT_TEST_N10_FULL.zip",
+      "companion": "/mnt/data/idunex_work/h382r_validation2/out_N10/IDUNEX_PROJECT_TEST_N10_FULL.zip.sha256",
+      "bounded_execution_timeout_seconds": 900,
+      "elapsed_seconds": 116.522
+    },
+    "N10_FULL_validate": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_ALLOWED",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": []
+    }
+  },
+  "updates": {
+    "set_wardrobe": {
+      "contract": {
+        "result": "PASS",
+        "delivery_status": "UPDATE_CONTRACT_NORMALIZED",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": []
+      },
+      "update_project": {
+        "result": "PASS",
+        "delivery_status": "DELIVERY_PASS",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": []
+      }
+    },
+    "brand_update": {
+      "contract": {
+        "result": "PASS",
+        "delivery_status": "UPDATE_CONTRACT_NORMALIZED",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": []
+      },
+      "update_project": {
+        "result": "PASS",
+        "delivery_status": "DELIVERY_PASS",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": []
+      }
+    },
+    "age_delta_years": {
+      "contract": {
+        "result": "PASS",
+        "delivery_status": "UPDATE_CONTRACT_NORMALIZED",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": []
+      },
+      "update_project": {
+        "result": "PASS",
+        "delivery_status": "DELIVERY_PASS",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": []
+      }
+    }
+  },
+  "migration": {
+    "migrate_project_v1.0.0": {
+      "result": "PASS",
+      "delivery_status": "MIGRATION_REAL_OUTPUT_PASS",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": []
+    },
+    "update_project_by_engine_v1.0.0": {
+      "result": "PASS",
+      "delivery_status": "MIGRATION_REAL_OUTPUT_PASS",
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "fail_codes": []
+    }
+  },
+  "mutation_self_test": {
+    "result": "PASS",
+    "delivery_status": "DELIVERY_PASS",
+    "validators_fail": 0,
+    "blocking_warnings": 0,
+    "fail_codes": []
+  },
+  "independent_project_zip_audit": {
+    "N1_LOW": {
+      "zip": "/mnt/data/idunex_work/h382r_validation2/out_N1/IDUNEX_PROJECT_TEST_N1_LOW.zip",
+      "bytes": 998258,
+      "entries": 250,
+      "directories": 0,
+      "testzip": "PASS",
+      "stored_count": 0,
+      "duplicate_real_count": 5,
+      "duplicate_allowlist_count": 5,
+      "duplicate_sha_match": true,
+      "sentinel_hits": [],
+      "sentinel_hit_count": 0,
+      "cert_h382r": {
+        "WHOLE_ZIP_SHA256_AUTHORITY": "EXTERNAL_COMPANION",
+        "WHOLE_ZIP_BYTES_AUTHORITY": "EXTERNAL_RELEASE_SURFACE",
+        "TOP_LEVEL_COMPANION_FILE_MATCHES_REOPENED_ZIP": "PASS",
+        "project_zip_sha256_external": "EXTERNAL_COMPANION_AUTHORITY",
+        "bytes": "EXTERNAL_RELEASE_SURFACE",
+        "entries": 250,
+        "stored_count": 0,
+        "self_reference_policy": "WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION"
+      }
+    },
+    "N2_INTERMEDIATE": {
+      "zip": "/mnt/data/idunex_work/h382r_validation2/out_N2/IDUNEX_PROJECT_TEST_N2_INTERMEDIATE.zip",
+      "bytes": 1333316,
+      "entries": 276,
+      "directories": 0,
+      "testzip": "PASS",
+      "stored_count": 0,
+      "duplicate_real_count": 5,
+      "duplicate_allowlist_count": 5,
+      "duplicate_sha_match": true,
+      "sentinel_hits": [],
+      "sentinel_hit_count": 0,
+      "cert_h382r": {
+        "WHOLE_ZIP_SHA256_AUTHORITY": "EXTERNAL_COMPANION",
+        "WHOLE_ZIP_BYTES_AUTHORITY": "EXTERNAL_RELEASE_SURFACE",
+        "TOP_LEVEL_COMPANION_FILE_MATCHES_REOPENED_ZIP": "PASS",
+        "project_zip_sha256_external": "EXTERNAL_COMPANION_AUTHORITY",
+        "bytes": "EXTERNAL_RELEASE_SURFACE",
+        "entries": 276,
+        "stored_count": 0,
+        "self_reference_policy": "WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION"
+      }
+    },
+    "N10_FULL": {
+      "zip": "/mnt/data/idunex_work/h382r_validation2/out_N10/IDUNEX_PROJECT_TEST_N10_FULL.zip",
+      "bytes": 4329065,
+      "entries": 880,
+      "directories": 0,
+      "testzip": "PASS",
+      "stored_count": 0,
+      "duplicate_real_count": 5,
+      "duplicate_allowlist_count": 5,
+      "duplicate_sha_match": true,
+      "sentinel_hits": [],
+      "sentinel_hit_count": 0,
+      "cert_h382r": {
+        "WHOLE_ZIP_SHA256_AUTHORITY": "EXTERNAL_COMPANION",
+        "WHOLE_ZIP_BYTES_AUTHORITY": "EXTERNAL_RELEASE_SURFACE",
+        "TOP_LEVEL_COMPANION_FILE_MATCHES_REOPENED_ZIP": "PASS",
+        "project_zip_sha256_external": "EXTERNAL_COMPANION_AUTHORITY",
+        "bytes": "EXTERNAL_RELEASE_SURFACE",
+        "entries": 880,
+        "stored_count": 0,
+        "self_reference_policy": "WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION"
+      }
+    }
+  },
+  "truthfulness_notes": [
+    "No creative output is certified by this engine package.",
+    "Project validation artifacts are compact evidence only; generated project ZIPs are not embedded in the motor.",
+    "Whole ZIP hash/bytes are external authority and are not internally self-materialized."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "forbidden": [
+    "summarize_Profile360_and_call_FULL",
+    "summarize_TechExt_and_call_FULL10",
+    "digest_as_substitute",
+    "compact_core_without_coverage_map",
+    "PASS_with_empty_actual_value"
+  ],
+  "allowed": [
+    "lossless_minification_all_fields_preserved",
+    "reorganization_with_migration_map",
+    "duplicate_consolidation_with_authority_preserved"
+  ],
+  "blocked_code": "BLOCKED_SUMMARY_AS_COMPLETENESS"
+}

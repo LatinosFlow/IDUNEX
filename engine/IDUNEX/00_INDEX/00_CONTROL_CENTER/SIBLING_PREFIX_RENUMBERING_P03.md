@@ -1,0 +1,15 @@
+# SIBLING_PREFIX_RENUMBERING_P03
+
+Estado: PASS
+
+## parent_scope
+IDUNEX/03_PROJECT_FACTORY
+
+## Correccion aplicada
+- `05_PROJECT_FACTORY_FULL_CONTRACT.md` se conserva.
+- `05_PROJECT_TEMPLATE_READINESS/` -> `06_PROJECT_TEMPLATE_READINESS/`.
+- `06_EXPORT_TEMPLATES/` -> `07_EXPORT_TEMPLATES/`.
+- `07_UPDATE_MIGRATION/` -> `08_UPDATE_MIGRATION/`.
+
+## actual_value
+duplicated_prefixes_after=0; rewritten_files=11

@@ -1,0 +1,31 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "required_files": [
+    "PROJECT_RUNTIME_COVERAGE_MAP.json",
+    "PROJECT_RUNTIME_COVERAGE_MAP.md"
+  ],
+  "required_mapping_fields": [
+    "model_id",
+    "model_code",
+    "profile360_section_id",
+    "profile360_section_name",
+    "profile360_field",
+    "profile360_subfield",
+    "TechExt_module",
+    "TechExt_field",
+    "master_visual_anchor",
+    "source_id",
+    "runtime_file",
+    "agent_surface",
+    "sidecar_field",
+    "qa_rule",
+    "fail_code",
+    "fallback_fix",
+    "evidence_artifact"
+  ],
+  "blocked_code": "BLOCKED_COVERAGE_MAP_TOO_SHALLOW",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "gate_id": "COVERAGE_MAP_GRANULARITY_GATE",
+  "minimum_rows_formula": "model_count * (profile360_section_required_fields + techext_required_fields_total + anchors + sidecar_fields + QA_rules)"
+}

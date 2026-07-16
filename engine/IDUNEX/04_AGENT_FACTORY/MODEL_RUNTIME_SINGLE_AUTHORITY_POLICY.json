@@ -1,0 +1,16 @@
+{
+  "policy_id": "MODEL_RUNTIME_SINGLE_AUTHORITY_POLICY",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "rule": "Exactly one active MODEL_RUNTIME_PROFILE_FULL per model per agent. Summaries, README, previews and evidence must be NON_RUNTIME_NOT_FOR_AGENT_UPLOAD.",
+  "fail_codes": [
+    "BLOCKED_MULTIPLE_ACTIVE_MODEL_PROFILE_AUTHORITIES",
+    "BLOCKED_FAKE_FULL_RUNTIME_PROFILE"
+  ],
+  "allowed_auxiliary_destinations": [
+    "DOCUMENTATION/",
+    "EVIDENCE/",
+    "NON_RUNTIME_REFERENCE/"
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "gate_id": "PROJECT_DELIVERY_BY_CONTRACT_NOT_COUNT_GATE",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "superior_rule": "No project delivery by superficial counts. PASS requires exact contract validation against motor authorities.",
+  "subordinate_to": [
+    "PROJECT_FACTORY_DELIVERY_HARD_GATE",
+    "TRUTHFULNESS_GATE",
+    "UNIVERSAL_PRE_DELIVERY_AUDIT_RETRY_LOOP"
+  ],
+  "required_gates": [
+    {
+      "gate_id": "PROFILE360_REGISTRY_EXACT_MATCH_GATE",
+      "fail_code": "BLOCKED_PROFILE360_REGISTRY_MISMATCH",
+      "contract": "Validate exact ids 00..60, exact names, exact order and canonical count; reject P360-00 or invented names.",
+      "blocking": true
+    },
+    {
+      "gate_id": "PROFILE360_SECTION_PAYLOAD_UNIQUENESS_GATE",
+      "fail_code": "BLOCKED_PROFILE360_SECTION_PAYLOAD_CLONED",
+      "contract": "Detect cloned/generic section payloads and identical required_fields where registry function differs.",
+      "blocking": true
+    },
+    {
+      "gate_id": "PROFILE360_SECTION_DEPTH_GATE",
+      "fail_code": "BLOCKED_PROFILE360_SECTION_UNDERFILLED",
+      "contract": "Require sufficient section-specific materialization: values, trace, QA, sidecar and fallback.",
+      "blocking": true
+    },
+    {
+      "gate_id": "TECHEXT_FIELD_LEVEL_CONTRACT_GATE",
+      "fail_code": "BLOCKED_TECHEXT_FIELD_CONTRACT_MISSING",
+      "contract": "Validate every official TechExt required field, not only module count.",
+      "blocking": true
+    },
+    {
+      "gate_id": "MODEL_RUNTIME_PROFILE_FULL_AGENT_PARITY_GATE",
+      "fail_code": "BLOCKED_FAKE_FULL_RUNTIME_PROFILE",
+      "contract": "Agent-loaded per-model file must contain/materialize the FULL profile, not a summary beside a JSON full elsewhere.",
+      "blocking": true
+    },
+    {
+      "gate_id": "AGENT_MODEL_FILE_FULLNESS_MINIMUM_GATE",
+      "fail_code": "BLOCKED_AGENT_MODEL_FILE_UNDERFILLED",
+      "contract": "Compute fullness metrics: sections, TechExt fields, anchors, source trace, sidecars, QA/fallback, field_count, parity mapping/hash.",
+      "blocking": true
+    },
+    {
+      "gate_id": "CORE_NO_BOILERPLATE_SIMILARITY_GATE",
+      "fail_code": "BLOCKED_CORE_BOILERPLATE_RUNTIME",
+      "contract": "Validate 10 runtime core files have distinct domains and similarity avg <= 0.80.",
+      "blocking": true
+    },
+    {
+      "gate_id": "PROJECT_CONFIG_8000_EXPORT_GATE",
+      "fail_code": "BLOCKED_PROJECT_CONFIG_8000_EXPORT_FAIL",
+      "contract": "Both ChatGPT and Copilot project configs must be exactly 8000 chars and contain required controls.",
+      "blocking": true
+    },
+    {
+      "gate_id": "COVERAGE_MAP_GRANULARITY_GATE",
+      "fail_code": "BLOCKED_COVERAGE_MAP_TOO_SHALLOW",
+      "contract": "Coverage map must trace model -> Profile360 section/field/subfield -> TechExt module/field -> anchors/source/runtime/sidecar/QA/fail/fallback/evidence.",
+      "blocking": true
+    },
+    {
+      "gate_id": "PROJECT_INTERNAL_AUDIT_DEPTH_GATE",
+      "fail_code": "BLOCKED_PROJECT_AUDIT_DEPTH_INSUFFICIENT",
+      "contract": "0 validators_fail is invalid unless all deep validators exist and PASS with concrete actual_value.",
+      "blocking": true
+    },
+    {
+      "gate_id": "PROJECT_FACTORY_SIMPLE_PROMPT_FULL_OUTPUT_GATE",
+      "fail_code": "BLOCKED_SIMPLE_PROMPT_WEAK_VALIDATION",
+      "contract": "Simple/colloquial prompts trigger the same full output and validation contract.",
+      "blocking": true
+    },
+    {
+      "gate_id": "UPDATE_PROJECT_CONTRACT_VALIDATION_GATE",
+      "fail_code": "BLOCKED_PROJECT_UPDATE_CONTRACT_REGRESSION",
+      "contract": "Project updates/migrations apply the same deep gates and cannot preserve previous structural errors.",
+      "blocking": true
+    },
+    {
+      "gate_id": "UPDATE_MODEL_DATA_CONTRACT_VALIDATION_GATE",
+      "fail_code": "BLOCKED_MODEL_DATA_UPDATE_INCOMPLETE",
+      "contract": "Model data updates recalculate dependent Profile360, TechExt, anchors, alias, coverage, hashes and runtime.",
+      "blocking": true
+    },
+    {
+      "gate_id": "MOTOR_UPDATE_CONTRACT_VALIDATION_GATE",
+      "fail_code": "BLOCKED_MOTOR_UPDATE_PROJECT_FACTORY_REGRESSION",
+      "contract": "Motor updates preserve prior layers and run simple project generation regression against Project Factory.",
+      "blocking": true
+    },
+    {
+      "gate_id": "TRUTHFULNESS_PROJECT_DELIVERY_GATE",
+      "fail_code": "BLOCKED_TRUTHFULNESS_PROJECT_PASS_FALSE",
+      "contract": "No DELIVERY_ALLOWED if any deep validator is missing, actual_value empty, PASS by count, known independent equivalent fail, or contract gate fail.",
+      "blocking": true
+    },
+    {
+      "gate_id": "PROJECT_DELIVERY_BY_CONTRACT_NOT_COUNT_GATE",
+      "fail_code": "BLOCKED_PROJECT_DELIVERY_BY_COUNT_ONLY",
+      "contract": "Counts are evidence hints only; exact contract PASS is mandatory.",
+      "blocking": true
+    }
+  ],
+  "count_only_patterns_blocked": [
+    "sections=61 without registry exact match",
+    "techext=10 without field-level contract",
+    "runtime=12 without full agent parity",
+    "sidecars=4 without granular mapping",
+    "coverage rows without field-level traceability",
+    "validators_fail=0 without deep auditors"
+  ],
+  "positive_simulations_required": [
+    "CREATE_PROJECT_PROMPT_SIMPLE_MODEL_A_ADULT_MODEL_B_ADULT",
+    "CREATE_PROJECT_PROMPT_COLOQUIAL_MODEL_A_ADULT_MODEL_B_ADULT",
+    "UPDATE_PROJECT_WITH_NEW_MOTOR",
+    "UPDATE_MODEL_DATA_RECALCULATE_DEPENDENCIES"
+  ],
+  "negative_tests_required": [
+    "BLOCKED_PROFILE360_REGISTRY_MISMATCH",
+    "BLOCKED_PROFILE360_SECTION_PAYLOAD_CLONED",
+    "BLOCKED_PROFILE360_SECTION_UNDERFILLED",
+    "BLOCKED_TECHEXT_FIELD_CONTRACT_MISSING",
+    "BLOCKED_FAKE_FULL_RUNTIME_PROFILE",
+    "BLOCKED_AGENT_MODEL_FILE_UNDERFILLED",
+    "BLOCKED_CORE_BOILERPLATE_RUNTIME",
+    "BLOCKED_PROJECT_CONFIG_8000_EXPORT_FAIL",
+    "BLOCKED_COVERAGE_MAP_TOO_SHALLOW",
+    "BLOCKED_PROJECT_AUDIT_DEPTH_INSUFFICIENT",
+    "BLOCKED_SIMPLE_PROMPT_WEAK_VALIDATION",
+    "BLOCKED_PROJECT_UPDATE_CONTRACT_REGRESSION",
+    "BLOCKED_MODEL_DATA_UPDATE_INCOMPLETE",
+    "BLOCKED_MOTOR_UPDATE_PROJECT_FACTORY_REGRESSION",
+    "BLOCKED_TRUTHFULNESS_PROJECT_PASS_FALSE",
+    "BLOCKED_PROJECT_DELIVERY_BY_COUNT_ONLY"
+  ],
+  "delivery_requirements": {
+    "PROFILE360_REGISTRY_EXACT_MATCH_GATE": "PASS",
+    "PROFILE360_SECTION_PAYLOAD_UNIQUENESS_GATE": "PASS",
+    "PROFILE360_SECTION_DEPTH_GATE": "PASS",
+    "TECHEXT_FIELD_LEVEL_CONTRACT_GATE": "PASS",
+    "MODEL_RUNTIME_PROFILE_FULL_AGENT_PARITY_GATE": "PASS",
+    "AGENT_MODEL_FILE_FULLNESS_MINIMUM_GATE": "PASS",
+    "CORE_NO_BOILERPLATE_SIMILARITY_GATE": "PASS",
+    "PROJECT_CONFIG_8000_EXPORT_GATE": "PASS",
+    "COVERAGE_MAP_GRANULARITY_GATE": "PASS",
+    "PROJECT_INTERNAL_AUDIT_DEPTH_GATE": "PASS",
+    "PROJECT_FACTORY_SIMPLE_PROMPT_FULL_OUTPUT_GATE": "PASS",
+    "UPDATE_PROJECT_CONTRACT_VALIDATION_GATE": "PASS",
+    "UPDATE_MODEL_DATA_CONTRACT_VALIDATION_GATE": "PASS",
+    "MOTOR_UPDATE_CONTRACT_VALIDATION_GATE": "PASS",
+    "TRUTHFULNESS_PROJECT_DELIVERY_GATE": "PASS",
+    "PROJECT_DELIVERY_BY_CONTRACT_NOT_COUNT_GATE": "PASS"
+  }
+}

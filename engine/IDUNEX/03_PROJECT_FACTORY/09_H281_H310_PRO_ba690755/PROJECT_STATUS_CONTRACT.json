@@ -1,0 +1,30 @@
+{
+  "contract_id": "PROJECT_STATUS_CONTRACT",
+  "rule_id": "PRJ-STAT-001",
+  "semantic_version": "v1.0.0",
+  "allowed_status_values": [
+    "GENERIC_SKELETON_NON_AUTHORITY",
+    "PROJECT_AGENT_LOAD_FAIL",
+    "PROJECT_AGENT_LOAD_PASS",
+    "PROJECT_AGENT_LOAD_PENDING",
+    "PROJECT_AUDIT_FAIL",
+    "PROJECT_AUDIT_PASS",
+    "PROJECT_AUDIT_REQUIRED",
+    "PROJECT_DEMO_PASS",
+    "PROJECT_DEPRECATED_NON_AUTHORITY",
+    "PROJECT_GENERATED_NOT_AUDITED",
+    "PROJECT_READY_FOR_CONTROLLED_USE",
+    "PROJECT_READY_FOR_PRODUCTION",
+    "PROJECT_UPDATE_REQUIRED"
+  ],
+  "rules": [
+    "Motor productivo no significa proyecto productivo",
+    "Proyecto Demo PASS no convierte proyectos futuros en PASS automático",
+    "Skeleton genérico nunca es producción",
+    "Proyecto con placeholders nunca es producción"
+  ],
+  "validator": "VALIDATE_PROJECT_STATUS_CONTRACT",
+  "result": "PASS",
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

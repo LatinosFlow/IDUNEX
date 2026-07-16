@@ -1,0 +1,31 @@
+{
+  "schema": "IDUNEX_MUTATION_SELF_TEST_EXECUTABLE_PROOF_H237_H244_V1",
+  "proof_id": "FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF",
+  "result": "PASS",
+  "rc": 0,
+  "cli_rc": 0,
+  "command": "python3 IDUNEX_PROJECT_FACTORY_v1.0.0.py mutation-self-test --work <tmp> --summary --output-json <out.json>",
+  "mutation_count": 506,
+  "cases_pass": 506,
+  "cases_fail": 0,
+  "failed": 0,
+  "MUTATION_SUITE_FULL_PASS": "PASS",
+  "positive_fixture": "PASS",
+  "restoration_retest": "PASS",
+  "execution_mode": "H237_H244_SINGLE_EXECUTABLE_MUTATION_SUITE_506_WITH_H113_H118_BOUNDED_VALIDATION",
+  "H237_EXECUTABLE_MUTATION_SUITE_REAL_FULL_PASS": "PASS",
+  "covered_families": [
+    "H113_deferred_engine_sha_active",
+    "H113_reopened_internal_proof",
+    "H114_sidecar_schema_output_hash_model_ids_qa_actual_watermark_required",
+    "H116_forensic_report_minimum",
+    "H117_export_performance_report",
+    "H118_expected_block_ambiguity"
+  ],
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "factory_sha256": "9a933d37520e2b7054c487cfb365df108bb9becd28394d78cec308616d7be325",
+  "runner_sha256": "d534788a1ee422c0be4b2de4282318db5fb986d67404e828b9d9df3d90f848d5",
+  "raw_output_sha256": "240f1d0b44503d05aad9592888ac6f9f14872a3af82d71d4e4943405502c9c61",
+  "run_date": "2026-07-03 PROJECT_DECLARED_TIMEZONE"
+}

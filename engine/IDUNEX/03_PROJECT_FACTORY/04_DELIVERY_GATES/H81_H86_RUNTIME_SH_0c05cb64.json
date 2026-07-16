@@ -1,0 +1,37 @@
+{
+  "gate_set": "H81_H86_RUNTIME_SHA_AGENT10N_CLOSURE_GATES",
+  "correction_scope_label": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80",
+  "result": "PASS",
+  "gates": [
+    {
+      "gate_id": "H81",
+      "name": "ACTIVE_RUNTIME_VALIDATOR_H01_H80_ALIGNMENT_GATE",
+      "result": "PASS"
+    },
+    {
+      "gate_id": "H82",
+      "name": "ACTIVE_SHA_LINEAGE_REGENERATION_POST_H71_H80_GATE",
+      "result": "PASS"
+    },
+    {
+      "gate_id": "H83",
+      "name": "RELEASE_DOCS_EXECUTABLE_PARITY_POST_H71_H80_GATE",
+      "result": "PASS"
+    },
+    {
+      "gate_id": "H84",
+      "name": "CLI_N10_CLEAN_EXIT_AND_OUTPUT_JSON_RECONFIRMATION_GATE",
+      "result": "PASS"
+    },
+    {
+      "gate_id": "H85",
+      "name": "SIDECAR_IMAGE_WATERMARK_FIELD_DEDUPLICATION_GATE",
+      "result": "PASS"
+    },
+    {
+      "gate_id": "H86",
+      "name": "FINAL_AGENT10N_SAFE_APPAREL_WATERMARK_FORENSIC_CLOSURE_GATE",
+      "result": "PASS"
+    }
+  ]
+}

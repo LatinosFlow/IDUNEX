@@ -1,0 +1,87 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "audit_id": "CONTENT_DUPLICATION_AND_COHERENCE_AUDIT",
+  "status": "PASS",
+  "blocking": true,
+  "scope": [
+    "Project Core templates",
+    "ChatGPT runtime core files",
+    "Copilot runtime core files",
+    "Agent Factory configs",
+    "manuals/changelogs internos",
+    "QA/fallback docs",
+    "policies",
+    "source ledger docs"
+  ],
+  "dedup_actions": [
+    {
+      "file": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/04_MULTIMODAL_CONTRACTS.md",
+      "removed_consecutive_duplicate_lines": [
+        {
+          "line_number": 100,
+          "line": "- Control específico 04_MULTIMODAL_CONTRACTS.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        },
+        {
+          "line_number": 101,
+          "line": "- Control específico 04_MULTIMODAL_CONTRACTS.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        }
+      ],
+      "status": "CLEANED_NOLOSS_SINGLE_RULE_RETAINED"
+    },
+    {
+      "file": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/05_QA_FAILCODES_FALLBACKS.md",
+      "removed_consecutive_duplicate_lines": [
+        {
+          "line_number": 113,
+          "line": "- Control específico 05_QA_FAILCODES_FALLBACKS.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        },
+        {
+          "line_number": 114,
+          "line": "- Control específico 05_QA_FAILCODES_FALLBACKS.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        },
+        {
+          "line_number": 115,
+          "line": "- Control específico 05_QA_FAILCODES_FALLBACKS.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        }
+      ],
+      "status": "CLEANED_NOLOSS_SINGLE_RULE_RETAINED"
+    },
+    {
+      "file": "IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/PROJECT_CORE/06_SIDECAR_HASH_LINEAGE.md",
+      "removed_consecutive_duplicate_lines": [
+        {
+          "line_number": 118,
+          "line": "- Control específico 06_SIDECAR_HASH_LINEAGE.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        },
+        {
+          "line_number": 119,
+          "line": "- Control específico 06_SIDECAR_HASH_LINEAGE.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        },
+        {
+          "line_number": 120,
+          "line": "- Control específico 06_SIDECAR_HASH_LINEAGE.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        },
+        {
+          "line_number": 121,
+          "line": "- Control específico 06_SIDECAR_HASH_LINEAGE.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        },
+        {
+          "line_number": 122,
+          "line": "- Control específico 06_SIDECAR_HASH_LINEAGE.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        },
+        {
+          "line_number": 123,
+          "line": "- Control específico 06_SIDECAR_HASH_LINEAGE.md: verificar regla diferencial, evidencia concreta, retest y bloqueo si falta source trace o sidecar."
+        }
+      ],
+      "status": "CLEANED_NOLOSS_SINGLE_RULE_RETAINED"
+    }
+  ],
+  "whitelist_rules": [
+    "JSON closing braces/brackets are structural, not operative repeated instructions",
+    "declared checklist rows may repeat control grammar when row-specific"
+  ],
+  "actual_value": "operative_consecutive_duplicates_removed=11; remaining_blocking_duplicates=0",
+  "fallback_fix": "Consolidate duplicate operative lines to single rule, preserve meaning, rebuild SHA/manifests, rerun full audit."
+}

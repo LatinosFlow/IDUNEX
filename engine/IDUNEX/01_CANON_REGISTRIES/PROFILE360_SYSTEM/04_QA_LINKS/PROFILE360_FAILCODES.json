@@ -1,0 +1,7 @@
+{
+  "alias_type": "CANONICAL_PATH_REFERENCE",
+  "canonical_path": "04_PROFILE360_SYSTEM/05_QA_FAILCODES/PROFILE360_FAILCODES.json",
+  "authority": false,
+  "consumer_action": "Resolve the canonical failcode registry; this QA link intentionally does not duplicate the payload.",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN"
+}

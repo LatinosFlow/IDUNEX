@@ -1,0 +1,32 @@
+{
+  "schema": "IDUNEX_AGENT_ROUTING_TESTS_H245_H260_V1",
+  "result": "PASS",
+  "cases": {
+    "agent_config_chatgpt_n1": "PASS",
+    "agent_config_chatgpt_n2": "PASS",
+    "agent_config_copilot_n1": "PASS",
+    "agent_config_copilot_n2": "PASS",
+    "haz_una_imagen_n_gt_1": "PASS",
+    "haz_a_modelo_canonico": "PASS",
+    "hazlos_juntos_sin_antecedente": "PASS",
+    "hazlos_juntos_con_modelos_explicitos": "PASS",
+    "certifica_sin_evidence": "PASS",
+    "logo_exacto_sin_asset": "PASS",
+    "quita_watermark_sin_optout": "PASS",
+    "foto_solo_pose": "PASS",
+    "como_celebridad": "PASS",
+    "uniforme_escolar_sexualizado": "PASS",
+    "sidecar_gate_not_block_first_candidate": "PASS",
+    "zip_gate_not_block_first_candidate": "PASS",
+    "runtime_absent_field_trace_not_block_candidate": "PASS",
+    "vendor_unsupported_not_pass": "PASS",
+    "image_capability_unavailable": "PASS"
+  },
+  "validators_fail": 0,
+  "blocking_warnings": 0,
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "deterministic_no_real_image_execution": true,
+  "native_image_route_required": true,
+  "certification_after_candidate": true
+}

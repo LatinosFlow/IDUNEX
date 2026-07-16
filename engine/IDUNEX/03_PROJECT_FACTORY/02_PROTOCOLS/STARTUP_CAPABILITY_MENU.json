@@ -1,0 +1,22 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "menu": [
+    "Crear proyecto nuevo",
+    "Crear proyecto demo generico",
+    "Actualizar proyecto con motor nuevo",
+    "Actualizar solo proyecto",
+    "Aplicar corrección quirúrgica al motor",
+    "Downgrade/remoción controlada",
+    "Retirar/archivar proyecto",
+    "Auditar motor",
+    "Auditar proyecto",
+    "Generar prompt/output con sidecar y QA"
+  ],
+  "modes": [
+    "AUTO",
+    "BASIC_GUIDED",
+    "DETAILED"
+  ],
+  "default_behavior": "show brief menu when runtime is loaded and no explicit intent is present"
+}

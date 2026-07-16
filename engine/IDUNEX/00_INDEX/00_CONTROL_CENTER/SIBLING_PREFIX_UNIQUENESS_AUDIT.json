@@ -1,0 +1,21 @@
+{
+  "policy_id": "P0.2-008",
+  "name": "SIBLING_PREFIX_UNIQUENESS_AUDIT",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "status": "ACTIVE_BLOCKING",
+  "date": "NEUTRALIZED_ACTIVE_SCOPE",
+  "actual_value": "scan all parent directories for duplicate ^\\d{2}_ child prefixes",
+  "root_blocking": true,
+  "canonical_sublevel_blocking": true,
+  "report_fields": [
+    "parent",
+    "prefix",
+    "children",
+    "corrective_action"
+  ],
+  "last_recomputed_strategy": "OPTION_A_PHYSICAL_RENUMBERING",
+  "root_prefix_duplicates": 0,
+  "sibling_scope_duplicates": 0,
+  "result": "PASS",
+  "fail_codes": []
+}

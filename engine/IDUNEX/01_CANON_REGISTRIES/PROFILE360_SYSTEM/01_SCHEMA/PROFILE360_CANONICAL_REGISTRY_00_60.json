@@ -1,0 +1,2387 @@
+{
+  "registry_id": "PROFILE360_CANONICAL_REGISTRY_00_60",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "section_count": 61,
+  "sections": [
+    {
+      "section_id": "00",
+      "section_name": "00_PROFILE_HEADER_AND_LOCKS",
+      "definition": "Contractually fixes profile header and locks; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "PROJECT_AUTHORITY"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_00_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_00",
+      "fallback_fix": "Re-materialize section 00 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_00",
+      "project_core_rule": "CORE_P360_00",
+      "chatgpt_rule": "GPT_P360_00",
+      "copilot_rule": "COPILOT_P360_00"
+    },
+    {
+      "section_id": "01",
+      "section_name": "01_MODEL_IDENTITY_CANON",
+      "definition": "Contractually fixes model identity canon; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "00_PROFILE_HEADER_AND_LOCKS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_01_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_01",
+      "fallback_fix": "Re-materialize section 01 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_01",
+      "project_core_rule": "CORE_P360_01",
+      "chatgpt_rule": "GPT_P360_01",
+      "copilot_rule": "COPILOT_P360_01"
+    },
+    {
+      "section_id": "02",
+      "section_name": "02_PROJECT_ROLE_AND_UNIQUENESS",
+      "definition": "Contractually fixes project role and uniqueness; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "01_MODEL_IDENTITY_CANON"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_02_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_02",
+      "fallback_fix": "Re-materialize section 02 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_02",
+      "project_core_rule": "CORE_P360_02",
+      "chatgpt_rule": "GPT_P360_02",
+      "copilot_rule": "COPILOT_P360_02"
+    },
+    {
+      "section_id": "03",
+      "section_name": "03_ADULT_AGE_AND_VISIBLE_AGE_LOCK",
+      "definition": "Contractually fixes adult age and visible age lock; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "02_PROJECT_ROLE_AND_UNIQUENESS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_03_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_03",
+      "fallback_fix": "Re-materialize section 03 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_03",
+      "project_core_rule": "CORE_P360_03",
+      "chatgpt_rule": "GPT_P360_03",
+      "copilot_rule": "COPILOT_P360_03"
+    },
+    {
+      "section_id": "04",
+      "section_name": "04_BIRTHPLACE_COUNTRY_CITY_DISTRICT",
+      "definition": "Contractually fixes birthplace country city district; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "03_ADULT_AGE_AND_VISIBLE_AGE_LOCK"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_04_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_04",
+      "fallback_fix": "Re-materialize section 04 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_04",
+      "project_core_rule": "CORE_P360_04",
+      "chatgpt_rule": "GPT_P360_04",
+      "copilot_rule": "COPILOT_P360_04"
+    },
+    {
+      "section_id": "05",
+      "section_name": "05_LOCALITY_SOCIAL_ENVIRONMENT",
+      "definition": "Contractually fixes locality social environment; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "04_BIRTHPLACE_COUNTRY_CITY_DISTRICT"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_05_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_05",
+      "fallback_fix": "Re-materialize section 05 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_05",
+      "project_core_rule": "CORE_P360_05",
+      "chatgpt_rule": "GPT_P360_05",
+      "copilot_rule": "COPILOT_P360_05"
+    },
+    {
+      "section_id": "06",
+      "section_name": "06_DESCENDANCE_AND_SAFE_PHENOTYPE_CAUSALITY",
+      "definition": "Contractually fixes descendance and safe phenotype causality; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "05_LOCALITY_SOCIAL_ENVIRONMENT"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_06_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_06",
+      "fallback_fix": "Re-materialize section 06 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_06",
+      "project_core_rule": "CORE_P360_06",
+      "chatgpt_rule": "GPT_P360_06",
+      "copilot_rule": "COPILOT_P360_06"
+    },
+    {
+      "section_id": "07",
+      "section_name": "07_FAMILY_HISTORY_AND_MIGRATION_MEMORY",
+      "definition": "Contractually fixes family history and migration memory; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "06_DESCENDANCE_AND_SAFE_PHENOTYPE_CAUSALITY"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_07_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_07",
+      "fallback_fix": "Re-materialize section 07 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_07",
+      "project_core_rule": "CORE_P360_07",
+      "chatgpt_rule": "GPT_P360_07",
+      "copilot_rule": "COPILOT_P360_07"
+    },
+    {
+      "section_id": "08",
+      "section_name": "08_CHILDHOOD_AND_FORMATIVE_CONTEXT",
+      "definition": "Contractually fixes childhood and formative context; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "07_FAMILY_HISTORY_AND_MIGRATION_MEMORY"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_08_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_08",
+      "fallback_fix": "Re-materialize section 08 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_08",
+      "project_core_rule": "CORE_P360_08",
+      "chatgpt_rule": "GPT_P360_08",
+      "copilot_rule": "COPILOT_P360_08"
+    },
+    {
+      "section_id": "09",
+      "section_name": "09_EDUCATION_TRAINING_AND_DISCIPLINE",
+      "definition": "Contractually fixes education training and discipline; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "08_CHILDHOOD_AND_FORMATIVE_CONTEXT"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_09_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_09",
+      "fallback_fix": "Re-materialize section 09 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_09",
+      "project_core_rule": "CORE_P360_09",
+      "chatgpt_rule": "GPT_P360_09",
+      "copilot_rule": "COPILOT_P360_09"
+    },
+    {
+      "section_id": "10",
+      "section_name": "10_PROFESSION_ROLE_AND_CREATIVE_PATH",
+      "definition": "Contractually fixes profession role and creative path; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "09_EDUCATION_TRAINING_AND_DISCIPLINE"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_10_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_10",
+      "fallback_fix": "Re-materialize section 10 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_10",
+      "project_core_rule": "CORE_P360_10",
+      "chatgpt_rule": "GPT_P360_10",
+      "copilot_rule": "COPILOT_P360_10"
+    },
+    {
+      "section_id": "11",
+      "section_name": "11_VALUES_ETHICS_AND_PERSONAL_LIMITS",
+      "definition": "Contractually fixes values ethics and personal limits; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "10_PROFESSION_ROLE_AND_CREATIVE_PATH"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_11_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_11",
+      "fallback_fix": "Re-materialize section 11 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_11",
+      "project_core_rule": "CORE_P360_11",
+      "chatgpt_rule": "GPT_P360_11",
+      "copilot_rule": "COPILOT_P360_11"
+    },
+    {
+      "section_id": "12",
+      "section_name": "12_PSYCHOLOGY_PERSONALITY_AND_EMOTIONAL_BASELINE",
+      "definition": "Contractually fixes psychology personality and emotional baseline; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "11_VALUES_ETHICS_AND_PERSONAL_LIMITS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_12_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_12",
+      "fallback_fix": "Re-materialize section 12 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_12",
+      "project_core_rule": "CORE_P360_12",
+      "chatgpt_rule": "GPT_P360_12",
+      "copilot_rule": "COPILOT_P360_12"
+    },
+    {
+      "section_id": "13",
+      "section_name": "13_INTERNAL_CONFLICTS_ASPIRATIONS_AND_DRIVES",
+      "definition": "Contractually fixes internal conflicts aspirations and drives; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "12_PSYCHOLOGY_PERSONALITY_AND_EMOTIONAL_BASELINE"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_13_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_13",
+      "fallback_fix": "Re-materialize section 13 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_13",
+      "project_core_rule": "CORE_P360_13",
+      "chatgpt_rule": "GPT_P360_13",
+      "copilot_rule": "COPILOT_P360_13"
+    },
+    {
+      "section_id": "14",
+      "section_name": "14_EPISODIC_MEMORY_AND_LIFE_EVENTS",
+      "definition": "Contractually fixes episodic memory and life events; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "13_INTERNAL_CONFLICTS_ASPIRATIONS_AND_DRIVES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_14_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_14",
+      "fallback_fix": "Re-materialize section 14 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_14",
+      "project_core_rule": "CORE_P360_14",
+      "chatgpt_rule": "GPT_P360_14",
+      "copilot_rule": "COPILOT_P360_14"
+    },
+    {
+      "section_id": "15",
+      "section_name": "15_WORLDVIEW_AND_CULTURAL_REFERENCES",
+      "definition": "Contractually fixes worldview and cultural references; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "14_EPISODIC_MEMORY_AND_LIFE_EVENTS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_15_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_15",
+      "fallback_fix": "Re-materialize section 15 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_15",
+      "project_core_rule": "CORE_P360_15",
+      "chatgpt_rule": "GPT_P360_15",
+      "copilot_rule": "COPILOT_P360_15"
+    },
+    {
+      "section_id": "16",
+      "section_name": "16_FACE_FORENSIC_LANDMARKS",
+      "definition": "Contractually fixes face forensic landmarks; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "15_WORLDVIEW_AND_CULTURAL_REFERENCES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_16_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_16",
+      "fallback_fix": "Re-materialize section 16 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_16",
+      "project_core_rule": "CORE_P360_16",
+      "chatgpt_rule": "GPT_P360_16",
+      "copilot_rule": "COPILOT_P360_16"
+    },
+    {
+      "section_id": "17",
+      "section_name": "17_FACE_ASYMMETRY_AND_NON_GENERIC_BEAUTY",
+      "definition": "Contractually fixes face asymmetry and non generic beauty; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "16_FACE_FORENSIC_LANDMARKS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_17_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_17",
+      "fallback_fix": "Re-materialize section 17 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_17",
+      "project_core_rule": "CORE_P360_17",
+      "chatgpt_rule": "GPT_P360_17",
+      "copilot_rule": "COPILOT_P360_17"
+    },
+    {
+      "section_id": "18",
+      "section_name": "18_EYES_GAZE_BROWS_AND_MICROEXPRESSIONS",
+      "definition": "Contractually fixes eyes gaze brows and microexpressions; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "17_FACE_ASYMMETRY_AND_NON_GENERIC_BEAUTY"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_18_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_18",
+      "fallback_fix": "Re-materialize section 18 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_18",
+      "project_core_rule": "CORE_P360_18",
+      "chatgpt_rule": "GPT_P360_18",
+      "copilot_rule": "COPILOT_P360_18"
+    },
+    {
+      "section_id": "19",
+      "section_name": "19_NOSE_MOUTH_TEETH_SMILE_SIGNATURE",
+      "definition": "Contractually fixes nose mouth teeth smile signature; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "18_EYES_GAZE_BROWS_AND_MICROEXPRESSIONS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_19_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_19",
+      "fallback_fix": "Re-materialize section 19 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_19",
+      "project_core_rule": "CORE_P360_19",
+      "chatgpt_rule": "GPT_P360_19",
+      "copilot_rule": "COPILOT_P360_19"
+    },
+    {
+      "section_id": "20",
+      "section_name": "20_SKIN_TONE_SUBTONE_TEXTURE_AND_MARKS",
+      "definition": "Contractually fixes skin tone subtone texture and marks; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "19_NOSE_MOUTH_TEETH_SMILE_SIGNATURE"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_20_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_20",
+      "fallback_fix": "Re-materialize section 20 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_20",
+      "project_core_rule": "CORE_P360_20",
+      "chatgpt_rule": "GPT_P360_20",
+      "copilot_rule": "COPILOT_P360_20"
+    },
+    {
+      "section_id": "21",
+      "section_name": "21_HAIR_TYPE_COLOR_VOLUME_PHYSICS_AND_GROOMING",
+      "definition": "Contractually fixes hair type color volume physics and grooming; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "20_SKIN_TONE_SUBTONE_TEXTURE_AND_MARKS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_21_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_21",
+      "fallback_fix": "Re-materialize section 21 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_21",
+      "project_core_rule": "CORE_P360_21",
+      "chatgpt_rule": "GPT_P360_21",
+      "copilot_rule": "COPILOT_P360_21"
+    },
+    {
+      "section_id": "22",
+      "section_name": "22_BODY_ANTHROPOMETRY_PROPORTIONS_AND_FITNESS",
+      "definition": "Contractually fixes body anthropometry proportions and fitness; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "21_HAIR_TYPE_COLOR_VOLUME_PHYSICS_AND_GROOMING"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_22_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_22",
+      "fallback_fix": "Re-materialize section 22 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_22",
+      "project_core_rule": "CORE_P360_22",
+      "chatgpt_rule": "GPT_P360_22",
+      "copilot_rule": "COPILOT_P360_22"
+    },
+    {
+      "section_id": "23",
+      "section_name": "23_POSTURE_BALANCE_CENTER_OF_GRAVITY",
+      "definition": "Contractually fixes posture balance center of gravity; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "22_BODY_ANTHROPOMETRY_PROPORTIONS_AND_FITNESS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_23_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_23",
+      "fallback_fix": "Re-materialize section 23 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_23",
+      "project_core_rule": "CORE_P360_23",
+      "chatgpt_rule": "GPT_P360_23",
+      "copilot_rule": "COPILOT_P360_23"
+    },
+    {
+      "section_id": "24",
+      "section_name": "24_HANDS_FEET_GESTURE_AND_BODY_DETAIL",
+      "definition": "Contractually fixes hands feet gesture and body detail; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "23_POSTURE_BALANCE_CENTER_OF_GRAVITY"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_24_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_24",
+      "fallback_fix": "Re-materialize section 24 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_24",
+      "project_core_rule": "CORE_P360_24",
+      "chatgpt_rule": "GPT_P360_24",
+      "copilot_rule": "COPILOT_P360_24"
+    },
+    {
+      "section_id": "25",
+      "section_name": "25_MOVEMENT_BIOMECHANICS_AND_WALK_CYCLE",
+      "definition": "Contractually fixes movement biomechanics and walk cycle; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "24_HANDS_FEET_GESTURE_AND_BODY_DETAIL"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_25_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_25",
+      "fallback_fix": "Re-materialize section 25 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_25",
+      "project_core_rule": "CORE_P360_25",
+      "chatgpt_rule": "GPT_P360_25",
+      "copilot_rule": "COPILOT_P360_25"
+    },
+    {
+      "section_id": "26",
+      "section_name": "26_ACTING_BIBLE_POSE_AND_MICROGESTURE",
+      "definition": "Contractually fixes acting bible pose and microgesture; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "25_MOVEMENT_BIOMECHANICS_AND_WALK_CYCLE"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_26_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_26",
+      "fallback_fix": "Re-materialize section 26 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_26",
+      "project_core_rule": "CORE_P360_26",
+      "chatgpt_rule": "GPT_P360_26",
+      "copilot_rule": "COPILOT_P360_26"
+    },
+    {
+      "section_id": "27",
+      "section_name": "27_VOICE_TIMBRE_AGE_ACCENT_AND_PROSODY",
+      "definition": "Contractually fixes voice timbre age accent and prosody; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "26_ACTING_BIBLE_POSE_AND_MICROGESTURE"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_27_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_27",
+      "fallback_fix": "Re-materialize section 27 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_27",
+      "project_core_rule": "CORE_P360_27",
+      "chatgpt_rule": "GPT_P360_27",
+      "copilot_rule": "COPILOT_P360_27"
+    },
+    {
+      "section_id": "28",
+      "section_name": "28_SOCIOLECT_REGISTER_AND_SPEECH_RHYTHM",
+      "definition": "Contractually fixes sociolect register and speech rhythm; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "27_VOICE_TIMBRE_AGE_ACCENT_AND_PROSODY"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_28_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_28",
+      "fallback_fix": "Re-materialize section 28 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_28",
+      "project_core_rule": "CORE_P360_28",
+      "chatgpt_rule": "GPT_P360_28",
+      "copilot_rule": "COPILOT_P360_28"
+    },
+    {
+      "section_id": "29",
+      "section_name": "29_DIALOGUE_PERSONA_AND_FIRST_PERSON_RULES",
+      "definition": "Contractually fixes dialogue persona and first person rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "28_SOCIOLECT_REGISTER_AND_SPEECH_RHYTHM"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_29_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_29",
+      "fallback_fix": "Re-materialize section 29 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_29",
+      "project_core_rule": "CORE_P360_29",
+      "chatgpt_rule": "GPT_P360_29",
+      "copilot_rule": "COPILOT_P360_29"
+    },
+    {
+      "section_id": "30",
+      "section_name": "30_INNER_VOICE_THOUGHT_PATTERN_AND_SILENCES",
+      "definition": "Contractually fixes inner voice thought pattern and silences; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "29_DIALOGUE_PERSONA_AND_FIRST_PERSON_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_30_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_30",
+      "fallback_fix": "Re-materialize section 30 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_30",
+      "project_core_rule": "CORE_P360_30",
+      "chatgpt_rule": "GPT_P360_30",
+      "copilot_rule": "COPILOT_P360_30"
+    },
+    {
+      "section_id": "31",
+      "section_name": "31_HUMOR_FLIRT_BOUNDARY_AND_DO_NOT_SAY",
+      "definition": "Contractually fixes humor flirt boundary and do not say; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "30_INNER_VOICE_THOUGHT_PATTERN_AND_SILENCES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_31_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_31",
+      "fallback_fix": "Re-materialize section 31 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_31",
+      "project_core_rule": "CORE_P360_31",
+      "chatgpt_rule": "GPT_P360_31",
+      "copilot_rule": "COPILOT_P360_31"
+    },
+    {
+      "section_id": "32",
+      "section_name": "32_TEXT_COPY_CAPTION_AND_SCRIPT_VOICE",
+      "definition": "Contractually fixes text copy caption and script voice; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "31_HUMOR_FLIRT_BOUNDARY_AND_DO_NOT_SAY"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_32_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_32",
+      "fallback_fix": "Re-materialize section 32 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_32",
+      "project_core_rule": "CORE_P360_32",
+      "chatgpt_rule": "GPT_P360_32",
+      "copilot_rule": "COPILOT_P360_32"
+    },
+    {
+      "section_id": "33",
+      "section_name": "33_SUNO_MUSIC_IDENTITY_AND_MODEL_POV",
+      "definition": "Contractually fixes suno music identity and model pov; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "32_TEXT_COPY_CAPTION_AND_SCRIPT_VOICE"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_33_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_33",
+      "fallback_fix": "Re-materialize section 33 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_33",
+      "project_core_rule": "CORE_P360_33",
+      "chatgpt_rule": "GPT_P360_33",
+      "copilot_rule": "COPILOT_P360_33"
+    },
+    {
+      "section_id": "34",
+      "section_name": "34_SONGWRITING_EMOTION_HOOK_AND_LYRICAL_RULES",
+      "definition": "Contractually fixes songwriting emotion hook and lyrical rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "33_SUNO_MUSIC_IDENTITY_AND_MODEL_POV"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_34_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_34",
+      "fallback_fix": "Re-materialize section 34 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_34",
+      "project_core_rule": "CORE_P360_34",
+      "chatgpt_rule": "GPT_P360_34",
+      "copilot_rule": "COPILOT_P360_34"
+    },
+    {
+      "section_id": "35",
+      "section_name": "35_ELEVENLABS_VOICE_DIRECTION_AND_AUDIO_RULES",
+      "definition": "Contractually fixes elevenlabs voice direction and audio rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "34_SONGWRITING_EMOTION_HOOK_AND_LYRICAL_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_35_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_35",
+      "fallback_fix": "Re-materialize section 35 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_35",
+      "project_core_rule": "CORE_P360_35",
+      "chatgpt_rule": "GPT_P360_35",
+      "copilot_rule": "COPILOT_P360_35"
+    },
+    {
+      "section_id": "36",
+      "section_name": "36_WARDROBE_IDENTITY_STYLE_SYSTEM",
+      "definition": "Contractually fixes wardrobe identity style system; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "35_ELEVENLABS_VOICE_DIRECTION_AND_AUDIO_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_36_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_36",
+      "fallback_fix": "Re-materialize section 36 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_36",
+      "project_core_rule": "CORE_P360_36",
+      "chatgpt_rule": "GPT_P360_36",
+      "copilot_rule": "COPILOT_P360_36"
+    },
+    {
+      "section_id": "37",
+      "section_name": "37_TEXTILE_FABRIC_FIT_GRAVITY_AND_LAYERING",
+      "definition": "Contractually fixes textile fabric fit gravity and layering; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "36_WARDROBE_IDENTITY_STYLE_SYSTEM"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_37_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_37",
+      "fallback_fix": "Re-materialize section 37 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_37",
+      "project_core_rule": "CORE_P360_37",
+      "chatgpt_rule": "GPT_P360_37",
+      "copilot_rule": "COPILOT_P360_37"
+    },
+    {
+      "section_id": "38",
+      "section_name": "38_BODYWEAR_SWIMWEAR_LINGERIE_EDITORIAL_RULES",
+      "definition": "Contractually fixes bodywear swimwear lingerie editorial rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "37_TEXTILE_FABRIC_FIT_GRAVITY_AND_LAYERING"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_38_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_38",
+      "fallback_fix": "Re-materialize section 38 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_38",
+      "project_core_rule": "CORE_P360_38",
+      "chatgpt_rule": "GPT_P360_38",
+      "copilot_rule": "COPILOT_P360_38"
+    },
+    {
+      "section_id": "39",
+      "section_name": "39_ACCESSORIES_PROPS_AND_PHYSICAL_ANCHORING",
+      "definition": "Contractually fixes accessories props and physical anchoring; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "38_BODYWEAR_SWIMWEAR_LINGERIE_EDITORIAL_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_39_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_39",
+      "fallback_fix": "Re-materialize section 39 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_39",
+      "project_core_rule": "CORE_P360_39",
+      "chatgpt_rule": "GPT_P360_39",
+      "copilot_rule": "COPILOT_P360_39"
+    },
+    {
+      "section_id": "40",
+      "section_name": "40_ENVIRONMENTS_COMPATIBLE_WITH_MODEL",
+      "definition": "Contractually fixes environments compatible with model; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "39_ACCESSORIES_PROPS_AND_PHYSICAL_ANCHORING"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_40_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_40",
+      "fallback_fix": "Re-materialize section 40 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_40",
+      "project_core_rule": "CORE_P360_40",
+      "chatgpt_rule": "GPT_P360_40",
+      "copilot_rule": "COPILOT_P360_40"
+    },
+    {
+      "section_id": "41",
+      "section_name": "41_ENVIRONMENTS_INCOMPATIBLE_OR_REQUIRING_JUSTIFICATION",
+      "definition": "Contractually fixes environments incompatible or requiring justification; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "40_ENVIRONMENTS_COMPATIBLE_WITH_MODEL"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_41_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_41",
+      "fallback_fix": "Re-materialize section 41 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_41",
+      "project_core_rule": "CORE_P360_41",
+      "chatgpt_rule": "GPT_P360_41",
+      "copilot_rule": "COPILOT_P360_41"
+    },
+    {
+      "section_id": "42",
+      "section_name": "42_SCENE_ARCHITECTURE_SPACE_AND_PRODUCTION_DESIGN",
+      "definition": "Contractually fixes scene architecture space and production design; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "41_ENVIRONMENTS_INCOMPATIBLE_OR_REQUIRING_JUSTIFICATION"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_42_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_42",
+      "fallback_fix": "Re-materialize section 42 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_42",
+      "project_core_rule": "CORE_P360_42",
+      "chatgpt_rule": "GPT_P360_42",
+      "copilot_rule": "COPILOT_P360_42"
+    },
+    {
+      "section_id": "43",
+      "section_name": "43_CAMERA_LENS_FRAMING_AND_COMPOSITION",
+      "definition": "Contractually fixes camera lens framing and composition; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "42_SCENE_ARCHITECTURE_SPACE_AND_PRODUCTION_DESIGN"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_43_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_43",
+      "fallback_fix": "Re-materialize section 43 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_43",
+      "project_core_rule": "CORE_P360_43",
+      "chatgpt_rule": "GPT_P360_43",
+      "copilot_rule": "COPILOT_P360_43"
+    },
+    {
+      "section_id": "44",
+      "section_name": "44_LIGHTING_COLOR_SHADOWS_AND_REFLECTIONS",
+      "definition": "Contractually fixes lighting color shadows and reflections; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "43_CAMERA_LENS_FRAMING_AND_COMPOSITION"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_44_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_44",
+      "fallback_fix": "Re-materialize section 44 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_44",
+      "project_core_rule": "CORE_P360_44",
+      "chatgpt_rule": "GPT_P360_44",
+      "copilot_rule": "COPILOT_P360_44"
+    },
+    {
+      "section_id": "45",
+      "section_name": "45_REFERENCE_IMAGE_TRANSFER_RULES",
+      "definition": "Contractually fixes reference image transfer rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "44_LIGHTING_COLOR_SHADOWS_AND_REFLECTIONS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_45_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_45",
+      "fallback_fix": "Re-materialize section 45 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_45",
+      "project_core_rule": "CORE_P360_45",
+      "chatgpt_rule": "GPT_P360_45",
+      "copilot_rule": "COPILOT_P360_45"
+    },
+    {
+      "section_id": "46",
+      "section_name": "46_SKETCH_TO_REAL_IMAGE_RULES",
+      "definition": "Contractually fixes sketch to real image rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "45_REFERENCE_IMAGE_TRANSFER_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_46_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_46",
+      "fallback_fix": "Re-materialize section 46 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_46",
+      "project_core_rule": "CORE_P360_46",
+      "chatgpt_rule": "GPT_P360_46",
+      "copilot_rule": "COPILOT_P360_46"
+    },
+    {
+      "section_id": "47",
+      "section_name": "47_IMAGE_PROMPT_MASTER_RULES",
+      "definition": "Contractually fixes image prompt master rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "46_SKETCH_TO_REAL_IMAGE_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_47_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_47",
+      "fallback_fix": "Re-materialize section 47 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_47",
+      "project_core_rule": "CORE_P360_47",
+      "chatgpt_rule": "GPT_P360_47",
+      "copilot_rule": "COPILOT_P360_47"
+    },
+    {
+      "section_id": "48",
+      "section_name": "48_VIDEO_PROMPT_MASTER_RULES",
+      "definition": "Contractually fixes video prompt master rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "47_IMAGE_PROMPT_MASTER_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_48_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_48",
+      "fallback_fix": "Re-materialize section 48 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_48",
+      "project_core_rule": "CORE_P360_48",
+      "chatgpt_rule": "GPT_P360_48",
+      "copilot_rule": "COPILOT_P360_48"
+    },
+    {
+      "section_id": "49",
+      "section_name": "49_AUDIO_SFX_FOLEY_AND_ROOMTONE_RULES",
+      "definition": "Contractually fixes audio sfx foley and roomtone rules; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "48_VIDEO_PROMPT_MASTER_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_49_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_49",
+      "fallback_fix": "Re-materialize section 49 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_49",
+      "project_core_rule": "CORE_P360_49",
+      "chatgpt_rule": "GPT_P360_49",
+      "copilot_rule": "COPILOT_P360_49"
+    },
+    {
+      "section_id": "50",
+      "section_name": "50_VENDOR_GUIDES_SUNO_ELEVENLABS_IMAGE_VIDEO_AUDIO",
+      "definition": "Contractually fixes vendor guides suno elevenlabs image video audio; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "49_AUDIO_SFX_FOLEY_AND_ROOMTONE_RULES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_50_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_50",
+      "fallback_fix": "Re-materialize section 50 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_50",
+      "project_core_rule": "CORE_P360_50",
+      "chatgpt_rule": "GPT_P360_50",
+      "copilot_rule": "COPILOT_P360_50"
+    },
+    {
+      "section_id": "51",
+      "section_name": "51_ADULT_EDITORIAL_SAFETY_BOUNDARIES",
+      "definition": "Contractually fixes adult editorial safety boundaries; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "50_VENDOR_GUIDES_SUNO_ELEVENLABS_IMAGE_VIDEO_AUDIO"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_51_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_51",
+      "fallback_fix": "Re-materialize section 51 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_51",
+      "project_core_rule": "CORE_P360_51",
+      "chatgpt_rule": "GPT_P360_51",
+      "copilot_rule": "COPILOT_P360_51"
+    },
+    {
+      "section_id": "52",
+      "section_name": "52_NEGATIVE_ALWAYS_AND_AVOID_LIST",
+      "definition": "Contractually fixes negative always and avoid list; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "51_ADULT_EDITORIAL_SAFETY_BOUNDARIES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_52_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_52",
+      "fallback_fix": "Re-materialize section 52 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_52",
+      "project_core_rule": "CORE_P360_52",
+      "chatgpt_rule": "GPT_P360_52",
+      "copilot_rule": "COPILOT_P360_52"
+    },
+    {
+      "section_id": "53",
+      "section_name": "53_DRIFT_PREVENTION_AND_PAIRWISE_UNIQUENESS",
+      "definition": "Contractually fixes drift prevention and pairwise uniqueness; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "52_NEGATIVE_ALWAYS_AND_AVOID_LIST"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_53_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_53",
+      "fallback_fix": "Re-materialize section 53 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_53",
+      "project_core_rule": "CORE_P360_53",
+      "chatgpt_rule": "GPT_P360_53",
+      "copilot_rule": "COPILOT_P360_53"
+    },
+    {
+      "section_id": "54",
+      "section_name": "54_QA_IDENTITY_VISUAL_AUDIO_TEXT_SCENE",
+      "definition": "Contractually fixes qa identity visual audio text scene; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "53_DRIFT_PREVENTION_AND_PAIRWISE_UNIQUENESS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_54_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_54",
+      "fallback_fix": "Re-materialize section 54 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_54",
+      "project_core_rule": "CORE_P360_54",
+      "chatgpt_rule": "GPT_P360_54",
+      "copilot_rule": "COPILOT_P360_54"
+    },
+    {
+      "section_id": "55",
+      "section_name": "55_FAIL_CODES_AND_FALLBACK_FIXES",
+      "definition": "Contractually fixes fail codes and fallback fixes; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "54_QA_IDENTITY_VISUAL_AUDIO_TEXT_SCENE"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_55_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_55",
+      "fallback_fix": "Re-materialize section 55 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_55",
+      "project_core_rule": "CORE_P360_55",
+      "chatgpt_rule": "GPT_P360_55",
+      "copilot_rule": "COPILOT_P360_55"
+    },
+    {
+      "section_id": "56",
+      "section_name": "56_SIDECAR_REQUIRED_FIELDS",
+      "definition": "Contractually fixes sidecar required fields; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "55_FAIL_CODES_AND_FALLBACK_FIXES"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_56_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_56",
+      "fallback_fix": "Re-materialize section 56 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_56",
+      "project_core_rule": "CORE_P360_56",
+      "chatgpt_rule": "GPT_P360_56",
+      "copilot_rule": "COPILOT_P360_56"
+    },
+    {
+      "section_id": "57",
+      "section_name": "57_SOURCE_TRACEABILITY_SRC_FIELD_QA",
+      "definition": "Contractually fixes source traceability src field qa; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "56_SIDECAR_REQUIRED_FIELDS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_57_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_57",
+      "fallback_fix": "Re-materialize section 57 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_57",
+      "project_core_rule": "CORE_P360_57",
+      "chatgpt_rule": "GPT_P360_57",
+      "copilot_rule": "COPILOT_P360_57"
+    },
+    {
+      "section_id": "58",
+      "section_name": "58_FACTORY_DEFINED_FIELDS",
+      "definition": "Contractually fixes factory defined fields; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "57_SOURCE_TRACEABILITY_SRC_FIELD_QA"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_58_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_58",
+      "fallback_fix": "Re-materialize section 58 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_58",
+      "project_core_rule": "CORE_P360_58",
+      "chatgpt_rule": "GPT_P360_58",
+      "copilot_rule": "COPILOT_P360_58"
+    },
+    {
+      "section_id": "59",
+      "section_name": "59_USER_APPROVED_LOCKED_FIELDS",
+      "definition": "Contractually fixes user approved locked fields; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "58_FACTORY_DEFINED_FIELDS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_59_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_59",
+      "fallback_fix": "Re-materialize section 59 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_59",
+      "project_core_rule": "CORE_P360_59",
+      "chatgpt_rule": "GPT_P360_59",
+      "copilot_rule": "COPILOT_P360_59"
+    },
+    {
+      "section_id": "60",
+      "section_name": "60_CHANGELOG_HASH_AND_LINEAGE",
+      "definition": "Contractually fixes changelog hash and lineage; it supplies causal values to identity, multimodal execution, QA, sidecar and lineage without agent inference.",
+      "required_fields": [
+        "actual_value",
+        "source_trace",
+        "lock_status",
+        "materialization_status"
+      ],
+      "allowed_values": [
+        "MODEL_SPECIFIC_LOCKED",
+        "USER_APPROVED_LOCKED"
+      ],
+      "forbidden_values": [
+        "NULL",
+        "BLANK",
+        "UNVERIFIED_INFERENCE",
+        "REAL_PERSON_COPY"
+      ],
+      "depends_on": [
+        "59_USER_APPROVED_LOCKED_FIELDS"
+      ],
+      "affects": [
+        "PROJECT_CANON",
+        "CHATGPT_RUNTIME",
+        "COPILOT_RUNTIME",
+        "QA",
+        "SIDECAR",
+        "LINEAGE"
+      ],
+      "qa_rule": "QA_P360_60_SEMANTIC_VALUE",
+      "fail_code": "FAIL_P360_60",
+      "fallback_fix": "Re-materialize section 60 from approved model inputs and its declared dependencies; rebuild runtime, coverage and evidence checksums.",
+      "sidecar_field": "canon.profile360.section_60",
+      "project_core_rule": "CORE_P360_60",
+      "chatgpt_rule": "GPT_P360_60",
+      "copilot_rule": "COPILOT_P360_60"
+    }
+  ]
+}

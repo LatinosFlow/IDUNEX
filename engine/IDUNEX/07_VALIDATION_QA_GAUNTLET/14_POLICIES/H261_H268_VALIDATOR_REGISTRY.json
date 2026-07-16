@@ -1,0 +1,49 @@
+{
+  "scope": "H261_H268_APPLIED_ON_H01_H260",
+  "semantic_version": "v1.0.0",
+  "root_unico": "IDUNEX",
+  "validators": [
+    {
+      "validator_id": "VALIDATE_ACTIVE_SURFACE_HISTORICAL_METADATA_SCRUB",
+      "result": "PASS_REQUIRED",
+      "blocking": true
+    },
+    {
+      "validator_id": "VALIDATE_PROJECT_VALIDATOR_FILESCHECKED_TRUTHFULNESS",
+      "result": "PASS_REQUIRED",
+      "blocking": true
+    },
+    {
+      "validator_id": "VALIDATE_CANONICAL_LABEL_HARMONIZATION",
+      "result": "PASS_REQUIRED",
+      "blocking": true
+    },
+    {
+      "validator_id": "VALIDATE_EXACT_DUPLICATE_RETENTION_ALLOWLIST",
+      "result": "PASS_REQUIRED",
+      "blocking": true
+    },
+    {
+      "validator_id": "VALIDATE_H245_H260_SINGLE_SOURCE_CANON_REFERENCE",
+      "result": "PASS_REQUIRED",
+      "blocking": true
+    },
+    {
+      "validator_id": "VALIDATE_ACTIVE_DATE_NEUTRALIZATION",
+      "result": "PASS_REQUIRED",
+      "blocking": true
+    },
+    {
+      "validator_id": "VALIDATE_MATRIX_RUNNER_STREAMING_PROGRESS_AND_RESUME",
+      "result": "PASS_REQUIRED",
+      "blocking": true
+    },
+    {
+      "validator_id": "VALIDATE_FINAL_CLEAN_10_10_GATE",
+      "result": "PASS_REQUIRED",
+      "blocking": true
+    }
+  ],
+  "truthfulness": "Engine integrity only; creative outputs not certified.",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

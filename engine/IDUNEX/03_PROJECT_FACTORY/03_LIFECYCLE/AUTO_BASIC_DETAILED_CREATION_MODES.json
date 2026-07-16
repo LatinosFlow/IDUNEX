@@ -1,0 +1,10 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "modes": {
+    "AUTO": "Engine defines fictitious names, visible adult ages when absent, roles, model_id, model_code, aliases, Profile360 FULL60, TechExt FULL10, anchors, runtime and evidence.",
+    "BASIC_GUIDED": "Short intake: project, quantity, visible adult age, role, general style, optional names.",
+    "DETAILED": "Advanced face, body, voice, wardrobe, motion, context, scenes, vendors, limits and locks."
+  },
+  "fallback_fix": "Escalate or downshift mode explicitly; never merge incompatible modes silently."
+}

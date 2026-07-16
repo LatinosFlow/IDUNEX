@@ -1,0 +1,463 @@
+{
+  "proof_id": "CLI_SUMMARY_OUTPUT_JSON_NO_NULL_PARITY_SCAN_H151_H156",
+  "generated_at": "2026-07-01 PROJECT_DECLARED_TIMEZONE",
+  "scope": "H151_H156_CLI_SUMMARY_NO_NULL_PARITY",
+  "direct_correction_scope": "H151_H156_APPLIED_ON_H01_H150",
+  "summary_normalizer": "_cli_summary_payload",
+  "sentinel_registry": [
+    "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+    "NOT_APPLICABLE_NO_BLOCK",
+    "NOT_APPLICABLE_NO_PROJECT_CONTEXT",
+    "NOT_APPLICABLE_NO_RUNTIME_COUNT",
+    "NOT_APPLICABLE_NO_VALIDATOR_FAILURE"
+  ],
+  "commands_scanned": {
+    "generate": {
+      "command": "generate",
+      "stdout_summary_file": "generate_summary.json",
+      "output_json_file": "generate_full.json",
+      "stdout_summary_sha256": "c27a9653e32416ee28457319c738fc0f1e0afeeef49f67132ca9198fa59b5499",
+      "output_json_sha256": "7de3a005267a0055fd07b536b0e8610d43232764b2eb47df91a9806269ed9fc9",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "delivery_status": "DELIVERY_ALLOWED",
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "fail_codes": [],
+      "null_blank_scan": "PASS"
+    },
+    "validate": {
+      "command": "validate",
+      "stdout_summary_file": "validate_summary.json",
+      "output_json_file": "validate_full.json",
+      "stdout_summary_sha256": "d58fba997bc62f20c62a2f8a16b3617d6db8808133cd5b8d775546f8b5d32669",
+      "output_json_sha256": "32af2b2a78c5716c79ecb1367102d0daa5315348a6f0bb4535ec8b0745a6db11",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "delivery_status": "PRECHECK_PASS",
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "fail_codes": [],
+      "null_blank_scan": "PASS"
+    },
+    "validate_contract_locked": {
+      "command": "validate-update-contract",
+      "stdout_summary_file": "validate_contract_locked_summary.json",
+      "output_json_file": "validate_contract_locked_full.json",
+      "stdout_summary_sha256": "fcdd31b06a3ca05e4ef6147944e0b79ac9d9380e41e2791e3eaa18ccdd27a756",
+      "output_json_sha256": "ce0f54a90da979928b2a184c4dd3353a9190c73790a7e3e75f692f0164aed9c1",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "fail_codes": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ],
+      "null_blank_scan": "PASS"
+    },
+    "update_locked": {
+      "command": "update-project",
+      "stdout_summary_file": "update_locked_summary.json",
+      "output_json_file": "update_locked_full.json",
+      "stdout_summary_sha256": "c82ab2effbd14e4b7ec637a0631c137db75f3523edd107a7884429ae39c9a349",
+      "output_json_sha256": "7da25fc801c16653c3b01d41942e36084f6e292f1d6ee503a1114ce13f1367b7",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "fail_codes": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ],
+      "null_blank_scan": "PASS"
+    },
+    "update_age": {
+      "command": "update-project",
+      "stdout_summary_file": "update_age_summary.json",
+      "output_json_file": "update_age_full.json",
+      "stdout_summary_sha256": "e7a7d196eb70b781ecca10e4ec28be7db00abcb052ed40d824413c8e93e57b9b",
+      "output_json_sha256": "e8cb3168028dedb02a5e219f9c4e741b307e47dfcb9e9db55aee10d9370048bf",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "delivery_status": "PRECHECK_PASS",
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "fail_codes": [],
+      "null_blank_scan": "PASS"
+    },
+    "update_wardrobe": {
+      "command": "update-project",
+      "stdout_summary_file": "update_wardrobe_summary.json",
+      "output_json_file": "update_wardrobe_full.json",
+      "stdout_summary_sha256": "e7a7d196eb70b781ecca10e4ec28be7db00abcb052ed40d824413c8e93e57b9b",
+      "output_json_sha256": "2a36bf2ddac028870097104267ff24cae1cb24bd0b069391ff28170ef72b58a1",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "delivery_status": "PRECHECK_PASS",
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "fail_codes": [],
+      "null_blank_scan": "PASS"
+    },
+    "update_env": {
+      "command": "update-project",
+      "stdout_summary_file": "update_env_summary.json",
+      "output_json_file": "update_env_full.json",
+      "stdout_summary_sha256": "e7a7d196eb70b781ecca10e4ec28be7db00abcb052ed40d824413c8e93e57b9b",
+      "output_json_sha256": "b97356ff061457735b60bd6a993e9ebb2c8ca9167999fa8de4581f415f0cf512",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "delivery_status": "PRECHECK_PASS",
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "fail_codes": [],
+      "null_blank_scan": "PASS"
+    },
+    "migrate_unknown": {
+      "command": "migrate-project",
+      "stdout_summary_file": "migrate_unknown_summary.json",
+      "output_json_file": "migrate_unknown_full.json",
+      "stdout_summary_sha256": "732eaa7336f79853d62efabe5556236218fb1c72f2c0ed3582667fb322e23e5a",
+      "output_json_sha256": "a3d68ad27db077b006071f09681a9f5c6b2b94bd8c2bad2981c8eed3079bea5f",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED_TARGET_ENGINE_ABSENT",
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "fail_codes": [
+        "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+      ],
+      "null_blank_scan": "PASS"
+    },
+    "migrate_compatible": {
+      "command": "migrate-project",
+      "stdout_summary_file": "migrate_compatible_summary.json",
+      "output_json_file": "migrate_compatible_full.json",
+      "stdout_summary_sha256": "cfd099d3c257a2274118fbe2eef1e1fc151b998ff3e4e02b1eff3b8767364d2c",
+      "output_json_sha256": "56f2df6d6b3e434ef3929208285f287fe2c8cb4d940596cd9703223ab1aebb72",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "delivery_status": "MIGRATION_SIMULATED_PASS",
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "fail_codes": [],
+      "null_blank_scan": "PASS"
+    },
+    "update_by_engine_unknown": {
+      "command": "update-project-by-engine",
+      "stdout_summary_file": "update_by_engine_unknown_summary.json",
+      "output_json_file": "update_by_engine_unknown_full.json",
+      "stdout_summary_sha256": "d60c40a67b48976fa57c9e4b1058202b4298933ea260f29d839f9b985f204ede",
+      "output_json_sha256": "aee657d4c92b903e4c4b21e8ff4b6c41f24ff2f85a3c0022c87ea214bb0654fc",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED_TARGET_ENGINE_ABSENT",
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "fail_codes": [
+        "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+      ],
+      "null_blank_scan": "PASS"
+    },
+    "update_by_engine_compatible": {
+      "command": "update-project-by-engine",
+      "stdout_summary_file": "update_by_engine_compatible_summary.json",
+      "output_json_file": "update_by_engine_compatible_full.json",
+      "stdout_summary_sha256": "14b6349faaf82d311c1e9498a0632de00a9db78dcdb510ab14d9f841a1f1dee5",
+      "output_json_sha256": "cf1bd09382c158dbe8257e395e3ed8d0bbb206174040b507562217ab1697b3d7",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "delivery_status": "MIGRATION_SIMULATED_PASS",
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "fail_codes": [],
+      "null_blank_scan": "PASS"
+    },
+    "mutation_self_test": {
+      "command": "mutation-self-test",
+      "stdout_summary_file": "mutation_self_test_summary.json",
+      "output_json_file": "mutation_self_test_full.json",
+      "stdout_summary_sha256": "f1f59b136513d23a0c2dcce78c5dbdc6f726dab4ba53b0cdf28beb47bf1f3f29",
+      "output_json_sha256": "077561b6aaf4db52d72c0f91fed11fdf3ddca31e2df8bc16c05288290c297ecc",
+      "stdout_result": "PASS",
+      "output_json_result": "PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "delivery_status": "NOT_APPLICABLE_NO_VALIDATOR_FAILURE",
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "fail_codes": [],
+      "null_blank_scan": "PASS"
+    }
+  },
+  "files_scanned": [
+    {
+      "file": "generate_summary.json",
+      "sha256": "c27a9653e32416ee28457319c738fc0f1e0afeeef49f67132ca9198fa59b5499",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "migrate_compatible_summary.json",
+      "sha256": "cfd099d3c257a2274118fbe2eef1e1fc151b998ff3e4e02b1eff3b8767364d2c",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "migrate_unknown_summary.json",
+      "sha256": "732eaa7336f79853d62efabe5556236218fb1c72f2c0ed3582667fb322e23e5a",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": true,
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "mutation_self_test_summary.json",
+      "sha256": "f1f59b136513d23a0c2dcce78c5dbdc6f726dab4ba53b0cdf28beb47bf1f3f29",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_age_summary.json",
+      "sha256": "e7a7d196eb70b781ecca10e4ec28be7db00abcb052ed40d824413c8e93e57b9b",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_by_engine_compatible_summary.json",
+      "sha256": "14b6349faaf82d311c1e9498a0632de00a9db78dcdb510ab14d9f841a1f1dee5",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_by_engine_unknown_summary.json",
+      "sha256": "d60c40a67b48976fa57c9e4b1058202b4298933ea260f29d839f9b985f204ede",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": true,
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_env_summary.json",
+      "sha256": "e7a7d196eb70b781ecca10e4ec28be7db00abcb052ed40d824413c8e93e57b9b",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_locked_summary.json",
+      "sha256": "c82ab2effbd14e4b7ec637a0631c137db75f3523edd107a7884429ae39c9a349",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": true,
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_wardrobe_summary.json",
+      "sha256": "e7a7d196eb70b781ecca10e4ec28be7db00abcb052ed40d824413c8e93e57b9b",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "validate_contract_locked_summary.json",
+      "sha256": "fcdd31b06a3ca05e4ef6147944e0b79ac9d9380e41e2791e3eaa18ccdd27a756",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": true,
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "validate_summary.json",
+      "sha256": "d58fba997bc62f20c62a2f8a16b3617d6db8808133cd5b8d775546f8b5d32669",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "generate_full.json",
+      "sha256": "7de3a005267a0055fd07b536b0e8610d43232764b2eb47df91a9806269ed9fc9",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "migrate_compatible_full.json",
+      "sha256": "56f2df6d6b3e434ef3929208285f287fe2c8cb4d940596cd9703223ab1aebb72",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "migrate_unknown_full.json",
+      "sha256": "a3d68ad27db077b006071f09681a9f5c6b2b94bd8c2bad2981c8eed3079bea5f",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": true,
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "mutation_self_test_full.json",
+      "sha256": "077561b6aaf4db52d72c0f91fed11fdf3ddca31e2df8bc16c05288290c297ecc",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_age_full.json",
+      "sha256": "e8cb3168028dedb02a5e219f9c4e741b307e47dfcb9e9db55aee10d9370048bf",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_by_engine_compatible_full.json",
+      "sha256": "cf1bd09382c158dbe8257e395e3ed8d0bbb206174040b507562217ab1697b3d7",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_by_engine_unknown_full.json",
+      "sha256": "aee657d4c92b903e4c4b21e8ff4b6c41f24ff2f85a3c0022c87ea214bb0654fc",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": true,
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_env_full.json",
+      "sha256": "b97356ff061457735b60bd6a993e9ebb2c8ca9167999fa8de4581f415f0cf512",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_locked_full.json",
+      "sha256": "7da25fc801c16653c3b01d41942e36084f6e292f1d6ee503a1114ce13f1367b7",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": true,
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "update_wardrobe_full.json",
+      "sha256": "2a36bf2ddac028870097104267ff24cae1cb24bd0b069391ff28170ef72b58a1",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "validate_contract_locked_full.json",
+      "sha256": "ce0f54a90da979928b2a184c4dd3353a9190c73790a7e3e75f692f0164aed9c1",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": true,
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "creative_output_certified_false": true
+    },
+    {
+      "file": "validate_full.json",
+      "sha256": "32af2b2a78c5716c79ecb1367102d0daa5315348a6f0bb4535ec8b0745a6db11",
+      "json_valid": true,
+      "null_count": 0,
+      "blank_count": 0,
+      "expected_block": false,
+      "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+      "creative_output_certified_false": true
+    }
+  ],
+  "json_invalid_count": 0,
+  "null_count": 0,
+  "blank_count": 0,
+  "expected_block_without_concrete_failcode_count": 0,
+  "creative_output_certified_not_false_count": 0,
+  "expected_block_failures": [
+    "NO_EXPECTED_BLOCK_FAILURES"
+  ],
+  "creative_output_certified_failures": [
+    "NO_CREATIVE_OUTPUT_CERTIFIED_FAILURES"
+  ],
+  "json_invalid_failures": [
+    "NO_JSON_INVALID_FAILURES"
+  ],
+  "H151_CLI_SUMMARY_NO_NULL_ALL_COMMANDS": "PASS",
+  "H152_EXPECTED_BLOCK_STDOUT_NO_NULL_PARITY": "PASS",
+  "H153_MIGRATION_UPDATE_STDOUT_NO_NULL_PARITY": "PASS",
+  "H154_CLI_OUTPUT_JSON_STDOUT_PARITY_NO_NULL": "PASS",
+  "H155_RUNTIME_GATES_ADDED": "PASS",
+  "H156_RELEASE_DOCS_UPDATED": "PASS",
+  "mutation_self_test_pass_source": "H63_MUTATION_SUITE_EXECUTABLE_BOUNDED_TIME_PROOF",
+  "mutation_self_test_result": "PASS",
+  "mutation_self_test_mutation_count": 475,
+  "N1_N10_X_MINIMAL_INTERMEDIATE_COMPLETE_PASS_SOURCE": "H62_CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT_PROOF",
+  "N1_N10_X_MINIMAL_INTERMEDIATE_COMPLETE_RESULT": "PASS",
+  "N1_N10_X_MINIMAL_INTERMEDIATE_COMPLETE_COUNT": "30/30 PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "result": "PASS",
+  "fail_codes": []
+}

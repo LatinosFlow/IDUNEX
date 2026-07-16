@@ -1,0 +1,30 @@
+name: Hallazgo de auditoría
+about: Registrar un hallazgo M02/M03 o de proyecto/runtime
+title: "AUD-###: "
+labels: [audit, EN_REVISION]
+body:
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Capa
+      options: [ENGINE_LEVEL, PROJECT_LEVEL, AGENT_LEVEL]
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidencia
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impacto
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_action
+    attributes:
+      label: Acción recomendada
+    validations:
+      required: true

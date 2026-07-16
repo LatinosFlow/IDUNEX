@@ -1,0 +1,175 @@
+{
+  "result": "PASS",
+  "matrix_results": [
+    {
+      "case": "age_evolution_+2",
+      "result": "PASS",
+      "expected": "DELIVERY/PRECHECK PASS",
+      "delivery_status": "UPDATE_CONTRACT_ACCEPTED",
+      "human_readable_result": "DELIVERY_PASS",
+      "expected_block": false,
+      "fail_codes": [],
+      "elapsed_ms": 1,
+      "command": "validate-update-contract age_evolution_+2",
+      "stdout_hash": "3ab40e5a0e320237b94766fe46f59eea85cddcc4b9db578fc0ac0a5bbf7bbd5a",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "set_wardrobe_safe_apparel",
+      "result": "PASS",
+      "expected": "DELIVERY/PRECHECK PASS",
+      "delivery_status": "UPDATE_CONTRACT_ACCEPTED",
+      "human_readable_result": "DELIVERY_PASS",
+      "expected_block": false,
+      "fail_codes": [],
+      "elapsed_ms": 1,
+      "command": "validate-update-contract set_wardrobe_safe_apparel",
+      "stdout_hash": "179cddec5b69419a05659c61ceee88143214947207058da6c0463d7bcf06991c",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "set_role_noop",
+      "result": "PASS",
+      "expected": "DELIVERY/PRECHECK PASS",
+      "delivery_status": "UPDATE_CONTRACT_ACCEPTED",
+      "human_readable_result": "DELIVERY_PASS",
+      "expected_block": false,
+      "fail_codes": [],
+      "elapsed_ms": 1,
+      "command": "validate-update-contract set_role_noop",
+      "stdout_hash": "24ea4843c99bc66b7c64ecf08d0d5537f050330c07dda6abf2e204dca96385ca",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "set_brand_usage_scope_demo_internal_test",
+      "result": "PASS",
+      "expected": "DELIVERY/PRECHECK PASS",
+      "delivery_status": "UPDATE_CONTRACT_ACCEPTED",
+      "human_readable_result": "DELIVERY_PASS",
+      "expected_block": false,
+      "fail_codes": [],
+      "elapsed_ms": 1,
+      "command": "validate-update-contract set_brand_usage_scope_demo_internal_test",
+      "stdout_hash": "015f7c52d4b0581d858ce91197928d3cded0a3c920fb9c31b6103abeac8e695e",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "validate_update_contract_locked_face",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "fail_codes": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_validate_update_contract_locked_face",
+      "stdout_hash": "60e72339e69cae2b7237a666175b4627ffe060b9ecfb37dcab0c364cb37729fd",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0,
+      "expected": "BLOCK_EXPECTED_PASS"
+    },
+    {
+      "case": "update_project_locked_face",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+      "fail_codes": [
+        "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_update_project_locked_face",
+      "stdout_hash": "675b02ee5f4a5206503d6752979622c5390eae29ddc490ea37adc153380c46ad",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0,
+      "expected": "BLOCK_EXPECTED_PASS"
+    },
+    {
+      "case": "update_project_selector_ambiguous_N2",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "FAIL_UPDATE_TARGET_MODEL_NOT_FOUND",
+      "fail_codes": [
+        "FAIL_UPDATE_TARGET_MODEL_NOT_FOUND"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_update_project_selector_ambiguous_N2",
+      "stdout_hash": "3c31aead287df455cf852609140893259aab73c90b80caa6ddb72f31847992b9",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0,
+      "expected": "BLOCK_EXPECTED_PASS"
+    },
+    {
+      "case": "migrate_project_unknown_engine",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED_TARGET_ENGINE_ABSENT",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "fail_codes": [
+        "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_migrate_project_unknown_engine",
+      "stdout_hash": "63ccc6de0ec714cb2a3a8811792943750693e6fdbc57cf62c708904d351630e6",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0,
+      "expected": "BLOCK_EXPECTED_PASS"
+    },
+    {
+      "case": "update_project_by_engine_unknown_engine",
+      "result": "PASS",
+      "delivery_status": "BLOCKED_EARLY_EXPECTED_TARGET_ENGINE_ABSENT",
+      "human_readable_result": "BLOCK_EXPECTED_PASS",
+      "expected_block": true,
+      "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+      "fail_codes": [
+        "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+      ],
+      "elapsed_ms": 1,
+      "command": "executed_cli_case_update_project_by_engine_unknown_engine",
+      "stdout_hash": "58ea5f36c73d348e21a0363803ad717569cc2eaa79ba158769480fd1503854aa",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0,
+      "expected": "BLOCK_EXPECTED_PASS"
+    },
+    {
+      "case": "compatible_migration",
+      "result": "PASS",
+      "expected": "MIGRATION_SIMULATED_PASS",
+      "delivery_status": "MIGRATION_SIMULATED_PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "expected_block": false,
+      "fail_codes": [],
+      "elapsed_ms": 1,
+      "command": "compatible_migration",
+      "stdout_hash": "ef159dac4b95721ae21a51cd84412e6b06f9885098b4ca0b64c6f1dabd520100",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    },
+    {
+      "case": "compatible_update_project_by_engine",
+      "result": "PASS",
+      "expected": "MIGRATION_SIMULATED_PASS",
+      "delivery_status": "MIGRATION_SIMULATED_PASS",
+      "human_readable_result": "DELIVERY_PASS",
+      "expected_block": false,
+      "fail_codes": [],
+      "elapsed_ms": 1,
+      "command": "compatible_update_project_by_engine",
+      "stdout_hash": "d31b209034817604738a1688073e1cbd94dcbb5e8991a8d5477f1304712ac5d3",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rc": 0
+    }
+  ],
+  "fail_codes": []
+}

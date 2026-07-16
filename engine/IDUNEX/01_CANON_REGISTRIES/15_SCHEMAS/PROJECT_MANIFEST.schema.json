@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-idunex-schema-policy": "PRODUCTIVE_BASE_ENGINE_SCHEMA; accepts current runtime fields, requires productive keys, forbids weakening by deleting useful JSON properties.",
+  "x-base-sha-audited": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-updated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "$id": "IDUNEX/15_SCHEMAS/PROJECT_MANIFEST.schema.json",
+  "title": "PROJECT_MANIFEST productive schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "project_id",
+    "engine_version",
+    "project_version",
+    "project_type",
+    "output_modalities",
+    "source_scope",
+    "identity_lock_scope",
+    "qa_scope",
+    "delivery_scope",
+    "validation_state",
+    "release_state",
+    "real_output_policy",
+    "production_state"
+  ],
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "engine_version": {
+      "type": "string",
+      "pattern": "IDUNEX_MOTOR_v1\\.0\\.0"
+    },
+    "project_version": {
+      "const": "v1.0.0"
+    },
+    "project_type": {
+      "type": "string",
+      "minLength": 3
+    },
+    "output_modalities": {
+      "type": "array",
+      "minItems": 1
+    },
+    "source_scope": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 3,
+          "description": "Canonical collapsed authority, normally ALL_ACTIVE_SOURCES_001_049."
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^(ALL_ACTIVE_SOURCES_001_049|SRC_[0-9]{3}.*)$"
+          },
+          "description": "Expanded explicit source ids; empty arrays are forbidden."
+        }
+      ]
+    },
+    "identity_lock_scope": {
+      "type": "array",
+      "minItems": 1
+    },
+    "qa_scope": {
+      "type": "array",
+      "minItems": 1
+    },
+    "delivery_scope": {
+      "type": "array",
+      "minItems": 1
+    },
+    "validation_state": {
+      "type": "string",
+      "minLength": 3
+    },
+    "release_state": {
+      "type": "string",
+      "minLength": 3
+    },
+    "real_output_policy": {
+      "type": "string",
+      "minLength": 5
+    },
+    "production_state": {
+      "type": "string",
+      "minLength": 3
+    },
+    "legacy_global_go_policy": {
+      "type": "string",
+      "pattern": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^SRC_[0-9]{3}.*$"
+      }
+    },
+    "source_scope_list": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^SRC_[0-9]{3}.*$"
+      }
+    }
+  },
+  "x-previous-base-sha256": "NON_OPERATIONAL_PREVIOUS_BASES_RECORDED_IN_REPORTS",
+  "x-previous-base-policy": "HISTORICAL_PREVIOUS_BASE_NOT_OPERATIONAL",
+  "x-correction-base-sha256": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-previous-base-marker": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-previous-base-do-not-use": "DO_NOT_USE_AS_BASE",
+  "x-historical-ca146-surgical-fix-note": "P0-02 source_scope accepts canonical string or explicit non-empty source id array; source_scope=[] fails.",
+  "x-historical-ca146-surgical-fix-policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-historical-ca146-surgical-fix-do-not-use-as-base": "DO_NOT_USE_AS_BASE"
+}

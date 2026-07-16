@@ -1,0 +1,9 @@
+{
+  "gate_id": "H131_ACTIVE_FIXTURE_NEGATIVE_PROOF_AUTHORITY_CLASSIFICATION_GATE",
+  "result": "PASS",
+  "fail_codes": [],
+  "negative_fixtures_classified": "NEGATIVE_FIXTURE_NON_AUTHORITY",
+  "active_authority_fail_contradictions": 0,
+  "mutation_fixtures_in_closure_proof": 0,
+  "creative_output_certified": false
+}

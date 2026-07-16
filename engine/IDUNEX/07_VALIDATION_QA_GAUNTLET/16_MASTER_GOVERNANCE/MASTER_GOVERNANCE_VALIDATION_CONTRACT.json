@@ -1,0 +1,39 @@
+{
+  "contract_id": "MASTER_GOVERNANCE_VALIDATION_CONTRACT",
+  "required_checks": [
+    "stable_family_coverage",
+    "rule_id_coverage",
+    "ZIP_EXT_001",
+    "level_contracts",
+    "root_equivalence",
+    "output_contracts",
+    "RES_policy",
+    "update_migration_contracts",
+    "H_demotion",
+    "no_bloat_no_history",
+    "Profile360_61",
+    "TechExt_284",
+    "runtime_10_plus_N",
+    "prompt_pack_A_J",
+    "matrix_31_or_N1_N10_x3",
+    "mutation_self_test",
+    "BRD_PAL_001_no_active_palette_leakage",
+    "truthfulness"
+  ],
+  "expected": {
+    "VALIDATORS_FAIL": 0,
+    "BLOCKING_WARNINGS": 0,
+    "FAIL_CODES": [],
+    "SCORE": "10/10"
+  },
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "MAX_MATRIX_CURRENT_RUN": "PASS",
+  "N1_TO_N10_X3_MATRIX": "PASS",
+  "VALIDATORS_FAIL": 0,
+  "BLOCKING_WARNINGS": 0,
+  "FAIL_CODES": [],
+  "SCORE": "10/10",
+  "CLOSURE_DECISION": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
+  "DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY": "PASS",
+  "CLI_LIFECYCLE_AND_MATRIX_VERSION_LINEAGE_PARITY": "PASS"
+}

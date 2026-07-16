@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "matrix_label": "H37_H51_AGENT_FORENSIC_DELIVERY",
+  "checks": {
+    "engine_zip_sha_companion": "PASS",
+    "testzip": "PASS_AFTER_FINAL_BUILD",
+    "root_unico": "IDUNEX",
+    "json_invalid": 0,
+    "json_schema_invalid": 0,
+    "schema_validator_result": "PASS",
+    "runtime_validator_result": "PASS",
+    "validators_fail": 0,
+    "blocking_warnings": 0,
+    "h01_h36_preserved": "PASS",
+    "h37_h51_applied": "PASS",
+    "project_generation_matrix_n1_n10_minimal_intermediate_complete": "PASS_EXECUTED_N1_N10_X3_REOPENED_ZIP_PROOFS_H56_H62_NO_PASS_BY_CONTRACT",
+    "same_version_update_matrix": "PASS",
+    "higher_engine_compatible_migration": "PASS",
+    "unknown_engine_blocked_early": "PASS",
+    "conversational_agent_test_harness": "PASS",
+    "h58_h64_applied": "PASS",
+    "input_alias_materialization_truthfulness": "PASS",
+    "generated_project_canonical_filename_parity": "PASS",
+    "mutation_suite_executable_bounded_time": "PASS",
+    "active_proof_truthfulness_legacy_demotion": "PASS"
+  },
+  "truthfulness": "No real creative asset is certified by this motor package; asset-level EXECUTED_PASS remains required. factory-contract-only PASS wording is not used as a substitute for executed proof."
+}

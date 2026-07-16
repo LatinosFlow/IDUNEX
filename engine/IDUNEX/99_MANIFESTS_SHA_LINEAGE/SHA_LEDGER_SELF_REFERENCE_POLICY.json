@@ -1,0 +1,23 @@
+{
+  "policy_id": "SHA_LEDGER_SELF_REFERENCE_POLICY_MANIFEST_LINEAGE_TRUTHFULNESS",
+  "semantic_version": "v1.0.0",
+  "result": "PASS",
+  "SELF_HASH_EXCLUDED_WITH_REASON": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+  "included_patterns": [
+    "all active files under IDUNEX except explicit self-excluded internal manifests"
+  ],
+  "excluded_patterns": [
+    "99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json",
+    "99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json",
+    "99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json",
+    "99_MANIFESTS_SHA_LINEAGE/MANIFEST.json",
+    "99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt",
+    "99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt"
+  ],
+  "excluded_count": 6,
+  "reason_code": "NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY",
+  "reason_human": "Internal manifests do not hash themselves or equivalent hash ledgers. This prevents self-certification and stale fixed-point claims while preserving full coverage for every non-excluded active file.",
+  "validator_expectation": "extra=0, missing=0, mismatch=0 for every non-excluded file; excluded files must be explicit and minimal.",
+  "fail_code": "FAIL_INTERNAL_MANIFEST_STALE_OR_INCOMPLETE",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

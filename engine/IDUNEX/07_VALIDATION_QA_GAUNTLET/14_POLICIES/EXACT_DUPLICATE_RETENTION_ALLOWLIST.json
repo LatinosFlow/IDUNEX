@@ -1,0 +1,311 @@
+{
+  "semantic_version": "v1.0.0",
+  "version_bump": "NO",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "correction_scope": "RENORMALIZACION_VERSION_OFICIAL_v1.0.0_Y_DEMO_000_2_MODELOS",
+  "previous_scope_compatibility": "MUTATION_SELF_TEST_H62_MATRIX_PROOF_PARITY_AND_ACTIVE_LEDGER_EXCLUSION_CLARITY",
+  "legacy_scope_compatibility": "DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY",
+  "scope": "COMPATIBILITY_ALIAS_EXACT_DUPLICATE_RETENTION_ALLOWLIST",
+  "surface_role": "COMPATIBILITY_ALIAS_NON_AUTHORITY",
+  "recompute_rule": "duplicate groups recomputed from active tree excluding 14_HISTORICAL_NON_AUTHORITY and self/allowlist/manifests ledgers",
+  "duplicate_group_count": 17,
+  "duplicate_file_count": 35,
+  "allowlist_group_count": 17,
+  "allowlist_file_count": 35,
+  "groups": [
+    {
+      "sha256": "abebb4e4c20a4df6aef8be8c6ebaad577a42d75a51da230c434878b920ce6222",
+      "paths": [
+        "00_INDEX/CHANGELOG.md",
+        "11_RELEASE_INTERNAL/CHANGELOG.md"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "00_INDEX/CHANGELOG.md",
+      "mirror_paths": [
+        "11_RELEASE_INTERNAL/CHANGELOG.md"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "6345559e645ffc847a4bbad5769d9811710b461603ba414086c607fbb4936e5f",
+      "paths": [
+        "00_INDEX/FINAL_AUDIT_REPORT.md",
+        "11_RELEASE_INTERNAL/FINAL_AUDIT_REPORT.md",
+        "99_MANIFESTS_SHA_LINEAGE/FINAL_AUDIT_REPORT.md"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "00_INDEX/FINAL_AUDIT_REPORT.md",
+      "mirror_paths": [
+        "11_RELEASE_INTERNAL/FINAL_AUDIT_REPORT.md",
+        "99_MANIFESTS_SHA_LINEAGE/FINAL_AUDIT_REPORT.md"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 3,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "b5e1e65113967ac51ed1f7bb3e1ff5070d763fe7d3512068bac43b0e4cc97892",
+      "paths": [
+        "00_INDEX/RELEASE_CERTIFICATE.txt",
+        "11_RELEASE_INTERNAL/RELEASE_CERTIFICATE.txt"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "00_INDEX/RELEASE_CERTIFICATE.txt",
+      "mirror_paths": [
+        "11_RELEASE_INTERNAL/RELEASE_CERTIFICATE.txt"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "60533d7a3bc866c333b6bf77d97a469035262dbe02fa586d72bc2376b65cc035",
+      "paths": [
+        "03_PROJECT_FACTORY/04_DELIVERY_GATES/H245_H260_AGENT_VISUAL_ROUTING_CANONICAL_GATES.json",
+        "04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_AGENT_VISUAL_ROUTING_CANON.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "03_PROJECT_FACTORY/04_DELIVERY_GATES/H245_H260_AGENT_VISUAL_ROUTING_CANONICAL_GATES.json",
+      "mirror_paths": [
+        "04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_AGENT_VISUAL_ROUTING_CANON.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "d0189bc666392a270834bbadc9626af0f14d646fcc6738d42a8e809888c4d5ac",
+      "paths": [
+        "03_PROJECT_FACTORY/04_DELIVERY_GATES/H245_H260_AGENT_VISUAL_ROUTING_CANONICAL_GATES.md",
+        "04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_AGENT_VISUAL_ROUTING_CANON.md"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "03_PROJECT_FACTORY/04_DELIVERY_GATES/H245_H260_AGENT_VISUAL_ROUTING_CANONICAL_GATES.md",
+      "mirror_paths": [
+        "04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_AGENT_VISUAL_ROUTING_CANON.md"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "82199e874db7546e1a1841142e3f07f6239834a5c287f07d1c22d1a4ee2327ce",
+      "paths": [
+        "03_PROJECT_FACTORY/04_DELIVERY_GATES/P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_GATE.json",
+        "07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/P034_GATE_IMPLEMENTATION_MATRIX.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "03_PROJECT_FACTORY/04_DELIVERY_GATES/P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_GATE.json",
+      "mirror_paths": [
+        "07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/P034_GATE_IMPLEMENTATION_MATRIX.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "48d9b7c2d2581460e88a434e91530d4d6769c511cd1eb05d0b8a5b577a72be8e",
+      "paths": [
+        "04_AGENT_FACTORY/03_INSTRUCTIONS/AGENT_INSTRUCTIONS_CORE.md",
+        "04_AGENT_FACTORY/11_H281_H310_AGENT_RUNTIME/AGENT_INSTRUCTIONS_ROUTER_UNDER_8000.md"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "04_AGENT_FACTORY/03_INSTRUCTIONS/AGENT_INSTRUCTIONS_CORE.md",
+      "mirror_paths": [
+        "04_AGENT_FACTORY/11_H281_H310_AGENT_RUNTIME/AGENT_INSTRUCTIONS_ROUTER_UNDER_8000.md"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "09765f0f8f1b92c60332e46e519713f9e6d73eae4ba5191dc474dbf446c25a09",
+      "paths": [
+        "04_AGENT_FACTORY/06_AGENT_CONFIG_8000/CONFIG_8000_CANONICAL_COUNT_POLICY.json",
+        "04_AGENT_FACTORY/CONFIG_8000_SEMANTIC_DENSITY_POLICY.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "04_AGENT_FACTORY/06_AGENT_CONFIG_8000/CONFIG_8000_CANONICAL_COUNT_POLICY.json",
+      "mirror_paths": [
+        "04_AGENT_FACTORY/CONFIG_8000_SEMANTIC_DENSITY_POLICY.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "53e4b604f78f71c72d7d96fa5e3a58bc49bd24bb9c572211da8cfd80e0ee1ec0",
+      "paths": [
+        "04_AGENT_FACTORY/06_AGENT_CONFIG_8000/CONFIG_8000_CANONICAL_COUNT_POLICY.md",
+        "04_AGENT_FACTORY/CONFIG_8000_SEMANTIC_DENSITY_POLICY.md"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "04_AGENT_FACTORY/06_AGENT_CONFIG_8000/CONFIG_8000_CANONICAL_COUNT_POLICY.md",
+      "mirror_paths": [
+        "04_AGENT_FACTORY/CONFIG_8000_SEMANTIC_DENSITY_POLICY.md"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "551fa15de142a8199f9ecf1b4d66708d140b8a420a523e0ceeb107a791c5fd67",
+      "paths": [
+        "06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/IDUNEX_VENDOR_CAPABILITY_DECLARATIONS_H71_H80.json",
+        "06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/P034_VENDOR_CAPABILITY_DECLARATIONS.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/IDUNEX_VENDOR_CAPABILITY_DECLARATIONS_H71_H80.json",
+      "mirror_paths": [
+        "06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/P034_VENDOR_CAPABILITY_DECLARATIONS.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "db49a59ef44db7438b07a9e56db773677f6a6e8194558ab880335533c8cb3a13",
+      "paths": [
+        "09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json",
+        "09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json",
+      "mirror_paths": [
+        "09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "cb2b74a94edcc460f1903c1d0339adde4c93f6ece2e02785876ac9097665cc5b",
+      "paths": [
+        "11_RELEASE_INTERNAL/GOVERNANCE_IMPLEMENTED_FINAL_CLOSURE_REPORT.json",
+        "99_MANIFESTS_SHA_LINEAGE/GOVERNANCE_IMPLEMENTED_FINAL_VALIDATION_SUMMARY.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "11_RELEASE_INTERNAL/GOVERNANCE_IMPLEMENTED_FINAL_CLOSURE_REPORT.json",
+      "mirror_paths": [
+        "99_MANIFESTS_SHA_LINEAGE/GOVERNANCE_IMPLEMENTED_FINAL_VALIDATION_SUMMARY.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "a073d145a2a80ea51c662167ff408bfbbf58a7f7cdc345c34d17cec9dc4d07d8",
+      "paths": [
+        "11_RELEASE_INTERNAL/H361_H380_MATRIX_COMPACT_EVIDENCE.json",
+        "99_MANIFESTS_SHA_LINEAGE/H361_H380_MATRIX_COMPACT_EVIDENCE.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "11_RELEASE_INTERNAL/H361_H380_MATRIX_COMPACT_EVIDENCE.json",
+      "mirror_paths": [
+        "99_MANIFESTS_SHA_LINEAGE/H361_H380_MATRIX_COMPACT_EVIDENCE.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "7e8fdeb6a41a0418785aac8ea323b0b2d53e4e8a664ebc377abc1bcea47ee9fc",
+      "paths": [
+        "11_RELEASE_INTERNAL/MUTATION_SUITE_H237_H244.json",
+        "99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "11_RELEASE_INTERNAL/MUTATION_SUITE_H237_H244.json",
+      "mirror_paths": [
+        "99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "96c253e8070f27055501ed6e5294ab98b9cb0977dc606e21f28222d0e086cf34",
+      "paths": [
+        "99_MANIFESTS_SHA_LINEAGE/H135_H142_NEGATIVE_MUTATION_CASES_REPORT.json",
+        "99_MANIFESTS_SHA_LINEAGE/H138_EXPECTED_BLOCK_NEGATIVE_MUTATION_SUITE_REPORT.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "99_MANIFESTS_SHA_LINEAGE/H135_H142_NEGATIVE_MUTATION_CASES_REPORT.json",
+      "mirror_paths": [
+        "99_MANIFESTS_SHA_LINEAGE/H138_EXPECTED_BLOCK_NEGATIVE_MUTATION_SUITE_REPORT.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "5496ba8260ee203566998be19564c08bad66594e126de4284df3ba170b4f5f5f",
+      "paths": [
+        "99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/PROJECT_31_MATRIX_H261_H268_SUMMARY.json",
+        "99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_PROJECT_MATRIX_COMPLETION_PROOF.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/PROJECT_31_MATRIX_H261_H268_SUMMARY.json",
+      "mirror_paths": [
+        "99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_PROJECT_MATRIX_COMPLETION_PROOF.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    },
+    {
+      "sha256": "30bf28d00aae3e7e3f6d065081e778b2bb24879e7ab8a3e0f27eef38307cf868",
+      "paths": [
+        "99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_ACTIVE_AUTHORITY_STALE_DUPLICATE_GUARD.json",
+        "99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/guard_final.json"
+      ],
+      "reason_code": "ENGINE_CANONICAL_MIRROR_RETENTION",
+      "authority_path": "99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_ACTIVE_AUTHORITY_STALE_DUPLICATE_GUARD.json",
+      "mirror_paths": [
+        "99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/guard_final.json"
+      ],
+      "consumer": "engine_runtime_validation",
+      "retention_rule": "exact duplicate retained only where canonical mirror or non-authority traceability is required; current hashes must match recomputation excluding historical and self/allowlist/manifests ledgers",
+      "blocking_if_missing": true,
+      "path_count": 2,
+      "retention_status": "ALLOWLISTED_REQUIRED"
+    }
+  ],
+  "result": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "active_authority": false
+}

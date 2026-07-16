@@ -1,0 +1,20 @@
+{
+  "gate_id": "H81",
+  "semantic_version": "v1.0.0",
+  "correction_scope_label": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "creative_output_certified": false,
+  "result": "PASS",
+  "created_at": "2026-06-30 PROJECT_DECLARED_TIMEZONE",
+  "ACTIVE_RUNTIME_VALIDATOR_H01_H80_ALIGNMENT_GATE": "PASS",
+  "required_scope": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80",
+  "h01_h80_preserved": "PASS",
+  "h71_h80_validated_executably": "PASS",
+  "SAFE_APPAREL_WATERMARK_CONVERSATIONAL_SUITE_ES_EN": "PASS 40/40",
+  "AGENT10N_PROPAGATION_LINTER_SAFE_APPAREL_WATERMARK": "PASS",
+  "IDUNEX_WATERMARK_DEFAULT_ON_AGENT10N": "PASS",
+  "IDUNEX_WATERMARK_EXPLICIT_OPTOUT_ONLY": "PASS",
+  "IDUNEX_WATERMARK_VENDOR_OVERLAY_FALLBACK": "PASS",
+  "fail_codes": []
+}

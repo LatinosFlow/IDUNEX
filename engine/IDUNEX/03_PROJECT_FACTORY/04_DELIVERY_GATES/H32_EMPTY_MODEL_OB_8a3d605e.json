@@ -1,0 +1,10 @@
+{
+  "gate_id": "H32_EMPTY_MODEL_OBJECTS_N1_N10_ROLE_DECOLLISION_GATE",
+  "gate_name": "EMPTY_MODEL_OBJECTS_N1_N10_ROLE_DECOLLISION_GATE",
+  "semantic_version": "v1.0.0",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "status": "ACTIVE_VALIDATED",
+  "blocking": true,
+  "authority": "DIRECT_CANONICAL_ENGINE_SURFACE",
+  "fallback_fix": "Repair EMPTY_MODEL_OBJECTS_N1_N10_ROLE_DECOLLISION_GATE in canonical motor, rebuild package, reopen ZIP and rerun full H01-H36 audit matrix."
+}

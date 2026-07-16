@@ -1,0 +1,10 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "roadmap": [
+    "CLI validator local",
+    "HTML audit dashboard",
+    "historical change registry",
+    "commercial templates for PROJECT_BRAND_ENTITY internal service"
+  ],
+  "status": "DOCUMENTED_NOT_FUNCTIONAL_P0_GATE"
+}

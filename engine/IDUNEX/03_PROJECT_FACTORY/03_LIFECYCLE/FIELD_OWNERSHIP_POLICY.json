@@ -1,0 +1,32 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "user_can_define": [
+    "project_id",
+    "project_name",
+    "model_count",
+    "visible_adult_ages",
+    "roles",
+    "optional_names",
+    "personalization_level",
+    "creative_restrictions"
+  ],
+  "engine_must_define": [
+    "model_id",
+    "model_code",
+    "aliases",
+    "Profile360_FULL60",
+    "TechExt_FULL10",
+    "anchors",
+    "runtime",
+    "manifests_SHA",
+    "lineage",
+    "sidecar_templates",
+    "golden_tests",
+    "audit_reports",
+    "fallback_fixes",
+    "evidence_bundle"
+  ],
+  "ask_when": "critical_not_inferable_or_policy_locked",
+  "fallback_fix": "Classify every unresolved field as user_owned, engine_owned or blocked before delivery."
+}

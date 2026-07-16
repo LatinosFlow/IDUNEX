@@ -1,0 +1,2444 @@
+{
+  "status": "EN_REVISION",
+  "purpose": "Path remap for Windows/GitHub Desktop compatibility. Contents are preserved; selected non-authority or long evidence paths are shortened.",
+  "max_relative_path_length_target": 125,
+  "generated_utc": "2026-07-16T16:18:49.032928+00:00",
+  "remap_count": 487,
+  "mappings": [
+    {
+      "original_path": "docs/audit/IA-IDUNEX-PlanAuditoriaMotor-M02-M03-20260716-v1-EN_REVISION.md",
+      "windows_safe_path": "docs/audit/IA_IDUNEX_PlanAudi_0e788546.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "docs/project-demo/IA-IDUNEX-Proyecto000DemoGate-20260716-v1-EN_REVISION.md",
+      "windows_safe_path": "docs/project-demo/IA_IDUNEX_Proyecto_97b871fe.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "docs/release/IA-IDUNEX-ReleaseGates-20260716-v1-EN_REVISION.md",
+      "windows_safe_path": "docs/release/IA_IDUNEX_ReleaseG_95bc6d37.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/FINAL_ACCEPTANCE_CRITERIA_100_PERCENT_10_10.json",
+      "windows_safe_path": "engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/FINAL_ACCEPTANCE_C_15e020b0.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/FINAL_ACCEPTANCE_CRITERIA_100_PERCENT_10_10.md",
+      "windows_safe_path": "engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/FINAL_ACCEPTANCE_C_8b3eab1c.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PATH_REFERENCE_REWRITE_AFTER_RENUMBERING.json",
+      "windows_safe_path": "engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PATH_REFERENCE_REW_fa73fd5d.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PATH_REFERENCE_REWRITE_AFTER_RENUMBERING.md",
+      "windows_safe_path": "engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PATH_REFERENCE_REW_9b6a4d5a.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/15_SCHEMAS/H37_H51_PROJECT_DELIVERY_ARTIFACTS.schema.json",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/15_SCHEMAS/H37_H51_PROJECT_DE_2501e840.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/15_SCHEMAS/MASTER_GOVERNANCE_RULE_REGISTRY.schema.json",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/15_SCHEMAS/MASTER_GOVERNANCE__758ce4d2.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/MODEL_CAUSALITY_ENGINE_FULL10/MODEL_CAUSALITY_ENGINE_FULL_10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/MODEL_CAUSALITY__d75c17de/MODEL_CAUSALITY_ENGINE_FULL_10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/MODEL_CAUSALITY_ENGINE_FULL10/MODEL_CAUSALITY_GRAPH_FULL10.json",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/MODEL_CAUSALITY__d75c17de/MODEL_CAUSALITY_GRAPH_FULL10.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/ACTING_FACS_MICROGESTURE_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/ACTING_FACS_MICROGESTURE_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/ADULT_AGE_BODY_VOICE_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/ADULT_AGE_BODY_VOICE_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/ANTI_SAME_FACE_BODY_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/ANTI_SAME_FACE_BODY_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/BODY_ANTHROPOMETRY_FITNESS_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/BODY_ANTHROPOMETRY_FITNESS_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/COPILOT_DOCX_GROUNDING_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/COPILOT_DOCX_GROUNDING_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/FACE_FORENSIC_LANDMARKS_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/FACE_FORENSIC_LANDMARKS_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/PSYCHOLOGY_MEMORY_BIOGRAPHY_OPERATIONAL.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/PSYCHOLOGY_MEMORY_BIOGRAPHY_OPERATIONAL.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/SIDECAR_C2PA_WATERMARK_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/SIDECAR_C2PA_WATERMARK_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/SKIN_HAIR_DERMATOLOGY_MEASURABLES.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/SKIN_HAIR_DERMATOLOGY_MEASURABLES.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/SUNO_MUSIC_IDENTITY_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/SUNO_MUSIC_IDENTITY_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/VIDEO_BIOMECHANICS_CONTINUITY_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/VIDEO_BIOMECHANICS_CONTINUITY_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/VOICE_AGE_PROSODY_ACCENT_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/VOICE_AGE_PROSODY_ACCENT_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES/WARDROBE_TEXTILE_BODYWEAR_EDITORIAL.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_SYSTEM/06_MEASURABLE_PA_21153b4a/WARDROBE_TEXTILE_BODYWEAR_EDITORIAL.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/00_PROFILE360_TECH_EXTENSION_CONTRACT.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/00_PROFILE360_TECH_EXTENSION_CONTRACT.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/01_BODY360_MEASURABLES_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/01_BODY360_MEASURABLES_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/02_FACE360_LANDMARK_TOLERANCE_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/02_FACE360_LANDMARK_TOLERANCE_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/03_SKIN360_LIGHT_RESPONSE_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/03_SKIN360_LIGHT_RESPONSE_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/04_HAIR360_TECHNICAL_PROFILE_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/04_HAIR360_TECHNICAL_PROFILE_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/05_HANDS_FEET360_DETAIL_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/05_HANDS_FEET360_DETAIL_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/06_WARDROBE360_SIZE_SYSTEM_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/06_WARDROBE360_SIZE_SYSTEM_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/07_MOTION360_VIDEO_BIOMECHANICS_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/07_MOTION360_VIDEO_BIOMECHANICS_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/08_VOICE360_ADVANCED_AUDIO_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/08_VOICE360_ADVANCED_AUDIO_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/09_EXPRESSION360_FACS_LITE_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/09_EXPRESSION360_FACS_LITE_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/10_CAMERA360_MODEL_RULES_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/10_CAMERA360_MODEL_RULES_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/11_LIGHTING360_MODEL_RESPONSE_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/11_LIGHTING360_MODEL_RESPONSE_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/12_ENVIRONMENT360_COMPATIBILITY_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/12_ENVIRONMENT360_COMPATIBILITY_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/13_PAIRWISE360_DIFFERENTIATION_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/13_PAIRWISE360_DIFFERENTIATION_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/14_MASTER_VISUAL_ANCHORS_MANIFEST_CONTRACT.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/14_MASTER_VISUAL_A_15e7e707.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/15_CANON_COMPLETENESS_SCORECARD.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/15_CANON_COMPLETENESS_SCORECARD.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/16_PROFILE360_TECH_EXTENSION_VALIDATORS.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/16_PROFILE360_TECH_EXTENSION_VALIDATORS.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/17_PROFILE360_TECH_EXTENSION_SIDECAR_FIELDS.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/17_PROFILE360_TECH_3af85367.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/BLOCKED_TECH_EXT_NULL_INHERITANCE.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/BLOCKED_TECH_EXT_NULL_INHERITANCE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_FULL10_FIELD_CONTRACT_REGISTRY.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/TECHEXT_FULL10_FIELD_CONTRACT_REGISTRY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_FULL10_OFFICIAL_FIELD_REGISTRY.json",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/TECHEXT_FULL10_OFF_5d877c88.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_MATERIALIZATION_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/TECHEXT_MATERIALIZATION_GATE.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_MATERIALIZATION_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/TECHEXT_MATERIALIZATION_GATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_TEMPLATE_NULL_INHERITANCE_AUDIT.csv",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/TECHEXT_TEMPLATE_N_5e853d8d.csv",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHNICAL_EXTENSIONS_FULL10/TECHEXT_TEMPLATE_NULL_INHERITANCE_AUDIT.json",
+      "windows_safe_path": "engine/IDUNEX/01_CANON_REGISTRIES/PROFILE360_TECHN_c65d3be1/TECHEXT_TEMPLATE_N_4e19ca0d.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/README_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2/README_TEMPLATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_TEMPLATE_v1.0.0/TEMPLATE_MANIFEST.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/01_TEMPLATES/IDUNEX_PROJECT_T_03c23ec2/TEMPLATE_MANIFEST.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/03_LIFECYCLE/PROJECT_RETIREMENT_AND_ARCHIVE_PROTOCOL.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/03_LIFECYCLE/PROJECT_RETIREMENT_e9c8c9dd.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/03_LIFECYCLE/PROJECT_UPDATE_BY_ENGINE_UPDATE_PROTOCOL.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/03_LIFECYCLE/PROJECT_UPDATE_BY__fa888033.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/FINAL_REOPENED_PROJECT_ZIP_EXECUTION_PROOF_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/FINAL_REOPENED_PRO_828afab9.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/FINAL_REOPENED_PROJECT_ZIP_EXECUTION_PROOF_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/FINAL_REOPENED_PRO_49a0b1b4.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H245_H260_AGENT_VISUAL_ROUTING_CANONICAL_GATES.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H245_H260_AGENT_VI_4faed6b9.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H245_H260_AGENT_VISUAL_ROUTING_CANONICAL_GATES.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H245_H260_AGENT_VI_32d46350.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H269_H280_PROJECT_FACTORY_TRUTHFULNESS_AND_COMPANION_CLEAN.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H269_H280_PROJECT__a7b1a62c.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H269_H280_PROJECT_FACTORY_TRUTHFULNESS_AND_COMPANION_CLEAN.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H269_H280_PROJECT__c479bb96.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H281_H310_DIRECT_CANONICAL_ENGINE_CLOSURE/H281_H310_DIRECT_CANONICAL_POLICY.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H281_H310_DIRECT_de86597f/H281_H310_DIRECT_CANONICAL_POLICY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H281_H310_DIRECT_CANONICAL_ENGINE_CLOSURE/H281_H310_DIRECT_CANONICAL_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H281_H310_DIRECT_de86597f/H281_H310_DIRECT_CANONICAL_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H30_ACTIVE_SOURCE_KEYWORD_NAMED_MODEL_LEAKAGE_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H30_ACTIVE_SOURCE__7fd3cf37.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H30_ACTIVE_SOURCE_KEYWORD_NAMED_MODEL_LEAKAGE_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H30_ACTIVE_SOURCE__ec3c2d93.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H31_H22_SCANNER_TOKENLIST_EXPANSION_AND_LEDGER_HARDENING_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H31_H22_SCANNER_TO_aef88dbc.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H31_H22_SCANNER_TOKENLIST_EXPANSION_AND_LEDGER_HARDENING_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H31_H22_SCANNER_TO_68f71b9a.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H32_EMPTY_MODEL_OBJECTS_N1_N10_ROLE_DECOLLISION_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H32_EMPTY_MODEL_OB_8a3d605e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H32_EMPTY_MODEL_OBJECTS_N1_N10_ROLE_DECOLLISION_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H32_EMPTY_MODEL_OB_e4d1de73.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H33_ADVERSARIAL_EMPTY_INPUT_PROJECT_FACTORY_MATRIX_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H33_ADVERSARIAL_EM_f298b5e7.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H33_ADVERSARIAL_EMPTY_INPUT_PROJECT_FACTORY_MATRIX_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H33_ADVERSARIAL_EM_2a748e14.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H341_H360_DIRECT_CANONICAL_ENGINE_CLOSURE/H341_H360_DIRECT_CANONICAL_POLICY.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H341_H360_DIRECT_ffd2bc6d/H341_H360_DIRECT_CANONICAL_POLICY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H341_H360_DIRECT_CANONICAL_ENGINE_CLOSURE/H341_H360_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H341_H360_DIRECT_ffd2bc6d/H341_H360_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H34_UPDATE_AND_MIGRATION_REGRESSION_MATRIX_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H34_UPDATE_AND_MIG_d37b3e4e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H34_UPDATE_AND_MIGRATION_REGRESSION_MATRIX_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H34_UPDATE_AND_MIG_fa8da6d4.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H35_OFFICIAL_DOCS_AND_EXTERNAL_DELIVERY_7_OF_7_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H35_OFFICIAL_DOCS__6b542034.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H35_OFFICIAL_DOCS_AND_EXTERNAL_DELIVERY_7_OF_7_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H35_OFFICIAL_DOCS__351fd755.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H361_H380_DIRECT_CANONICAL_ENGINE_CLOSURE/H361_H380_DIRECT_CANONICAL_POLICY.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H361_H380_DIRECT_d3dadbdf/H361_H380_DIRECT_CANONICAL_POLICY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H361_H380_DIRECT_CANONICAL_ENGINE_CLOSURE/H361_H380_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H361_H380_DIRECT_d3dadbdf/H361_H380_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H36_NO_REGRESSION_FULL_SURFACE_FINAL_AUDIT_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H36_NO_REGRESSION__851bc42e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H36_NO_REGRESSION_FULL_SURFACE_FINAL_AUDIT_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H36_NO_REGRESSION__d662c7e8.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H37_INPUT_RICH_DIRECTION_FIELDS_MATERIALIZATION_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H37_INPUT_RICH_DIR_e2b19857.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H37_INPUT_RICH_DIRECTION_FIELDS_MATERIALIZATION_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H37_INPUT_RICH_DIR_f5a226ad.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H382R_EXTERNAL_WHOLE_ZIP_AUTHORITY_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H382R_EXTERNAL_WHO_672a29e3.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H391_H410_DIRECT_CANONICAL_ENGINE_CLOSURE/H391_H410_DIRECT_CANONICAL_POLICY.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H391_H410_DIRECT_2c03a01a/H391_H410_DIRECT_CANONICAL_POLICY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H391_H410_DIRECT_CANONICAL_ENGINE_CLOSURE/H391_H410_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H391_H410_DIRECT_2c03a01a/H391_H410_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H42_SOURCE_RUNTIME_LEDGER_MINIFIED_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H42_SOURCE_RUNTIME_1932c0ac.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H43_PROJECT_ENTITY_BRAND_REGISTRY_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H43_PROJECT_ENTITY_1fa39912.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H48_CONVERSATIONAL_AGENT_TEST_HARNESS_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H48_CONVERSATIONAL_8fe6f541.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H48_CONVERSATIONAL_AGENT_TEST_HARNESS_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H48_CONVERSATIONAL_29b7a7ac.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H50_RUNTIME_PARITY_AND_MINIFICATION_SAFETY_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H50_RUNTIME_PARITY_f96a5dfa.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H50_RUNTIME_PARITY_AND_MINIFICATION_SAFETY_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H50_RUNTIME_PARITY_74fe5726.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H51_PROJECT_CERTIFICATE_COMPLETENESS_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H51_PROJECT_CERTIF_f6cac0ed.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H51_PROJECT_CERTIFICATE_COMPLETENESS_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H51_PROJECT_CERTIF_8ae69aaf.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAREL_WATERMARK_AGENT10N_CANONICAL_GATES.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAR_988b3417.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAREL_WATERMARK_AGENT10N_CANONICAL_GATES.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H71_H80_SAFE_APPAR_ed492131.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H81_H86_RUNTIME_SHA_AGENT10N_CLOSURE_GATES.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H81_H86_RUNTIME_SH_0c05cb64.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H81_H86_RUNTIME_SHA_AGENT10N_CLOSURE_GATES.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/H81_H86_RUNTIME_SH_ebd98913.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/P034_PROJECT_ENTIT_f112c141.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/P034_PROJECT_ENTIT_cc274dbc.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_CORE_SIBLING_PREFIX_CANON_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_CORE_SIBLI_38c8d0b1.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_CREATION_ONE_PASS_GUARANTEE_POLICY.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_CREATION_O_0a03adf5.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_CREATION_ONE_PASS_GUARANTEE_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_CREATION_O_2f2e0460.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_DELIVERY_BY_CONTRACT_NOT_COUNT_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_DELIVERY_B_dc4d0ad7.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_DELIVERY_BY_CONTRACT_NOT_COUNT_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_DELIVERY_B_ed29c76b.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_FACTORY_RETRY_LOOP_FOR_PACKAGING.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_FACTORY_RE_4f8a7184.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_FACTORY_RETRY_LOOP_FOR_PACKAGING.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_FACTORY_RE_e416ca94.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_GENERATION_RETRY_LOOP_UNTIL_PASS.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_GENERATION_eb068e78.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_GENERATION_RETRY_LOOP_UNTIL_PASS.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_GENERATION_3469c0e4.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_INDEPENDENT_AUDIT_BEFORE_DELIVERY.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_INDEPENDEN_9e859445.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_INDEPENDENT_AUDIT_BEFORE_DELIVERY.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_INDEPENDEN_77fb817d.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_PACKAGE_10_10_VS_OUTPUT_REAL_10_10.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_PACKAGE_10_c3e9d3e6.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_PACKAGE_10_10_VS_OUTPUT_REAL_10_10.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_PACKAGE_10_2173003f.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_RUNTIME_PACKAGING_HARDENING_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_RUNTIME_PA_8fc001e1.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_RUNTIME_PACKAGING_HARDENING_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_RUNTIME_PA_c629078b.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_TRUTHFULNESS_INDEPENDENT_FAIL_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_TRUTHFULNE_97c2c4ff.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_TRUTHFULNESS_INDEPENDENT_FAIL_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_TRUTHFULNE_573180ee.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/RUNTIME_VALIDATOR_TRUTHFULNESS_RECONCILIATION_GATES.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/RUNTIME_VALIDATOR__c9e267fc.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/RUNTIME_VALIDATOR_TRUTHFULNESS_RECONCILIATION_GATES.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/RUNTIME_VALIDATOR__3240481a.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/SELF_REFERENTIAL_MANIFEST_EXCLUSION_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/SELF_REFERENTIAL_M_21508917.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/SELF_REFERENTIAL_MANIFEST_EXCLUSION_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/SELF_REFERENTIAL_M_2746a174.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/UNIVERSAL_PRE_DELIVERY_AUDIT_RETRY_LOOP.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/UNIVERSAL_PRE_DELI_6ae2c206.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/ZIP_EXT_001_WHOLE_ZIP_EXTERNAL_AUTHORITY_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/ZIP_EXT_001_WHOLE__0cccfebc.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/ZIP_EXT_001_WHOLE_ZIP_EXTERNAL_AUTHORITY_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/ZIP_EXT_001_WHOLE__68954d32.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPLATE_READINESS/DEMO_TEMPLATE_READINESS.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPL_72024b88/DEMO_TEMPLATE_READINESS.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPLATE_READINESS/MULTI_SUBJECT_TEMPLATE_READINESS.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPL_72024b88/MULTI_SUBJECT_TEMPLATE_READINESS.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPLATE_READINESS/PROJECT_PROMPTS_POLICY_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPL_72024b88/PROJECT_PROMPTS_POLICY_CONTRACT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPLATE_READINESS/PROJECT_PROMPTS_POLICY_CONTRACT.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPL_72024b88/PROJECT_PROMPTS_POLICY_CONTRACT.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/07_EXPORT_TEMPLATES/PROJECT_SOURCE_COVERAGE_SCORECARD_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/07_EXPORT_TEMPLATES/PROJECT_SOURCE_COV_0c3367c4.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/07_EXPORT_TEMPLATES/SOURCE_RUNTIME_LEDGER_MINIFIED_TEMPLATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/07_EXPORT_TEMPLATES/SOURCE_RUNTIME_LED_e35057fe.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/08_UPDATE_MIGRATION/UPDATE_MIGRATION_VARIABLE_DECISION_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/08_UPDATE_MIGRATION/UPDATE_MIGRATION_V_8718725b.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/FULL_MODEL_360_RUNTIME_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/FULL_MODEL_360_RUNTIME_CONTRACT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/H281_H310_PROJECT_OUTPUT_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/H281_H310_PROJECT_OUTPUT_CONTRACT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/HUMAN_READABLE_CANON_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/HUMAN_READABLE_CANON_CONTRACT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/MODEL_CONFLICT_RESOLVER.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/MODEL_CONFLICT_RESOLVER.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_BRAND_REGISTRY.schema.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_BRAND_REGISTRY.schema.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_FILENAME_CANON.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_FILENAME_CANON.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_OUTPUT_CONTRACT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_STATUS_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_STATUS_CONTRACT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROJECT_TEMPLATE_FILL_VALIDATOR.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_TEMPLATE_FILL_VALIDATOR.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PROJECT_OUTPUT_CONTRACTS/PROMPT_PACK_A_J_UNIVERSAL_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROMPT_PACK_A_J_UNIVERSAL_CONTRACT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/03_PROJECT_FACTORY/PROJECT_FACTORY_TECH_EXT_EXPORT_CONTRACT.md",
+      "windows_safe_path": "engine/IDUNEX/03_PROJECT_FACTORY/PROJECT_FACTORY_TE_4293374f.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_AGENT_VISUAL_ROUTING_CANON.json",
+      "windows_safe_path": "engine/IDUNEX/04_AGENT_FACTORY/10_AGENT_EXECUTI_7c69c542/H245_H260_AGENT_VISUAL_ROUTING_CANON.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_AGENT_VISUAL_ROUTING_CANON.md",
+      "windows_safe_path": "engine/IDUNEX/04_AGENT_FACTORY/10_AGENT_EXECUTI_7c69c542/H245_H260_AGENT_VISUAL_ROUTING_CANON.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/04_AGENT_FACTORY/10_AGENT_EXECUTION_ROUTING_H245_H260/H245_H260_SINGLE_SOURCE_CANON_REFERENCE.json",
+      "windows_safe_path": "engine/IDUNEX/04_AGENT_FACTORY/10_AGENT_EXECUTI_7c69c542/H245_H260_SINGLE_S_dfaad80a.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/04_AGENT_FACTORY/11_H281_H310_AGENT_RUNTIME/SAFE_REWRITE_AND_ADULT_EDITORIAL_POLICY.json",
+      "windows_safe_path": "engine/IDUNEX/04_AGENT_FACTORY/11_H281_H310_AGENT_RUNTIME/SAFE_REWRITE_AND_A_b62f9b63.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/04_AGENT_FACTORY/12_H281_H310_RUNTIME_10_PLUS_N/AGENT_RUNTIME_10_PLUS_N_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/04_AGENT_FACTORY/12_H281_H310_RUN_dc798981/AGENT_RUNTIME_10_PLUS_N_CONTRACT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/04_AGENT_FACTORY/AGENT_RUNTIME_UPLOAD_SET_MANIFEST_CONTRACT.json",
+      "windows_safe_path": "engine/IDUNEX/04_AGENT_FACTORY/AGENT_RUNTIME_UPLO_1a91b017.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/04_AGENT_FACTORY/AGENT_RUNTIME_UPLOAD_SET_MANIFEST_CONTRACT.md",
+      "windows_safe_path": "engine/IDUNEX/04_AGENT_FACTORY/AGENT_RUNTIME_UPLO_6550018a.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/04_AGENT_FACTORY/CHATGPT_COPILOT_VENDOR_DECISION_MATRIX.json",
+      "windows_safe_path": "engine/IDUNEX/04_AGENT_FACTORY/CHATGPT_COPILOT_VE_721a4697.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_DIAGRAM_STYLE_GUIDE.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYS_30e665af.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_DOCX_STYLE_GUIDE.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYSTEM_DOCX_STYLE_GUIDE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_EXPORT_RULES_WEB_PRINT_SOCIAL.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYS_c7e77cc3.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_IDUNEX_VISUAL_RULES.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYS_5c8a5d3c.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_SCORECARD_DOCX_PPT_DIAGRAMS.json",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYS_18357a8d.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_SCORECARD_DOCX_PPT_DIAGRAMS.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYS_d2be3253.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/GENERIC_VISUAL_SYSTEM_WATERMARK_GUIDE.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/GENERIC_VISUAL_SYSTEM_WATERMARK_GUIDE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/P034_LOGO_WORDMARK_POLICY.json",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/P034_LOGO_WORDMARK_POLICY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/VISUAL_SYSTEM_INVENTORY.json",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/VISUAL_SYSTEM_INVENTORY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUAL_SYSTEM_LIBRARY/VISUAL_SYSTEM_TO_RUNTIME_MAP.json",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/08_GENERIC_VISUA_b7a90a8a/VISUAL_SYSTEM_TO_RUNTIME_MAP.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/01_ACTIVATION_AND_INPUT_ROUTING.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/01_ACTIVATION_AND_INPUT_ROUTING.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/02_PROMPT_INPUT_MODES_4WAY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/02_PROMPT_INPUT_MODES_4WAY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/03_OUTPUT_STATUS_AND_APPROVAL_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/03_OUTPUT_STATUS_AND_APPROVAL_GATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/04_METADATA_WATERMARK_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/04_METADATA_WATERMARK_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/05_WATERMARK_DEFAULT_ON_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/05_WATERMARK_DEFAULT_ON_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/06_AGENT_FULL_CONTEXT_LOAD_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/06_AGENT_FULL_CONTEXT_LOAD_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/07_RUNTIME_FILE_REQUIRED_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/07_RUNTIME_FILE_REQUIRED_MATRIX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/08_NO_SUMMARY_RUNTIME_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/08_NO_SUMMARY_RUNTIME_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/09_CANON_DATA_ACCESS_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/09_CANON_DATA_ACCESS_GATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/10_NO_IMAGINATION_CANON_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/10_NO_IMAGINATION_CANON_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/11_FACTORY_DEFINED_PROPOSED_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/11_FACTORY_DEFINED_PROPOSED_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/12_REFERENCE_IMAGE_TRANSFER_STRICTER.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/12_REFERENCE_IMAGE_TRANSFER_STRICTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/13_VENDOR_EXECUTION_CHECKLISTS.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/13_VENDOR_EXECUTION_CHECKLISTS.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/14_OUTPUT_ASSET_PROVENANCE_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/14_OUTPUT_ASSET_PROVENANCE_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/15_MISSING_DATA_BEHAVIOR.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/15_MISSING_DATA_BEHAVIOR.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_GOVERNANCE_FULL10/16_AGENT_PACK_NOLOSS_COMPILATION_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/12_AGENT_RUNTIME_e1631ced/16_AGENT_PACK_NOLOSS_COMPILATION_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/16_RESEARCH_RUNTIME_LIBRARY/SIDECAR_METADATA_TEMPLATE.productive_example.json",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/16_RESEARCH_RUNTIME_LIBRARY/SIDECAR_METADATA_T_8cc7d1c0.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/20_MOTOR_CORE_10/09_09_VENDOR_SIDECAR_WATERMARK_GOVERNANCE.md",
+      "windows_safe_path": "engine/IDUNEX/05_RUNTIME_CORE_LIBRARY/20_MOTOR_CORE_10/09_09_VENDOR_SIDEC_73032d2f.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/CHATGPT_COPILOT_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/CHATGPT_COPILOT_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/CHATGPT_JSON_TXT_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/CHATGPT_JSON_TXT_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/COPILOT_DOCX_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/COPILOT_DOCX_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/ELEVENLABS_VOICE_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/ELEVENLABS_VOICE_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/IDUNEX_VENDOR_CAPABILITY_DECLARATIONS_H71_H80.json",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/IDUNEX_VENDOR_CAPA_e93ebcba.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/IMAGE_PROMPT_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/IMAGE_PROMPT_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/P034_VENDOR_CAPABILITY_DECLARATIONS.json",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/P034_VENDOR_CAPABILITY_DECLARATIONS.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/SIDECAR_METADATA_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/SIDECAR_METADATA_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/SUNO_MUSIC_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/SUNO_MUSIC_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/TEXT_SCRIPT_COPY_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/TEXT_SCRIPT_COPY_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VENDOR_TEMPLATES/ELEVENLABS_IDUNEX_HANDOFF_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VENDOR_TEMPLATES/ELEVENLABS_IDUNEX_HANDOFF_TEMPLATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VENDOR_TEMPLATES/HEYGEN_IDUNEX_HANDOFF_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VENDOR_TEMPLATES/HEYGEN_IDUNEX_HANDOFF_TEMPLATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VENDOR_TEMPLATES/KLING_IDUNEX_HANDOFF_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VENDOR_TEMPLATES/KLING_IDUNEX_HANDOFF_TEMPLATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VENDOR_TEMPLATES/LUMA_IDUNEX_HANDOFF_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VENDOR_TEMPLATES/LUMA_IDUNEX_HANDOFF_TEMPLATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VENDOR_TEMPLATES/PIKA_IDUNEX_HANDOFF_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VENDOR_TEMPLATES/PIKA_IDUNEX_HANDOFF_TEMPLATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VENDOR_TEMPLATES/RUNWAY_IDUNEX_HANDOFF_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VENDOR_TEMPLATES/RUNWAY_IDUNEX_HANDOFF_TEMPLATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VENDOR_TEMPLATES/SUNO_IDUNEX_HANDOFF_TEMPLATE.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VENDOR_TEMPLATES/SUNO_IDUNEX_HANDOFF_TEMPLATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VENDOR_TEMPLATES/VENDOR_TEMPLATE_INDEX.json",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VENDOR_TEMPLATES/VENDOR_TEMPLATE_INDEX.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VIDEO_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VIDEO_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VENDOR_ADAPTERS/VIDEO_PROMPT_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/07_MULTIMODAL_VE_87b6d926/VIDEO_PROMPT_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10/REFERENCE_IMAGE_TRANSFER_RULES.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMEN_ea924ed1/REFERENCE_IMAGE_TRANSFER_RULES.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10/SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10.json",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMEN_ea924ed1/SCENE_ENVIRONMENT__ecb1ca0f.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10/SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL_10.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMEN_ea924ed1/SCENE_ENVIRONMENT__c21e13b4.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10/SCENE_ENV_FAIL_CODE_REGISTRY.json",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMEN_ea924ed1/SCENE_ENV_FAIL_CODE_REGISTRY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10/SKETCH_TO_REAL_ADAPTER.md",
+      "windows_safe_path": "engine/IDUNEX/06_MULTIMODAL_CONTRACTS/SCENE_ENVIRONMEN_ea924ed1/SKETCH_TO_REAL_ADAPTER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/02_PROJECT/PROFILE360_SECTION_PAYLOAD_UNIQUENESS_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/02_PROJECT/PROFILE360_SECTION_85706bd8.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/04_AGENTLOAD/AGENT_MODEL_FILE_FULLNESS_MINIMUM_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/04_AGENTLOAD/AGENT_MODEL_FILE_F_aca2673f.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/04_AGENTLOAD/MODEL_RUNTIME_PROFILE_FULL_AGENT_PARITY_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/04_AGENTLOAD/MODEL_RUNTIME_PROF_011eeaf6.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/05_LINTERS/POLICY_HARMONIZATION_NO_DUPLICATE_AUTHORITY_GATE.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/05_LINTERS/POLICY_HARMONIZATI_4ddfab9e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/05_LINTERS/POLICY_HARMONIZATION_NO_DUPLICATE_AUTHORITY_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/05_LINTERS/POLICY_HARMONIZATI_7215b60b.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/CONTENT_DUPLICATION_AND_COHERENCE_AUDIT.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/CONTENT_DUPLICATIO_69b1a847.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GENERIC_PROJECT_REAUDIT_SCENARIO_PROTOCOL.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GENERIC_PROJECT_RE_93e7f0da.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GENERIC_PROJECT_REAUDIT_SCENARIO_PROTOCOL.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GENERIC_PROJECT_RE_74924da3.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GENERIC_PROJECT_REGENERATION_STRICT_ACCEPTANCE_CRITERIA.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GENERIC_PROJECT_RE_6f8e8771.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GENERIC_PROJECT_REGENERATION_STRICT_ACCEPTANCE_CRITERIA.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GENERIC_PROJECT_RE_d34fdd4d.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GOLDEN_TESTS_REQUIRED_EVIDENCE_BY_MODALITY.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/GOLDEN_TESTS_REQUI_1cd88fc1.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/H71_H80_SAFE_APPAREL_WATERMARK_VALIDATION_MATRIX.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/H71_H80_SAFE_APPAR_351dd2b1.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/H71_H80_SAFE_APPAREL_WATERMARK_VALIDATION_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/H71_H80_SAFE_APPAR_c3a112d9.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/MOTOR_SELF_TEST_PROJECT_FACTORY_SIMULATION.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/MOTOR_SELF_TEST_PR_49ca0f54.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/MOTOR_SELF_TEST_PROJECT_FACTORY_SIMULATION.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/MOTOR_SELF_TEST_PR_ccba5c03.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/PROFILE360_TECHEXT_COHERENCE_10_10_AUDIT.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/PROFILE360_TECHEXT_f3b0f3d8.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/PROFILE360_TECHEXT_COHERENCE_10_10_AUDIT.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/PROFILE360_TECHEXT_346df0e4.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/13_QA_GAUNTLET/SCENE_ENVIRONMENT__ac0a92c0.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/ANTI_REGRESSION_AFTER_DOWNGRADE_MATRIX.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/ANTI_REGRESSION_AF_8241e0ad.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/FAIL_RETRY_UNTIL_100_PERCENT_PASS_GLOBAL.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/FAIL_RETRY_UNTIL_1_1f732a5e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/FAIL_RETRY_UNTIL_100_PERCENT_PASS_GLOBAL.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/FAIL_RETRY_UNTIL_1_e9cff303.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_AGENTES_CHATGPT_COPILOT_AGENT_LOAD.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_A_9585ef56.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_LEGAL_PRIVACIDAD_LICENCIAS.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_L_29783eee.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_MOTOR_GENERACION_ACTUALIZACION.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_M_d8393a25.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_PROFILE360_FULL_FORENSIC_INTERCONNECTED.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_P_b08b5bb5.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_PROYECTOS_GENERACION_ACTUALIZACION.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_P_18ef7a37.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_QA_REPAIR_LOOP_FINAL_ONLY.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_Q_780f3d97.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_SOURCE_TO_RUNTIME_NOLOSS_AUDITORIA.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_S_13d9bbc8.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_VERSIONADO_NAMING_COMPATIBILIDAD.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/IDUNEX_NORMATIVA_V_0f682f0f.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/MIRROR_POLICY_COMPATIBILITY_NO_DUPLICATE_AUTHORITY.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/MIRROR_POLICY_COMP_3c9c08fa.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/VERSION_RESET_AND_NO_LEGACY_TRACE_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/VERSION_RESET_AND__8c7849a7.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/ZERO_ACTIVE_TRACE_AFTER_REMOVAL_CHECKLIST.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/14_POLICIES/ZERO_ACTIVE_TRACE__b13a3ecd.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/QA_FINAL_RELEASE_GATE.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_FINAL_RELEASE_GATE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/QA_GAUNTLET_CANONICAL_INDEX.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_CANONICAL_INDEX.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/QA_GAUNTLET_CANONICAL_MAP.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_CANONICAL_MAP.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/QA_GAUNTLET_EXECUTION_ORDER.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_EXECUTION_ORDER.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/QA_GAUNTLET_LEGACY_BRIDGE_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_LEGACY_BRIDGE_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/QA_GAUNTLET_VALIDATOR_REGISTRY.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_VALIDATOR_REGISTRY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/README_CANONICAL_BRIDGE.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/README_CANONICAL_BRIDGE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/VALIDATE_H261_H268_FINAL_CLEAN.py",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_H261_H268_FINAL_CLEAN.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/VALIDATE_H269_H280_PROJECT_FACTORY_TRUTHFULNESS_AND_COMPANION_CLEAN.py",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_H269_H280_c34f7092.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/VALIDATORS_PRODUCTIVE_BASE_ENGINE.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATORS_PRODUCTIVE_BASE_ENGINE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/VALIDATORS_TECH_EXT_FULL10.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATORS_TECH_EXT_FULL10.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/VALIDATOR_EVIDENCE_STANDARD.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATOR_EVIDENCE_STANDARD.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_CANONICAL_BRIDGE/VALIDATOR_FALSE_PASS_GUARD.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATOR_FALSE_PASS_GUARD.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/H37_H51_AGENT_FORENSIC_DELIVERY_VALIDATION_MATRIX.json",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/H37_H51_AGENT_FORE_fdbf01d1.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/H37_H51_AGENT_FORENSIC_DELIVERY_VALIDATION_MATRIX.md",
+      "windows_safe_path": "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/H37_H51_AGENT_FORE_790a9ec8.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_005_Cabello_peinados_y_f_sica_capilar.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_005_Cabello_pe_dcee8496.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_006_Etnia_desc_133a7d7c.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_009_Religi_n_espiritualidad_y_cosmovisi_n.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_009_Religi_n_e_cb533282.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_013_Formaci_n_profesional_de_modelaje_premium.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_013_Formaci_n__75ba36e7.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_014_Profesi_n_principal_y_CV_realista.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_014_Profesi_n__dacbb77c.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_016_Lencer_abodywear_editorial_adulto_no_expl_cito.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_016_Lencer_abo_18e8bd69.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_017_C_mara_sensor_lente_y_fotograf_a_premium.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_017_C_mara_sen_8b713a66.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_021_Video_IA_y_continuidad_entre_planos.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_021_Video_IA_y_e0532893.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_024_Escritura_pensamiento_y_voz_interna.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_024_Escritura__d200431b.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_029_Optimizaci_n_DOCX_para_Copilot_M365_Chat.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_029_Optimizaci_54333dc5.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_030_No-loss_migration_y_compatibilidad.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_030_No_loss_mi_7aac8d29.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_031_Proporciones_fitness_por_edad_adulta.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_031_Proporcion_ff4ee4c5.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_032_Anti_same-face_anti_same-body_para_10_modelos.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_032_Anti_same__48eba6d6.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_033_Causalidad_edad-origen-psicolog_a-voz.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_033_Causalidad_69205660.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_034_Wardrobe_premium_por_modelo_y_cuerpo.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_034_Wardrobe_p_27118417.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_035_Acting_poses_y_microgestos_por_personalidad.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_035_Acting_pos_50be525e.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_036_Identidad_musical_Suno_por_modelo.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_036_Identidad__302842af.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_037_MEMORIA_EP_6f37de72.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_039_BODY_BEAUT_945f00bd.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_041_PERUVIAN_S_2c6e1576.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_042_VIDEO_BIOMECHANICS_ACTING_CONTINUITY.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_042_VIDEO_BIOM_4cdf2e1a.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_043_VOICE_AGE__7a98138f.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_045_WARDROBE_TEXTILE_BODYWEAR_PHYSICS.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_045_WARDROBE_T_d4752448.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_046_C2PA_SIDECAR_WATERMARK_OUTPUT_GOVERNANCE.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_046_C2PA_SIDEC_6b00981f.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_048_COPILOT_DOCX_GROUNDING_LARGE_CANON.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_048_COPILOT_DO_fc06f68d.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_049_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL_10.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/03_SOURCE_CARDS/SRC_049_SCENE_ENVI_c9905490.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.json",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LED_17e320a0.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LEDGER_MINIFIED_STRICT_VALIDATOR.md",
+      "windows_safe_path": "engine/IDUNEX/08_EVIDENCE_LINEAGE/SOURCE_TO_RUNTIME/SOURCE_RUNTIME_LED_da9008e9.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/COPILOT_DOCX_TEST.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/COPILOT_DOCX_TEST.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/FIXTURE_METADATA.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/FIXTURE_METADATA.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/GOLDEN_TEST_RESULTS.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/GOLDEN_TEST_RESULTS.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/HASH_EVIDENCE.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/HASH_EVIDENCE.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/HASH_EVIDENCE.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/HASH_EVIDENCE.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/PROFILE360_SAMPLE_MINIMAL.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/PROFILE360_SAMPLE_MINIMAL.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/PROJECT_MANIFEST.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/PROJECT_MANIFEST.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/PROMPTPACK_IMAGE_TEST.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/PROMPTPACK_IMAGE_TEST.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/PROMPTPACK_VIDEO_TEST.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/PROMPTPACK_VIDEO_TEST.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/QA_RESULT.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/QA_RESULT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/SIDECAR_OUTPUT_EXAMPLE.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/SIDECAR_OUTPUT_EXAMPLE.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/SMOKE_INPUT_FIXTURE.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/SMOKE_INPUT_FIXTURE.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/SMOKE_OUTPUT_MOCK_RESULT.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/SMOKE_OUTPUT_MOCK_RESULT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/SMOKE_TEST_SCOPE_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/SMOKE_TEST_SCOPE_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/SUNO_TEST.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/SUNO_TEST.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_CANONICAL_SMOKE_TEST/VOICE_TEST.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__37d6499c/VOICE_TEST.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/00_PROJECT_INDEX/FIXTURE_NON_AUTHORITY_MARKER.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/COPILOT_DOCX_FINAL_TEST.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/COPILOT_DOCX_FINAL_TEST.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/FIXTURE_METADATA.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/FIXTURE_METADATA.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/GOLDEN_TEST_RESULTS_REAL.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/GOLDEN_TEST_RESULTS_REAL.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/HASH_EVIDENCE_REAL.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/HASH_EVIDENCE_REAL.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/OUTPUT_PAYLOAD_COPILOT_DOCX.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/OUTPUT_PAYLOAD_COPILOT_DOCX.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/OUTPUT_PAYLOAD_IMAGE.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/OUTPUT_PAYLOAD_IMAGE.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/OUTPUT_PAYLOAD_SUNO.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/OUTPUT_PAYLOAD_SUNO.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/OUTPUT_PAYLOAD_VIDEO.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/OUTPUT_PAYLOAD_VIDEO.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/OUTPUT_PAYLOAD_VOICE.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/OUTPUT_PAYLOAD_VOICE.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/PROFILE360_REAL_TEST.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/PROFILE360_REAL_TEST.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/PROJECT_MANIFEST.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/PROJECT_MANIFEST.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/PROJECT_REAL_VALIDATION_SCOPE_POLICY.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/PROJECT_REAL_VALIDATION_SCOPE_POLICY.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/PROMPTPACK_IMAGE_FINAL.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/PROMPTPACK_IMAGE_FINAL.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/PROMPTPACK_VIDEO_FINAL.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/PROMPTPACK_VIDEO_FINAL.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/QA_RESULT_REAL.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/QA_RESULT_REAL.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/SIDECAR_COPILOT_OUTPUT.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/SIDECAR_COPILOT_OUTPUT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/SIDECAR_IMAGE_OUTPUT.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/SIDECAR_IMAGE_OUTPUT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/SIDECAR_SUNO_OUTPUT.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/SIDECAR_SUNO_OUTPUT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/SIDECAR_VIDEO_OUTPUT.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/SIDECAR_VIDEO_OUTPUT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/SIDECAR_VOICE_OUTPUT.json",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/SIDECAR_VOICE_OUTPUT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/SUNO_FINAL_TEST.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/SUNO_FINAL_TEST.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE_VALIDATION_001/VOICE_FINAL_TEST.md",
+      "windows_safe_path": "engine/IDUNEX/09_TEMPLATES_FIXTURES/18_PROJECTS/PROJECT_FIXTURE__fc03c926/VOICE_FINAL_TEST.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/ACTIVE_PROOF_AND_LEDGER_STALENESS_PURGE_H240.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/ACTIVE_PROOF_AND_L_7afeb990.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/AGENT_RUNTIME_MARKDOWN_STRICT_CLAUSE_SCHEMA_H213.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/AGENT_RUNTIME_MARK_1380fa37.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/AGENT_RUNTIME_UPLOAD_MANIFEST_VISIBLE_HASHES_H216.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/AGENT_RUNTIME_UPLO_b5282716.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/BRAND_LOGO_POLICY_ALIAS_NORMALIZATION_H182_TESTS.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/BRAND_LOGO_POLICY__6b0f0d4b.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/CREATIVE_SURFACE_NO_RAW_INTERNAL_TOKENS_EXTENDED_H185_SCAN.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/CREATIVE_SURFACE_N_28cedb3a.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/CUSTOM_N10_COMPLETE_ADVERSARIAL_H205_H212.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/CUSTOM_N10_COMPLET_d0e24739.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/DELIVERY_COMPLETION_MANIFEST_GUARD_H191_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/DELIVERY_COMPLETIO_d4da6737.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/FIELD_SOURCE_TRACE_LEDGER_CONTRACT_H215.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/FIELD_SOURCE_TRACE_3d7ef466.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/FIRST_VISUAL_TRACEABILITY_RUNTIME_ROUTER_H229_H236.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/FIRST_VISUAL_TRACE_ac5de87b.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS_H165_H180.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/FRESH_PROJECT_GENE_49518118.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/GENERATE_SUPERVISOR_WATCHDOG_H205_H212.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/GENERATE_SUPERVISO_a2ceeef2.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/GOVERNANCE_IMPLEMENTED_FINAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/GOVERNANCE_IMPLEME_6264a179.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H181_H188_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H181_H188_DIRECT_C_72e364bc.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H189_H196_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H189_H196_DIRECT_C_0d9f7b24.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H197_H204_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H197_H204_DIRECT_C_d535688b.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H205_H212_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H205_H212_DIRECT_C_36c8d173.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H213_H236_AGENT_BATCH_TEST_ARTIFACTS_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H213_H236_AGENT_BA_4d2a45f8.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H213_H236_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H213_H236_DIRECT_C_5ef6510e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H213_H236_PROJECT_GENERATION_VALIDATION_MATRIX.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H213_H236_PROJECT__a122a8e4.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H237_H244_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H237_H244_DIRECT_C_5f1f3abe.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H245_H260_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H245_H260_DIRECT_C_dd5f4150.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H269_H280_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H269_H280_DIRECT_C_79b80ed7.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H281_H310_CONNECTEDNESS_AND_CLOSURE/COMPANION_LEDGER_TRUTHFULNESS_POINTER.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H281_H310_CONNEC_0ff15bcd/COMPANION_LEDGER_TRUTHFULNESS_POINTER.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H281_H310_CONNECTEDNESS_AND_CLOSURE/FILE_CONNECTEDNESS_RULES.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H281_H310_CONNEC_0ff15bcd/FILE_CONNECTEDNESS_RULES.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H281_H310_CONNECTEDNESS_AND_CLOSURE/SIZE_DELTA_BUDGET.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H281_H310_CONNEC_0ff15bcd/SIZE_DELTA_BUDGET.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H281_H310_GENERATED_PROJECT_MATRIX_SUMMARY.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H281_H310_GENERATE_c547d337.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H341_H360_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H341_H360_DIRECT_C_f1ecd199.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H361_H380_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H361_H380_DIRECT_C_286e22d9.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H381R_H390R_EXECUTED_VALIDATION_COMPACT_EVIDENCE.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H381R_H390R_EXECUT_279f6c6c.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H391_H410_DIRECT_CANONICAL_CLOSURE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H391_H410_DIRECT_C_0d8663fc.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H391_H410_EXECUTED_VALIDATION_COMPACT_EVIDENCE.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H391_H410_EXECUTED_202784b5.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H391_H410_MATRIX_30_COMMAND_RETURN_COMPACT_EVIDENCE.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H391_H410_MATRIX_3_9448a131.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H71_H80_SAFE_APPAREL_WATERMARK_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/H71_H80_SAFE_APPAR_1390dcf6.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/N10_FULL_INFO_FACTORY_COMPLETION_MANIFEST_LIFECYCLE_FIX_EVIDENCE.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/N10_FULL_INFO_FACT_af8d7c00.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/OBSOLETE_HISTORY_DATA_RETENTION_SCAN_H205_H212.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/OBSOLETE_HISTORY_D_596cd05c.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/OBSOLETE_HISTORY_DATA_RETENTION_SCAN_H213_H236.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/OBSOLETE_HISTORY_D_94264e3d.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/P034_FINALOPS_UPDATE_MIGRATION_IMPORTSAFE_CLOSURE.md",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/P034_FINALOPS_UPDA_6416c012.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/PROJECT_FACTORY_REGRESSION_GAUNTLET_H269_H280.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/PROJECT_FACTORY_RE_ca293780.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/PROJECT_TEST_RUNNER_DETERMINISTIC_AND_NON_HANGING_H242.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/PROJECT_TEST_RUNNE_05ccffad.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/11_RELEASE_INTERNAL/VISUAL_ANCHOR_DESCRIPTOR_NO_RAW_TOKEN_SCAN_H181_H188.json",
+      "windows_safe_path": "engine/IDUNEX/11_RELEASE_INTERNAL/VISUAL_ANCHOR_DESC_70acfa4b.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/LEGACY_12_HISTORICAL_NON_AUTHORITY/HISTORICAL_NON_AUTHORITY_DIGEST.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/LEGACY_12_HISTOR_1e3b39d2/HISTORICAL_NON_AUTHORITY_DIGEST.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/LEGACY_12_HISTORICAL_NON_AUTHORITY/README.md",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/LEGACY_12_HISTOR_1e3b39d2/README.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/11_RELEASE_INTERNAL/MINIMAL_MATRIX_N1_N2_N10_POST_FIX.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/11_RELEASE_INTERNAL/MINIMAL_MATRIX_N1_N2_N10_POST_FIX.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/11_RELEASE_INTERNAL/UPDATE_MIGRATION_MATRIX_CURRENT_SESSION.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/11_RELEASE_INTERNAL/UPDATE_MIGRATION_MATRIX.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/11_RELEASE_INTERNAL/UPDATE_MIGRATION_MUTATION_CURRENT_SESSION.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/11_RELEASE_INTERNAL/UPDATE_MIGRATION_MUTATION.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/DEMO_AND_N1_N10_ALL_SHA_CLAIMS_REVALIDATION_MATRIX.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/DEMO_N1_N10_SHA_REVALIDATION.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H127_H134_NEGATIVE_MUTATION_CASES_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/H127_H134_MUTATION_CASES.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H133_EXTERNAL_COMPANION_SHA_MUTATION_SUITE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/H133_SHA_MUTATION_REPORT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/PROJECT_31_MATRIX_H261_H268_PARTIAL.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_31_H261_H268_PARTIAL.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/PROJECT_N1_MIN_GENERATE_H261_H268.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_N1_MIN_GENERATE_H261_H268.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/PROJECT_N1_MIN_VALIDATE_H261_H268.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_N1_MIN_VALIDATE_H261_H268.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/PROJECT_N2_MIN_GENERATE_H261_H268.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_N2_MIN_GENERATE_H261_H268.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/PROJECT_N2_MIN_VALIDATE_H261_H268.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/PROJECT_N2_MIN_VALIDATE_H261_H268.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_IDUNEX_RUNTIME.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/D_cbcc47dc/D_13e719b0/D_a98062b8/VALIDATE_RUNTIME.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H62_CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/N1_N10_PROJECT_SHA_PROOF_REGENERATION_MATRIX.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/N1_N10_SHA_REGEN_MATRIX.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/P034_PROJECT_GENERATION_CLI_MATRIX_1_TO_10_X3_REOPENED_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/P034_CLI_MATRIX_PROOF.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/P034_RUNTIME_VALIDATION_RESULT.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/P034_RUNTIME_VALIDATION_RESULT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/PROJECT_EXTERNAL_SHA_COMPANION_PARITY_SCAN.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/PROJECT_SHA_PARITY_SCAN.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_MUTATION_CURRENT_SESSION.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_MUTATION.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/MOVED_ACTIVE_STALE_LEGACY_FILES_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/MOVED_ACTIVE_STALE_0e08a5e1.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/PROJECT_FIXTURE_VALIDATION_001_ROLLBACK_NOTE_NON_AUTHORITY.md",
+      "windows_safe_path": "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/PROJECT_FIXTURE_VA_fe0e061a.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_DELIVERY_GATES_MATRIX_SEMANTIC_SCAN.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_DELIVERY_GA_29326cec.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_DUPLICATE_LEDGER_SELF_EXCEPTION_GOVERNANCE.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_DUPLICATE_L_bfb0ed3d.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_DUPLICATE_LEDGER_SELF_EXCEPTION_GOVERNANCE.md",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_DUPLICATE_L_b51835c4.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_FIXTURE_NEGATIVE_PROOF_AUTHORITY_CLASSIFICATION_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_FIXTURE_NEG_35a017c7.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_JSON_NULL_BLANK_ZERO_TOLERANCE_SCAN.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/ACTIVE_JSON_NULL_B_772420e5.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/CLI_SUMMARY_OUTPUT_JSON_NO_NULL_PARITY_SCAN_H151_H156.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/CLI_SUMMARY_OUTPUT_36ef7fe6.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/CONTROL_CENTER_PASS_PENDING_DEMOTION_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/CONTROL_CENTER_PAS_1c95ac89.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/DUPLICATE_AND_REDUNDANCY_AUDIT_H157_H164.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/DUPLICATE_AND_REDU_9aa330f9.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/EXTERNAL_COMPANION_SHA_SELF_REFERENCE_SENTINEL_SCAN.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/EXTERNAL_COMPANION_3069da05.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_S_5015ecbe.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_REOPENED_ZIP_FULL_VALIDATION_MATRIX_H143_H150.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_REOPENED_ZIP_cec38f2a.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FRESH_PROJECT_GENERATION_N1_N10_3_LEVELS_H157_H164.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FRESH_PROJECT_GENE_90d744d4.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/GENERATED_PROJECT_AND_CLI_REVALIDATION_POST_H135_H140.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/GENERATED_PROJECT__190c5d23.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/GLOBAL_ACTIVE_STALE_PENDING_TOKEN_SCAN.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/GLOBAL_ACTIVE_STAL_b095a27c.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/GOVERNANCE_IMPLEMENTED_FINAL_VALIDATION_SUMMARY.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/GOVERNANCE_IMPLEME_499fc844.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H108_DELIVERY_GATE_MATRIX_NEGATIVE_MUTATION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H108_DELIVERY_GATE_204a7477.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H109_N2_N10_GENERATION_AGENT10N_RECONFIRMATION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H109_N2_N10_GENERA_cda2101c.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H113_H118_PROJECT_EXPORT_FORENSIC_HARDENING_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H113_H118_PROJECT__a36d6571.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H119_H126_INCREMENTAL_MUTATION_SUITE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H119_H126_INCREMEN_da5f355d.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H119_H126_NEGATIVE_MUTATION_CASES_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H119_H126_NEGATIVE_2962d5b6.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H119_H126_PROJECT_SHA_PROOF_TRUTHFULNESS_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H119_H126_PROJECT__9337dad9.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H127_H134_COMPANION_SELF_REFERENCE_FINAL_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H127_H134_COMPANIO_cf25f622.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H135_H142_EXPECTED_BLOCK_CLI_TRUTHFULNESS_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H135_H142_EXPECTED_372f59e1.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H135_H142_NEGATIVE_MUTATION_CASES_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H135_H142_NEGATIVE_9f17373e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H138_EXPECTED_BLOCK_NEGATIVE_MUTATION_SUITE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H138_EXPECTED_BLOC_fb4bb50a.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H143_H150_SCHEMA_RUNTIME_PARITY_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H143_H150_SCHEMA_R_9a683fdb.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H148_SCHEMA_RUNTIME_PARITY_NEGATIVE_MUTATION_SUITE_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H148_SCHEMA_RUNTIM_85eafe6a.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H165_H180_CREATIVE_CANON_SAFETY_REALISM_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H165_H180_CREATIVE_bc21788f.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/H261_H268_FINAL_CLEAN_EXECUTION_MANIFEST.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/H261_H268_FINAL_CL_6d3826f8.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/MUTATION_SELF_TEST_506_H261_H268.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/MUTATION_SELF_TEST_506_H261_H268.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/PROJECT_31_MATRIX_H261_H268_SUMMARY.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/PROJECT_31_MATRIX_H261_H268_SUMMARY.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_ACTIVE_AUTHORITY_STALE_DUPLICATE_GUARD.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/VALIDATORS/VAL_AUTH_STALE_DUP_GUARD.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_AGENT_RUNTIME_MARKDOWN_STRICT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/VALIDATORS/VAL_AGENT_RUNTIME_MD.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_FIELD_SOURCE_TRACE_LEDGER.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/VALIDATORS/VALIDATE_FIELD_SOURCE_TRACE_LEDGER.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_H261_H268_FINAL_CLEAN.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/VALIDATORS/VAL_H261_H268_CLEAN.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/VALIDATORS/VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_PROMPT_PACK_STRUCTURE.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/VALIDATORS/VALIDATE_PROMPT_PACK_STRUCTURE.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_FINAL_CLEAN_EVIDENCE/VALIDATOR_RESULTS/guard_final.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/VALIDATORS/guard_final.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_ACTIVE_PLACEHOLDER_AND_AMBIGUOUS_TOKEN_GUARD.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VAL_PLACEHOLDER_TOKEN_GUARD.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_AGENT_FORENSIC_COMPANION_LEDGER_TRUTHFULNESS.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VAL_AGENT_LEDGER_TRUTH.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_CREATIVE_CERTIFICATION_TRUTHFULNESS.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VAL_CREATIVE_TRUTH.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_FINAL_CERTIFICATE_SURFACE_SYNC.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VAL_CERT_SURFACE_SYNC.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_PROJECT_ACTIVE_RESULTS_ALL_PASS.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VALIDATE_PROJECT_A_d5e70399.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_PROJECT_EXACT_DUPLICATE_ALLOWLIST_VISIBLE.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VAL_PROJECT_DUP_ALLOWLIST.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_PROJECT_MATRIX_COMPLETION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VAL_MATRIX_COMPLETION.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_PROJECT_PROMPT_PACK_CLASSIFICATION.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VALIDATE_PROJECT_P_6efa30dc.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_PROJECT_ZIP_REOPENED_COUNTS_AUTHORITATIVE.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VAL_ZIP_COUNTS_AUTH.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_TRUTHFULNESS_EVIDENCE/VALIDATOR_RESULTS/VALIDATE_RUNTIME_CANONICAL_MODEL_NAME_ALLOWLIST.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H269_H280_EVIDENCE/VALIDATORS/VAL_RUNTIME_MODEL_ALLOWLIST.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H52_H57_DIRECT_CANONICAL_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H52_H57_DIRECT_CAN_314d9542.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H58_ALIAS_CANONICALIZATION_EXECUTED_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H58_ALIAS_CANONICA_b9bc301a.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H58_H64_DIRECT_CANONICAL_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H58_H64_DIRECT_CAN_77d03b53.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H59_H37_MATERIALIZATION_TRUTHFULNESS_EXECUTED_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H59_H37_MATERIALIZ_df684040.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H60_H61_GENERATED_PROJECT_ARTIFACT_ENFORCEMENT_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H60_H61_GENERATED__da577697.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H62_CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H63_MUTATION_SUITE_EXECUTABLE_BOUNDED_TIME_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H63_MUTATION_SUITE_526503c8.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H64_ACTIVE_PROOF_TRUTHFULNESS_AND_LEGACY_DEMOTION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H64_ACTIVE_PROOF_T_ed8f2cca.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H65_H66_PROJECT_VALIDATOR_PENDING_NEGATIVE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H65_H66_PROJECT_VA_18dac1af.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H65_H70_DIRECT_CANONICAL_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H65_H70_DIRECT_CAN_6c722e27.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H67_ACTIVE_PROOF_LEGACY_SCOPE_FULL_TREE_SCAN_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H67_ACTIVE_PROOF_L_e1d5c1ca.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H68_GENERATED_PROJECT_FULL_SURFACE_UNRESOLVED_SCAN_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H68_GENERATED_PROJ_6d7ec73e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H69_PENDING_AND_PROOF_NEGATIVE_CASES_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H69_PENDING_AND_PR_3bbb860e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H81_RUNTIME_VALIDATOR_H01_H80_ALIGNMENT_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H81_RUNTIME_VALIDA_e10d5663.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H82_ACTIVE_SHA_LINEAGE_REGENERATION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H82_ACTIVE_SHA_LIN_8489c47c.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H83_RELEASE_DOCS_EXECUTABLE_PARITY_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H83_RELEASE_DOCS_E_409b801d.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H85_SIDECAR_IMAGE_WATERMARK_FIELD_DEDUPLICATION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H85_SIDECAR_IMAGE__e6bba362.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H86_AGENT10N_SAFE_APPAREL_WATERMARK_FORENSIC_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H86_AGENT10N_SAFE__89896e31.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H87_FIXTURE_PACKAGE_SHA_REGENERATION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H87_FIXTURE_PACKAG_a0835327.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H87_H92_DIRECT_CANONICAL_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H87_H92_DIRECT_CAN_0e102db0.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H88_SAFE_APPAREL_SUITE_SEMANTIC_CONSISTENCY_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H88_SAFE_APPAREL_S_df915708.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H89_ADULT_EDITORIAL_NON_EXPLICIT_CASE_RESOLUTION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H89_ADULT_EDITORIA_84a2020f.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H90_SUITE_SEMANTIC_MISMATCH_NEGATIVE_CASES_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H90_SUITE_SEMANTIC_8cb50d14.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H91_ACTIVE_PROOF_STATUS_LABEL_NORMALIZATION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H91_ACTIVE_PROOF_S_a50cd411.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H92_RELEASE_DOCS_EXECUTABLE_PARITY_H87_H91_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H92_RELEASE_DOCS_E_de0c9012.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H93_H98_UPDATE_DRIFT_FAILCODE_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H93_H98_UPDATE_DRI_7d694462.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H99_H104_ACTIVE_MATRIX_SEMANTIC_VALIDATION_CLOSURE_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H99_H104_ACTIVE_MA_de0e3a71.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/N10_SAFE_APPAREL_WATERMARK_AGENT10N_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/N10_SAFE_APPAREL_W_9a9a0394.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_ACTUAL_VALUE_PROJECT_ONLY_QUALITY_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_ACTUAL_VALUE__2eccb0e5.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_FACTORY_GENERALITY_DIRECT_CORRECTION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_FACTORY_GENER_3beab7d6.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_FACTORY_GENERALITY_DIRECT_CORRECTION_PROOF.md",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_FACTORY_GENER_1248e9ae.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_FINALOPS_UPDATE_MIGRATION_IMPORTSAFE_CLOSURE.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_FINALOPS_UPDA_28fb7df1.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_MOTOR_PROJECT_BOUNDARY_RECONCILIATION_PROOF.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_MOTOR_PROJECT_5fe58002.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_MOTOR_PROJECT_BOUNDARY_RECONCILIATION_PROOF.md",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_MOTOR_PROJECT_71a26842.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_ZERO_DRIFT_SCHEMA_ORGANIZATION_FORENSIC_CLOSURE_SUMMARY.md",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/P034_ZERO_DRIFT_SC_0d21ecdd.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/RUNTIME_SLA_AND_EVIDENCE_TRUTHFULNESS_H157_H164.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/RUNTIME_SLA_AND_EV_d696dcd2.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SIDECAR_LINEAGE_PROJECT_ZIP_SHA_STRICT_SCAN.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SIDECAR_LINEAGE_PR_4da95fde.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SUMMARY_REPORT_OPTIONAL_FIELD_SENTINEL_POLICY.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SUMMARY_REPORT_OPT_a0ea1b20.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/UPDATE_AND_MIGRATION_EXPECTED_BLOCK_REGRESSION_MATRIX.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/UPDATE_AND_MIGRATI_b5fc6e9e.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_ATOMIC_REGRESSION_MATRIX_H157_H164.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_A_e6388b93.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_MATRIX_CURRENT_SESSION.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/UPDATE_MIGRATION_MATRIX.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_ACTIVE_AUTHORITY_STALE_DUPLICATE_GUARD.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_ACTIVE_AU_f3527139.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_ACTIVE_PLACEHOLDER_AND_AMBIGUOUS_TOKEN_GUARD.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_ACTIVE_PL_a6029d75.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_AGENT_FORENSIC_COMPANION_LEDGER_TRUTHFULNESS.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_AGENT_FOR_59659cc6.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_CREATIVE_CERTIFICATION_TRUTHFULNESS.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_CREATIVE__7e821f04.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_ACTIVE_RESULTS_ALL_PASS.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_A_b54375bc.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_EXACT_DUPLICATE_ALLOWLIST_VISIBLE.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_E_cff8886a.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_MATRIX_COMPLETION_PROOF.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_M_4a7925d0.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_PROMPT_PACK_CLASSIFICATION.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_P_dea7bda6.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_ZIP_REOPENED_COUNTS_AUTHORITATIVE.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_Z_df02d23d.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_RUNTIME_CANONICAL_MODEL_NAME_ALLOWLIST.py",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_RUNTIME_C_6c4afd26.py",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATOR_PARITY_SELF_CONSISTENCY_REPORT.json",
+      "windows_safe_path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATOR_PARITY_S_3108f82b.json",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/authority/REFERENCIA/IDUNEX_MOTOR_v1.0.0_MANUAL_DE_TRABAJO_LATINOSFLOW.pdf",
+      "windows_safe_path": "governance/authority/REFERENCIA/IDUNEX_MOTOR_v1_0__49f2b895.pdf",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/authority/REFERENCIA/IDUNEX_MOTOR_v1.0.0_MANUAL_TECNICO_ALCANCE_LATINOSFLOW.pdf",
+      "windows_safe_path": "governance/authority/REFERENCIA/IDUNEX_MOTOR_v1_0__91fec215.pdf",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/authority/REFERENCIA/IDUNEX_MOTOR_v1.0.0_RELEASE_CERTIFICATE.txt",
+      "windows_safe_path": "governance/authority/REFERENCIA/IDUNEX_MOTOR_v1_0__29dfbebb.txt",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/authority/REFERENCIA/IDUNEX_PROMPTS_OFICIALES_AGENTES_RUNTIME.docx",
+      "windows_safe_path": "governance/authority/REFERENCIA/IDUNEX_PROMPTS_OFI_997e8900.docx",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/authority/REFERENCIA/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO_AUTORIDAD_MOTOR.txt",
+      "windows_safe_path": "governance/authority/REFERENCIA/IDUNEX_PROMPT_CANO_16f1f470.txt",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/authority/REFERENCIA/IDUNEX_PROMPT_SUITE_PLANTILLAS_PROYECTOS_AUTORIDAD_MOTOR_.docx",
+      "windows_safe_path": "governance/authority/REFERENCIA/IDUNEX_PROMPT_SUIT_e4f26c43.docx",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/authority/REFERENCIA/Informe Maestro - Gobernanza, Arquitectura y Políticas Oficiales del Motor IDUNEX.pdf",
+      "windows_safe_path": "governance/authority/REFERENCIA/Informe_Maestro_Go_07d4ad84.pdf",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/decisions/IA-IDUNEX-ADR-0001-AutoridadRepositorio-20260716-v1-EN_REVISION.md",
+      "windows_safe_path": "governance/decisions/IA_IDUNEX_ADR_0001_b7bf718f.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    },
+    {
+      "original_path": "governance/decisions/IA-IDUNEX-ADR-0002-FlujoMotorDemoProyectos-20260716-v1-EN_REVISION.md",
+      "windows_safe_path": "governance/decisions/IA_IDUNEX_ADR_0002_9ecf3c2b.md",
+      "reason": "shortened_to_prevent_windows_git_filename_too_long"
+    }
+  ]
+}

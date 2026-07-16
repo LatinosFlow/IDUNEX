@@ -1,0 +1,23 @@
+name: Release blocker
+about: Bloqueador de release o de paso a Proyecto Demo
+title: "BLOCKER-###: "
+labels: [release-blocker, BLOQUEADO]
+body:
+  - type: textarea
+    id: blocker
+    attributes:
+      label: Bloqueador
+    validations:
+      required: true
+  - type: textarea
+    id: gate
+    attributes:
+      label: Gate afectado
+    validations:
+      required: true
+  - type: textarea
+    id: unblock
+    attributes:
+      label: Condición de desbloqueo
+    validations:
+      required: true

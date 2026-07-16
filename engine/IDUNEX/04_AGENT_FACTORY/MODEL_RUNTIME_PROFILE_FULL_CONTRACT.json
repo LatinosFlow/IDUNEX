@@ -1,0 +1,83 @@
+{
+  "contract_id": "MODEL_RUNTIME_PROFILE_FULL_CONTRACT",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "status": "ACTIVE_BLOCKING",
+  "one_file_per_model_runtime": true,
+  "runtime_formula": "10 core IDUNEX + 1 MODEL_RUNTIME_PROFILE_FULL per model",
+  "required_sections": [
+    "Profile360_FULL60",
+    "TechExt_FULL10",
+    "Master_Visual_Anchors",
+    "Aliases",
+    "Face360",
+    "Body360",
+    "Skin360",
+    "Hair360",
+    "Wardrobe360",
+    "Voice360",
+    "Motion360",
+    "Scene_Environment_affinity",
+    "Camera_lighting_rules",
+    "Image_video_reference_rules",
+    "Voice_audio_music_Suno_ElevenLabs_rules",
+    "Sidecar_field_mapping",
+    "QA_fail_codes_fallbacks_specific_to_model",
+    "Source_trace_critical_fields",
+    "Pairwise_uniqueness",
+    "Same_face_collapse_prevention",
+    "Age_ambiguity_prevention",
+    "Generic_model_prevention"
+  ],
+  "final_project_forbidden": [
+    "null",
+    "blank",
+    "placeholder",
+    "FACTORY_DEFINED_PROPOSED_pending",
+    "digest_only",
+    "external_pointer_only",
+    "TechExt_cited_not_embedded"
+  ],
+  "blockers": [
+    "BLOCKED_TECH_EXT_NOT_MATERIALIZED",
+    "BLOCKED_TECH_EXT_NULL_INHERITANCE",
+    "BLOCKED_MODEL_RUNTIME_PROFILE_FULL_INCOMPLETE",
+    "BLOCKED_SUMMARY_AS_COMPLETENESS"
+  ],
+  "materialization_rule": "Each model runtime file must contain or losslessly materialize every required section before agent export. Digest/coverage/evidence can support verification but cannot replace FULL.",
+  "fallback_fix": "Materialize missing sections inside the MODEL_RUNTIME_PROFILE_FULL file; resolve alias from Profile360; fill unique TechExt values; rebuild coverage map, sidecar mapping, QA/fallbacks and source trace; re-run audit until PASS.",
+  "agent_parity_gate": "MODEL_RUNTIME_PROFILE_FULL_AGENT_PARITY_GATE",
+  "agent_model_file_fullness_gate": "AGENT_MODEL_FILE_FULLNESS_MINIMUM_GATE",
+  "required_fullness_metrics": [
+    "sections_present",
+    "techext_fields_present",
+    "anchors_present",
+    "source_trace_present",
+    "sidecar_mapping_present",
+    "qa_fallback_present",
+    "field_count",
+    "parity_hash_or_mapping"
+  ],
+  "blocked_fake_full_runtime_profile": "BLOCKED_FAKE_FULL_RUNTIME_PROFILE",
+  "blocked_underfilled_agent_model_file": "BLOCKED_AGENT_MODEL_FILE_UNDERFILLED",
+  "count_only_forbidden": true,
+  "H71_H80_SAFE_APPAREL_WATERMARK_AGENT10N": {
+    "tokens": [
+      "SAFE_APPAREL_TAXONOMY",
+      "ADULT_REVEALING_APPAREL_NOT_NUDITY",
+      "VENDOR_PROMPT_SANITIZATION_SAFE_APPAREL",
+      "WATERMARK_DEFAULT_ON=true",
+      "watermark_text=idunex",
+      "watermark_position=bottom_center",
+      "EXPLICIT_IDUNEX_OPTOUT_ONLY",
+      "POSTPROCESS_OVERLAY_REQUIRED"
+    ],
+    "line": "H71_H80_AGENT10N=SAFE_APPAREL_TAXONOMY; ADULT_REVEALING_APPAREL_NOT_NUDITY; VENDOR_PROMPT_SANITIZATION_SAFE_APPAREL; WATERMARK_DEFAULT_ON=true; watermark_text=idunex; watermark_position=bottom_center; EXPLICIT_IDUNEX_OPTOUT_ONLY; POSTPROCESS_OVERLAY_REQUIRED; ALLOW adult editorial beachwear/swimwear/intimate apparel/catalog/corset/body/performance wardrobe when covered non-explicit; BLOCK nudity, exposed intimate areas, topless, intimate act, pornographic framing, minor-coded or school-coded sexualization and real-person copying.",
+    "classification": "ALLOW|CONDITIONAL_REWRITE|BLOCK",
+    "watermark_default_on": true,
+    "watermark_text": "idunex",
+    "watermark_position": "bottom_center",
+    "optout": "explicit idunex mention only",
+    "overlay_fallback": "POSTPROCESS_OVERLAY_REQUIRED"
+  }
+}

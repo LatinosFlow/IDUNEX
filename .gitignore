@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Build artifacts
+dist/
+build/
+coverage/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# IDUNEX transient outputs
+**/staging/
+**/temp/
+**/tmp/
+**/logs/
+**/heartbeat/
+**/*_INTERMEDIATE.zip
+**/*_TEMP.zip
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key

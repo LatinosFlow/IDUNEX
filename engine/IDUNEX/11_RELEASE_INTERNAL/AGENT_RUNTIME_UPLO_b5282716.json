@@ -1,0 +1,13 @@
+{
+  "anti_stale_policy": "ACTIVE_SESSION_SHA_FIRST > ACTIVE_MANIFEST > everything_else",
+  "duplicate_title_policy": "BLOCK_OR_IGNORE_NON_AUTHORITY",
+  "gate": "H216",
+  "manifest_files": [
+    "AGENT_RUNTIME_UPLOAD_SET_MANIFEST_CHATGPT.json",
+    "AGENT_RUNTIME_UPLOAD_SET_MANIFEST_COPILOT.json",
+    "ACTIVE_RUNTIME_UPLOAD_MANIFEST.md",
+    "ACTIVE_RUNTIME_UPLOAD_MANIFEST.json"
+  ],
+  "result": "PASS",
+  "runtime_files_formula": "10+N"
+}

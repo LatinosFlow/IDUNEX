@@ -1,0 +1,45 @@
+name: Defecto del motor
+about: Reportar un defecto reproducible del motor IDUNEX
+title: "IDUNEX-###: "
+labels: [defect, EN_REVISION]
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: Comportamiento observado
+      description: Qué ocurrió exactamente.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamiento esperado
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Pasos de reproducción
+    validations:
+      required: true
+  - type: input
+    id: base_sha
+    attributes:
+      label: SHA/base afectada
+      placeholder: commit SHA o ZIP SHA256
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidad
+      options: [bloqueante, alta, media, baja]
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Criterios de aceptación
+      description: Qué debe pasar para cerrar el issue.
+    validations:
+      required: true

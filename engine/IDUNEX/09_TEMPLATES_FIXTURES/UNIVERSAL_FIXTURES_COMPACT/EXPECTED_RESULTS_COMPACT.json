@@ -1,0 +1,14 @@
+{
+  "semantic_version": "v1.0.0",
+  "fixture_bloat_control": "PASS",
+  "required_validation_signals": [
+    "runtime_10_plus_n_template",
+    "prompt_pack_A_J",
+    "project_brand_registry_schema",
+    "read_map",
+    "task_registry",
+    "safe_rewrite",
+    "reference_image_handler"
+  ],
+  "blocking_fail_codes": []
+}

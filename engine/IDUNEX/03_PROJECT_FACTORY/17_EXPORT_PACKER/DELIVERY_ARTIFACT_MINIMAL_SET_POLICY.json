@@ -1,0 +1,38 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "SEMANTIC_VERSION": "v1.0.0",
+  "VERSION_BUMP": "NO",
+  "CORRECTION_MODE": "DIRECT_CANONICAL_NO_PATCH",
+  "policy_id": "DELIVERY_ARTIFACT_MINIMAL_SET_POLICY",
+  "status": "ACTIVE_PASS",
+  "output_external_contract": "EXACT_7_OF_7",
+  "external_artifacts_allowed_count": 7,
+  "external_artifacts_allowed": [
+    "IDUNEX_MOTOR_v1.0.0.zip",
+    "IDUNEX_MOTOR_v1.0.0.zip.sha256",
+    "IDUNEX_MOTOR_v1.0.0_RELEASE_CERTIFICATE.txt",
+    "IDUNEX_MOTOR_v1.0.0_MANUAL_TECNICO_ALCANCE_LATINOSFLOW.pdf",
+    "IDUNEX_MOTOR_v1.0.0_MANUAL_DE_TRABAJO_LATINOSFLOW.pdf",
+    "IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO_AUTORIDAD_MOTOR.txt",
+    "IDUNEX_PROMPT_SUITE_PLANTILLAS_PROYECTOS_AUTORIDAD_MOTOR_.docx"
+  ],
+  "active_changelog_p03_external_artifact_allowed": false,
+  "historical_lineage_policy": "P03/P034 lineage may exist only under 12_HISTORICAL_NON_AUTHORITY and is non-authoritative; it is not part of the active external delivery set.",
+  "internal_reports_required_inside_zip": [
+    "FINAL_AUDIT_REPORT.md",
+    "PROJECT_FACTORY_SELF_TEST_REPORT.md",
+    "manifests",
+    "evidence",
+    "runtime_contract_ledgers",
+    "update_no_drift_ledgers"
+  ],
+  "hard_gates": [
+    "FAIL if active external artifact count differs from 7",
+    "FAIL if prompt canonical artifact is absent",
+    "FAIL if prompt suite DOCX artifact is absent",
+    "FAIL if changelog P03 is declared as active external artifact",
+    "FAIL if stale external delivery count 6 appears in this active policy",
+    "FAIL if semantic version includes suffix or unchanged marker"
+  ],
+  "actual_value": "external_artifacts_allowed=7; detailed_reports_inside_zip=true; prompt_canonical_and_prompt_suite_required=true"
+}

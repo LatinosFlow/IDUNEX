@@ -1,0 +1,24 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "policy_id": "GOLDEN_TEST_POLICY_ENGINE_VS_PROJECT",
+  "engine_allowed_state": "FRAMEWORK_PASS",
+  "engine_forbidden_state": "GOLDEN_TEST_REAL_OUTPUT_EXECUTION_PASS",
+  "allowed_states": [
+    "FRAMEWORK_PASS",
+    "PROJECT_TESTS_DEFINED",
+    "NOT_EXECUTED",
+    "EXECUTED_PASS",
+    "EXECUTED_FAIL",
+    "NOT_APPLICABLE"
+  ],
+  "project_requires_tests_defined": true,
+  "productive_real_10_10_requires": [
+    "EXECUTED_PASS",
+    "evidence",
+    "sidecar",
+    "prompt_hash",
+    "output_hash",
+    "lineage"
+  ],
+  "export_path": "PROJECT_CORE/14_GOLDEN_TESTS"
+}

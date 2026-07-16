@@ -1,0 +1,204 @@
+{
+  "policy_id": "P0.2-002",
+  "name": "ROOT_DIRECTORY_CANONICAL_RENUMBERING",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "status": "APPLIED_NO_LOSS",
+  "date": "NEUTRALIZED_ACTIVE_SCOPE",
+  "canonical_root_namespace": [
+    "00_CONTROL_CENTER",
+    "01_RESEARCH_BASELINE_LOCKED",
+    "03_PROJECT_FACTORY",
+    "04_AGENT_FACTORY",
+    "04_PROFILE360_SYSTEM",
+    "05_SOURCE_TO_RUNTIME",
+    "06_MULTIMODAL_CONTRACTS",
+    "07_MULTIMODAL_VENDOR_ADAPTERS",
+    "08_GENERIC_VISUAL_SYSTEM_LIBRARY",
+    "09_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10",
+    "10_MODEL_CAUSALITY_ENGINE_FULL10",
+    "11_PROFILE360_TECHNICAL_EXTENSIONS_FULL10",
+    "12_AGENT_RUNTIME_GOVERNANCE_FULL10",
+    "13_QA_GAUNTLET",
+    "14_POLICIES",
+    "15_SCHEMAS",
+    "16_RESEARCH_RUNTIME_LIBRARY",
+    "17_EXPORT_PACKER",
+    "18_PROJECTS",
+    "19_DOCUMENTATION",
+    "20_MOTOR_CORE_10",
+    "21_MANIFESTS_LINEAGE",
+    "22_QA_GAUNTLET_CANONICAL_BRIDGE",
+    "99_MANIFESTS_SHA_LINEAGE"
+  ],
+  "root_renumbering": [
+    {
+      "old": "01_MOTOR_CORE_10",
+      "new": "20_MOTOR_CORE_10",
+      "action": "RENAMED"
+    },
+    {
+      "old": "01_RESEARCH_BASELINE_LOCKED",
+      "new": "01_RESEARCH_BASELINE_LOCKED",
+      "action": "PRESERVED"
+    },
+    {
+      "old": "03_PROJECT_FACTORY",
+      "new": "03_PROJECT_FACTORY",
+      "action": "PRESERVED"
+    },
+    {
+      "old": "04_AGENT_FACTORY",
+      "new": "04_AGENT_FACTORY",
+      "action": "PRESERVED"
+    },
+    {
+      "old": "04_PROFILE360_SYSTEM",
+      "new": "04_PROFILE360_SYSTEM",
+      "action": "PRESERVED"
+    },
+    {
+      "old": "05_MODEL_CAUSALITY_ENGINE_FULL_10",
+      "new": "10_MODEL_CAUSALITY_ENGINE_FULL10",
+      "action": "RENAMED"
+    },
+    {
+      "old": "05_SOURCE_TO_RUNTIME",
+      "new": "05_SOURCE_TO_RUNTIME",
+      "action": "PRESERVED"
+    },
+    {
+      "old": "06_MULTIMODAL_CONTRACTS",
+      "new": "06_MULTIMODAL_CONTRACTS",
+      "action": "PRESERVED"
+    },
+    {
+      "old": "06_MULTIMODAL_VENDOR_ADAPTERS",
+      "new": "07_MULTIMODAL_VENDOR_ADAPTERS",
+      "action": "RENAMED"
+    },
+    {
+      "old": "07_GENERIC_VISUAL_SYSTEM_LIBRARY",
+      "new": "08_GENERIC_VISUAL_SYSTEM_LIBRARY",
+      "action": "RENAMED"
+    },
+    {
+      "old": "07_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL_10",
+      "new": "09_SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10",
+      "action": "RENAMED"
+    },
+    {
+      "old": "08_PROJECTS",
+      "new": "18_PROJECTS",
+      "action": "RENAMED"
+    },
+    {
+      "old": "08_QA_GAUNTLET",
+      "new": "22_QA_GAUNTLET_CANONICAL_BRIDGE",
+      "action": "RENAMED"
+    },
+    {
+      "old": "09_EXPORT_PACKER",
+      "new": "17_EXPORT_PACKER",
+      "action": "RENAMED"
+    },
+    {
+      "old": "09_QA_GAUNTLET",
+      "new": "13_QA_GAUNTLET",
+      "action": "RENAMED"
+    },
+    {
+      "old": "10_MANIFESTS_LINEAGE",
+      "new": "21_MANIFESTS_LINEAGE",
+      "action": "RENAMED"
+    },
+    {
+      "old": "10_POLICIES",
+      "new": "14_POLICIES",
+      "action": "RENAMED"
+    },
+    {
+      "old": "11_DOCUMENTATION",
+      "new": "19_DOCUMENTATION",
+      "action": "RENAMED"
+    },
+    {
+      "old": "11_PROFILE360_TECHNICAL_EXTENSIONS_FULL10",
+      "new": "11_PROFILE360_TECHNICAL_EXTENSIONS_FULL10",
+      "action": "PRESERVED"
+    },
+    {
+      "old": "12_AGENT_RUNTIME_GOVERNANCE_FULL10",
+      "new": "12_AGENT_RUNTIME_GOVERNANCE_FULL10",
+      "action": "PRESERVED"
+    },
+    {
+      "old": "12_RESEARCH_RUNTIME_LIBRARY",
+      "new": "16_RESEARCH_RUNTIME_LIBRARY",
+      "action": "RENAMED"
+    },
+    {
+      "old": "13_SCHEMAS",
+      "new": "15_SCHEMAS",
+      "action": "RENAMED"
+    },
+    {
+      "old": "99_MANIFESTS_SHA_LINEAGE",
+      "new": "99_MANIFESTS_SHA_LINEAGE",
+      "action": "PRESERVED"
+    }
+  ],
+  "sibling_renumbering": [
+    {
+      "old": "IDUNEX/03_PROJECT_FACTORY/02_LIFECYCLE",
+      "new": "IDUNEX/03_PROJECT_FACTORY/03_LIFECYCLE",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/03_PROJECT_FACTORY/03_EXPORT_TEMPLATES",
+      "new": "IDUNEX/03_PROJECT_FACTORY/07_EXPORT_TEMPLATES",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/03_PROJECT_FACTORY/03_UPDATE_MIGRATION",
+      "new": "IDUNEX/03_PROJECT_FACTORY/08_UPDATE_MIGRATION",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/03_PROJECT_FACTORY/04_PROJECT_TEMPLATE_READINESS",
+      "new": "IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPLATE_READINESS",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/04_PROFILE360_SYSTEM/03_QA_LINKS",
+      "new": "IDUNEX/04_PROFILE360_SYSTEM/04_QA_LINKS",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/04_PROFILE360_SYSTEM/04_QA_FAILCODES",
+      "new": "IDUNEX/04_PROFILE360_SYSTEM/05_QA_FAILCODES",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/04_PROFILE360_SYSTEM/05_MEASURABLE_PARAMETER_MATRICES",
+      "new": "IDUNEX/04_PROFILE360_SYSTEM/06_MEASURABLE_PARAMETER_MATRICES",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/05_SOURCE_TO_RUNTIME/03_COVERAGE",
+      "new": "IDUNEX/05_SOURCE_TO_RUNTIME/04_COVERAGE",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/05_SOURCE_TO_RUNTIME/04_NOLOSS",
+      "new": "IDUNEX/05_SOURCE_TO_RUNTIME/05_NOLOSS",
+      "action": "RENAMED"
+    },
+    {
+      "old": "IDUNEX/05_SOURCE_TO_RUNTIME/05_COVERAGE",
+      "new": "IDUNEX/05_SOURCE_TO_RUNTIME/06_COVERAGE",
+      "action": "RENAMED"
+    }
+  ],
+  "actual_value": "canonical_roots=24; root_prefix_duplicates=0; preserved_extra_layers=3",
+  "non_loss_guarantee": "folder move/rename only; content preserved except active path references and regenerated manifests/reports"
+}

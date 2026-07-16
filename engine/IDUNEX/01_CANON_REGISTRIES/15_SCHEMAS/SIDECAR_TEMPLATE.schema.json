@@ -1,0 +1,1902 @@
+{
+  "gate_id": "H114",
+  "strict_sidecar_schema_hardening": "PASS",
+  "schemas": [
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "IDUNEX IMAGE sidecar",
+      "type": "object",
+      "required": [
+        "project_id",
+        "model_ids",
+        "modality",
+        "request_id",
+        "canon_clause_ids",
+        "settings",
+        "negative_avoid",
+        "qa_results",
+        "evidence_paths",
+        "evidence_hashes",
+        "execution_status",
+        "lineage",
+        "lineage_event",
+        "prompt_hash",
+        "config_hash",
+        "output_hash",
+        "sidecar_hash",
+        "asset_hash",
+        "qa_expected",
+        "qa_actual",
+        "reviewer",
+        "target_filename",
+        "asset_state",
+        "delivery_state",
+        "derived_asset_disclosure",
+        "vendor_capability_status",
+        "watermark_required",
+        "watermark_text",
+        "watermark_position",
+        "watermark_method",
+        "watermark_optout_state",
+        "watermark_vendor_capability",
+        "width_px",
+        "height_px",
+        "camera",
+        "lighting",
+        "watermark_decision",
+        "photorealism_checks"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^IDUNEX_PROJECT_.+"
+        },
+        "model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MODEL_.+"
+          },
+          "minItems": 1
+        },
+        "modality": {
+          "type": "string",
+          "const": "IMAGE"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canon_clause_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "settings": {
+          "type": "object"
+        },
+        "negative_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qa_results": {
+          "type": "object"
+        },
+        "evidence_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_hashes": {
+          "type": "object"
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": [
+            "NOT_EXECUTED",
+            "EXECUTED_PASS",
+            "EXECUTED_FAIL",
+            "BLOCKED_EXPECTED"
+          ]
+        },
+        "lineage": {
+          "type": "object",
+          "required": [
+            "engine_sha256",
+            "project_zip_sha256",
+            "model_ids",
+            "created_at"
+          ],
+          "properties": {
+            "engine_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "project_zip_sha256": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^MODEL_.+"
+              }
+            },
+            "created_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": true
+        },
+        "lineage_event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "config_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sidecar_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "asset_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "qa_expected": {
+          "type": "object"
+        },
+        "qa_actual": {
+          "type": "object"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_state": {
+          "type": "string"
+        },
+        "delivery_state": {
+          "type": "string"
+        },
+        "derived_asset_disclosure": {
+          "type": "string"
+        },
+        "vendor_capability_status": {
+          "type": "string"
+        },
+        "watermark_required": {
+          "type": "boolean"
+        },
+        "watermark_text": {
+          "type": "string"
+        },
+        "watermark_position": {
+          "type": "string"
+        },
+        "watermark_method": {
+          "type": "string"
+        },
+        "watermark_optout_state": {
+          "type": "string"
+        },
+        "watermark_vendor_capability": {
+          "type": "string"
+        },
+        "width_px": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height_px": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "camera": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lighting": {
+          "type": "string",
+          "minLength": 1
+        },
+        "watermark_decision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "photorealism_checks": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution_status": {
+                "const": "EXECUTED_PASS"
+              }
+            },
+            "required": [
+              "execution_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "prompt_hash",
+              "config_hash",
+              "output_hash",
+              "sidecar_hash",
+              "asset_hash",
+              "qa_expected",
+              "qa_actual",
+              "reviewer",
+              "lineage"
+            ]
+          }
+        }
+      ],
+      "defaults_required_parity": true,
+      "watermark_required": true,
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_optout_state": "default_on",
+      "watermark_vendor_capability": "POSTPROCESS_OVERLAY_FALLBACK_REQUIRED",
+      "strict_schema_h114": true,
+      "negative_schema_tests": [
+        "model_ids=true",
+        "output_hash=123",
+        "qa_actual=texto libre",
+        "EXECUTED_PASS without reviewer/hash",
+        "watermark_required=yes"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "IDUNEX VIDEO sidecar",
+      "type": "object",
+      "required": [
+        "project_id",
+        "model_ids",
+        "modality",
+        "request_id",
+        "canon_clause_ids",
+        "settings",
+        "negative_avoid",
+        "qa_results",
+        "evidence_paths",
+        "evidence_hashes",
+        "execution_status",
+        "lineage",
+        "lineage_event",
+        "prompt_hash",
+        "config_hash",
+        "output_hash",
+        "sidecar_hash",
+        "asset_hash",
+        "qa_expected",
+        "qa_actual",
+        "reviewer",
+        "target_filename",
+        "asset_state",
+        "delivery_state",
+        "derived_asset_disclosure",
+        "vendor_capability_status",
+        "watermark_required",
+        "watermark_text",
+        "watermark_position",
+        "watermark_method",
+        "watermark_optout_state",
+        "watermark_vendor_capability",
+        "width_px",
+        "height_px",
+        "duration_seconds",
+        "fps",
+        "camera_motion",
+        "continuity_checks",
+        "audio_sync"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^IDUNEX_PROJECT_.+"
+        },
+        "model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MODEL_.+"
+          },
+          "minItems": 1
+        },
+        "modality": {
+          "type": "string",
+          "const": "VIDEO"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canon_clause_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "settings": {
+          "type": "object"
+        },
+        "negative_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qa_results": {
+          "type": "object"
+        },
+        "evidence_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_hashes": {
+          "type": "object"
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": [
+            "NOT_EXECUTED",
+            "EXECUTED_PASS",
+            "EXECUTED_FAIL",
+            "BLOCKED_EXPECTED"
+          ]
+        },
+        "lineage": {
+          "type": "object",
+          "required": [
+            "engine_sha256",
+            "project_zip_sha256",
+            "model_ids",
+            "created_at"
+          ],
+          "properties": {
+            "engine_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "project_zip_sha256": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^MODEL_.+"
+              }
+            },
+            "created_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": true
+        },
+        "lineage_event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "config_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sidecar_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "asset_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "qa_expected": {
+          "type": "object"
+        },
+        "qa_actual": {
+          "type": "object"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_state": {
+          "type": "string"
+        },
+        "delivery_state": {
+          "type": "string"
+        },
+        "derived_asset_disclosure": {
+          "type": "string"
+        },
+        "vendor_capability_status": {
+          "type": "string"
+        },
+        "watermark_required": {
+          "type": "boolean"
+        },
+        "watermark_text": {
+          "type": "string"
+        },
+        "watermark_position": {
+          "type": "string"
+        },
+        "watermark_method": {
+          "type": "string"
+        },
+        "watermark_optout_state": {
+          "type": "string"
+        },
+        "watermark_vendor_capability": {
+          "type": "string"
+        },
+        "width_px": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height_px": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "duration_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "camera_motion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "continuity_checks": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audio_sync": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution_status": {
+                "const": "EXECUTED_PASS"
+              }
+            },
+            "required": [
+              "execution_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "prompt_hash",
+              "config_hash",
+              "output_hash",
+              "sidecar_hash",
+              "asset_hash",
+              "qa_expected",
+              "qa_actual",
+              "reviewer",
+              "lineage"
+            ]
+          }
+        }
+      ],
+      "defaults_required_parity": true,
+      "watermark_required": true,
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_optout_state": "default_on",
+      "watermark_vendor_capability": "POSTPROCESS_OVERLAY_FALLBACK_REQUIRED",
+      "strict_schema_h114": true,
+      "negative_schema_tests": [
+        "model_ids=true",
+        "output_hash=123",
+        "qa_actual=texto libre",
+        "EXECUTED_PASS without reviewer/hash",
+        "watermark_required=yes"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "IDUNEX VOICE sidecar",
+      "type": "object",
+      "required": [
+        "project_id",
+        "model_ids",
+        "modality",
+        "request_id",
+        "canon_clause_ids",
+        "settings",
+        "negative_avoid",
+        "qa_results",
+        "evidence_paths",
+        "evidence_hashes",
+        "execution_status",
+        "lineage",
+        "lineage_event",
+        "prompt_hash",
+        "config_hash",
+        "output_hash",
+        "sidecar_hash",
+        "asset_hash",
+        "qa_expected",
+        "qa_actual",
+        "reviewer",
+        "target_filename",
+        "asset_state",
+        "delivery_state",
+        "derived_asset_disclosure",
+        "vendor_capability_status",
+        "watermark_required",
+        "watermark_text",
+        "watermark_position",
+        "watermark_method",
+        "watermark_optout_state",
+        "watermark_vendor_capability",
+        "duration_seconds",
+        "sample_rate_hz",
+        "bit_depth",
+        "mic_distance_cm",
+        "room_tone",
+        "voice_similarity_policy",
+        "anti_clone_checks"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^IDUNEX_PROJECT_.+"
+        },
+        "model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MODEL_.+"
+          },
+          "minItems": 1
+        },
+        "modality": {
+          "type": "string",
+          "const": "VOICE"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canon_clause_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "settings": {
+          "type": "object"
+        },
+        "negative_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qa_results": {
+          "type": "object"
+        },
+        "evidence_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_hashes": {
+          "type": "object"
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": [
+            "NOT_EXECUTED",
+            "EXECUTED_PASS",
+            "EXECUTED_FAIL",
+            "BLOCKED_EXPECTED"
+          ]
+        },
+        "lineage": {
+          "type": "object",
+          "required": [
+            "engine_sha256",
+            "project_zip_sha256",
+            "model_ids",
+            "created_at"
+          ],
+          "properties": {
+            "engine_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "project_zip_sha256": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^MODEL_.+"
+              }
+            },
+            "created_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": true
+        },
+        "lineage_event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "config_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sidecar_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "asset_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "qa_expected": {
+          "type": "object"
+        },
+        "qa_actual": {
+          "type": "object"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_state": {
+          "type": "string"
+        },
+        "delivery_state": {
+          "type": "string"
+        },
+        "derived_asset_disclosure": {
+          "type": "string"
+        },
+        "vendor_capability_status": {
+          "type": "string"
+        },
+        "watermark_required": {
+          "type": "boolean"
+        },
+        "watermark_text": {
+          "type": "string"
+        },
+        "watermark_position": {
+          "type": "string"
+        },
+        "watermark_method": {
+          "type": "string"
+        },
+        "watermark_optout_state": {
+          "type": "string"
+        },
+        "watermark_vendor_capability": {
+          "type": "string"
+        },
+        "duration_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "sample_rate_hz": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "bit_depth": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mic_distance_cm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "room_tone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "voice_similarity_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anti_clone_checks": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution_status": {
+                "const": "EXECUTED_PASS"
+              }
+            },
+            "required": [
+              "execution_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "prompt_hash",
+              "config_hash",
+              "output_hash",
+              "sidecar_hash",
+              "asset_hash",
+              "qa_expected",
+              "qa_actual",
+              "reviewer",
+              "lineage"
+            ]
+          }
+        }
+      ],
+      "defaults_required_parity": true,
+      "watermark_required": true,
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_optout_state": "default_on",
+      "watermark_vendor_capability": "POSTPROCESS_OVERLAY_FALLBACK_REQUIRED",
+      "strict_schema_h114": true,
+      "negative_schema_tests": [
+        "model_ids=true",
+        "output_hash=123",
+        "qa_actual=texto libre",
+        "EXECUTED_PASS without reviewer/hash",
+        "watermark_required=yes"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "IDUNEX MUSIC_SUNO sidecar",
+      "type": "object",
+      "required": [
+        "project_id",
+        "model_ids",
+        "modality",
+        "request_id",
+        "canon_clause_ids",
+        "settings",
+        "negative_avoid",
+        "qa_results",
+        "evidence_paths",
+        "evidence_hashes",
+        "execution_status",
+        "lineage",
+        "lineage_event",
+        "prompt_hash",
+        "config_hash",
+        "output_hash",
+        "sidecar_hash",
+        "asset_hash",
+        "qa_expected",
+        "qa_actual",
+        "reviewer",
+        "target_filename",
+        "asset_state",
+        "delivery_state",
+        "derived_asset_disclosure",
+        "vendor_capability_status",
+        "watermark_required",
+        "watermark_text",
+        "watermark_position",
+        "watermark_method",
+        "watermark_optout_state",
+        "watermark_vendor_capability",
+        "duration_seconds",
+        "bpm",
+        "key",
+        "genre_tags",
+        "lyrics_policy",
+        "artist_imitation_blocker",
+        "vocal_pov"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^IDUNEX_PROJECT_.+"
+        },
+        "model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MODEL_.+"
+          },
+          "minItems": 1
+        },
+        "modality": {
+          "type": "string",
+          "const": "MUSIC_SUNO"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canon_clause_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "settings": {
+          "type": "object"
+        },
+        "negative_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qa_results": {
+          "type": "object"
+        },
+        "evidence_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_hashes": {
+          "type": "object"
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": [
+            "NOT_EXECUTED",
+            "EXECUTED_PASS",
+            "EXECUTED_FAIL",
+            "BLOCKED_EXPECTED"
+          ]
+        },
+        "lineage": {
+          "type": "object",
+          "required": [
+            "engine_sha256",
+            "project_zip_sha256",
+            "model_ids",
+            "created_at"
+          ],
+          "properties": {
+            "engine_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "project_zip_sha256": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^MODEL_.+"
+              }
+            },
+            "created_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": true
+        },
+        "lineage_event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "config_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sidecar_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "asset_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "qa_expected": {
+          "type": "object"
+        },
+        "qa_actual": {
+          "type": "object"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_state": {
+          "type": "string"
+        },
+        "delivery_state": {
+          "type": "string"
+        },
+        "derived_asset_disclosure": {
+          "type": "string"
+        },
+        "vendor_capability_status": {
+          "type": "string"
+        },
+        "watermark_required": {
+          "type": "boolean"
+        },
+        "watermark_text": {
+          "type": "string"
+        },
+        "watermark_position": {
+          "type": "string"
+        },
+        "watermark_method": {
+          "type": "string"
+        },
+        "watermark_optout_state": {
+          "type": "string"
+        },
+        "watermark_vendor_capability": {
+          "type": "string"
+        },
+        "duration_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "bpm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "genre_tags": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lyrics_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artist_imitation_blocker": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vocal_pov": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution_status": {
+                "const": "EXECUTED_PASS"
+              }
+            },
+            "required": [
+              "execution_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "prompt_hash",
+              "config_hash",
+              "output_hash",
+              "sidecar_hash",
+              "asset_hash",
+              "qa_expected",
+              "qa_actual",
+              "reviewer",
+              "lineage"
+            ]
+          }
+        }
+      ],
+      "defaults_required_parity": true,
+      "watermark_required": true,
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_optout_state": "default_on",
+      "watermark_vendor_capability": "POSTPROCESS_OVERLAY_FALLBACK_REQUIRED",
+      "strict_schema_h114": true,
+      "negative_schema_tests": [
+        "model_ids=true",
+        "output_hash=123",
+        "qa_actual=texto libre",
+        "EXECUTED_PASS without reviewer/hash",
+        "watermark_required=yes"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "IDUNEX TEXT_PERSONA sidecar",
+      "type": "object",
+      "required": [
+        "project_id",
+        "model_ids",
+        "modality",
+        "request_id",
+        "canon_clause_ids",
+        "settings",
+        "negative_avoid",
+        "qa_results",
+        "evidence_paths",
+        "evidence_hashes",
+        "execution_status",
+        "lineage",
+        "lineage_event",
+        "prompt_hash",
+        "config_hash",
+        "output_hash",
+        "sidecar_hash",
+        "asset_hash",
+        "qa_expected",
+        "qa_actual",
+        "reviewer",
+        "target_filename",
+        "asset_state",
+        "delivery_state",
+        "derived_asset_disclosure",
+        "vendor_capability_status",
+        "watermark_required",
+        "watermark_text",
+        "watermark_position",
+        "watermark_method",
+        "watermark_optout_state",
+        "watermark_vendor_capability",
+        "persona_memory_scope",
+        "dialogue_rules",
+        "prohibited_claims",
+        "uncertainty_policy",
+        "language_register"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^IDUNEX_PROJECT_.+"
+        },
+        "model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MODEL_.+"
+          },
+          "minItems": 1
+        },
+        "modality": {
+          "type": "string",
+          "const": "TEXT_PERSONA"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canon_clause_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "settings": {
+          "type": "object"
+        },
+        "negative_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qa_results": {
+          "type": "object"
+        },
+        "evidence_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_hashes": {
+          "type": "object"
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": [
+            "NOT_EXECUTED",
+            "EXECUTED_PASS",
+            "EXECUTED_FAIL",
+            "BLOCKED_EXPECTED"
+          ]
+        },
+        "lineage": {
+          "type": "object",
+          "required": [
+            "engine_sha256",
+            "project_zip_sha256",
+            "model_ids",
+            "created_at"
+          ],
+          "properties": {
+            "engine_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "project_zip_sha256": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^MODEL_.+"
+              }
+            },
+            "created_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": true
+        },
+        "lineage_event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "config_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sidecar_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "asset_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "qa_expected": {
+          "type": "object"
+        },
+        "qa_actual": {
+          "type": "object"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_state": {
+          "type": "string"
+        },
+        "delivery_state": {
+          "type": "string"
+        },
+        "derived_asset_disclosure": {
+          "type": "string"
+        },
+        "vendor_capability_status": {
+          "type": "string"
+        },
+        "watermark_required": {
+          "type": "boolean"
+        },
+        "watermark_text": {
+          "type": "string"
+        },
+        "watermark_position": {
+          "type": "string"
+        },
+        "watermark_method": {
+          "type": "string"
+        },
+        "watermark_optout_state": {
+          "type": "string"
+        },
+        "watermark_vendor_capability": {
+          "type": "string"
+        },
+        "persona_memory_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dialogue_rules": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prohibited_claims": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uncertainty_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language_register": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution_status": {
+                "const": "EXECUTED_PASS"
+              }
+            },
+            "required": [
+              "execution_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "prompt_hash",
+              "config_hash",
+              "output_hash",
+              "sidecar_hash",
+              "asset_hash",
+              "qa_expected",
+              "qa_actual",
+              "reviewer",
+              "lineage"
+            ]
+          }
+        }
+      ],
+      "defaults_required_parity": true,
+      "watermark_required": true,
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_optout_state": "default_on",
+      "watermark_vendor_capability": "POSTPROCESS_OVERLAY_FALLBACK_REQUIRED",
+      "strict_schema_h114": true,
+      "negative_schema_tests": [
+        "model_ids=true",
+        "output_hash=123",
+        "qa_actual=texto libre",
+        "EXECUTED_PASS without reviewer/hash",
+        "watermark_required=yes"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "IDUNEX WARDROBE_PROPS sidecar",
+      "type": "object",
+      "required": [
+        "project_id",
+        "model_ids",
+        "modality",
+        "request_id",
+        "canon_clause_ids",
+        "settings",
+        "negative_avoid",
+        "qa_results",
+        "evidence_paths",
+        "evidence_hashes",
+        "execution_status",
+        "lineage",
+        "lineage_event",
+        "prompt_hash",
+        "config_hash",
+        "output_hash",
+        "sidecar_hash",
+        "asset_hash",
+        "qa_expected",
+        "qa_actual",
+        "reviewer",
+        "target_filename",
+        "asset_state",
+        "delivery_state",
+        "derived_asset_disclosure",
+        "vendor_capability_status",
+        "watermark_required",
+        "watermark_text",
+        "watermark_position",
+        "watermark_method",
+        "watermark_optout_state",
+        "watermark_vendor_capability",
+        "garment_fit",
+        "material_physics",
+        "prop_contact_points",
+        "continuity_frame_refs",
+        "safety_apparel_classification"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^IDUNEX_PROJECT_.+"
+        },
+        "model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MODEL_.+"
+          },
+          "minItems": 1
+        },
+        "modality": {
+          "type": "string",
+          "const": "WARDROBE_PROPS"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canon_clause_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "settings": {
+          "type": "object"
+        },
+        "negative_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qa_results": {
+          "type": "object"
+        },
+        "evidence_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_hashes": {
+          "type": "object"
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": [
+            "NOT_EXECUTED",
+            "EXECUTED_PASS",
+            "EXECUTED_FAIL",
+            "BLOCKED_EXPECTED"
+          ]
+        },
+        "lineage": {
+          "type": "object",
+          "required": [
+            "engine_sha256",
+            "project_zip_sha256",
+            "model_ids",
+            "created_at"
+          ],
+          "properties": {
+            "engine_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "project_zip_sha256": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^MODEL_.+"
+              }
+            },
+            "created_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": true
+        },
+        "lineage_event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "config_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sidecar_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "asset_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "qa_expected": {
+          "type": "object"
+        },
+        "qa_actual": {
+          "type": "object"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_state": {
+          "type": "string"
+        },
+        "delivery_state": {
+          "type": "string"
+        },
+        "derived_asset_disclosure": {
+          "type": "string"
+        },
+        "vendor_capability_status": {
+          "type": "string"
+        },
+        "watermark_required": {
+          "type": "boolean"
+        },
+        "watermark_text": {
+          "type": "string"
+        },
+        "watermark_position": {
+          "type": "string"
+        },
+        "watermark_method": {
+          "type": "string"
+        },
+        "watermark_optout_state": {
+          "type": "string"
+        },
+        "watermark_vendor_capability": {
+          "type": "string"
+        },
+        "garment_fit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "material_physics": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prop_contact_points": {
+          "type": "string",
+          "minLength": 1
+        },
+        "continuity_frame_refs": {
+          "type": "string",
+          "minLength": 1
+        },
+        "safety_apparel_classification": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution_status": {
+                "const": "EXECUTED_PASS"
+              }
+            },
+            "required": [
+              "execution_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "prompt_hash",
+              "config_hash",
+              "output_hash",
+              "sidecar_hash",
+              "asset_hash",
+              "qa_expected",
+              "qa_actual",
+              "reviewer",
+              "lineage"
+            ]
+          }
+        }
+      ],
+      "defaults_required_parity": true,
+      "watermark_required": true,
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_optout_state": "default_on",
+      "watermark_vendor_capability": "POSTPROCESS_OVERLAY_FALLBACK_REQUIRED",
+      "strict_schema_h114": true,
+      "negative_schema_tests": [
+        "model_ids=true",
+        "output_hash=123",
+        "qa_actual=texto libre",
+        "EXECUTED_PASS without reviewer/hash",
+        "watermark_required=yes"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "IDUNEX ENVIRONMENT_SCENE sidecar",
+      "type": "object",
+      "required": [
+        "project_id",
+        "model_ids",
+        "modality",
+        "request_id",
+        "canon_clause_ids",
+        "settings",
+        "negative_avoid",
+        "qa_results",
+        "evidence_paths",
+        "evidence_hashes",
+        "execution_status",
+        "lineage",
+        "lineage_event",
+        "prompt_hash",
+        "config_hash",
+        "output_hash",
+        "sidecar_hash",
+        "asset_hash",
+        "qa_expected",
+        "qa_actual",
+        "reviewer",
+        "target_filename",
+        "asset_state",
+        "delivery_state",
+        "derived_asset_disclosure",
+        "vendor_capability_status",
+        "watermark_required",
+        "watermark_text",
+        "watermark_position",
+        "watermark_method",
+        "watermark_optout_state",
+        "watermark_vendor_capability",
+        "location",
+        "time_of_day",
+        "weather",
+        "scale_reference",
+        "lighting_physics",
+        "spatial_continuity"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^IDUNEX_PROJECT_.+"
+        },
+        "model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MODEL_.+"
+          },
+          "minItems": 1
+        },
+        "modality": {
+          "type": "string",
+          "const": "ENVIRONMENT_SCENE"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canon_clause_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "settings": {
+          "type": "object"
+        },
+        "negative_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qa_results": {
+          "type": "object"
+        },
+        "evidence_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_hashes": {
+          "type": "object"
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": [
+            "NOT_EXECUTED",
+            "EXECUTED_PASS",
+            "EXECUTED_FAIL",
+            "BLOCKED_EXPECTED"
+          ]
+        },
+        "lineage": {
+          "type": "object",
+          "required": [
+            "engine_sha256",
+            "project_zip_sha256",
+            "model_ids",
+            "created_at"
+          ],
+          "properties": {
+            "engine_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "project_zip_sha256": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^MODEL_.+"
+              }
+            },
+            "created_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": true
+        },
+        "lineage_event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "config_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sidecar_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "asset_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "qa_expected": {
+          "type": "object"
+        },
+        "qa_actual": {
+          "type": "object"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_state": {
+          "type": "string"
+        },
+        "delivery_state": {
+          "type": "string"
+        },
+        "derived_asset_disclosure": {
+          "type": "string"
+        },
+        "vendor_capability_status": {
+          "type": "string"
+        },
+        "watermark_required": {
+          "type": "boolean"
+        },
+        "watermark_text": {
+          "type": "string"
+        },
+        "watermark_position": {
+          "type": "string"
+        },
+        "watermark_method": {
+          "type": "string"
+        },
+        "watermark_optout_state": {
+          "type": "string"
+        },
+        "watermark_vendor_capability": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time_of_day": {
+          "type": "string",
+          "minLength": 1
+        },
+        "weather": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scale_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lighting_physics": {
+          "type": "string",
+          "minLength": 1
+        },
+        "spatial_continuity": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution_status": {
+                "const": "EXECUTED_PASS"
+              }
+            },
+            "required": [
+              "execution_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "prompt_hash",
+              "config_hash",
+              "output_hash",
+              "sidecar_hash",
+              "asset_hash",
+              "qa_expected",
+              "qa_actual",
+              "reviewer",
+              "lineage"
+            ]
+          }
+        }
+      ],
+      "defaults_required_parity": true,
+      "watermark_required": true,
+      "watermark_text": "idunex",
+      "watermark_position": "bottom_center",
+      "watermark_method": "POSTPROCESS_OVERLAY_REQUIRED",
+      "watermark_optout_state": "default_on",
+      "watermark_vendor_capability": "POSTPROCESS_OVERLAY_FALLBACK_REQUIRED",
+      "strict_schema_h114": true,
+      "negative_schema_tests": [
+        "model_ids=true",
+        "output_hash=123",
+        "qa_actual=texto libre",
+        "EXECUTED_PASS without reviewer/hash",
+        "watermark_required=yes"
+      ]
+    }
+  ],
+  "negative_schema_tests": [
+    "model_ids=true",
+    "output_hash=123",
+    "qa_actual=texto libre",
+    "EXECUTED_PASS without reviewer/hash",
+    "watermark_required=yes"
+  ],
+  "result": "PASS"
+}

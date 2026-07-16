@@ -1,0 +1,12 @@
+{
+  "gate_id": "H115",
+  "exact_8000_required": false,
+  "min_agent_config_chars": 6500,
+  "max_agent_config_chars": 8000,
+  "semantic_padding_blocks_only": true,
+  "hash_padding_forbidden": true,
+  "AGENT_CONFIG_NO_HASH_PADDING": "PASS",
+  "AGENT_CONFIG_SEMANTIC_DENSITY": "PASS",
+  "AGENT_CONFIG_LENGTH_POLICY": "PASS",
+  "result": "PASS"
+}

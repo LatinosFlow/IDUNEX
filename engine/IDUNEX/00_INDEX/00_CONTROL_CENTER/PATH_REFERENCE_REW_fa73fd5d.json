@@ -1,0 +1,15 @@
+{
+  "report_id": "PATH_REFERENCE_REWRITE_CURRENT",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "authority": "ACTIVE_CURRENT_ONLY",
+  "historical_payload_location": "12_HISTORICAL_NON_AUTHORITY/P034_DEMOTED_PATH_REFERENCE_B03/00_INDEX__00_CONTROL_CENTER__PATH_REFERENCE_REWRITE_AFTER_RENUMBERING.json.historical.json",
+  "active_path_reference_rule": "Every active path literal in release reports/proofs must exist in the final reopened ZIP.",
+  "active_report_nonexistent_path_count": 0,
+  "result": "PASS",
+  "last_recomputed_strategy": "OPTION_A_PHYSICAL_RENUMBERING",
+  "root_prefix_duplicates": 0,
+  "sibling_scope_duplicates": 0,
+  "fail_codes": []
+}

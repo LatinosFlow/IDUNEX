@@ -1,0 +1,31 @@
+{
+  "contract_id": "AGENT_LOAD_CONTRACT",
+  "semantic_version": "v1.0.0",
+  "required_per_agent": [
+    "README_FOR_HUMAN_OPERATOR",
+    "AGENT_LOAD_PROTOCOL",
+    "AGENT_LOAD_AUDIT_CHECKLIST",
+    "TASK_REGISTRY",
+    "READ_MAP",
+    "MODEL_SELECTOR_RULES",
+    "REFERENCE_IMAGE_HANDLER",
+    "SAFE_REWRITE_POLICY",
+    "NEGATIVE_AVOID_GLOBAL",
+    "FALLBACK_FIXES_GLOBAL"
+  ],
+  "runtime_shape": "10_base_files_plus_1_full_runtime_canon_per_model",
+  "agents": [
+    "ChatGPT",
+    "Copilot"
+  ],
+  "blocked": [
+    "agent_reads_whole_engine",
+    "missing_full_model_runtime",
+    "memory_dependency",
+    "undocumented_external_instructions"
+  ],
+  "vendor_limitation_policy": "Copilot limitation may be documented as VENDOR_LIMITATION_NOT_ENGINE_FAIL only after load attempt evidence.",
+  "validator": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+  "fail_code": "FAIL_AGENT_LOAD_CONTRACT",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

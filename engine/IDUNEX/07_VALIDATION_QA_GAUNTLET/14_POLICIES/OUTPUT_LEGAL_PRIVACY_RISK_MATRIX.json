@@ -1,0 +1,11 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "jurisdiction": "PROJECT_DECLARED_COUNTRY - applicable privacy law considered for privacy controls",
+  "controls": [
+    "no_real_identity_copy",
+    "watermark_provenance",
+    "license_check",
+    "personal_data_minimization",
+    "sidecar_lineage"
+  ]
+}

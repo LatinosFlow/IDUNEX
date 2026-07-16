@@ -1,0 +1,26 @@
+{
+  "semantic_version": "v1.0.0",
+  "authority_class": "REFERENCE",
+  "fixture_type": "minimal_abstract",
+  "project_data_included": false,
+  "real_model_data_included": false,
+  "brand_defaults_included": false,
+  "models": [
+    {
+      "model_key": "MODEL_A",
+      "profile360_required": true,
+      "human_readable_canon_required": true
+    }
+  ],
+  "runtime": {
+    "chatgpt": "10+N",
+    "copilot": "10+N"
+  },
+  "expected_results": {
+    "project_brand_registry_schema": "PASS",
+    "full_model_runtime_contract": "PASS",
+    "prompt_pack_A_J": "PASS",
+    "agent_instructions_under_8000_chars": "PASS",
+    "creative_output_certified_default": false
+  }
+}

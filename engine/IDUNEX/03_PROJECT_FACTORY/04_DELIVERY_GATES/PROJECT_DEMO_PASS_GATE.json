@@ -1,0 +1,27 @@
+{
+  "gate_id": "PROJECT_DEMO_PASS_GATE",
+  "rule_id": "PRJ-DEMO-GATE-001",
+  "semantic_version": "v1.0.0",
+  "required": [
+    "project_name = Proyecto 000 Demo",
+    "filename canon correcto",
+    "no placeholders",
+    "no GENERIC_PROJECT_*",
+    "brand registry explícito",
+    "assets policy explícita",
+    "Profile360/TechExt completos",
+    "runtime ChatGPT 10+N",
+    "runtime Copilot 10+N",
+    "prompt packs A-J",
+    "validate recomputado PASS",
+    "auditoría de proyecto PASS",
+    "carga real ChatGPT/Copilot auditada o vendor limitation documentada",
+    "CREATIVE_OUTPUT_CERTIFIED=FALSE hasta QA real"
+  ],
+  "demo_pass_not_auto_future_pass": true,
+  "validator": "VALIDATE_PROJECT_DEMO_PASS_GATE",
+  "status": "ACTIVE_NATIVE",
+  "result": "PASS",
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

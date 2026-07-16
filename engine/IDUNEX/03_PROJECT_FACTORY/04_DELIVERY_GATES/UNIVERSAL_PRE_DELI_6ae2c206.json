@@ -1,0 +1,28 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "operations": [
+    "update_motor",
+    "downgrade_motor",
+    "create_project",
+    "update_project",
+    "migrate_project",
+    "retire_project",
+    "create_agent",
+    "generate_output",
+    "audit_output",
+    "reissue_package"
+  ],
+  "loop": [
+    "generate_or_apply",
+    "audit",
+    "root_cause_if_fail",
+    "surgical_fix",
+    "rebuild",
+    "recalculate_manifests_SHA",
+    "reopen_final_zip",
+    "reaudit",
+    "repeat_until_100_percent_PASS"
+  ],
+  "fallback_fix": "No delivery until validators fail=0 and blocking warnings=0."
+}

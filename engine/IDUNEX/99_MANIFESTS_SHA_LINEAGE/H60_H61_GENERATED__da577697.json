@@ -1,0 +1,30 @@
+{
+  "proof_id": "H60_H61_GENERATED_PROJECT_ARTIFACT_ENFORCEMENT_PROOF",
+  "date": "2026-06-30 PROJECT_DECLARED_TIMEZONE",
+  "result": "PASS",
+  "canonical_artifacts_present": "PASS",
+  "required_artifacts": [
+    "10_RELEASE/IDUNEX_PROJECT_CERTIFICATE.json",
+    "10_RELEASE/FINAL_PROJECT_REPORT.md",
+    "00_PROJECT_INDEX/PROJECT_CHANGELOG.md"
+  ],
+  "alias_artifacts_allowed_but_not_substitutes": [
+    "10_RELEASE/PROJECT_RELEASE_CERTIFICATE_H51.json",
+    "10_RELEASE/FINAL_AUDIT_REPORT.md",
+    "00_PROJECT_INDEX/CHANGELOG.md"
+  ],
+  "validator_blocks_removed_certificate": "PASS",
+  "validator_blocks_removed_final_report": "PASS",
+  "negative_removed_certificate_fail_codes": [
+    "FAIL_PACKAGE_SHA",
+    "FAIL_PACKAGE_MANIFEST_MISSING_FILE",
+    "FAIL_H51_PROJECT_CERTIFICATE_INCOMPLETE",
+    "FAIL_H51_PROJECT_CERTIFICATE_RUNTIME_COUNTS_MISSING",
+    "FAIL_H51_PROJECT_CERTIFICATE_CREATIVE_STATE_MISSING"
+  ],
+  "negative_removed_final_report_fail_codes": [
+    "FAIL_PACKAGE_SHA",
+    "FAIL_PACKAGE_MANIFEST_MISSING_FILE",
+    "FAIL_H60_FINAL_PROJECT_REPORT_MISSING"
+  ]
+}

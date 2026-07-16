@@ -1,0 +1,29 @@
+{
+  "semantic_version": "v1.0.0",
+  "static_smoke_test_matrix_template": [
+    {
+      "test": "brand_registry_schema",
+      "expected": "PASS"
+    },
+    {
+      "test": "runtime_chatgpt_10_plus_n",
+      "expected": "PASS"
+    },
+    {
+      "test": "runtime_copilot_10_plus_n",
+      "expected": "PASS"
+    },
+    {
+      "test": "full_model_runtime_per_model",
+      "expected": "PASS"
+    },
+    {
+      "test": "prompt_pack_A_J_all_modalities",
+      "expected": "PASS"
+    },
+    {
+      "test": "final_recomputational_gate",
+      "expected": "PASS"
+    }
+  ]
+}

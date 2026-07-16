@@ -1,0 +1,12 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "controls": [
+    "visual_hierarchy",
+    "AA_contrast",
+    "grid_spacing",
+    "PROJECT_BRAND_ENTITY_palette",
+    "optimized_export",
+    "no_text_artifacts"
+  ],
+  "required_result": "PASS_REQUIRED"
+}

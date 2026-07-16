@@ -1,0 +1,41 @@
+# IDUNEX Motor v1.0.0 - Changelog
+
+SEMANTIC_VERSION=v1.0.0
+VERSION_BUMP=NO
+CORRECTION_MODE=DIRECT_CANONICAL_NO_PATCH
+CORRECTION_SCOPE=RENORMALIZACION_VERSION_OFICIAL_v1.0.0_Y_DEMO_000_2_MODELOS
+PREVIOUS_SCOPE_COMPATIBILITY=MUTATION_SELF_TEST_H62_MATRIX_PROOF_PARITY_AND_ACTIVE_LEDGER_EXCLUSION_CLARITY
+LEGACY_SCOPE_COMPATIBILITY=DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY
+CREATIVE_OUTPUT_CERTIFIED=FALSE
+
+## 2026-07-08 - Active surface scope drift and duplicate retention allowlist stale-pass closure
+- B01_ACTIVE_SURFACE_SCOPE_DRIFT corrected: active control surfaces no longer declare the legacy duplicate-governance correction scope as vigente PASS scope.
+- B02_ACTIVE_DUPLICATE_RETENTION_ALLOWLIST_STALE_PASS corrected: retention allowlist was demoted to compatibility alias non-authority and synchronized to active duplicate recomputation.
+- B03_VALIDATOR_COVERAGE_GAP_SCOPE_AND_RETENTION_LEDGER corrected inside existing validators; no parallel validator was added.
+- H62 proof remains previous compatible authority: mutation-self-test 506/506 and N1..N10 x low/intermediate/full matrix 31/31 preserved.
+- Duplicate governance and active validator parity remains legacy compatibility metadata only, not current correction scope.
+
+MAX_MATRIX_CURRENT_RUN=PASS
+N1_TO_N10_X3_MATRIX=PASS
+VALIDATORS_FAIL=0
+BLOCKING_WARNINGS=0
+FAIL_CODES=[]
+SCORE=10/10
+OUTPUT_EXTERNAL_EXACT_7_OF_7=PASS
+CLOSURE_DECISION=ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION
+MATRIX_CURRENT_RUN_RECOMPUTED_31_31=PASS
+MUTATION_SELF_TEST=PASS_506_OF_506_RECOMPUTED
+CREATIVE_OUTPUT_CERTIFIED=FALSE
+PROJECT_DEMO_NEXT_PHASE_REQUIRED=TRUE
+
+## 2026-07-08 - H62 matrix proof parity and active ledger exclusion clarity
+- Scope preserved as PREVIOUS_SCOPE_COMPATIBILITY.
+- B01 PASS: active H62 proof restored from H238 v1.0.0, 31/31 matrix proof.
+- B02 PASS: duplicate ledger self-exception/dedup clarity applied.
+- CREATIVE_OUTPUT_CERTIFIED remains FALSE.
+
+## 2026-07-08 - CLI lifecycle and matrix version lineage parity
+- Scope preserved as historical previous compatibility to H62.
+- B01 PASS: H269-H280 aggregate validator runs child validators with explicit timeout, process-group kill-tree, bounded stdout/stderr capture and real rc observation.
+- B02 PASS: active matrix runner derives project IDs from SEMANTIC_VERSION v1.0.0; current 31/31 matrix PASS emits v1.0.0 project IDs.
+- CREATIVE_OUTPUT_CERTIFIED remains FALSE.

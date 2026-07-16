@@ -1,0 +1,32 @@
+{
+  "result": "PASS",
+  "semantic_version": "v1.0.0",
+  "h01_h09_preserved": true,
+  "h10_h14_added": true,
+  "no_loss_controls": [
+    {
+      "control": "H01-H09",
+      "status": "PRESERVED"
+    },
+    {
+      "control": "P034 gate count 40",
+      "status": "PRESERVED"
+    },
+    {
+      "control": "Direct correction gates 14",
+      "status": "ACTIVE_VALIDATED"
+    },
+    {
+      "control": "Mutation suite",
+      "status": "442/442 PASS"
+    },
+    {
+      "control": "Universal fixtures 1/2/10",
+      "status": "REGENERATED_AND_VALIDATED"
+    },
+    {
+      "control": "Creative output certification",
+      "status": "FALSE_PRESERVED"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "report": "GENERATE_SUPERVISOR_WATCHDOG_H205_H212",
+  "scope": "H205_H212_SUPERVISOR_WATCHDOG_RETENTION_CLOSURE",
+  "result": "PASS",
+  "forced_timeout_case": "IDUNEX_H205_FORCE_NONCOOP_STAGE_HANG",
+  "stdout_json_valid": true,
+  "output_json_valid": true,
+  "rc_non_ambiguous": true,
+  "returned_within_sla": "PASS",
+  "result_value": "FAIL",
+  "validators_fail": 1,
+  "fail_codes": [
+    "FAIL_H205_GENERATE_SUPERVISOR_TIMEOUT",
+    "FAIL_H205_ROOT_CAUSE_PHASE_FORCED_NONCOOPERATIVE_STAGE_SLEEP"
+  ],
+  "root_cause_phase": "forced_noncooperative_stage_sleep",
+  "elapsed_seconds": 3.051,
+  "sla_seconds": 4,
+  "NO_ACTIVE_STAGE_AFTER_SUPERVISOR_TIMEOUT": "PASS",
+  "NON_DELIVERY_QUARANTINE_MANIFEST_COMPLETE": "PASS",
+  "NO_INVALID_ZIP_NAMED_AS_DELIVERABLE_IN_STAGE": "PASS",
+  "temp_zip_status": {
+    "zip_named_deliverable_count": 0,
+    "invalid_zip_named_deliverable_count": 0,
+    "temp_non_delivery_zip_count": 0,
+    "items": [],
+    "stage_present": true,
+    "NO_INVALID_ZIP_NAMED_AS_DELIVERABLE_IN_STAGE": "PASS"
+  },
+  "no_public_delivery": true,
+  "GENERATE_SUPERVISOR_WATCHDOG_ENFORCED": "PASS",
+  "CUSTOM_N10_COMPLETE_EXTERNAL_TIMEOUT_REPRO_FIXED": "PASS",
+  "creative_output_certified": false
+}

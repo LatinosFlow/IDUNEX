@@ -1,0 +1,185 @@
+{
+  "gate_id": "H378_H380_COMPACT_EXECUTION_EVIDENCE",
+  "semantic_version": "v1.0.0",
+  "version_bump": "NO",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "correction_scope": "N10_H205_H410_COMPACT_FINALIZER_DIRECT_CANONICAL",
+  "creative_output_certified": false,
+  "truthfulness_note": "Compact evidence only. Human logs, staging and heavy reports are not authority active.",
+  "n10_policy": "N10 full-info generation now returns PASS within SLA with final reopen, completion manifest and external validate PASS. Forced timeout remains only as H205 negative watchdog proof.",
+  "items": {
+    "generate_N1_low": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "STAGING_TIMEOUT_QUARANTINE": "PASS",
+      "NO_ACTIVE_STAGE_AFTER_COMMAND_RETURN": "PASS",
+      "matrix_expected_result": "PASS"
+    },
+    "validate_N1_zip": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_ALLOWED",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "project_id": "IDUNEX_PROJECT_IDUNEX_TEST_N1_LOW_H361",
+      "model_count": 1,
+      "runtime_upload_count": 11,
+      "profile360_join": "61/61 per model",
+      "techext_join": "284/284 per model",
+      "matrix_expected_result": "PASS"
+    },
+    "generate_N2_full": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "STAGING_TIMEOUT_QUARANTINE": "PASS",
+      "NO_ACTIVE_STAGE_AFTER_COMMAND_RETURN": "PASS",
+      "matrix_expected_result": "PASS"
+    },
+    "update_contract_empty_alias_safe_fail": {
+      "result": "FAIL",
+      "delivery_status": "DELIVERY_BLOCKED",
+      "fail_codes": [
+        "FAIL_UPDATE_CONTRACT_EMPTY_WITH_SCHEMA"
+      ],
+      "matrix_expected_result": "PASS"
+    },
+    "update_age_delta_years": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "matrix_expected_result": "PASS"
+    },
+    "update_set_wardrobe": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "matrix_expected_result": "PASS"
+    },
+    "update_update_model_field": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "matrix_expected_result": "PASS"
+    },
+    "update_brand_update": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "matrix_expected_result": "PASS"
+    },
+    "update_runtime_regeneration": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "matrix_expected_result": "PASS"
+    },
+    "update_add_model_contract_path": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "matrix_expected_result": "PASS"
+    },
+    "update_remove_model_contract_path": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "matrix_expected_result": "PASS"
+    },
+    "migrate_project_same_version": {
+      "result": "PASS",
+      "delivery_status": "MIGRATION_REAL_OUTPUT_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "SAME_VERSION_MIGRATION_REAL_OUTPUT": "PASS",
+      "matrix_expected_result": "PASS"
+    },
+    "update_project_by_engine_same_version": {
+      "result": "PASS",
+      "delivery_status": "MIGRATION_REAL_OUTPUT_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "SAME_VERSION_MIGRATION_REAL_OUTPUT": "PASS",
+      "matrix_expected_result": "PASS"
+    },
+    "mutation_self_audit_506": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "MUTATION_SUITE_FULL_PASS": "PASS",
+      "matrix_expected_result": "PASS"
+    },
+    "engine_closure_validator": {
+      "result": "PASS",
+      "matrix_expected_result": "PASS"
+    },
+    "generate_N10_full_info_recomputed_pass": {
+      "result": "PASS",
+      "delivery_status": "DELIVERY_PASS",
+      "fail_codes": [],
+      "validators_fail": 0,
+      "blocking_warnings": 0,
+      "model_count": 10,
+      "elapsed_seconds": 101.678,
+      "sla_seconds": 240,
+      "runtime_upload_count": 20,
+      "zipfile_testzip": "PASS",
+      "companion_sha_match": "PASS",
+      "NO_ACTIVE_STAGE_AFTER_COMMAND_RETURN": "PASS",
+      "matrix_expected_result": "PASS",
+      "phase_timing_ledger": {
+        "gate_id": "H198_GENERATION_PHASE_TIMING_LEDGER",
+        "model_count": 10,
+        "sla_seconds": 240,
+        "elapsed_seconds": 101.678,
+        "current_or_last_phase": "final_reopen",
+        "input_normalization_seconds": 0.0,
+        "make_project_seconds": 50.133,
+        "refresh_ledgers_seconds": 1.135,
+        "precheck_seconds": 8.02,
+        "first_zip_seconds": 1.619,
+        "first_reopen_seconds": 8.979,
+        "content_tree_seconds": 3.269,
+        "final_zip_seconds": 1.312,
+        "final_reopen_seconds": 16.617,
+        "atomic_rename_seconds": 0.002,
+        "completion_manifest_seconds": 10.278,
+        "cleanup_seconds": 0.0,
+        "n10_phase_warning_threshold_seconds": 60,
+        "warnings": [],
+        "result": "PASS",
+        "fail_codes": [],
+        "creative_output_certified": false
+      }
+    }
+  },
+  "blocking_items": [],
+  "VALIDATORS_FAIL": 0,
+  "BLOCKING_WARNINGS": 0,
+  "FAIL_CODES": [],
+  "score_gate_10_10": "PASS",
+  "result": "PASS"
+}

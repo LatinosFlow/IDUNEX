@@ -1,0 +1,43 @@
+{
+  "surface_id": "SAFE_REWRITE_POLICY",
+  "semantic_version": "v1.0.0",
+  "source_authority": [
+    "04_AGENT_FACTORY/11_H281_H310_AGENT_RUNTIME/SAFE_REWRITE_AND_ADULT_EDITORIAL_POLICY.json"
+  ],
+  "contract_satisfied": "AGENT_LOAD_CONTRACT.required_per_agent.SAFE_REWRITE_POLICY",
+  "policy": "adult_editorial_safe_rewrite",
+  "rewrite_required_for": [
+    "revealing adult wardrobe terms",
+    "vendor false positive recovery",
+    "unsafe colloquial wording",
+    "ambiguous sensual styling"
+  ],
+  "rewrite_to": "adult editorial, commercial, non-explicit, covered intimate areas, brand-safe, realistic textile fit",
+  "allowed": [
+    "swimwear",
+    "lingerie",
+    "adult glamour",
+    "sensual pose with clothing",
+    "covered editorial fashion"
+  ],
+  "blocked": [
+    "nudity",
+    "explicit sex",
+    "pornography",
+    "intimate exposure",
+    "minor appearance",
+    "school-coded sexualization",
+    "coercion",
+    "unauthorized real-person copy",
+    "policy evasion"
+  ],
+  "fallback": "rewrite once to safe adult editorial wording; if still unsafe, block with failcode and no output claim",
+  "fail_codes": [
+    "FAIL_H73_SAFE_REWRITE_NOT_APPLIED",
+    "FAIL_H88_SUITE_CONDITIONAL_WITHOUT_SAFE_REWRITE",
+    "FAIL_H89_SAFE_REWRITE_MISSING_FOR_ALLOWED_CASE"
+  ],
+  "memory_dependency": "FORBIDDEN",
+  "result": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

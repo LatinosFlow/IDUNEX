@@ -1,0 +1,17 @@
+{
+  "semantic_version": "v1.0.0",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "H01-H86_PRESERVED": "PASS",
+  "H87-H92_APPLIED": "PASS",
+  "validators_fail": 0,
+  "blocking_warnings": 0,
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "result": "PASS",
+  "FIXTURE_PROJECT_VALIDATE_N1": "PASS",
+  "FIXTURE_PROJECT_VALIDATE_N2": "PASS",
+  "FIXTURE_PROJECT_VALIDATE_N10": "PASS",
+  "FAIL_PACKAGE_SHA": 0,
+  "FAIL_H87_FIXTURE_PACKAGE_SHA_STALE": 0
+}

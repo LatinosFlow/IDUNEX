@@ -1,0 +1,126 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "cases": [
+    {
+      "prompt": "crear un proyecto demo generico con dos modelos adultos ficticios",
+      "detected_intent": "CREATE_PROJECT_AUTO",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": true,
+      "blockers_or_expected": "none"
+    },
+    {
+      "prompt": "que el motor defina todo",
+      "detected_intent": "CREATE_PROJECT_AUTO",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": true,
+      "blockers_or_expected": "none"
+    },
+    {
+      "prompt": "quiero personalizar básico",
+      "detected_intent": "CREATE_PROJECT_BASIC_GUIDED",
+      "operation_mode": "BASIC_GUIDED",
+      "should_ask": true,
+      "should_generate": false,
+      "blockers_or_expected": "needs_basic_template"
+    },
+    {
+      "prompt": "quiero definir cada rasgo",
+      "detected_intent": "CREATE_PROJECT_DETAILED",
+      "operation_mode": "DETAILED",
+      "should_ask": true,
+      "should_generate": false,
+      "blockers_or_expected": "needs_detailed_template"
+    },
+    {
+      "prompt": "crear proyecto con 11 modelos",
+      "detected_intent": "CREATE_PROJECT_AUTO",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": false,
+      "blockers_or_expected": "BLOCKED_MAX_MODEL_COUNT_OR_AGENT_FILE_LIMIT"
+    },
+    {
+      "prompt": "exportar agente con 10 modelos",
+      "detected_intent": "GENERATE_OUTPUT",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": true,
+      "blockers_or_expected": "20_files_exact"
+    },
+    {
+      "prompt": "exportar agente con 2 modelos",
+      "detected_intent": "GENERATE_OUTPUT",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": true,
+      "blockers_or_expected": "12_files_exact"
+    },
+    {
+      "prompt": "TechExt citado pero no embebido",
+      "detected_intent": "AUDIT_PROJECT",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": false,
+      "blockers_or_expected": "BLOCKED_TECH_EXT_NOT_MATERIALIZED"
+    },
+    {
+      "prompt": "core compactado sin coverage map",
+      "detected_intent": "AUDIT_PROJECT",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": false,
+      "blockers_or_expected": "BLOCKED_RUNTIME_COVERAGE_MAP_MISSING"
+    },
+    {
+      "prompt": "alias extendido no resuelto",
+      "detected_intent": "AUDIT_PROJECT",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": false,
+      "blockers_or_expected": "BLOCKED_MODEL_ALIAS_NOT_RESOLVED"
+    },
+    {
+      "prompt": "modelo legacy fuera de namespace",
+      "detected_intent": "AUDIT_PROJECT",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": false,
+      "blockers_or_expected": "BLOCKED_LEGACY_MODEL_OUTSIDE_NAMESPACE"
+    },
+    {
+      "prompt": "PROJECT_CORE con prefijos duplicados",
+      "detected_intent": "AUDIT_PROJECT",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": false,
+      "blockers_or_expected": "BLOCKED_PROJECT_CORE_PREFIX_DUPLICATE"
+    },
+    {
+      "prompt": "actualiza este proyecto con el nuevo motor",
+      "detected_intent": "UPDATE_PROJECT_WITH_NEW_ENGINE",
+      "operation_mode": "AUTO",
+      "should_ask": true,
+      "should_generate": false,
+      "blockers_or_expected": "classify_variables"
+    },
+    {
+      "prompt": "OUTPUT_REAL_10_10 sin asset",
+      "detected_intent": "AUDIT_OUTPUT",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": false,
+      "blockers_or_expected": "BLOCKED_OUTPUT_REAL_10_10_WITHOUT_ASSET"
+    },
+    {
+      "prompt": "PASS con auditoría independiente FAIL",
+      "detected_intent": "AUDIT_ENGINE",
+      "operation_mode": "AUTO",
+      "should_ask": false,
+      "should_generate": false,
+      "blockers_or_expected": "BLOCKED_TRUTHFULNESS_INDEPENDENT_FAIL"
+    }
+  ]
+}

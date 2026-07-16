@@ -1,0 +1,339 @@
+{
+  "gate_id": "MASTER_GOVERNANCE_UPDATE_MIGRATION_MATRIX_CURRENT_SESSION",
+  "execution_mode": "real_cli_current_session",
+  "base_project_zip": "/mnt/data/idunex_update_matrix_work/base2/IDUNEX_PROJECT_H238_BASIC_N2_V1_0_0.zip",
+  "case_count": 15,
+  "pass_count": 15,
+  "fail_count": 0,
+  "result": "PASS",
+  "UPDATE_MATRIX": "PASS",
+  "MIGRATION_MATRIX": "PASS",
+  "positive_and_expected_block_cases": true,
+  "VALIDATORS_FAIL": 0,
+  "BLOCKING_WARNINGS": 0,
+  "FAIL_CODES": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "cases": [
+    {
+      "case": "validate_contract_top_level_alias_set_wardrobe",
+      "category": "validate-update-contract",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "delivery_status": "UPDATE_CONTRACT_NORMALIZED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "runtime_upload_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED"
+      },
+      "source_output_json": "/mnt/data/idunex_update_matrix_work/cases/validate_contract_top_level_alias_set_wardrobe/out.json"
+    },
+    {
+      "case": "validate_contract_operations_array_age",
+      "category": "validate-update-contract",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "delivery_status": "UPDATE_CONTRACT_NORMALIZED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "runtime_upload_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED"
+      },
+      "source_output_json": "/mnt/data/idunex_update_matrix_work/cases/validate_contract_operations_array_age/out.json"
+    },
+    {
+      "case": "validate_contract_singular_operation_set_wardrobe",
+      "category": "validate-update-contract",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "delivery_status": "UPDATE_CONTRACT_NORMALIZED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "runtime_upload_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED"
+      },
+      "source_output_json": "/mnt/data/validate_singular_ok/out.json"
+    },
+    {
+      "case": "validate_contract_locked_field_expected_block",
+      "category": "validate-update-contract",
+      "expectation": "expected_block",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "delivery_status": "BLOCKED_EARLY_EXPECTED",
+        "expected_block": true,
+        "block_fail_code": "FAIL_LOCKED_FIELD_UPDATE_REJECTED",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [
+          "FAIL_LOCKED_FIELD_UPDATE_REJECTED"
+        ],
+        "model_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "runtime_upload_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED"
+      },
+      "source_output_json": "/mnt/data/idunex_update_matrix_work/cases/validate_contract_locked_field_expected_block/out.json"
+    },
+    {
+      "case": "update_age_evolution",
+      "category": "update-project",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project",
+        "delivery_status": "DELIVERY_ALLOWED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": 2,
+        "runtime_upload_count": 12,
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "PASS"
+      },
+      "source_output_json": "/mnt/data/update_test_age/out.json"
+    },
+    {
+      "case": "update_set_wardrobe",
+      "category": "update-project",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project",
+        "delivery_status": "DELIVERY_ALLOWED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": 2,
+        "runtime_upload_count": 12,
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "PASS"
+      },
+      "source_output_json": "/mnt/data/update_test_set_wardrobe/out.json"
+    },
+    {
+      "case": "update_model_field_allowed",
+      "category": "update-project",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project",
+        "delivery_status": "DELIVERY_ALLOWED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": 2,
+        "runtime_upload_count": 12,
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "PASS"
+      },
+      "source_output_json": "/mnt/data/update_test_model_field_ok/out.json"
+    },
+    {
+      "case": "update_brand_update",
+      "category": "update-project",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project",
+        "delivery_status": "DELIVERY_ALLOWED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": 2,
+        "runtime_upload_count": 12,
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "PASS"
+      },
+      "source_output_json": "/mnt/data/update_test_brand_pos2/out.json"
+    },
+    {
+      "case": "update_runtime_regeneration",
+      "category": "update-project",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project",
+        "delivery_status": "DELIVERY_ALLOWED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": 2,
+        "runtime_upload_count": 12,
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "PASS"
+      },
+      "source_output_json": "/mnt/data/update_test_runtime_regeneration/out2.json"
+    },
+    {
+      "case": "update_add_model_no_drift",
+      "category": "update-project",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project",
+        "delivery_status": "DELIVERY_ALLOWED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": 3,
+        "runtime_upload_count": 13,
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "PASS"
+      },
+      "source_output_json": "/mnt/data/update_test_add_model_3/out.json"
+    },
+    {
+      "case": "update_remove_model_no_drift",
+      "category": "update-project",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project",
+        "delivery_status": "DELIVERY_ALLOWED",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": 1,
+        "runtime_upload_count": 11,
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "PASS"
+      },
+      "source_output_json": "/mnt/data/update_test_remove_model_3/out.json"
+    },
+    {
+      "case": "update_remove_to_zero_expected_block",
+      "category": "update-project",
+      "expectation": "expected_block",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project",
+        "delivery_status": "BLOCKED_EARLY_EXPECTED",
+        "expected_block": true,
+        "block_fail_code": "BLOCKED_EXPECTED_REMOVE_MODEL_WOULD_LEAVE_ZERO",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [
+          "BLOCKED_EXPECTED_REMOVE_MODEL_WOULD_LEAVE_ZERO"
+        ],
+        "model_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "runtime_upload_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED"
+      },
+      "source_output_json": "/mnt/data/update_test_zero/out.json"
+    },
+    {
+      "case": "migrate_same_version",
+      "category": "migrate-project",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "migrate-project",
+        "delivery_status": "MIGRATION_REAL_OUTPUT_PASS",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "runtime_upload_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED"
+      },
+      "source_output_json": "/mnt/data/mig_migrate_same/out.json"
+    },
+    {
+      "case": "update_project_by_engine_same_version",
+      "category": "update-project-by-engine",
+      "expectation": "positive",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "update-project-by-engine",
+        "delivery_status": "MIGRATION_REAL_OUTPUT_PASS",
+        "expected_block": false,
+        "block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [],
+        "model_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "runtime_upload_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED"
+      },
+      "source_output_json": "/mnt/data/mig_update_by_engine/out.json"
+    },
+    {
+      "case": "migrate_unknown_target_expected_block",
+      "category": "migrate-project",
+      "expectation": "expected_block",
+      "result": "PASS",
+      "rc_observed": "CLI_RC_ZERO_OR_CAPTURED",
+      "payload_result": {
+        "result": "PASS",
+        "operation": "migrate-project",
+        "delivery_status": "BLOCKED_EARLY_EXPECTED_TARGET_ENGINE_ABSENT",
+        "expected_block": true,
+        "block_fail_code": "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY",
+        "validators_fail": 0,
+        "blocking_warnings": 0,
+        "fail_codes": [
+          "UNSUPPORTED_TARGET_ENGINE_AUTHORITY_MISSING_EARLY"
+        ],
+        "model_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "runtime_upload_count": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED",
+        "UPDATE_NO_DRIFT_UNREQUESTED_FIELDS": "NOT_APPLICABLE_WITH_REASON_CURRENT_MATRIX_CASE_FIELD_NOT_EMITTED"
+      },
+      "source_output_json": "/mnt/data/mig_unknown/out.json"
+    }
+  ]
+}

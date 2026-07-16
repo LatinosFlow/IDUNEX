@@ -1,0 +1,48 @@
+{
+  "policy_id": "MOTOR_PROJECT_BOUNDARY_POLICY",
+  "semantic_version": "v1.0.0",
+  "active_internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "motor_defines": [
+    "architecture",
+    "policies",
+    "schemas",
+    "contracts",
+    "project_factory",
+    "validators",
+    "manifests",
+    "runtime_layout",
+    "source_lineage_SRC_001_SRC_049",
+    "Pairwise360_rules",
+    "sidecar_contracts",
+    "golden_test_contracts",
+    "materialization_rules"
+  ],
+  "project_defines": [
+    "project_id",
+    "model_count",
+    "model_names_aliases",
+    "visible_adult_age",
+    "origin",
+    "gender_role_when_supplied",
+    "materialized_anchors",
+    "materialized_Profile360",
+    "materialized_TechExt",
+    "runtime_profiles",
+    "final_prompts",
+    "sidecars",
+    "golden_tests"
+  ],
+  "project_model_range": {
+    "min": 1,
+    "max": 10
+  },
+  "fixture_required_flags": [
+    "FIXTURE_ONLY",
+    "NON_AUTHORITY",
+    "NOT_CANONICAL_PROJECT",
+    "NOT_CANONICAL_MODEL",
+    "NOT_FOR_RUNTIME_IDENTITY"
+  ],
+  "template_actual_value_rule": "SCHEMA_SLOT_OR_PROJECT_FACTORY_MATERIALIZATION_CONTRACT_ONLY",
+  "generated_project_actual_value_rule": "MATERIALIZED_PROJECT_VALUE_NO_PLACEHOLDER_NO_CLONE_WITH_CAUSAL_EVIDENCE"
+}

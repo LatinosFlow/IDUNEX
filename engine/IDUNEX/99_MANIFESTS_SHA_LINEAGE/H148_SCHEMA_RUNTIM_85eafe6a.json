@@ -1,0 +1,220 @@
+{
+  "report_id": "H148_SCHEMA_RUNTIME_PARITY_NEGATIVE_MUTATION_SUITE_REPORT",
+  "result": "PASS",
+  "mutation_count": 10,
+  "cases": [
+    {
+      "case_id": "H148_01",
+      "case": "json_active_block_fail_code_null",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H143_BLOCK_FAIL_CODE_NULL_ON_DELIVERY_PASS"
+      ],
+      "observed_failcodes": [
+        "FAIL_H143_BLOCK_FAIL_CODE_NULL_ON_DELIVERY_PASS"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 2,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/GENERATED_PROJECT_AND_CLI_REVALIDATION_POST_H135_H140.json"
+      ],
+      "command": "executed_negative_mutation_case_json_active_block_fail_code_null",
+      "stdout_hash": "0846a3bf6fb7dae6349cea4a4ef99f89bd6f09fb40923e454f2b693582678315",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_02",
+      "case": "json_active_human_readable_result_null",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H143_ACTIVE_JSON_NULL_VALUE"
+      ],
+      "observed_failcodes": [
+        "FAIL_H143_ACTIVE_JSON_NULL_VALUE"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 3,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/GENERATED_PROJECT_AND_CLI_REVALIDATION_POST_H135_H140.json"
+      ],
+      "command": "executed_negative_mutation_case_json_active_human_readable_result_null",
+      "stdout_hash": "a256a11e2657a52a58066e2b811c72a8886a03a1df42bab9921f4da3151dbf97",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_03",
+      "case": "json_active_required_string_empty",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H143_ACTIVE_JSON_BLANK_VALUE"
+      ],
+      "observed_failcodes": [
+        "FAIL_H143_ACTIVE_JSON_BLANK_VALUE"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 4,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/GENERATED_PROJECT_AND_CLI_REVALIDATION_POST_H135_H140.json"
+      ],
+      "command": "executed_negative_mutation_case_json_active_required_string_empty",
+      "stdout_hash": "c073115d9f00ed261181053ea7ec69d3fa0bd61037b9ed5b0a4c167179858cec",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_04",
+      "case": "runtime_check_true_schema_returncode_1",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H144_RUNTIME_CHECK_TRUE_WITH_SUBVALIDATOR_RETURN_CODE_FAIL"
+      ],
+      "observed_failcodes": [
+        "FAIL_H144_RUNTIME_CHECK_TRUE_WITH_SUBVALIDATOR_RETURN_CODE_FAIL"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 5,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py"
+      ],
+      "command": "executed_negative_mutation_case_runtime_check_true_schema_returncode_1",
+      "stdout_hash": "f19f93a6463675a7aeea774819e7af48795fe0a696fe6129f05b4b7e9fa48d36",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_05",
+      "case": "runtime_validators_fail_zero_schema_failed",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H144_RUNTIME_VALIDATORS_FAIL_ZERO_WITH_FAILED_SUBVALIDATOR"
+      ],
+      "observed_failcodes": [
+        "FAIL_H144_RUNTIME_VALIDATORS_FAIL_ZERO_WITH_FAILED_SUBVALIDATOR"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 6,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py"
+      ],
+      "command": "executed_negative_mutation_case_runtime_validators_fail_zero_schema_failed",
+      "stdout_hash": "656267d39523f2a674bdd2e94abfabff19d8268dacb5539398b59b8dc08fd833",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_06",
+      "case": "runtime_fail_codes_empty_schema_failed",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H144_RUNTIME_FAIL_CODES_EMPTY_WITH_FAILED_SUBVALIDATOR"
+      ],
+      "observed_failcodes": [
+        "FAIL_H144_RUNTIME_FAIL_CODES_EMPTY_WITH_FAILED_SUBVALIDATOR"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 7,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py"
+      ],
+      "command": "executed_negative_mutation_case_runtime_fail_codes_empty_schema_failed",
+      "stdout_hash": "6cdfb54d0644d4beffbdbfba25a6f5341a3bdfbe608552492adf385889811969",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_07",
+      "case": "docs_pass_with_schema_fail",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H147_DOCS_DECLARE_SCHEMA_PASS_WITH_SCHEMA_FAIL"
+      ],
+      "observed_failcodes": [
+        "FAIL_H147_DOCS_DECLARE_SCHEMA_PASS_WITH_SCHEMA_FAIL"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 8,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py"
+      ],
+      "command": "executed_negative_mutation_case_docs_pass_with_schema_fail",
+      "stdout_hash": "30bd498c3693add6a1d30f2aad1f7cd5ac575c435425734b8f6372ad570f0145",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_08",
+      "case": "docs_pass_with_masked_schema_fail",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H147_DOCS_DECLARE_RUNTIME_PASS_WITH_MASKED_SUBVALIDATOR_FAIL"
+      ],
+      "observed_failcodes": [
+        "FAIL_H147_DOCS_DECLARE_RUNTIME_PASS_WITH_MASKED_SUBVALIDATOR_FAIL"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 9,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py"
+      ],
+      "command": "executed_negative_mutation_case_docs_pass_with_masked_schema_fail",
+      "stdout_hash": "de5e6afcfca0c8f381c18154aa37e301be4c4724903319eda10b4c79e919fe1b",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_09",
+      "case": "summary_unknown_sentinel",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H145_UNKNOWN_SENTINEL_VALUE"
+      ],
+      "observed_failcodes": [
+        "FAIL_H145_UNKNOWN_SENTINEL_VALUE"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 10,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py"
+      ],
+      "command": "executed_negative_mutation_case_summary_unknown_sentinel",
+      "stdout_hash": "b3cbbd12d1ea092d1088963425e4819ae8ac69fb2bee22ed9a965e5b0e614f82",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case_id": "H148_10",
+      "case": "delivery_pass_block_fail_code_null",
+      "injected_fault": "EXECUTED_NEGATIVE_FIXTURE",
+      "expected_failcodes": [
+        "FAIL_H143_BLOCK_FAIL_CODE_NULL_ON_DELIVERY_PASS"
+      ],
+      "observed_failcodes": [
+        "FAIL_H143_BLOCK_FAIL_CODE_NULL_ON_DELIVERY_PASS"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "post_restore_positive_result": "PASS",
+      "elapsed_ms": 11,
+      "touched_files": [
+        "99_MANIFESTS_SHA_LINEAGE/GENERATED_PROJECT_AND_CLI_REVALIDATION_POST_H135_H140.json"
+      ],
+      "command": "executed_negative_mutation_case_delivery_pass_block_fail_code_null",
+      "stdout_hash": "e961a48219acfdf73a3db79126b61d0ef657e2bc85d9d9cea9f8c6e25dbaed62",
+      "stderr_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "H143_H150_NEGATIVE_MUTATION_CASES_PASS": "PASS",
+  "fail_codes": [],
+  "generated_at": "2026-07-01 PROJECT_DECLARED_TIMEZONE"
+}

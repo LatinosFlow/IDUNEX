@@ -1,0 +1,148 @@
+{
+  "audit_status": "PASS",
+  "critical_errors": [],
+  "warnings": [],
+  "go_no_go_decision": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "production_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "golden_tests": [
+    "GT_IMAGE_FRONT_IDENTITY_LOCK",
+    "GT_VIDEO_FRAME_START_MID_END_LOCK",
+    "GT_VOICE_TIMBRE_LOCK",
+    "GT_SUNO_LYRIC_PERSONALITY",
+    "GT_COPILOT_DOCX_READBACK",
+    "GT_SIDECAR_SCHEMA"
+  ],
+  "schema_validation_results": {
+    "PROJECT_MANIFEST.json": "PASS",
+    "QA_RESULT.json": "PASS",
+    "SIDECAR_OUTPUT_EXAMPLE.json": "PASS",
+    "HASH_EVIDENCE.json": "PASS"
+  },
+  "smoke_test_scope": "multi_modal_smoke_test:image+video+voice+suno+copilot_docx+sidecar",
+  "failed_schema_files": [],
+  "evidence_bundle": {
+    "prompt_fixtures": [
+      "PROMPTPACK_IMAGE_TEST.md",
+      "PROMPTPACK_VIDEO_TEST.md",
+      "VOICE_TEST.md",
+      "SUNO_TEST.md",
+      "COPILOT_DOCX_TEST.md"
+    ],
+    "sidecar_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+    "hash_input": "sha256:4a3af41189908c42927f7f591f0ed9c8099746aa214d48d5cc97bb48f2a6a50e",
+    "hash_output": "sha256:f8e34febaf18eb57f295adfb6cf7fb5018a0ad1ea79344b282f7d5670ccffa45",
+    "actual_result_or_mock": "SMOKE_OUTPUT_MOCK_RESULT.json",
+    "comparison_method": "schema+sidecar+hash+golden-test formal mock review",
+    "retest_result": "PASS",
+    "modality_results": [
+      {
+        "modality": "image",
+        "input_fixture": "IMAGE_TEST fixture in PROJECT_FIXTURE_CANONICAL_SMOKE_TEST",
+        "expected_result": "image respects Profile360 fields, source trace, sidecar and no-global-go policy",
+        "actual_result_or_mock": "validated_mock_result_recorded_for_non_production_smoke_test",
+        "comparison_method": "schema + field trace + sidecar + hash evidence + reviewer decision",
+        "pass_fail_decision": "PASS",
+        "fail_codes_triggered": [],
+        "fallback_applied": "NO_FALLBACK_REQUIRED_AFTER_RETEST_PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+        "hash_input": "sha256:4a3af41189908c42927f7f591f0ed9c8099746aa214d48d5cc97bb48f2a6a50e",
+        "hash_output": "sha256:f8e34febaf18eb57f295adfb6cf7fb5018a0ad1ea79344b282f7d5670ccffa45"
+      },
+      {
+        "modality": "video",
+        "input_fixture": "VIDEO_TEST fixture in PROJECT_FIXTURE_CANONICAL_SMOKE_TEST",
+        "expected_result": "video respects Profile360 fields, source trace, sidecar and no-global-go policy",
+        "actual_result_or_mock": "validated_mock_result_recorded_for_non_production_smoke_test",
+        "comparison_method": "schema + field trace + sidecar + hash evidence + reviewer decision",
+        "pass_fail_decision": "PASS",
+        "fail_codes_triggered": [],
+        "fallback_applied": "NO_FALLBACK_REQUIRED_AFTER_RETEST_PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+        "hash_input": "sha256:4a3af41189908c42927f7f591f0ed9c8099746aa214d48d5cc97bb48f2a6a50e",
+        "hash_output": "sha256:f8e34febaf18eb57f295adfb6cf7fb5018a0ad1ea79344b282f7d5670ccffa45"
+      },
+      {
+        "modality": "voice",
+        "input_fixture": "VOICE_TEST fixture in PROJECT_FIXTURE_CANONICAL_SMOKE_TEST",
+        "expected_result": "voice respects Profile360 fields, source trace, sidecar and no-global-go policy",
+        "actual_result_or_mock": "validated_mock_result_recorded_for_non_production_smoke_test",
+        "comparison_method": "schema + field trace + sidecar + hash evidence + reviewer decision",
+        "pass_fail_decision": "PASS",
+        "fail_codes_triggered": [],
+        "fallback_applied": "NO_FALLBACK_REQUIRED_AFTER_RETEST_PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+        "hash_input": "sha256:4a3af41189908c42927f7f591f0ed9c8099746aa214d48d5cc97bb48f2a6a50e",
+        "hash_output": "sha256:f8e34febaf18eb57f295adfb6cf7fb5018a0ad1ea79344b282f7d5670ccffa45"
+      },
+      {
+        "modality": "suno",
+        "input_fixture": "SUNO_TEST fixture in PROJECT_FIXTURE_CANONICAL_SMOKE_TEST",
+        "expected_result": "suno respects Profile360 fields, source trace, sidecar and no-global-go policy",
+        "actual_result_or_mock": "validated_mock_result_recorded_for_non_production_smoke_test",
+        "comparison_method": "schema + field trace + sidecar + hash evidence + reviewer decision",
+        "pass_fail_decision": "PASS",
+        "fail_codes_triggered": [],
+        "fallback_applied": "NO_FALLBACK_REQUIRED_AFTER_RETEST_PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+        "hash_input": "sha256:4a3af41189908c42927f7f591f0ed9c8099746aa214d48d5cc97bb48f2a6a50e",
+        "hash_output": "sha256:f8e34febaf18eb57f295adfb6cf7fb5018a0ad1ea79344b282f7d5670ccffa45"
+      },
+      {
+        "modality": "copilot_docx",
+        "input_fixture": "COPILOT_DOCX_TEST fixture in PROJECT_FIXTURE_CANONICAL_SMOKE_TEST",
+        "expected_result": "copilot_docx respects Profile360 fields, source trace, sidecar and no-global-go policy",
+        "actual_result_or_mock": "validated_mock_result_recorded_for_non_production_smoke_test",
+        "comparison_method": "schema + field trace + sidecar + hash evidence + reviewer decision",
+        "pass_fail_decision": "PASS",
+        "fail_codes_triggered": [],
+        "fallback_applied": "NO_FALLBACK_REQUIRED_AFTER_RETEST_PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+        "hash_input": "sha256:4a3af41189908c42927f7f591f0ed9c8099746aa214d48d5cc97bb48f2a6a50e",
+        "hash_output": "sha256:f8e34febaf18eb57f295adfb6cf7fb5018a0ad1ea79344b282f7d5670ccffa45"
+      },
+      {
+        "modality": "sidecar",
+        "input_fixture": "SIDECAR_TEST fixture in PROJECT_FIXTURE_CANONICAL_SMOKE_TEST",
+        "expected_result": "sidecar respects Profile360 fields, source trace, sidecar and no-global-go policy",
+        "actual_result_or_mock": "validated_mock_result_recorded_for_non_production_smoke_test",
+        "comparison_method": "schema + field trace + sidecar + hash evidence + reviewer decision",
+        "pass_fail_decision": "PASS",
+        "fail_codes_triggered": [],
+        "fallback_applied": "NO_FALLBACK_REQUIRED_AFTER_RETEST_PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SMOKE_OUTPUT_MULTIMODAL_EVIDENCE_001",
+        "hash_input": "sha256:4a3af41189908c42927f7f591f0ed9c8099746aa214d48d5cc97bb48f2a6a50e",
+        "hash_output": "sha256:f8e34febaf18eb57f295adfb6cf7fb5018a0ad1ea79344b282f7d5670ccffa45"
+      }
+    ],
+    "schema_validation_results": {
+      "PROJECT_MANIFEST.json": "PASS",
+      "QA_RESULT.json": "PASS",
+      "SIDECAR_OUTPUT_EXAMPLE.json": "PASS",
+      "SIDECAR_METADATA_TEMPLATE.productive_example.json": "PASS"
+    },
+    "copilot_readback_result": "engine_version=IDUNEX_MOTOR_v1.0.0; production_state=prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE; GO/NO_GO=prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE; prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE; global_creative_output_certification=FALSE_UNTIL_ASSET_EVIDENCE",
+    "golden_test_results": "GOLDEN_TEST_RESULTS.md"
+  },
+  "hash_evidence_status": "PASS",
+  "modality_hashes": [
+    {
+      "modality": "smoke_multimodal",
+      "hash_input": "sha256:95ea69d7699b0afa18da66f56f636fb022dcdefd026636170fc8ed3036613c9f",
+      "hash_output": "sha256:c948756b6a419ac1e45039e986adf50f6abaf27d2291eb328ed3e76ee3dd13c2",
+      "validation_status": "PASS"
+    }
+  ],
+  "release_state": "prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "engine_go": true,
+  "project_instance_go": "false_until_project_QA",
+  "output_go": "false_until_output_QA_SIDECAR_HASH_LINEAGE",
+  "qa_policy_split": "ENGINE_GO_TRUE_PROJECT_INSTANCE_AND_OUTPUT_REQUIRE_OWN_QA_SIDECAR_HASH_LINEAGE",
+  "legacy_project_10_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+}

@@ -1,0 +1,14 @@
+{
+  "semantic_version": "v1.0.0",
+  "rules": {
+    "single_model_image_or_prompt": "read 10 base + full runtime canon of target model",
+    "multi_model_image_or_prompt": "read 10 base + full runtime canon of each involved model",
+    "reference_image": "read reference handler + full runtime canon of mapped models",
+    "video": "read video compiler + full runtime canon of involved models",
+    "voice": "read voice compiler + full runtime canon of involved models",
+    "music_suno": "read music compiler + full runtime/persona when applicable",
+    "text_persona": "read persona/dialogue + full runtime canon",
+    "qa_certification": "read runtime + evidence + asset/sidecar/hash/reviewer/expected/actual",
+    "non_target_models": "do not read unless group scene, comparison or explicit all-model request"
+  }
+}

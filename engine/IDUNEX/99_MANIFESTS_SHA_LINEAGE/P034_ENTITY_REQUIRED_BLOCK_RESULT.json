@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "stage": "INPUT_CONTRACT",
+  "delivery_status": "BLOCKED_EARLY_EXPECTED",
+  "fail_codes": [
+    "FAIL_PROJECT_ENTITY_PROFILE_MISSING"
+  ],
+  "detail": "project_entity_profile is mandatory before project generation"
+}

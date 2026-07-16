@@ -1,0 +1,14 @@
+{
+  "proof_id": "H64_ACTIVE_PROOF_TRUTHFULNESS_AND_LEGACY_DEMOTION_PROOF",
+  "date": "2026-06-30 PROJECT_DECLARED_TIMEZONE",
+  "result": "PASS",
+  "old_scope_active_proof_count": 0,
+  "pass_by_contract_active_count": 0,
+  "old_scope_active_hits": [],
+  "pass_by_contract_active_hits": [],
+  "scanned_active_proofs": 197,
+  "legacy_policy": "Historical references may remain only under 12_HISTORICAL_NON_AUTHORITY or explicit historical_non_authority marking; active final proofs must use H01_H51_PLUS_H52_H57_PLUS_H58_H64 and executed proof wording.",
+  "H67_FULL_TREE_SCANNER_GATE": "PASS",
+  "h67_scanned_files": 1776,
+  "h67_historical_findings_count": 7
+}

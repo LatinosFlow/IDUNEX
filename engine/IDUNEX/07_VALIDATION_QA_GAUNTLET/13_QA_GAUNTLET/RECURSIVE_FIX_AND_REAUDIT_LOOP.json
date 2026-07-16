@@ -1,0 +1,8 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "generated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "control": "RECURSIVE_FIX_AND_REAUDIT_LOOP",
+  "status": "ACTIVE_P03",
+  "blocking": true,
+  "actual_value": "RECURSIVE_FIX_AND_REAUDIT_LOOP=ACTIVE"
+}

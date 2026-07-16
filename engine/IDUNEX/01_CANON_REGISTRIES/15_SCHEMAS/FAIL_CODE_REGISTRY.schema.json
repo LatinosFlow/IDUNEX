@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 2100,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "adapter_fix",
+      "fail_code",
+      "fallback_fix",
+      "field_id",
+      "field_name",
+      "parameter_fix",
+      "production_decision",
+      "prompt_fix",
+      "qa_retest",
+      "qa_rule_id",
+      "root_cause",
+      "runtime_domain",
+      "severity",
+      "sidecar_trace_required",
+      "source_trace_required",
+      "symptom"
+    ],
+    "properties": {
+      "adapter_fix": {
+        "type": "string",
+        "minLength": 1
+      },
+      "fail_code": {
+        "type": "string",
+        "pattern": "^FAIL_[A-Z0-9_]+$"
+      },
+      "fallback_fix": {
+        "type": "string",
+        "minLength": 120
+      },
+      "field_id": {
+        "type": "string",
+        "pattern": "^P360_[A-Z0-9_]+_[0-9]{4}$"
+      },
+      "field_name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "parameter_fix": {
+        "type": "string",
+        "minLength": 1
+      },
+      "production_decision": {
+        "type": "string",
+        "minLength": 1
+      },
+      "prompt_fix": {
+        "type": "string",
+        "minLength": 1
+      },
+      "qa_retest": {
+        "type": "string",
+        "minLength": 1
+      },
+      "qa_rule_id": {
+        "type": "string",
+        "pattern": "^QA_[A-Z0-9_]+$"
+      },
+      "root_cause": {
+        "type": "string",
+        "minLength": 1
+      },
+      "runtime_domain": {
+        "type": "string",
+        "enum": [
+          "profile360_acting",
+          "profile360_body",
+          "profile360_camera",
+          "profile360_culture",
+          "profile360_export",
+          "profile360_face",
+          "profile360_hair",
+          "profile360_identity",
+          "profile360_language",
+          "profile360_legal",
+          "profile360_lighting",
+          "profile360_music",
+          "profile360_props",
+          "profile360_psychology",
+          "profile360_qa",
+          "profile360_scene",
+          "profile360_sidecar",
+          "profile360_skin",
+          "profile360_video",
+          "profile360_voice",
+          "profile360_wardrobe"
+        ]
+      },
+      "severity": {
+        "type": "string",
+        "minLength": 1
+      },
+      "sidecar_trace_required": {
+        "type": "boolean"
+      },
+      "source_trace_required": {
+        "type": "array",
+        "items": {},
+        "uniqueItems": true
+      },
+      "symptom": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "maxItems": 2100
+}

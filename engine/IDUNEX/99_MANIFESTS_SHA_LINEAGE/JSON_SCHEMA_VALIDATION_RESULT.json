@@ -1,0 +1,18 @@
+{
+  "validator": "VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL",
+  "json_total": 306,
+  "json_invalid": 0,
+  "schema_checked": 21,
+  "schema_invalid": 0,
+  "strict_type_errors": 0,
+  "techext_data_type_allowed_set": [
+    "array",
+    "integer",
+    "number",
+    "number_or_numeric_band",
+    "numeric_band",
+    "string"
+  ],
+  "errors": [],
+  "result": "PASS"
+}

@@ -1,0 +1,18 @@
+{
+  "PROFILE360_FIELD_TRACE_COVERAGE": "61/61",
+  "TECHEXT_FIELD_TRACE_COVERAGE": "284/284",
+  "gate": "H215",
+  "per_model_files": "FIELD_SOURCE_TRACE_LEDGER_MODEL_001..MODEL_N.json",
+  "required_fields": [
+    "field_path",
+    "value_hash",
+    "source_ids",
+    "claim_id",
+    "evidence_hash",
+    "qa_expected",
+    "qa_actual",
+    "failcode",
+    "fallback"
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,18 @@
+{
+  "report_id": "SUMMARY_REPORT_OPTIONAL_FIELD_SENTINEL_POLICY_H143_H150",
+  "result": "PASS",
+  "sentinel_registry": [
+    "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+    "NOT_APPLICABLE_NO_BLOCK",
+    "NOT_APPLICABLE_NO_PROJECT_CONTEXT",
+    "NOT_APPLICABLE_NO_RUNTIME_COUNT",
+    "NOT_APPLICABLE_NO_VALIDATOR_FAILURE"
+  ],
+  "delivery_pass_block_fail_code": "NOT_APPLICABLE_NON_BLOCKING_DELIVERY",
+  "expected_block_rule": "block_fail_code MUST be a real failcode",
+  "unknown_sentinel_values": 0,
+  "optional_field_nulls": 0,
+  "expected_block_sentinel_misuse": 0,
+  "fail_codes": [],
+  "generated_at": "2026-07-01 PROJECT_DECLARED_TIMEZONE"
+}

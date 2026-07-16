@@ -1,0 +1,20 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "separate_statuses": [
+    "PROJECT_PACKAGE_10_10",
+    "AGENT_RUNTIME_10_10",
+    "MODEL_CANON_10_10",
+    "OUTPUT_REAL_10_10"
+  ],
+  "output_real_10_10_requires": [
+    "real_asset",
+    "sidecar",
+    "prompt_hash",
+    "output_hash",
+    "QA",
+    "reviewer",
+    "lineage"
+  ],
+  "blocked_code": "BLOCKED_OUTPUT_REAL_10_10_WITHOUT_ASSET"
+}

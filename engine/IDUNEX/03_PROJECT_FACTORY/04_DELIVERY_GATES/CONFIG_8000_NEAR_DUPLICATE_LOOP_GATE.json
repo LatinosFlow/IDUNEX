@@ -1,0 +1,22 @@
+{
+  "engine": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "gate_id": "CONFIG_8000_NEAR_DUPLICATE_LOOP_GATE",
+  "result": "PASS_POLICY_INSTALLED",
+  "detects": [
+    "Operational clause 0001...0020",
+    "enumerated_clause_loop",
+    "same_sentence_with_incremental_number",
+    "low_unique_sentence_ratio",
+    "truncated_last_clause",
+    "repeated n-gram density"
+  ],
+  "failcodes": [
+    "BLOCKED_CONFIG_8000_NEAR_DUPLICATE_SEMANTIC_LOOP",
+    "BLOCKED_CONFIG_8000_ENUMERATED_CLAUSE_PADDING",
+    "BLOCKED_CONFIG_8000_LOW_SEMANTIC_DENSITY",
+    "BLOCKED_CONFIG_8000_TRUNCATED_FINAL_CLAUSE"
+  ],
+  "official_end_marker_p033_plus": "[END_CONFIG] END_CONFIG."
+}

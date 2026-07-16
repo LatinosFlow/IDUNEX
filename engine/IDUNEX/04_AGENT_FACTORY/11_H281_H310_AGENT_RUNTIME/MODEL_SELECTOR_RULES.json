@@ -1,0 +1,32 @@
+{
+  "surface_id": "MODEL_SELECTOR_RULES",
+  "semantic_version": "v1.0.0",
+  "source_authority": [
+    "04_AGENT_FACTORY/11_H281_H310_AGENT_RUNTIME/AGENT_READ_MAP.json",
+    "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py::MODEL_SELECTOR_PRECHECK",
+    "H218 selector precheck"
+  ],
+  "contract_satisfied": "AGENT_LOAD_CONTRACT.required_per_agent.MODEL_SELECTOR_RULES",
+  "rules": {
+    "single_model_project": "target MODEL_001 when model_count=1 and no selector is necessary",
+    "multi_model_project_without_selector": "ASK_OR_BLOCK; never choose a random model",
+    "allowed_selectors": [
+      "model_id",
+      "model_code",
+      "model_index",
+      "explicit model name/alias resolved by project alias resolver",
+      "group intent/duo/all when explicitly requested"
+    ],
+    "reference_image": "map each person/figure to an explicit IDUNEX model; ask when mapping is unclear",
+    "non_target_models": "do not read non-target models unless group scene, comparison or explicit all-model request",
+    "fallback": "ASK_MINIMAL_SELECTOR_OR_APPLY_DOCUMENTED_SAFE_RULE_WITH_PAIRWISE_SEPARATION"
+  },
+  "fail_codes": [
+    "FAIL_H218_SELECTOR_AMBIGUOUS_TARGET",
+    "FAIL_UPDATE_TARGET_MODEL_NOT_FOUND",
+    "FAIL_CORE01_PROJECT_SCOPE"
+  ],
+  "memory_dependency": "FORBIDDEN",
+  "result": "PASS",
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

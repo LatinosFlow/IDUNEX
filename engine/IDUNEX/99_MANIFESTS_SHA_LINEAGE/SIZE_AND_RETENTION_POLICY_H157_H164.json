@@ -1,0 +1,38 @@
+{
+  "policy_id": "SIZE_AND_RETENTION_POLICY_H157_H164",
+  "semantic_version": "v1.0.0",
+  "root_unico": "IDUNEX",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "direct_correction_scope": "H157_H164_APPLIED_ON_H01_H156",
+  "zip_internal_compression_required": "ZIP_DEFLATED",
+  "zip_stored_internal_files_allowed": false,
+  "internal_directory_entries_allowed": false,
+  "canonical_zip_recommended_budget_bytes": 16777216,
+  "surgical_correction_net_growth_budget_bytes": 512000,
+  "canonical_zip_budget_policy": "<=16MB for v1.0.0 unless byte-by-byte justification is embedded",
+  "surgical_growth_policy": "<=500KB net growth per direct surgical correction unless byte-by-byte justification is embedded",
+  "historical_non_authority_policy": "do_not_materialize_full_fixtures_when_manifest_digest_is_sufficient",
+  "regenerable_evidence_policy": "compact_gate_evidence_only; do_not_duplicate_full_suites_when_runtime_can_regenerate",
+  "forbidden_payloads": [
+    "nested_zip",
+    "raw_pdf",
+    "images",
+    "heavy_binary",
+    "creative_outputs",
+    "logs_temporales_de_sesion"
+  ],
+  "active_research_protection": [
+    "SRC_049",
+    "source_cards",
+    "claims",
+    "mappings",
+    "QA_fallbacks",
+    "lineage",
+    "source_inventory"
+  ],
+  "validator_association": "VALIDATE_IDUNEX_RUNTIME.py::H157_H164_GATES",
+  "result": "PASS",
+  "fail_codes": [],
+  "creative_output_certified": false,
+  "CREATIVE_OUTPUT_CERTIFIED": false
+}

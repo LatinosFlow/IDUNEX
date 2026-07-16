@@ -1,0 +1,480 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "profile360_version": "v1.0.0",
+  "project_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "fields": [
+    {
+      "field_id": "P360_IDENTITY_0001",
+      "field_name": "canonical_name",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_001_Ontolog_a_IDUNEX_360"
+      ],
+      "primary_source_id": "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0001",
+      "fail_code": "FAIL_IDENTITY_0001_CANONICAL_NAME",
+      "fallback_fix": "Si falla canonical_name, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0001_CANONICAL_NAME, aplicar retest GT_IDENTITY_0001 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0001"
+    },
+    {
+      "field_id": "P360_IDENTITY_0002",
+      "field_name": "model_code",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0002",
+      "fail_code": "FAIL_IDENTITY_0002_MODEL_CODE",
+      "fallback_fix": "Si falla model_code, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0002_MODEL_CODE, aplicar retest GT_IDENTITY_0002 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0002"
+    },
+    {
+      "field_id": "P360_IDENTITY_0003",
+      "field_name": "aliases",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0003",
+      "fail_code": "FAIL_IDENTITY_0003_ALIASES",
+      "fallback_fix": "Si falla aliases, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0003_ALIASES, aplicar retest GT_IDENTITY_0003 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0003"
+    },
+    {
+      "field_id": "P360_BODY_0004",
+      "field_name": "adult_age",
+      "runtime_domain": "profile360_body",
+      "source_ids": [
+        "SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT",
+        "SRC_038_PAIRWISE_UNIQUENESS_METRICS",
+        "SRC_031_Proporciones_fitness_por_edad_adulta",
+        "SRC_003_Antropometr_a_corporal_avanzada"
+      ],
+      "primary_source_id": "SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT",
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "video_prompt_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_BODY_0004",
+      "fail_code": "FAIL_BODY_0004_ADULT_AGE",
+      "fallback_fix": "Si falla adult_age, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0004_ADULT_AGE, aplicar retest GT_BODY_0004 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_BODY_0004"
+    },
+    {
+      "field_id": "P360_BODY_0005",
+      "field_name": "visual_age",
+      "runtime_domain": "profile360_body",
+      "source_ids": [
+        "SRC_003_Antropometr_a_corporal_avanzada",
+        "SRC_031_Proporciones_fitness_por_edad_adulta",
+        "SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT",
+        "SRC_038_PAIRWISE_UNIQUENESS_METRICS"
+      ],
+      "primary_source_id": "SRC_003_Antropometr_a_corporal_avanzada",
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "video_prompt_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_BODY_0005",
+      "fail_code": "FAIL_BODY_0005_VISUAL_AGE",
+      "fallback_fix": "Si falla visual_age, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0005_VISUAL_AGE, aplicar retest GT_BODY_0005 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_BODY_0005"
+    },
+    {
+      "field_id": "P360_BODY_0006",
+      "field_name": "body_age",
+      "runtime_domain": "profile360_body",
+      "source_ids": [
+        "SRC_003_Antropometr_a_corporal_avanzada",
+        "SRC_031_Proporciones_fitness_por_edad_adulta",
+        "SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT",
+        "SRC_038_PAIRWISE_UNIQUENESS_METRICS"
+      ],
+      "primary_source_id": "SRC_003_Antropometr_a_corporal_avanzada",
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "video_prompt_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_BODY_0006",
+      "fail_code": "FAIL_BODY_0006_BODY_AGE",
+      "fallback_fix": "Si falla body_age, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0006_BODY_AGE, aplicar retest GT_BODY_0006 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_BODY_0006"
+    },
+    {
+      "field_id": "P360_VOICE_0007",
+      "field_name": "vocal_age",
+      "runtime_domain": "profile360_voice",
+      "source_ids": [
+        "SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY",
+        "SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_022_Voz_hablada_para_ElevenLabs",
+        "SRC_012_Lenguaje_acento_y_voz_escrita"
+      ],
+      "primary_source_id": "SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY",
+      "adapter_targets": [
+        "elevenlabs_voice_adapter",
+        "video_prompt_adapter",
+        "text_script_copy_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_VOICE_0007",
+      "fail_code": "FAIL_VOICE_0007_VOCAL_AGE",
+      "fallback_fix": "Si falla vocal_age, recargar primary_source_id SRC_012_Lenguaje_acento_y_voz_escrita, cruzar supporting_source_ids SRC_022_Voz_hablada_para_ElevenLabs, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, SRC_043_VOICE_AGE_PROSODY_SPEAKER_IDENTITY, reemitir solo adapters elevenlabs_voice_adapter, video_prompt_adapter, text_script_copy_adapter, sidecar_metadata_adapter, registrar FAIL_VOICE_0007_VOCAL_AGE, aplicar retest GT_VOICE_0007 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_VOICE_0007"
+    },
+    {
+      "field_id": "P360_IDENTITY_0008",
+      "field_name": "project_role",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0008",
+      "fail_code": "FAIL_IDENTITY_0008_PROJECT_ROLE",
+      "fallback_fix": "Si falla project_role, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0008_PROJECT_ROLE, aplicar retest GT_IDENTITY_0008 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0008"
+    },
+    {
+      "field_id": "P360_IDENTITY_0009",
+      "field_name": "canon_scope",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0009",
+      "fail_code": "FAIL_IDENTITY_0009_CANON_SCOPE",
+      "fallback_fix": "Si falla canon_scope, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0009_CANON_SCOPE, aplicar retest GT_IDENTITY_0009 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0009"
+    },
+    {
+      "field_id": "P360_IDENTITY_0010",
+      "field_name": "mutable_scope",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0010",
+      "fail_code": "FAIL_IDENTITY_0010_MUTABLE_SCOPE",
+      "fallback_fix": "Si falla mutable_scope, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0010_MUTABLE_SCOPE, aplicar retest GT_IDENTITY_0010 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0010"
+    },
+    {
+      "field_id": "P360_IDENTITY_0011",
+      "field_name": "immutable_scope",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0011",
+      "fail_code": "FAIL_IDENTITY_0011_IMMUTABLE_SCOPE",
+      "fallback_fix": "Si falla immutable_scope, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0011_IMMUTABLE_SCOPE, aplicar retest GT_IDENTITY_0011 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0011"
+    },
+    {
+      "field_id": "P360_IDENTITY_0012",
+      "field_name": "identity_status",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0012",
+      "fail_code": "FAIL_IDENTITY_0012_IDENTITY_STATUS",
+      "fallback_fix": "Si falla identity_status, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0012_IDENTITY_STATUS, aplicar retest GT_IDENTITY_0012 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0012"
+    },
+    {
+      "field_id": "P360_BODY_0013",
+      "field_name": "relationship_to_project",
+      "runtime_domain": "profile360_body",
+      "source_ids": [
+        "SRC_003_Antropometr_a_corporal_avanzada",
+        "SRC_031_Proporciones_fitness_por_edad_adulta",
+        "SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT",
+        "SRC_038_PAIRWISE_UNIQUENESS_METRICS"
+      ],
+      "primary_source_id": "SRC_003_Antropometr_a_corporal_avanzada",
+      "adapter_targets": [
+        "image_prompt_adapter",
+        "video_prompt_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_BODY_0013",
+      "fail_code": "FAIL_BODY_0013_RELATIONSHIP_TO_PROJECT",
+      "fallback_fix": "Si falla relationship_to_project, recargar primary_source_id SRC_003_Antropometr_a_corporal_avanzada, cruzar supporting_source_ids SRC_031_Proporciones_fitness_por_edad_adulta, SRC_039_BODY_BEAUTY_FITNESS_EDITORIAL_NON_EXPLICIT, SRC_038_PAIRWISE_UNIQUENESS_METRICS, reemitir solo adapters image_prompt_adapter, video_prompt_adapter, sidecar_metadata_adapter, registrar FAIL_BODY_0013_RELATIONSHIP_TO_PROJECT, aplicar retest GT_BODY_0013 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_BODY_0013"
+    },
+    {
+      "field_id": "P360_IDENTITY_0014",
+      "field_name": "persona_boundary",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0014",
+      "fail_code": "FAIL_IDENTITY_0014_PERSONA_BOUNDARY",
+      "fallback_fix": "Si falla persona_boundary, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0014_PERSONA_BOUNDARY, aplicar retest GT_IDENTITY_0014 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0014"
+    },
+    {
+      "field_id": "P360_IDENTITY_0015",
+      "field_name": "private_public_boundary",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0015",
+      "fail_code": "FAIL_IDENTITY_0015_PRIVATE_PUBLIC_BOUNDARY",
+      "fallback_fix": "Si falla private_public_boundary, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0015_PRIVATE_PUBLIC_BOUNDARY, aplicar retest GT_IDENTITY_0015 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0015"
+    },
+    {
+      "field_id": "P360_IDENTITY_0016",
+      "field_name": "birth_context",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0016",
+      "fail_code": "FAIL_IDENTITY_0016_BIRTH_CONTEXT",
+      "fallback_fix": "Si falla birth_context, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0016_BIRTH_CONTEXT, aplicar retest GT_IDENTITY_0016 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0016"
+    },
+    {
+      "field_id": "P360_CULTURE_0017",
+      "field_name": "family_structure",
+      "runtime_domain": "profile360_culture",
+      "source_ids": [
+        "SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_010_Psicolog_a_avanzada",
+        "SRC_009_Religi_n_espiritualidad_y_cosmovisi_n",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos"
+      ],
+      "primary_source_id": "SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT",
+      "adapter_targets": [
+        "text_script_copy_adapter",
+        "image_prompt_adapter",
+        "elevenlabs_voice_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_CULTURE_0017",
+      "fail_code": "FAIL_CULTURE_0017_FAMILY_STRUCTURE",
+      "fallback_fix": "Si falla family_structure, recargar primary_source_id SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, reemitir solo adapters text_script_copy_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_CULTURE_0017_FAMILY_STRUCTURE, aplicar retest GT_CULTURE_0017 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_CULTURE_0017"
+    },
+    {
+      "field_id": "P360_CULTURE_0018",
+      "field_name": "migration_trace",
+      "runtime_domain": "profile360_culture",
+      "source_ids": [
+        "SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_009_Religi_n_espiritualidad_y_cosmovisi_n",
+        "SRC_010_Psicolog_a_avanzada",
+        "SRC_033_Causalidad_edad-origen-psicolog_a-voz",
+        "SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT"
+      ],
+      "primary_source_id": "SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos",
+      "adapter_targets": [
+        "text_script_copy_adapter",
+        "image_prompt_adapter",
+        "elevenlabs_voice_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_CULTURE_0018",
+      "fail_code": "FAIL_CULTURE_0018_MIGRATION_TRACE",
+      "fallback_fix": "Si falla migration_trace, recargar primary_source_id SRC_006_Etnia_descendencia_y_fenotipo_sin_estereotipos, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_009_Religi_n_espiritualidad_y_cosmovisi_n, SRC_010_Psicolog_a_avanzada, SRC_033_Causalidad_edad-origen-psicolog_a-voz, SRC_041_PERUVIAN_SPANISH_ACCENT_SOCIOLECT, reemitir solo adapters text_script_copy_adapter, image_prompt_adapter, elevenlabs_voice_adapter, sidecar_metadata_adapter, registrar FAIL_CULTURE_0018_MIGRATION_TRACE, aplicar retest GT_CULTURE_0018 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_CULTURE_0018"
+    },
+    {
+      "field_id": "P360_IDENTITY_0019",
+      "field_name": "education_trace",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0019",
+      "fail_code": "FAIL_IDENTITY_0019_EDUCATION_TRACE",
+      "fallback_fix": "Si falla education_trace, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0019_EDUCATION_TRACE, aplicar retest GT_IDENTITY_0019 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0019"
+    },
+    {
+      "field_id": "P360_IDENTITY_0020",
+      "field_name": "work_trace",
+      "runtime_domain": "profile360_identity",
+      "source_ids": [
+        "SRC_001_Ontolog_a_IDUNEX_360",
+        "SRC_007_Biograf_a_familiar_y_migratoria",
+        "SRC_013_Formaci_n_profesional_de_modelaje_premium",
+        "SRC_014_Profesi_n_principal_y_CV_realista",
+        "SRC_030_No-loss_migration_y_compatibilidad",
+        "SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA"
+      ],
+      "primary_source_id": "SRC_001_Ontolog_a_IDUNEX_360",
+      "adapter_targets": [
+        "chatgpt_json_txt_adapter",
+        "agent_factory_adapter",
+        "project_factory_adapter",
+        "sidecar_metadata_adapter"
+      ],
+      "qa_rule_id": "QA_IDENTITY_0020",
+      "fail_code": "FAIL_IDENTITY_0020_WORK_TRACE",
+      "fallback_fix": "Si falla work_trace, recargar primary_source_id SRC_001_Ontolog_a_IDUNEX_360, cruzar supporting_source_ids SRC_007_Biograf_a_familiar_y_migratoria, SRC_013_Formaci_n_profesional_de_modelaje_premium, SRC_014_Profesi_n_principal_y_CV_realista, SRC_030_No-loss_migration_y_compatibilidad, SRC_037_MEMORIA_EPISODICA_AUTOBIOGRAFICA, reemitir solo adapters chatgpt_json_txt_adapter, agent_factory_adapter, project_factory_adapter, sidecar_metadata_adapter, registrar FAIL_IDENTITY_0020_WORK_TRACE, aplicar retest GT_IDENTITY_0020 y bloquear PROJECT_INSTANCE_GO hasta que el sidecar confirme source_ids_used y field_ids_used reales.",
+      "golden_test_id": "GT_IDENTITY_0020"
+    }
+  ],
+  "locks": [
+    "JSON_LOCK",
+    "ANCHOR_LOCK",
+    "AGE_LOCK",
+    "ID_LOCK"
+  ]
+}

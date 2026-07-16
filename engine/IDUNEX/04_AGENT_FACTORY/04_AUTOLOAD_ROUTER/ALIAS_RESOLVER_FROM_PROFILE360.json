@@ -1,0 +1,15 @@
+{
+  "policy_id": "LEGACY_NON_AUTHORITY",
+  "status": "ACTIVE_BLOCKING",
+  "source": "Profile360",
+  "required_fields": [
+    "short_name",
+    "full_name",
+    "model_id",
+    "model_code",
+    "approved_narrative_aliases",
+    "blocked_legacy_aliases",
+    "conflict_resolution"
+  ],
+  "blocked_code": "BLOCKED_MODEL_ALIAS_NOT_RESOLVED"
+}

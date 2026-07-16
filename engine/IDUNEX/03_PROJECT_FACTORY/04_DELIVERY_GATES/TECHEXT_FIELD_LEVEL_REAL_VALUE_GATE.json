@@ -1,0 +1,31 @@
+{
+  "engine": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "gate_id": "TECHEXT_FIELD_LEVEL_REAL_VALUE_GATE",
+  "result": "PASS_POLICY_INSTALLED",
+  "required_fields": [
+    "module_id",
+    "field_id",
+    "actual_value",
+    "measurement",
+    "tolerance",
+    "source_id",
+    "qa_rule",
+    "fail_code",
+    "fallback_fix",
+    "sidecar_field",
+    "locked_by_user_or_factory"
+  ],
+  "forbidden_generic_phrases": [
+    "valor finalizado, trazable al rol",
+    "PASS_FIELD_LEVEL_FINALIZED",
+    "factory defined",
+    "applies to model role"
+  ],
+  "failcodes": [
+    "BLOCKED_TECHEXT_GENERIC_FIELD_VALUE",
+    "BLOCKED_TECHEXT_PASS_BY_FIELD_COUNT_ONLY",
+    "BLOCKED_TECHEXT_REPEATED_ACTUAL_VALUE_TEMPLATE"
+  ]
+}

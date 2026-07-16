@@ -1,0 +1,17 @@
+{
+  "gate_id": "H82",
+  "semantic_version": "v1.0.0",
+  "correction_scope_label": "H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "creative_output_certified": false,
+  "result": "PASS",
+  "created_at": "2026-06-30 PROJECT_DECLARED_TIMEZONE",
+  "ACTIVE_SHA_LEDGERS_ZERO_STALE_UNJUSTIFIED": "PASS_AFTER_REGENERATION",
+  "SHA_LEDGER_SELF_REFERENCE_POLICY": "PASS",
+  "included_ledgers": [
+    "00_INDEX/SHA256SUMS.txt",
+    "99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt"
+  ],
+  "fail_codes": []
+}

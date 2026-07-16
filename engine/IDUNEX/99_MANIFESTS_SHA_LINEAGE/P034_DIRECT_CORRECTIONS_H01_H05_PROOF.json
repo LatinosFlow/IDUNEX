@@ -1,0 +1,11 @@
+{
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "semantic_version": "v1.0.0",
+  "h01_brand_usage_scope": "PASS",
+  "h02_manifest_dynamic_exclusions": "PASS",
+  "h03_role_gender_aware": "PASS",
+  "h04_input_fidelity_expanded": "PASS",
+  "h05_runtime_semantic_diagnostics": "PASS",
+  "mutation_count": "410/410",
+  "creative_output_certified": false
+}

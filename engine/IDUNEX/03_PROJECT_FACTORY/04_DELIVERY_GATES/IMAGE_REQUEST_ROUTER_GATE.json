@@ -1,0 +1,28 @@
+{
+  "engine": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "gate_id": "IMAGE_REQUEST_ROUTER_GATE",
+  "result": "PASS_POLICY_INSTALLED",
+  "activators": [
+    "genera",
+    "crea",
+    "foto",
+    "imagen",
+    "retrato",
+    "rostro",
+    "cuerpo completo",
+    "casual",
+    "deportivo",
+    "vestido",
+    "fondo blanco",
+    "macro",
+    "primer plano",
+    "según IDUNEX",
+    "MODEL_ALIAS",
+    "MODEL_ID",
+    "MODEL_CODE"
+  ],
+  "blocked_if_not_routed": "BLOCKED_IMAGE_REQUEST_NOT_ROUTED_TO_IMAGE_TOOL",
+  "tool_route": "image generation tool for new images; image edit tool only when target image exists; Python allowed only for QA/hash/sidecar after asset exists"
+}

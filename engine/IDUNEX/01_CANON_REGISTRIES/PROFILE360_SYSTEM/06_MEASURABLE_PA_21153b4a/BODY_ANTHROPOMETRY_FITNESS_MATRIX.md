@@ -1,0 +1,28 @@
+# BODY_ANTHROPOMETRY_FITNESS_MATRIX
+
+| parameter_id | parameter_name | definition | unit_or_scale | allowed_range | warning_range | fail_range | modalities | source_ids | field_ids | qa_method | fail_code | fallback_fix | example_pass | example_fail | project_test_requirement |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| HEIGHT_BAND_001 | height_band | measure height_band | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_HEIGHT_BAND | fallback + retest | pass example | fail example | project test required |
+| SHOULDER_WIDTH_002 | shoulder_width | measure shoulder_width | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_SHOULDER_WIDTH | fallback + retest | pass example | fail example | project test required |
+| TORSO_LENGTH_003 | torso_length | measure torso_length | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_TORSO_LENGTH | fallback + retest | pass example | fail example | project test required |
+| WAIST_RATIO_004 | waist_ratio | measure waist_ratio | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_WAIST_RATIO | fallback + retest | pass example | fail example | project test required |
+| HIP_RATIO_005 | hip_ratio | measure hip_ratio | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_HIP_RATIO | fallback + retest | pass example | fail example | project test required |
+| LEG_LENGTH_RATIO_006 | leg_length_ratio | measure leg_length_ratio | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_LEG_LENGTH_RATIO | fallback + retest | pass example | fail example | project test required |
+| ARM_LENGTH_RATIO_007 | arm_length_ratio | measure arm_length_ratio | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_ARM_LENGTH_RATIO | fallback + retest | pass example | fail example | project test required |
+| NECK_LENGTH_008 | neck_length | measure neck_length | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_NECK_LENGTH | fallback + retest | pass example | fail example | project test required |
+| POSTURE_BASELINE_009 | posture_baseline | measure posture_baseline | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_POSTURE_BASELINE | fallback + retest | pass example | fail example | project test required |
+| MUSCLE_TONE_010 | muscle_tone | measure muscle_tone | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_MUSCLE_TONE | fallback + retest | pass example | fail example | project test required |
+| BODY_ENERGY_011 | body_energy | measure body_energy | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_BODY_ENERGY | fallback + retest | pass example | fail example | project test required |
+| WALKING_STYLE_012 | walking_style | measure walking_style | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_WALKING_STYLE | fallback + retest | pass example | fail example | project test required |
+| HAND_SHAPE_013 | hand_shape | measure hand_shape | enum/0-100 | declared and traced | vague | missing/contradictory | all relevant | source map | field map | QA method | FAIL_MATRIX_HAND_SHAPE | fallback + retest | pass example | fail example | project test required |
+
+## HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY former v1.0.3 Remediación final QA/Evidencia/Hash
+
+
+### Parámetros ejecutables HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY former v1.0.3
+| parameter_id | parameter_name | definition | unit_or_scale | allowed_range | warning_range | fail_range | modalities | qa_method | fail_code | fallback_fix | example_pass | example_fail | project_test_requirement |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| MATRIX_PARAM_001 | identity_measure_alignment | Alinea campo, fuente y adapter con evidencia | PASS/WARNING/FAIL | PASS | WARNING si falta evidencia mock | FAIL si falta source_id | all | schema+sidecar+hash | FAIL_MATRIX_ALIGNMENT | recargar source/runtime/sidecar | campo trazado y validado | campo sin fuente | smoke evidence required |
+| MATRIX_PARAM_002 | modality_specificity | Evita test genérico entre modalidades | 0-100 | >=85 | 70-84 | <70 | image/video/voice/suno/copilot | golden test review | FAIL_GENERIC_TEST | reescribir pasos por modalidad | test con parámetros nativos | pasos genéricos copiados | modality evidence required |
+| MATRIX_PARAM_003 | fallback_executability | Fallback quirúrgico y retest | PASS/WARNING/FAIL | PASS | fallback parcial | fallback ausente | all | failcode registry | FAIL_FALLBACK_THIN | agregar prompt_fix/adapter_fix/retest | fallback con retest | fallback genérico | retest required |
+| MATRIX_PARAM_004 | hash_evidence | Hash reproducible del input/output | sha256 | 64 hex | hash sin comando | placeholder | sidecar/qa | recalculation | FAIL_HASH_EVIDENCE | regenerar HASH_EVIDENCE | hash recalculable | hash textual falso | hash evidence required |

@@ -1,0 +1,14 @@
+{
+  "semantic_version": "v1.0.0",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "H01-H86_PRESERVED": "PASS",
+  "H87-H92_APPLIED": "PASS",
+  "validators_fail": 0,
+  "blocking_warnings": 0,
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "result": "PASS",
+  "H92_RELEASE_DOCS_EXECUTABLE_PARITY_H87_H91_GATE": "PASS",
+  "official_docs_coherence": "PASS"
+}

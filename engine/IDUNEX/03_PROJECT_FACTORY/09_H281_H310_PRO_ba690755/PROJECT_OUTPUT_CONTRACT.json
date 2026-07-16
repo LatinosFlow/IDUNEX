@@ -1,0 +1,21 @@
+{
+  "contract": "PROJECT_OUTPUT_CONTRACT",
+  "mandatory_outputs": [
+    "project_zip",
+    "project_zip_sha256",
+    "PROJECT_BRAND_REGISTRY.json",
+    "full_model_360_per_model",
+    "human_readable_canon_per_model",
+    "runtime_chatgpt_10_plus_n",
+    "runtime_copilot_10_plus_n",
+    "README_FOR_HUMAN_OPERATOR.md",
+    "minimum_test_prompts_by_modality",
+    "static_smoke_test_matrix",
+    "manifests",
+    "evidence_lineage",
+    "companion_forensic_pointers",
+    "internal_release_certificate",
+    "final_machine_audit_summary_no_placeholders"
+  ],
+  "creative_certification_without_asset_real": false
+}

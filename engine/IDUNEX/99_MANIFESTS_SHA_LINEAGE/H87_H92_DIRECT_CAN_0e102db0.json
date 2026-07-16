@@ -1,0 +1,13 @@
+{
+  "semantic_version": "v1.0.0",
+  "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
+  "root_unico": "IDUNEX",
+  "H01-H86_PRESERVED": "PASS",
+  "H87-H92_APPLIED": "PASS",
+  "validators_fail": 0,
+  "blocking_warnings": 0,
+  "fail_codes": [],
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "result": "PASS",
+  "MOTOR_CORREGIDO_DIRECTO_CANONICO_H87_H92_FIXTURE_SUITE_SEMANTIC_CIERRE_100": "PASS"
+}

@@ -1,0 +1,47 @@
+{
+  "sidecar_schema_version": "v1.0.0",
+  "output_id": "IDUNEX_REAL_VALIDATION_001_COPILOT_DOCX_OUTPUT",
+  "project_id": "IDUNEX_PROJECT_FIXTURE_VALIDATION_001",
+  "model_id": "IDUNEX_HUMANIZED_DIGITAL_VALIDATION_MODEL_001",
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "profile360_version": "PROFILE360_REAL_TEST_v1.0.0",
+  "promptpack_version": "v1.0.0",
+  "source_ids_used": [
+    "SRC_001_Ontolog_a_IDUNEX_360",
+    "SRC_025_Golden_Tests_de_identidad"
+  ],
+  "field_ids_used": [
+    "P360_IDENTITY_0001",
+    "P360_QA_2001"
+  ],
+  "adapter_used": "copilot_docx_adapter",
+  "vendor": "formal_non_production_validation_fixture",
+  "vendor_params": {
+    "adapter": "copilot_docx_adapter",
+    "mode": "formal_non_production_validation_evidence",
+    "modality": "copilot_docx"
+  },
+  "locks_active": [
+    "JSON_LOCK",
+    "ANCHOR_LOCK",
+    "AGE_LOCK",
+    "ID_LOCK",
+    "GLOBAL_GO_FALSE"
+  ],
+  "qa_status": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "qa_fail_codes": [],
+  "fallbacks_applied": [],
+  "hash_input": "sha256:b183628bbea066080538569083192aaf1781b8e15f1bf4808c3fb607c258f513",
+  "hash_output": "sha256:ae1220f12da88cf87597c99c4798149cabe8fe27f876b27ad00cded3b5129ffa",
+  "created_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "reviewed_by": "IDUNEX_QA_AUDITOR",
+  "production_state": "prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "evidence_type": "formal_non_production_validation_evidence",
+  "productive_output": false,
+  "project_10_authorized": false,
+  "global_go_authorized": false,
+  "motor_baseline_10_authorized": true,
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "legacy_project_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "legacy_project_10_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY"
+}

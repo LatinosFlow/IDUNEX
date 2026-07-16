@@ -1,0 +1,23 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "protocol_id": "GENERIC_PROJECT_REAUDIT_SCENARIO_PROTOCOL",
+  "status": "ACTIVE_BLOCKING_GENERIC",
+  "scope": "any project X, any allowed model count 1..10, create/update/audit/archive operations",
+  "project_specific_names_allowed_as_active_condition": false,
+  "fixture_names": [
+    "GENERIC_PROJECT_FIXTURE",
+    "PROJECT_X",
+    "MODEL_A_ADULT",
+    "MODEL_B_ADULT",
+    "ORIGIN_A",
+    "ORIGIN_B"
+  ],
+  "required_result": "validators_fail=0; delivery_status=DELIVERY_ALLOWED; truthfulness_gate_status=PASS; all packaging/manifests/config gates PASS",
+  "fail_codes": [
+    "BLOCKED_PROJECT_SPECIFIC_HARDCODE_IN_ACTIVE_POLICY",
+    "BLOCKED_GENERIC_FIXTURE_MISSING",
+    "BLOCKED_POSITIVE_FIXTURE_VALIDATOR_FAIL"
+  ]
+}

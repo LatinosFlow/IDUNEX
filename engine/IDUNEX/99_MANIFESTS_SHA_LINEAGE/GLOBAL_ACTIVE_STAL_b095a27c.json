@@ -1,0 +1,10 @@
+{
+  "creative_output_certified": false,
+  "timestamp": "2026-07-01 PROJECT_DECLARED_TIMEZONE",
+  "gate_id": "H121_GLOBAL_ACTIVE_STALE_PENDING_TOKEN_SCAN_GATE",
+  "findings_count": 0,
+  "findings": [],
+  "historical_exclusions_require_AUTHORITY_STATUS_NON_AUTHORITY_HISTORICAL": true,
+  "result": "PASS",
+  "fail_codes": []
+}

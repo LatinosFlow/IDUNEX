@@ -1,0 +1,21 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "semantic_version": "v1.0.0",
+  "internal_label": "P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN",
+  "artifact": "GENERIC_PROJECT_REGENERATION_STRICT_ACCEPTANCE_CRITERIA",
+  "status": "ACTIVE_BLOCKING_GENERIC",
+  "criteria": [
+    "no active project-name hardcode",
+    "no active model-name hardcode",
+    "fixtures are not authority",
+    "1 model -> 11 runtime files per agent",
+    "2 models -> 12 runtime files per agent",
+    "10 models -> 20 runtime files per agent",
+    "11 models -> blocked without split",
+    "CONFIG_8000 validator distinguishes normative anti-padding references from real padding loops",
+    "all SHA ledgers, including local/template ledgers, pass from reopened ZIP",
+    "no PASS row may carry non-final actual_value"
+  ],
+  "actual_value": "generic criteria active; no project-specific active dependency; fail_codes enumerated; linked audits generated in 99_MANIFESTS_SHA_LINEAGE",
+  "result": "PASS"
+}

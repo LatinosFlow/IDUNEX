@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-idunex-schema-policy": "PRODUCTIVE_BASE_ENGINE_SCHEMA; accepts current runtime fields, requires productive keys, forbids weakening by deleting useful JSON properties.",
+  "x-base-sha-audited": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-updated_at": "NEUTRALIZED_ACTIVE_SCOPE",
+  "$id": "IDUNEX/15_SCHEMAS/SCENE_ENV_FAIL_CODE_REGISTRY.schema.json",
+  "title": "SCENE_ENV_FAIL_CODE_REGISTRY productive schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "registry_id",
+    "source_id",
+    "engine",
+    "fail_codes"
+  ],
+  "properties": {
+    "registry_id": {
+      "const": "SCENE_ENV_FAIL_CODE_REGISTRY"
+    },
+    "source_id": {
+      "const": "SRC_049_ENV_PHYSICS_FULL10"
+    },
+    "engine": {
+      "const": "SCENE_ENVIRONMENT_SPATIAL_PHYSICS_ENGINE_FULL10"
+    },
+    "fail_codes": {
+      "type": "array",
+      "minItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "fail_code",
+          "definition",
+          "trigger",
+          "affected_fields",
+          "prompt_fix",
+          "negative_prompt_fix",
+          "qa_fix",
+          "manual_fallback",
+          "sidecar_evidence_field",
+          "severity",
+          "retest_rule"
+        ]
+      }
+    },
+    "extension_policy": {
+      "type": "object"
+    }
+  },
+  "x-previous-base-sha256": "NON_OPERATIONAL_PREVIOUS_BASES_RECORDED_IN_REPORTS",
+  "x-previous-base-policy": "HISTORICAL_PREVIOUS_BASE_NOT_OPERATIONAL",
+  "x-correction-base-sha256": "1add3f8d3757d65bea5bcb848060a21a24523f297902639c4cffb7c184197b60",
+  "x-previous-base-marker": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "x-previous-base-do-not-use": "DO_NOT_USE_AS_BASE"
+}

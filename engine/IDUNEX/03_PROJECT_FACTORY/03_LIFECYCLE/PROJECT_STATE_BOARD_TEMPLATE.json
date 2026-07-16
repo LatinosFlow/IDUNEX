@@ -1,0 +1,19 @@
+{
+  "engine_version": "IDUNEX_MOTOR_v1.0.0",
+  "columns": [
+    "project_id",
+    "state",
+    "new_outputs_allowed",
+    "latest_package_sha",
+    "risk",
+    "next_action"
+  ],
+  "allowed_states": [
+    "PROJECT_ACTIVE",
+    "PROJECT_LOCKED",
+    "PROJECT_DEPRECATED",
+    "PROJECT_RETIRED",
+    "PROJECT_ARCHIVED_READONLY",
+    "PROJECT_PURGED_POLICY_ALLOWED"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "audit_status": "PASS",
+  "critical_errors": [],
+  "evidence_bundle": {
+    "modality_results": [
+      {
+        "actual_result_or_mock": "OUTPUT_PAYLOAD_IMAGE.json",
+        "comparison_method": "reproducible_sha256_hash_check",
+        "expected_result": "formal_non_production_validation_evidence_only",
+        "fail_codes_triggered": [],
+        "fallback_applied": "none",
+        "hash_input": "sha256:0c1b317e1faea21fa995e5cb8cd0456df07732dd1ef6ee2d16b3c7e847c242c0",
+        "hash_output": "sha256:036b283dcef0b39e9cabc6df3c5df1c9145181eb35e11fd3a42a3e0486b0e6d8",
+        "input_fixture": "PROMPTPACK_IMAGE_FINAL.md",
+        "modality": "image",
+        "pass_fail_decision": "PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SIDECAR_IMAGE_OUTPUT"
+      },
+      {
+        "actual_result_or_mock": "OUTPUT_PAYLOAD_VIDEO.json",
+        "comparison_method": "reproducible_sha256_hash_check",
+        "expected_result": "formal_non_production_validation_evidence_only",
+        "fail_codes_triggered": [],
+        "fallback_applied": "none",
+        "hash_input": "sha256:081c357da8f9fe8ec2cc863bf36046e6975633dca86f8b2f55a6963278a377bb",
+        "hash_output": "sha256:c3ddda7b876ceb7c631c144109c9d3363d85a0cdc4628d843e68939e242b81d6",
+        "input_fixture": "PROMPTPACK_VIDEO_FINAL.md",
+        "modality": "video",
+        "pass_fail_decision": "PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SIDECAR_VIDEO_OUTPUT"
+      },
+      {
+        "actual_result_or_mock": "OUTPUT_PAYLOAD_VOICE.json",
+        "comparison_method": "reproducible_sha256_hash_check",
+        "expected_result": "formal_non_production_validation_evidence_only",
+        "fail_codes_triggered": [],
+        "fallback_applied": "none",
+        "hash_input": "sha256:ffcf8735f46220b2914c82911634ed18dca03573c3e9a88079a6837c0bfaceaf",
+        "hash_output": "sha256:edeae02938f8fdeba21cbb85b894ba530fe01e5d7f4d312af04427ec6cf71b5d",
+        "input_fixture": "VOICE_FINAL_TEST.md",
+        "modality": "voice",
+        "pass_fail_decision": "PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SIDECAR_VOICE_OUTPUT"
+      },
+      {
+        "actual_result_or_mock": "OUTPUT_PAYLOAD_SUNO.json",
+        "comparison_method": "reproducible_sha256_hash_check",
+        "expected_result": "formal_non_production_validation_evidence_only",
+        "fail_codes_triggered": [],
+        "fallback_applied": "none",
+        "hash_input": "sha256:37cd4c8bc30b3c1d2c2aa0d418605cc6a75efd93327312bb14d2da2337057f72",
+        "hash_output": "sha256:5ead77cd438e5ed7054dd9e12b82f6cc11c4040c27acb5fb178920c5921640e7",
+        "input_fixture": "SUNO_FINAL_TEST.md",
+        "modality": "suno",
+        "pass_fail_decision": "PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SIDECAR_SUNO_OUTPUT"
+      },
+      {
+        "actual_result_or_mock": "OUTPUT_PAYLOAD_COPILOT_DOCX.json",
+        "comparison_method": "reproducible_sha256_hash_check",
+        "expected_result": "formal_non_production_validation_evidence_only",
+        "fail_codes_triggered": [],
+        "fallback_applied": "none",
+        "hash_input": "sha256:b183628bbea066080538569083192aaf1781b8e15f1bf4808c3fb607c258f513",
+        "hash_output": "sha256:ae1220f12da88cf87597c99c4798149cabe8fe27f876b27ad00cded3b5129ffa",
+        "input_fixture": "COPILOT_DOCX_FINAL_TEST.md",
+        "modality": "copilot_docx",
+        "pass_fail_decision": "PASS",
+        "retest_result": "PASS",
+        "sidecar_id": "SIDECAR_COPILOT_DOCX_OUTPUT"
+      }
+    ]
+  },
+  "failed_schema_files": [],
+  "legacy_global_go_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "go_no_go_decision": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "golden_tests": [
+    "PROJECT_FIXTURE_VALIDATION_001_NON_PRODUCTIVE_BASELINE_GOLDEN_TESTS"
+  ],
+  "production_state": "prior_validation_reference=NON_AUTHORITY_REFERENCE; active_validation_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "schema_validation_results": {
+    "status": "PASS",
+    "schema_pairs_validated": 19
+  },
+  "smoke_test_scope": "PROJECT_FIXTURE_VALIDATION_001_FORMAL_NON_PRODUCTIVE_BASELINE_EVIDENCE",
+  "warnings": [],
+  "hash_evidence_status": "PASS",
+  "modality_hashes": [
+    {
+      "modality": "image",
+      "hash_input": "sha256:0c1b317e1faea21fa995e5cb8cd0456df07732dd1ef6ee2d16b3c7e847c242c0",
+      "hash_output": "sha256:036b283dcef0b39e9cabc6df3c5df1c9145181eb35e11fd3a42a3e0486b0e6d8",
+      "validation_status": "PASS"
+    },
+    {
+      "modality": "video",
+      "hash_input": "sha256:081c357da8f9fe8ec2cc863bf36046e6975633dca86f8b2f55a6963278a377bb",
+      "hash_output": "sha256:c3ddda7b876ceb7c631c144109c9d3363d85a0cdc4628d843e68939e242b81d6",
+      "validation_status": "PASS"
+    },
+    {
+      "modality": "voice",
+      "hash_input": "sha256:ffcf8735f46220b2914c82911634ed18dca03573c3e9a88079a6837c0bfaceaf",
+      "hash_output": "sha256:edeae02938f8fdeba21cbb85b894ba530fe01e5d7f4d312af04427ec6cf71b5d",
+      "validation_status": "PASS"
+    },
+    {
+      "modality": "suno",
+      "hash_input": "sha256:37cd4c8bc30b3c1d2c2aa0d418605cc6a75efd93327312bb14d2da2337057f72",
+      "hash_output": "sha256:5ead77cd438e5ed7054dd9e12b82f6cc11c4040c27acb5fb178920c5921640e7",
+      "validation_status": "PASS"
+    },
+    {
+      "modality": "copilot_docx",
+      "hash_input": "sha256:b183628bbea066080538569083192aaf1781b8e15f1bf4808c3fb607c258f513",
+      "hash_output": "sha256:ae1220f12da88cf87597c99c4798149cabe8fe27f876b27ad00cded3b5129ffa",
+      "validation_status": "PASS"
+    }
+  ],
+  "release_state": "prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE",
+  "productive_output": false,
+  "legacy_project_10_policy": "HISTORICAL_ONLY_NOT_ACTIVE_ENGINE_POLICY",
+  "evidence_type": "formal_non_production_validation_evidence",
+  "motor_baseline_10_authorized": true,
+  "global_go_authorized": false,
+  "project_10_authorized": false,
+  "engine_go": true,
+  "project_instance_go": "false_until_project_QA",
+  "output_go": "false_until_output_QA_SIDECAR_HASH_LINEAGE",
+  "qa_policy_split": "ENGINE_GO_TRUE_PROJECT_INSTANCE_AND_OUTPUT_REQUIRE_OWN_QA_SIDECAR_HASH_LINEAGE"
+}

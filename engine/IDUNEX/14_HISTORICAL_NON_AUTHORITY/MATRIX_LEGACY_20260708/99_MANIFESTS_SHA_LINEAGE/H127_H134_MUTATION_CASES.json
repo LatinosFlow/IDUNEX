@@ -1,0 +1,191 @@
+{
+  "gate_id": "H133_EXTERNAL_COMPANION_SHA_MUTATION_SUITE_GATE",
+  "result": "PASS",
+  "mutation_count": 12,
+  "cases": [
+    {
+      "case": "external_companion_sha256_prefinal_mismatch",
+      "touched_files": [
+        "00_PROJECT_INDEX/PROJECT_MANIFEST.json"
+      ],
+      "expected_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SHA_MISMATCH"
+      ],
+      "observed_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SHA_MISMATCH"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 547
+    },
+    {
+      "case": "external_companion_sha256_equal_real_inside_zip",
+      "touched_files": [
+        "00_PROJECT_INDEX/PROJECT_MANIFEST.json"
+      ],
+      "expected_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SHA_EMBEDDED_SELF_REFERENCE"
+      ],
+      "observed_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SHA_EMBEDDED_SELF_REFERENCE"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 524
+    },
+    {
+      "case": "external_companion_sha256_abc",
+      "touched_files": [
+        "00_PROJECT_INDEX/PROJECT_MANIFEST.json"
+      ],
+      "expected_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SENTINEL_MISSING"
+      ],
+      "observed_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SENTINEL_MISSING"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 486
+    },
+    {
+      "case": "companion_sha256_numeric_123",
+      "touched_files": [
+        "00_PROJECT_INDEX/PROJECT_MANIFEST.json"
+      ],
+      "expected_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SENTINEL_MISSING"
+      ],
+      "observed_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SENTINEL_MISSING"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 475
+    },
+    {
+      "case": "project_companion_sha256_wrong_location",
+      "touched_files": [
+        "00_PROJECT_INDEX/PROJECT_MANIFEST.json"
+      ],
+      "expected_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SHA_MISMATCH"
+      ],
+      "observed_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SHA_MISMATCH"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 479
+    },
+    {
+      "case": "content_tree_sha_mislabeled_as_companion",
+      "touched_files": [
+        "00_PROJECT_INDEX/PROJECT_MANIFEST.json"
+      ],
+      "expected_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SHA_MISMATCH",
+        "FAIL_H127_CONTENT_TREE_SHA_MISLABELED_AS_COMPANION"
+      ],
+      "observed_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SHA_MISMATCH"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 512
+    },
+    {
+      "case": "external_companion_sha256_missing_sentinel_demo_n2",
+      "touched_files": [
+        "00_PROJECT_INDEX/PROJECT_MANIFEST.json"
+      ],
+      "expected_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SENTINEL_MISSING"
+      ],
+      "observed_failcodes": [
+        "FAIL_H127_EXTERNAL_COMPANION_SENTINEL_MISSING"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 473
+    },
+    {
+      "case": "n10_internal_invalid_companion_claim",
+      "touched_files": [
+        "IDUNEX_PROJECT_N10_MIN_V1_0_0"
+      ],
+      "expected_failcodes": [
+        "FAIL_H130_N_PROJECT_SHA_CLAIM_REVALIDATION_FAILED"
+      ],
+      "observed_failcodes": [
+        "FAIL_H130_N_PROJECT_SHA_CLAIM_REVALIDATION_FAILED"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1
+    },
+    {
+      "case": "negative_fixture_result_fail_as_active_authority",
+      "touched_files": [
+        "ACTIVE_PROOF_PASS_CONTRADICTION_SCAN.result=FAIL"
+      ],
+      "expected_failcodes": [
+        "FAIL_H131_NEGATIVE_FIXTURE_MARKED_AS_ACTIVE_AUTHORITY"
+      ],
+      "observed_failcodes": [
+        "FAIL_H131_NEGATIVE_FIXTURE_MARKED_AS_ACTIVE_AUTHORITY"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1
+    },
+    {
+      "case": "pass_pending_active_control_center",
+      "touched_files": [
+        "PASS_RECOMPUTED_* active"
+      ],
+      "expected_failcodes": [
+        "FAIL_H132_PASS_RECOMPUTED_TOKEN_ACTIVE"
+      ],
+      "observed_failcodes": [
+        "FAIL_H132_PASS_RECOMPUTED_TOKEN_ACTIVE"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1
+    },
+    {
+      "case": "pending_final_reopened_zip_active_proof",
+      "touched_files": [
+        "FINAL_REOPENED_ZIP_RECOMPUTED active"
+      ],
+      "expected_failcodes": [
+        "FAIL_H132_PENDING_TOKEN_WITHOUT_HISTORICAL_DEMOTION"
+      ],
+      "observed_failcodes": [
+        "FAIL_H132_PENDING_TOKEN_WITHOUT_HISTORICAL_DEMOTION"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1
+    },
+    {
+      "case": "docs_pass_without_executable_reports",
+      "touched_files": [
+        "PASS docs without H127-H133 reports"
+      ],
+      "expected_failcodes": [
+        "FAIL_H134_RELEASE_DOCS_EXECUTABLE_PARITY_MISMATCH"
+      ],
+      "observed_failcodes": [
+        "FAIL_H134_RELEASE_DOCS_EXECUTABLE_PARITY_MISMATCH"
+      ],
+      "result": "PASS",
+      "restore_result": "PASS",
+      "elapsed_ms": 1
+    }
+  ],
+  "H127_H134_NEGATIVE_MUTATION_CASES_PASS": "PASS",
+  "fail_codes": [],
+  "creative_output_certified": false
+}
