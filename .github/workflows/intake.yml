@@ -21,3 +21,7 @@ jobs:
         run: python tools/audit/governance_state_check.py --repo-root .
       - name: Run governance state mutations (AUD-006)
         run: python -m unittest discover -s tests/intake -p 'test_governance_state.py'
+      - name: Check Windows-safe remap integrity (AUD-005)
+        run: python tools/audit/windows_path_remap_check.py --repo-root .
+      - name: Run Windows-safe remap mutations (AUD-005)
+        run: python -m unittest discover -s tests/intake -p 'test_windows_path_remap.py'

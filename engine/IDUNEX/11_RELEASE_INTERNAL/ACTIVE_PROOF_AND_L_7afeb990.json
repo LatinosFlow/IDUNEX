@@ -7,7 +7,7 @@
   "POST_FINALIZER_HASH_RECALCULATION": "PASS",
   "mutation_count_authority": 506,
   "mutation_count_active_proof": 506,
-  "mutation_proof_authority": "99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_SELF_TEST_EXECUTABLE_PROOF.json",
+  "mutation_proof_authority": "99_MANIFESTS_SHA_LINEAGE/FACTORY_MUTATION_S_5015ecbe.json",
   "h238_matrix_authority": "11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json",
   "forbidden_truthfulness_findings": [],
   "CREATIVE_OUTPUT_CERTIFIED": false,

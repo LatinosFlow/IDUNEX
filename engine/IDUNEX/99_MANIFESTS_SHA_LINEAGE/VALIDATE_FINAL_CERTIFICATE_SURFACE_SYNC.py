@@ -4,7 +4,7 @@ from pathlib import Path
 import json, re, sys, zipfile, hashlib
 sys.dont_write_bytecode=True
 VALIDATOR="VALIDATE_FINAL_CERTIFICATE_SURFACE_SYNC"
-ENGINE_CONTRACT="03_PROJECT_FACTORY/04_DELIVERY_GATES/H269_H280_PROJECT_FACTORY_TRUTHFULNESS_AND_COMPANION_CLEAN.json"
+ENGINE_CONTRACT="03_PROJECT_FACTORY/04_DELIVERY_GATES/H269_H280_PROJECT__a7b1a62c.json"
 
 # ACTIVE_VERSION_RENORMALIZATION_GUARD_v1_0_0: integrated hard gate, no parallel validator.
 def _active_version_v1_0_0_guard(root: Path):

@@ -11,7 +11,7 @@
   "historical_non_authority_policy": "14_HISTORICAL_NON_AUTHORITY is never an active source for H62 proof",
   "historical_h62_proof_non_authority_only": true,
   "HISTORICAL_H62_PROOF_NON_AUTHORITY_ONLY": true,
-  "legacy_h62_rejected_path": "14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_LINEAGE_NON_AUTHORITY_20260708/99_MANIFESTS_SHA_LINEAGE/H62_CLI_GENERATION_N1_N10_3_LEVELS_CLEAN_EXIT_PROOF.json",
+  "legacy_h62_rejected_path": "14_HISTORICAL_NON_AUTHORITY/MATRIX_LEGACY_20260708/99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json",
   "ACTIVE_H62_PROOF_LEGACY_PROJECT_IDS": 0,
   "active_h62_proof_legacy_project_ids": 0,
   "active_project_ids_version_parity": true,

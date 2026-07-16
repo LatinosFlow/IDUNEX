@@ -10,7 +10,7 @@ for p in ROOT.rglob('*'):
     rel=p.relative_to(ROOT).as_posix()
     if any(tok in rel for tok in bad_path_tokens): errors.append({'code':'FAIL_H226_ACTIVE_STALE_OR_TEMP_FILE','path':rel})
 if (ROOT/'03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py').exists():
-    for rel in ['11_RELEASE_INTERNAL/OBSOLETE_HISTORY_DATA_RETENTION_SCAN_H213_H236.json','03_PROJECT_FACTORY/04_DELIVERY_GATES/H213_H236_CANONICAL_GATES.json']:
+    for rel in ['11_RELEASE_INTERNAL/OBSOLETE_HISTORY_D_94264e3d.json','03_PROJECT_FACTORY/04_DELIVERY_GATES/H213_H236_CANONICAL_GATES.json']:
         p=ROOT/rel; checked.append(rel)
         if not p.is_file(): errors.append({'code':'FAIL_H226_ENGINE_AUTHORITY_REPORT_MISSING','path':rel})
     txt=(ROOT/'03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py').read_text(encoding='utf-8', errors='ignore')
