@@ -39,7 +39,7 @@ El input de prueba contiene un sentinel inválido y queda bloqueado antes de cre
 
 ## Evidencia ejecutada
 
-Entorno: Windows, Python 3.11 del runtime de Codex.
+Entorno: Windows, Python 3.12.13 del runtime de Codex.
 
 ```text
 python -m py_compile engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py tests/intake/test_generate_windows_watchdog.py
