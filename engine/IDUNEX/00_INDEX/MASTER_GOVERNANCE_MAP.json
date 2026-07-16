@@ -1,6 +1,12 @@
 {
   "map_id": "IDUNEX_MASTER_GOVERNANCE_MAP",
   "semantic_version": "v1.0.0",
+  "issue": "AUD-006",
+  "state_authority": "governance/CURRENT_STATE.json",
+  "motor_status": "EN_REVISION",
+  "m02_result": "M02_FAIL",
+  "rules_authority_status": "REFERENCIA_SUSTITUIDA_UNTIL_INDEPENDENT_RECOMPUTATION",
+  "rules_status_semantics": "historical_declared_status preserves prior internal claims and has no current closure authority",
   "version_bump": "NO",
   "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
   "source": "Informe Maestro distilled into executable governance, no raw PDF copied into engine",
@@ -30,7 +36,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_GOV_CORE_001"
     },
     {
@@ -47,7 +53,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_GOV_LVL_001"
     },
     {
@@ -65,7 +71,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_VER_SEM_001"
     },
     {
@@ -82,7 +88,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_VER_COR_001"
     },
     {
@@ -100,7 +106,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_ENG_CORE_001"
     },
     {
@@ -117,7 +123,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_ENG_STR_001"
     },
     {
@@ -134,7 +140,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_CON_001"
     },
     {
@@ -151,7 +157,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_DEMO_001"
     },
     {
@@ -169,7 +175,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_AGT_LOAD_001"
     },
     {
@@ -186,7 +192,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_CAN_P360_001"
     },
     {
@@ -203,7 +209,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_CAN_TEXT_001"
     },
     {
@@ -221,7 +227,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_RES_CORPUS_001"
     },
     {
@@ -239,7 +245,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_RUN_10N_001"
     },
     {
@@ -257,7 +263,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PMT_AJ_001"
     },
     {
@@ -275,7 +281,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_VAL_REC_001"
     },
     {
@@ -293,7 +299,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_AUD_MAX_001"
     },
     {
@@ -311,7 +317,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_UPD_MAT_001"
     },
     {
@@ -329,7 +335,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_MIG_MAT_001"
     },
     {
@@ -347,7 +353,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_BRD_DEF_001"
     },
     {
@@ -383,7 +389,7 @@
           "real project/brand names as active defaults"
         ]
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_BRD_PAL_001_ACTIVE_PROJECT_BRAND_PALETTE_DEFAULT_LEAKAGE"
     },
     {
@@ -400,7 +406,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_REF_SAFE_001"
     },
     {
@@ -418,7 +424,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_SAF_ADULT_001"
     },
     {
@@ -436,7 +442,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_ZIP_EXT_001"
     },
     {
@@ -454,7 +460,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_DUP_EXA_001"
     },
     {
@@ -471,7 +477,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_LIN_HDEM_001"
     },
     {
@@ -488,7 +494,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_BLT_NBH_001"
     },
     {
@@ -506,7 +512,7 @@
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_CRT_FALSE_001"
     },
     {
@@ -520,7 +526,7 @@
       ],
       "implementation_type": "policy+factory_logic+validator",
       "validator_or_factory_affected": "VALIDATE_PROJECT_FILENAME_CANON",
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_NAME_001",
       "evidence": {
         "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
@@ -537,7 +543,7 @@
       ],
       "implementation_type": "policy+validator+factory_logic",
       "validator_or_factory_affected": "VALIDATE_NO_PLACEHOLDER_EXECUTION_GATE",
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_TPL_001",
       "evidence": {
         "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
@@ -553,7 +559,7 @@
       ],
       "implementation_type": "policy+validator+factory_logic",
       "validator_or_factory_affected": "VALIDATE_GENERIC_SKELETON_NON_AUTHORITY",
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_SKEL_001",
       "evidence": {
         "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
@@ -569,7 +575,7 @@
       ],
       "implementation_type": "contract+validator",
       "validator_or_factory_affected": "VALIDATE_PROJECT_STATUS_CONTRACT",
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_STAT_001",
       "evidence": {
         "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
@@ -585,7 +591,7 @@
       ],
       "implementation_type": "gate+validator",
       "validator_or_factory_affected": "VALIDATE_PROJECT_DEMO_PASS_GATE",
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_DEMO_GATE_001",
       "evidence": {
         "source_master_section": "Project policy correction kit distilled; no raw kit copied as active history"
@@ -607,7 +613,7 @@
         "required_paths_exist": "RECOMPUTED_BY_POST_CORRECTION_TESTS",
         "source_master_section": "Informe Maestro sections 9, 12, 13, 16, 17, 18 distilled, not copied raw"
       },
-      "status": "PASS",
+      "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_LIFE_001"
     }
   ],
@@ -626,35 +632,39 @@
     "99_MANIFESTS_SHA_LINEAGE/VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py"
   ],
   "hard_gates": {
-    "MAX_MATRIX_CURRENT_RUN": "PASS",
-    "N1_TO_N10_X3_MATRIX": "PASS",
-    "VALIDATORS_FAIL": 0,
-    "BLOCKING_WARNINGS": 0,
-    "FAIL_CODES": [],
-    "SCORE": "10/10",
+    "MOTOR_STATUS": "EN_REVISION",
+    "M02_RESULT": "M02_FAIL",
+    "MAX_MATRIX_CURRENT_RUN": "SUSTITUIDA_BY_M02_FAIL",
+    "N1_TO_N10_X3_MATRIX": "SUSTITUIDA_BY_M02_FAIL",
+    "SCORE": "BLOCKED_BY_M02_FAIL",
+    "READY_FOR_PROJECT_DEMO_GENERATION": false,
+    "RELEASE_AUTHORIZED": false,
+    "PRODUCTIVE_CLOSURE_AUTHORIZED": false,
     "CREATIVE_OUTPUT_CERTIFIED": false,
-    "CLOSURE_DECISION": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION"
+    "CLOSURE_DECISION": "BLOCKED_BY_M02_FAIL"
   },
   "CREATIVE_OUTPUT_CERTIFIED": false,
-  "correction_scope": "RENORMALIZACION_VERSION_OFICIAL_v1.0.0_Y_DEMO_000_2_MODELOS",
-  "truthfulness_parity": "DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY_PASS",
-  "max_matrix_current_run": "PASS",
-  "n1_to_n10_x3_matrix": "PASS",
-  "closure_decision": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
-  "MAX_MATRIX_CURRENT_RUN": "PASS",
-  "N1_TO_N10_X3_MATRIX": "PASS",
-  "VALIDATORS_FAIL": 0,
-  "validators_fail": 0,
-  "BLOCKING_WARNINGS": 0,
-  "blocking_warnings": 0,
-  "FAIL_CODES": [],
-  "fail_codes": [],
-  "SCORE": "10/10",
-  "result": "PASS",
-  "CLOSURE_DECISION": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
-  "completed_count": 31,
-  "pass_count": 31,
-  "fail_count": 0,
-  "unexecuted_count": 0,
+  "correction_scope": "AUD-006_GOVERNANCE_STATE_MACHINE",
+  "truthfulness_parity": "CURRENT_STATE_OVERRIDES_PRIOR_INTERNAL_RESULTS",
+  "max_matrix_current_run": "SUSTITUIDA_BY_M02_FAIL",
+  "n1_to_n10_x3_matrix": "SUSTITUIDA_BY_M02_FAIL",
+  "closure_decision": "BLOCKED_BY_M02_FAIL",
+  "MAX_MATRIX_CURRENT_RUN": "SUSTITUIDA_BY_M02_FAIL",
+  "N1_TO_N10_X3_MATRIX": "SUSTITUIDA_BY_M02_FAIL",
+  "SCORE": "BLOCKED_BY_M02_FAIL",
+  "result": "M02_FAIL",
+  "CLOSURE_DECISION": "BLOCKED_BY_M02_FAIL",
+  "READY_FOR_PROJECT_DEMO_GENERATION": false,
+  "RELEASE_AUTHORIZED": false,
+  "PRODUCTIVE_CLOSURE_AUTHORIZED": false,
+  "historical_internal_claim": {
+    "authority_status": "REFERENCIA_SUSTITUIDA",
+    "declared_result": "PASS",
+    "declared_score": "10/10",
+    "declared_completed_count": 31,
+    "declared_pass_count": 31,
+    "declared_fail_count": 0,
+    "current_governance_effect": "NONE"
+  },
   "creative_output_certified": false
 }

@@ -1,6 +1,16 @@
 {
   "contract_id": "ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS",
   "semantic_version": "v1.0.0",
+  "state_authority": "governance/CURRENT_STATE.json",
+  "GOVERNANCE_INTERLOCK": {
+    "issue": "AUD-006",
+    "when": "M02_RESULT=M02_FAIL",
+    "motor_status": "EN_REVISION",
+    "ready_for_project_demo_generation": false,
+    "release_authorized": false,
+    "productive_closure_authorized": false,
+    "rule": "No internal certificate or evidence from ENGINE_LEVEL, PROJECT_LEVEL or AGENT_LEVEL may enable Demo, release, tag or productive closure while M02_FAIL is current."
+  },
   "GOV_LVL_001": "ENGINE_LEVEL != PROJECT_LEVEL != AGENT_LEVEL",
   "ENGINE_LEVEL": {
     "responsibility": "governs",

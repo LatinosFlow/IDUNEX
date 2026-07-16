@@ -1,4 +1,13 @@
 {
+  "authority_status": "REFERENCIA_HISTORICA_SUSTITUIDA",
+  "superseded_by": "AUD-006_M02_FAIL",
+  "current_repository_state": {
+    "motor_status": "EN_REVISION",
+    "m02_result": "M02_FAIL",
+    "ready_for_project_demo_generation": false,
+    "release_authorized": false,
+    "productive_closure_authorized": false
+  },
   "gate_id": "H238_FULL_31_PROJECT_MATRIX_REAL_EXECUTION",
   "runner": "IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
   "semantic_version": "v1.0.0",
@@ -1667,9 +1676,9 @@
   "blocking_warnings": 0,
   "FAIL_CODES": [],
   "fail_codes": [],
-  "SCORE": "10/10",
-  "CLOSURE_DECISION": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
-  "closure_decision": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
-  "current_run_note": "Current run recomputed 31/31 PASS with semantic_version v1.0.0 project IDs. No creative outputs, future projects or Project Demo are certified by this surface.",
+  "HISTORICAL_DECLARED_SCORE": "10/10",
+  "CLOSURE_DECISION": "BLOCKED_BY_M02_FAIL",
+  "closure_decision": "BLOCKED_BY_M02_FAIL",
+  "current_run_note": "Prior internal run declared 31/31; AUD-006 classifies it as replaced historical evidence with no current governance effect.",
   "correction_scope": "CLI_LIFECYCLE_AND_MATRIX_VERSION_LINEAGE_PARITY"
 }

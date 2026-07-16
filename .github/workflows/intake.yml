@@ -17,3 +17,7 @@ jobs:
           python-version: '3.11'
       - name: Run intake audit
         run: python tools/audit/intake_audit.py --repo-root .
+      - name: Check governance state consistency (AUD-006)
+        run: python tools/audit/governance_state_check.py --repo-root .
+      - name: Run governance state mutations (AUD-006)
+        run: python -m unittest discover -s tests/intake -p 'test_governance_state.py'
