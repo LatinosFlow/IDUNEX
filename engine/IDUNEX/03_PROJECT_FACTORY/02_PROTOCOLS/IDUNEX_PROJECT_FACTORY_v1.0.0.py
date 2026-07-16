@@ -7564,6 +7564,17 @@ def _h197_alarm_handler(signum, frame):
         raise H197GenerationWallclockTimeout(H197_ACTIVE_CONTEXT.get("phase", "UNKNOWN_PHASE"), elapsed, int(H197_ACTIVE_CONTEXT.get("sla_seconds") or 300))
     raise TimeoutError("H197 inactive wallclock timeout")
 
+def _h197_signal_alarm_primitives() -> tuple[object, object] | None:
+    """Return optional Unix alarm primitives; H205 remains the cross-platform watchdog."""
+    sigalrm = getattr(signal, "SIGALRM", None)
+    itimer_real = getattr(signal, "ITIMER_REAL", None)
+    required_calls = ("getsignal", "signal", "setitimer")
+    if sigalrm is None or itimer_real is None:
+        return None
+    if not all(callable(getattr(signal, name, None)) for name in required_calls):
+        return None
+    return sigalrm, itimer_real
+
 def _h197_phase_start(phase: str) -> float:
     H197_ACTIVE_CONTEXT["phase"] = phase
     _h205_write_phase_heartbeat(phase)
@@ -9382,12 +9393,28 @@ def generate_end_to_end(spec: dict, destination: Path) -> dict:
     destination.mkdir(parents=True, exist_ok=True)
     ctx=_h197_reset_context(spec, destination)
     sla=int(ctx["sla_seconds"])
-    old_handler=signal.getsignal(signal.SIGALRM)
-    try:
-        signal.signal(signal.SIGALRM, _h197_alarm_handler)
-        signal.setitimer(signal.ITIMER_REAL, sla)
-    except Exception:
-        old_handler=None
+    alarm_primitives=_h197_signal_alarm_primitives()
+    sigalrm=itimer_real=None
+    old_handler=None
+    alarm_handler_installed=False
+    alarm_armed=False
+    if alarm_primitives is not None:
+        sigalrm,itimer_real=alarm_primitives
+        try:
+            old_handler=signal.getsignal(sigalrm)
+            signal.signal(sigalrm, _h197_alarm_handler)
+            alarm_handler_installed=True
+            signal.setitimer(itimer_real, sla)
+            alarm_armed=True
+        except Exception:
+            if alarm_handler_installed and old_handler is not None:
+                try:
+                    signal.signal(sigalrm, old_handler)
+                except Exception:
+                    pass
+            alarm_primitives=None
+            old_handler=None
+            alarm_handler_installed=False
     started=time.monotonic()
     stale_stage_cleanup_report=[]
     quarantine = destination / "NON_DELIVERY_QUARANTINE"
@@ -9416,10 +9443,11 @@ def generate_end_to_end(spec: dict, destination: Path) -> dict:
         write_json(stage_parent/"STAGING_NON_DELIVERY_MANIFEST.json", {"gate_id":"H200","delivery_status":"NON_DELIVERY_STAGING_ONLY","final_zip_partial_publication_forbidden":True,"result":"PASS","fail_codes":[],"creative_output_certified":False})
         if os.environ.get("IDUNEX_H205_FORCE_NONCOOP_STAGE_HANG") == "1":
             _h197_phase_start("forced_noncooperative_stage_sleep")
-            try:
-                signal.signal(signal.SIGALRM, signal.SIG_IGN)
-            except Exception:
-                pass
+            if alarm_handler_installed:
+                try:
+                    signal.signal(sigalrm, signal.SIG_IGN)
+                except Exception:
+                    pass
             time.sleep(max(2.0, float(sla) + 30.0))
         staged_out=_generate_end_to_end_non_atomic(spec, stage_parent)
         if _is_expected_block_payload(staged_out):
@@ -9507,12 +9535,14 @@ def generate_end_to_end(spec: dict, destination: Path) -> dict:
                 shutil.rmtree(stage_parent, ignore_errors=True)
         finally:
             _h197_phase_end("cleanup_seconds", t)
-            try:
-                signal.setitimer(signal.ITIMER_REAL, 0)
-                if old_handler is not None:
-                    signal.signal(signal.SIGALRM, old_handler)
-            except Exception:
-                pass
+            if alarm_primitives is not None:
+                try:
+                    if alarm_armed:
+                        signal.setitimer(itimer_real, 0)
+                    if alarm_handler_installed and old_handler is not None:
+                        signal.signal(sigalrm, old_handler)
+                except Exception:
+                    pass
             if stage_quarantined:
                 _h205_cleanup_heartbeat(destination)
                 for _tmp_name in ["H205_WORKER_STDOUT.tmp.NON_DELIVERY", "H205_WORKER_STDERR.tmp.NON_DELIVERY"]:
