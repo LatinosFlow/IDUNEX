@@ -146,13 +146,14 @@
     {
       "rule_id": "PRJ-DEMO-001",
       "family": "PRJ",
-      "title": "Proyecto Demo posterior no default",
-      "statement": "Proyecto 000 Demo/LatinosFlow queda como validación posterior externa; no es fixture ni default activo del motor.",
-      "active_paths": [
-        "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json"
-      ],
-      "implementation_type": "policy+contract+validator",
-      "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+      "title": "Named validation project external policy",
+      "statement": "Cualquier proyecto de validación nombrado se suministra como input externo posterior; no es fixture ni default activo del motor.",
+      "active_paths": [],
+      "implementation_type": "external_post_m02_contract",
+      "validator_or_factory_affected": "NONE_ENGINE_LEVEL",
+      "authority_classification": "EXTERNAL_POST_M02_PROJECT_CONTRACT",
+      "engine_runtime_active": false,
+      "current_authority_status": "EXTERNAL_NOT_ACTIVE",
       "evidence": {
         "required_paths_exist": "RECOMPUTED_BY_VALIDATE_MASTER_GOVERNANCE_NATIVE",
         "source_master_section": "Informe Maestro distilled, not copied raw"
@@ -342,7 +343,7 @@
       "rule_id": "BRD-DEF-001",
       "family": "BRD",
       "title": "No brand defaults in engine",
-      "statement": "LatinosFlow, logos, paletas, clientes, modelos demo y rutas de proyectos no pueden ser defaults activos del motor.",
+      "statement": "Nombres de compañía, logos, paletas, clientes, modelos y rutas de proyectos concretos no pueden ser defaults activos del motor.",
       "active_paths": [
         "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json",
         "12_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json"
@@ -484,7 +485,7 @@
       "rule_id": "BLT-NBH-001",
       "family": "BLT",
       "title": "No-bloat / no-history active gate",
-      "statement": "Bloquea logs largos, staging, temp, heartbeat, ZIPs intermedios, auditorías humanas completas y proyecto Demo materializado como motor.",
+      "statement": "Bloquea logs largos, staging, temp, heartbeat, ZIPs intermedios, auditorías humanas completas y cualquier proyecto nombrado materializado como motor.",
       "active_paths": [
         "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/NO_BLOAT_NO_HISTORY_POLICY.json"
       ],
@@ -553,7 +554,7 @@
       "rule_id": "PRJ-SKEL-001",
       "family": "PRJ",
       "title": "Generic skeleton non-authority",
-      "statement": "Datos incompletos o genéricos clasifican el proyecto como GENERIC_SKELETON_NON_AUTHORITY y bloquean production, agent load pass y demo pass.",
+      "statement": "Datos incompletos o genéricos clasifican el proyecto como GENERIC_SKELETON_NON_AUTHORITY y bloquean production, agent load pass y external validation pass.",
       "active_paths": [
         "03_PROJECT_FACTORY/04_DELIVERY_GATES/GENERIC_SKELETON_NON_AUTHORITY_GATE.json"
       ],
@@ -584,13 +585,14 @@
     {
       "rule_id": "PRJ-DEMO-GATE-001",
       "family": "PRJ",
-      "title": "Project Demo pass gate",
-      "statement": "Proyecto 000 Demo solo declara PROJECT_DEMO_PASS tras auditoría de proyecto, runtime ChatGPT/Copilot 10+N y carga real auditada o vendor limitation documentada.",
-      "active_paths": [
-        "03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_DEMO_PASS_GATE.json"
-      ],
-      "implementation_type": "gate+validator",
-      "validator_or_factory_affected": "VALIDATE_PROJECT_DEMO_PASS_GATE",
+      "title": "External project validation pass contract",
+      "statement": "Una validación externa futura requiere auditoría de proyecto, runtime ChatGPT/Copilot 10+N y carga real auditada o vendor limitation documentada; nunca se activa por nombre.",
+      "active_paths": [],
+      "implementation_type": "external_post_m02_contract",
+      "validator_or_factory_affected": "NONE_ENGINE_LEVEL",
+      "authority_classification": "EXTERNAL_POST_M02_PROJECT_CONTRACT",
+      "engine_runtime_active": false,
+      "current_authority_status": "EXTERNAL_NOT_ACTIVE",
       "historical_declared_status": "PASS",
       "fail_code": "FAIL_PRJ_DEMO_GATE_001",
       "evidence": {

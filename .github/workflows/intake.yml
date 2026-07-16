@@ -25,3 +25,7 @@ jobs:
         run: python tools/audit/windows_path_remap_check.py --repo-root .
       - name: Run Windows-safe remap mutations (AUD-005)
         run: python -m unittest discover -s tests/intake -p 'test_windows_path_remap.py'
+      - name: Check named-project hardcoding and external Demo gates (AUD-007)
+        run: python tools/audit/demo_hardcoding_check.py --repo-root .
+      - name: Run Demo hardcoding mutations and non-Demo N1 smoke (AUD-007)
+        run: python -m unittest discover -s tests/intake -p 'test_demo_hardcoding.py'

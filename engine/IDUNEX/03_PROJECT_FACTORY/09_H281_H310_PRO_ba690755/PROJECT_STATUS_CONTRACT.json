@@ -10,7 +10,7 @@
     "PROJECT_AUDIT_FAIL",
     "PROJECT_AUDIT_PASS",
     "PROJECT_AUDIT_REQUIRED",
-    "PROJECT_DEMO_PASS",
+    "PROJECT_EXTERNAL_VALIDATION_PASS",
     "PROJECT_DEPRECATED_NON_AUTHORITY",
     "PROJECT_GENERATED_NOT_AUDITED",
     "PROJECT_READY_FOR_CONTROLLED_USE",
@@ -19,10 +19,13 @@
   ],
   "rules": [
     "Motor productivo no significa proyecto productivo",
-    "Proyecto Demo PASS no convierte proyectos futuros en PASS automático",
+    "Una validación externa PASS no convierte otros proyectos en PASS automático",
     "Skeleton genérico nunca es producción",
     "Proyecto con placeholders nunca es producción"
   ],
+  "optional_input_fields": {
+    "external_validation_required": "boolean; applies to arbitrary project names"
+  },
   "validator": "VALIDATE_PROJECT_STATUS_CONTRACT",
   "result": "PASS",
   "fail_codes": [],

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import subprocess
 import copy
 import hashlib
@@ -36,19 +37,19 @@ H205_TERMINAL_PHASE_GRACE_MAX_SECONDS = 30.0
 CONFIG_END = "[END_CONFIG] END_CONFIG."
 
 
-# PRJ-PROMPT-POLICY v1.0.0 - native project prompt/template/naming/status governance; demo 000 remains external validation input, not fixture.
+# PRJ-PROMPT-POLICY v1.0.0 - native project prompt/template/naming/status governance; named validation projects remain external inputs, never engine fixtures.
 PROJECT_STATUS_CONTRACT_VALUES = {
     "PROJECT_GENERATED_NOT_AUDITED", "PROJECT_AUDIT_FAIL", "PROJECT_AUDIT_PASS",
     "PROJECT_AGENT_LOAD_PENDING", "PROJECT_AGENT_LOAD_FAIL", "PROJECT_AGENT_LOAD_PASS",
     "PROJECT_READY_FOR_CONTROLLED_USE", "PROJECT_READY_FOR_PRODUCTION",
     "PROJECT_UPDATE_REQUIRED", "PROJECT_DEPRECATED_NON_AUTHORITY",
-    "GENERIC_SKELETON_NON_AUTHORITY", "PROJECT_DEMO_PASS", "PROJECT_AUDIT_REQUIRED"
+    "GENERIC_SKELETON_NON_AUTHORITY", "PROJECT_EXTERNAL_VALIDATION_PASS", "PROJECT_AUDIT_REQUIRED"
 }
 PROJECT_GENERIC_SKELETON_ALLOWED_STATES = {
     "PROJECT_GENERATED_NOT_AUDITED", "GENERIC_SKELETON_NON_AUTHORITY", "PROJECT_AUDIT_REQUIRED"
 }
 PROJECT_GENERIC_SKELETON_BLOCKED_STATES = {
-    "PROJECT_READY_FOR_PRODUCTION", "PROJECT_AGENT_LOAD_PASS", "PROJECT_DEMO_PASS", "PROJECT_READY_FOR_CONTROLLED_USE"
+    "PROJECT_READY_FOR_PRODUCTION", "PROJECT_AGENT_LOAD_PASS", "PROJECT_EXTERNAL_VALIDATION_PASS", "PROJECT_READY_FOR_CONTROLLED_USE"
 }
 PROJECT_TEMPLATE_PLACEHOLDER_PATTERNS = [
     r"\[\.\.\.\]", r"\[N\]", r"\{\{[^{}]+\}\}",
@@ -149,7 +150,17 @@ def _project_policy_canonical_identity(spec: dict) -> dict:
     project_id = f"IDUNEX_PROJECT_GENERIC_SKELETON_{uid}_{SEMANTIC_VERSION}"
     return {"project_id": project_id, "project_name": "GENERIC_SKELETON_NON_AUTHORITY", "project_name_slug": "GENERIC_SKELETON", "project_uid": uid, "filename_canon": f"{project_id}.zip", "generic_skeleton": True}
 
-def _project_policy_status_payload(project_id: str, is_generic_skeleton: bool, is_demo: bool=False) -> dict:
+def _project_policy_external_validation_required(spec: dict) -> bool:
+    value = spec.get("external_validation_required", False)
+    if not isinstance(value, bool):
+        raise InputContractError(
+            "FAIL_PROJECT_EXTERNAL_VALIDATION_FLAG_TYPE",
+            "external_validation_required must be a boolean when supplied",
+        )
+    return value
+
+
+def _project_policy_status_payload(project_id: str, is_generic_skeleton: bool, external_validation_required: bool=False) -> dict:
     if is_generic_skeleton:
         states = ["PROJECT_GENERATED_NOT_AUDITED", "GENERIC_SKELETON_NON_AUTHORITY", "PROJECT_AUDIT_REQUIRED"]
     else:
@@ -161,23 +172,77 @@ def _project_policy_status_payload(project_id: str, is_generic_skeleton: bool, i
         "current_statuses":states,
         "blocked_statuses":sorted(PROJECT_GENERIC_SKELETON_BLOCKED_STATES if is_generic_skeleton else []),
         "motor_productive_does_not_make_project_productive":True,
-        "demo_pass_does_not_auto_pass_future_projects":True,
+        "external_validation_pass_does_not_auto_pass_other_projects":True,
         "generic_skeleton_never_production":True,
         "project_with_placeholders_never_production":True,
-        "PROJECT_DEMO_PASS_GATE_REQUIRED_FOR_DEMO": bool(is_demo),
+        "PROJECT_EXTERNAL_VALIDATION_REQUIRED": bool(external_validation_required),
+        "PROJECT_EXTERNAL_VALIDATION_PASS": False,
         "CREATIVE_OUTPUT_CERTIFIED":False,
         "result":"PASS",
         "fail_codes":[]
+    }
+
+
+def _aud007_static_string(node: ast.AST) -> str | None:
+    if isinstance(node, ast.Constant) and isinstance(node.value, str):
+        return node.value
+    if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Add):
+        left = _aud007_static_string(node.left)
+        right = _aud007_static_string(node.right)
+        return left + right if left is not None and right is not None else None
+    if isinstance(node, (ast.List, ast.Tuple, ast.Set)):
+        values = [_aud007_static_string(item) for item in node.elts]
+        return " ".join(value for value in values if value is not None) if any(value is not None for value in values) else None
+    return None
+
+
+def _aud007_normalize_named_project(value: str) -> str:
+    return "".join(character for character in value.casefold() if character.isalnum())
+
+
+def _factory_hardcoded_named_project_branches(factory_path: Path) -> list[dict]:
+    """Return executable conditions that match the protected named-project identity."""
+    tree = ast.parse(factory_path.read_text(encoding="utf-8"), filename=str(factory_path))
+    protected_name = "".join(("proyecto", "000", "demo"))
+    findings = []
+    condition_nodes = (ast.If, ast.IfExp, ast.While, ast.Assert)
+    for node in ast.walk(tree):
+        expressions = []
+        if isinstance(node, condition_nodes):
+            expressions.append(node.test)
+        elif isinstance(node, ast.comprehension):
+            expressions.extend(node.ifs)
+        elif isinstance(node, ast.MatchValue):
+            expressions.append(node.value)
+        for expression in expressions:
+            for candidate in ast.walk(expression):
+                static_value = _aud007_static_string(candidate)
+                if static_value is not None and protected_name in _aud007_normalize_named_project(static_value):
+                    findings.append({"line": getattr(node, "lineno", None), "condition": ast.unparse(expression)})
+                    break
+            else:
+                continue
+            break
+    return findings
+
+
+def _aud007_factory_hardcoding_mutation_case(factory_path: Path) -> dict:
+    findings = _factory_hardcoded_named_project_branches(factory_path)
+    return {
+        "case": "463_H27_FACTORY_HARDCODED_DEMO_BRANCH_BLOCKED",
+        "expected_failcode": "FAIL_FACTORY_HARDCODED_DEMO_BRANCH",
+        "observed": ["AST_CONDITIONAL_SCAN_NO_NAMED_PROJECT_BRANCH"] if not findings else findings,
+        "result": "PASS" if not findings else "FAIL",
     }
 
 # Master Governance stable family authority integrated from Informe Maestro (distilled, no raw document copy).
 MASTER_GOVERNANCE_NATIVE = True
 STABLE_GOVERNANCE_RULE_IDS = {
     "GOV-CORE-001", "GOV-LVL-001", "VER-SEM-001", "VER-COR-001", "ENG-CORE-001", "ENG-STR-001",
-    "PRJ-CON-001", "PRJ-DEMO-001", "AGT-LOAD-001", "CAN-P360-001", "CAN-TEXT-001", "RES-CORPUS-001",
+    "PRJ-CON-001", "AGT-LOAD-001", "CAN-P360-001", "CAN-TEXT-001", "RES-CORPUS-001",
     "RUN-10N-001", "PMT-AJ-001", "VAL-REC-001", "AUD-MAX-001", "UPD-MAT-001", "MIG-MAT-001",
     "BRD-DEF-001", "BRD-PAL-001", "REF-SAFE-001", "SAF-ADULT-001", "ZIP-EXT-001", "DUP-EXA-001", "LIN-HDEM-001",
-    "BLT-NBH-001", "CRT-FALSE-001", "PRJ-NAME-001", "PRJ-TPL-001", "PRJ-SKEL-001", "PRJ-STAT-001", "PRJ-DEMO-GATE-001", "PRJ-LIFE-001"
+    "BLT-NBH-001", "CRT-FALSE-001", "PRJ-NAME-001", "PRJ-TPL-001", "PRJ-SKEL-001", "PRJ-STAT-001", "PRJ-LIFE-001"
 }
 ZIP_EXT_001_WHOLE_ZIP_EXTERNAL_AUTHORITY = "H382R integrated into active stable canon; whole ZIP SHA/bytes authority remains external only."
 ENGINE_PROJECT_AGENT_LEVEL_CONTRACT = "ENGINE_LEVEL != PROJECT_LEVEL != AGENT_LEVEL"
@@ -4829,7 +4894,7 @@ def make_project(spec: dict, destination: Path, engine_profile_registry: list[di
     project_name = identity["project_name"]
     project_name_slug = identity["project_name_slug"]
     project_uid = identity["project_uid"]
-    is_project_demo = project_name == "Proyecto 000 Demo"
+    external_validation_required = _project_policy_external_validation_required(spec)
     raw_models = spec.get("models")
     if not isinstance(raw_models, list):
         raise InputContractError("FAIL_INPUT_CONTRACT_MISSING_REQUIRED_FIELD", "models must be an explicit list with 1..10 model slots")
@@ -4859,10 +4924,10 @@ def make_project(spec: dict, destination: Path, engine_profile_registry: list[di
     write_text(root/"00_PROJECT_INDEX"/"README_PROJECT.md", f"# {project_id}\n\nIDUNEX {SEMANTIC_VERSION}; {INTERNAL_LABEL}. Canonical project with {len(models)} fictitious adult model(s). No operational files are permitted loose at project root.")
     control=root/"00_PROJECT_INDEX"
     model_index={"project_id":project_id,"model_count":len(models),"models":[{"model_id":m["model_id"],"model_code":m["model_code"],"name":m["name"],"age":m["age"],"gender":m["gender"],"origin":m["origin"],"role":m["role"],"role_source":m["role_source"],"rich_directions":m.get("rich_directions",{}),"input_field_normalization_records":m.get("input_field_normalization_records",[])} for m in models]}
-    write_json(control/"PROJECT_MANIFEST.json", {"project_id":project_id,"project_name":project_name,"project_name_slug":project_name_slug,"PROJECT_UID":project_uid,"project_uid_role":"metadata_internal_not_filename_replacement","project_filename_canon":f"{project_id}.zip","engine_version":SEMANTIC_VERSION,"project_version":SEMANTIC_VERSION,"project_schema_version":SEMANTIC_VERSION,"created_with_engine_sha256":resolve_engine_zip_sha256(),"last_updated_with_engine_sha256":resolve_engine_zip_sha256(),"last_update_mode":"DIRECT_CANONICAL_PROJECT_GENERATION","semantic_version":SEMANTIC_VERSION,"internal_label":INTERNAL_LABEL,"active_internal_label":INTERNAL_LABEL,"model_count":len(models),"runtime_formula":"10+N","created_at":now(),"project_entity_profile":entity_profile,"package_status":"GENERIC_SKELETON_NON_AUTHORITY" if is_generic_skeleton else "SPECIFICATION_READY_NOT_CREATIVE_OUTPUT","project_statuses":["PROJECT_GENERATED_NOT_AUDITED","GENERIC_SKELETON_NON_AUTHORITY","PROJECT_AUDIT_REQUIRED"] if is_generic_skeleton else ["PROJECT_GENERATED_NOT_AUDITED","PROJECT_AGENT_LOAD_PENDING","PROJECT_AUDIT_REQUIRED"],"PROJECT_PACKAGE_CERTIFIED":False if is_generic_skeleton else True,"PROJECT_RUNTIME_READY":False if is_generic_skeleton else True,"PROJECT_AUTHORITY_CLASSIFICATION":"GENERIC_SKELETON_NON_AUTHORITY" if is_generic_skeleton else "PROJECT_EXECUTABLE_CANONICAL_SPECIFICATION","PROJECT_DEMO_PASS":False,"PROJECT_AGENT_LOAD_PASS":False,"PROJECT_READY_FOR_PRODUCTION":False,"CREATIVE_OUTPUT_CERTIFIED":False,"NO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE":True})
+    write_json(control/"PROJECT_MANIFEST.json", {"project_id":project_id,"project_name":project_name,"project_name_slug":project_name_slug,"PROJECT_UID":project_uid,"project_uid_role":"metadata_internal_not_filename_replacement","project_filename_canon":f"{project_id}.zip","engine_version":SEMANTIC_VERSION,"project_version":SEMANTIC_VERSION,"project_schema_version":SEMANTIC_VERSION,"created_with_engine_sha256":resolve_engine_zip_sha256(),"last_updated_with_engine_sha256":resolve_engine_zip_sha256(),"last_update_mode":"DIRECT_CANONICAL_PROJECT_GENERATION","semantic_version":SEMANTIC_VERSION,"internal_label":INTERNAL_LABEL,"active_internal_label":INTERNAL_LABEL,"model_count":len(models),"runtime_formula":"10+N","created_at":now(),"project_entity_profile":entity_profile,"package_status":"GENERIC_SKELETON_NON_AUTHORITY" if is_generic_skeleton else "SPECIFICATION_READY_NOT_CREATIVE_OUTPUT","project_statuses":["PROJECT_GENERATED_NOT_AUDITED","GENERIC_SKELETON_NON_AUTHORITY","PROJECT_AUDIT_REQUIRED"] if is_generic_skeleton else ["PROJECT_GENERATED_NOT_AUDITED","PROJECT_AGENT_LOAD_PENDING","PROJECT_AUDIT_REQUIRED"],"PROJECT_PACKAGE_CERTIFIED":False if is_generic_skeleton else True,"PROJECT_RUNTIME_READY":False if is_generic_skeleton else True,"PROJECT_AUTHORITY_CLASSIFICATION":"GENERIC_SKELETON_NON_AUTHORITY" if is_generic_skeleton else "PROJECT_EXECUTABLE_CANONICAL_SPECIFICATION","PROJECT_EXTERNAL_VALIDATION_REQUIRED":external_validation_required,"PROJECT_EXTERNAL_VALIDATION_PASS":False,"PROJECT_AGENT_LOAD_PASS":False,"PROJECT_READY_FOR_PRODUCTION":False,"CREATIVE_OUTPUT_CERTIFIED":False,"NO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE":True})
     write_json(control/"PROJECT_ENTITY_PROFILE.json", entity_profile)
     write_json(control/"PROJECT_NAMING_CANON.json", {"contract_id":"PROJECT_FILENAME_CANON","project_id":project_id,"project_name":project_name,"project_name_slug":project_name_slug,"semantic_version":SEMANTIC_VERSION,"filename_canon":f"{project_id}.zip","PROJECT_UID":project_uid,"project_uid_role":["metadata_internal","collision_suffix","manifest_field"],"hash_short_may_replace_project_name":False,"result":"PASS","fail_codes":[]})
-    write_json(control/"PROJECT_STATUS_CONTRACT.json", _project_policy_status_payload(project_id, is_generic_skeleton, is_project_demo))
+    write_json(control/"PROJECT_STATUS_CONTRACT.json", _project_policy_status_payload(project_id, is_generic_skeleton, external_validation_required))
     write_json(control/"PROJECT_TEMPLATE_FILL_VALIDATOR.json", {"validator_id":"PROJECT_TEMPLATE_FILL_VALIDATOR","template_mode":False,"project_no_placeholder_execution_gate":"PROJECT_NO_PLACEHOLDER_EXECUTION_GATE","placeholder_hits":[],"do_not_execute_template_with_placeholders":True,"result":"PASS","fail_codes":[]})
     write_json(control/"PROJECT_VERSION_LINEAGE.json", {"engine_version":SEMANTIC_VERSION,"project_version":SEMANTIC_VERSION,"project_schema_version":SEMANTIC_VERSION,"created_with_engine_sha256":resolve_engine_zip_sha256(),"last_updated_with_engine_sha256":resolve_engine_zip_sha256(),"last_update_mode":"DIRECT_CANONICAL_PROJECT_GENERATION","external_project_filename_rule":"PROJECT_FILENAME_CANON: IDUNEX_PROJECT_<PROJECT_NAME_SLUG>_<SEMANTIC_VERSION>.zip when project_name exists; PROJECT_UID metadata only"})
     write_json(control/"PROJECT_MODEL_INDEX.json", model_index)
@@ -4873,7 +4938,7 @@ def make_project(spec: dict, destination: Path, engine_profile_registry: list[di
     write_json(control/"PATH_MIGRATION_MAP.json", {"03_CHATGPT_AGENT":"CHATGPT","04_COPILOT_AGENT":"COPILOT","status":"LEGACY_PATHS_MAPPED_NOT_ACTIVE"})
     write_json(control/"PROJECT_ENTITY_PROFILE_LEDGER.json", {"gate":"PROJECT_ENTITY_PROFILE_GATE","profile":entity_profile,"required_fields":PROJECT_ENTITY_REQUIRED_FIELDS,"missing_fields":[],"status":"PASS"})
     write_json(control/"RIGHTS_AND_LICENSE_LEDGER.json", {"gate":"RIGHTS_AND_LICENSE_LEDGER_GATE","rights_holder_entity":entity_profile["rights_holder_entity"],"model_ownership_statement":entity_profile["model_ownership_statement"],"brand_usage_scope":entity_profile["brand_usage_scope"],"license_status":"EXPLICIT_PROJECT_SCOPE_ONLY","no_default_company_inference":True})
-    write_json(control/"FINAL_PROJECT_CLOSURE_VISIBILITY_BANNER.json", {"PROJECT_PACKAGE_CERTIFIED":False if is_generic_skeleton else True,"PROJECT_RUNTIME_READY":False if is_generic_skeleton else True,"PROJECT_AUTHORITY_CLASSIFICATION":"GENERIC_SKELETON_NON_AUTHORITY" if is_generic_skeleton else "PROJECT_EXECUTABLE_CANONICAL_SPECIFICATION","PROJECT_DEMO_PASS":False,"PROJECT_AGENT_LOAD_PASS":False,"PROJECT_READY_FOR_PRODUCTION":False,"CREATIVE_OUTPUT_CERTIFIED":False,"NO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE":True})
+    write_json(control/"FINAL_PROJECT_CLOSURE_VISIBILITY_BANNER.json", {"PROJECT_PACKAGE_CERTIFIED":False if is_generic_skeleton else True,"PROJECT_RUNTIME_READY":False if is_generic_skeleton else True,"PROJECT_AUTHORITY_CLASSIFICATION":"GENERIC_SKELETON_NON_AUTHORITY" if is_generic_skeleton else "PROJECT_EXECUTABLE_CANONICAL_SPECIFICATION","PROJECT_EXTERNAL_VALIDATION_REQUIRED":external_validation_required,"PROJECT_EXTERNAL_VALIDATION_PASS":False,"PROJECT_AGENT_LOAD_PASS":False,"PROJECT_READY_FOR_PRODUCTION":False,"CREATIVE_OUTPUT_CERTIFIED":False,"NO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE":True})
     canon=root/"01_CANON"
     write_json(canon/"P034_GATE_IMPLEMENTATION_MATRIX.json", {"active_internal_label":INTERNAL_LABEL,"gate_count":40,"gates":p034_gate_matrix(),"h71_h80_direct_correction_gates":[g for g in P034_DIRECT_CORRECTION_GATES if g.startswith("H7") or g.startswith("H80")],"blocked_status_counts":{"NI":0,"TNV":0,"UT":0,"PT":0}})
     write_json(canon/"P034_DIRECT_CORRECTION_GATES.json", {"gate_count":len(P034_DIRECT_CORRECTION_GATES),"gates":[{"gate_name":sanitize_active_token_text(g),"status":"ACTIVE_VALIDATED","blocking":True} for g in P034_DIRECT_CORRECTION_GATES],"correction_mode":"DIRECT_CANONICAL_NO_PATCH"})
@@ -5921,8 +5986,8 @@ def validate_project(root: Path, profile_registry: list[dict] | None=None, tech_
         if generic:
             if not PROJECT_GENERIC_SKELETON_ALLOWED_STATES.issubset(statuses):
                 add_fail(fails,"FAIL_VALIDATE_GENERIC_SKELETON_NON_AUTHORITY", f"missing skeleton statuses={sorted(PROJECT_GENERIC_SKELETON_ALLOWED_STATES-statuses)}")
-            if statuses & PROJECT_GENERIC_SKELETON_BLOCKED_STATES or any(manifest.get(k) is True for k in ["PROJECT_DEMO_PASS","PROJECT_AGENT_LOAD_PASS","PROJECT_READY_FOR_PRODUCTION"]):
-                add_fail(fails,"FAIL_VALIDATE_GENERIC_SKELETON_NON_AUTHORITY", "generic skeleton cannot be production/agent/demo pass")
+            if statuses & PROJECT_GENERIC_SKELETON_BLOCKED_STATES or any(manifest.get(k) is True for k in ["PROJECT_EXTERNAL_VALIDATION_PASS","PROJECT_AGENT_LOAD_PASS","PROJECT_READY_FOR_PRODUCTION"]):
+                add_fail(fails,"FAIL_VALIDATE_GENERIC_SKELETON_NON_AUTHORITY", "generic skeleton cannot be production/agent/external-validation pass")
         else:
             for scan_rel in ["00_PROJECT_INDEX/PROJECT_MANIFEST.json", "00_PROJECT_INDEX/PROJECT_TEMPLATE_FILL_VALIDATOR.json", "00_PROJECT_INDEX/PROJECT_STATUS_CONTRACT.json"]:
                 sp=root/scan_rel
@@ -7160,7 +7225,7 @@ def mutation_self_test(work: Path) -> dict:
     engine_root = Path(__file__).resolve().parents[2]
     h20_proof_path = engine_root/"99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json"
     h20_proof = load_json(h20_proof_path) if h20_proof_path.exists() else {}
-    h20_ok = h20_proof.get("result") == "PASS" and ((h20_proof.get("rows") == 30 and h20_proof.get("pass_count") == 30) or (h20_proof.get("case_count") == 31 and h20_proof.get("pass_count") == 31 and h20_proof.get("PROJECT_31_FULL_MATRIX_PASS_COUNT") == "31/31"))
+    h20_ok = h20_proof.get("result") == "PASS" and ((h20_proof.get("rows") == 30 and h20_proof.get("pass_count") == 30) or (h20_proof.get("case_count") == 30 and h20_proof.get("pass_count") == 30 and h20_proof.get("PROJECT_N1_N10_X3_MATRIX_PASS_COUNT") == "30/30") or (h20_proof.get("case_count") == 31 and h20_proof.get("pass_count") == 31 and h20_proof.get("PROJECT_31_FULL_MATRIX_PASS_COUNT") == "31/31"))
     h18_h21_cases = [
         {"case":"452_H18_PROFILE360_GENERIC_INPUT_FULL_DECOLLISION", "expected_failcode":"FAIL_PROFILE360_GENERIC_INPUT_FULL_DECOLLISION_NOT_MATERIALIZED", "observed":["PASS_BY_H62_N1_N10_X3_EXECUTED_MATRIX" if h20_ok else "H62_MATRIX_PROOF_MISSING"], "result":"PASS" if h20_ok else "FAIL"},
         {"case":"453_H19_PRECHECK_LATE_GENERIC_CLONING_PREVENTED", "expected_failcode":"FAIL_GENERIC_COMPLETE_INPUT_DECOLLISION_EARLY_BLOCK", "observed":["NO_PRECHECK_FAIL_PROFILE_MODEL_SPECIFIC_CLONING_BY_H62_MATRIX" if h20_ok else "H62_MATRIX_PROOF_MISSING"], "result":"PASS" if h20_ok else "FAIL"},
@@ -7175,7 +7240,7 @@ def mutation_self_test(work: Path) -> dict:
         {"case":"460_H24_ROLE_CANONICAL_SURFACE_DIVERGENCE_BLOCKED", "expected_failcode":"FAIL_ROLE_CANONICAL_SURFACE_DIVERGENCE", "observed":["INDEX_MODEL_RUNTIME_LEDGER_CONVERGE"], "result":"PASS"},
         {"case":"461_H25_GENERIC_ROLE_GENDER_AGREEMENT_NO_NAMED_MODEL", "expected_failcode":"FAIL_ROLE_GENDER_AGREEMENT_UPDATE", "observed":["MODEL_ID_ONLY_ROLE_GENDER_TESTS"], "result":"PASS"},
         {"case":"462_H26_OFFICIAL_DOCS_GENERIC_LANGUAGE", "expected_failcode":"FAIL_OFFICIAL_DOCS_MODEL_PROJECT_NAME_LEAKAGE", "observed":["OFFICIAL_DOCS_NAMED_MODEL_REFERENCES_ZERO"], "result":"PASS"},
-        {"case":"463_H27_FACTORY_HARDCODED_DEMO_BRANCH_BLOCKED", "expected_failcode":"FAIL_FACTORY_HARDCODED_DEMO_BRANCH", "observed":["FACTORY_OPERATES_BY_FIELDS_NOT_NAMES"], "result":"PASS"},
+        _aud007_factory_hardcoding_mutation_case(Path(__file__)),
         {"case":"464_H28_ROUTER_NAMED_ALIAS_POLICY_LEAKAGE_BLOCKED", "expected_failcode":"FAIL_ROUTER_NAMED_ALIAS_POLICY_LEAKAGE", "observed":["ROUTER_ALIAS_POLICY_MODEL_ID_ONLY"], "result":"PASS"},
         {"case":"465_H29_FULL_MOTOR_GENERICITY_AUDIT_MATRIX", "expected_failcode":"FAIL_FULL_MOTOR_GENERICITY_AUDIT_MATRIX", "observed":["FULL_MOTOR_GENERICITY_AUDIT_MATRIX_PASS"], "result":"PASS"},
     ]
@@ -8211,7 +8276,13 @@ def _rebuild_project_from_generation_input(dst: Path, raw_models: list[dict], mo
     if not (1 <= len(raw_models) <= 10):
         raise InputContractError("FAIL_MODEL_COUNT_MIN" if len(raw_models) < 1 else "FAIL_MODEL_COUNT_MAX", f"{mode}: model_count={len(raw_models)}")
     entity = load_json(dst/"00_PROJECT_INDEX"/"PROJECT_ENTITY_PROFILE.json")
-    spec = {"project_id": dst.name, "project_entity_profile": entity, "models": raw_models}
+    previous_manifest = load_json(dst/"00_PROJECT_INDEX"/"PROJECT_MANIFEST.json")
+    spec = {
+        "project_id": dst.name,
+        "project_entity_profile": entity,
+        "models": raw_models,
+        "external_validation_required": bool(previous_manifest.get("PROJECT_EXTERNAL_VALIDATION_REQUIRED", False)),
+    }
     parent = dst.parent
     rebuilt = make_project(spec, parent)
     manifest = load_json(rebuilt/"00_PROJECT_INDEX"/"PROJECT_MANIFEST.json")
