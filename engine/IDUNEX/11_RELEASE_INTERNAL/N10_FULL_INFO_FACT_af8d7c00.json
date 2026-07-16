@@ -1,4 +1,13 @@
 {
+  "authority_status": "REFERENCIA_HISTORICA_SUSTITUIDA",
+  "superseded_by": "AUD-006_M02_FAIL",
+  "current_repository_state": {
+    "motor_status": "EN_REVISION",
+    "m02_result": "M02_FAIL",
+    "ready_for_project_demo_generation": false,
+    "release_authorized": false,
+    "productive_closure_authorized": false
+  },
   "evidence_id": "DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY_EVIDENCE",
   "semantic_version": "v1.0.0",
   "version_bump": "NO",
@@ -49,7 +58,7 @@
     "test_count": 12
   },
   "max_matrix_current_run": "PASS",
-  "closure_decision": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
+  "closure_decision": "BLOCKED_BY_M02_FAIL",
   "current_matrix_attempt": "11_RELEASE_INTERNAL/MAX_MATRIX_CURRENT_RUN_ATTEMPT.json",
   "validators_fail": 0,
   "blocking_warnings": 0,
@@ -58,8 +67,8 @@
   "VALIDATORS_FAIL": 0,
   "BLOCKING_WARNINGS": 0,
   "FAIL_CODES": [],
-  "SCORE": "10/10",
-  "CLOSURE_DECISION": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
+  "HISTORICAL_DECLARED_SCORE": "10/10",
+  "CLOSURE_DECISION": "BLOCKED_BY_M02_FAIL",
   "completed_count": 31,
   "pass_count": 31,
   "fail_count": 0,

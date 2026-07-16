@@ -2,6 +2,13 @@ repository: idunex
 system: IDUNEX
 area: IA
 status: EN_REVISION
+m02_result: M02_FAIL
+state_authority: governance/CURRENT_STATE.json
+ready_for_project_demo_generation: false
+release_authorized: false
+tag_authorized: false
+productive_closure_authorized: false
+creative_output_certified: false
 semantic_version: v1.0.0
 source_zip:
   filename: IDUNEX_MOTOR_v1.0.0.zip
@@ -11,7 +18,7 @@ source_zip:
   directories: 0
   stored_entries: 0
   internal_zip_entries: 0
-  testzip: PASS
+  testzip: REFERENCIA_DECLARADA_NO_RECOMPUTADA_M02
 paths:
   engine_root: engine/IDUNEX
   reference_authority: governance/authority/REFERENCIA
@@ -22,3 +29,4 @@ policy:
   project_demo_blocked_until_motor_audit: true
   future_projects_blocked_until_demo_100: true
   creative_output_certified: false
+  m02_fail_blocks_internal_certificates: true

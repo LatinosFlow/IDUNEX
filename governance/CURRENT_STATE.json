@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "issue": "AUD-006",
+  "authority": "governance/CURRENT_STATE.json",
+  "effective_date": "2026-07-16",
+  "motor_status": "EN_REVISION",
+  "m02_result": "M02_FAIL",
+  "ready_for_project_demo_generation": false,
+  "release_authorized": false,
+  "tag_authorized": false,
+  "productive_closure_authorized": false,
+  "creative_output_certified": false,
+  "interlock": {
+    "condition": "m02_result == M02_FAIL",
+    "rule": "No internal certificate or derived evidence may enable Project Demo generation, a release, a tag, or productive closure.",
+    "denied_capabilities": [
+      "PROJECT_DEMO_GENERATION",
+      "RELEASE",
+      "TAG",
+      "PRODUCTIVE_CLOSURE"
+    ]
+  },
+  "evidence_classes": {
+    "historical_or_declared": "REFERENCIA_SUSTITUIDA; retained only for lineage and never authoritative",
+    "prior_recomputed": "REFERENCIA_SUSTITUIDA; scoped execution evidence that cannot override the current M02 decision",
+    "current_repository_state": "Only this file is authoritative for current global motor state"
+  },
+  "superseded_surfaces": [
+    "engine/IDUNEX/00_INDEX",
+    "engine/IDUNEX/11_RELEASE_INTERNAL",
+    "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE"
+  ]
+}

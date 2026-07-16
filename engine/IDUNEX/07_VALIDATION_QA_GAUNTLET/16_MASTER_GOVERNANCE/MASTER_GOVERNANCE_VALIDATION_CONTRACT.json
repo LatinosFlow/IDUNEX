@@ -1,5 +1,7 @@
 {
   "contract_id": "MASTER_GOVERNANCE_VALIDATION_CONTRACT",
+  "issue": "AUD-006",
+  "state_authority": "governance/CURRENT_STATE.json",
   "required_checks": [
     "stable_family_coverage",
     "rule_id_coverage",
@@ -18,22 +20,20 @@
     "matrix_31_or_N1_N10_x3",
     "mutation_self_test",
     "BRD_PAL_001_no_active_palette_leakage",
-    "truthfulness"
+    "truthfulness",
+    "governance_state_consistency"
   ],
-  "expected": {
-    "VALIDATORS_FAIL": 0,
-    "BLOCKING_WARNINGS": 0,
-    "FAIL_CODES": [],
-    "SCORE": "10/10"
+  "expected_current_state": {
+    "MOTOR_STATUS": "EN_REVISION",
+    "M02_RESULT": "M02_FAIL",
+    "READY_FOR_PROJECT_DEMO_GENERATION": false,
+    "RELEASE_AUTHORIZED": false,
+    "PRODUCTIVE_CLOSURE_AUTHORIZED": false,
+    "CREATIVE_OUTPUT_CERTIFIED": false
   },
-  "CREATIVE_OUTPUT_CERTIFIED": false,
-  "MAX_MATRIX_CURRENT_RUN": "PASS",
-  "N1_TO_N10_X3_MATRIX": "PASS",
-  "VALIDATORS_FAIL": 0,
-  "BLOCKING_WARNINGS": 0,
-  "FAIL_CODES": [],
-  "SCORE": "10/10",
-  "CLOSURE_DECISION": "ENGINE_TECHNICAL_CLOSURE_PASS_READY_FOR_PROJECT_DEMO_VALIDATION",
-  "DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY": "PASS",
-  "CLI_LIFECYCLE_AND_MATRIX_VERSION_LINEAGE_PARITY": "PASS"
+  "historical_evidence_policy": {
+    "authority_status": "REFERENCIA_SUSTITUIDA",
+    "may_override_current_state": false
+  },
+  "interlock": "M02_FAIL prevents any internal certificate from enabling Demo, release, tag or productive closure."
 }

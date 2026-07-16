@@ -1,11 +1,20 @@
 {
+  "authority_status": "REFERENCIA_HISTORICA_SUSTITUIDA",
+  "superseded_by": "AUD-006_M02_FAIL",
+  "current_repository_state": {
+    "motor_status": "EN_REVISION",
+    "m02_result": "M02_FAIL",
+    "ready_for_project_demo_generation": false,
+    "release_authorized": false,
+    "productive_closure_authorized": false
+  },
   "schema": "IDUNEX_GOVERNANCE_IMPLEMENTED_FINAL_CLOSURE_REPORT_V1",
-  "decision": "PASS_GOVERNANCE_IMPLEMENTED_CORRECTED_ENGINE_DELIVERED",
+  "decision": "REFERENCIA_SUSTITUIDA_BY_M02_FAIL",
   "SEMANTIC_VERSION": "v1.0.0",
   "VERSION_BUMP": "NO",
   "CORRECTION_MODE": "DIRECT_CANONICAL_NO_PATCH",
   "CORRECTION_SCOPE": "MASTER_GOVERNANCE_NATIVE_STABLE_FAMILIES_OUTPUT_UPDATE_MIGRATION_AGENT_CONTRACTS",
-  "RELEASE_PHASE": "OFFICIAL_GOVERNANCE_NATIVE_ENGINE_CLOSURE",
+  "RELEASE_PHASE": "BLOCKED_BY_M02_FAIL",
   "CREATIVE_OUTPUT_CERTIFIED": false,
   "MASTER_GOVERNANCE_NATIVE": "PASS",
   "STABLE_FAMILY_COVERAGE": "PASS",
@@ -63,6 +72,6 @@
   "VALIDATORS_FAIL": 0,
   "BLOCKING_WARNINGS": 0,
   "FAIL_CODES": [],
-  "SCORE": "10/10",
-  "truthfulness": "All PASS claims in this closure are backed by current-session validator outputs and recomputed project/update/migration/mutation matrices. Whole ZIP hash and bytes are not self-certified internally and are declared only by external companion surfaces under ZIP-EXT-001."
+  "HISTORICAL_DECLARED_SCORE": "10/10",
+  "truthfulness": "Prior internal component claims are retained as replaced historical evidence. They do not override the current independent M02_FAIL decision or authorize Demo, release, tag or productive closure."
 }
