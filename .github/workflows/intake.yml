@@ -29,3 +29,7 @@ jobs:
         run: python tools/audit/demo_hardcoding_check.py --repo-root .
       - name: Run Demo hardcoding mutations and non-Demo N1 smoke (AUD-007)
         run: python -m unittest discover -s tests/intake -p 'test_demo_hardcoding.py'
+      - name: Check single validator entrypoint (AUD-009)
+        run: python tools/audit/validator_entrypoint_check.py --repo-root .
+      - name: Run validator entrypoint adversarial tests (AUD-009)
+        run: python -m unittest discover -s tests/intake -p 'test_validator_entrypoint.py'
