@@ -3,24 +3,32 @@ inherits = PROJECT_FACTORY_GLOBAL_PROTOCOL_RULES#COMMON_PROJECT_FACTORY_EXECUTIO
 protocol_specific_delta_required = true
 inherits_model_count_matrix = PROJECT_FACTORY_GLOBAL_PROTOCOL_RULES#MODEL_COUNT_MATRIX_1_TO_10
 
-# Generic Project Demo Readiness
+# External Project Validation Readiness (path retained for compatibility)
 
 **Motor:** IDUNEX_MOTOR_v1.0.0  
-**Estado interno:** prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE  
-**ENGINE_RELEASE_DATE:** NEUTRALIZED_ACTIVE_SCOPE  
-**PACKAGE_GENERATION_DATE:** NEUTRALIZED_ACTIVE_SCOPE  
-**Uso:** base central de conocimiento, generación, actualización, auditoría y reparación de proyectos IDUNEX para PROJECT_BRAND_ENTITY.  
-**Regla cero:** este archivo no es resumen. Es runtime operativo. Si una instrucción, campo, test o política no puede afectar una salida real, debe convertirse en regla ejecutable o eliminarse del runtime.
+**Clasificación:** EXTERNAL_POST_M02_PROJECT_INPUT_CONTRACT
 
-plantilla demo no instanciada Demo debe usar este motor solo después de aceptación de Alonso. Debe crear CANON_SUBJECT_SLOT_A y CANON_SUBJECT_SLOT_B con pairwise uniqueness, no media al inicio, tests textuales, QA y agent-load completo.
+**ENGINE_LEVEL activo:** false
+
+**Estado vigente:** BLOCKED_BY_M02_FAIL
+
+**Uso:** referencia externa posterior; no participa en generación, actualización, auditoría ni reparación del motor.
+
+**Regla cero:** ninguna instrucción de este archivo tiene efecto runtime ni puede seleccionar un proyecto por nombre.
+
+Una plantilla externa futura solo puede usarse después de una decisión M02 independiente y de un input explícito con campos genéricos. No se instancia durante esta corrección.
 # Project Factory Full 10/10
 
 **Motor:** IDUNEX_MOTOR_v1.0.0  
-**Estado interno:** prior_scope_reference=NON_AUTHORITY_REFERENCE; active_scope=H261_H268_RUNTIME_TRUTHFULNESS_SCOPE  
-**ENGINE_RELEASE_DATE:** NEUTRALIZED_ACTIVE_SCOPE  
-**PACKAGE_GENERATION_DATE:** NEUTRALIZED_ACTIVE_SCOPE  
-**Uso:** base central de conocimiento, generación, actualización, auditoría y reparación de proyectos IDUNEX para PROJECT_BRAND_ENTITY.  
-**Regla cero:** este archivo no es resumen. Es runtime operativo. Si una instrucción, campo, test o política no puede afectar una salida real, debe convertirse en regla ejecutable o eliminarse del runtime.
+**Clasificación:** EXTERNAL_POST_M02_PROJECT_INPUT_CONTRACT
+
+**ENGINE_LEVEL activo:** false
+
+**Estado vigente:** BLOCKED_BY_M02_FAIL
+
+**Uso:** referencia externa posterior; no participa en el runtime del motor.
+
+**Regla cero:** los detalles siguientes no son reglas ejecutables ni canon ENGINE_LEVEL.
 
 
 Este módulo gobierna creación y actualización de proyectos. Un proyecto IDUNEX nunca es copia del motor: es una instancia con canon, 10 core adaptados, perfiles Perfil360 por modelo, agent-load ChatGPT, Copilot DOCX, adapters, QA, manifests y lineage.

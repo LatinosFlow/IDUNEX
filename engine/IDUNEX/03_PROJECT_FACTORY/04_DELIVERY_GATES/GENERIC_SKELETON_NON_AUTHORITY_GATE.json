@@ -17,10 +17,10 @@
   "blocked_states": [
     "PROJECT_READY_FOR_PRODUCTION",
     "PROJECT_AGENT_LOAD_PASS",
-    "PROJECT_DEMO_PASS",
+    "PROJECT_EXTERNAL_VALIDATION_PASS",
     "PROJECT_READY_FOR_CONTROLLED_USE"
   ],
-  "blocks_official_demo_use": true,
+  "blocks_external_validation_pass": true,
   "validator": "VALIDATE_GENERIC_SKELETON_NON_AUTHORITY",
   "status": "ACTIVE_NATIVE",
   "result": "PASS",

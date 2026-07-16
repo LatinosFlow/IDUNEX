@@ -1,3 +1,9 @@
 # PROJECT_DEMO_PASS_GATE
 
-Proyecto 000 Demo solo puede declarar PROJECT_DEMO_PASS si cumple naming canon, no placeholders, brand/assets explícitos, Profile360/TechExt completos, runtime ChatGPT/Copilot 10+N, prompt packs A-J, validate PASS, auditoría PASS y carga real ChatGPT/Copilot o vendor limitation documentada.
+**Clasificación:** `EXTERNAL_POST_M02_PROJECT_CONTRACT`
+
+**ENGINE_LEVEL activo:** `false`
+
+**Estado vigente:** `BLOCKED_BY_M02_FAIL`
+
+Este archivo se conserva por compatibilidad de ruta como contrato externo posterior. No se carga como gate del motor, no selecciona proyectos por nombre y no autoriza generación. Una validación externa futura deberá activarse mediante `external_validation_required=true` en un input explícito y someterse a auditoría de proyecto separada.

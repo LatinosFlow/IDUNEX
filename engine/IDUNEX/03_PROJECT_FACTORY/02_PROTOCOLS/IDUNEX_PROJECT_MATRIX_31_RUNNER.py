@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """IDUNEX H396 real command matrix runner for H391-H410.
 
-Legacy H238 name is retained only for path compatibility.
+Legacy H238/31 path names are retained only for compatibility.
 
-Single authoritative executable for the H238 matrix: 1 demo N2 case plus
-basic/intermediate/complete N1..N10. It writes compact evidence only and removes
+Single authoritative executable for the technical matrix: exactly
+basic/intermediate/complete N1..N10 (30 non-Demo cases). It writes compact evidence only and removes
 all generated project directories/ZIPs unless --keep-work is passed.
 """
 from __future__ import annotations
@@ -14,6 +14,7 @@ import argparse, csv, hashlib, json, os, shutil, signal, subprocess, sys, tempfi
 SCRIPT_DIR = Path(__file__).resolve().parent
 FACTORY = SCRIPT_DIR / "IDUNEX_PROJECT_FACTORY_v1.0.0.py"
 DEFAULT_TIMEOUT = 300
+MATRIX_EXPECTED_CASES = 30
 
 
 def resolve_semantic_version() -> str:
@@ -198,7 +199,7 @@ def entity_profile(scope: str) -> dict:
 
 
 def cases() -> list[dict]:
-    rows = [{"case_id": "H238_DEMO_N2", "level": "demo", "model_count": 2, "scope": "demo"}]
+    rows = []
     for level in ("basic", "intermediate", "complete"):
         for n in range(1, 11):
             rows.append({"case_id": f"H238_{level.upper()}_N{n}", "level": level, "model_count": n, "scope": "internal" if level != "complete" else "commercial/internal"})
@@ -346,6 +347,8 @@ def main() -> int:
     args = ap.parse_args()
     work = Path(args.work).resolve(); output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
+    all_cases = cases()
+    current_case_ids = {case["case_id"] for case in all_cases}
     partial_path = output_dir / "H238_FULL_31_PROJECT_MATRIX_PARTIAL.json"
     if work.exists() and not args.resume: shutil.rmtree(work)
     work.mkdir(parents=True, exist_ok=True)
@@ -353,12 +356,11 @@ def main() -> int:
     if args.resume and partial_path.is_file():
         try:
             previous = json.loads(partial_path.read_text(encoding="utf-8"))
-            rows = [r for r in previous.get("cases", []) if r.get("result") == "PASS"]
+            rows = [r for r in previous.get("cases", []) if r.get("result") == "PASS" and r.get("case_id") in current_case_ids]
         except Exception:
             rows = []
     done_ids = {r.get("case_id") for r in rows}
     start = time.monotonic()
-    all_cases = cases()
     for idx, case in enumerate(all_cases, 1):
         if case["case_id"] in done_ids:
             if args.stream_progress:
@@ -368,8 +370,11 @@ def main() -> int:
         rows = [r for r in rows if r.get("case_id") != case["case_id"]] + [row]
         pass_count_partial = sum(1 for r in rows if r.get("result") == "PASS")
         partial = {
-            "gate_id": "H238_FULL_31_PROJECT_MATRIX_REAL_EXECUTION",
+            "gate_id": "H238_N1_N10_X3_MATRIX_REAL_EXECUTION",
             "runner": "IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
+            "legacy_runner_name_retained_for_path_compatibility": True,
+            "matrix_contract": "N1_N10_X_BASIC_INTERMEDIATE_COMPLETE",
+            "contains_demo_case": False,
             "semantic_version": SEMANTIC_VERSION,
             "project_version_token": PROJECT_VERSION_TOKEN,
             "matrix_lineage_version_parity": "PASS" if all(PROJECT_VERSION_TOKEN in r.get("project_id", "") and LEGACY_TOKEN not in r.get("project_id", "") for r in rows) else "FAIL",
@@ -391,18 +396,21 @@ def main() -> int:
     elapsed = round(time.monotonic() - start, 3)
     pass_count = sum(1 for r in rows if r.get("result") == "PASS")
     summary = {
-        "gate_id": "H238_FULL_31_PROJECT_MATRIX_REAL_EXECUTION",
+        "gate_id": "H238_N1_N10_X3_MATRIX_REAL_EXECUTION",
         "runner": "IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
+        "legacy_runner_name_retained_for_path_compatibility": True,
+        "matrix_contract": "N1_N10_X_BASIC_INTERMEDIATE_COMPLETE",
+        "contains_demo_case": False,
         "semantic_version": SEMANTIC_VERSION,
         "project_version_token": PROJECT_VERSION_TOKEN,
         "active_project_ids_version_parity": all(PROJECT_VERSION_TOKEN in r.get("project_id", "") and LEGACY_TOKEN not in r.get("project_id", "") for r in rows),
         "case_count": len(rows),
         "pass_count": pass_count,
         "fail_count": len(rows) - pass_count,
-        "PROJECT_31_FULL_MATRIX_EXECUTED": "PASS" if pass_count == 31 else "FALSE",
-        "PROJECT_31_FULL_MATRIX_PASS_COUNT": f"{pass_count}/31",
-        "FULL_31_PROJECT_MATRIX_REAL_EXECUTION": "PASS" if pass_count == 31 else "FAIL",
-        "result": "PASS" if pass_count == 31 else "FAIL",
+        "PROJECT_N1_N10_X3_MATRIX_EXECUTED": "PASS" if pass_count == MATRIX_EXPECTED_CASES and len(rows) == MATRIX_EXPECTED_CASES else "FALSE",
+        "PROJECT_N1_N10_X3_MATRIX_PASS_COUNT": f"{pass_count}/{MATRIX_EXPECTED_CASES}",
+        "FULL_N1_N10_X3_MATRIX_REAL_EXECUTION": "PASS" if pass_count == MATRIX_EXPECTED_CASES and len(rows) == MATRIX_EXPECTED_CASES else "FAIL",
+        "result": "PASS" if pass_count == MATRIX_EXPECTED_CASES and len(rows) == MATRIX_EXPECTED_CASES else "FAIL",
         "elapsed_seconds": elapsed,
         "timeout_per_process_seconds": args.timeout,
         "no_test_output_zips_in_engine": True,

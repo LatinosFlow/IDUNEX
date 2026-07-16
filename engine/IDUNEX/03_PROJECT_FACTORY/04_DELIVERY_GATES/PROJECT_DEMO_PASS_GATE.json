@@ -2,8 +2,13 @@
   "gate_id": "PROJECT_DEMO_PASS_GATE",
   "rule_id": "PRJ-DEMO-GATE-001",
   "semantic_version": "v1.0.0",
+  "authority_classification": "EXTERNAL_POST_M02_PROJECT_CONTRACT",
+  "engine_runtime_active": false,
+  "applies_by_project_name": false,
+  "input_source": "EXPLICIT_EXTERNAL_PROJECT_SPEC",
+  "activation_condition": "INDEPENDENT_M02_PASS_AND_SEPARATE_PROJECT_AUDIT",
   "required": [
-    "project_name = Proyecto 000 Demo",
+    "external_validation_required = true",
     "filename canon correcto",
     "no placeholders",
     "no GENERIC_PROJECT_*",
@@ -18,10 +23,12 @@
     "carga real ChatGPT/Copilot auditada o vendor limitation documentada",
     "CREATIVE_OUTPUT_CERTIFIED=FALSE hasta QA real"
   ],
-  "demo_pass_not_auto_future_pass": true,
-  "validator": "VALIDATE_PROJECT_DEMO_PASS_GATE",
-  "status": "ACTIVE_NATIVE",
-  "result": "PASS",
-  "fail_codes": [],
+  "external_validation_pass_not_auto_other_projects": true,
+  "validator": "EXTERNAL_PROJECT_AUDIT_ONLY",
+  "status": "EXTERNAL_BLOCKED_NOT_ACTIVE",
+  "result": "NOT_EVALUATED",
+  "fail_codes": [
+    "BLOCKED_BY_M02_FAIL"
+  ],
   "CREATIVE_OUTPUT_CERTIFIED": false
 }

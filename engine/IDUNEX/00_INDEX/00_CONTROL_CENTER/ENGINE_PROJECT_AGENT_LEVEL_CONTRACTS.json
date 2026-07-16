@@ -31,7 +31,7 @@
     "must_not_contain": [
       "real_company_default",
       "project_default",
-      "Proyecto_Demo_as_active_fixture",
+      "named_validation_project_as_active_fixture",
       "LatinosFlow_as_default",
       "brand_palette_default",
       "real_logo_default",
@@ -80,9 +80,9 @@
     ]
   },
   "blocked_defaults": [
-    "Proyecto 000 Demo active fixture",
-    "LatinosFlow active brand default",
-    "brand palettes/logos/clients/models demo as engine defaults",
+    "named validation project active fixture",
+    "real company active brand default",
+    "brand palettes/logos/clients/models from any named project as engine defaults",
     "agents reading full engine instead of project runtime",
     "active generic PROJECT_BRAND_ENTITY palette hex defaults",
     "BRD-PAL-001 blocked brand palette fingerprints in active runtime"
