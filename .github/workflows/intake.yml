@@ -10,11 +10,15 @@ on:
 jobs:
   intake:
     runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install intake test dependencies
+        run: python -m pip install python-docx==1.2.0
       - name: Run intake audit
         run: python tools/audit/intake_audit.py --repo-root .
       - name: Check governance state consistency (AUD-006)
