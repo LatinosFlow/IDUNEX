@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "issue": "AUD-003",
+  "github_issue": "LatinosFlow/IDUNEX#4",
+  "branch": "fix/AUD-003-baseline-ledger-remap",
+  "base_commit": "fb148d23953fe8fcb0aaeb0c739fef6db7f467f5",
+  "scope_result": "PARTIAL_PASS",
+  "motor_status": "EN_REVISION",
+  "m02_result": "M02_FAIL",
+  "release_authorized": false,
+  "tag_authorized": false,
+  "project_demo_generated": false,
+  "historical_received_baseline": {
+    "classification": "HISTORICAL_DECLARED_EVIDENCE_NOT_CURRENT_TREE",
+    "source_zip": "IDUNEX_MOTOR_v1.0.0.zip",
+    "declared_zip_sha256": "bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6",
+    "declared_zip_entries": 977,
+    "physical_zip_in_repository": false,
+    "aud003_zip_recomputation": "NOT_PERFORMED_ABSENT_BY_STORAGE_POLICY",
+    "preserved_received_ledger": {
+      "path": "governance/baseline/historical_received/IDUNEX_MOTOR_v1.0.0_RECEIVED_SHA256SUMS.txt",
+      "indexed_files": 971,
+      "bytes": 134065,
+      "sha256": "4b56282a87ee00d0172aa1078480255a64622886a134d4c7c702f12f19e53d99"
+    },
+    "pre_regeneration_provenance": "governance/baseline/historical_received/AUD-003_PRE_REGENERATION_PROVENANCE.json"
+  },
+  "current_corrected_tree": {
+    "classification": "CURRENT_REPRODUCIBLE_REPOSITORY_TREE_NOT_RELEASE",
+    "scope": "engine/IDUNEX",
+    "physical_file_count": 979,
+    "physical_bytes": 47227994,
+    "tree_sha256": "92a614a9f83b9e8d01dcea67aeec4075e64a7e4f6ba91316db440266636d5db6",
+    "tree_sha256_algorithm": "SHA256(repo_path_utf8 + NUL + decimal_bytes + NUL + file_sha256 + LF), sorted by path",
+    "manifest": {
+      "path": "governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json",
+      "bytes": 276224,
+      "sha256": "9aa4a9c0a945e8786b9fbbe38be526c93f3f0a3647fc008fe6e05a1f85e5df14"
+    },
+    "sha_companion": {
+      "path": "governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt",
+      "bytes": 158,
+      "sha256": "334f843cff1caa7c9cd49824c1088feffc387ababe780272b11d6f8a22f29160"
+    },
+    "coverage": {
+      "indexed_missing_paths": 0,
+      "physical_unmanifested_paths": 0,
+      "obsolete_hashes": 0,
+      "metadata_mismatches": 0,
+      "stale_active_manifest_paths": 0,
+      "external_exclusions": 0,
+      "internal_indexed_files": 973,
+      "internal_self_exclusions": 6
+    }
+  },
+  "received_to_current_difference": {
+    "path": "governance/baseline/IDUNEX_BASELINE_DIFF_RECEIVED_TO_CURRENT.json",
+    "bytes": 42451,
+    "sha256": "710b34f8f0a5756219ddc420bcc7031d11b532d30726b8af2d4094f333f9be9c",
+    "received_paths_resolved": 971,
+    "unchanged_content": 873,
+    "modified_content": 98,
+    "missing_after_resolution": 0,
+    "added_current": 2,
+    "windows_safe_engine_mappings": 475,
+    "post_remap_movements": 295
+  },
+  "current_internal_manifest_carriers": [
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json", "bytes": 261561, "sha256": "90694c5ca46b829b3ac27c02c24eaf03ef25d4aef19dd44b9d0d96e6047d72f2"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json", "bytes": 261561, "sha256": "90694c5ca46b829b3ac27c02c24eaf03ef25d4aef19dd44b9d0d96e6047d72f2"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json", "bytes": 261561, "sha256": "90694c5ca46b829b3ac27c02c24eaf03ef25d4aef19dd44b9d0d96e6047d72f2"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.json", "bytes": 261561, "sha256": "90694c5ca46b829b3ac27c02c24eaf03ef25d4aef19dd44b9d0d96e6047d72f2"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt", "bytes": 145113, "sha256": "91dabccde14973b4907de9b194d274c8f520c5608c7f4df6b9e9dbef36fcba5f"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt", "bytes": 145113, "sha256": "91dabccde14973b4907de9b194d274c8f520c5608c7f4df6b9e9dbef36fcba5f"}
+  ],
+  "validations": [
+    {"name": "IDUNEX Intake Audit", "result": "PASS", "failures": 0},
+    {"name": "Security Lite", "result": "PASS", "high_confidence_secret_patterns": 0},
+    {"name": "governance_state_check", "result": "CONSISTENT", "active_contradictions": 0},
+    {"name": "windows_path_remap_check", "result": "PASS", "indexed_paths_checked": 5838, "missing_indexed_paths": 0, "stale_references": 0},
+    {"name": "no_bloat_no_history_check", "result": "PASS", "unjustified_duplicate_groups": 0, "movement_conflicts": 0},
+    {"name": "baseline_scanner", "result": "PASS", "scope_result": "PARTIAL_PASS"},
+    {"name": "demo_hardcoding_check", "result": "PASS", "active_named_project_branches": 0},
+    {"name": "validator_entrypoint_check", "result": "NOT_APPLICABLE_NOT_PRESENT"},
+    {"name": "intake_unittest_suite", "result": "PASS", "tests_run": 26, "skipped": 1, "skip_reason": "Unix SIGALRM primitives unavailable on Windows"},
+    {"name": "changed_demo_or_release_paths", "result": "PASS", "count": 0},
+    {"name": "local_tags_created", "result": "PASS", "count": 0}
+  ],
+  "conclusion": "AUD003_BASELINE_SCOPE_PARTIAL_PASS_M02_GLOBAL_REMAINS_FAIL"
+}

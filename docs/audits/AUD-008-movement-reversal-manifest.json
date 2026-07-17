@@ -22,11 +22,11 @@
     },
     "after": {
       "active_file_count": 747,
-      "active_bytes": 18351717,
+      "active_bytes": 18619046,
       "duplicates": {
         "group_count": 2,
         "file_count": 6,
-        "redundant_bytes": 735958,
+        "redundant_bytes": 929796,
         "justified_group_count": 2,
         "unjustified_group_count": 0
       },

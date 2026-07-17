@@ -14,6 +14,13 @@
   "release_authorized": false,
   "productive_closure_authorized": false,
   "creative_output_certified": false,
+  "aud003_baseline": {
+    "scope_result": "PARTIAL_PASS",
+    "current_tree_manifest": "governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json",
+    "current_tree_sha256_companion": "governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt",
+    "current_tree_is_release": false,
+    "m02_result_after_correction": "M02_FAIL"
+  },
   "historical_internal_claim": {
     "authority_status": "REFERENCIA_SUSTITUIDA",
     "evidence_class": "PRIOR_RECOMPUTED_INTERNAL_NOT_CURRENT_REPOSITORY_STATE",
