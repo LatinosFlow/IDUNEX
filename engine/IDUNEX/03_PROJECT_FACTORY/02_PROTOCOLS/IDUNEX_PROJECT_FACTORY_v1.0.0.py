@@ -7669,7 +7669,9 @@ def _h197_sla_for_model_count(n: int) -> int:
         return 120
     if 2 <= n <= 5:
         return 180
-    return 240
+    if 6 <= n <= 8:
+        return 240
+    return 300
 
 def _h197_reset_context(spec: dict, destination: Path) -> dict:
     n = _h197_model_count_from_spec(spec)
