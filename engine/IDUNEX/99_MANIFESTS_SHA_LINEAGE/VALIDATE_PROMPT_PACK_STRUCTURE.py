@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """H225 validator: prompt pack A-J coverage with mandatory Negative/QC/Fallback sections."""
+from validator_subcheck_protocol import enforce_subcheck_invocation as _enforce_subcheck_invocation
+_enforce_subcheck_invocation(__file__, __name__)
+
 from pathlib import Path
 import json, sys
 sys.dont_write_bytecode=True
