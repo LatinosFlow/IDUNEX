@@ -2,6 +2,13 @@
   "scope": "H261_H268_APPLIED_ON_H01_H260",
   "semantic_version": "v1.0.0",
   "root_unico": "IDUNEX",
+  "registry_role": "INTERNAL_SUBCHECK_CATALOG",
+  "registry_global_closure_capable": false,
+  "authoritative_entrypoint": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
+  "direct_execution_policy": "BLOCKED_USE_ENTRYPOINT_DELEGATION",
+  "m02_decision_authority": false,
+  "current_motor_status": "EN_REVISION",
+  "current_m02_result": "M02_FAIL",
   "validators": [
     {
       "validator_id": "VALIDATE_ACTIVE_SURFACE_HISTORICAL_METADATA_SCRUB",

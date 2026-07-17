@@ -1,14 +1,16 @@
 # VALIDATORS_PRODUCTIVE_BASE_ENGINE — IDUNEX MOTOR v1.0.0
 
 updated_at = NEUTRALIZED_ACTIVE_SCOPE
-ENGINE_RELEASE_STATUS = PRODUCTIVE_BASE_ENGINE
-ENGINE_FINAL_RELEASE_GATE = INTERNAL_PREPACKAGE_PASS_EXTERNAL_COMPANION_VALIDATED_BY_SCRIPT
+MOTOR_STATUS = EN_REVISION
+M02_RESULT = M02_FAIL
+ENGINE_RELEASE_STATUS = BLOCKED_BY_GOVERNANCE
+ENGINE_FINAL_RELEASE_GATE = BLOCKED
 FINAL_ZIP_SHA256_AUTHORITY = EXTERNAL_COMPANION_SHA256_FILE
 SELF_REFERENTIAL_FINAL_SHA_POLICY = DO_NOT_EMBED_FINAL_ZIP_SHA_INSIDE_ZIP
 
 ## Autoridad ejecutable
-La autoridad ejecutable es `IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py`.
-Este contrato no reemplaza el script; obliga que todo PASS tenga evidencia no vacia.
+El único entrypoint ejecutable autoritativo es `IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py`.
+Este contrato no reemplaza el script; cataloga checks internos y obliga que todo resultado local tenga evidencia no vacía. Ningún check listado es un entrypoint adicional ni tiene autoridad para decidir M02.
 
 ## Anti-falso PASS obligatorio
 DECLARED_PASS_WITHOUT_EVIDENCE = FAIL_FALSE_PASS.
@@ -25,7 +27,7 @@ Cada validator debe emitir:
 - severity
 - timestamp
 
-## Validators de cierre productivo
+## Checks internos agregados por el entrypoint
 - VALIDATE_PRODUCTIVE_BASE_ENGINE_STATE
 - VALIDATE_RESEARCH_BASELINE_LOCKED
 - VALIDATE_SOURCE_049_ENV_PHYSICS_REGISTERED

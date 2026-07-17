@@ -3,6 +3,11 @@
 generated_at = NEUTRALIZED_ACTIVE_SCOPE
 phase = FASE_1_4
 canonical_qa_authority = 22_QA_GAUNTLET_CANONICAL_BRIDGE
+canonical_qa_authority_scope = REGISTRY_ORDER_AND_EVIDENCE_ONLY
+global_validator_entrypoint = 99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py
+global_validator_entrypoint_count = 1
+MOTOR_STATUS = EN_REVISION
+M02_RESULT = M02_FAIL
 legacy_qa_layer = 13_QA_GAUNTLET
 legacy_policy = LEGACY_QA_GAUNTLET_COMPATIBILITY_LAYER
 runtime_authority_13_QA_GAUNTLET = false
@@ -12,4 +17,4 @@ legacy_golden_tests_retained_for_no_loss_only = true
 validator = VALIDATE_LEGACY_QA_LAYER_MARKED
 
 ## Rule
-22_QA_GAUNTLET_CANONICAL_BRIDGE is the only active/canonical QA authority for current runtime. 13_QA_GAUNTLET is retained only as historical compatibility and golden-test bridge.
+22_QA_GAUNTLET_CANONICAL_BRIDGE is the canonical registry/order/evidence layer. It is not executable authority. `VALIDATE_IDUNEX_RUNTIME.py` is the only global validator entrypoint; 13_QA_GAUNTLET is retained only as historical compatibility and golden-test evidence.

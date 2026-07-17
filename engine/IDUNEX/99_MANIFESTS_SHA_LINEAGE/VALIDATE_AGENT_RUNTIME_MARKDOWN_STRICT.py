@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """H213 validator: strict active runtime clause schema for IDUNEX generated projects or engine contract."""
+from validator_subcheck_protocol import enforce_subcheck_invocation as _enforce_subcheck_invocation
+_enforce_subcheck_invocation(__file__, __name__)
+
 from pathlib import Path
 import json, re, sys
 sys.dont_write_bytecode=True

@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+from validator_subcheck_protocol import enforce_subcheck_invocation as _enforce_subcheck_invocation
+_enforce_subcheck_invocation(__file__, __name__)
+
 from pathlib import Path
 import json, hashlib, collections, re, sys, zipfile
 ROOT = Path(__file__).resolve().parents[1]

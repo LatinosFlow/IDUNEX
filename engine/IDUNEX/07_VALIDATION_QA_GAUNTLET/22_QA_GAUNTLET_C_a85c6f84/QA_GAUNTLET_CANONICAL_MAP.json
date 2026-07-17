@@ -1,7 +1,12 @@
 {
   "canonical_layer": "22_QA_GAUNTLET_CANONICAL_BRIDGE",
   "legacy_compatibility_layer": "13_QA_GAUNTLET",
-  "status": "PRODUCTIVE_BASE_ENGINE_VALIDATED",
+  "status": "EN_REVISION",
+  "m02_result": "M02_FAIL",
+  "layer_role": "QA_REGISTRY_ORDER_AND_EVIDENCE_BRIDGE",
+  "executable_authority": false,
+  "authoritative_entrypoint": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
+  "global_closure_entrypoint_count": 1,
   "load_order": [
     "00_CONTROL_CENTER",
     "01_RESEARCH_BASELINE_LOCKED",

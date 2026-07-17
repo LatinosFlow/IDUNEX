@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+from pathlib import Path as _AuthorityPath
+import sys as _authority_sys
+_authority_root = next(parent for parent in _AuthorityPath(__file__).resolve().parents if parent.name == "IDUNEX")
+_authority_sys.path.insert(0, str(_authority_root / "99_MANIFESTS_SHA_LINEAGE"))
+from validator_subcheck_protocol import enforce_subcheck_invocation as _enforce_subcheck_invocation
+_enforce_subcheck_invocation(__file__, __name__)
+
 from pathlib import Path
 import sys, json, re
 ROOT = Path(sys.argv[1]).resolve() if len(sys.argv)>1 else Path(__file__).resolve().parents[2]
