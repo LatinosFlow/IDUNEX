@@ -27,7 +27,7 @@ current_corrected_tree:
   classification: CURRENT_REPRODUCIBLE_REPOSITORY_TREE_NOT_RELEASE
   file_count: 979
   bytes: 47227994
-  tree_sha256: 92a614a9f83b9e8d01dcea67aeec4075e64a7e4f6ba91316db440266636d5db6
+  tree_sha256: b44ce9c87249a5ab33c7cb25ef3aeb539a21ff03f481e2e6282238b2da5548e4
   manifest: governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json
   sha256_companion: governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
   difference_report: governance/baseline/IDUNEX_BASELINE_DIFF_RECEIVED_TO_CURRENT.json

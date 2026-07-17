@@ -78,7 +78,11 @@ def _file_type(path: Path) -> str:
 
 def snapshot_tree(engine_root: Path, *, exclude_internal: bool = False) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
-    for path in sorted(item for item in engine_root.rglob("*") if item.is_file()):
+    physical_files = (item for item in engine_root.rglob("*") if item.is_file())
+    for path in sorted(
+        physical_files,
+        key=lambda item: item.relative_to(engine_root).as_posix(),
+    ):
         relative = path.relative_to(engine_root).as_posix()
         if exclude_internal and relative in INTERNAL_EXCLUSIONS:
             continue

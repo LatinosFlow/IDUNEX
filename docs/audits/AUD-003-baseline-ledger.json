@@ -30,17 +30,17 @@
     "scope": "engine/IDUNEX",
     "physical_file_count": 979,
     "physical_bytes": 47227994,
-    "tree_sha256": "92a614a9f83b9e8d01dcea67aeec4075e64a7e4f6ba91316db440266636d5db6",
+    "tree_sha256": "b44ce9c87249a5ab33c7cb25ef3aeb539a21ff03f481e2e6282238b2da5548e4",
     "tree_sha256_algorithm": "SHA256(repo_path_utf8 + NUL + decimal_bytes + NUL + file_sha256 + LF), sorted by path",
     "manifest": {
       "path": "governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json",
       "bytes": 276224,
-      "sha256": "9aa4a9c0a945e8786b9fbbe38be526c93f3f0a3647fc008fe6e05a1f85e5df14"
+      "sha256": "dc96f7760f4a02c692a94456c92eb8d533f96440a458748cf5a0dbe2a1d264a6"
     },
     "sha_companion": {
       "path": "governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt",
       "bytes": 158,
-      "sha256": "334f843cff1caa7c9cd49824c1088feffc387ababe780272b11d6f8a22f29160"
+      "sha256": "9d7c48a23704f135d4e36327735ff0ffa59978ab93c05186f5df6dac36b666c4"
     },
     "coverage": {
       "indexed_missing_paths": 0,
@@ -66,12 +66,12 @@
     "post_remap_movements": 295
   },
   "current_internal_manifest_carriers": [
-    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json", "bytes": 261561, "sha256": "90694c5ca46b829b3ac27c02c24eaf03ef25d4aef19dd44b9d0d96e6047d72f2"},
-    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json", "bytes": 261561, "sha256": "90694c5ca46b829b3ac27c02c24eaf03ef25d4aef19dd44b9d0d96e6047d72f2"},
-    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json", "bytes": 261561, "sha256": "90694c5ca46b829b3ac27c02c24eaf03ef25d4aef19dd44b9d0d96e6047d72f2"},
-    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.json", "bytes": 261561, "sha256": "90694c5ca46b829b3ac27c02c24eaf03ef25d4aef19dd44b9d0d96e6047d72f2"},
-    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt", "bytes": 145113, "sha256": "91dabccde14973b4907de9b194d274c8f520c5608c7f4df6b9e9dbef36fcba5f"},
-    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt", "bytes": 145113, "sha256": "91dabccde14973b4907de9b194d274c8f520c5608c7f4df6b9e9dbef36fcba5f"}
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json", "bytes": 261561, "sha256": "5def768f4b239d9258a7072652d6fce8bbb4ad14704b972b469856711a1a9f8e"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json", "bytes": 261561, "sha256": "5def768f4b239d9258a7072652d6fce8bbb4ad14704b972b469856711a1a9f8e"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json", "bytes": 261561, "sha256": "5def768f4b239d9258a7072652d6fce8bbb4ad14704b972b469856711a1a9f8e"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.json", "bytes": 261561, "sha256": "5def768f4b239d9258a7072652d6fce8bbb4ad14704b972b469856711a1a9f8e"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt", "bytes": 145113, "sha256": "b4883ca8884328dca639de6b9a3520fc8b1c1b47101a655cbb3cf2eff4581aa4"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt", "bytes": 145113, "sha256": "b4883ca8884328dca639de6b9a3520fc8b1c1b47101a655cbb3cf2eff4581aa4"}
   ],
   "validations": [
     {"name": "IDUNEX Intake Audit", "result": "PASS", "failures": 0},

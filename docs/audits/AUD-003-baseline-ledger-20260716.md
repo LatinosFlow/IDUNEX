@@ -18,7 +18,7 @@ El baseline histórico recibido y el árbol corregido actual son evidencias dist
 |---|---|---:|---|
 | ZIP `IDUNEX_MOTOR_v1.0.0.zip` | Declaración histórica; ZIP ausente por política de almacenamiento | 977 entradas declaradas | `bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6` declarado, no recomputado en AUD-003 |
 | Ledger recibido preservado | Histórico, no autoridad actual | 971 rutas indexadas + 6 autoexclusiones históricas | `4b56282a87ee00d0172aa1078480255a64622886a134d4c7c702f12f19e53d99` |
-| Árbol físico actual `engine/IDUNEX` | Baseline actual reproducible desde el repositorio; no release | 979 archivos, 47.227.994 bytes | `92a614a9f83b9e8d01dcea67aeec4075e64a7e4f6ba91316db440266636d5db6` |
+| Árbol físico actual `engine/IDUNEX` | Baseline actual reproducible desde el repositorio; no release | 979 archivos, 47.227.994 bytes | `b44ce9c87249a5ab33c7cb25ef3aeb539a21ff03f481e2e6282238b2da5548e4` |
 
 Los seis manifiestos internos se excluyen entre sí para evitar autorreferencia. El manifiesto externo de gobierno cubre los 979 archivos físicos, incluidos esos seis, y no declara exclusiones.
 
