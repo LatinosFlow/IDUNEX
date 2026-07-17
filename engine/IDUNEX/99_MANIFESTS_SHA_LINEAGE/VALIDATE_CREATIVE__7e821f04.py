@@ -4,7 +4,7 @@ from pathlib import Path
 import json, re, sys, zipfile, hashlib
 sys.dont_write_bytecode=True
 VALIDATOR="VALIDATE_CREATIVE_CERTIFICATION_TRUTHFULNESS"
-ENGINE_CONTRACT="03_PROJECT_FACTORY/04_DELIVERY_GATES/H269_H280_PROJECT__a7b1a62c.json"
+ENGINE_CONTRACT="03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_FACTORY_TRUTHFULNESS_POLICY_a7b1a62c.json"
 
 def load_json(p: Path):
     return json.loads(p.read_text(encoding="utf-8"))

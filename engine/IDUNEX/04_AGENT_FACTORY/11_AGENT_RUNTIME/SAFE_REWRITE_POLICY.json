@@ -2,7 +2,7 @@
   "surface_id": "SAFE_REWRITE_POLICY",
   "semantic_version": "v1.0.0",
   "source_authority": [
-    "04_AGENT_FACTORY/11_H281_H310_AGENT_RUNTIME/SAFE_REWRITE_AND_A_b62f9b63.json"
+    "04_AGENT_FACTORY/11_AGENT_RUNTIME/SAFE_REWRITE_AND_A_b62f9b63.json"
   ],
   "contract_satisfied": "AGENT_LOAD_CONTRACT.required_per_agent.SAFE_REWRITE_POLICY",
   "policy": "adult_editorial_safe_rewrite",

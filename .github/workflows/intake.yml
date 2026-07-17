@@ -29,3 +29,7 @@ jobs:
         run: python tools/audit/demo_hardcoding_check.py --repo-root .
       - name: Run Demo hardcoding mutations and non-Demo N1 smoke (AUD-007)
         run: python -m unittest discover -s tests/intake -p 'test_demo_hardcoding.py'
+      - name: Check active bloat, milestone history, and reversible demotion (AUD-008)
+        run: python tools/audit/no_bloat_no_history_check.py --repo-root .
+      - name: Run AUD-008 duplicate, H-route, and authority mutations
+        run: python -m unittest discover -s tests/intake -p 'test_no_bloat_no_history.py'

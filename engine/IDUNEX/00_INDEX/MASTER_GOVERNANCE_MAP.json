@@ -168,7 +168,7 @@
       "statement": "Cada agente recibe runtime de proyecto: 10 archivos base + 1 full runtime canon por modelo para ChatGPT y Copilot.",
       "active_paths": [
         "12_OUTPUT_CONTRACTS/AGENT_LOAD_CONTRACT.json",
-        "04_AGENT_FACTORY/12_H281_H310_RUN_dc798981"
+        "04_AGENT_FACTORY/12_RUNTIME_CONTRACTS"
       ],
       "implementation_type": "policy+contract+validator",
       "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
@@ -237,7 +237,7 @@
       "title": "Runtime ChatGPT/Copilot 10+N",
       "statement": "Runtime por proyecto: ChatGPT 10+N y Copilot 10+N; archivo por modelo completo, no resumen.",
       "active_paths": [
-        "04_AGENT_FACTORY/12_H281_H310_RUN_dc798981",
+        "04_AGENT_FACTORY/12_RUNTIME_CONTRACTS",
         "05_RUNTIME_CORE_LIBRARY/20_MOTOR_CORE_10"
       ],
       "implementation_type": "policy+contract+validator",
@@ -292,7 +292,7 @@
       "statement": "Cierre de motor exige N1..N10 x low/intermediate/full, update matrix, migration matrix, mutation/self-test y CLI lifecycle.",
       "active_paths": [
         "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
-        "11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json"
+        "14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json"
       ],
       "implementation_type": "policy+contract+validator",
       "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
@@ -453,7 +453,7 @@
       "statement": "Todo duplicado exacto debe estar cubierto por allowlist recomputada con authority_path, mirror_paths, reason_code y consumidor.",
       "active_paths": [
         "07_VALIDATION_QA_GAUNTLET/14_POLICIES/EXACT_DUPLICATE_ALLOWLIST.json",
-        "99_MANIFESTS_SHA_LINEAGE/ENGINE_EXACT_DUPLICATE_ALLOWLIST.json"
+        "14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/99_MANIFESTS_SHA_LINEAGE/ENGINE_EXACT_DUPLICATE_ALLOWLIST.json"
       ],
       "implementation_type": "policy+contract+validator",
       "validator_or_factory_affected": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
@@ -522,7 +522,7 @@
       "title": "Project filename canon from project_name",
       "statement": "Si existe project_name válido, el filename externo es IDUNEX_PROJECT_<PROJECT_NAME_SLUG>_<SEMANTIC_VERSION>.zip; PROJECT_UID es metadata interna y no reemplaza el nombre.",
       "active_paths": [
-        "03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_FILENAME_CANON.json",
+        "03_PROJECT_FACTORY/09_PROJECT_OUTPUT_CONTRACTS/PROJECT_FILENAME_CANON.json",
         "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
       ],
       "implementation_type": "policy+factory_logic+validator",
@@ -540,7 +540,7 @@
       "statement": "Las plantillas pueden contener placeholders solo en template_mode no ejecutable; proyectos ejecutables bloquean placeholders y sentinels.",
       "active_paths": [
         "03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_NO_PLACEHOLDER_EXECUTION_GATE.json",
-        "03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_TEMPLATE_FILL_VALIDATOR.json"
+        "03_PROJECT_FACTORY/09_PROJECT_OUTPUT_CONTRACTS/PROJECT_TEMPLATE_FILL_VALIDATOR.json"
       ],
       "implementation_type": "policy+validator+factory_logic",
       "validator_or_factory_affected": "VALIDATE_NO_PLACEHOLDER_EXECUTION_GATE",
@@ -572,7 +572,7 @@
       "title": "Project status contract",
       "statement": "Todo proyecto tiene estados explícitos. Motor productivo no convierte proyecto en producción; proyecto futuro requiere auditoría recomputacional propia.",
       "active_paths": [
-        "03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_STATUS_CONTRACT.json"
+        "03_PROJECT_FACTORY/09_PROJECT_OUTPUT_CONTRACTS/PROJECT_STATUS_CONTRACT.json"
       ],
       "implementation_type": "contract+validator",
       "validator_or_factory_affected": "VALIDATE_PROJECT_STATUS_CONTRACT",

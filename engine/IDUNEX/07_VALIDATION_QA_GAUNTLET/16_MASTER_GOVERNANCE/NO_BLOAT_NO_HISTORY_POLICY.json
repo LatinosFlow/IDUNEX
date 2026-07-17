@@ -5,7 +5,8 @@
     "compact_evidence",
     "non_authority_lineage",
     "distilled_master_governance",
-    "minimal_fixtures_marked_non_authority"
+    "minimal_fixtures_marked_non_authority",
+    "frozen_final_manifests_explicitly_out_of_scope"
   ],
   "forbidden": [
     "raw_master_pdf_inside_engine",
@@ -22,5 +23,16 @@
     "active_history_as_authority"
   ],
   "hard_gate": "NO_ACTIVE_BLOAT_AND_NO_ACTIVE_HISTORY_AUTHORITY",
+  "scanner": "tools/audit/no_bloat_no_history_check.py",
+  "requirements": {
+    "unjustified_exact_duplicate_groups": 0,
+    "active_h_milestone_routes_outside_history": 0,
+    "historical_evidence_with_active_authority": 0
+  },
+  "historical_zone": "14_HISTORICAL_NON_AUTHORITY",
+  "movement_reversal_manifest": "docs/audits/AUD-008-movement-reversal-manifest.json",
+  "global_state_authority": "governance/CURRENT_STATE.json",
+  "MOTOR_STATUS": "EN_REVISION",
+  "M02_RESULT": "M02_FAIL",
   "CREATIVE_OUTPUT_CERTIFIED": false
 }

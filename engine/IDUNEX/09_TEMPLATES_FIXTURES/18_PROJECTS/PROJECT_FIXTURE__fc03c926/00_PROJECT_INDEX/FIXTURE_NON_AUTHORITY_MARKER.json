@@ -1,5 +1,6 @@
 {
   "classification": "FIXTURE_ONLY",
+  "fixture_marker_for": "PROJECT_FIXTURE__fc03c926",
   "authority": "NON_AUTHORITY",
   "not_canonical_project": true,
   "not_canonical_model": true,

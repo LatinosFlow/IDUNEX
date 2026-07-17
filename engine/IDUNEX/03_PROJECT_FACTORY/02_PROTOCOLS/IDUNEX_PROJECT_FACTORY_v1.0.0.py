@@ -7223,7 +7223,7 @@ def mutation_self_test(work: Path) -> dict:
     restoration=validate_project(pristine)
     result="PASS" if positive.get("result")=="PASS" and restoration.get("result")=="PASS" and all(x["result"]=="PASS" for x in cases) else "FAIL"
     engine_root = Path(__file__).resolve().parents[2]
-    h20_proof_path = engine_root/"99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json"
+    h20_proof_path = engine_root/"14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json"
     h20_proof = load_json(h20_proof_path) if h20_proof_path.exists() else {}
     h20_ok = h20_proof.get("result") == "PASS" and ((h20_proof.get("rows") == 30 and h20_proof.get("pass_count") == 30) or (h20_proof.get("case_count") == 30 and h20_proof.get("pass_count") == 30 and h20_proof.get("PROJECT_N1_N10_X3_MATRIX_PASS_COUNT") == "30/30") or (h20_proof.get("case_count") == 31 and h20_proof.get("pass_count") == 31 and h20_proof.get("PROJECT_31_FULL_MATRIX_PASS_COUNT") == "31/31"))
     h18_h21_cases = [
