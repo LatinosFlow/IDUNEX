@@ -2,7 +2,7 @@
   "surface_id": "MODEL_SELECTOR_RULES",
   "semantic_version": "v1.0.0",
   "source_authority": [
-    "04_AGENT_FACTORY/11_H281_H310_AGENT_RUNTIME/AGENT_READ_MAP.json",
+    "04_AGENT_FACTORY/11_AGENT_RUNTIME/AGENT_READ_MAP.json",
     "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py::MODEL_SELECTOR_PRECHECK",
     "H218 selector precheck"
   ],

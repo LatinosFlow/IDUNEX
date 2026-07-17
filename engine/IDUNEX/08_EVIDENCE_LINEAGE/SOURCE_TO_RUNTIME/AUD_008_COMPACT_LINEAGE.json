@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "audit": "AUD-008",
+  "classification": "EVIDENCE_REQUIRED",
+  "authority": "NON_AUTHORITY_LINEAGE_POINTER",
+  "active_form": "COMPACT",
+  "detailed_artifact_count_reclassified": 53,
+  "detailed_bytes_reclassified": 27059971,
+  "historical_root": "14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/08_EVIDENCE_LINEAGE",
+  "movement_reversal_manifest": "docs/audits/AUD-008-movement-reversal-manifest.json",
+  "motor_status": "EN_REVISION",
+  "m02_result": "M02_FAIL",
+  "creative_output_certified": false
+}

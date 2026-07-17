@@ -17,6 +17,7 @@ from typing import Any, Iterable
 
 
 MAP_PATH = Path("governance/baseline/WINDOWS_PATH_SAFE_REMAP.json")
+AUD008_MOVEMENT_PATH = Path("docs/audits/AUD-008-movement-reversal-manifest.json")
 ENGINE_ROOT = Path("engine/IDUNEX")
 
 TEXT_SUFFIXES = {".csv", ".json", ".md", ".py", ".txt", ".yaml", ".yml"}
@@ -44,7 +45,8 @@ HASH_MANIFESTS = (
     Path("engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt"),
     Path("engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt"),
 )
-H62_SAFE = "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json"
+H62_BASELINE_SAFE = "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json"
+H62_SAFE = "engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/99_MANIFESTS_SHA_LINEAGE/H62_CLI_N1_N10_CLEAN_EXIT.json"
 
 
 def _normalise(value: str) -> str:
@@ -133,6 +135,23 @@ def load_remap_table(root: Path) -> RemapTable:
                     continue
                 references[original] = safe
 
+    # AUD-008 is a reversible post-remap classification ledger, not a rewrite
+    # of the frozen AUD-005 baseline. Chain the baseline target through that
+    # ledger so integrity checks follow the current physical location while
+    # preserving the original mapping authority unchanged.
+    movement_data = json.loads((root / AUD008_MOVEMENT_PATH).read_text(encoding="utf-8"))
+    post_movement: dict[str, str] = {}
+    for movement in movement_data.get("movements", []):
+        origin = f"engine/IDUNEX/{_normalise(str(movement.get('origin', '')))}"
+        destination = f"engine/IDUNEX/{_normalise(str(movement.get('destination', '')))}"
+        if not origin.endswith("/") and origin != "engine/IDUNEX/" and destination != "engine/IDUNEX/":
+            for old, new in _reference_variants(origin, destination):
+                post_movement[old] = new
+    for old, new in post_movement.items():
+        references[old] = new
+    for original, target in list(references.items()):
+        references[original] = post_movement.get(target, target)
+
     return RemapTable(
         declared_count=int(data.get("remap_count", -1)),
         entries=entries,
@@ -142,9 +161,9 @@ def load_remap_table(root: Path) -> RemapTable:
 
 
 def h62_original_path(table: RemapTable) -> str:
-    matches = [entry.original for entry in table.entries if entry.safe == H62_SAFE]
+    matches = [entry.original for entry in table.entries if entry.safe == H62_BASELINE_SAFE]
     if len(matches) != 1:
-        raise ValueError(f"Expected one H62 mapping for {H62_SAFE}, got {len(matches)}")
+        raise ValueError(f"Expected one H62 mapping for {H62_BASELINE_SAFE}, got {len(matches)}")
     return matches[0]
 
 
@@ -167,15 +186,27 @@ def validate_table(root: Path, table: RemapTable) -> list[str]:
         if not entry.original or not entry.safe:
             findings.append("mapping contains an empty path")
             continue
-        if not (root / entry.safe).is_file():
-            findings.append(f"missing remapped target: {entry.safe}")
+        current_target = table.resolve(entry.safe)
+        if not (root / current_target).is_file():
+            findings.append(f"missing remapped target: {entry.safe} -> {current_target}")
         if entry.original != entry.safe and (root / entry.original).exists():
             findings.append(f"original path still materialised: {entry.original}")
     return findings
 
 
 def _is_scan_excluded(relative: Path) -> bool:
-    return any(_is_under(relative, prefix) for prefix in EXCLUDED_PREFIXES)
+    if any(_is_under(relative, prefix) for prefix in EXCLUDED_PREFIXES):
+        return True
+    # CURRENT_STATE classifies the non-Python 99 surface as superseded ledger
+    # material. Frozen manifests and derived JSON evidence are resolved for
+    # target existence, but are not rewritten or treated as active consumers.
+    if _is_under(relative, Path("engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE")) and relative.suffix.lower() != ".py":
+        return True
+    # The resolver must retain the frozen baseline H62 spelling in a dedicated
+    # constant so it can chain baseline -> AUD-008 movement ledger.
+    if relative == Path("tools/audit/windows_path_remap_check.py"):
+        return True
+    return False
 
 
 def _scan_files(root: Path) -> Iterable[Path]:
@@ -217,7 +248,11 @@ def scan_stale_references(root: Path, table: RemapTable) -> list[dict[str, Any]]
         for original, safe in stale_patterns:
             if any(original in longer for longer in consumed):
                 continue
-            if original in text:
+            # A moved destination may contain the prior path as a suffix
+            # (14/.../99_MANIFESTS/...); mask valid current references before
+            # checking whether an unchained stale spelling remains.
+            probe = text.replace(safe, "")
+            if original in probe:
                 hits.append({"original": original, "safe": safe})
                 consumed.append(original)
         if hits:
@@ -227,8 +262,8 @@ def scan_stale_references(root: Path, table: RemapTable) -> list[dict[str, Any]]
     return findings
 
 
-def _engine_index_target(root: Path, indexed: str) -> Path:
-    normalised = _normalise(indexed)
+def _engine_index_target(root: Path, indexed: str, table: RemapTable) -> Path:
+    normalised = table.resolve(_normalise(indexed))
     if normalised.startswith("engine/IDUNEX/"):
         return root / normalised
     if normalised.startswith("IDUNEX/"):
@@ -236,7 +271,7 @@ def _engine_index_target(root: Path, indexed: str) -> Path:
     return root / ENGINE_ROOT / normalised
 
 
-def validate_indexed_paths(root: Path) -> tuple[int, list[str]]:
+def validate_indexed_paths(root: Path, table: RemapTable) -> tuple[int, list[str]]:
     checked = 0
     missing: list[str] = []
 
@@ -245,7 +280,7 @@ def validate_indexed_paths(root: Path) -> tuple[int, list[str]]:
         for row in data.get("files", []):
             indexed = str(row.get("path", ""))
             checked += 1
-            if not _engine_index_target(root, indexed).is_file():
+            if not _engine_index_target(root, indexed, table).is_file():
                 missing.append(f"{relative.as_posix()}: {indexed}")
 
     hash_line = re.compile(r"^[0-9a-fA-F]{64}\s{2}(.+)$")
@@ -256,7 +291,7 @@ def validate_indexed_paths(root: Path) -> tuple[int, list[str]]:
                 continue
             indexed = match.group(1)
             checked += 1
-            if not _engine_index_target(root, indexed).is_file():
+            if not _engine_index_target(root, indexed, table).is_file():
                 missing.append(f"{relative.as_posix()}: {indexed}")
 
     return checked, missing
@@ -267,7 +302,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
     table = load_remap_table(root)
     table_findings = validate_table(root, table)
     stale = scan_stale_references(root, table)
-    indexed_path_count, missing_indexed = validate_indexed_paths(root)
+    indexed_path_count, missing_indexed = validate_indexed_paths(root, table)
 
     safe_h62 = root / H62_SAFE
     factory = root / (
@@ -310,7 +345,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
             if entry.original != entry.safe and (root / entry.original).exists()
         ),
         "missing_remapped_target_count": sum(
-            1 for entry in table.entries if not (root / entry.safe).is_file()
+            1 for entry in table.entries if not (root / table.resolve(entry.safe)).is_file()
         ),
         "indexed_path_count": indexed_path_count,
         "missing_indexed_path_count": len(missing_indexed),
@@ -318,6 +353,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
         "stale_reference_count": sum(len(item["references"]) for item in stale),
         "stale_references": stale,
         "h62_safe_path": H62_SAFE,
+        "h62_baseline_safe_path": H62_BASELINE_SAFE,
         "h62_safe_path_exists": safe_h62.is_file(),
         "h62_consumers_windows_safe": h62_consumers,
         "findings": findings,

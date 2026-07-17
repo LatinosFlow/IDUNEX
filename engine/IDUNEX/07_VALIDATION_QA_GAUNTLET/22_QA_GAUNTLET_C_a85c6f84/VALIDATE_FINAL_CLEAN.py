@@ -13,8 +13,8 @@ DUPLICATE_ALLOWLIST_SELF_FILES={
  # non-self-referential internal manifest ledgers are dynamically excluded
  # from duplicate governance parity. They are validated by their own
  # lineage/truthfulness gates and must not be forced into stale allowlists.
- '99_MANIFESTS_SHA_LINEAGE/ENGINE_EXACT_DUPLICATE_ALLOWLIST.json',
- '99_MANIFESTS_SHA_LINEAGE/EXACT_DUPLICATE_ALLOWLIST.json',
+ '14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/99_MANIFESTS_SHA_LINEAGE/ENGINE_EXACT_DUPLICATE_ALLOWLIST.json',
+ '14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/99_MANIFESTS_SHA_LINEAGE/EXACT_DUPLICATE_ALLOWLIST.json',
  '07_VALIDATION_QA_GAUNTLET/14_POLICIES/EXACT_DUPLICATE_ALLOWLIST.json',
  '07_VALIDATION_QA_GAUNTLET/14_POLICIES/EXACT_DUPLICATE_RETENTION_ALLOWLIST.json',
  '07_VALIDATION_QA_GAUNTLET/14_POLICIES/EXACT_DUPLICATE_RETENTION_ALLOWLIST.md',
@@ -68,7 +68,7 @@ def main() -> int:
             if active_date_re.search(txt):
                 fail('VALIDATE_ACTIVE_DATE_NEUTRALIZATION','FAIL_ORPHAN_LEGACY_DATE',rel)
     # H263 label harmonization: active label must be singular; legacy labels may appear only in lineage/release/historical/fixture contexts.
-    label_file=root/'04_AGENT_FACTORY/10_AGENT_EXECUTI_7c69c542/H245_H260_SINGLE_S_dfaad80a.json'
+    label_file=root/'04_AGENT_FACTORY/10_AGENT_EXECUTI_7c69c542/SINGLE_S_dfaad80a.json'
     if not label_file.is_file():
         fail('VALIDATE_H245_H260_SINGLE_SOURCE_CANON_REFERENCE','FAIL_CANON_REFERENCE_MISSING',label_file)
     else:
@@ -89,7 +89,7 @@ def main() -> int:
             fail('VALIDATE_MATRIX_RUNNER_STREAMING_PROGRESS_AND_RESUME','FAIL_RUNNER_STREAM_RESUME_MISSING',tok)
     # H264 exact duplicates. Active schema authority is `groups`; `duplicate_groups`
     # is accepted only as a legacy fallback when the active key is absent.
-    allow_path=root/'99_MANIFESTS_SHA_LINEAGE/ENGINE_EXACT_DUPLICATE_ALLOWLIST.json'
+    allow_path=root/'14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/99_MANIFESTS_SHA_LINEAGE/ENGINE_EXACT_DUPLICATE_ALLOWLIST.json'
     allow={}
     schema_required={'sha256','paths','reason_code','authority_path','mirror_paths','consumer','retention_rule','blocking_if_missing'}
     if not allow_path.is_file():
