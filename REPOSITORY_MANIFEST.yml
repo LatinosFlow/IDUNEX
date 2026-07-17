@@ -10,7 +10,7 @@ tag_authorized: false
 productive_closure_authorized: false
 creative_output_certified: false
 semantic_version: v1.0.0
-source_zip:
+historical_received_baseline:
   filename: IDUNEX_MOTOR_v1.0.0.zip
   sha256: bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6
   bytes: 4277381
@@ -18,7 +18,28 @@ source_zip:
   directories: 0
   stored_entries: 0
   internal_zip_entries: 0
-  testzip: REFERENCIA_DECLARADA_NO_RECOMPUTADA_M02
+  testzip: HISTORICAL_RECEIPT_DECLARATION_NOT_RECOMPUTED_AUD003
+  authority: HISTORICAL_DECLARED_EVIDENCE_NOT_CURRENT_TREE
+  physical_zip_in_repository: false
+  preserved_received_ledger: governance/baseline/historical_received/IDUNEX_MOTOR_v1.0.0_RECEIVED_SHA256SUMS.txt
+current_corrected_tree:
+  scope: engine/IDUNEX
+  classification: CURRENT_REPRODUCIBLE_REPOSITORY_TREE_NOT_RELEASE
+  file_count: 979
+  bytes: 47227994
+  tree_sha256: b44ce9c87249a5ab33c7cb25ef3aeb539a21ff03f481e2e6282238b2da5548e4
+  manifest: governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json
+  sha256_companion: governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
+  difference_report: governance/baseline/IDUNEX_BASELINE_DIFF_RECEIVED_TO_CURRENT.json
+  scanner: tools/audit/baseline_scanner.py
+  reproducible_from_repository: true
+  indexed_missing_paths: 0
+  physical_unmanifested_paths: 0
+  stale_active_manifest_paths: 0
+  obsolete_hashes: 0
+  aud003_scope_result: PARTIAL_PASS
+  m02_result_after_correction: M02_FAIL
+  release_created: false
 paths:
   engine_root: engine/IDUNEX
   reference_authority: governance/authority/REFERENCIA

@@ -1,0 +1,2 @@
+# AUD-003 current physical engine tree aggregate; not a ZIP or release SHA256
+b44ce9c87249a5ab33c7cb25ef3aeb539a21ff03f481e2e6282238b2da5548e4  engine/IDUNEX

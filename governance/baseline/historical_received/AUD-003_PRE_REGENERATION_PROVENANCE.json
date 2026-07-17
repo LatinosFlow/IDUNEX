@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "evidence_class": "HISTORICAL_PRE_AUD003_MANIFESTS_NON_AUTHORITY",
+  "source_commit": "fb148d23953fe8fcb0aaeb0c739fef6db7f467f5",
+  "preserved_received_ledger": {
+    "path": "governance/baseline/historical_received/IDUNEX_MOTOR_v1.0.0_RECEIVED_SHA256SUMS.txt",
+    "bytes": 134065,
+    "sha256": "4b56282a87ee00d0172aa1078480255a64622886a134d4c7c702f12f19e53d99",
+    "indexed_file_count": 971
+  },
+  "pre_regeneration_manifest_carriers": [
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json", "bytes": 200631, "sha256": "07387d088b981a796880731953334554020b6b7832300cc9aa10f6a7239456a9"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json", "bytes": 200631, "sha256": "07387d088b981a796880731953334554020b6b7832300cc9aa10f6a7239456a9"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json", "bytes": 200631, "sha256": "07387d088b981a796880731953334554020b6b7832300cc9aa10f6a7239456a9"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.json", "bytes": 200631, "sha256": "07387d088b981a796880731953334554020b6b7832300cc9aa10f6a7239456a9"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt", "bytes": 134065, "sha256": "4b56282a87ee00d0172aa1078480255a64622886a134d4c7c702f12f19e53d99"},
+    {"path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt", "bytes": 134065, "sha256": "4b56282a87ee00d0172aa1078480255a64622886a134d4c7c702f12f19e53d99"}
+  ],
+  "reversal": {
+    "method": "RESTORE_EXACT_BLOB_FROM_SOURCE_COMMIT",
+    "command_template": "git show fb148d23953fe8fcb0aaeb0c739fef6db7f467f5:<path>",
+    "note": "Verify restored carriers against the recorded byte count and SHA256. Historical evidence cannot override the current manifest or governance/CURRENT_STATE.json."
+  }
+}

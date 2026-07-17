@@ -1,2 +1,7 @@
-SHA256SUMS authority: 99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt
-ZIP-EXT-001 external companion remains authoritative for whole ZIP SHA256.
+Current internal non-self-referential ledger: 99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt
+Current complete physical-tree manifest: governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json
+Current complete tree aggregate: governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
+Historical received ZIP claim: governance/baseline/IDUNEX_MOTOR_v1.0.0_BASELINE_RECEIPT.json
+MOTOR_STATUS=EN_REVISION
+M02_RESULT=M02_FAIL
+RELEASE_AUTHORIZED=FALSE

@@ -1,15 +1,17 @@
-# HASH_REGENERATION_POLICY — ACTIVE CURRENT ONLY
+# HASH_REGENERATION_POLICY — AUD-003 CURRENT PHYSICAL TREE
 
 - Semantic version: `v1.0.0`
-- Active label: `P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_CANONICAL_REOPEN`
+- Current manifest: `governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json`
+- Current aggregate: `governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt`
 - Mode: `DIRECT_CANONICAL_NO_PATCH`
-- Authority: `ACTIVE_CURRENT_ONLY`
+- Authority: `CURRENT_REPOSITORY_TREE_NOT_RELEASE`
 
 Policy:
 1. Recompute active SHA ledgers after any canonical edit.
 2. Exclude dynamic manifest carriers listed in the dynamic exclusion manifest.
-3. Keep historical payloads only under `12_HISTORICAL_NON_AUTHORITY/`.
-4. Do not cite removed historical paths from active release reports.
-5. Block delivery when an active proof or report references a path absent from the reopened ZIP.
+3. Keep historical payloads only under `14_HISTORICAL_NON_AUTHORITY/` or `governance/baseline/historical_received/`.
+4. Resolve Windows-safe paths and AUD-008 movements before comparing the received ledger.
+5. Require zero missing indexed paths, zero unmanifested physical files and zero hash mismatches.
+6. Keep `MOTOR_STATUS=EN_REVISION` and `M02_RESULT=M02_FAIL`; this regeneration is not a release decision.
 
-Result: `PASS`
+Verification entrypoint: `python tools/audit/baseline_scanner.py --repo-root .`

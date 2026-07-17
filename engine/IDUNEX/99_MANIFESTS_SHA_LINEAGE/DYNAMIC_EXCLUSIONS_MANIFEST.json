@@ -50,8 +50,8 @@
       "blocking_if_missing_reason": true
     }
   ],
-  "validator_expectation": "INTERNAL_MANIFEST_SYNC=PASS only when every non-excluded file is listed with current bytes and SHA256 and no excluded manifest appears in the file list.",
+  "validator_expectation": "tools/audit/baseline_scanner.py must recompute zero missing, unmanifested, stale and hash-mismatch findings for every non-excluded file.",
   "fail_code": "FAIL_INTERNAL_MANIFEST_STALE_OR_INCOMPLETE",
-  "result": "PASS",
+  "result": "RECOMPUTE_WITH_AUD003_BASELINE_SCANNER",
   "CREATIVE_OUTPUT_CERTIFIED": false
 }
