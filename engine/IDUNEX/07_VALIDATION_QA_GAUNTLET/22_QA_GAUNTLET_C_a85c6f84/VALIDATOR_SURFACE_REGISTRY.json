@@ -41,7 +41,7 @@
       },
       {
         "id": "VALIDATE_H261_H268_FINAL_CLEAN",
-        "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_H261_H268_FINAL_CLEAN.py",
+        "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_FINAL_CLEAN.py",
         "role": "SUBVALIDATOR",
         "execution": "DELEGATED_SUBPROCESS",
         "direct_cli": "BLOCKED",
@@ -49,7 +49,7 @@
       },
       {
         "id": "VALIDATE_H269_H280",
-        "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_H269_H280_c34f7092.py",
+        "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_VALIDATOR_SUITE_c34f7092.py",
         "role": "SUBVALIDATOR",
         "execution": "DELEGATED_SUBPROCESS",
         "direct_cli": "BLOCKED",
@@ -106,14 +106,6 @@
       {
         "id": "VALIDATE_FINAL_CERTIFICATE_SURFACE_SYNC",
         "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_FINAL_CERTIFICATE_SURFACE_SYNC.py",
-        "role": "SUBVALIDATOR",
-        "execution": "DELEGATED_SUBPROCESS",
-        "direct_cli": "BLOCKED",
-        "global_closure_capable": false
-      },
-      {
-        "id": "VALIDATE_H281_H310_ENGINE_CLOSURE",
-        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_H281_H310_ENGINE_CLOSURE.py",
         "role": "SUBVALIDATOR",
         "execution": "DELEGATED_SUBPROCESS",
         "direct_cli": "BLOCKED",
@@ -224,6 +216,11 @@
   },
   "repository_validation_tools": [
     {
+      "path": "tools/audit/baseline_scanner.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
       "path": "tools/audit/demo_hardcoding_check.py",
       "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
       "global_closure_capable": false
@@ -235,6 +232,11 @@
     },
     {
       "path": "tools/audit/intake_audit.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
+      "path": "tools/audit/no_bloat_no_history_check.py",
       "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
       "global_closure_capable": false
     },

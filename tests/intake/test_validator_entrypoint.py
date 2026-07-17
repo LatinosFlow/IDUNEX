@@ -22,7 +22,7 @@ class ValidatorEntrypointTest(unittest.TestCase):
         findings, summary = check_repository(REPO_ROOT)
         self.assertEqual(findings, [])
         self.assertEqual(summary["entrypoint_count"], 1)
-        self.assertEqual(summary["subvalidator_count"], 21)
+        self.assertEqual(summary["subvalidator_count"], 20)
 
     def test_scanner_rejects_a_second_global_entrypoint(self):
         registry = json.loads((REPO_ROOT / REGISTRY_PATH).read_text(encoding="utf-8"))
