@@ -966,8 +966,8 @@
     },
     {
       "path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
-      "bytes": 834731,
-      "sha256": "e339f033a51a33bb8229d24848b63bdf59a27145999de1fb27fdb2814e537214",
+      "bytes": 834770,
+      "sha256": "3b8db82d69e17ec2800071204b920db05c1de0ec28f6add670e1d27a30349cd4",
       "extension": ".py",
       "type": "python"
     },
