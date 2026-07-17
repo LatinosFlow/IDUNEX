@@ -57,6 +57,20 @@ def add(name, ok, detail=None):
     checks[name]=bool(ok)
     if detail is not None: details[name]=detail
 
+def _current_governance_state():
+    state_path=ROOT.parent.parent/'governance/CURRENT_STATE.json'
+    return read_json(state_path) if state_path.is_file() else {}
+
+def _registered_lineage_validator_names():
+    registry=read_json(SURFACE_REGISTRY)
+    surfaces=registry.get('engine_surfaces', {})
+    rows=list(surfaces.get('authoritative_entrypoints', []))+list(surfaces.get('subvalidators', []))
+    return {
+        Path(str(row.get('path', ''))).name
+        for row in rows
+        if str(row.get('path', '')).startswith('99_MANIFESTS_SHA_LINEAGE/VALIDATE_')
+    }
+
 def active_files():
     for p in sorted(ROOT.rglob('*')):
         if p.is_file():
@@ -95,7 +109,24 @@ def _active_surface_scope_sync_gate(root: Path):
     if contract.is_file():
         try:
             d=json.loads(contract.read_text(encoding='utf-8'))
-            if not (d.get('MAX_MATRIX_CURRENT_RUN')=='PASS' and d.get('N1_TO_N10_X3_MATRIX')=='PASS' and d.get('VALIDATORS_FAIL')==0 and d.get('BLOCKING_WARNINGS')==0 and d.get('FAIL_CODES')==[] and d.get('SCORE')=='10/10'):
+            state=_current_governance_state()
+            expected=d.get('expected_current_state', {})
+            state_fields={
+                'MOTOR_STATUS': state.get('motor_status'),
+                'M02_RESULT': state.get('m02_result'),
+                'READY_FOR_PROJECT_DEMO_GENERATION': state.get('ready_for_project_demo_generation'),
+                'RELEASE_AUTHORIZED': state.get('release_authorized'),
+                'PRODUCTIVE_CLOSURE_AUTHORIZED': state.get('productive_closure_authorized'),
+                'CREATIVE_OUTPUT_CERTIFIED': state.get('creative_output_certified'),
+            }
+            historical=d.get('historical_evidence_policy', {})
+            contract_synced=(
+                expected==state_fields
+                and d.get('state_authority')=='governance/CURRENT_STATE.json'
+                and historical.get('may_override_current_state') is False
+                and 'M02_FAIL' in str(d.get('interlock', ''))
+            )
+            if not contract_synced:
                 failures.append({'path':'07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json','code':'FAIL_MASTER_GOVERNANCE_VALIDATION_CONTRACT_NOT_SYNCED'})
         except Exception:
             failures.append({'path':'07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json','code':'FAIL_MASTER_GOVERNANCE_VALIDATION_CONTRACT_UNREADABLE'})
@@ -250,7 +281,9 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
     ]
     addf('MOTOR_CANONICAL_TOP_TREE_EXACT', {p.name for p in ROOT.iterdir() if p.is_dir()}==expected_top and not [p.name for p in ROOT.iterdir() if p.is_file()])
     addf('NO_BYTECODE_ACTIVE', not list(ROOT.rglob('*.pyc')) and not [p for p in ROOT.rglob('__pycache__')])
-    addf('ACTIVE_VALIDATORS_EXACT_SET', {p.name for p in (ROOT/'99_MANIFESTS_SHA_LINEAGE').glob('VALIDATE_*.py')}=={'VALIDATE_IDUNEX_RUNTIME.py','VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py','VALIDATE_IDUNEX_PROJECT.py','VALIDATE_AGENT_RUNTIME_MARKDOWN_STRICT.py','VALIDATE_PROMPT_PACK_STRUCTURE.py','VALIDATE_FIELD_SOURCE_TRACE_LEDGER.py','VALIDATE_ACTIVE_AUTHORITY_STALE_DUPLICATE_GUARD.py','VALIDATE_PROJECT_ACTIVE_RESULTS_ALL_PASS.py','VALIDATE_PROJECT_ZIP_REOPENED_COUNTS_AUTHORITATIVE.py','VALIDATE_AGENT_FORENSIC_COMPANION_LEDGER_TRUTHFULNESS.py','VALIDATE_PROJECT_PROMPT_PACK_CLASSIFICATION.py','VALIDATE_RUNTIME_CANONICAL_MODEL_NAME_ALLOWLIST.py','VALIDATE_PROJECT_EXACT_DUPLICATE_ALLOWLIST_VISIBLE.py','VALIDATE_ACTIVE_PLACEHOLDER_AND_AMBIGUOUS_TOKEN_GUARD.py','VALIDATE_PROJECT_MATRIX_COMPLETION_PROOF.py','VALIDATE_CREATIVE_CERTIFICATION_TRUTHFULNESS.py','VALIDATE_FINAL_CERTIFICATE_SURFACE_SYNC.py','VALIDATE_H281_H310_ENGINE_CLOSURE.py'})
+    registered_validator_names=_registered_lineage_validator_names()
+    physical_validator_names={p.name for p in (ROOT/'99_MANIFESTS_SHA_LINEAGE').glob('VALIDATE_*.py')}
+    addf('ACTIVE_VALIDATORS_EXACT_SET', physical_validator_names==registered_validator_names, {'physical':sorted(physical_validator_names),'registered':sorted(registered_validator_names)})
     factory_text = FACTORY.read_text(encoding='utf-8', errors='ignore') if FACTORY.is_file() else ''
     runner_path = ROOT/'03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py'
     # Master Governance native structural gate integrated into the primary runtime validator.
@@ -468,23 +501,19 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         if low.endswith('.zip') or low.endswith('.log') or '/matrix_chunk_work/' in low or '/tmp_' in low or '.idunex_h160_stage_' in low:
             forbidden_outputs.append(rel)
     addf('NO_TEMP_LOGS_OR_TEST_OUTPUT_ZIPS_IN_ENGINE', forbidden_outputs==[], {'forbidden_outputs':forbidden_outputs[:20]})
-    # Document truthfulness parity for internal docs. PASS-only tokens are required only when the current max matrix is PASS.
+    # Current governance, not superseded matrix evidence, controls active document truthfulness.
     doc_missing={}
-    try:
-        _mx=_json_load_rel('14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/11_RELEASE_INTERNAL/H238_FULL_31_PROJECT_MATRIX_SUMMARY.json')
-        _matrix_pass = _mx.get('result')=='PASS' and _mx.get('pass_count')==31 and _mx.get('fail_count')==0
-    except Exception:
-        _matrix_pass = False
-    if _matrix_pass:
-        doc_tokens=['VALIDATORS_FAIL=0','BLOCKING_WARNINGS=0','FAIL_CODES=[]','SCORE=10/10','CREATIVE_OUTPUT_CERTIFIED=FALSE']
-        forbidden_when_matrix_fail=[]
-    else:
-        doc_tokens=['MAX_MATRIX_CURRENT_RUN=FAIL','N1_TO_N10_X3_MATRIX=FAIL','VALIDATORS_FAIL=1','FAIL_CODES=[FAIL_MAX_MATRIX_NOT_EXECUTED_CURRENT_RUN]','SCORE=BLOCKED','CREATIVE_OUTPUT_CERTIFIED=FALSE']
-        forbidden_when_matrix_fail=['SCORE=10/10','VALIDATORS_FAIL=0','FAIL_CODES=[]','PRODUCT_READY','MAX_MATRIX_CURRENT_RUN=PASS']
-    for rel in ['00_INDEX/RELEASE_CERTIFICATE.txt','00_INDEX/CHANGELOG.md','14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/11_RELEASE_INTERNAL/RELEASE_CERTIFICATE.txt','14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/11_RELEASE_INTERNAL/CHANGELOG.md','00_INDEX/ACTIVE_VERSION.txt','00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md','00_INDEX/00_CONTROL_CENTER/STATUS.md']:
+    state=_current_governance_state()
+    doc_tokens=[
+        f"MOTOR_STATUS={str(state.get('motor_status', '')).upper()}",
+        f"M02_RESULT={str(state.get('m02_result', '')).upper()}",
+        'CREATIVE_OUTPUT_CERTIFIED=FALSE',
+    ]
+    forbidden_active=['READY_FOR_PROJECT_DEMO_GENERATION=TRUE','RELEASE_AUTHORIZED=TRUE','TAG_AUTHORIZED=TRUE','PRODUCTIVE_CLOSURE_AUTHORIZED=TRUE']
+    for rel in ['00_INDEX/RELEASE_CERTIFICATE.txt','00_INDEX/CHANGELOG.md','00_INDEX/ACTIVE_VERSION.txt','00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md','00_INDEX/00_CONTROL_CENTER/STATUS.md']:
         tx=(ROOT/rel).read_text(encoding='utf-8', errors='ignore') if (ROOT/rel).is_file() else ''
         missing=[t for t in doc_tokens if t not in tx]
-        forbidden=[t for t in forbidden_when_matrix_fail if t in tx]
+        forbidden=[t for t in forbidden_active if t in tx]
         doc_missing[rel]=missing + ['FORBIDDEN:'+t for t in forbidden]
     addf('DOCUMENT_TRUTHFULNESS_PARITY_H245_H260', all(not v for v in doc_missing.values()), {'missing':doc_missing})
 
@@ -532,7 +561,7 @@ required_gates=H37_H51|H58_H64|H65_H70|H71_H80|H87_H92|H93_H98|H99_H104|H105_H11
 expected_top={'00_INDEX','01_CANON_REGISTRIES','02_RESEARCH_CORPUS','03_PROJECT_FACTORY','04_AGENT_FACTORY','05_RUNTIME_CORE_LIBRARY','06_MULTIMODAL_CONTRACTS','07_VALIDATION_QA_GAUNTLET','08_EVIDENCE_LINEAGE','09_TEMPLATES_FIXTURES','10_INTERNAL_MANUALS','11_RELEASE_INTERNAL','12_OUTPUT_CONTRACTS','13_UPDATE_MIGRATION','14_HISTORICAL_NON_AUTHORITY','99_MANIFESTS_SHA_LINEAGE'}
 add('MOTOR_CANONICAL_TOP_TREE_EXACT', {p.name for p in ROOT.iterdir() if p.is_dir()}==expected_top and not [p.name for p in ROOT.iterdir() if p.is_file()])
 add('NO_BYTECODE_ACTIVE', not list(ROOT.rglob('*.pyc')) and not [p for p in ROOT.rglob('__pycache__')])
-add('ACTIVE_VALIDATORS_EXACT_SET', {p.name for p in (ROOT/'99_MANIFESTS_SHA_LINEAGE').glob('VALIDATE_*.py')}=={'VALIDATE_IDUNEX_RUNTIME.py','VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py','VALIDATE_IDUNEX_PROJECT.py','VALIDATE_AGENT_RUNTIME_MARKDOWN_STRICT.py','VALIDATE_PROMPT_PACK_STRUCTURE.py','VALIDATE_FIELD_SOURCE_TRACE_LEDGER.py','VALIDATE_ACTIVE_AUTHORITY_STALE_DUPLICATE_GUARD.py','VALIDATE_PROJECT_ACTIVE_RESULTS_ALL_PASS.py','VALIDATE_PROJECT_ZIP_REOPENED_COUNTS_AUTHORITATIVE.py','VALIDATE_AGENT_FORENSIC_COMPANION_LEDGER_TRUTHFULNESS.py','VALIDATE_PROJECT_PROMPT_PACK_CLASSIFICATION.py','VALIDATE_RUNTIME_CANONICAL_MODEL_NAME_ALLOWLIST.py','VALIDATE_PROJECT_EXACT_DUPLICATE_ALLOWLIST_VISIBLE.py','VALIDATE_ACTIVE_PLACEHOLDER_AND_AMBIGUOUS_TOKEN_GUARD.py','VALIDATE_PROJECT_MATRIX_COMPLETION_PROOF.py','VALIDATE_CREATIVE_CERTIFICATION_TRUTHFULNESS.py','VALIDATE_FINAL_CERTIFICATE_SURFACE_SYNC.py','VALIDATE_H281_H310_ENGINE_CLOSURE.py'})
+add('ACTIVE_VALIDATORS_EXACT_SET', {p.name for p in (ROOT/'99_MANIFESTS_SHA_LINEAGE').glob('VALIDATE_*.py')}==_registered_lineage_validator_names())
 active_factories=[p for p in ROOT.rglob('*.py') if '12_HISTORICAL_NON_AUTHORITY/' not in p.relative_to(ROOT).as_posix() and 'FACTORY' in p.name and p.name!='IDUNEX_EXPORT_PACKER.py']
 add('SINGLE_PROJECT_FACTORY_ACTIVE', active_factories==[FACTORY])
 add('SEMANTIC_VERSION_EXACT_LEGACY_TOKEN_LITERAL_REMOVED', factory_loaded and getattr(factory,'SEMANTIC_VERSION',None)=='v1.0.0')

@@ -160,8 +160,8 @@
       "received_path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
       "current_path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
       "received_sha256": "88959e9d0c08e6fff03b7e869396aa0b57cd197840d913d72a41a75c483da8a1",
-      "current_sha256": "3ee97ceaf1369f5ede0367d6428b06a4fcc5c0164ef03996b188b7454cd8347b",
-      "current_bytes": 830398
+      "current_sha256": "e339f033a51a33bb8229d24848b63bdf59a27145999de1fb27fdb2814e537214",
+      "current_bytes": 834731
     },
     {
       "received_path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
@@ -755,8 +755,8 @@
       "received_path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "current_path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "received_sha256": "1c4caff832466eb00ab273aca775198edca7aae01d2c2937e9a0d8ecfeee4176",
-      "current_sha256": "a4d8c1e39c4b5680e2c85f22076de88d0c9d8532e1aad8ac03d45fa1699e4775",
-      "current_bytes": 144797
+      "current_sha256": "f1f31302730a0d6736d4f50651f59ce920507b3eabc6b62715092a95f65ab34a",
+      "current_bytes": 144089
     },
     {
       "received_path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py",
