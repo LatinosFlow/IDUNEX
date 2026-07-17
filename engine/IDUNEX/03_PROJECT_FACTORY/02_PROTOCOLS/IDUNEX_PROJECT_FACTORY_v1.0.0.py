@@ -486,7 +486,14 @@ def _valid_sha256_hex(value: object) -> bool:
     return isinstance(value, str) and bool(SHA256_HEX_RE.match(value.strip().lower()))
 
 def resolve_engine_zip_sha256() -> str:
-    """Resolve engine ZIP SHA from explicit env/companion. The ZIP's own hash cannot be self-embedded inside its content without circularity."""
+    """Resolve the active engine identity used by legacy ``engine_zip_sha`` fields.
+
+    A packaged release uses an explicit ZIP companion (or the environment
+    override).  A repository checkout in EN_REVISION has no release ZIP, so
+    its non-release identity is the reproducible AUD-003 current-tree
+    companion.  The manifest and governance interlock are checked together so
+    historical/release hashes cannot be selected accidentally.
+    """
     env=os.environ.get(ENGINE_ZIP_SHA256_ENV, '').strip().lower()
     if _valid_sha256_hex(env):
         return env
@@ -497,6 +504,39 @@ def resolve_engine_zip_sha256() -> str:
                 token=p.read_text(encoding='utf-8', errors='ignore').split()[0].strip().lower()
                 if _valid_sha256_hex(token):
                     return token
+    for base in [Path.cwd(), *Path(__file__).resolve().parents]:
+        companion=base/"governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt"
+        manifest_path=base/"governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json"
+        state_path=base/"governance/CURRENT_STATE.json"
+        if not (companion.is_file() and manifest_path.is_file() and state_path.is_file()):
+            continue
+        try:
+            token=next(
+                (
+                    part.strip().lower()
+                    for part in companion.read_text(encoding='utf-8', errors='strict').split()
+                    if _valid_sha256_hex(part)
+                ),
+                '',
+            )
+            manifest=load_json(manifest_path)
+            state=load_json(state_path)
+        except (IndexError, OSError, ValueError, json.JSONDecodeError):
+            continue
+        current_tree_identity=(
+            _valid_sha256_hex(token)
+            and manifest.get("tree_sha256")==token
+            and manifest.get("baseline_class")=="CURRENT_CORRECTED_REPOSITORY_TREE_NOT_RELEASE"
+            and manifest.get("scope")=="engine/IDUNEX"
+            and manifest.get("semantic_version")==SEMANTIC_VERSION
+            and manifest.get("release_authorized") is False
+            and state.get("motor_status")=="EN_REVISION"
+            and state.get("m02_result")=="M02_FAIL"
+            and state.get("release_authorized") is False
+            and state.get("tag_authorized") is False
+        )
+        if current_tree_identity:
+            return token
     return "ENGINE_ZIP_SHA256_EXTERNAL_COMPANION_REQUIRED"
 
 def expected_block_result_payload(block_fail_code: str, detail: str = "expected input contract block", *, delivery_status: str = "BLOCKED_EARLY_EXPECTED", operation: str | None = None) -> dict:
@@ -3578,30 +3618,46 @@ def _h37_search_needles(value: object) -> list[str]:
     return [n for n in dict.fromkeys(needles) if n not in ("", "None")]
 
 
-def collect_materialization_evidence(root: Path, value: object, *, exclude: set[str] | None=None) -> dict:
-    exclude = exclude or set()
-    needles = _h37_search_needles(value)
-    evidence=[]
-    surfaces=set()
+def build_materialization_evidence_index(root: Path) -> list[dict]:
+    """Snapshot eligible materialization surfaces once for a ledger pass."""
+    index=[]
     for p in sorted(root.rglob("*")):
         if not p.is_file():
             continue
         rel=p.relative_to(root).as_posix()
-        if rel in exclude or rel.endswith("INPUT_PROMPT_FIDELITY_LEDGER.json"):
-            continue
         if p.suffix.lower() not in {".json", ".md", ".txt", ".py", ".csv"}:
             continue
         try:
             tx=p.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
-        if not any(n in tx for n in needles):
-            continue
         surface=_h37_materialization_surface_for(rel, tx)
         if surface is None:
             continue
+        index.append({"path":p, "rel":rel, "text":tx, "surface":surface})
+    return index
+
+
+def collect_materialization_evidence(root: Path, value: object, *, exclude: set[str] | None=None, materialization_index: list[dict] | None=None) -> dict:
+    exclude = exclude or set()
+    needles = _h37_search_needles(value)
+    evidence=[]
+    surfaces=set()
+    index=materialization_index if materialization_index is not None else build_materialization_evidence_index(root)
+    for item in index:
+        rel=item["rel"]
+        if rel in exclude or rel.endswith("INPUT_PROMPT_FIDELITY_LEDGER.json"):
+            continue
+        tx=item["text"]
+        if not any(n in tx for n in needles):
+            continue
+        surface=item["surface"]
+        digest=item.get("sha256")
+        if digest is None:
+            digest=sha(item["path"])
+            item["sha256"]=digest
         surfaces.add(surface)
-        evidence.append({"path":rel,"sha256":sha(p),"surface":surface})
+        evidence.append({"path":rel,"sha256":digest,"surface":surface})
     return {"paths":[e["path"] for e in evidence], "hashes":{e["path"]:e["sha256"] for e in evidence}, "surfaces":sorted(surfaces), "evidence":evidence}
 
 
@@ -3639,6 +3695,7 @@ def h37_explicit_rows_from_spec(spec: dict, models: list[dict]) -> list[tuple[st
 
 def write_h58_input_field_normalization_ledger(root: Path, project_id: str, models: list[dict]) -> None:
     records=[]
+    materialization_index=build_materialization_evidence_index(root)
     for m in models:
         for rec in m.get("input_field_normalization_records", []):
             canonical_field=rec.get("canonical_field")
@@ -3646,7 +3703,7 @@ def write_h58_input_field_normalization_ledger(root: Path, project_id: str, mode
             row=dict(rec)
             row["model_id"] = m.get("model_id")
             row["canonical_value"] = actual
-            ev=collect_materialization_evidence(root, actual, exclude={"01_CANON/INPUT_FIELD_NORMALIZATION_LEDGER.json", "01_CANON/INPUT_PROMPT_FIDELITY_LEDGER.json"})
+            ev=collect_materialization_evidence(root, actual, exclude={"01_CANON/INPUT_FIELD_NORMALIZATION_LEDGER.json", "01_CANON/INPUT_PROMPT_FIDELITY_LEDGER.json"}, materialization_index=materialization_index)
             row["materialized_surfaces"] = ev["surfaces"]
             row["materialization_evidence_paths"] = ev["paths"]
             row["materialization_evidence_hashes"] = ev["hashes"]
@@ -3682,9 +3739,10 @@ def write_h37_input_prompt_fidelity_ledger(root: Path, project_id: str, spec: di
     write_h37_truthfulness_support_surfaces(root, project_id, explicit_rows)
     # H58 ledger is a separate normalizer ledger; H37 must not self-certify.
     write_h58_input_field_normalization_ledger(root, project_id, models)
+    materialization_index=build_materialization_evidence_index(root)
     for path,value,canonical_path,normalized in explicit_rows:
         status, reason = h37_status_for_value(value)
-        ev=collect_materialization_evidence(root, normalized, exclude={"01_CANON/INPUT_PROMPT_FIDELITY_LEDGER.json"})
+        ev=collect_materialization_evidence(root, normalized, exclude={"01_CANON/INPUT_PROMPT_FIDELITY_LEDGER.json"}, materialization_index=materialization_index)
         only_self = False
         if not ev["paths"]:
             # Explicitly distinguish false self-pass: value exists only in the H37 ledger once written/rewritten.
@@ -4356,6 +4414,10 @@ def update_h49_h51_after_zip(project_zip: Path, companion: Path, validation: dic
             _h410_sync_final_count_surfaces(root, final_file_count)
             _h274_write_project_exact_duplicate_allowlist(root)
             write_project_package_manifests(root, project_id)
+            # Windows forbids replacing a ZIP while its read handle is open.
+            # All reads/extraction are complete at this point; close before the
+            # in-place H410 repackage (the context manager may close it again).
+            z.close()
             zip_project(root, project_zip)
         finally:
             tmp.cleanup()
@@ -9638,7 +9700,9 @@ def generate_end_to_end(spec: dict, destination: Path) -> dict:
     except Exception as e:
         if final_zip_candidate and final_zip_candidate.exists(): final_zip_candidate.unlink(missing_ok=True)
         if final_companion_candidate and final_companion_candidate.exists(): final_companion_candidate.unlink(missing_ok=True)
-        return _h192_root_cause_envelope({"result":"FAIL","delivery_status":"DELIVERY_BLOCKED","fail_codes":["FAIL_H160_PARTIAL_ZIP_BLOCKED"],"error_class":e.__class__.__name__,"H160_ATOMIC_PROJECT_FINALIZER":"FAIL","NO_PARTIAL_ZIP_ON_TIMEOUT":"PASS","CREATIVE_OUTPUT_CERTIFIED":False}, "FAIL_H160_ATOMIC_FINALIZE_NOT_REACHED", stage="UNHANDLED_EXCEPTION", detail=e.__class__.__name__)
+        phase=str(H197_ACTIVE_CONTEXT.get("phase") or "UNHANDLED_EXCEPTION")
+        detail=f"{e.__class__.__name__}: {e}"
+        return _h192_root_cause_envelope({"result":"FAIL","delivery_status":"DELIVERY_BLOCKED","fail_codes":["FAIL_H160_PARTIAL_ZIP_BLOCKED"],"error_class":e.__class__.__name__,"detail":detail,"H160_ATOMIC_PROJECT_FINALIZER":"FAIL","NO_PARTIAL_ZIP_ON_TIMEOUT":"PASS","CREATIVE_OUTPUT_CERTIFIED":False}, "FAIL_H160_ATOMIC_FINALIZE_NOT_REACHED", stage=phase, detail=detail)
     finally:
         t=_h197_phase_start("cleanup")
         try:
@@ -9935,16 +9999,34 @@ def _h205_supervised_generate_cli(args: argparse.Namespace) -> int:
                     proc.wait(timeout=2)
                 except Exception:
                     pass
+                # A worker can finish between the last completion poll and this
+                # exit poll.  Recompute delivery from ZIP bytes, companion, CRC,
+                # completion manifest and reopened validation before propagating
+                # a transient worker rc; this is evidence verification, not a
+                # declared-PASS shortcut.
+                post_exit_deadline=time.monotonic()+2.0
+                while True:
+                    observed = _h205_observe_completed_delivery(args.output_json, destination)
+                    if observed is not None:
+                        so.close(); se.close()
+                        stdout_tmp.unlink(missing_ok=True); stderr_tmp.unlink(missing_ok=True)
+                        observed["H205_POST_EXIT_COMPLETION_VERIFICATION"]="PASS"
+                        return _h205_emit_observed_completion(args, observed, proc, destination, started=started)
+                    if time.monotonic() >= post_exit_deadline:
+                        break
+                    time.sleep(0.05)
                 break
             if args.output_json and now_mono - last_completion_check >= 0.5:
                 last_completion_check = now_mono
                 observed = _h205_observe_completed_delivery(args.output_json, destination)
                 if observed is not None:
+                    so.close(); se.close()
                     stdout_tmp.unlink(missing_ok=True); stderr_tmp.unlink(missing_ok=True)
                     return _h205_emit_observed_completion(args, observed, proc, destination, started=started)
             if now_mono - started >= timeout:
                 observed = _h205_observe_completed_delivery(args.output_json, destination)
                 if observed is not None:
+                    so.close(); se.close()
                     stdout_tmp.unlink(missing_ok=True); stderr_tmp.unlink(missing_ok=True)
                     return _h205_emit_observed_completion(args, observed, proc, destination, started=started)
                 heartbeat = _h205_read_phase_heartbeat(destination)
@@ -9964,6 +10046,7 @@ def _h205_supervised_generate_cli(args: argparse.Namespace) -> int:
                             break
                         observed = _h205_observe_completed_delivery(args.output_json, destination)
                         if observed is not None:
+                            so.close(); se.close()
                             stdout_tmp.unlink(missing_ok=True); stderr_tmp.unlink(missing_ok=True)
                             observed["H205_TERMINAL_PHASE_BOUNDED_GRACE_USED"] = "PASS"
                             return _h205_emit_observed_completion(args, observed, proc, destination, started=started)
@@ -9983,6 +10066,7 @@ def _h205_supervised_generate_cli(args: argparse.Namespace) -> int:
                     pass
                 elapsed = time.monotonic() - started
                 so.flush(); se.flush()
+                so.close(); se.close()
                 stdout_text = stdout_tmp.read_text(encoding="utf-8", errors="ignore") if stdout_tmp.exists() else "SUPERVISOR_NO_STDOUT_TEMP"
                 stderr_text = stderr_tmp.read_text(encoding="utf-8", errors="ignore") if stderr_tmp.exists() else "SUPERVISOR_NO_STDERR_TEMP"
                 stdout_tmp.unlink(missing_ok=True); stderr_tmp.unlink(missing_ok=True)

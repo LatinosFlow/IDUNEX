@@ -53,6 +53,29 @@ class GenerateWindowsWatchdogTest(unittest.TestCase):
         finally:
             self.factory.signal = original_signal
 
+    def test_h113_resolves_current_aud003_tree_identity_without_release_zip(self):
+        manifest = json.loads(
+            (
+                REPO_ROOT
+                / "governance"
+                / "baseline"
+                / "IDUNEX_CURRENT_TREE_MANIFEST.json"
+            ).read_text(encoding="utf-8")
+        )
+        previous = os.environ.pop("IDUNEX_ENGINE_ZIP_SHA256", None)
+        try:
+            self.assertEqual(
+                self.factory.resolve_engine_zip_sha256(), manifest["tree_sha256"]
+            )
+            self.assertEqual(
+                manifest["baseline_class"],
+                "CURRENT_CORRECTED_REPOSITORY_TREE_NOT_RELEASE",
+            )
+            self.assertFalse(manifest["release_authorized"])
+        finally:
+            if previous is not None:
+                os.environ["IDUNEX_ENGINE_ZIP_SHA256"] = previous
+
     @unittest.skipUnless(hasattr(signal, "SIGALRM"), "Unix alarm primitives are unavailable")
     def test_sigalrm_timer_remains_enabled_when_supported(self):
         self.assertEqual(
