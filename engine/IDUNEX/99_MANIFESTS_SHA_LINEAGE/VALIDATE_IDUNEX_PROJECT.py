@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Canonical IDUNEX project validator: precheck, reopened ZIP, or bounded mutation suite."""
+from validator_subcheck_protocol import enforce_subcheck_invocation as _enforce_subcheck_invocation
+_enforce_subcheck_invocation(__file__, __name__)
+
 from pathlib import Path
 import argparse, importlib.util, json, sys, tempfile, time
 sys.dont_write_bytecode = True

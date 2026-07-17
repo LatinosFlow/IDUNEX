@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "issue": "AUD-009",
+  "registry_id": "VALIDATOR_SURFACE_REGISTRY",
+  "motor_status": "EN_REVISION",
+  "m02_result": "M02_FAIL",
+  "global_closure_entrypoint_count": 1,
+  "authority_policy": {
+    "global_result": "Only the authoritative entrypoint may aggregate and emit the global technical validator result.",
+    "m02_decision": "No repository validator may declare M02_PASS; only an independent re-audit may change M02_RESULT.",
+    "secondary_execution": "Subvalidators run only through entrypoint delegation and their results remain LOCAL_SUBCHECK_ONLY.",
+    "current_interlock": "Project Demo generation, release, tag and productive closure remain unauthorized."
+  },
+  "engine_surfaces": {
+    "authoritative_entrypoints": [
+      {
+        "id": "VALIDATE_IDUNEX_RUNTIME",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
+        "role": "GLOBAL_VALIDATOR_ENTRYPOINT",
+        "public_cli": true,
+        "global_closure_capable": true,
+        "m02_decision_authority": false
+      }
+    ],
+    "subvalidators": [
+      {
+        "id": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
+        "path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/VALIDATE_MASTER_GOVERNANCE_NATIVE.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_PROMPTS_PROJECT_POLICY",
+        "path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/VALIDATE_PROMPTS_PROJECT_POLICY.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_H261_H268_FINAL_CLEAN",
+        "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_FINAL_CLEAN.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_H269_H280",
+        "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_VALIDATOR_SUITE_c34f7092.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_ACTIVE_AUTHORITY_STALE_DUPLICATE_GUARD",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_ACTIVE_AU_f3527139.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_ACTIVE_PLACEHOLDER_AND_AMBIGUOUS_TOKEN_GUARD",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_ACTIVE_PL_a6029d75.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_AGENT_FORENSIC_COMPANION_LEDGER_TRUTHFULNESS",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_AGENT_FOR_59659cc6.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_AGENT_RUNTIME_MARKDOWN_STRICT",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_AGENT_RUNTIME_MARKDOWN_STRICT.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_CREATIVE_CERTIFICATION_TRUTHFULNESS",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_CREATIVE__7e821f04.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_FIELD_SOURCE_TRACE_LEDGER",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_FIELD_SOURCE_TRACE_LEDGER.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_FINAL_CERTIFICATE_SURFACE_SYNC",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_FINAL_CERTIFICATE_SURFACE_SYNC.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_IDUNEX_PROJECT",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_PROJECT.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_PROJECT_ACTIVE_RESULTS_ALL_PASS",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_A_b54375bc.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_PROJECT_EXACT_DUPLICATE_ALLOWLIST_VISIBLE",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_E_cff8886a.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_PROJECT_MATRIX_COMPLETION_PROOF",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_M_4a7925d0.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_PROJECT_PROMPT_PACK_CLASSIFICATION",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_P_dea7bda6.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_PROJECT_ZIP_REOPENED_COUNTS_AUTHORITATIVE",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROJECT_Z_df02d23d.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_PROMPT_PACK_STRUCTURE",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_PROMPT_PACK_STRUCTURE.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      },
+      {
+        "id": "VALIDATE_RUNTIME_CANONICAL_MODEL_NAME_ALLOWLIST",
+        "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_RUNTIME_C_6c4afd26.py",
+        "role": "SUBVALIDATOR",
+        "execution": "DELEGATED_SUBPROCESS",
+        "direct_cli": "BLOCKED",
+        "global_closure_capable": false
+      }
+    ],
+    "internal_support_modules": [
+      {
+        "id": "validator_subcheck_protocol",
+        "path": "99_MANIFESTS_SHA_LINEAGE/validator_subcheck_protocol.py",
+        "role": "INTERNAL_SUPPORT_MODULE",
+        "public_cli": false,
+        "global_closure_capable": false
+      }
+    ],
+    "scoped_domain_commands": [
+      {
+        "id": "IDUNEX_PROJECT_FACTORY",
+        "path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
+        "scope": "PROJECT_LIFECYCLE",
+        "global_closure_capable": false
+      },
+      {
+        "id": "IDUNEX_PROJECT_MATRIX_RUNNER",
+        "path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
+        "scope": "PROJECT_MATRIX_EVIDENCE",
+        "global_closure_capable": false
+      },
+      {
+        "id": "IDUNEX_EXPORT_PACKER",
+        "path": "03_PROJECT_FACTORY/17_EXPORT_PACKER/IDUNEX_EXPORT_PACKER.py",
+        "scope": "PACKAGE_ASSEMBLY",
+        "global_closure_capable": false
+      }
+    ]
+  },
+  "repository_validation_tools": [
+    {
+      "path": "tools/audit/baseline_scanner.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
+      "path": "tools/audit/demo_hardcoding_check.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
+      "path": "tools/audit/governance_state_check.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
+      "path": "tools/audit/intake_audit.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
+      "path": "tools/audit/no_bloat_no_history_check.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
+      "path": "tools/audit/security_lite_scan.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
+      "path": "tools/audit/validator_entrypoint_check.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    },
+    {
+      "path": "tools/audit/windows_path_remap_check.py",
+      "role": "REPOSITORY_CHECK_NON_AUTHORITATIVE",
+      "global_closure_capable": false
+    }
+  ],
+  "qa_record_classes": {
+    "validator_entrypoint": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
+    "internal_check_catalog": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_VALIDATOR_REGISTRY.json",
+    "historical_evidence_prefixes": [
+      "14_HISTORICAL_NON_AUTHORITY/",
+      "99_MANIFESTS_SHA_LINEAGE/H261_H268_EVIDENCE/"
+    ],
+    "non_authoritative_reference_prefixes": [
+      "governance/authority/REFERENCIA/",
+      "docs/audits/"
+    ]
+  }
+}

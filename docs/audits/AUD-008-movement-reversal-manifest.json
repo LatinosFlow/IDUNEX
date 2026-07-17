@@ -21,12 +21,12 @@
       }
     },
     "after": {
-      "active_file_count": 747,
-      "active_bytes": 18619046,
+      "active_file_count": 749,
+      "active_bytes": 18648611,
       "duplicates": {
         "group_count": 2,
         "file_count": 6,
-        "redundant_bytes": 929796,
+        "redundant_bytes": 931595,
         "justified_group_count": 2,
         "unjustified_group_count": 0
       },
@@ -1835,11 +1835,11 @@
       "reason": "replace milestone path identity with a stable semantic path",
       "impact": "authority/evidence retained with stable path identity; derived references rewritten",
       "authority_after": "REQUIRED_EVIDENCE",
-      "sha256_after": "44045dbf1f566887b8e0bcf36005498c2eae06a470861897d9afe4c217bcfb68",
+      "sha256_after": "9553c3b4dd9cdce15d74ca94ee414988e753a48fec35527ab9b4aae30eaf471e",
       "reverse": {
         "from": "07_VALIDATION_QA_GAUNTLET/14_POLICIES/VALIDATOR_REGISTRY.json",
         "to": "07_VALIDATION_QA_GAUNTLET/14_POLICIES/H261_H268_VALIDATOR_REGISTRY.json",
-        "expected_sha256": "44045dbf1f566887b8e0bcf36005498c2eae06a470861897d9afe4c217bcfb68"
+        "expected_sha256": "9553c3b4dd9cdce15d74ca94ee414988e753a48fec35527ab9b4aae30eaf471e"
       }
     },
     {
@@ -1886,11 +1886,11 @@
       "reason": "replace milestone path identity with a stable semantic path",
       "impact": "authority/evidence retained with stable path identity; derived references rewritten",
       "authority_after": "REQUIRED_EVIDENCE",
-      "sha256_after": "fec27f7ac3a30b76d0b50a214ac35779d02955c79c249798ceb35698056843c7",
+      "sha256_after": "aa5cdae6b90f1d493b761de621b2a5b60469af331270926d805768a4e4ca3c0c",
       "reverse": {
         "from": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_FINAL_CLEAN.py",
         "to": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_H261_H268_FINAL_CLEAN.py",
-        "expected_sha256": "fec27f7ac3a30b76d0b50a214ac35779d02955c79c249798ceb35698056843c7"
+        "expected_sha256": "aa5cdae6b90f1d493b761de621b2a5b60469af331270926d805768a4e4ca3c0c"
       }
     },
     {
@@ -1903,11 +1903,11 @@
       "reason": "replace milestone path identity with a stable semantic path",
       "impact": "authority/evidence retained with stable path identity; derived references rewritten",
       "authority_after": "REQUIRED_EVIDENCE",
-      "sha256_after": "96278e0b8c61dbb562f1ea05fe74b0dbc5e3003405607a42b7fa20d2a31491fe",
+      "sha256_after": "5fa18d63b16db280349afd71195e4715b6e4253535ab02b9e9270b91209d85b6",
       "reverse": {
         "from": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_VALIDATOR_SUITE_c34f7092.py",
         "to": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATE_H269_H280_c34f7092.py",
-        "expected_sha256": "96278e0b8c61dbb562f1ea05fe74b0dbc5e3003405607a42b7fa20d2a31491fe"
+        "expected_sha256": "5fa18d63b16db280349afd71195e4715b6e4253535ab02b9e9270b91209d85b6"
       }
     },
     {

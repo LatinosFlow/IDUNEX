@@ -41,3 +41,7 @@ jobs:
         run: python tools/audit/no_bloat_no_history_check.py --repo-root .
       - name: Run AUD-008 duplicate, H-route, and authority mutations
         run: python -m unittest discover -s tests/intake -p 'test_no_bloat_no_history.py'
+      - name: Check single validator entrypoint (AUD-009)
+        run: python tools/audit/validator_entrypoint_check.py --repo-root .
+      - name: Run validator entrypoint adversarial tests (AUD-009)
+        run: python -m unittest discover -s tests/intake -p 'test_validator_entrypoint.py'

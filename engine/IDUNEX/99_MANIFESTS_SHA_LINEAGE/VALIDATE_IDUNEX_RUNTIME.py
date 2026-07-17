@@ -2,10 +2,49 @@
 """Canonical IDUNEX runtime validator aligned through H189-H196 direct finalizer truthfulness/timeout closure gates."""
 from pathlib import Path
 import hashlib, importlib.util, json, re, subprocess, sys, os
+from validator_subcheck_protocol import delegate_subcheck
 sys.dont_write_bytecode = True
+ENTRYPOINT_FILE = Path(__file__).resolve()
+DEFAULT_ENGINE_ROOT = ENTRYPOINT_FILE.parents[1]
+SURFACE_REGISTRY = (
+    DEFAULT_ENGINE_ROOT
+    / '07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATOR_SURFACE_REGISTRY.json'
+)
+if len(sys.argv) > 1 and sys.argv[1] == '--subcheck':
+    subcheck_id = sys.argv[2] if len(sys.argv) > 2 else ''
+    subcheck_args = sys.argv[3:]
+    if subcheck_args[:1] == ['--']:
+        subcheck_args = subcheck_args[1:]
+    raise SystemExit(delegate_subcheck(
+        entrypoint_file=__file__,
+        engine_root=DEFAULT_ENGINE_ROOT,
+        registry_path=SURFACE_REGISTRY,
+        subcheck_id=subcheck_id,
+        subcheck_args=subcheck_args,
+    ))
 ROOT = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
+
+def _authority_envelope(payload):
+    state = {}
+    state_path = ROOT.parent.parent/'governance/CURRENT_STATE.json'
+    if state_path.is_file():
+        try:
+            state = json.loads(state_path.read_text(encoding='utf-8'))
+        except Exception:
+            state = {}
+    payload.update({
+        'authority_role': 'GLOBAL_VALIDATOR_ENTRYPOINT',
+        'global_closure_capable': True,
+        'global_closure_authorized': bool(state.get('productive_closure_authorized', False)),
+        'm02_decision_authority': False,
+        'm02_approval_declared': False,
+        'motor_status': state.get('motor_status', 'EXTERNAL_GOVERNANCE_NOT_AVAILABLE'),
+        'm02_result': state.get('m02_result', 'EXTERNAL_GOVERNANCE_NOT_AVAILABLE'),
+    })
+    return payload
+
 if ROOT.name != 'IDUNEX':
-    print(json.dumps({'validator':'VALIDATE_IDUNEX_RUNTIME','result':'FAIL','fail_codes':['ROOT_UNICO']})); sys.exit(1)
+    print(json.dumps(_authority_envelope({'validator':'VALIDATE_IDUNEX_RUNTIME','result':'FAIL','fail_codes':['ROOT_UNICO']}))); sys.exit(1)
 EXPECTED='P034_PROJECT_ENTITY_BRAND_LOGO_IMAGE_DELIVERY_SAFE_APPAREL_AGENT_RUNTIME_FIRST_VISUAL_TRACEABILITY_CANONICAL_REOPEN'
 SCOPE='H01_H51_PLUS_H52_H57_PLUS_H58_H64_PLUS_H65_H70_PLUS_H71_H80_PLUS_H81_H86_PLUS_H87_H92_PLUS_H93_H98_PLUS_H99_H104_PLUS_H105_H112_PLUS_H113_H118_PLUS_H119_H126_PLUS_H127_H134_PLUS_H135_H142_PLUS_H143_H150_PLUS_H151_H156_PLUS_H157_H164_PLUS_H165_H180_PLUS_H181_H188_PLUS_H189_H196_PLUS_H197_H204_PLUS_H205_H212_PLUS_H213_H236_PLUS_H237_H244_PLUS_H245_H260'
 FACTORY=ROOT/'03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py'
@@ -461,7 +500,7 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         failures.append('FAIL_INTERNAL_MANIFEST_STALE_OR_INCOMPLETE')
     result='PASS' if not failures else 'FAIL'
     out={'validator':'VALIDATE_IDUNEX_RUNTIME','scope':'MASTER_GOVERNANCE_NATIVE_PLUS_H205_H410_AGENT_ROUTING_CLOSURE','result':result,'validators_fail':0 if result=='PASS' else len(failures),'blocking_warnings':0,'fail_codes':[] if result=='PASS' else failures,'checks':checks_fast,'details':details_fast,'H01-H236_PRESERVED':'PASS' if checks_fast.get('H205_H212_PRESERVED') and checks_fast.get('H213_H236_PRESERVED') else 'FAIL','H237-H244_APPLIED':'PASS' if checks_fast.get('H237_H244_DIRECT_CANONICAL_CLOSURE_REPORT') else 'FAIL','MUTATION_SUITE_EXECUTABLE_FULL_PASS':'PASS' if checks_fast.get('MUTATION_SUITE_EXECUTABLE_FULL_PASS') else 'FAIL','FULL_31_PROJECT_MATRIX_REAL_EXECUTION':'PASS' if checks_fast.get('FULL_31_PROJECT_MATRIX_REAL_EXECUTION') else 'FAIL','PROJECT_31_FULL_MATRIX_EXECUTED':'PASS' if checks_fast.get('FULL_31_PROJECT_MATRIX_REAL_EXECUTION') else 'FAIL','PROJECT_31_FULL_MATRIX_PASS_COUNT':'31/31' if checks_fast.get('FULL_31_PROJECT_MATRIX_REAL_EXECUTION') else 'FAIL','ACTIVE_PROOF_AND_LEDGER_STALENESS_PURGE':'PASS' if checks_fast.get('ACTIVE_PROOF_AND_LEDGER_STALENESS_PURGE') else 'FAIL','RUNTIME_VALIDATOR_CRITICAL_EVIDENCE_PROPAGATION':'PASS' if result=='PASS' else 'FAIL','PROJECT_TEST_RUNNER_DETERMINISTIC_AND_NON_HANGING':'PASS' if checks_fast.get('PROJECT_TEST_RUNNER_DETERMINISTIC_AND_NON_HANGING') else 'FAIL','DOCUMENT_TRUTHFULNESS_PARITY_H245_H260':'PASS' if checks_fast.get('DOCUMENT_TRUTHFULNESS_PARITY_H245_H260') else 'FAIL','VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL':'PASS','VALIDATE_IDUNEX_RUNTIME':'PASS' if result=='PASS' else 'FAIL','VALIDATE_AGENT_RUNTIME_MARKDOWN_STRICT':'PASS' if result=='PASS' else 'FAIL','VALIDATE_PROMPT_PACK_STRUCTURE':'PASS' if result=='PASS' else 'FAIL','VALIDATE_FIELD_SOURCE_TRACE_LEDGER':'PASS' if result=='PASS' else 'FAIL','VALIDATE_ACTIVE_AUTHORITY_STALE_DUPLICATE_GUARD':'PASS' if result=='PASS' else 'FAIL','CREATIVE_OUTPUT_CERTIFIED':False}
-    print(json.dumps(out, ensure_ascii=False, indent=2))
+    print(json.dumps(_authority_envelope(out), ensure_ascii=False, indent=2))
     sys.exit(0 if result=='PASS' else 1)
 
 before=[(rel, sha(p), p.stat().st_size) for p,rel in active_files()]
@@ -1305,5 +1344,5 @@ if 'fail_codes' not in out and 'FAIL_CODES' not in out:
 if 'CREATIVE_OUTPUT_CERTIFIED' not in out and 'creative_output_certified' not in out:
     out['CREATIVE_OUTPUT_CERTIFIED'] = False
 
-print(json.dumps(out, ensure_ascii=False, indent=2))
+print(json.dumps(_authority_envelope(out), ensure_ascii=False, indent=2))
 sys.exit(0 if not fails else 1)

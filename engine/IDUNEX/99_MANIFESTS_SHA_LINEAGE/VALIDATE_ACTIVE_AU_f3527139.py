@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """H226 validator: active authority, stale duplicate and fixture-hardcode guard."""
+from validator_subcheck_protocol import enforce_subcheck_invocation as _enforce_subcheck_invocation
+_enforce_subcheck_invocation(__file__, __name__)
+
 from pathlib import Path
 import json, sys, re, hashlib, collections
 sys.dont_write_bytecode=True

@@ -8090,6 +8090,36 @@ KNOWN_SIMULATED_TARGET_ENGINES = {
     "IDUNEX_MOTOR_v1.0.0_SIMULATED_PLUS"
 }
 
+RELATED_CLI_PATH_ARGUMENTS = {
+    "update-project": ("project", "update", "output", "output_json"),
+    "migrate-project": ("project", "output", "output_json"),
+    "update-project-by-engine": ("project", "output", "output_json"),
+}
+
+def _resolved_absolute_path(path: str | Path) -> Path:
+    """Return the single internal filesystem representation used by project operations."""
+    return Path(path).expanduser().resolve(strict=False)
+
+def _normalize_related_cli_paths(args: argparse.Namespace) -> argparse.Namespace:
+    """Resolve filesystem arguments once, immediately after CLI parsing."""
+    for attribute in RELATED_CLI_PATH_ARGUMENTS.get(args.cmd, ()):
+        value = getattr(args, attribute, None)
+        if value not in (None, ""):
+            setattr(args, attribute, _resolved_absolute_path(value))
+    return args
+
+def _project_relative_path(project_root: Path, path: Path, *, purpose: str) -> str:
+    """Return a manifest/evidence path only when it is contained by project_root."""
+    root = _resolved_absolute_path(project_root)
+    candidate = _resolved_absolute_path(path)
+    try:
+        return candidate.relative_to(root).as_posix()
+    except ValueError as exc:
+        raise InputContractError(
+            "FAIL_CLI_PATH_OUTSIDE_PROJECT_ROOT",
+            f"{purpose}: {candidate} is outside {root}",
+        ) from exc
+
 def active_bytecode_artifacts(root: Path | None = None) -> list[str]:
     base = root or ENGINE_ROOT
     hits = []
@@ -8194,6 +8224,8 @@ def validate_update_contract_file(path: Path) -> dict:
 
 def _copy_project_source(source: Path, output: Path) -> tuple[Path, list[tempfile.TemporaryDirectory]]:
     temps: list[tempfile.TemporaryDirectory] = []
+    source = _resolved_absolute_path(source)
+    output = _resolved_absolute_path(output)
     src = source
     if source.suffix.lower() == ".zip":
         td = tempfile.TemporaryDirectory(); temps.append(td)
@@ -8205,9 +8237,9 @@ def _copy_project_source(source: Path, output: Path) -> tuple[Path, list[tempfil
         roots = [p for p in Path(td.name).iterdir() if p.is_dir()]
         if len(roots) != 1:
             raise InputContractError("FAIL_ZIP_ROOT_COUNT", "project zip must expose one root")
-        src = roots[0]
+        src = _resolved_absolute_path(roots[0])
     output.mkdir(parents=True, exist_ok=True)
-    dst = output/src.name
+    dst = _resolved_absolute_path(output/src.name)
     if dst.exists():
         shutil.rmtree(dst)
     shutil.copytree(src, dst, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
@@ -8475,12 +8507,19 @@ def _apply_semantic_replacements_limited(project_root: Path, replacements: list[
     touched = []
     scanned = []
     text_repls = [(str(o), str(n)) for o,n in replacements if isinstance(o, str) and o]
-    root_paths = [r.resolve() for r in roots if r.exists()]
+    project_root = _resolved_absolute_path(project_root)
+    root_paths = []
+    for root in roots:
+        if not root.exists():
+            continue
+        resolved_root = _resolved_absolute_path(root)
+        _project_relative_path(project_root, resolved_root, purpose="semantic replacement root")
+        root_paths.append(resolved_root)
     for base in root_paths:
         for p in sorted(base.rglob("*")):
             if not p.is_file() or p.suffix.lower() not in {".json", ".md", ".txt", ".docx"}:
                 continue
-            rel = p.relative_to(project_root).as_posix()
+            rel = _project_relative_path(project_root, p, purpose="semantic replacement evidence path")
             scanned.append(rel)
             if p.suffix.lower() == ".json":
                 try:
@@ -8628,9 +8667,10 @@ def _project_active_files(project_root: Path) -> list[Path]:
 
 def _apply_semantic_replacements(project_root: Path, replacements: list[tuple[object, object]], *, age_context: tuple[int, int] | None = None, exclude_audit: bool = True) -> tuple[list[str], list[str]]:
     touched=[]; scanned=[]
+    project_root = _resolved_absolute_path(project_root)
     text_repls=[(str(o), str(n)) for o,n in replacements if isinstance(o, str) and o]
     for p in _project_active_files(project_root):
-        rel=p.relative_to(project_root).as_posix()
+        rel=_project_relative_path(project_root, p, purpose="semantic replacement evidence path")
         if exclude_audit and any(x in rel for x in ["PROJECT_UPDATE_LEDGER", "PROJECT_CHANGELOG"]):
             continue
         scanned.append(rel)
@@ -9978,7 +10018,7 @@ def main() -> int:
     mg=sub.add_parser("migrate-project"); mg.add_argument("--project",required=True); mg.add_argument("--target-engine",required=True); mg.add_argument("--output",required=True); _add_common_cli_output_flags(mg)
     ube=sub.add_parser("update-project-by-engine"); ube.add_argument("--project",required=True); ube.add_argument("--target-engine",required=True); ube.add_argument("--output",required=True); _add_common_cli_output_flags(ube)
     m=sub.add_parser("mutation-self-test"); m.add_argument("--work",required=True); _add_common_cli_output_flags(m)
-    args=ap.parse_args()
+    args=_normalize_related_cli_paths(ap.parse_args())
     out={"result":"FAIL","fail_codes":["FAIL_CLI_UNHANDLED_COMMAND"]}
     temp=None
     try:

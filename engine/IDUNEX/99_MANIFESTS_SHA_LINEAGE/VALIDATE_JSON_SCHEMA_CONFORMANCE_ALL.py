@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Strict JSON and schema conformance validator for IDUNEX P034."""
+from validator_subcheck_protocol import enforce_subcheck_invocation as _enforce_subcheck_invocation
+_enforce_subcheck_invocation(__file__, __name__)
+
 import json, sys, re
 from pathlib import Path
 sys.dont_write_bytecode = True
