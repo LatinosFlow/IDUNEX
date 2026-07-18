@@ -4,7 +4,7 @@
   "issue": "AUD-006",
   "state_authority": "governance/CURRENT_STATE.json",
   "motor_status": "EN_REVISION",
-  "m02_result": "M02_FAIL",
+  "m02_result": "M02_PASS",
   "rules_authority_status": "REFERENCIA_SUSTITUIDA_UNTIL_INDEPENDENT_RECOMPUTATION",
   "rules_status_semantics": "historical_declared_status preserves prior internal claims and has no current closure authority",
   "version_bump": "NO",

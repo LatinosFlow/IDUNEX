@@ -34,7 +34,7 @@
       "received_path": "00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md",
       "current_path": "00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md",
       "received_sha256": "20840c2f5fbae425d3365a91b550a7d098083c6c46edf6b18fcc55f42ac1be27",
-      "current_sha256": "2df7c9037bceb2bbaab3299e3a271dfe736004a366d36d61148f0ce722f508b3",
+      "current_sha256": "7842c6d7d0e6424600380a763805d52e597c40a6ff4debbdc48d3207c9e95a89",
       "current_bytes": 936
     },
     {
@@ -48,8 +48,8 @@
       "received_path": "00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json",
       "current_path": "00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json",
       "received_sha256": "ed6b6c418e6befacc8ea190983f2dcb7953d7485b407f4d6c9f3830a21b80483",
-      "current_sha256": "ea492d04c8d658c27e1c5841765a1c44077074855101a0dd1e4396238cbc48c6",
-      "current_bytes": 848
+      "current_sha256": "49b8c4e60517b07b848e6a4acde8c98c5391bd0cb4cef3b6b724d8377c743376",
+      "current_bytes": 851
     },
     {
       "received_path": "00_INDEX/00_CONTROL_CENTER/ROOT_DIRECTORY_CANONICAL_RENUMBERING.json",
@@ -69,29 +69,29 @@
       "received_path": "00_INDEX/00_CONTROL_CENTER/STATUS.md",
       "current_path": "00_INDEX/00_CONTROL_CENTER/STATUS.md",
       "received_sha256": "e48d6f1eca71553a7aaa4171332739da05115ce1c6f2c9226adec9625bebcff3",
-      "current_sha256": "a479af79bee29a0a8ff06f7605dcd4833f2112bd7c1f6fe39cd9ab1b9d1e7cd8",
-      "current_bytes": 606
+      "current_sha256": "a1588d7a3d45d4176114f845c7a21ecae3172d12242854e533cdb225ab8fdbc7",
+      "current_bytes": 614
     },
     {
       "received_path": "00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json",
       "current_path": "00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json",
       "received_sha256": "0edc02c4cd6f1394b1fa6bb735edc6585fa30060ed61f91e1ae061549d53917a",
-      "current_sha256": "8d688101048532aef11496ec61709f40798cfec0dbc6cc6009fffd37749d496b",
-      "current_bytes": 1271
+      "current_sha256": "0c9a4b5646d8f3c92cff5498d0da131d231c661d756ecf2648b3e35d438f1b62",
+      "current_bytes": 1277
     },
     {
       "received_path": "00_INDEX/ACTIVE_VERSION.txt",
       "current_path": "00_INDEX/ACTIVE_VERSION.txt",
       "received_sha256": "d36560984b1a137fbf113a3e348789527f6457cb7cdc1c0b98f842e48e9cb594",
-      "current_sha256": "801c1c3cc526200a5e4b4cc24d4f21b9e9d777ac213ac7606dd022b9f885b083",
-      "current_bytes": 717
+      "current_sha256": "bd5a23eb178bca3da217bcb57776b0d556ba48f76b328afdaa391a3d459202f3",
+      "current_bytes": 719
     },
     {
       "received_path": "00_INDEX/CHANGELOG.md",
       "current_path": "00_INDEX/CHANGELOG.md",
       "received_sha256": "abebb4e4c20a4df6aef8be8c6ebaad577a42d75a51da230c434878b920ce6222",
-      "current_sha256": "903ce64dfc2d130673b0c4964b8a6275f41bdbb79bb3260c10e7fdc491957c12",
-      "current_bytes": 2642
+      "current_sha256": "f536a5469ff00c6fa0241f0c56b2bd95210f917732f3c7172c5c3daae9388acf",
+      "current_bytes": 2637
     },
     {
       "received_path": "00_INDEX/FINAL_AUDIT_REPORT.md",
@@ -104,15 +104,15 @@
       "received_path": "00_INDEX/MASTER_GOVERNANCE_MAP.json",
       "current_path": "00_INDEX/MASTER_GOVERNANCE_MAP.json",
       "received_sha256": "e4ca3cc0ae8c15a041d2e23249b01f9187dbdc09d838b02002dea304a0035448",
-      "current_sha256": "54f986727f1aae3c0883d3d7499248250279b9a1c63c8bf0f1cd0228a4e3f972",
+      "current_sha256": "32e0ea4ffb313912fdc1a56b05f43475afa1a059caf94634e6e03cdee8518cbb",
       "current_bytes": 32352
     },
     {
       "received_path": "00_INDEX/RELEASE_CERTIFICATE.txt",
       "current_path": "00_INDEX/RELEASE_CERTIFICATE.txt",
       "received_sha256": "b5e1e65113967ac51ed1f7bb3e1ff5070d763fe7d3512068bac43b0e4cc97892",
-      "current_sha256": "31baec44d5e893637baff1fd8dc68e719a0a0a69c531f4b28748b974313127ac",
-      "current_bytes": 823
+      "current_sha256": "0cf20e192b13c08bd94d91214b943b16e6ce0f6db22acd446619ef3f80d26431",
+      "current_bytes": 834
     },
     {
       "received_path": "00_INDEX/SHA256SUMS_POINTER.txt",
@@ -307,7 +307,7 @@
       "received_path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
       "current_path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
       "received_sha256": "6e1993188d5fa8c28c0babd768b159d90b5d4f1fd6476fb3ab356a25dea116f9",
-      "current_sha256": "3e7df1611e566a255efad1de8c4579d32f33c3c903f808bf9c4d602ab83d88a6",
+      "current_sha256": "5100ff9619fcc3388ddc9ab35351f4470a2a624f07ac2d630fda1ba4bbcb3613",
       "current_bytes": 1159
     },
     {
@@ -608,8 +608,8 @@
       "received_path": "99_MANIFESTS_SHA_LINEAGE/FINAL_RELEASE_STATUS.json",
       "current_path": "99_MANIFESTS_SHA_LINEAGE/FINAL_RELEASE_STATUS.json",
       "received_sha256": "62bd2835a9993a062cff2eea0b1bf1b96471f2617792415b7319b627d5346a97",
-      "current_sha256": "abf89690ee145089cf494da3fd9579c9d80c396a97d86e0226e893de7c21df21",
-      "current_bytes": 3293
+      "current_sha256": "2e8ee116593a13646de67df61fa46ab492a073ac88df64ea841fe86a27fcd1ae",
+      "current_bytes": 3302
     },
     {
       "received_path": "99_MANIFESTS_SHA_LINEAGE/GLOBAL_ACTIVE_MATRIX_SEMANTIC_SCAN.json",
@@ -846,5 +846,5 @@
       "type": "python"
     }
   ],
-  "global_conclusion": "AUD003_BASELINE_SCOPE_RECOMPUTED_M02_REMAINS_FAIL"
+  "global_conclusion": "AUD003_BASELINE_SCOPE_RECOMPUTED_M02_ALIGNED_PASS_EN_REVISION"
 }

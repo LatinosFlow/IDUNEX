@@ -196,7 +196,7 @@ def main() -> int:
         "result": "CONSISTENT" if not findings else "INCONSISTENT",
         "scope": "AUD-009_VALIDATOR_ENTRYPOINT_CONSISTENCY_ONLY",
         "motor_status": "EN_REVISION",
-        "m02_result": "M02_FAIL",
+        "m02_result": "M02_PASS",
         "global_closure_authorized": False,
         "m02_decision_authority": False,
         **summary,

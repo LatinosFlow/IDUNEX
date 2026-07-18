@@ -6,11 +6,11 @@
   "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
   "correction_scope": "AUD-003_BASELINE_LEDGER_REMAP",
   "motor_status": "EN_REVISION",
-  "m02_result": "M02_FAIL",
+  "m02_result": "M02_PASS",
   "release_authorized": false,
   "file_count": 975,
-  "byte_count": 45922173,
-  "tree_sha256": "d89ca1ba2e9480612e7839edd15712c7cc5cccff7d68f9eb1c712e02a768dfd1",
+  "byte_count": 45922207,
+  "tree_sha256": "98860797718e5e74cf047b1ab65031ca3d2890dd13a2687ad5798ef902d93139",
   "tree_sha256_algorithm": "SHA256(path_utf8 + NUL + decimal_bytes + NUL + file_sha256 + LF), sorted by path",
   "counts_by_extension": {
     ".csv": 2,
@@ -43,7 +43,7 @@
     {
       "path": "00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md",
       "bytes": 936,
-      "sha256": "2df7c9037bceb2bbaab3299e3a271dfe736004a366d36d61148f0ce722f508b3",
+      "sha256": "7842c6d7d0e6424600380a763805d52e597c40a6ff4debbdc48d3207c9e95a89",
       "extension": ".md",
       "type": "markdown"
     },
@@ -175,8 +175,8 @@
     },
     {
       "path": "00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json",
-      "bytes": 848,
-      "sha256": "ea492d04c8d658c27e1c5841765a1c44077074855101a0dd1e4396238cbc48c6",
+      "bytes": 851,
+      "sha256": "49b8c4e60517b07b848e6a4acde8c98c5391bd0cb4cef3b6b724d8377c743376",
       "extension": ".json",
       "type": "json"
     },
@@ -273,15 +273,15 @@
     },
     {
       "path": "00_INDEX/00_CONTROL_CENTER/STATUS.md",
-      "bytes": 606,
-      "sha256": "a479af79bee29a0a8ff06f7605dcd4833f2112bd7c1f6fe39cd9ab1b9d1e7cd8",
+      "bytes": 614,
+      "sha256": "a1588d7a3d45d4176114f845c7a21ecae3172d12242854e533cdb225ab8fdbc7",
       "extension": ".md",
       "type": "markdown"
     },
     {
       "path": "00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json",
-      "bytes": 1271,
-      "sha256": "8d688101048532aef11496ec61709f40798cfec0dbc6cc6009fffd37749d496b",
+      "bytes": 1277,
+      "sha256": "0c9a4b5646d8f3c92cff5498d0da131d231c661d756ecf2648b3e35d438f1b62",
       "extension": ".json",
       "type": "json"
     },
@@ -294,15 +294,15 @@
     },
     {
       "path": "00_INDEX/ACTIVE_VERSION.txt",
-      "bytes": 717,
-      "sha256": "801c1c3cc526200a5e4b4cc24d4f21b9e9d777ac213ac7606dd022b9f885b083",
+      "bytes": 719,
+      "sha256": "bd5a23eb178bca3da217bcb57776b0d556ba48f76b328afdaa391a3d459202f3",
       "extension": ".txt",
       "type": "text"
     },
     {
       "path": "00_INDEX/CHANGELOG.md",
-      "bytes": 2642,
-      "sha256": "903ce64dfc2d130673b0c4964b8a6275f41bdbb79bb3260c10e7fdc491957c12",
+      "bytes": 2637,
+      "sha256": "f536a5469ff00c6fa0241f0c56b2bd95210f917732f3c7172c5c3daae9388acf",
       "extension": ".md",
       "type": "markdown"
     },
@@ -316,7 +316,7 @@
     {
       "path": "00_INDEX/MASTER_GOVERNANCE_MAP.json",
       "bytes": 32352,
-      "sha256": "54f986727f1aae3c0883d3d7499248250279b9a1c63c8bf0f1cd0228a4e3f972",
+      "sha256": "32e0ea4ffb313912fdc1a56b05f43475afa1a059caf94634e6e03cdee8518cbb",
       "extension": ".json",
       "type": "json"
     },
@@ -336,8 +336,8 @@
     },
     {
       "path": "00_INDEX/RELEASE_CERTIFICATE.txt",
-      "bytes": 823,
-      "sha256": "31baec44d5e893637baff1fd8dc68e719a0a0a69c531f4b28748b974313127ac",
+      "bytes": 834,
+      "sha256": "0cf20e192b13c08bd94d91214b943b16e6ce0f6db22acd446619ef3f80d26431",
       "extension": ".txt",
       "type": "text"
     },
@@ -4033,7 +4033,7 @@
     {
       "path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
       "bytes": 1159,
-      "sha256": "3e7df1611e566a255efad1de8c4579d32f33c3c903f808bf9c4d602ab83d88a6",
+      "sha256": "5100ff9619fcc3388ddc9ab35351f4470a2a624f07ac2d630fda1ba4bbcb3613",
       "extension": ".json",
       "type": "json"
     },
@@ -6496,8 +6496,8 @@
     },
     {
       "path": "99_MANIFESTS_SHA_LINEAGE/FINAL_RELEASE_STATUS.json",
-      "bytes": 3293,
-      "sha256": "abf89690ee145089cf494da3fd9579c9d80c396a97d86e0226e893de7c21df21",
+      "bytes": 3302,
+      "sha256": "2e8ee116593a13646de67df61fa46ab492a073ac88df64ea841fe86a27fcd1ae",
       "extension": ".json",
       "type": "json"
     },

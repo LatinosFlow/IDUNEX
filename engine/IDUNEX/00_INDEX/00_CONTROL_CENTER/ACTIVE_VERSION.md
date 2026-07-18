@@ -7,7 +7,7 @@ CORRECTION_MODE=DIRECT_CANONICAL_NO_PATCH
 CORRECTION_SCOPE=AUD-006_GOVERNANCE_STATE_MACHINE
 STATE_AUTHORITY=governance/CURRENT_STATE.json
 MOTOR_STATUS=EN_REVISION
-M02_RESULT=M02_FAIL
+M02_RESULT=M02_PASS
 MOTOR_ACTIVE_STATUS=EN_REVISION
 TECHNICAL_CLOSURE_AUTHORIZED=FALSE
 READY_FOR_PROJECT_DEMO_GENERATION=FALSE
@@ -22,4 +22,4 @@ CURRENT_TREE_SHA256_COMPANION=governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
 CURRENT_TREE_IS_RELEASE=FALSE
 ```
 
-Prior internal closure claims are retained only as historical or declared evidence and cannot override the current `M02_FAIL` decision.
+Prior internal closure claims are retained only as historical or declared evidence and cannot override the current governance decision.

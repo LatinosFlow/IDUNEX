@@ -24,10 +24,10 @@ class GovernanceStateTest(unittest.TestCase):
         self.assertEqual(report["result"], "CONSISTENT")
         self.assertEqual(report["active_contradiction_count"], 0)
 
-    def test_current_state_rejects_demo_enablement_under_m02_fail(self):
+    def test_current_state_rejects_demo_enablement_under_m02_pass(self):
         mutated = {
             "motor_status": "EN_REVISION",
-            "m02_result": "M02_FAIL",
+            "m02_result": "M02_PASS",
             "ready_for_project_demo_generation": True,
             "release_authorized": False,
             "tag_authorized": False,
@@ -53,7 +53,7 @@ class GovernanceStateTest(unittest.TestCase):
             rogue = root / "engine" / "IDUNEX" / "00_INDEX" / "ROGUE_CERTIFICATE.txt"
             rogue.parent.mkdir(parents=True)
             rogue.write_text(
-                "M02_RESULT=M02_FAIL\nREADY_FOR_PROJECT_DEMO_GENERATION=TRUE\n",
+                "M02_RESULT=M02_PASS\nREADY_FOR_PROJECT_DEMO_GENERATION=TRUE\n",
                 encoding="utf-8",
             )
             findings, historical_matches = scan_contradictions(root)

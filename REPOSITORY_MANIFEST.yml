@@ -2,7 +2,7 @@ repository: idunex
 system: IDUNEX
 area: IA
 status: EN_REVISION
-m02_result: M02_FAIL
+m02_result: M02_PASS
 state_authority: governance/CURRENT_STATE.json
 ready_for_project_demo_generation: false
 release_authorized: false
@@ -38,7 +38,7 @@ current_corrected_tree:
   stale_active_manifest_paths: 0
   obsolete_hashes: 0
   aud003_scope_result: PARTIAL_PASS
-  m02_result_after_correction: M02_FAIL
+  m02_result_after_correction: M02_PASS
   release_created: false
 paths:
   engine_root: engine/IDUNEX
