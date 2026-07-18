@@ -1,6 +1,6 @@
 {
   "authority_status": "REFERENCIA_HISTORICA_SUSTITUIDA",
-  "superseded_by": "AUD-006_M02_FAIL",
+  "superseded_by": "AUD-021_M02_PASS",
   "motor_status": "EN_REVISION",
   "m02_result": "M02_PASS",
   "ready_for_project_demo_generation": false,

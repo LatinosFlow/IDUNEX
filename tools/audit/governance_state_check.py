@@ -18,6 +18,8 @@ STATE_PATH = Path("governance/CURRENT_STATE.json")
 
 JSON_STATE_SURFACES = (
     STATE_PATH,
+    # Historical non-authority JSON surfaces are intentionally excluded from
+    # active parity checks to keep this scanner scoped to current authority.
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json"),
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json"),
     Path("engine/IDUNEX/00_INDEX/MASTER_GOVERNANCE_MAP.json"),
