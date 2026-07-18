@@ -18,8 +18,8 @@ STATE_PATH = Path("governance/CURRENT_STATE.json")
 
 JSON_STATE_SURFACES = (
     STATE_PATH,
-    # Historical non-authority JSON surfaces are intentionally excluded from
-    # active parity checks to keep this scanner scoped to current authority.
+    # Historical non-authority JSON surfaces (14_HISTORICAL_NON_AUTHORITY/**)
+    # are intentionally excluded to keep this scanner scoped to active authority.
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json"),
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json"),
     Path("engine/IDUNEX/00_INDEX/MASTER_GOVERNANCE_MAP.json"),
@@ -144,7 +144,7 @@ def scan_contradictions(root: Path) -> tuple[list[str], int]:
             continue
 
         marked_reference = any(marker in text for marker in REFERENCE_MARKERS)
-        has_current_m02 = bool(re.search(r"M02_(?:FAIL|PASS)", text))
+        has_m02_marker = bool(re.search(r"M02_(?:FAIL|PASS)", text))
         has_demo_false = bool(
             re.search(
                 r"READY_FOR_PROJECT_DEMO_GENERATION[\"\s]*[:=]\s*(?:FALSE|false)",
@@ -153,7 +153,7 @@ def scan_contradictions(root: Path) -> tuple[list[str], int]:
             or re.search(r'"ready_for_project_demo_generation"\s*:\s*false', text)
         )
 
-        if marked_reference and has_current_m02 and has_demo_false:
+        if marked_reference and has_m02_marker and has_demo_false:
             historical_reference_matches += len(matches)
             continue
 
