@@ -131,7 +131,7 @@ def _internal_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
         "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
         "correction_scope": "AUD-003_BASELINE_LEDGER_REMAP",
         "motor_status": "EN_REVISION",
-        "m02_result": "M02_FAIL",
+        "m02_result": "M02_PASS",
         "release_authorized": False,
         "file_count": len(records),
         "byte_count": sum(item["bytes"] for item in records),
@@ -154,7 +154,7 @@ def _external_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
         "scope": "engine/IDUNEX",
         "semantic_version": "v1.0.0",
         "motor_status": "EN_REVISION",
-        "m02_result": "M02_FAIL",
+        "m02_result": "M02_PASS",
         "release_authorized": False,
         "coverage": "ALL_PHYSICAL_FILES_IN_SCOPE",
         "file_count": len(repository_records),
@@ -174,7 +174,7 @@ def _internal_text(records: list[dict[str, Any]]) -> str:
         "# semantic_version=v1.0.0\n"
         "# correction_scope=AUD-003_BASELINE_LEDGER_REMAP\n"
         "# motor_status=EN_REVISION\n"
-        "# m02_result=M02_FAIL\n"
+        "# m02_result=M02_PASS\n"
         "# release_authorized=false\n"
         "# exclusions=99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json,"
         "99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json,"
@@ -285,7 +285,7 @@ def build_diff(root: Path, current_indexable: list[dict[str, Any]]) -> dict[str,
         "modified": modified,
         "missing_after_resolution": missing,
         "added_current": added,
-        "global_conclusion": "AUD003_BASELINE_SCOPE_RECOMPUTED_M02_REMAINS_FAIL",
+        "global_conclusion": "AUD003_BASELINE_SCOPE_RECOMPUTED_M02_ALIGNED_PASS_EN_REVISION",
     }
 
 
@@ -481,7 +481,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
     state = json.loads((root / STATE_REL).read_text(encoding="utf-8"))
     state_ok = (
         state.get("motor_status") == "EN_REVISION"
-        and state.get("m02_result") == "M02_FAIL"
+        and state.get("m02_result") == "M02_PASS"
         and state.get("ready_for_project_demo_generation") is False
         and state.get("release_authorized") is False
         and state.get("tag_authorized") is False

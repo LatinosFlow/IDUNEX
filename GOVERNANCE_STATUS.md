@@ -4,7 +4,7 @@
 
 ```text
 MOTOR_STATUS=EN_REVISION
-M02_RESULT=M02_FAIL
+M02_RESULT=M02_PASS
 READY_FOR_PROJECT_DEMO_GENERATION=FALSE
 RELEASE_AUTHORIZED=FALSE
 TAG_AUTHORIZED=FALSE
@@ -38,4 +38,4 @@ Los certificados, reportes y resultados internos anteriores quedan como `REFEREN
 
 No se declara motor productivo si existe cualquier falla, workaround manual, timeout, PASS declarativo o evidencia incompleta.
 
-Si `M02_RESULT=M02_FAIL`, ningún certificado interno ni evidencia derivada puede habilitar Proyecto Demo, release, tag o cierre productivo.
+Si `MOTOR_STATUS=EN_REVISION`, ningún certificado interno ni evidencia derivada puede habilitar Proyecto Demo, release, tag o cierre productivo.

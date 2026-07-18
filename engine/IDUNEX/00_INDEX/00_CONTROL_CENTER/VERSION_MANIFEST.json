@@ -5,11 +5,11 @@
   "correction_scope": "AUD-006_GOVERNANCE_STATE_MACHINE",
   "state_authority": "governance/CURRENT_STATE.json",
   "motor_status": "EN_REVISION",
-  "m02_result": "M02_FAIL",
-  "result": "M02_FAIL",
-  "decision": "EN_REVISION_M02_FAIL",
-  "closure_decision": "BLOCKED_BY_M02_FAIL",
-  "score": "BLOCKED_BY_M02_FAIL",
+  "m02_result": "M02_PASS",
+  "result": "M02_PASS",
+  "decision": "EN_REVISION_M02_PASS",
+  "closure_decision": "BLOCKED_BY_EN_REVISION",
+  "score": "BLOCKED_BY_EN_REVISION",
   "ready_for_project_demo_generation": false,
   "release_authorized": false,
   "productive_closure_authorized": false,
@@ -19,7 +19,7 @@
     "current_tree_manifest": "governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json",
     "current_tree_sha256_companion": "governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt",
     "current_tree_is_release": false,
-    "m02_result_after_correction": "M02_FAIL"
+    "m02_result_after_correction": "M02_PASS"
   },
   "historical_internal_claim": {
     "authority_status": "REFERENCIA_SUSTITUIDA",

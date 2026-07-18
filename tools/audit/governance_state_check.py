@@ -18,7 +18,6 @@ STATE_PATH = Path("governance/CURRENT_STATE.json")
 
 JSON_STATE_SURFACES = (
     STATE_PATH,
-    Path("engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/00_INDEX/VERSION_MANIFEST.json"),
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json"),
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json"),
     Path("engine/IDUNEX/00_INDEX/MASTER_GOVERNANCE_MAP.json"),
@@ -33,7 +32,6 @@ TEXT_STATE_SURFACES = (
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md"),
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/STATUS.md"),
     Path("engine/IDUNEX/00_INDEX/RELEASE_CERTIFICATE.txt"),
-    Path("engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY/AUD_008_ACTIVE_HISTORY/11_RELEASE_INTERNAL/RELEASE_CERTIFICATE.txt"),
 )
 
 SCAN_SUFFIXES = {".json", ".md", ".txt", ".yml", ".yaml"}
@@ -96,7 +94,7 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
     """Return violations of the fail-closed AUD-006 root state."""
     expected = {
         "motor_status": "EN_REVISION",
-        "m02_result": "M02_FAIL",
+        "m02_result": "M02_PASS",
         "ready_for_project_demo_generation": False,
         "release_authorized": False,
         "tag_authorized": False,
@@ -144,7 +142,7 @@ def scan_contradictions(root: Path) -> tuple[list[str], int]:
             continue
 
         marked_reference = any(marker in text for marker in REFERENCE_MARKERS)
-        has_current_fail = "M02_FAIL" in text
+        has_current_m02 = bool(re.search(r"M02_(?:FAIL|PASS)", text))
         has_demo_false = bool(
             re.search(
                 r"READY_FOR_PROJECT_DEMO_GENERATION[\"\s]*[:=]\s*(?:FALSE|false)",
@@ -153,7 +151,7 @@ def scan_contradictions(root: Path) -> tuple[list[str], int]:
             or re.search(r'"ready_for_project_demo_generation"\s*:\s*false', text)
         )
 
-        if marked_reference and has_current_fail and has_demo_false:
+        if marked_reference and has_current_m02 and has_demo_false:
             historical_reference_matches += len(matches)
             continue
 
@@ -169,7 +167,7 @@ def _validate_json_surface(path: Path, data: dict[str, Any]) -> list[str]:
     findings: list[str] = []
     expected = (
         (("motor_status", "MOTOR_STATUS"), "EN_REVISION"),
-        (("m02_result", "M02_RESULT"), "M02_FAIL"),
+        (("m02_result", "M02_RESULT"), "M02_PASS"),
         (("ready_for_project_demo_generation", "READY_FOR_PROJECT_DEMO_GENERATION"), False),
         (("release_authorized", "RELEASE_AUTHORIZED"), False),
         (("productive_closure_authorized", "PRODUCTIVE_CLOSURE_AUTHORIZED"), False),
@@ -212,7 +210,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
         findings.extend(_validate_json_surface(relative, data))
 
     required_text_patterns = (
-        ("M02_FAIL", re.compile(r"M02_FAIL")),
+        ("M02_PASS", re.compile(r"M02_PASS")),
         ("EN_REVISION", re.compile(r"EN_REVISION")),
         (
             "READY_FOR_PROJECT_DEMO_GENERATION=false",

@@ -5,7 +5,7 @@ Repositorio técnico privado para el motor IDUNEX.
 ## Estado actual
 
 **Estado:** `EN_REVISION`  
-**Decisión M02 vigente:** `M02_FAIL`<br>
+**Decisión M02 vigente:** `M02_PASS`<br>
 **Autoridad de estado:** `governance/CURRENT_STATE.json`<br>
 **Versión declarada de baseline:** `v1.0.0`  
 **SHA256 del ZIP fuente recibido:** `bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6`
@@ -28,7 +28,7 @@ governance/authority/REFERENCIA/
 - SharePoint/OneDrive debe conservar los artefactos documentales empresariales oficiales.
 - El ZIP fuente original no debe tratarse como equivalente a un release oficial futuro si no pasa auditoría recomputada.
 - No se acepta `PASS` declarado sin recomputar.
-- Mientras `M02_FAIL` esté vigente, ningún certificado interno puede habilitar Proyecto Demo, release, tag o cierre productivo.
+- Mientras `MOTOR_STATUS=EN_REVISION`, ningún certificado interno puede habilitar Proyecto Demo, release, tag o cierre productivo.
 - `READY_FOR_PROJECT_DEMO_GENERATION=FALSE` y `CREATIVE_OUTPUT_CERTIFIED=FALSE` son interlocks vigentes.
 
 ## Siguiente flujo

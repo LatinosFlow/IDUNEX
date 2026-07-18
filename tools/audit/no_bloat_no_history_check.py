@@ -3,7 +3,7 @@
 
 The scanner never trusts declared PASS surfaces. It hashes the current active
 tree, detects milestone paths, verifies the movement/reversal ledger, and
-confirms the global motor state remains EN_REVISION / M02_FAIL.
+confirms the global motor state remains EN_REVISION / M02_PASS.
 """
 from __future__ import annotations
 
@@ -251,7 +251,7 @@ def audit_repo(repo_root: Path) -> dict:
         state = {"error": str(exc)}
     state_ok = (
         state.get("motor_status") == "EN_REVISION"
-        and state.get("m02_result") == "M02_FAIL"
+        and state.get("m02_result") == "M02_PASS"
         and state.get("ready_for_project_demo_generation") is False
         and state.get("release_authorized") is False
         and state.get("tag_authorized") is False

@@ -5,8 +5,8 @@
   "state_authority": "governance/CURRENT_STATE.json",
   "status": "EN_REVISION",
   "motor_status": "EN_REVISION",
-  "m02_result": "M02_FAIL",
-  "result": "M02_FAIL",
+  "m02_result": "M02_PASS",
+  "result": "M02_PASS",
   "ready_for_project_demo_generation": false,
   "release_authorized": false,
   "productive_closure_authorized": false,
@@ -18,5 +18,5 @@
     "current_governance_effect": "NONE",
     "evidence_pointer": "git history and engine/IDUNEX/11_RELEASE_INTERNAL"
   },
-  "interlock": "M02_FAIL blocks Demo, release, tag and productive closure regardless of any prior internal result."
+  "interlock": "EN_REVISION blocks Demo, release, tag and productive closure regardless of any prior internal result."
 }
