@@ -15,7 +15,15 @@
     "evidence_lineage",
     "companion_forensic_pointers",
     "internal_release_certificate",
-    "final_machine_audit_summary_no_placeholders"
+    "final_machine_audit_summary_no_placeholders",
+    "MODEL_REGISTRY.json",
+    "NO_DRIFT_LEDGERS.json",
+    "AGENT_LOAD_PROTOCOL_per_agent",
+    "AGENT_LOAD_AUDIT_CHECKLIST_per_agent",
+    "agent_load_required_surfaces_10_of_10_per_agent",
+    "external_artifacts_5_of_5"
   ],
-  "creative_certification_without_asset_real": false
+  "creative_certification_without_asset_real": false,
+  "authority": "engine/IDUNEX/12_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json",
+  "implicit_equivalence_allowed": false
 }

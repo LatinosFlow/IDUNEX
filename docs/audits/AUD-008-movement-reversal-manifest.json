@@ -22,11 +22,11 @@
     },
     "after": {
       "active_file_count": 749,
-      "active_bytes": 18652309,
+      "active_bytes": 18686062,
       "duplicates": {
         "group_count": 2,
         "file_count": 6,
-        "redundant_bytes": 931595,
+        "redundant_bytes": 931598,
         "justified_group_count": 2,
         "unjustified_group_count": 0
       },
@@ -1422,16 +1422,16 @@
       "classification": "ACTIVE_AUTHORITY",
       "origin": "03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_OUTPUT_CONTRACT.json",
       "destination": "03_PROJECT_FACTORY/09_PROJECT_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json",
-      "bytes": 613,
+      "bytes": 961,
       "sha256_before": "41293d6cb547541303d1505a1493b731f040504d1cf1264698a6c48266e34ef1",
       "reason": "replace milestone path identity with a stable semantic path",
       "impact": "authority/evidence retained with stable path identity; derived references rewritten",
       "authority_after": "ACTIVE",
-      "sha256_after": "41293d6cb547541303d1505a1493b731f040504d1cf1264698a6c48266e34ef1",
+      "sha256_after": "c7a583baec25f01738079bf204d645b5b719a1539eb210f41728a145f1b07a5e",
       "reverse": {
         "from": "03_PROJECT_FACTORY/09_PROJECT_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json",
         "to": "03_PROJECT_FACTORY/09_H281_H310_PRO_ba690755/PROJECT_OUTPUT_CONTRACT.json",
-        "expected_sha256": "41293d6cb547541303d1505a1493b731f040504d1cf1264698a6c48266e34ef1"
+        "expected_sha256": "c7a583baec25f01738079bf204d645b5b719a1539eb210f41728a145f1b07a5e"
       }
     },
     {

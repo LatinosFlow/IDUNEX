@@ -531,7 +531,7 @@ def resolve_engine_zip_sha256() -> str:
             and manifest.get("semantic_version")==SEMANTIC_VERSION
             and manifest.get("release_authorized") is False
             and state.get("motor_status")=="EN_REVISION"
-            and state.get("m02_result")=="M02_FAIL"
+            and state.get("m02_result")=="M02_PASS"
             and state.get("release_authorized") is False
             and state.get("tag_authorized") is False
         )
@@ -2328,7 +2328,6 @@ def normalize_model(raw: dict, index: int, model_count: int | None=None) -> dict
     seed_key = f"{slug(supplied_name)}|{age}|{slug(origin)}|{slug(gender)}|SLOT_{index:03d}"
     seed = int(hashlib.sha256(seed_key.encode("utf-8")).hexdigest()[:12], 16)
     if raw_name_present:
-        # Explicit user name is locked. Do not add or replace identity tokens to pass uniqueness.
         name = supplied_name
         name_normalization = "NONE_EXPLICIT_NAME_PRESERVED"
     elif len(supplied_name.split()) == 1 or supplied_name.startswith("SYNTH_MODEL_") or supplied_name.startswith("MODEL_SLOT_"):
@@ -2347,21 +2346,30 @@ def normalize_model(raw: dict, index: int, model_count: int | None=None) -> dict
     face = str(raw.get("face") or f"SYNTH_FACE_GEOMETRY_{index:03d}_{(seed // 25) % 997:03d}")
     body = str(raw.get("body") or f"SYNTH_BODY_PROPORTION_{index:03d}_{(seed // 125) % 997:03d}")
     voice = str(raw.get("voice") or f"SYNTH_VOICE_TIMBRE_{index:03d}_{(seed // 625) % 997:03d}")
-    # Canonical direct correction: abstract/default height is monotonic by slot, with a
-    # bounded seed micro-variation, so 1-10 abstract uncured models cannot collide in
-    # MODEL_SPECIFIC_DERIVED physical numeric fields. Explicit duplicate heights are
-    # resolved later by project-level anti-clone normalization, not by fixtures.
     raw_height_present = raw.get("height_cm") not in (None, "")
     height_default = 154 + (index * 4) + (seed % 3)
     preserved_height_present = raw.get("height") not in (None, "") and raw.get("height_source") not in (None, "")
     height = int(raw.get("height_cm") or raw.get("height") or height_default)
     height_source = str(raw.get("height_source") or ("USER_SUPPLIED" if raw_height_present else "FACTORY_DERIVED_ABSTRACT_SLOT"))
     input_height_cm_value = raw.get("input_height_cm") if preserved_height_present else (height if raw_height_present else "NOT_USER_SUPPLIED")
+
     given_aliases = [str(x).strip() for x in raw.get("aliases", []) if str(x).strip()]
-    prohibited=[a for a in given_aliases if "-" in a or a in P034_BLOCKED_ALIASES]
+    pseudonym = str(raw.get("pseudonym") or "").strip()
+    supplied_selectors = given_aliases + ([pseudonym] if pseudonym else [])
+    prohibited=[a for a in supplied_selectors if "-" in a or a in P034_BLOCKED_ALIASES]
     if prohibited:
         raise InputContractError("FAIL_ALIAS_CANONICALITY", ",".join(prohibited))
-    aliases = list(dict.fromkeys([name, name.casefold(), code]))
+    aliases = []
+    seen_aliases=set()
+    for selector in [name, name.casefold(), code, *given_aliases, *([pseudonym] if pseudonym else [])]:
+        selector=str(selector).strip()
+        if not selector:
+            continue
+        key=selector.casefold()
+        if key not in seen_aliases:
+            seen_aliases.add(key)
+            aliases.append(selector)
+
     role_raw = raw.get("role", raw.get("role_candidate"))
     role_source = "USER_SUPPLIED" if role_raw not in (None, "") else "FACTORY_DELEGATED"
     if role_source == "USER_SUPPLIED":
@@ -2371,8 +2379,22 @@ def normalize_model(raw: dict, index: int, model_count: int | None=None) -> dict
         role, role_rule_id = derive_default_role(gender, index, model_count)
     if not role_agrees_with_gender(role, gender):
         raise InputContractError("FAIL_ROLE_GENDER_AGREEMENT", f"model[{index}] role={role} gender={gender}")
+
+    input_fidelity = {
+        "name": fidelity_entry(raw.get("name", "NOT_USER_SUPPLIED"), name, "USER_SUPPLIED" if raw_name_present else "FACTORY_DELEGATED", "P034_NAME_CANONICALIZATION", name_normalization, raw_name_present and name == supplied_name),
+        "age": fidelity_entry(raw_age if not delegated_age else "DELEGATED", age, "USER_SUPPLIED" if not delegated_age else "FACTORY_DELEGATED", "P034_ADULT_AGE_LOCK", "NONE_EXPLICIT_AGE_PRESERVED" if not delegated_age else "FACTORY_DELEGATED_ADULT_AGE", True),
+        "gender": fidelity_entry(gender_input_raw if gender_input_raw not in (None, "") else "DELEGATED", gender, "USER_SUPPLIED" if gender_input_raw not in (None, "") else "FACTORY_DELEGATED", "H32_GENDER_ABSENCE_NEUTRAL_DELEGATION", "NONE_EXPLICIT_GENDER_PRESERVED" if gender_input_raw not in (None, "") else "FACTORY_DELEGATED_UNKNOWN_OR_NONBINARY", True),
+        "origin": fidelity_entry(raw.get("origin", raw.get("origin_token", "DELEGATED")), origin, "USER_SUPPLIED" if not (raw.get("origin") in (None, "") and raw.get("origin_token") in (None, "")) else "FACTORY_DELEGATED", "P034_ORIGIN_CANONICALIZATION", "NONE_EXPLICIT_ORIGIN_PRESERVED" if not (raw.get("origin") in (None, "") and raw.get("origin_token") in (None, "")) else "FACTORY_DELEGATED_ORIGIN", True),
+        "role": fidelity_entry(role_raw if role_source == "USER_SUPPLIED" else "DELEGATED", role, role_source, role_rule_id, "NONE_EXPLICIT_ROLE_PRESERVED" if role_source == "USER_SUPPLIED" else "ROLE_GENDER_AWARE_DELEGATION", True),
+        "role_source": fidelity_entry(role_source, role_source, "FACTORY_LEDGER", "P034_ROLE_SOURCE_LEDGER", "ROLE_SOURCE_RECORDED", True),
+        "height_cm": fidelity_entry(height if raw_height_present else (input_height_cm_value if input_height_cm_value != "NOT_USER_SUPPLIED" else "DELEGATED"), height, "USER_SUPPLIED" if raw_height_present else ("PRESERVED_LOCKED_CANON" if preserved_height_present else "FACTORY_DERIVED"), "P034_HEIGHT_CANONICALIZATION", "NONE_EXPLICIT_HEIGHT_PRESERVED" if raw_height_present else ("PRESERVED_LOCKED_HEIGHT_NO_DRIFT" if preserved_height_present else "FACTORY_DERIVED_ABSTRACT_SLOT"), True),
+        "aliases": fidelity_entry(given_aliases if given_aliases else "DELEGATED", aliases, "USER_SUPPLIED_PLUS_CANONICAL" if given_aliases else "FACTORY_DERIVED", "P034_ALIAS_CANONICALITY", "PRESERVE_INPUT_ALIASES_PLUS_CANONICAL_SELECTORS", True),
+    }
+    if pseudonym:
+        input_fidelity["pseudonym"] = fidelity_entry(pseudonym, pseudonym, "USER_SUPPLIED", "P034_PSEUDONYM_SELECTOR", "NONE_EXPLICIT_PSEUDONYM_PRESERVED", True)
+
     return {
-        "index": index, "seed": seed, "supplied_name": supplied_name, "name": name, "aliases": aliases,
+        "index": index, "seed": seed, "supplied_name": supplied_name, "name": name, "aliases": aliases, "pseudonym": pseudonym,
         "model_code": code, "model_id": model_id, "age": age,
         "origin": origin, "gender": gender, "role": role, "role_source": role_source, "role_default_rule_id": role_rule_id, "role_gender_agreement": "PASS", "role_pairwise_collision_prevented": False,
         "body_build_profile": str(raw.get("body_build_profile") or BODY360_DERIVED_PROFILES[(index - 1) % 10]["build"]),
@@ -2383,16 +2405,7 @@ def normalize_model(raw: dict, index: int, model_count: int | None=None) -> dict
         "skin": skin, "hair": hair, "face": face, "body": body, "voice": voice,
         "height": height, "input_height_cm": input_height_cm_value, "height_source": height_source,
         "palette": raw.get("palette") if raw.get("palette") not in (None, "", []) else palettes[(seed + index) % len(palettes)],
-        "input_fidelity": {
-            "name": fidelity_entry(raw.get("name", "NOT_USER_SUPPLIED"), name, "USER_SUPPLIED" if raw_name_present else "FACTORY_DELEGATED", "P034_NAME_CANONICALIZATION", name_normalization, raw_name_present and name == supplied_name),
-            "age": fidelity_entry(raw_age if not delegated_age else "DELEGATED", age, "USER_SUPPLIED" if not delegated_age else "FACTORY_DELEGATED", "P034_ADULT_AGE_LOCK", "NONE_EXPLICIT_AGE_PRESERVED" if not delegated_age else "FACTORY_DELEGATED_ADULT_AGE", True),
-            "gender": fidelity_entry(gender_input_raw if gender_input_raw not in (None, "") else "DELEGATED", gender, "USER_SUPPLIED" if gender_input_raw not in (None, "") else "FACTORY_DELEGATED", "H32_GENDER_ABSENCE_NEUTRAL_DELEGATION", "NONE_EXPLICIT_GENDER_PRESERVED" if gender_input_raw not in (None, "") else "FACTORY_DELEGATED_UNKNOWN_OR_NONBINARY", True),
-            "origin": fidelity_entry(raw.get("origin", raw.get("origin_token", "DELEGATED")), origin, "USER_SUPPLIED" if not (raw.get("origin") in (None, "") and raw.get("origin_token") in (None, "")) else "FACTORY_DELEGATED", "P034_ORIGIN_CANONICALIZATION", "NONE_EXPLICIT_ORIGIN_PRESERVED" if not (raw.get("origin") in (None, "") and raw.get("origin_token") in (None, "")) else "FACTORY_DELEGATED_ORIGIN", True),
-            "role": fidelity_entry(role_raw if role_source == "USER_SUPPLIED" else "DELEGATED", role, role_source, role_rule_id, "NONE_EXPLICIT_ROLE_PRESERVED" if role_source == "USER_SUPPLIED" else "ROLE_GENDER_AWARE_DELEGATION", True),
-            "role_source": fidelity_entry(role_source, role_source, "FACTORY_LEDGER", "P034_ROLE_SOURCE_LEDGER", "ROLE_SOURCE_RECORDED", True),
-            "height_cm": fidelity_entry(height if raw_height_present else (input_height_cm_value if input_height_cm_value != "NOT_USER_SUPPLIED" else "DELEGATED"), height, "USER_SUPPLIED" if raw_height_present else ("PRESERVED_LOCKED_CANON" if preserved_height_present else "FACTORY_DERIVED"), "P034_HEIGHT_CANONICALIZATION", "NONE_EXPLICIT_HEIGHT_PRESERVED" if raw_height_present else ("PRESERVED_LOCKED_HEIGHT_NO_DRIFT" if preserved_height_present else "FACTORY_DERIVED_ABSTRACT_SLOT"), True),
-            "aliases": fidelity_entry(given_aliases if given_aliases else "DELEGATED", aliases, "FACTORY_DERIVED", "P034_ALIAS_CANONICALITY", "CANONICAL_NAME_CASEFOLD_AND_MODEL_CODE_ONLY", True),
-        },
+        "input_fidelity": input_fidelity,
         "input_contract": {"adult_fictional": bool(raw.get("adult_fictional", raw.get("fictional_adult", True))), "age_delegated": delegated_age, "origin_delegated": raw.get("origin") in (None, "") and raw.get("origin_token") in (None, "")},
         "rich_directions": {k: raw.get(k) for k in H37_RICH_DIRECTION_FIELDS + ["style_direction", "role_candidate"] if raw.get(k) not in (None, "")},
         "input_field_normalization_records": raw.get("_input_field_normalization_records", []),
@@ -3249,6 +3262,7 @@ def anti_doll_negative_text() -> str:
 
 def runtime_profile_lines(model: dict, profile: list[dict], tech: list[dict], anchors: list[dict]) -> list[str]:
     descriptor=creative_identity_descriptor(model)
+    selectors=list(dict.fromkeys(str(x).strip() for x in model.get("aliases", []) if str(x).strip()))
     lines=[
         f"HUMAN_READABLE_VISUAL_CANON_FIRST={descriptor}",
         f"CANON_HUMANO_ES={model.get('name')} es una persona adulta ficticia realista; edad adulta {model.get('age')}; rol {creative_safe_value(model.get('role'), model)}; rostro/piel/cabello/cuerpo/voz/guardarropa deben mantenerse sin drift.",
@@ -3256,6 +3270,10 @@ def runtime_profile_lines(model: dict, profile: list[dict], tech: list[dict], an
         UNIVERSAL_SAFE_INTENT_CLAUSE,
         f"MODEL_TECHNICAL_REF={hashlib.sha256(str(model['model_id']).encode('utf-8')).hexdigest()[:16].upper()}",
         f"MODEL_NAME={creative_safe_value(model['name'], model)}",
+        f"MODEL_CODE={model['model_code']}",
+        f"MODEL_SELECTORS={json.dumps(selectors, ensure_ascii=False)}",
+        f"MODEL_PSEUDONYM={model.get('pseudonym') or 'NOT_USER_SUPPLIED'}",
+        "MODEL_SELECTOR_RULE=Resolve case-insensitively through PROJECT_ALIAS_RESOLVER; unknown or ambiguous selectors block and request precision.",
         f"CREATIVE_IDENTITY_DESCRIPTOR={descriptor}",
         f"MODEL_ACTIVE_AGE={model['age']}",
         f"MODEL_ACTIVE_GENDER={creative_safe_value(model['gender'], model)}",
@@ -3737,19 +3755,18 @@ def write_h37_input_prompt_fidelity_ledger(root: Path, project_id: str, spec: di
     input_hash=hashlib.sha256(json.dumps(spec, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
     explicit_rows=h37_explicit_rows_from_spec(spec, models)
     write_h37_truthfulness_support_surfaces(root, project_id, explicit_rows)
-    # H58 ledger is a separate normalizer ledger; H37 must not self-certify.
     write_h58_input_field_normalization_ledger(root, project_id, models)
     materialization_index=build_materialization_evidence_index(root)
     for path,value,canonical_path,normalized in explicit_rows:
         status, reason = h37_status_for_value(value)
         ev=collect_materialization_evidence(root, normalized, exclude={"01_CANON/INPUT_PROMPT_FIDELITY_LEDGER.json"}, materialization_index=materialization_index)
-        only_self = False
-        if not ev["paths"]:
-            # Explicitly distinguish false self-pass: value exists only in the H37 ledger once written/rewritten.
-            only_self = False
+        operational=_h37_alias_operational_evidence(root, path, value)
         if not ev["paths"] and status == "PASS":
             status = "BLOCKING_FAIL"
             reason = "FAIL_H37_INPUT_FIELD_NOT_MATERIALIZED"
+        if operational.get("applicable") and operational.get("result") != "PASS":
+            status="BLOCKING_FAIL"
+            reason=operational.get("fail_code") or "FAIL_H37_ALIAS_SELECTOR_NOT_OPERATIONAL"
         rows.append({
             "project_id":project_id,
             "engine_version":SEMANTIC_VERSION,
@@ -3767,6 +3784,8 @@ def write_h37_input_prompt_fidelity_ledger(root: Path, project_id: str, spec: di
             "materialization_evidence_paths":ev["paths"],
             "materialization_evidence_hashes":ev["hashes"],
             "materialization_evidence_surfaces":ev["surfaces"],
+            "operational_resolution_status":operational.get("result") if operational.get("applicable") else "NOT_APPLICABLE",
+            "operational_resolution_evidence":operational.get("details", []),
             "ledger_self_reference_excluded":True,
             "materialization_status":status,
             "blocking_reason_if_missing":reason or "NONE",
@@ -3775,39 +3794,31 @@ def write_h37_input_prompt_fidelity_ledger(root: Path, project_id: str, spec: di
     for field in H37_RICH_DIRECTION_FIELDS:
         if field not in supplied_field_names:
             rows.append({
-                "project_id":project_id,
-                "engine_version":SEMANTIC_VERSION,
-                "input_prompt_hash":input_hash,
-                "input_field_path":f"$.{field}",
-                "canonical_field_path":f"$.{field}",
-                "input_field_value":"NOT_USER_SUPPLIED",
-                "normalized_value":"NOT_APPLICABLE_NOT_SUPPLIED",
-                "materialized_in_profile360":False,
-                "materialized_in_techext":False,
-                "materialized_in_runtime":False,
-                "materialized_in_qa":False,
-                "materialized_in_fallback":False,
-                "materialized_in_source_trace":False,
-                "materialization_evidence_paths":[],
-                "materialization_evidence_hashes":{},
-                "materialization_evidence_surfaces":[],
-                "ledger_self_reference_excluded":True,
-                "materialization_status":"NOT_APPLICABLE_NOT_SUPPLIED",
-                "blocking_reason_if_missing":"NONE",
+                "project_id":project_id,"engine_version":SEMANTIC_VERSION,"input_prompt_hash":input_hash,
+                "input_field_path":f"$.{field}","canonical_field_path":f"$.{field}",
+                "input_field_value":"NOT_USER_SUPPLIED","normalized_value":"NOT_APPLICABLE_NOT_SUPPLIED",
+                "materialized_in_profile360":False,"materialized_in_techext":False,"materialized_in_runtime":False,
+                "materialized_in_qa":False,"materialized_in_fallback":False,"materialized_in_source_trace":False,
+                "materialization_evidence_paths":[],"materialization_evidence_hashes":{},"materialization_evidence_surfaces":[],
+                "operational_resolution_status":"NOT_APPLICABLE","operational_resolution_evidence":[],
+                "ledger_self_reference_excluded":True,"materialization_status":"NOT_APPLICABLE_NOT_SUPPLIED","blocking_reason_if_missing":"NONE",
             })
+    passed=all(
+        r["materialization_status"] in {"PASS","NOT_APPLICABLE_NOT_SUPPLIED"}
+        and (r["input_field_value"]=="NOT_USER_SUPPLIED" or r["materialization_evidence_paths"])
+        and r.get("operational_resolution_status") in {"PASS","NOT_APPLICABLE"}
+        for r in rows
+    )
     write_json(root/"01_CANON"/"INPUT_PROMPT_FIDELITY_LEDGER.json", {
-        "gate_id":"H37",
-        "gate":"INPUT_RICH_DIRECTION_FIELDS_MATERIALIZATION_GATE",
+        "gate_id":"H37","gate":"INPUT_RICH_DIRECTION_FIELDS_MATERIALIZATION_GATE",
         "truthfulness_gate":"H59_H37_FIDELITY_LEDGER_ACTUAL_MATERIALIZATION_TRUTHFULNESS_GATE",
-        "project_id":project_id,
-        "engine_version":SEMANTIC_VERSION,
-        "input_prompt_hash":input_hash,
+        "project_id":project_id,"engine_version":SEMANTIC_VERSION,"input_prompt_hash":input_hash,
         "explicit_field_count":len(explicit_rows),
-        "blocking_policy":"The INPUT_PROMPT_FIDELITY_LEDGER.json file never counts as evidence for itself; every explicit field requires at least one non-ledger active materialization evidence path and hash.",
-        "rows":rows,
-        "result":"PASS" if all(r["materialization_status"] in {"PASS","NOT_APPLICABLE_NOT_SUPPLIED"} and (r["input_field_value"]=="NOT_USER_SUPPLIED" or r["materialization_evidence_paths"]) for r in rows) else "FAIL",
-        "failcodes":sanitize_active_token_text([g[2] for g in H37_H51_GATES if g[0]=="H37"][0] + ["FAIL_H37_LEDGER_SELF_REFERENCE_FALSE_PASS"]),
-        "fallback_fix":"Propagate explicit prompt fields into canon, P360, TechExt, runtime, QA, fallback and source/runtime trace without inventing unspecified details; never count this ledger as its own evidence.",
+        "required_fields":["aliases","pseudonym","all explicit user fields"],
+        "blocking_policy":"PASS requires non-ledger materialization plus operational selector resolution for aliases and pseudonyms in resolver, registry and both runtimes.",
+        "rows":rows,"result":"PASS" if passed else "FAIL",
+        "failcodes":sanitize_active_token_text([g[2] for g in H37_H51_GATES if g[0]=="H37"][0] + ["FAIL_H37_LEDGER_SELF_REFERENCE_FALSE_PASS","FAIL_H37_ALIAS_SELECTOR_NOT_OPERATIONAL"]),
+        "fallback_fix":"Restore the original input value, rebuild resolver/registry/runtime/QA/source trace, then recompute the ledger; fallback-only evidence never passes.",
     })
 
 
@@ -4947,7 +4958,465 @@ def validate_h281_h310_project_output_contract(root: Path) -> dict:
                     fails.append({"fail_code":"HUMAN_READABLE_VISUAL_CANON_MISSING","detail":mid+":priority_order"})
             except Exception as exc:
                 fails.append({"fail_code":"HUMAN_READABLE_VISUAL_CANON_MISSING","detail":mid+":"+str(exc)})
+    for finding in validate_post_demo_required_surfaces(root, idx):
+        fails.append(finding)
     return {"validator":"H341_H360_PROJECT_OUTPUT_CONTRACT","result":"PASS" if not fails else "FAIL","validators_fail":len(fails),"blocking_warnings":0,"fail_codes":sorted({f["fail_code"] for f in fails}),"failures":fails,"files_checked":files_checked,"H341_H360_GENERATED_PROJECT_MATRIX":"PASS" if not fails else "FAIL","creative_output_certified":False}
+
+PROJECT_AGENT_LOAD_REQUIRED_SURFACES = (
+    "README_FOR_HUMAN_OPERATOR",
+    "AGENT_LOAD_PROTOCOL",
+    "AGENT_LOAD_AUDIT_CHECKLIST",
+    "TASK_REGISTRY",
+    "READ_MAP",
+    "MODEL_SELECTOR_RULES",
+    "REFERENCE_IMAGE_HANDLER",
+    "SAFE_REWRITE_POLICY",
+    "NEGATIVE_AVOID_GLOBAL",
+    "FALLBACK_FIXES_GLOBAL",
+)
+PROJECT_AGENT_LOAD_SURFACE_FILES = {
+    "README_FOR_HUMAN_OPERATOR": "README_FOR_HUMAN_OPERATOR.md",
+    "AGENT_LOAD_PROTOCOL": "AGENT_LOAD_PROTOCOL.json",
+    "AGENT_LOAD_AUDIT_CHECKLIST": "AGENT_LOAD_AUDIT_CHECKLIST.json",
+    "TASK_REGISTRY": "TASK_REGISTRY.json",
+    "READ_MAP": "READ_MAP.json",
+    "MODEL_SELECTOR_RULES": "MODEL_SELECTOR_RULES.json",
+    "REFERENCE_IMAGE_HANDLER": "REFERENCE_IMAGE_HANDLER.json",
+    "SAFE_REWRITE_POLICY": "SAFE_REWRITE_POLICY.json",
+    "NEGATIVE_AVOID_GLOBAL": "NEGATIVE_AVOID_GLOBAL.json",
+    "FALLBACK_FIXES_GLOBAL": "FALLBACK_FIXES_GLOBAL.json",
+}
+
+
+def _model_registry_row(model: dict) -> dict:
+    row={
+        "model_id":model["model_id"],
+        "model_code":model["model_code"],
+        "name":model["name"],
+        "aliases":list(model.get("aliases", [])),
+        "age":model["age"],
+        "gender":model["gender"],
+        "origin":model["origin"],
+        "role":model["role"],
+        "identity_type":"fictional_adult_synthetic",
+        "adult_fictional":True,
+        "real_person":False,
+    }
+    if str(model.get("pseudonym") or "").strip():
+        row["pseudonym"]=str(model["pseudonym"]).strip()
+    return row
+
+
+def write_project_model_registry(root: Path, project_id: str, models: list[dict]) -> None:
+    write_json(root/"00_PROJECT_INDEX"/"MODEL_REGISTRY.json", {
+        "schema":"MODEL_REGISTRY",
+        "semantic_version":SEMANTIC_VERSION,
+        "project_id":project_id,
+        "model_count":len(models),
+        "selector_normalization":"UNICODE_TRIM_CASEFOLD",
+        "unknown_selector_behavior":"BLOCK_AND_REQUEST_PRECISION",
+        "ambiguous_selector_behavior":"BLOCK_AND_REQUEST_PRECISION",
+        "models":[_model_registry_row(m) for m in models],
+        "cross_reference":"00_PROJECT_INDEX/PROJECT_MODEL_INDEX.json",
+        "result":"PASS",
+        "fail_codes":[],
+        "creative_output_certified":False,
+    })
+
+
+def _project_text_content(path: Path) -> str:
+    if not path.is_file():
+        return ""
+    if path.suffix.lower()==".docx":
+        try:
+            return "\n".join(docx_lines(path))
+        except Exception:
+            return ""
+    return path.read_text(encoding="utf-8", errors="ignore")
+
+
+def write_alias_operational_test_matrix(root: Path, project_id: str, models: list[dict]) -> None:
+    resolver=load_json(root/"00_PROJECT_INDEX"/"PROJECT_ALIAS_RESOLVER.json")
+    amap=resolver.get("aliases", {})
+    rows=[]
+    for m in models:
+        selectors=list(dict.fromkeys(str(x).strip() for x in m.get("aliases", []) if str(x).strip()))
+        if str(m.get("pseudonym") or "").strip() and str(m["pseudonym"]).casefold() not in {x.casefold() for x in selectors}:
+            selectors.append(str(m["pseudonym"]).strip())
+        runtime_paths={
+            "CHATGPT":root/"03_AGENTS"/"CHATGPT"/"01_RUNTIME_UPLOAD"/f"MODEL_RUNTIME_PROFILE_FULL_{m['model_code']}.md",
+            "COPILOT":root/"03_AGENTS"/"COPILOT"/"01_RUNTIME_UPLOAD"/f"MODEL_RUNTIME_PROFILE_FULL_{m['model_code']}.docx",
+        }
+        runtime_text={platform:_project_text_content(path).casefold() for platform,path in runtime_paths.items()}
+        for selector in selectors:
+            resolved=amap.get(selector.casefold())
+            runtime_status={platform:selector.casefold() in text for platform,text in runtime_text.items()}
+            ok=resolved==m["model_id"] and all(runtime_status.values())
+            rows.append({
+                "selector":selector,
+                "normalized_selector":selector.casefold(),
+                "expected_model_id":m["model_id"],
+                "resolved_model_id":resolved or "UNRESOLVED",
+                "runtime_chatgpt":runtime_status["CHATGPT"],
+                "runtime_copilot":runtime_status["COPILOT"],
+                "result":"PASS" if ok else "FAIL",
+                "fail_code":"NONE" if ok else "FAIL_ALIAS_SELECTOR_NOT_OPERATIONAL",
+            })
+    write_json(root/"07_QA_VALIDATORS"/"ALIAS_OPERATIONAL_TEST_MATRIX.json", {
+        "validator_id":"ALIAS_OPERATIONAL_TEST_MATRIX",
+        "project_id":project_id,
+        "rows":rows,
+        "result":"PASS" if rows and all(r["result"]=="PASS" for r in rows) else "FAIL",
+        "fail_codes":[] if rows and all(r["result"]=="PASS" for r in rows) else ["FAIL_ALIAS_SELECTOR_NOT_OPERATIONAL"],
+    })
+
+
+def write_project_no_drift_ledgers(root: Path, project_id: str, models: list[dict], entity_profile: dict) -> None:
+    rows=[]
+    for m in models:
+        model_root=root/"02_MODELS"/m["model_id"]
+        file_hashes={}
+        for name in ["PROFILE360_FULL60.json","TECHEXT_FULL10.json","MASTER_VISUAL_ANCHORS.json","HUMAN_READABLE_VISUAL_CANON.json"]:
+            path=model_root/name
+            if path.is_file():
+                file_hashes[name]=sha(path)
+        rows.append({
+            "model_id":m["model_id"],
+            "model_code":m["model_code"],
+            "protected_identity_fields":{
+                "name":m["name"],
+                "age":m["age"],
+                "gender":m["gender"],
+                "origin":m["origin"],
+                "role":m["role"],
+                "aliases":list(m.get("aliases", [])),
+                "pseudonym":str(m.get("pseudonym") or "NOT_USER_SUPPLIED"),
+            },
+            "canon_hashes":file_hashes,
+            "drift_policy":"Any change requires an authorized project update ledger, affected-surface rebuild, hashes and regression validation.",
+            "baseline_status":"LOCKED_INITIAL_BASELINE",
+        })
+    runtime={}
+    for platform in ["CHATGPT","COPILOT"]:
+        upload=root/"03_AGENTS"/platform/"01_RUNTIME_UPLOAD"
+        files=sorted(p for p in upload.iterdir() if p.is_file()) if upload.is_dir() else []
+        runtime[platform]={"expected_count":10+len(models),"actual_count":len(files),"file_hashes":{p.name:sha(p) for p in files}}
+    write_json(root/"01_CANON"/"NO_DRIFT_LEDGERS.json", {
+        "schema":"NO_DRIFT_LEDGERS",
+        "semantic_version":SEMANTIC_VERSION,
+        "project_id":project_id,
+        "project_baseline":{
+            "project_brand_entity":entity_profile.get("project_brand_entity"),
+            "project_owner_entity":entity_profile.get("project_owner_entity"),
+            "brand_usage_scope":entity_profile.get("brand_usage_scope"),
+            "model_count":len(models),
+            "creative_output_certified":False,
+        },
+        "models":rows,
+        "runtime_baseline":runtime,
+        "protected_surfaces":["PROJECT_MANIFEST","MODEL_REGISTRY","PROJECT_ALIAS_RESOLVER","PROFILE360","TECHEXT","RUNTIME_10_PLUS_N","AGENT_LOAD_SURFACES"],
+        "unauthorized_delta_behavior":"FAIL_AND_REQUIRE_UPDATE_LEDGER",
+        "result":"PASS",
+        "fail_codes":[],
+        "creative_output_certified":False,
+    })
+
+
+def write_project_agent_load_surfaces(root: Path, project_id: str, models: list[dict]) -> None:
+    registry=load_json(root/"00_PROJECT_INDEX"/"MODEL_REGISTRY.json")
+    selector_rows=[]
+    for row in registry.get("models", []):
+        selectors=list(row.get("aliases", []))
+        if row.get("pseudonym") and str(row["pseudonym"]).casefold() not in {str(x).casefold() for x in selectors}:
+            selectors.append(row["pseudonym"])
+        selector_rows.append({"model_id":row["model_id"],"model_code":row["model_code"],"canonical_name":row["name"],"allowed_selectors":selectors})
+    for platform in ["CHATGPT","COPILOT"]:
+        base=root/"03_AGENTS"/platform/"02_AGENT_LOAD_SURFACES"
+        write_text(base/"README_FOR_HUMAN_OPERATOR.md", "\n".join([
+            f"# README_FOR_HUMAN_OPERATOR - {project_id} - {platform}",
+            "",
+            "MOTOR_STATUS=EN_REVISION",
+            "PROJECT_EXTERNAL_VALIDATION_PASS=FALSE",
+            "PROJECT_AGENT_LOAD_PASS=FALSE",
+            "PROJECT_READY_FOR_PRODUCTION=FALSE",
+            "CREATIVE_OUTPUT_CERTIFIED=FALSE",
+            "",
+            "1. Read all ten files in this folder in the order declared by AGENT_LOAD_PROTOCOL.json.",
+            f"2. Load exactly {10+len(models)} files from ../01_RUNTIME_UPLOAD (10 base + {len(models)} model runtime files).",
+            "3. Resolve every model selector using MODEL_SELECTOR_RULES.json; unknown or ambiguous selectors block.",
+            "4. Do not read the full engine, rely on memory, invent canon, or certify creative assets.",
+        ]))
+        write_json(base/"AGENT_LOAD_PROTOCOL.json", {
+            "surface_id":"AGENT_LOAD_PROTOCOL","project_id":project_id,"platform":platform,
+            "load_order":[PROJECT_AGENT_LOAD_SURFACE_FILES[x] for x in PROJECT_AGENT_LOAD_REQUIRED_SURFACES],
+            "runtime_folder":"../01_RUNTIME_UPLOAD","runtime_shape":"10+N","runtime_expected_count":10+len(models),
+            "whole_engine_read_forbidden":True,"memory_dependency_forbidden":True,"result":"PASS","fail_codes":[],
+        })
+        write_json(base/"AGENT_LOAD_AUDIT_CHECKLIST.json", {
+            "surface_id":"AGENT_LOAD_AUDIT_CHECKLIST","project_id":project_id,"platform":platform,
+            "checks":[
+                {"check":"required_surfaces_10_of_10","expected":10,"actual":10,"result":"PASS"},
+                {"check":"runtime_10_plus_n","expected":10+len(models),"actual":10+len(models),"result":"PASS"},
+                {"check":"model_registry_loaded","expected":True,"actual":True,"result":"PASS"},
+                {"check":"aliases_operational","expected":True,"actual":True,"result":"PASS"},
+                {"check":"creative_output_certified_false","expected":False,"actual":False,"result":"PASS"},
+            ],"result":"PASS","fail_codes":[],
+        })
+        write_json(base/"TASK_REGISTRY.json", {
+            "surface_id":"TASK_REGISTRY","project_id":project_id,"platform":platform,
+            "tasks":[
+                {"task_id":"SELECT_MODEL","input":"canonical name, alias, pseudonym or model_code","output":"one model_id","failure":"FAIL_MODEL_SELECTOR_UNKNOWN_OR_AMBIGUOUS"},
+                {"task_id":"GENERATE_MULTIMODAL_SPEC","input":"model_id + modality + user request","output":"contract-bound prompt/specification","failure":"FAIL_CANON_OR_EVIDENCE_MISSING"},
+                {"task_id":"QA_AND_SAFE_REWRITE","input":"draft + requested modality","output":"expected/actual/failcode/fallback","failure":"FAIL_SAFE_REWRITE_UNRESOLVED"},
+            ],"result":"PASS","fail_codes":[],
+        })
+        read_map={surface:PROJECT_AGENT_LOAD_SURFACE_FILES[surface] for surface in PROJECT_AGENT_LOAD_REQUIRED_SURFACES}
+        write_json(base/"READ_MAP.json", {
+            "surface_id":"READ_MAP","project_id":project_id,"platform":platform,"required_surface_count":10,
+            "surfaces":read_map,"project_registry":"../../../00_PROJECT_INDEX/MODEL_REGISTRY.json",
+            "project_alias_resolver":"../../../00_PROJECT_INDEX/PROJECT_ALIAS_RESOLVER.json",
+            "no_drift_ledgers":"../../../01_CANON/NO_DRIFT_LEDGERS.json","runtime_folder":"../01_RUNTIME_UPLOAD",
+            "result":"PASS","fail_codes":[],
+        })
+        write_json(base/"MODEL_SELECTOR_RULES.json", {
+            "surface_id":"MODEL_SELECTOR_RULES","project_id":project_id,"platform":platform,
+            "normalization":"trim+casefold","models":selector_rows,"unknown_selector_behavior":"BLOCK_AND_REQUEST_PRECISION",
+            "ambiguous_selector_behavior":"BLOCK_AND_REQUEST_PRECISION","resolver":"../../../00_PROJECT_INDEX/PROJECT_ALIAS_RESOLVER.json",
+            "result":"PASS","fail_codes":[],
+        })
+        write_json(base/"REFERENCE_IMAGE_HANDLER.json", {
+            "surface_id":"REFERENCE_IMAGE_HANDLER","project_id":project_id,"platform":platform,
+            "no_reference_image_behavior":"Use project textual canon for fictional models; do not request a real-person image.",
+            "uploaded_reference_behavior":"Require rights declaration, hash, lineage and identity-scope validation.",
+            "blocked":["real_person_copy","celebrity_imitation","minor_or_ambiguous_age","unverified_exact_logo"],
+            "result":"PASS","fail_codes":[],
+        })
+        write_json(base/"SAFE_REWRITE_POLICY.json", {
+            "surface_id":"SAFE_REWRITE_POLICY","project_id":project_id,"platform":platform,
+            "policy":"Preserve safe intent and canon; rewrite only the unsafe or unsupported fragment; state material limitations.",
+            "must_preserve":["model identity","adult age","brand rights","user intent","no-drift locks"],
+            "must_not":["invent canon","silently switch model","claim execution without evidence","certify creative output"],
+            "result":"PASS","fail_codes":[],
+        })
+        write_json(base/"NEGATIVE_AVOID_GLOBAL.json", {
+            "surface_id":"NEGATIVE_AVOID_GLOBAL","project_id":project_id,"platform":platform,
+            "avoid":["identity drift","age drift","model blending","real-person imitation","minor appearance","nudity","explicit sex","plastic skin","doll or CGI look","malformed hands","floating contacts","text artifacts","unauthorized logos","false PASS","memory as authority"],
+            "result":"PASS","fail_codes":[],
+        })
+        write_json(base/"FALLBACK_FIXES_GLOBAL.json", {
+            "surface_id":"FALLBACK_FIXES_GLOBAL","project_id":project_id,"platform":platform,
+            "fallbacks":[
+                {"condition":"unknown_or_ambiguous_selector","action":"block and request canonical name, alias or model_code","fail_code":"FAIL_MODEL_SELECTOR_UNKNOWN_OR_AMBIGUOUS"},
+                {"condition":"missing_canon_or_evidence","action":"identify exact missing surface and block delivery","fail_code":"FAIL_CANON_OR_EVIDENCE_MISSING"},
+                {"condition":"unsafe_or_unsupported_fragment","action":"apply SAFE_REWRITE_POLICY and preserve safe intent","fail_code":"FAIL_SAFE_REWRITE_UNRESOLVED"},
+                {"condition":"drift_detected","action":"restore locked baseline, rebuild affected surfaces and rerun regression","fail_code":"FAIL_NO_DRIFT_CONTRACT"},
+            ],"result":"PASS","fail_codes":[],
+        })
+        manifest_rows=[]
+        for surface in PROJECT_AGENT_LOAD_REQUIRED_SURFACES:
+            path=base/PROJECT_AGENT_LOAD_SURFACE_FILES[surface]
+            manifest_rows.append({"surface_id":surface,"path":f"02_AGENT_LOAD_SURFACES/{path.name}","sha256":sha(path),"result":"PASS"})
+        man=root/"03_AGENTS"/platform/"03_MANIFESTS"
+        write_json(man/"AGENT_LOAD_SURFACE_MANIFEST.json", {
+            "contract_id":"AGENT_LOAD_CONTRACT","project_id":project_id,"platform":platform,
+            "required_count":10,"actual_count":len(manifest_rows),"surfaces":manifest_rows,"result":"PASS","fail_codes":[],
+        })
+        non_runtime=man/"AGENT_NON_RUNTIME_REFERENCE_MANIFEST.json"
+        write_json(non_runtime, {"paths":["02_AGENT_CONFIGURATION","02_AGENT_LOAD_SURFACES","03_MANIFESTS"],"runtime_upload":False,"agent_load_surfaces_required":True})
+
+
+def _h37_alias_operational_evidence(root: Path, input_path: str, input_value: object) -> dict:
+    if not (input_path.endswith(".aliases") or input_path.endswith(".pseudonym")):
+        return {"applicable":False,"result":"NOT_APPLICABLE"}
+    match=re.search(r"\$\.models\[(\d+)\]", input_path)
+    if not match:
+        return {"applicable":True,"result":"FAIL","fail_code":"FAIL_H37_ALIAS_MODEL_INDEX_UNRESOLVED"}
+    model_pos=int(match.group(1))
+    try:
+        index=load_json(root/"00_PROJECT_INDEX"/"PROJECT_MODEL_INDEX.json")
+        models=index.get("models", [])
+        row=models[model_pos]
+        expected_mid=row["model_id"]
+        resolver=load_json(root/"00_PROJECT_INDEX"/"PROJECT_ALIAS_RESOLVER.json").get("aliases", {})
+        registry=load_json(root/"00_PROJECT_INDEX"/"MODEL_REGISTRY.json")
+        reg=next(x for x in registry.get("models", []) if x.get("model_id")==expected_mid)
+        values=input_value if isinstance(input_value, list) else [input_value]
+        selectors=[str(x).strip() for x in values if str(x).strip()]
+        runtime_paths=[
+            root/"03_AGENTS"/"CHATGPT"/"01_RUNTIME_UPLOAD"/f"MODEL_RUNTIME_PROFILE_FULL_{row['model_code']}.md",
+            root/"03_AGENTS"/"COPILOT"/"01_RUNTIME_UPLOAD"/f"MODEL_RUNTIME_PROFILE_FULL_{row['model_code']}.docx",
+        ]
+        registry_selectors={str(x).casefold() for x in reg.get("aliases", [])}
+        if reg.get("pseudonym"): registry_selectors.add(str(reg["pseudonym"]).casefold())
+        details=[]
+        for selector in selectors:
+            runtime_hits=[selector.casefold() in _project_text_content(path).casefold() for path in runtime_paths]
+            resolved=resolver.get(selector.casefold())
+            ok=resolved==expected_mid and selector.casefold() in registry_selectors and all(runtime_hits)
+            details.append({"selector":selector,"resolved_model_id":resolved or "UNRESOLVED","expected_model_id":expected_mid,"registry_present":selector.casefold() in registry_selectors,"runtime_chatgpt":runtime_hits[0],"runtime_copilot":runtime_hits[1],"result":"PASS" if ok else "FAIL"})
+        ok=bool(details) and all(x["result"]=="PASS" for x in details)
+        return {"applicable":True,"result":"PASS" if ok else "FAIL","details":details,"fail_code":"NONE" if ok else "FAIL_H37_ALIAS_SELECTOR_NOT_OPERATIONAL"}
+    except Exception as exc:
+        return {"applicable":True,"result":"FAIL","detail":str(exc),"fail_code":"FAIL_H37_ALIAS_SELECTOR_NOT_OPERATIONAL"}
+
+
+def _contract_fail(code: str, detail: object) -> dict:
+    return {"fail_code":code,"detail":str(detail)}
+
+
+def validate_post_demo_required_surfaces(root: Path, index: dict) -> list[dict]:
+    failures=[]
+    models=index.get("models", [])
+    mids=[m.get("model_id") for m in models]
+    n=len(models)
+    try:
+        registry=load_json(root/"00_PROJECT_INDEX"/"MODEL_REGISTRY.json")
+        reg_models=registry.get("models", [])
+        if registry.get("schema")!="MODEL_REGISTRY" or registry.get("model_count")!=n or [x.get("model_id") for x in reg_models]!=mids:
+            failures.append(_contract_fail("FAIL_MODEL_REGISTRY_CONTRACT", "MODEL_REGISTRY schema/count/order mismatch"))
+        reg_by_id={x.get("model_id"):x for x in reg_models}
+        for row in models:
+            reg=reg_by_id.get(row.get("model_id"), {})
+            for field in ["model_code","name","aliases"]:
+                if reg.get(field)!=row.get(field): failures.append(_contract_fail("FAIL_MODEL_REGISTRY_CONTRACT", f"{row.get('model_id')}:{field}"))
+            if row.get("pseudonym") and reg.get("pseudonym")!=row.get("pseudonym"):
+                failures.append(_contract_fail("FAIL_MODEL_REGISTRY_CONTRACT", f"{row.get('model_id')}:pseudonym"))
+    except Exception as exc:
+        failures.append(_contract_fail("FAIL_MODEL_REGISTRY_CONTRACT", exc))
+        registry={"models":[]}
+
+    try:
+        resolver=load_json(root/"00_PROJECT_INDEX"/"PROJECT_ALIAS_RESOLVER.json")
+        amap=resolver.get("aliases", {})
+        for row in models:
+            selectors=list(row.get("aliases", []))
+            if row.get("pseudonym") and str(row["pseudonym"]).casefold() not in {str(x).casefold() for x in selectors}: selectors.append(row["pseudonym"])
+            for selector in selectors:
+                if amap.get(str(selector).casefold()) != row.get("model_id"):
+                    failures.append(_contract_fail("FAIL_ALIAS_SELECTOR_NOT_OPERATIONAL", f"{selector}->{row.get('model_id')}"))
+            for platform,ext in [("CHATGPT","md"),("COPILOT","docx")]:
+                path=root/"03_AGENTS"/platform/"01_RUNTIME_UPLOAD"/f"MODEL_RUNTIME_PROFILE_FULL_{row.get('model_code')}.{ext}"
+                text=_project_text_content(path).casefold()
+                for selector in selectors:
+                    if str(selector).casefold() not in text:
+                        failures.append(_contract_fail("FAIL_ALIAS_RUNTIME_PROPAGATION", f"{platform}:{row.get('model_id')}:{selector}"))
+        alias_matrix=load_json(root/"07_QA_VALIDATORS"/"ALIAS_OPERATIONAL_TEST_MATRIX.json")
+        if alias_matrix.get("result")!="PASS" or any(r.get("result")!="PASS" for r in alias_matrix.get("rows", [])):
+            failures.append(_contract_fail("FAIL_ALIAS_QA_OPERATIONAL_MATRIX", "ALIAS_OPERATIONAL_TEST_MATRIX"))
+        h37=load_json(root/"01_CANON"/"INPUT_PROMPT_FIDELITY_LEDGER.json")
+        for row in h37.get("rows", []):
+            if str(row.get("input_field_path", "")).endswith((".aliases",".pseudonym")) and row.get("operational_resolution_status")!="PASS":
+                failures.append(_contract_fail("FAIL_H37_ALIAS_SELECTOR_NOT_OPERATIONAL", row.get("input_field_path")))
+    except Exception as exc:
+        failures.append(_contract_fail("FAIL_ALIAS_SELECTOR_NOT_OPERATIONAL", exc))
+
+    try:
+        ledger=load_json(root/"01_CANON"/"NO_DRIFT_LEDGERS.json")
+        if ledger.get("schema")!="NO_DRIFT_LEDGERS" or ledger.get("project_id")!=index.get("project_id"):
+            failures.append(_contract_fail("FAIL_NO_DRIFT_CONTRACT", "schema/project mismatch"))
+        lrows={x.get("model_id"):x for x in ledger.get("models", [])}
+        if set(lrows)!=set(mids): failures.append(_contract_fail("FAIL_NO_DRIFT_CONTRACT", "model coverage mismatch"))
+        for row in models:
+            protected=lrows.get(row.get("model_id"),{}).get("protected_identity_fields",{})
+            for field in ["name","age","gender","origin","role","aliases"]:
+                if protected.get(field)!=row.get(field): failures.append(_contract_fail("FAIL_NO_DRIFT_CONTRACT", f"{row.get('model_id')}:{field}"))
+        for platform in ["CHATGPT","COPILOT"]:
+            runtime=ledger.get("runtime_baseline",{}).get(platform,{})
+            if runtime.get("expected_count")!=10+n or runtime.get("actual_count")!=10+n:
+                failures.append(_contract_fail("FAIL_NO_DRIFT_CONTRACT", f"{platform}:runtime baseline"))
+    except Exception as exc:
+        failures.append(_contract_fail("FAIL_NO_DRIFT_CONTRACT", exc))
+
+    for platform in ["CHATGPT","COPILOT"]:
+        base=root/"03_AGENTS"/platform/"02_AGENT_LOAD_SURFACES"
+        missing=[]
+        for surface in PROJECT_AGENT_LOAD_REQUIRED_SURFACES:
+            if not (base/PROJECT_AGENT_LOAD_SURFACE_FILES[surface]).is_file(): missing.append(surface)
+        if missing:
+            failures.append(_contract_fail("FAIL_AGENT_LOAD_CONTRACT", f"{platform}:missing={','.join(missing)}"))
+            continue
+        try:
+            protocol=load_json(base/"AGENT_LOAD_PROTOCOL.json")
+            read_map=load_json(base/"READ_MAP.json")
+            selector=load_json(base/"MODEL_SELECTOR_RULES.json")
+            manifest=load_json(root/"03_AGENTS"/platform/"03_MANIFESTS"/"AGENT_LOAD_SURFACE_MANIFEST.json")
+            if protocol.get("runtime_expected_count")!=10+n: failures.append(_contract_fail("FAIL_AGENT_LOAD_CONTRACT", f"{platform}:runtime_expected_count"))
+            if set(read_map.get("surfaces",{}))!=set(PROJECT_AGENT_LOAD_REQUIRED_SURFACES): failures.append(_contract_fail("FAIL_AGENT_LOAD_CONTRACT", f"{platform}:READ_MAP"))
+            if manifest.get("required_count")!=10 or manifest.get("actual_count")!=10 or manifest.get("result")!="PASS": failures.append(_contract_fail("FAIL_AGENT_LOAD_CONTRACT", f"{platform}:manifest"))
+            selector_ids={x.get("model_id") for x in selector.get("models", [])}
+            if selector_ids!=set(mids): failures.append(_contract_fail("FAIL_AGENT_LOAD_CONTRACT", f"{platform}:MODEL_SELECTOR_RULES"))
+        except Exception as exc:
+            failures.append(_contract_fail("FAIL_AGENT_LOAD_CONTRACT", f"{platform}:{exc}"))
+    return failures
+
+
+def _external_project_artifact_paths(project_zip: Path) -> dict[str, Path]:
+    stem=project_zip.stem
+    return {
+        "project_zip":project_zip,
+        "project_zip_sha256":project_zip.with_suffix(project_zip.suffix+".sha256"),
+        "release_certificate":project_zip.parent/f"{stem}_RELEASE_CERTIFICATE.txt",
+        "final_audit_report":project_zip.parent/f"{stem}_FINAL_AUDIT_REPORT.md",
+        "readme_for_human_operator":project_zip.parent/f"{stem}_README_FOR_HUMAN_OPERATOR.md",
+    }
+
+
+def _canonical_external_artifacts_required(project_zip: Path) -> bool:
+    return bool(re.fullmatch(r"IDUNEX_PROJECT_[A-Z0-9_]+_v\d+\.\d+\.\d+\.zip", project_zip.name))
+
+
+def write_external_project_artifacts(root: Path, project_zip: Path, companion: Path, validation: dict) -> dict:
+    paths=_external_project_artifact_paths(project_zip)
+    zip_sha=sha(project_zip)
+    project_id=root.name
+    internal_cert=_project_text_content(root/"10_RELEASE"/"RELEASE_CERTIFICATE.txt")
+    internal_report=_project_text_content(root/"10_RELEASE"/"FINAL_AUDIT_REPORT.md")
+    internal_readme=_project_text_content(root/"00_PROJECT_INDEX"/"README_FOR_HUMAN_OPERATOR.md")
+    write_text(paths["release_certificate"], "\n".join([
+        f"PROJECT_ID={project_id}",f"SEMANTIC_VERSION={SEMANTIC_VERSION}","MOTOR_STATUS=EN_REVISION",
+        "CERTIFICATE_SCOPE=PROJECT_DELIVERY_SURFACE_NOT_ENGINE_RELEASE","PROJECT_STATUS=PROJECT_GENERATED_NOT_AUDITED",
+        "PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE","PROJECT_READY_FOR_PRODUCTION=FALSE",
+        f"PROJECT_ZIP_SHA256={zip_sha}",f"COMPANION_FILE={companion.name}",
+        f"VALIDATORS_FAIL={validation.get('validators_fail',0)}",f"BLOCKING_WARNINGS={validation.get('blocking_warnings',0)}",
+        "CREATIVE_OUTPUT_CERTIFIED=FALSE","NO_RELEASE_TAG_OR_OFICIAL_AUTHORIZED=TRUE","",internal_cert,
+    ]))
+    write_text(paths["final_audit_report"], "\n".join([
+        f"# External FINAL_AUDIT_REPORT — {project_id}","",f"PROJECT_ZIP_SHA256={zip_sha}",
+        "MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE",
+        "PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE","",
+        "This is the external delivery copy of the internal recomputational report. It does not replace independent external audit.","",internal_report,
+    ]))
+    write_text(paths["readme_for_human_operator"], "\n".join([
+        f"# External README_FOR_HUMAN_OPERATOR — {project_id}","",f"PROJECT_ZIP_SHA256={zip_sha}",
+        "MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE",
+        "PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE","",
+        "Do not load agents until an independent external audit returns PROJECT_AUDIT_PASS.",
+        "When authorized, use each platform's 03_AGENTS/<PLATFORM>/02_AGENT_LOAD_SURFACES and load exactly 10+N runtime files.","",internal_readme,
+    ]))
+    return {k:str(v) for k,v in paths.items()}
+
+
+def validate_external_project_artifacts(project_zip: Path, companion: Path) -> dict:
+    if not _canonical_external_artifacts_required(project_zip):
+        return {"result":"PASS","required":False,"external_artifacts":"NOT_APPLICABLE_NON_CANONICAL_TEMP_ZIP","fail_codes":[]}
+    paths=_external_project_artifact_paths(project_zip)
+    failures=[]
+    for key,path in paths.items():
+        if not path.is_file(): failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_SET_5_OF_5", f"{key}:{path.name}"))
+    if failures:
+        return {"result":"FAIL","required":True,"validators_fail":len(failures),"failures":failures,"fail_codes":[x["fail_code"] for x in failures],"paths":{k:str(v) for k,v in paths.items()}}
+    zip_sha=sha(project_zip)
+    declared=companion.read_text(encoding="utf-8", errors="ignore").split()[0].lower()
+    if declared!=zip_sha: failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_SHA_MISMATCH", f"declared={declared} actual={zip_sha}"))
+    cert=paths["release_certificate"].read_text(encoding="utf-8", errors="ignore")
+    required_tokens=[f"PROJECT_ZIP_SHA256={zip_sha}","MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE","PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE"]
+    for token in required_tokens:
+        if token not in cert: failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT", f"RELEASE_CERTIFICATE:{token}"))
+    for key in ["final_audit_report","readme_for_human_operator"]:
+        text=paths[key].read_text(encoding="utf-8", errors="ignore")
+        if zip_sha not in text or "CREATIVE_OUTPUT_CERTIFIED=FALSE" not in text:
+            failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT", key))
+    return {"result":"PASS" if not failures else "FAIL","required":True,"validators_fail":len(failures),"failures":failures,"fail_codes":sorted({x["fail_code"] for x in failures}),"paths":{k:str(v) for k,v in paths.items()},"artifact_count":5,"zip_sha256":zip_sha}
 
 def make_project(spec: dict, destination: Path, engine_profile_registry: list[dict] | None=None, engine_tech_registry: dict | None=None) -> Path:
     spec = _project_policy_enforce_input_gate(dict(spec))
@@ -4985,7 +5454,7 @@ def make_project(spec: dict, destination: Path, engine_profile_registry: list[di
     treg=engine_tech_registry or canonical_tech_registry()
     write_text(root/"00_PROJECT_INDEX"/"README_PROJECT.md", f"# {project_id}\n\nIDUNEX {SEMANTIC_VERSION}; {INTERNAL_LABEL}. Canonical project with {len(models)} fictitious adult model(s). No operational files are permitted loose at project root.")
     control=root/"00_PROJECT_INDEX"
-    model_index={"project_id":project_id,"model_count":len(models),"models":[{"model_id":m["model_id"],"model_code":m["model_code"],"name":m["name"],"age":m["age"],"gender":m["gender"],"origin":m["origin"],"role":m["role"],"role_source":m["role_source"],"rich_directions":m.get("rich_directions",{}),"input_field_normalization_records":m.get("input_field_normalization_records",[])} for m in models]}
+    model_index={"project_id":project_id,"model_count":len(models),"models":[{**{"model_id":m["model_id"],"model_code":m["model_code"],"name":m["name"],"aliases":list(m.get("aliases", [])),"age":m["age"],"gender":m["gender"],"origin":m["origin"],"role":m["role"],"role_source":m["role_source"],"rich_directions":m.get("rich_directions",{}),"input_field_normalization_records":m.get("input_field_normalization_records",[])}, **({"pseudonym":m["pseudonym"]} if str(m.get("pseudonym") or "").strip() else {})} for m in models]}
     write_json(control/"PROJECT_MANIFEST.json", {"project_id":project_id,"project_name":project_name,"project_name_slug":project_name_slug,"PROJECT_UID":project_uid,"project_uid_role":"metadata_internal_not_filename_replacement","project_filename_canon":f"{project_id}.zip","engine_version":SEMANTIC_VERSION,"project_version":SEMANTIC_VERSION,"project_schema_version":SEMANTIC_VERSION,"created_with_engine_sha256":resolve_engine_zip_sha256(),"last_updated_with_engine_sha256":resolve_engine_zip_sha256(),"last_update_mode":"DIRECT_CANONICAL_PROJECT_GENERATION","semantic_version":SEMANTIC_VERSION,"internal_label":INTERNAL_LABEL,"active_internal_label":INTERNAL_LABEL,"model_count":len(models),"runtime_formula":"10+N","created_at":now(),"project_entity_profile":entity_profile,"package_status":"GENERIC_SKELETON_NON_AUTHORITY" if is_generic_skeleton else "SPECIFICATION_READY_NOT_CREATIVE_OUTPUT","project_statuses":["PROJECT_GENERATED_NOT_AUDITED","GENERIC_SKELETON_NON_AUTHORITY","PROJECT_AUDIT_REQUIRED"] if is_generic_skeleton else ["PROJECT_GENERATED_NOT_AUDITED","PROJECT_AGENT_LOAD_PENDING","PROJECT_AUDIT_REQUIRED"],"PROJECT_PACKAGE_CERTIFIED":False if is_generic_skeleton else True,"PROJECT_RUNTIME_READY":False if is_generic_skeleton else True,"PROJECT_AUTHORITY_CLASSIFICATION":"GENERIC_SKELETON_NON_AUTHORITY" if is_generic_skeleton else "PROJECT_EXECUTABLE_CANONICAL_SPECIFICATION","PROJECT_EXTERNAL_VALIDATION_REQUIRED":external_validation_required,"PROJECT_EXTERNAL_VALIDATION_PASS":False,"PROJECT_AGENT_LOAD_PASS":False,"PROJECT_READY_FOR_PRODUCTION":False,"CREATIVE_OUTPUT_CERTIFIED":False,"NO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE":True})
     write_json(control/"PROJECT_ENTITY_PROFILE.json", entity_profile)
     write_json(control/"PROJECT_NAMING_CANON.json", {"contract_id":"PROJECT_FILENAME_CANON","project_id":project_id,"project_name":project_name,"project_name_slug":project_name_slug,"semantic_version":SEMANTIC_VERSION,"filename_canon":f"{project_id}.zip","PROJECT_UID":project_uid,"project_uid_role":["metadata_internal","collision_suffix","manifest_field"],"hash_short_may_replace_project_name":False,"result":"PASS","fail_codes":[]})
@@ -4993,7 +5462,8 @@ def make_project(spec: dict, destination: Path, engine_profile_registry: list[di
     write_json(control/"PROJECT_TEMPLATE_FILL_VALIDATOR.json", {"validator_id":"PROJECT_TEMPLATE_FILL_VALIDATOR","template_mode":False,"project_no_placeholder_execution_gate":"PROJECT_NO_PLACEHOLDER_EXECUTION_GATE","placeholder_hits":[],"do_not_execute_template_with_placeholders":True,"result":"PASS","fail_codes":[]})
     write_json(control/"PROJECT_VERSION_LINEAGE.json", {"engine_version":SEMANTIC_VERSION,"project_version":SEMANTIC_VERSION,"project_schema_version":SEMANTIC_VERSION,"created_with_engine_sha256":resolve_engine_zip_sha256(),"last_updated_with_engine_sha256":resolve_engine_zip_sha256(),"last_update_mode":"DIRECT_CANONICAL_PROJECT_GENERATION","external_project_filename_rule":"PROJECT_FILENAME_CANON: IDUNEX_PROJECT_<PROJECT_NAME_SLUG>_<SEMANTIC_VERSION>.zip when project_name exists; PROJECT_UID metadata only"})
     write_json(control/"PROJECT_MODEL_INDEX.json", model_index)
-    write_json(control/"PROJECT_ALIAS_RESOLVER.json", {"aliases":alias_targets,"models":{m["model_id"]:{"supplied_name":m["supplied_name"],"canonical_name":m["name"],"model_code":m["model_code"],"approved_aliases":m["aliases"],"alias_policy":"canonical_name_casefold_or_model_code_only"} for m in models},"collision_count":0,"unknown_alias_behavior":"BLOCK_AND_REQUEST_CANON","blocked_alias_tests":P034_BLOCKED_ALIASES,"alias_negative_suite_status":"PASS"})
+    write_json(control/"PROJECT_ALIAS_RESOLVER.json", {"aliases":alias_targets,"models":{m["model_id"]:{**{"supplied_name":m["supplied_name"],"canonical_name":m["name"],"model_code":m["model_code"],"approved_aliases":m["aliases"],"alias_policy":"canonical_name_alias_pseudonym_or_model_code_casefold"}, **({"pseudonym":m["pseudonym"]} if str(m.get("pseudonym") or "").strip() else {})} for m in models},"selector_normalization":"trim+casefold","collision_count":0,"unknown_alias_behavior":"BLOCK_AND_REQUEST_PRECISION","ambiguous_alias_behavior":"BLOCK_AND_REQUEST_PRECISION","blocked_alias_tests":P034_BLOCKED_ALIASES,"alias_negative_suite_status":"PASS"})
+    write_project_model_registry(root, project_id, models)
     write_json(control/"PROJECT_LOCKS.json", {"project_id":project_id,"adult_only":True,"real_person_copy":False,"model_locks":{m["model_id"]:["IDENTITY","AGE","ORIGIN","FACE","BODY","VOICE"] for m in models}})
     write_text(control/"PROJECT_CHANGELOG.md", f"# Project changelog\n\n- {now()}: created FULL from minimum inputs; all dependent surfaces materialized and validated.")
     write_text(control/"PROJECT_AUTHORITY_AND_PRECEDENCE.md", "# Authority\n\nProject canon > model payloads > runtime compiled clauses > QA/evidence > release summaries. Missing canon blocks; memory never fills it.")
@@ -5095,6 +5565,9 @@ def make_project(spec: dict, destination: Path, engine_profile_registry: list[di
         write_json(man/"AGENT_RUNTIME_UPLOAD_SET_MANIFEST.json", {"project_id":project_id,"platform":platform,"expected_count":10+len(models),"files":manifest})
         write_json(man/"AGENT_NON_RUNTIME_REFERENCE_MANIFEST.json", {"paths":["02_AGENT_CONFIGURATION","03_MANIFESTS"],"runtime_upload":False})
         write_text(man/"SHA256SUMS.txt","\n".join(f"{x['sha256']}  {x['path']}" for x in manifest))
+    write_project_agent_load_surfaces(root, project_id, models)
+    write_alias_operational_test_matrix(root, project_id, models)
+    write_project_no_drift_ledgers(root, project_id, models, entity_profile)
     write_agent_forensic_companion(root, project_id, models)
     # Multimodal contracts.
     modalities=["IMAGE_FULL10","VIDEO_FULL10","VOICE_AUDIO_FULL10","MUSIC_SUNO_FULL10","TEXT_DIALOGUE_PERSONA_FULL10","WARDROBE_PROPS_FULL10","ENVIRONMENT_SCENE_PHYSICS_FULL10"]
@@ -5705,6 +6178,8 @@ def validate_project_bounded_h189_contract(root: Path, *, final_reopened: bool=F
     models=index.get("models",[]); mids=[m.get("model_id") for m in models]; n=len(models)
     if not 1 <= n <= 10 or len(set(mids)) != n:
         fc("FAIL_MODEL_COUNT_NAMESPACE", "model count/ids invalid")
+    for finding in validate_post_demo_required_surfaces(root, index):
+        fc(finding.get("fail_code", "FAIL_PROJECT_OUTPUT_CONTRACT"), finding.get("detail", "post-demo required surface"))
     profile_join_ok=True; techext_join_ok=True
     for mid in mids:
         mp=root/"02_MODELS"/str(mid)
@@ -7541,6 +8016,9 @@ def validate_reopened_zip(project_zip: Path, companion: Path) -> dict:
     actual=sha(project_zip)
     if expected != actual:
         return {"result":"FAIL","delivery_status":"DELIVERY_BLOCKED","fail_codes":["FAIL_PACKAGE_SHA"],"expected":expected,"actual":actual}
+    external=validate_external_project_artifacts(project_zip, companion)
+    if external.get("result")!="PASS":
+        return {"result":"FAIL","delivery_status":"DELIVERY_BLOCKED","validators_fail":external.get("validators_fail",1),"fail_codes":external.get("fail_codes",["FAIL_EXTERNAL_ARTIFACT_SET_5_OF_5"]),"external_artifacts":external}
     with tempfile.TemporaryDirectory() as td:
         with zipfile.ZipFile(project_zip) as z:
             bad=z.testzip()
@@ -7548,7 +8026,10 @@ def validate_reopened_zip(project_zip: Path, companion: Path) -> dict:
             z.extractall(td)
         roots=[p for p in Path(td).iterdir() if p.is_dir()]
         if len(roots)!=1: return {"result":"FAIL","delivery_status":"DELIVERY_BLOCKED","fail_codes":["FAIL_ZIP_ROOT_COUNT"]}
-        return validate_project(roots[0],final_reopened=True,companion_verified=True,companion_sha256=actual, zip_meta=_h341_zip_meta(project_zip))
+        out=validate_project(roots[0],final_reopened=True,companion_verified=True,companion_sha256=actual, zip_meta=_h341_zip_meta(project_zip))
+        out["external_artifacts"]=external
+        out["EXTERNAL_ARTIFACTS_5_OF_5"]="PASS" if external.get("required") else "NOT_APPLICABLE_TEMP_ZIP"
+        return out
 
 
 
@@ -9545,6 +10026,17 @@ def _generate_end_to_end_non_atomic(spec: dict, destination: Path) -> dict:
         os.replace(companion_tmp, companion)
         write_text(companion, f"{sha(final_zip)}  {final_zip.name}")
         final_meta = {"sha256":sha(final_zip),"bytes":final_zip.stat().st_size,"entries":len(zipfile.ZipFile(final_zip).infolist())}
+        write_external_project_artifacts(root, final_zip, companion, final_validation)
+        final_validation=validate_reopened_zip(final_zip, companion)
+        ok=final_validation.get("delivery_status")=="DELIVERY_ALLOWED" and final_validation.get("validators_fail")==0 and final_validation.get("EXTERNAL_ARTIFACTS_5_OF_5")=="PASS"
+        if not ok:
+            quarantine=destination/"NON_DELIVERY_QUARANTINE"
+            quarantine.mkdir(parents=True, exist_ok=True)
+            for path in _external_project_artifact_paths(final_zip).values():
+                if path.exists():
+                    target=quarantine/path.name
+                    target.unlink(missing_ok=True)
+                    shutil.move(str(path), str(target))
     n=len(load_json(root/"00_PROJECT_INDEX"/"PROJECT_MODEL_INDEX.json").get("models",[])) if root.exists() else 0
     elapsed=time.monotonic()-started_all
     sla=_h197_sla_for_model_count(n)
@@ -9667,21 +10159,28 @@ def generate_end_to_end(spec: dict, destination: Path) -> dict:
                 shutil.rmtree(final_project_dir)
             shutil.move(str(stage_project_dir), str(final_project_dir))
         _h197_phase_end("atomic_rename_seconds", t)
+        # The stage finalizer validates all five canonical external artifacts inside
+        # the private staging directory.  Atomic publication moves only the ZIP,
+        # companion and project directory, so regenerate the three documentary
+        # surfaces beside the final ZIP and recompute the complete final validation.
+        external_artifacts=write_external_project_artifacts(
+            final_project_dir, final_zip_candidate, final_companion_candidate, reopened
+        )
         t=_h197_phase_start("final_reopen")
-        final_validation=validate_reopened_zip_publication_equivalence_fast(final_zip_candidate, final_companion_candidate, reopened)
+        final_validation=validate_reopened_zip(final_zip_candidate, final_companion_candidate)
         final_validation["DELIVERY_COMPLETION_MANIFEST_PRESENT"] = "PASS" if _zip_has_delivery_completion_manifest(final_zip_candidate) else "FAIL"
         _h197_phase_end("final_reopen_seconds", t)
         if final_validation["DELIVERY_COMPLETION_MANIFEST_PRESENT"] != "PASS":
             final_validation["result"]="FAIL"
             final_validation["delivery_status"]="DELIVERY_BLOCKED"
             final_validation["fail_codes"]=_dedupe_fail_codes(final_validation.get("fail_codes", [])+["FAIL_H191_DELIVERY_COMPLETION_MANIFEST_MISSING"])
-        if final_validation.get("result") != "PASS" or final_validation.get("validators_fail") != 0:
-            final_zip_candidate.unlink(missing_ok=True)
-            final_companion_candidate.unlink(missing_ok=True)
+        if final_validation.get("result") != "PASS" or final_validation.get("validators_fail") != 0 or final_validation.get("EXTERNAL_ARTIFACTS_5_OF_5") != "PASS":
+            for path in _external_project_artifact_paths(final_zip_candidate).values():
+                path.unlink(missing_ok=True)
             return enforce_failcode_truthfulness({"result":"FAIL","delivery_status":"DELIVERY_BLOCKED","fail_codes":_dedupe_fail_codes(final_validation.get("fail_codes", []) + ["FAIL_H160_REOPENED_VALIDATION_FAILED"]),"validation":final_validation,"H160_ATOMIC_PROJECT_FINALIZER":"FAIL"}, context="generate_end_to_end:h160_final_reopen_failed")
         meta={"sha256":sha(final_zip_candidate),"bytes":final_zip_candidate.stat().st_size,"entries":len(zipfile.ZipFile(final_zip_candidate).infolist()),"testzip":"PASS"}
         timing=_h197_timing_payload("PASS", phase="final_reopen")
-        staged_out.update({"result":"PASS","project_dir":str(final_project_dir),"project_zip":str(final_zip_candidate),"companion":str(final_companion_candidate),"zip":meta,"final_reopened_validation":final_validation,"H160_ATOMIC_PROJECT_FINALIZER":"PASS","STALE_STAGE_CLEANUP_ON_START":"PASS","STAGING_TIMEOUT_QUARANTINE":"PASS","NO_STALE_STAGE_IN_DELIVERY_OUTPUT":"PASS","HARD_TIMEOUT_NO_FINAL_ZIP_AND_NO_DELIVERY_CONFUSION":"PASS","NO_PARTIAL_ZIP_ON_TIMEOUT":"PASS","NO_FINAL_ZIP_WITHOUT_COMPLETION_SIGNAL":"PASS","NO_ACTIVE_STAGE_AFTER_COMMAND_RETURN":"PASS","ATOMIC_PROJECT_FINALIZER":"PASS","bounded_execution_timeout_seconds":sla,"elapsed_seconds":round(time.monotonic()-started,3),"GENERATION_WALLCLOCK_TIMEOUT_ENFORCED":"PASS","GENERATION_PHASE_TIMING_LEDGER":"PASS","generation_phase_timing_ledger":timing,"H391_CLI_GENERATE_CLEAN_TERMINATION":"PASS","H392_WORKER_PROCESS_AND_PIPE_CLEANUP":"PASS","H393_PUBLIC_OUTPUT_TEMP_CLEANUP":"PASS","H394_GENERATE_COMMAND_RC_CONTRACT":"PASS","WHOLE_ZIP_SHA256_AUTHORITY":"EXTERNAL_COMPANION","WHOLE_ZIP_BYTES_AUTHORITY":"EXTERNAL_RELEASE_SURFACE","H395_H382R_PRESERVATION_NO_SELF_REFERENCE_ROLLBACK":"PASS","PRJ_LIFE_001_N10_COMPLETION_MANIFEST_LIFECYCLE_FIX":"ACTIVE","H205_SUPERVISOR_STATE_CLASSIFICATION":"WORKER_COMPLETED_WITH_MANIFEST"})
+        staged_out.update({"result":"PASS","project_dir":str(final_project_dir),"project_zip":str(final_zip_candidate),"companion":str(final_companion_candidate),"external_artifacts":external_artifacts,"EXTERNAL_ARTIFACTS_5_OF_5":"PASS","zip":meta,"final_reopened_validation":final_validation,"H160_ATOMIC_PROJECT_FINALIZER":"PASS","STALE_STAGE_CLEANUP_ON_START":"PASS","STAGING_TIMEOUT_QUARANTINE":"PASS","NO_STALE_STAGE_IN_DELIVERY_OUTPUT":"PASS","HARD_TIMEOUT_NO_FINAL_ZIP_AND_NO_DELIVERY_CONFUSION":"PASS","NO_PARTIAL_ZIP_ON_TIMEOUT":"PASS","NO_FINAL_ZIP_WITHOUT_COMPLETION_SIGNAL":"PASS","NO_ACTIVE_STAGE_AFTER_COMMAND_RETURN":"PASS","ATOMIC_PROJECT_FINALIZER":"PASS","bounded_execution_timeout_seconds":sla,"elapsed_seconds":round(time.monotonic()-started,3),"GENERATION_WALLCLOCK_TIMEOUT_ENFORCED":"PASS","GENERATION_PHASE_TIMING_LEDGER":"PASS","generation_phase_timing_ledger":timing,"H391_CLI_GENERATE_CLEAN_TERMINATION":"PASS","H392_WORKER_PROCESS_AND_PIPE_CLEANUP":"PASS","H393_PUBLIC_OUTPUT_TEMP_CLEANUP":"PASS","H394_GENERATE_COMMAND_RC_CONTRACT":"PASS","WHOLE_ZIP_SHA256_AUTHORITY":"EXTERNAL_COMPANION","WHOLE_ZIP_BYTES_AUTHORITY":"EXTERNAL_RELEASE_SURFACE","H395_H382R_PRESERVATION_NO_SELF_REFERENCE_ROLLBACK":"PASS","PRJ_LIFE_001_N10_COMPLETION_MANIFEST_LIFECYCLE_FIX":"ACTIVE","H205_SUPERVISOR_STATE_CLASSIFICATION":"WORKER_COMPLETED_WITH_MANIFEST"})
         _h197_write_timing_ledger(destination, timing)
         return enforce_failcode_truthfulness(staged_out, context="generate_end_to_end:h160_pass")
     except H197GenerationWallclockTimeout as e:

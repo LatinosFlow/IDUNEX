@@ -27,5 +27,8 @@
   "vendor_limitation_policy": "Copilot limitation may be documented as VENDOR_LIMITATION_NOT_ENGINE_FAIL only after load attempt evidence.",
   "validator": "VALIDATE_MASTER_GOVERNANCE_NATIVE",
   "fail_code": "FAIL_AGENT_LOAD_CONTRACT",
-  "CREATIVE_OUTPUT_CERTIFIED": false
+  "CREATIVE_OUTPUT_CERTIFIED": false,
+  "surface_materialization_pattern": "03_AGENTS/<AGENT>/02_AGENT_LOAD_SURFACES/<SURFACE>.(json|md)",
+  "per_agent_manifest": "03_AGENTS/<AGENT>/03_MANIFESTS/AGENT_LOAD_SURFACE_MANIFEST.json",
+  "equivalence_policy": "No implicit semantic equivalence. Every required surface must have an explicit file and per-agent manifest entry."
 }
