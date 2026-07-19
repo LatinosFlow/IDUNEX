@@ -1,14 +1,14 @@
 # GOV-IDUNEX-AutorizacionRegeneracionProyecto000DemoPostPR38-20260719-v2-EN_REVISION
 
-**Tipo:** Addendum documental de autorización operativa controlada  
-**ID:** AUD-023-CORRECCION  
-**Fecha:** 2026-07-19  
-**Versión:** v2  
-**Estado:** `EN_REVISION`  
-**Repositorio:** `LatinosFlow/IDUNEX`  
-**PR técnico de origen:** `#38`  
-**Commit técnico autorizado:** `18be3cfc4704ecff7c0187548072de6541410313`  
-**Destino autorizado:** ChatGPT normal, fuera de GitHub  
+**Tipo:** Addendum documental de autorización operativa controlada
+**ID:** AUD-023-CORRECCION
+**Fecha:** 2026-07-19
+**Versión:** v2
+**Estado:** `EN_REVISION`
+**Repositorio:** `LatinosFlow/IDUNEX`
+**PR técnico de origen:** `#38`
+**Commit técnico autorizado:** `18be3cfc4704ecff7c0187548072de6541410313`
+**Destino autorizado:** ChatGPT normal, fuera de GitHub
 
 ---
 
