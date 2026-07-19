@@ -1,7 +1,7 @@
 # GOV-IDUNEX-AutorizacionRegeneracionProyecto000DemoPostPR38-20260719-v2-EN_REVISION
 
 **Tipo:** Addendum documental de autorización operativa controlada
-**ID:** AUD-023-CORRECCION
+**ID:** AUD-023
 **Fecha:** 2026-07-19
 **Versión:** v2
 **Estado:** `EN_REVISION`
@@ -27,6 +27,20 @@ La base técnica autorizada es:
 - Versión semántica: `v1.0.0`
 
 Esta autorización constituye una excepción documental acotada para una única ejecución externa y controlada. No modifica `ready_for_project_demo_generation=false`, no autoriza la generación dentro de GitHub y no promueve el estado global del motor.
+
+---
+
+## Control de versión y sustitución
+
+- Documento sustituido:
+  `docs/audits/IA-IDUNEX-AutorizacionRegeneracionProyecto000DemoPostPR38-20260719-v1-EN_REVISION.md`
+- Estado del documento v1: `SUSTITUIDO`
+- Motivo: contenido truncado e incompleto.
+- Documento vigente:
+  `docs/audits/GOV-IDUNEX-AutorizacionRegeneracionProyecto000DemoPostPR38-20260719-v2-EN_REVISION.md`
+- Autoridad vigente: versión v2 después de su merge a `main`.
+
+La versión v1 se conserva únicamente como `REFERENCIA_FORENSE` y no debe utilizarse para autorizar ni ejecutar la regeneración.
 
 ---
 
