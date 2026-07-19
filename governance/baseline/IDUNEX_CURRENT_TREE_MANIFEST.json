@@ -9,8 +9,8 @@
   "release_authorized": false,
   "coverage": "ALL_PHYSICAL_FILES_IN_SCOPE",
   "file_count": 981,
-  "byte_count": 47261257,
-  "tree_sha256": "e986e467e8f7cef2f0c3d4f3f9be18149bd90567d51b66a17d0404d1d68e978b",
+  "byte_count": 47295010,
+  "tree_sha256": "0165188a1d598bdbaab6c53f880208ef2a2f1af9e86fe6a91ffa61730d78d666",
   "tree_sha256_algorithm": "SHA256(repo_path_utf8 + NUL + decimal_bytes + NUL + file_sha256 + LF), sorted by path",
   "counts_by_extension": {
     ".csv": 2,
@@ -958,8 +958,8 @@
     },
     {
       "path": "engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
-      "bytes": 834770,
-      "sha256": "3b8db82d69e17ec2800071204b920db05c1de0ec28f6add670e1d27a30349cd4",
+      "bytes": 867350,
+      "sha256": "2f08e2ed993dd87d0dbb4ccb438e4a3b4fcda8f39e92489513284fa0df0bbe5d",
       "extension": ".py",
       "type": "python"
     },
@@ -2267,8 +2267,8 @@
     },
     {
       "path": "engine/IDUNEX/03_PROJECT_FACTORY/09_PROJECT_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json",
-      "bytes": 613,
-      "sha256": "41293d6cb547541303d1505a1493b731f040504d1cf1264698a6c48266e34ef1",
+      "bytes": 961,
+      "sha256": "c7a583baec25f01738079bf204d645b5b719a1539eb210f41728a145f1b07a5e",
       "extension": ".json",
       "type": "json"
     },
@@ -4682,8 +4682,8 @@
     },
     {
       "path": "engine/IDUNEX/12_OUTPUT_CONTRACTS/AGENT_LOAD_CONTRACT.json",
-      "bytes": 926,
-      "sha256": "db8598c7812cb169fadebdc403539b12eb1b14449919e7d6d16af1935b76d6db",
+      "bytes": 1259,
+      "sha256": "eaedf9ab1279c9cbc1da1e32305ce52208903fe0753ebae48638ae22a32fb90d",
       "extension": ".json",
       "type": "json"
     },
@@ -4696,8 +4696,8 @@
     },
     {
       "path": "engine/IDUNEX/12_OUTPUT_CONTRACTS/PROJECT_OUTPUT_CONTRACT.json",
-      "bytes": 1704,
-      "sha256": "5a0b3ef219650e81fabcbc90012056692058453a70bc36c7e7fe189015a44462",
+      "bytes": 2192,
+      "sha256": "906752885758d6f9b42b2f091d0c4b768b0645e4e15066a61bd583a26c716b7d",
       "extension": ".json",
       "type": "json"
     },
@@ -6481,8 +6481,8 @@
     },
     {
       "path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json",
-      "bytes": 262070,
-      "sha256": "aae0baeb56bca3ea51c236159930b857ed1edb19ea21cdeadd2fe9b8c7f2f2d2",
+      "bytes": 262071,
+      "sha256": "186f8a0445123a9eb1531449aa5337a71ce993c6dc915aea6a9745ab5b8b161c",
       "extension": ".json",
       "type": "json"
     },
@@ -6516,8 +6516,8 @@
     },
     {
       "path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json",
-      "bytes": 262070,
-      "sha256": "aae0baeb56bca3ea51c236159930b857ed1edb19ea21cdeadd2fe9b8c7f2f2d2",
+      "bytes": 262071,
+      "sha256": "186f8a0445123a9eb1531449aa5337a71ce993c6dc915aea6a9745ab5b8b161c",
       "extension": ".json",
       "type": "json"
     },
@@ -6551,8 +6551,8 @@
     },
     {
       "path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json",
-      "bytes": 262070,
-      "sha256": "aae0baeb56bca3ea51c236159930b857ed1edb19ea21cdeadd2fe9b8c7f2f2d2",
+      "bytes": 262071,
+      "sha256": "186f8a0445123a9eb1531449aa5337a71ce993c6dc915aea6a9745ab5b8b161c",
       "extension": ".json",
       "type": "json"
     },
@@ -6565,15 +6565,15 @@
     },
     {
       "path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.json",
-      "bytes": 262070,
-      "sha256": "aae0baeb56bca3ea51c236159930b857ed1edb19ea21cdeadd2fe9b8c7f2f2d2",
+      "bytes": 262071,
+      "sha256": "186f8a0445123a9eb1531449aa5337a71ce993c6dc915aea6a9745ab5b8b161c",
       "extension": ".json",
       "type": "json"
     },
     {
       "path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt",
       "bytes": 145385,
-      "sha256": "7b8e507d04f1d9057b8a9314ad23cf1b8aaa897564e4070c5e76f9be61c9f8ce",
+      "sha256": "35b96012fd2c00fe7aa5cdb67e02830252c8b4ba90e1214250a52d56fb2e6ad2",
       "extension": ".txt",
       "type": "text"
     },
@@ -6713,7 +6713,7 @@
     {
       "path": "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt",
       "bytes": 145385,
-      "sha256": "7b8e507d04f1d9057b8a9314ad23cf1b8aaa897564e4070c5e76f9be61c9f8ce",
+      "sha256": "35b96012fd2c00fe7aa5cdb67e02830252c8b4ba90e1214250a52d56fb2e6ad2",
       "extension": ".txt",
       "type": "text"
     },
