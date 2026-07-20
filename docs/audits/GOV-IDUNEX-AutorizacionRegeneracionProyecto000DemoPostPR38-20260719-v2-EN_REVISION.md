@@ -193,7 +193,7 @@ Conservar:
 
 ## 10. Ruta posterior
 
-`AUD-023-CORRECCION MERGED → regenerar Demo → validar ZIP → custodiar 5 artefactos → nueva auditoría externa independiente`
+`AUD-023 v2 MERGED → regenerar Demo → validar ZIP → custodiar 5 artefactos → nueva auditoría externa independiente`
 
 Solo la nueva auditoría externa puede declarar `PROJECT_AUDIT_PASS`.
 
@@ -215,8 +215,8 @@ No se autoriza release, tag, `OFICIAL`, cierre productivo, carga en agentes, `PR
 
 ## 12. Estado final
 
-- `AUD023_CORRECTION_STATUS=EN_REVISION`
-- `AUD023_PR_STATUS=PENDING_MERGE`
+- `AUD023_STATUS=EN_REVISION`
+- `AUD023_PR_STATUS=MERGED`
 - `MOTOR_STATUS=EN_REVISION`
 - `DEMO_REGENERATION_AUTHORIZED=CONTROLLED_ONLY`
 - `CONTROLLED_EXECUTION_LIMIT=ONE`
