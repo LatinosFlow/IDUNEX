@@ -25,9 +25,10 @@ historical_received_baseline:
 current_corrected_tree:
   scope: engine/IDUNEX
   classification: CURRENT_REPRODUCIBLE_REPOSITORY_TREE_NOT_RELEASE
-  file_count: 979
-  bytes: 47227994
-  tree_sha256: b44ce9c87249a5ab33c7cb25ef3aeb539a21ff03f481e2e6282238b2da5548e4
+  repository_commit: 9f39ad4712cc3235bc94b1def317265182b5dcdc
+  file_count: 981
+  bytes: 47302063
+  tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
   manifest: governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json
   sha256_companion: governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
   difference_report: governance/baseline/IDUNEX_BASELINE_DIFF_RECEIVED_TO_CURRENT.json
@@ -37,9 +38,22 @@ current_corrected_tree:
   physical_unmanifested_paths: 0
   stale_active_manifest_paths: 0
   obsolete_hashes: 0
-  aud003_scope_result: PARTIAL_PASS
-  m02_result_after_correction: M02_PASS
+  aud003_scope_result: PASS_CURRENT_TREE_REPRODUCED
   release_created: false
+current_tree_audit:
+  decision: CURRENT_TREE_REAUDIT_REQUIRED
+  reason: PR44_MODIFIED_ENGINE_AFTER_HISTORICAL_M02_M03
+  m02_current_tree: NOT_RECOMPUTED_POST_PR44
+  m03_current_tree: NOT_RECOMPUTED_POST_PR44
+  historical_m02_result: M02_PASS
+  historical_m03_result: M03_PASS
+  historical_pass_may_promote_current_tree: false
+  controlling_issue: 46
+  controlled_demo_generation: BLOCKED_PENDING_CURRENT_TREE_M02_M03
+current_demo_authority:
+  active_document: docs/audits/GOV-IDUNEX-ReconciliacionAutoridadPostPR44-20260721-v1-EN_REVISION.md
+  aud025_v1_status: SUSTITUIDO_REFERENCIA_NO_EXECUTION_AUTHORITY
+  repository_zip_sha_authority: EXTERNAL_COMPANION_REQUIRED_NOT_RECOVERED
 paths:
   engine_root: engine/IDUNEX
   reference_authority: governance/authority/REFERENCIA
@@ -51,3 +65,4 @@ policy:
   future_projects_blocked_until_demo_100: true
   creative_output_certified: false
   m02_fail_blocks_internal_certificates: true
+  post_engine_change_requires_m02_m03_recomputation: true
