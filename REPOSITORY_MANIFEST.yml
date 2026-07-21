@@ -41,15 +41,23 @@ current_corrected_tree:
   aud003_scope_result: PASS_CURRENT_TREE_REPRODUCED
   release_created: false
 current_tree_audit:
-  decision: CURRENT_TREE_REAUDIT_REQUIRED
-  reason: PR44_MODIFIED_ENGINE_AFTER_HISTORICAL_M02_M03
-  m02_current_tree: NOT_RECOMPUTED_POST_PR44
+  decision: CURRENT_TREE_M03_REAUDIT_REQUIRED
+  reason: M02_RECOMPUTED_PASS_M03_NOT_RECOMPUTED_POST_PR44
+  m02_current_tree: M02_PASS_RECOMPUTED_POST_PR44
+  m02_report: docs/audits/IA-IDUNEX-ReauditoriaMotorM02PostPR44-20260721-v1-EN_REVISION.md
+  m02_repository_commit: 75d64e1994366428eeccd2fadd345554fa6db581
+  m02_engine_tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
+  m02_workflow_run_id: 29858513365
+  m02_workflow_job_id: 88728860232
+  m02_artifact_id: 8507003060
+  m02_artifact_sha256: f4422a331d54b25edf057ef13112edd4f9391429f12a84701af18a31b367b6b8
+  m02_score: 10/10
   m03_current_tree: NOT_RECOMPUTED_POST_PR44
   historical_m02_result: M02_PASS
   historical_m03_result: M03_PASS
   historical_pass_may_promote_current_tree: false
   controlling_issue: 46
-  controlled_demo_generation: BLOCKED_PENDING_CURRENT_TREE_M02_M03
+  controlled_demo_generation: BLOCKED_PENDING_CURRENT_TREE_M03
 current_demo_authority:
   active_document: docs/audits/GOV-IDUNEX-ReconciliacionAutoridadPostPR44-20260721-v1-EN_REVISION.md
   aud025_v1_status: SUSTITUIDO_REFERENCIA_NO_EXECUTION_AUTHORITY
