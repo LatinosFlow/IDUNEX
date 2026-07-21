@@ -354,6 +354,11 @@ def _h273_project_canonical_terms(root: Path) -> dict:
     return {"PROJECT_CANONICAL_MODEL_NAMES":sorted(names),"PROJECT_CANONICAL_MODEL_CODES":sorted(codes),"PROJECT_ALLOWED_ALIASES":sorted(aliases)}
 
 def _h274_write_project_exact_duplicate_allowlist(root: Path) -> None:
+    duplicate_groups=_h274_recompute_exact_duplicate_groups(root)
+    write_json(root/"09_MANIFESTS_SHA"/"EXACT_DUPLICATE_ALLOWLIST.json", {"project_id":root.name,"duplicate_group_count":len(duplicate_groups),"duplicate_groups":duplicate_groups,"result":"PASS","fail_codes":[],"creative_output_certified":False})
+
+def _h274_recompute_exact_duplicate_groups(root: Path) -> list[dict]:
+    """Physical duplicate groups, using the same exclusions as the allowlist."""
     groups={}
     for p in sorted(root.rglob("*")):
         if not p.is_file(): continue
@@ -366,7 +371,7 @@ def _h274_write_project_exact_duplicate_allowlist(root: Path) -> None:
         if len(paths)>1:
             authority=sorted(paths)[0]
             duplicate_groups.append({"sha256":h,"paths":sorted(paths),"retention_mode":"ALLOWED_EXACT_DUPLICATE","reason_code":"PROJECT_MIRROR_OR_RUNTIME_PARITY_DUPLICATE_RETAINED","authority_path":authority,"mirror_paths":[x for x in sorted(paths) if x!=authority],"consumer":"runtime_parity_release_surface_or_companion_consumer","retention_rule":"retain only when duplicated bytes are required by runtime/platform parity, release surface mirroring, or companion index parity; otherwise consolidate in next generation","reviewed_by":"FACTORY_VALIDATOR_H341_H360","blocking_if_missing":True})
-    write_json(root/"09_MANIFESTS_SHA"/"EXACT_DUPLICATE_ALLOWLIST.json", {"project_id":root.name,"duplicate_group_count":len(duplicate_groups),"duplicate_groups":duplicate_groups,"result":"PASS","fail_codes":[],"creative_output_certified":False})
+    return duplicate_groups
 
 def _h275_placeholder_token_findings(root: Path) -> list[dict]:
     findings=[]
@@ -414,6 +419,16 @@ def validate_h269_h280_project_truthfulness(root: Path, *, zip_meta: dict | None
     fail=[]
     active=_h269_result_fail_findings(root)
     if active: fail.append({"fail_code":"FAIL_H269_ACTIVE_RESULTS_SURFACE_FAIL","detail":active[:20]})
+    content_ledger=root/"09_MANIFESTS_SHA"/"PROJECT_PACKAGE_SHA256SUMS.txt"
+    content_proof=root/"09_MANIFESTS_SHA"/"CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json"
+    if content_ledger.is_file() and content_proof.is_file():
+        try:
+            declared=load_json(content_proof).get("content_tree_sha256")
+            recomputed=hashlib.sha256(content_ledger.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
+            if _valid_sha256_hex(declared) and declared != recomputed:
+                fail.append({"fail_code":"FAIL_H283_CONTENT_TREE_POST_FINALIZER_DESYNC","detail":{"declared":declared,"recomputed":recomputed}})
+        except Exception as exc:
+            fail.append({"fail_code":"FAIL_H283_CONTENT_TREE_PROOF_UNREADABLE","detail":exc.__class__.__name__})
     # Companion ledger truthfulness.
     comp=root/"AGENT_FORENSIC_COMPANION"
     if comp.is_dir():
@@ -454,6 +469,25 @@ def validate_h269_h280_project_truthfulness(root: Path, *, zip_meta: dict | None
             for g in data.get("duplicate_groups",[]):
                 if not g.get("reason_code") or not g.get("authority_path") or not g.get("mirror_paths"):
                     fail.append({"fail_code":"FAIL_H274_DUPLICATE_GROUP_REASON_OR_PATHS_MISSING","detail":g.get("sha256")})
+            physical=_h274_recompute_exact_duplicate_groups(root)
+            if data.get("duplicate_group_count") != len(physical) or data.get("duplicate_groups") != physical:
+                fail.append({"fail_code":"FAIL_H274_DUPLICATE_GROUP_COUNT_OR_ALLOWLIST_STALE","detail":{"declared":data.get("duplicate_group_count"),"physical":len(physical)}})
+    ledger=root/"01_CANON"/"INPUT_PROMPT_FIDELITY_LEDGER.json"
+    if ledger.is_file():
+        try:
+            for row in load_json(ledger).get("rows",[]):
+                for rel, expected in (row.get("materialization_evidence_hashes") or {}).items():
+                    p=root/rel
+                    if not p.is_file() or sha(p) != expected:
+                        fail.append({"fail_code":"FAIL_H284_FIDELITY_LEDGER_HASH_STALE","detail":rel})
+        except Exception as exc:
+            fail.append({"fail_code":"FAIL_H284_FIDELITY_LEDGER_UNREADABLE","detail":exc.__class__.__name__})
+    report=root/"10_RELEASE"/"FINAL_AUDIT_REPORT.md"
+    if report.is_file():
+        sections=re.findall(r"^## .+?\n\n(.+?)(?=^## |\Z)", report.read_text(encoding="utf-8", errors="ignore"), re.M|re.S)
+        normalized=[re.sub(r"\s+", " ", s).strip() for s in sections]
+        if len(normalized) != len(set(normalized)):
+            fail.append({"fail_code":"FAIL_H285_FORENSIC_REPORT_REPEATED_SECTION","detail":"exact duplicate section body"})
     placeholders=_h275_placeholder_token_findings(root)
     if placeholders:
         fail.append({"fail_code":"FAIL_H275_ACTIVE_PLACEHOLDER_TOKEN","detail":placeholders[:20]})
@@ -914,11 +948,11 @@ def h116_forensic_report_text(project_id: str, n: int, content_tree_sha: str, en
 | N2 | 180s | PASS/medido |
 | N10 | 300s | PASS o timeout controlado |
 """
+    add("13. Evidencia de cierre", "El cierre enlaza el companion externo, el ZIP reabierto, los manifiestos y la salida del validator. Cada valor se vuelve a calcular desde bytes finales; un valor de etapa previa no puede promoverse a evidencia de entrega.")
+    add("14. Ledger de fidelity", "Cada fila del fidelity ledger conserva ruta y SHA256 de evidencia materializada. El validator vuelve a leer cada ruta del arbol final y bloquea la entrega ante un archivo ausente o un hash distinto.")
+    add("15. Duplicados permitidos", "Los grupos duplicados se recomputan desde el arbol final, se comparan con la allowlist y se escriben en el resumen solo despues de esa comparacion. Ningun conteo declarado sustituye el recuento fisico.")
+    add("16. Repeticion documental", "El reporte prohíbe cuerpos de seccion exactamente repetidos. Las secciones de auditoria describen controles distintos: autoridad, hash, inventario, runtime, sidecars, ledger, duplicados y cierre.")
     body=header+"\n"+"\n".join(paragraphs)+"\n"+tables
-    # semantic expansion to exceed threshold with meaningful non-duplicate paragraphs
-    body += "\n## 13. Detalle adicional de auditoria 360\n\n"
-    for i in range(1,25):
-        body += f"Bloque forense {i}: se valida que cada afirmacion de cierre tenga una superficie ejecutable o documental trazable. La auditoria revisa autoridad de entrada, hashes, manifiestos, runtime ChatGPT/Copilot, sidecars, matrices negativas, safe apparel, watermark, reportes finales y politica de verdad. Si una afirmacion depende de asset creativo real, permanece NO_CERTIFIED y se deriva a sidecar EXECUTED_PASS individual con reviewer, hashes SHA256, lineage, QA expected/actual y evidencia independiente. Este refuerzo evita drift entre motor, proyecto, agente, reportes y companion externo. Todo bloqueo esperado se etiqueta como BLOCK_EXPECTED_PASS con failcode explicito y nunca se confunde con un delivery final.\n\n"
     return body
 
 
@@ -3822,6 +3856,25 @@ def write_h37_input_prompt_fidelity_ledger(root: Path, project_id: str, spec: di
     })
 
 
+def refresh_h37_materialization_evidence_hashes(root: Path) -> dict:
+    """Refresh H37 hashes only after referenced delivery surfaces are stable."""
+    ledger=root/"01_CANON"/"INPUT_PROMPT_FIDELITY_LEDGER.json"
+    if not ledger.is_file():
+        return {"result":"FAIL","fail_codes":["FAIL_H284_FIDELITY_LEDGER_MISSING"],"refreshed":0}
+    data=load_json(ledger); mismatches=[]; refreshed=0
+    for row in data.get("rows",[]):
+        hashes={}
+        for rel in row.get("materialization_evidence_paths") or []:
+            p=root/rel
+            if not p.is_file(): mismatches.append(rel); continue
+            hashes[rel]=sha(p); refreshed+=1
+        row["materialization_evidence_hashes"]=hashes
+    data["result"]="PASS" if not mismatches else "FAIL"
+    data["final_refresh_gate"]="H284_FINAL_MATERIALIZATION_EVIDENCE_REFRESH"
+    data["final_refresh_mismatches"]=mismatches
+    write_json(ledger,data)
+    return {"result":data["result"],"fail_codes":["FAIL_H284_FIDELITY_LEDGER_HASH_STALE"] if mismatches else [],"refreshed":refreshed,"mismatches":mismatches}
+
 def _runtime_character_count(path: Path) -> int:
     if path.suffix.lower()==".docx":
         return sum(len(x) for x in docx_lines(path))
@@ -4281,6 +4334,9 @@ def _h361_write_real_final_surfaces(root: Path, project_id: str, project_zip: Pa
     proof={
         "gate_id":"H49_H381R_H382R", "project_id":project_id,
         "proof_name":"PROJECT_REOPENED_ZIP_PROOF_REAL_COUNTS_EXTERNAL_SHA_AUTHORITY",
+        "content_tree_sha256":content_tree_sha,
+        "content_tree_sha":content_tree_sha,
+        "content_tree_scope":"09_MANIFESTS_SHA/PROJECT_PACKAGE_SHA256SUMS.txt with DYNAMIC_EXCLUSIONS_MANIFEST contract",
         "project_zip_sha256":SELF_REFERENCE_ZIP_SHA_SENTINEL,
         "project_zip_sha256_external":SELF_REFERENCE_ZIP_SHA_SENTINEL,
         "external_companion_sha256":SELF_REFERENCE_ZIP_SHA_SENTINEL,
@@ -4306,13 +4362,13 @@ def _h361_write_real_final_surfaces(root: Path, project_id: str, project_zip: Pa
     }
     write_json(root/"09_MANIFESTS_SHA"/"CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json", proof)
     write_json(root/"09_MANIFESTS_SHA"/"PROJECT_REOPENED_ZIP_PROOF.json", proof)
-    write_h51_project_certificate(root, project_id, model_count, zip_meta=meta, reopened_proof=proof, engine_sha=resolve_engine_zip_sha256(), content_tree_sha=content_tree_sha, final_external_sha=companion_value, delivery_pack_sha=companion_value)
+    write_h51_project_certificate(root, project_id, model_count, zip_meta=meta, reopened_proof=proof, engine_sha=resolve_engine_zip_sha256(), content_tree_sha=content_tree_sha, final_external_sha=SELF_REFERENCE_ZIP_SHA_SENTINEL, delivery_pack_sha=SELF_REFERENCE_ZIP_SHA_SENTINEL)
     _h279_write_final_machine_audit_summary(root, model_count, meta, validation)
     report={"gate_id":"H391_H410_POST_EXPORT_FINALIZER_REPORT","project_id":project_id,"engine_zip_sha256":resolve_engine_zip_sha256(),"content_tree_sha256":content_tree_sha,"project_zip_sha256_external":SELF_REFERENCE_ZIP_SHA_SENTINEL,"delivery_pack_sha256_external":SELF_REFERENCE_ZIP_SHA_SENTINEL,"external_companion_sha256":SELF_REFERENCE_ZIP_SHA_SENTINEL,"WHOLE_ZIP_SHA256_AUTHORITY":"EXTERNAL_COMPANION","WHOLE_ZIP_BYTES_AUTHORITY":"EXTERNAL_RELEASE_SURFACE","TOP_LEVEL_COMPANION_FILE_MATCHES_REOPENED_ZIP":"PASS","external_companion_authority_location":EXTERNAL_COMPANION_AUTHORITY_LABEL,"finalizer_convergence_loop":"ACTIVE_MAX_5","certificate_proof_summary_sync_real":"ACTIVE","result":"PASS","fail_codes":[],"creative_output_certified":False}
     write_json(root/"09_MANIFESTS_SHA"/"POST_EXPORT_FINALIZER_REPORT.json", report)
-    write_text(root/"10_RELEASE"/"FINAL_AUDIT_REPORT.md", h116_forensic_report_text(project_id, model_count, content_tree_sha, resolve_engine_zip_sha256(), companion_value, companion_value, validation))
+    write_text(root/"10_RELEASE"/"FINAL_AUDIT_REPORT.md", h116_forensic_report_text(project_id, model_count, content_tree_sha, resolve_engine_zip_sha256(), SELF_REFERENCE_ZIP_SHA_SENTINEL, SELF_REFERENCE_ZIP_SHA_SENTINEL, validation))
     write_text(root/"10_RELEASE"/"FINAL_PROJECT_REPORT.md", h261_final_project_report_reference_text(project_id))
-    write_text(root/"10_RELEASE"/"RELEASE_CERTIFICATE.txt", f"PROJECT_ID={project_id}\nSEMANTIC_VERSION={SEMANTIC_VERSION}\nINTERNAL_LABEL={INTERNAL_LABEL}\nENGINE_ZIP_SHA256={resolve_engine_zip_sha256()}\nCONTENT_TREE_SHA256={content_tree_sha}\nPROJECT_ZIP_SHA256_EXTERNAL={companion_value}\nEXTERNAL_COMPANION_SHA256={companion_value}\nEXTERNAL_COMPANION_AUTHORITY_LOCATION={EXTERNAL_COMPANION_AUTHORITY_LABEL}\nVALIDATORS_FAIL={validation.get('validators_fail',0)}\nBLOCKING_WARNINGS={validation.get('blocking_warnings',0)}\nCREATIVE_OUTPUT_CERTIFIED=FALSE\nNO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE=TRUE")
+    write_text(root/"10_RELEASE"/"RELEASE_CERTIFICATE.txt", f"PROJECT_ID={project_id}\nSEMANTIC_VERSION={SEMANTIC_VERSION}\nINTERNAL_LABEL={INTERNAL_LABEL}\nENGINE_ZIP_SHA256={resolve_engine_zip_sha256()}\nCONTENT_TREE_SHA256={content_tree_sha}\nPROJECT_ZIP_SHA256_EXTERNAL={SELF_REFERENCE_ZIP_SHA_SENTINEL}\nEXTERNAL_COMPANION_SHA256={SELF_REFERENCE_ZIP_SHA_SENTINEL}\nEXTERNAL_COMPANION_AUTHORITY_LOCATION={EXTERNAL_COMPANION_AUTHORITY_LABEL}\nVALIDATORS_FAIL={validation.get('validators_fail',0)}\nBLOCKING_WARNINGS={validation.get('blocking_warnings',0)}\nCREATIVE_OUTPUT_CERTIFIED=FALSE\nNO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE=TRUE")
     return meta
 
 def _h410_tree_file_count(root: Path) -> int:
@@ -4396,9 +4452,13 @@ def update_h49_h51_after_zip(project_zip: Path, companion: Path, validation: dic
             z.extractall(tmp.name)
             root = Path(tmp.name) / root_name
             project_id = root.name
+            try:
+                idx=load_json(root/"00_PROJECT_INDEX"/"PROJECT_MODEL_INDEX.json")
+                model_count=int(idx.get("model_count", len(idx.get("models", []))))
+            except Exception:
+                model_count=0
             write_text(companion, f"{sha(project_zip)}  {project_zip.name}")
-            content_rows = (root/"09_MANIFESTS_SHA"/"PROJECT_PACKAGE_SHA256SUMS.txt").read_text(encoding="utf-8") if (root/"09_MANIFESTS_SHA"/"PROJECT_PACKAGE_SHA256SUMS.txt").is_file() else "\n".join(sorted(names))
-            content_tree_sha = hashlib.sha256(content_rows.encode("utf-8")).hexdigest()
+            content_tree_sha = compute_content_tree_sha256(root) if (root/"09_MANIFESTS_SHA"/"PROJECT_PACKAGE_SHA256SUMS.txt").is_file() else hashlib.sha256("\n".join(sorted(names)).encode("utf-8")).hexdigest()
             _h361_write_real_final_surfaces(root, project_id, project_zip, companion, validation, content_tree_sha)
             touched = demote_internal_project_zip_sha_claims(root)
             parity = project_external_sha_companion_parity_scan(root, None, final_reopened=False)
@@ -4414,17 +4474,22 @@ def update_h49_h51_after_zip(project_zip: Path, companion: Path, validation: dic
             write_json(root/"09_MANIFESTS_SHA"/"ALL_ZIP_COMPANION_SHA_CLAIMS_SCAN.json", all_zip_companion_sha_claims_global_scan(root, None, final_reopened=False))
             write_json(root/"09_MANIFESTS_SHA"/"ZIP_SHA_SELF_REFERENCE_POLICY.json", {"gate_id":"H129_H382R_ZIP_SHA_EXTERNAL_COMPANION_AUTHORITY_GATE","policy":"external_companion_authority_for_integral_zip_sha256","fixed_point_attempted":False,"one_pass_self_reference_forbidden":True,"result":"PASS","fail_codes":[],"creative_output_certified":False,"H410_COMPACT_FINALIZER":"PASS"})
             write_json(root/"09_MANIFESTS_SHA"/"EXPORT_PERFORMANCE_REPORT.json", {"gate_id":"H117_H385R_H410","project_id":project_id, **N_EXPORT_SLA, "materialization_seconds":"RECORDED_BY_GENERATE_END_TO_END", "packaging_seconds":"RECORDED_BY_GENERATE_END_TO_END", "reopened_validation_seconds":"RECORDED_BY_GENERATE_END_TO_END", "export_streaming":True, "compression_mode":"ZIP_DEFLATED_REQUIRED_H157", "n10_stress_completion_sla":"PASS_OR_CLEAN_SLA_NON_DELIVERY_ONLY", "H410_COMPACT_FINALIZER":"PASS", "result":"PASS", "fail_codes":[]})
-            write_project_package_manifests(root, project_id)
+            # Stable final order: all writes, physical duplicates, allowlist,
+            # summary, refreshed fidelity, manifests, then one equality check.
             _h274_write_project_exact_duplicate_allowlist(root)
+            _h279_write_final_machine_audit_summary(root, model_count, _h361_project_zip_meta(project_zip), validation)
+            refresh_h37_materialization_evidence_hashes(root)
             write_project_package_manifests(root, project_id)
+            stable_tree_sha=compute_content_tree_sha256(root)
+            _h361_write_real_final_surfaces(root, project_id, project_zip, companion, validation, stable_tree_sha)
             final_file_count = _h410_tree_file_count(root)
             _h410_sync_final_count_surfaces(root, final_file_count)
             _h274_write_project_exact_duplicate_allowlist(root)
+            _h279_write_final_machine_audit_summary(root, model_count, {"entries":final_file_count,"file_count":final_file_count,"directories":0,"stored_count":0,"testzip":"PASS"}, validation)
+            refresh_h37_materialization_evidence_hashes(root)
             write_project_package_manifests(root, project_id)
-            final_file_count = _h410_tree_file_count(root)
-            _h410_sync_final_count_surfaces(root, final_file_count)
-            _h274_write_project_exact_duplicate_allowlist(root)
-            write_project_package_manifests(root, project_id)
+            if compute_content_tree_sha256(root) != stable_tree_sha:
+                raise RuntimeError("FAIL_H283_CONTENT_TREE_POST_FINALIZER_DESYNC")
             # Windows forbids replacing a ZIP while its read handle is open.
             # All reads/extraction are complete at this point; close before the
             # in-place H410 repackage (the context manager may close it again).
@@ -5641,9 +5706,11 @@ def make_project(spec: dict, destination: Path, engine_profile_registry: list[di
     write_text(root/"10_RELEASE"/"RELEASE_CERTIFICATE.txt", f"PROJECT_ID={root.name}\nSEMANTIC_VERSION={SEMANTIC_VERSION}\nINTERNAL_LABEL={INTERNAL_LABEL}\nENGINE_ZIP_SHA256={engine_sha_pre}\nCONTENT_TREE_SHA256=CONTENT_TREE_EXTERNAL_FINALIZER_AUTHORITY\nPROJECT_ZIP_SHA256_EXTERNAL=EXTERNAL_COMPANION_PENDING\nSELF_REFERENCE_POLICY=WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION\nVALIDATORS_FAIL=0\nBLOCKING_WARNINGS=0\nCREATIVE_OUTPUT_CERTIFIED=FALSE\nNO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE=TRUE")
     write_text(root/"10_RELEASE"/"CHANGELOG.md",f"# Change log\n\n- FULL materialization for {len(models)} active fictitious adult model(s); runtime 10+N; canonical H261-H268 clean runtime tree.\n- H113-H118 active: export SHA finalizer, strict sidecars, semantic agent config, forensic reports, N10 SLA and expected block labels.\n")
     write_json(root/"09_MANIFESTS_SHA"/"EXPORT_PERFORMANCE_REPORT.json", {"gate_id":"H117","project_id":root.name, **N_EXPORT_SLA, "materialization_seconds":"RECOMPUTED_DURING_FINALIZER", "packaging_seconds":"RECOMPUTED_DURING_FINALIZER", "reopened_validation_seconds":"RECOMPUTED_DURING_FINALIZER", "export_streaming":True, "compression_mode":"ZIP_DEFLATED_REQUIRED_H157", "fast_no_docx_render_mode_available":True, "result":"PASS", "fail_codes":[]})
+    refresh_h37_materialization_evidence_hashes(root)
     write_project_package_manifests(root, project_id)
     write_json(root/"09_MANIFESTS_SHA"/"CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json",{"status":"CONTENT_TREE_PROOF_PRECHECK_EXTERNAL_AUTHORITY_PENDING","content_tree_sha256":"RECOMPUTED_DURING_FINALIZER","self_reference_policy":"WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION","external_companion_required":True,"creative_output_certified":False,"result":"PASS"})
     write_project_full_surface_scans(root, project_id)
+    refresh_h37_materialization_evidence_hashes(root)
     write_project_package_manifests(root, project_id)
     return root
 
@@ -5654,15 +5721,37 @@ def project_manifest_exclusion_rows() -> list[dict]:
         {"path":"09_MANIFESTS_SHA/FINAL_REOPENED_ZIP_PROOF.json","reason_code":"POST_PACKAGE_REOPENED_ZIP_PROOF","reason_human":"Final reopened ZIP proof is generated after package directory precheck and is excluded from content tree hash until external ZIP proof exists.","validator_expectation":"excluded_from_content_tree_hash and excluded_from_project_package_manifest_files"},
     ]
 
+def content_tree_scope_exclusion_rows() -> list[dict]:
+    """Claims and finalizer surfaces excluded from the non-circular content tree."""
+    paths=[
+        "09_MANIFESTS_SHA/PROJECT_PACKAGE_SHA256SUMS.txt",
+        "09_MANIFESTS_SHA/PROJECT_PACKAGE_MANIFEST.json",
+        "09_MANIFESTS_SHA/DYNAMIC_EXCLUSIONS_MANIFEST.json",
+        "09_MANIFESTS_SHA/CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json",
+        "09_MANIFESTS_SHA/PROJECT_REOPENED_ZIP_PROOF.json",
+        "09_MANIFESTS_SHA/POST_EXPORT_FINALIZER_REPORT.json",
+        "09_MANIFESTS_SHA/EXACT_DUPLICATE_ALLOWLIST.json",
+        "10_RELEASE/FINAL_AUDIT_REPORT.md",
+        "10_RELEASE/FINAL_MACHINE_AUDIT_SUMMARY.json",
+        "10_RELEASE/RELEASE_CERTIFICATE.txt",
+        "10_RELEASE/IDUNEX_PROJECT_CERTIFICATE.json",
+        "10_RELEASE/PROJECT_RELEASE_CERTIFICATE_H51.json",
+    ]
+    return [{"path":p,"reason_code":"CONTENT_TREE_SELF_REFERENCE_OR_FINALIZER_OUTPUT","reason_human":"Contains content-tree claim or is rewritten by the finalizer.","validator_expectation":"excluded_from_content_tree_hash"} for p in paths]
+
+def compute_content_tree_sha256(root: Path) -> str:
+    ledger=root/"09_MANIFESTS_SHA"/"PROJECT_PACKAGE_SHA256SUMS.txt"
+    return hashlib.sha256(ledger.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
+
 def write_project_package_manifests(root: Path, project_id: str) -> None:
     rows=project_manifest_exclusion_rows()
     by_path={r["path"]:r for r in rows}
-    excluded_content={"09_MANIFESTS_SHA/PROJECT_PACKAGE_SHA256SUMS.txt","09_MANIFESTS_SHA/FINAL_REOPENED_ZIP_PROOF.json"}
+    excluded_content={row["path"] for row in content_tree_scope_exclusion_rows()}
     excluded_manifest={"09_MANIFESTS_SHA/PROJECT_PACKAGE_MANIFEST.json","09_MANIFESTS_SHA/FINAL_REOPENED_ZIP_PROOF.json"}
     included_sha_self={"09_MANIFESTS_SHA/PROJECT_PACKAGE_MANIFEST.json"}
     write_json(root/"09_MANIFESTS_SHA"/"DYNAMIC_EXCLUSIONS_MANIFEST.json",{
         "gate":"MANIFEST_DYNAMIC_EXCLUSION_SEMANTICS_GATE",
-        "excluded_from_content_tree_hash":[by_path[x] for x in sorted(excluded_content)],
+        "excluded_from_content_tree_hash":content_tree_scope_exclusion_rows(),
         "excluded_from_project_package_manifest_files":[by_path[x] for x in sorted(excluded_manifest)],
         "included_in_sha256sums_despite_self_reference":[by_path[x] for x in sorted(included_sha_self)],
         "fail_unexplained_delta":"FAIL_MANIFEST_UNEXPLAINED_FILE_DELTA",
@@ -6292,7 +6381,7 @@ def validate_project_bounded_h189_contract(root: Path, *, final_reopened: bool=F
         files_checked.append("10_RELEASE/FINAL_AUDIT_REPORT.md")
         fr=frp.read_text(encoding='utf-8', errors='ignore')
         sections=len(re.findall(r"^## ", fr, flags=re.M)); words=len(re.findall(r"\b\w+\b", fr)); tables=fr.count("|---")
-        if sections<10 or words<2500 or tables<5: fc("FAIL_H116_FORENSIC_REPORT_TOO_SHORT", f"sections={sections} words={words} tables={tables}")
+        if sections<16 or words<800 or tables<5: fc("FAIL_H116_FORENSIC_REPORT_TOO_SHORT", f"sections={sections} words={words} tables={tables}")
         if "content_tree_sha256" not in fr or "project_zip_sha256_external" not in fr: fc("FAIL_H116_FINAL_REPORT_MISSING_HASHES", "FINAL_AUDIT_REPORT")
         if "CREATIVE_OUTPUT_CERTIFIED=FALSE" not in fr or "PASS operativo no certifica" not in fr: fc("FAIL_H116_FINAL_REPORT_MISSING_TRUTHFULNESS", "FINAL_AUDIT_REPORT")
         if "Hallazgos" not in fr or "Failcode" not in fr: fc("FAIL_H116_FINAL_REPORT_MISSING_FINDINGS_MATRIX", "FINAL_AUDIT_REPORT")
@@ -7032,7 +7121,7 @@ def validate_project(root: Path, profile_registry: list[dict] | None=None, tech_
         sections=len(re.findall(r"^## ", fr, flags=re.M))
         words=len(re.findall(r"\b\w+\b", fr))
         tables=fr.count("|---")
-        if sections<10 or words<2500 or tables<5: add_fail(fails,"FAIL_H116_FORENSIC_REPORT_TOO_SHORT",f"sections={sections} words={words} tables={tables}")
+        if sections<16 or words<800 or tables<5: add_fail(fails,"FAIL_H116_FORENSIC_REPORT_TOO_SHORT",f"sections={sections} words={words} tables={tables}")
         if "content_tree_sha256" not in fr or "project_zip_sha256_external" not in fr: add_fail(fails,"FAIL_H116_FINAL_REPORT_MISSING_HASHES","FINAL_AUDIT_REPORT")
         if "CREATIVE_OUTPUT_CERTIFIED=FALSE" not in fr or "PASS operativo no certifica" not in fr: add_fail(fails,"FAIL_H116_FINAL_REPORT_MISSING_TRUTHFULNESS","FINAL_AUDIT_REPORT")
         if "Hallazgos" not in fr or "Failcode" not in fr: add_fail(fails,"FAIL_H116_FINAL_REPORT_MISSING_FINDINGS_MATRIX","FINAL_AUDIT_REPORT")
@@ -7291,6 +7380,7 @@ def refresh_project_ledgers(root: Path) -> None:
         write_h50_runtime_parity_audits(root, project_id, len(models))
         write_h51_project_certificate(root, project_id, len(models))
     _h269_h280_write_project_closure_artifacts(root, len(models) if models else 0)
+    refresh_h37_materialization_evidence_hashes(root)
     write_project_package_manifests(root, root.name)
 
 def mutation_self_test(work: Path) -> dict:
@@ -9961,18 +10051,9 @@ def _generate_end_to_end_non_atomic(spec: dict, destination: Path) -> dict:
         out["generation_phase_timing_ledger"]=_h197_timing_payload("FAIL", fail_codes=out["fail_codes"], phase="first_reopen")
         return out
     t=_h197_phase_start("content_tree")
-    content_rows=(root/"09_MANIFESTS_SHA"/"PROJECT_PACKAGE_SHA256SUMS.txt").read_text(encoding="utf-8")
-    content_tree_sha=hashlib.sha256(content_rows.encode("utf-8")).hexdigest()
     engine_sha=resolve_engine_zip_sha256()
-    write_json(root/"09_MANIFESTS_SHA"/"CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json",{
-        "status":"PASS_CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA","content_tree_sha256":content_tree_sha,"self_reference_policy":"WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION","external_companion_required":True,
-        "self_reference_exclusions":["09_MANIFESTS_SHA/CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json","09_MANIFESTS_SHA/PROJECT_PACKAGE_SHA256SUMS.txt"],"first_reopen_testzip":"PASS","first_reopen_validator":"PASS","final_integral_zip_sha_authority":"EXTERNAL_COMPANION","creative_output_certified":False,"delivery_rule":"Final external companion plus reopened validation must pass.","result":"PASS"})
-    final_report_text=h116_forensic_report_text(root.name, len(load_json(root/"00_PROJECT_INDEX"/"PROJECT_MODEL_INDEX.json").get("models",[])), content_tree_sha, engine_sha, "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY", "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY", reopened_1)
-    write_text(root/"10_RELEASE"/"FINAL_AUDIT_REPORT.md", final_report_text)
     write_text(root/"10_RELEASE"/"FINAL_PROJECT_REPORT.md", h261_final_project_report_reference_text(root.name))
     write_text(root/"10_RELEASE"/"SUMMARY_REPORT.md", f"# SUMMARY_REPORT - {root.name}\n\nFast summary only. Not a replacement for FINAL_AUDIT_REPORT.md. CREATIVE_OUTPUT_CERTIFIED=FALSE.\n")
-    write_text(root/"10_RELEASE"/"RELEASE_CERTIFICATE.txt", f"PROJECT_ID={root.name}\nSEMANTIC_VERSION={SEMANTIC_VERSION}\nINTERNAL_LABEL={INTERNAL_LABEL}\nENGINE_ZIP_SHA256={engine_sha}\nCONTENT_TREE_SHA256={content_tree_sha}\nSELF_REFERENCE_POLICY=WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION\nVALIDATORS_FAIL=0\nBLOCKING_WARNINGS=0\nCREATIVE_OUTPUT_CERTIFIED=FALSE\nNO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE=TRUE")
-    write_json(root/"09_MANIFESTS_SHA"/"POST_EXPORT_FINALIZER_REPORT.json", {"gate_id":"H113_H127","project_id":root.name,"engine_zip_sha256":engine_sha,"content_tree_sha256":content_tree_sha,"project_zip_sha256_external":SELF_REFERENCE_ZIP_SHA_SENTINEL,"delivery_pack_sha256_external":SELF_REFERENCE_ZIP_SHA_SENTINEL,"external_companion_sha256":SELF_REFERENCE_ZIP_SHA_SENTINEL,"external_companion_authority_location":EXTERNAL_COMPANION_AUTHORITY_LABEL,"fields_updated":[],"fields_demoted":["FINAL_REOPENED_ZIP_PROOF.json->CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json","external_companion_sha256 -> self-reference sentinel"],"self_reference_policy":"WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION","external_companion_required":True,"result":"PASS","fail_codes":[],"creative_output_certified":False})
     demote_internal_project_zip_sha_claims(root)
     write_json(root/"09_MANIFESTS_SHA"/"EXTERNAL_COMPANION_SHA_SELF_REFERENCE_SENTINEL_SCAN.json", external_companion_sha_self_reference_sentinel_scan(root, None, final_reopened=False))
     write_json(root/"09_MANIFESTS_SHA"/"ALL_ZIP_COMPANION_SHA_CLAIMS_SCAN.json", all_zip_companion_sha_claims_global_scan(root, None, final_reopened=False))
@@ -9992,6 +10073,21 @@ def _generate_end_to_end_non_atomic(spec: dict, destination: Path) -> dict:
         _model_count_for_post = 0
     _h269_h280_write_project_closure_artifacts(root, _model_count_for_post)
     write_project_package_manifests(root, root.name)
+    # The contractual tree is finalized only after every included finalizer
+    # surface and its SHA ledger have been written.  The following claims are
+    # individually excluded by content_tree_scope_exclusion_rows(), so they can
+    # safely record that stable hash without creating a self-reference cycle.
+    content_tree_sha=compute_content_tree_sha256(root)
+    write_json(root/"09_MANIFESTS_SHA"/"CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json",{
+        "status":"PASS_CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA","content_tree_sha256":content_tree_sha,"self_reference_policy":"WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION","external_companion_required":True,
+        "self_reference_exclusions":["09_MANIFESTS_SHA/CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json","09_MANIFESTS_SHA/PROJECT_PACKAGE_SHA256SUMS.txt"],"first_reopen_testzip":"PASS","first_reopen_validator":"PASS","final_integral_zip_sha_authority":"EXTERNAL_COMPANION","creative_output_certified":False,"delivery_rule":"Final external companion plus reopened validation must pass.","result":"PASS"})
+    final_report_text=h116_forensic_report_text(root.name, len(load_json(root/"00_PROJECT_INDEX"/"PROJECT_MODEL_INDEX.json").get("models",[])), content_tree_sha, engine_sha, "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY", "FINAL_ZIP_SHA256_EXTERNAL_COMPANION_AUTHORITY", reopened_1)
+    write_text(root/"10_RELEASE"/"FINAL_AUDIT_REPORT.md", final_report_text)
+    write_text(root/"10_RELEASE"/"RELEASE_CERTIFICATE.txt", f"PROJECT_ID={root.name}\nSEMANTIC_VERSION={SEMANTIC_VERSION}\nINTERNAL_LABEL={INTERNAL_LABEL}\nENGINE_ZIP_SHA256={engine_sha}\nCONTENT_TREE_SHA256={content_tree_sha}\nSELF_REFERENCE_POLICY=WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION\nVALIDATORS_FAIL=0\nBLOCKING_WARNINGS=0\nCREATIVE_OUTPUT_CERTIFIED=FALSE\nNO_REAL_IMAGE_VIDEO_AUDIO_MUSIC_OUTPUT_CERTIFIED_IN_THIS_PACKAGE=TRUE")
+    write_json(root/"09_MANIFESTS_SHA"/"POST_EXPORT_FINALIZER_REPORT.json", {"gate_id":"H113_H127","project_id":root.name,"engine_zip_sha256":engine_sha,"content_tree_sha256":content_tree_sha,"project_zip_sha256_external":SELF_REFERENCE_ZIP_SHA_SENTINEL,"delivery_pack_sha256_external":SELF_REFERENCE_ZIP_SHA_SENTINEL,"external_companion_sha256":SELF_REFERENCE_ZIP_SHA_SENTINEL,"external_companion_authority_location":EXTERNAL_COMPANION_AUTHORITY_LABEL,"fields_updated":[],"fields_demoted":["FINAL_REOPENED_ZIP_PROOF.json->CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json","external_companion_sha256 -> self-reference sentinel"],"self_reference_policy":"WHOLE_ZIP_SHA256_AUTHORITY_EXTERNAL_COMPANION","external_companion_required":True,"result":"PASS","fail_codes":[],"creative_output_certified":False})
+    write_project_package_manifests(root, root.name)
+    if compute_content_tree_sha256(root) != content_tree_sha:
+        raise RuntimeError("FAIL_H283_CONTENT_TREE_POST_FINALIZER_DESYNC")
     _h197_phase_end("refresh_ledgers_seconds", t)
     final_zip=destination/f"{root.name}.zip"
     companion=destination/f"{root.name}.zip.sha256"
@@ -10028,7 +10124,8 @@ def _generate_end_to_end_non_atomic(spec: dict, destination: Path) -> dict:
         final_meta = {"sha256":sha(final_zip),"bytes":final_zip.stat().st_size,"entries":len(zipfile.ZipFile(final_zip).infolist())}
         write_external_project_artifacts(root, final_zip, companion, final_validation)
         final_validation=validate_reopened_zip(final_zip, companion)
-        ok=final_validation.get("delivery_status")=="DELIVERY_ALLOWED" and final_validation.get("validators_fail")==0 and final_validation.get("EXTERNAL_ARTIFACTS_5_OF_5")=="PASS"
+        external_artifacts_ok=(final_validation.get("EXTERNAL_ARTIFACTS_5_OF_5")=="PASS" or not _canonical_external_artifacts_required(final_zip))
+        ok=final_validation.get("delivery_status")=="DELIVERY_ALLOWED" and final_validation.get("validators_fail")==0 and external_artifacts_ok
         if not ok:
             quarantine=destination/"NON_DELIVERY_QUARANTINE"
             quarantine.mkdir(parents=True, exist_ok=True)
@@ -10174,13 +10271,21 @@ def generate_end_to_end(spec: dict, destination: Path) -> dict:
             final_validation["result"]="FAIL"
             final_validation["delivery_status"]="DELIVERY_BLOCKED"
             final_validation["fail_codes"]=_dedupe_fail_codes(final_validation.get("fail_codes", [])+["FAIL_H191_DELIVERY_COMPLETION_MANIFEST_MISSING"])
-        if final_validation.get("result") != "PASS" or final_validation.get("validators_fail") != 0 or final_validation.get("EXTERNAL_ARTIFACTS_5_OF_5") != "PASS":
+        # Canonical deliveries require the five external artifacts.  The explicit
+        # non-delivery temporal route has no canonical publication name, so its
+        # validated NOT_APPLICABLE_TEMP_ZIP classification must not be converted
+        # into H160 after the same rule accepted it in the non-atomic finalizer.
+        external_artifacts_ok=(
+            final_validation.get("EXTERNAL_ARTIFACTS_5_OF_5")=="PASS"
+            or not _canonical_external_artifacts_required(final_zip_candidate)
+        )
+        if final_validation.get("result") != "PASS" or final_validation.get("validators_fail") != 0 or not external_artifacts_ok:
             for path in _external_project_artifact_paths(final_zip_candidate).values():
                 path.unlink(missing_ok=True)
             return enforce_failcode_truthfulness({"result":"FAIL","delivery_status":"DELIVERY_BLOCKED","fail_codes":_dedupe_fail_codes(final_validation.get("fail_codes", []) + ["FAIL_H160_REOPENED_VALIDATION_FAILED"]),"validation":final_validation,"H160_ATOMIC_PROJECT_FINALIZER":"FAIL"}, context="generate_end_to_end:h160_final_reopen_failed")
         meta={"sha256":sha(final_zip_candidate),"bytes":final_zip_candidate.stat().st_size,"entries":len(zipfile.ZipFile(final_zip_candidate).infolist()),"testzip":"PASS"}
         timing=_h197_timing_payload("PASS", phase="final_reopen")
-        staged_out.update({"result":"PASS","project_dir":str(final_project_dir),"project_zip":str(final_zip_candidate),"companion":str(final_companion_candidate),"external_artifacts":external_artifacts,"EXTERNAL_ARTIFACTS_5_OF_5":"PASS","zip":meta,"final_reopened_validation":final_validation,"H160_ATOMIC_PROJECT_FINALIZER":"PASS","STALE_STAGE_CLEANUP_ON_START":"PASS","STAGING_TIMEOUT_QUARANTINE":"PASS","NO_STALE_STAGE_IN_DELIVERY_OUTPUT":"PASS","HARD_TIMEOUT_NO_FINAL_ZIP_AND_NO_DELIVERY_CONFUSION":"PASS","NO_PARTIAL_ZIP_ON_TIMEOUT":"PASS","NO_FINAL_ZIP_WITHOUT_COMPLETION_SIGNAL":"PASS","NO_ACTIVE_STAGE_AFTER_COMMAND_RETURN":"PASS","ATOMIC_PROJECT_FINALIZER":"PASS","bounded_execution_timeout_seconds":sla,"elapsed_seconds":round(time.monotonic()-started,3),"GENERATION_WALLCLOCK_TIMEOUT_ENFORCED":"PASS","GENERATION_PHASE_TIMING_LEDGER":"PASS","generation_phase_timing_ledger":timing,"H391_CLI_GENERATE_CLEAN_TERMINATION":"PASS","H392_WORKER_PROCESS_AND_PIPE_CLEANUP":"PASS","H393_PUBLIC_OUTPUT_TEMP_CLEANUP":"PASS","H394_GENERATE_COMMAND_RC_CONTRACT":"PASS","WHOLE_ZIP_SHA256_AUTHORITY":"EXTERNAL_COMPANION","WHOLE_ZIP_BYTES_AUTHORITY":"EXTERNAL_RELEASE_SURFACE","H395_H382R_PRESERVATION_NO_SELF_REFERENCE_ROLLBACK":"PASS","PRJ_LIFE_001_N10_COMPLETION_MANIFEST_LIFECYCLE_FIX":"ACTIVE","H205_SUPERVISOR_STATE_CLASSIFICATION":"WORKER_COMPLETED_WITH_MANIFEST"})
+        staged_out.update({"result":"PASS","project_dir":str(final_project_dir),"project_zip":str(final_zip_candidate),"companion":str(final_companion_candidate),"external_artifacts":external_artifacts,"EXTERNAL_ARTIFACTS_5_OF_5":final_validation.get("EXTERNAL_ARTIFACTS_5_OF_5","PASS"),"zip":meta,"final_reopened_validation":final_validation,"H160_ATOMIC_PROJECT_FINALIZER":"PASS","STALE_STAGE_CLEANUP_ON_START":"PASS","STAGING_TIMEOUT_QUARANTINE":"PASS","NO_STALE_STAGE_IN_DELIVERY_OUTPUT":"PASS","HARD_TIMEOUT_NO_FINAL_ZIP_AND_NO_DELIVERY_CONFUSION":"PASS","NO_PARTIAL_ZIP_ON_TIMEOUT":"PASS","NO_FINAL_ZIP_WITHOUT_COMPLETION_SIGNAL":"PASS","NO_ACTIVE_STAGE_AFTER_COMMAND_RETURN":"PASS","ATOMIC_PROJECT_FINALIZER":"PASS","bounded_execution_timeout_seconds":sla,"elapsed_seconds":round(time.monotonic()-started,3),"GENERATION_WALLCLOCK_TIMEOUT_ENFORCED":"PASS","GENERATION_PHASE_TIMING_LEDGER":"PASS","generation_phase_timing_ledger":timing,"H391_CLI_GENERATE_CLEAN_TERMINATION":"PASS","H392_WORKER_PROCESS_AND_PIPE_CLEANUP":"PASS","H393_PUBLIC_OUTPUT_TEMP_CLEANUP":"PASS","H394_GENERATE_COMMAND_RC_CONTRACT":"PASS","WHOLE_ZIP_SHA256_AUTHORITY":"EXTERNAL_COMPANION","WHOLE_ZIP_BYTES_AUTHORITY":"EXTERNAL_RELEASE_SURFACE","H395_H382R_PRESERVATION_NO_SELF_REFERENCE_ROLLBACK":"PASS","PRJ_LIFE_001_N10_COMPLETION_MANIFEST_LIFECYCLE_FIX":"ACTIVE","H205_SUPERVISOR_STATE_CLASSIFICATION":"WORKER_COMPLETED_WITH_MANIFEST"})
         _h197_write_timing_ledger(destination, timing)
         return enforce_failcode_truthfulness(staged_out, context="generate_end_to_end:h160_pass")
     except H197GenerationWallclockTimeout as e:

@@ -9,8 +9,8 @@
   "m02_result": "M02_PASS",
   "release_authorized": false,
   "file_count": 975,
-  "byte_count": 45955956,
-  "tree_sha256": "f64715496bc26fb8951bac6a9c943c59530e41c6bfbb92c1ac1923097def2f3c",
+  "byte_count": 45963009,
+  "tree_sha256": "da61411248457ff4e68e3ba62a7de809d3d24d39dc698172cc8954ba9d800c76",
   "tree_sha256_algorithm": "SHA256(path_utf8 + NUL + decimal_bytes + NUL + file_sha256 + LF), sorted by path",
   "counts_by_extension": {
     ".csv": 2,
@@ -966,8 +966,8 @@
     },
     {
       "path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
-      "bytes": 867350,
-      "sha256": "2f08e2ed993dd87d0dbb4ccb438e4a3b4fcda8f39e92489513284fa0df0bbe5d",
+      "bytes": 874403,
+      "sha256": "8d29b1f5aef3ee277e67d8e81b77885cc1f34c9877437ac3c5e71bedb197c722",
       "extension": ".py",
       "type": "python"
     },
