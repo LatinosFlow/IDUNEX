@@ -1,0 +1,553 @@
+name: IDUNEX M03 Adversarial Reaudit
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_engine_tree_sha256:
+        description: Expected SHA-256 of the current engine/IDUNEX physical tree
+        required: true
+        default: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
+        type: string
+      timeout_per_case:
+        description: Maximum seconds for each generated matrix process
+        required: true
+        default: '300'
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: idunex-m03-adversarial-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  m03-adversarial:
+    name: M03 adversarial technical evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+
+    steps:
+      - name: Checkout frozen workflow ref
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned audit dependency
+        run: python -m pip install python-docx==1.2.0
+
+      - name: Initialize isolated evidence directories
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "EVIDENCE_DIR=${RUNNER_TEMP}/idunex-m03-evidence" >> "$GITHUB_ENV"
+          echo "MATRIX_WORK=${RUNNER_TEMP}/idunex-m03-matrix-work" >> "$GITHUB_ENV"
+          echo "MUTATION_WORK=${RUNNER_TEMP}/idunex-m03-mutation-work" >> "$GITHUB_ENV"
+          mkdir -p "${RUNNER_TEMP}/idunex-m03-evidence/identity"
+          mkdir -p "${RUNNER_TEMP}/idunex-m03-evidence/lineage"
+          mkdir -p "${RUNNER_TEMP}/idunex-m03-evidence/cases"
+          mkdir -p "${RUNNER_TEMP}/idunex-m03-evidence/checks"
+          mkdir -p "${RUNNER_TEMP}/idunex-m03-evidence/matrix"
+          mkdir -p "${RUNNER_TEMP}/idunex-m03-evidence/mutation"
+          cp tests/m03/m03_adversarial_lineage.json "${RUNNER_TEMP}/idunex-m03-evidence/lineage/"
+          cp REPOSITORY_MANIFEST.yml "${RUNNER_TEMP}/idunex-m03-evidence/identity/"
+          cp governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json "${RUNNER_TEMP}/idunex-m03-evidence/identity/"
+
+      - name: Preflight repository and engine identity
+        id: preflight
+        continue-on-error: true
+        env:
+          EXPECTED_ENGINE_TREE_SHA256: ${{ inputs.expected_engine_tree_sha256 }}
+        shell: bash
+        run: |
+          set -o pipefail
+          python -B - <<'PY' 2>&1 | tee "$EVIDENCE_DIR/identity/preflight.log"
+          from __future__ import annotations
+
+          import hashlib
+          import json
+          import os
+          import re
+          import subprocess
+          from pathlib import Path
+
+          root = Path('.').resolve()
+          engine = root / 'engine' / 'IDUNEX'
+          baseline_path = root / 'governance' / 'baseline' / 'IDUNEX_CURRENT_TREE_MANIFEST.json'
+          repository_manifest_path = root / 'REPOSITORY_MANIFEST.yml'
+          state_path = root / 'governance' / 'CURRENT_STATE.json'
+          expected = os.environ['EXPECTED_ENGINE_TREE_SHA256'].strip().lower()
+          failures: list[str] = []
+
+          files = sorted(
+              (path for path in engine.rglob('*') if path.is_file()),
+              key=lambda path: path.relative_to(root).as_posix(),
+          ) if engine.is_dir() else []
+          aggregate = hashlib.sha256()
+          byte_count = 0
+          for path in files:
+              relative = path.relative_to(root).as_posix()
+              data = path.read_bytes()
+              digest = hashlib.sha256(data).hexdigest()
+              byte_count += len(data)
+              aggregate.update(relative.encode('utf-8'))
+              aggregate.update(b'\0')
+              aggregate.update(str(len(data)).encode('ascii'))
+              aggregate.update(b'\0')
+              aggregate.update(digest.encode('ascii'))
+              aggregate.update(b'\n')
+          actual_tree = aggregate.hexdigest()
+
+          baseline = json.loads(baseline_path.read_text(encoding='utf-8')) if baseline_path.is_file() else {}
+          state = json.loads(state_path.read_text(encoding='utf-8')) if state_path.is_file() else {}
+          repository_manifest = repository_manifest_path.read_text(encoding='utf-8') if repository_manifest_path.is_file() else ''
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          status = subprocess.check_output(['git', 'status', '--porcelain'], text=True)
+          pyc_paths = sorted(
+              path.relative_to(root).as_posix()
+              for path in root.rglob('*')
+              if path.is_file() and (path.suffix.lower() == '.pyc' or '__pycache__' in path.parts)
+          )
+          pycache_dirs = sorted(
+              path.relative_to(root).as_posix()
+              for path in root.rglob('__pycache__')
+              if path.is_dir()
+          )
+
+          if len(files) != 981:
+              failures.append('FAIL_ENGINE_FILE_COUNT')
+          if byte_count != 47_302_063:
+              failures.append('FAIL_ENGINE_BYTE_COUNT')
+          if actual_tree != expected:
+              failures.append('FAIL_EXPECTED_ENGINE_TREE_SHA256_MISMATCH')
+          if baseline.get('file_count') != len(files) or baseline.get('byte_count') != byte_count or baseline.get('tree_sha256') != actual_tree:
+              failures.append('FAIL_BASELINE_MANIFEST_IDENTITY_MISMATCH')
+          manifest_contracts = [
+              bool(re.search(r'file_count:\s*981\b', repository_manifest)),
+              bool(re.search(r'bytes:\s*47302063\b', repository_manifest)),
+              actual_tree in repository_manifest,
+          ]
+          if not all(manifest_contracts):
+              failures.append('FAIL_REPOSITORY_MANIFEST_IDENTITY_MISMATCH')
+          if status.strip():
+              failures.append('FAIL_REPOSITORY_NOT_CLEAN_AT_PREFLIGHT')
+          if pyc_paths or pycache_dirs:
+              failures.append('FAIL_PYC_OR_PYCACHE_PRESENT')
+
+          required_state = {
+              'motor_status': 'EN_REVISION',
+              'ready_for_project_demo_generation': False,
+              'release_authorized': False,
+              'tag_authorized': False,
+              'productive_closure_authorized': False,
+              'creative_output_certified': False,
+          }
+          governance_mismatches = {
+              key: {'expected': value, 'actual': state.get(key)}
+              for key, value in required_state.items()
+              if state.get(key) != value
+          }
+          if governance_mismatches:
+              failures.append('FAIL_GOVERNANCE_NON_RELEASE_INTERLOCK')
+
+          result = {
+              'schema_version': 1,
+              'audit_id': 'AUD-027',
+              'repository_commit': head,
+              'engine_scope': 'engine/IDUNEX',
+              'engine_file_count': len(files),
+              'engine_byte_count': byte_count,
+              'engine_tree_sha256': actual_tree,
+              'expected_engine_tree_sha256': expected,
+              'baseline_manifest': {
+                  'file_count': baseline.get('file_count'),
+                  'byte_count': baseline.get('byte_count'),
+                  'tree_sha256': baseline.get('tree_sha256'),
+              },
+              'repository_manifest_contracts': manifest_contracts,
+              'repository_clean': not bool(status.strip()),
+              'pyc_paths': pyc_paths,
+              'pycache_directories': pycache_dirs,
+              'governance_required': required_state,
+              'governance_actual': {key: state.get(key) for key in required_state},
+              'governance_mismatches': governance_mismatches,
+              'M03_DECISION': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
+              'CREATIVE_OUTPUT_CERTIFIED': False,
+              'result': 'PASS' if not failures else 'FAIL',
+              'fail_codes': failures,
+          }
+          output = Path(os.environ['EVIDENCE_DIR']) / 'identity' / 'PREFLIGHT.json'
+          output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          (output.parent / 'repository-commit.txt').write_text(head + '\n', encoding='utf-8')
+          (output.parent / 'engine-tree-sha256.txt').write_text(actual_tree + '\n', encoding='utf-8')
+          (output.parent / 'git-status-preflight.txt').write_text(status, encoding='utf-8')
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+          raise SystemExit(0 if result['result'] == 'PASS' else 1)
+          PY
+
+      - name: Validate M03 lineage 25 of 25
+        id: lineage
+        if: steps.preflight.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          python -B - <<'PY' 2>&1 | tee "$EVIDENCE_DIR/lineage/lineage-validation.log"
+          import json
+          import os
+          from pathlib import Path
+
+          from tests.m03.test_adversarial_harness import load_lineage, validate_lineage
+
+          payload, cases = load_lineage()
+          report = validate_lineage(payload, cases)
+          output = Path(os.environ['EVIDENCE_DIR']) / 'lineage' / 'LINEAGE_VALIDATION.json'
+          output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Execute complete M03 adversarial harness
+        id: harness
+        if: steps.preflight.outcome == 'success' && steps.lineage.outcome == 'success'
+        continue-on-error: true
+        env:
+          M03_EVIDENCE_DIR: ${{ runner.temp }}/idunex-m03-evidence
+          M03_TIMEOUT_PER_CASE: ${{ inputs.timeout_per_case }}
+        shell: bash
+        run: |
+          set +e
+          python -B -m unittest tests.m03.test_adversarial_harness -v \
+            >"$EVIDENCE_DIR/checks/m03-harness.stdout.log" \
+            2>"$EVIDENCE_DIR/checks/m03-harness.stderr.log"
+          rc=$?
+          printf '%s\n' "$rc" >"$EVIDENCE_DIR/checks/m03-harness.rc"
+          tail -n 120 "$EVIDENCE_DIR/checks/m03-harness.stdout.log" || true
+          tail -n 120 "$EVIDENCE_DIR/checks/m03-harness.stderr.log" || true
+          exit "$rc"
+
+      - name: Capture global validator result from exact case 19 execution
+        id: validator
+        if: always() && steps.preflight.outcome == 'success' && steps.lineage.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp "$EVIDENCE_DIR/cases/M03-19.stdout.log" "$EVIDENCE_DIR/checks/runtime-validator.stdout.log"
+          cp "$EVIDENCE_DIR/cases/M03-19.stderr.log" "$EVIDENCE_DIR/checks/runtime-validator.stderr.log"
+          cp "$EVIDENCE_DIR/cases/M03-19.rc" "$EVIDENCE_DIR/checks/runtime-validator.rc"
+          python -B - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ['EVIDENCE_DIR']) / 'checks'
+          report = json.loads((root / 'runtime-validator.stdout.log').read_text(encoding='utf-8'))
+          rc = int((root / 'runtime-validator.rc').read_text(encoding='utf-8').strip())
+          ok = (
+              rc == 0
+              and report.get('result') == 'PASS'
+              and report.get('validators_fail') == 0
+              and report.get('blocking_warnings') == 0
+              and report.get('fail_codes') == []
+          )
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          raise SystemExit(0 if ok else 1)
+          PY
+
+      - name: Execute canonical N1 to N10 x3 matrix
+        id: matrix
+        if: always() && steps.preflight.outcome == 'success' && steps.lineage.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python -B engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py \
+            --work "$MATRIX_WORK" \
+            --output-dir "$EVIDENCE_DIR/matrix" \
+            --timeout "${{ inputs.timeout_per_case }}" \
+            --stream-progress \
+            >"$EVIDENCE_DIR/checks/project-matrix.stdout.log" \
+            2>"$EVIDENCE_DIR/checks/project-matrix.stderr.log"
+          rc=$?
+          printf '%s\n' "$rc" >"$EVIDENCE_DIR/checks/project-matrix.rc"
+          tail -n 120 "$EVIDENCE_DIR/checks/project-matrix.stdout.log" || true
+          tail -n 120 "$EVIDENCE_DIR/checks/project-matrix.stderr.log" || true
+          exit "$rc"
+
+      - name: Execute canonical mutation self-test
+        id: mutation
+        if: always() && steps.preflight.outcome == 'success' && steps.lineage.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python -B engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py \
+            mutation-self-test \
+            --work "$MUTATION_WORK" \
+            --summary \
+            --output-json "$EVIDENCE_DIR/mutation/mutation-result.json" \
+            >"$EVIDENCE_DIR/checks/mutation-self-test.stdout.log" \
+            2>"$EVIDENCE_DIR/checks/mutation-self-test.stderr.log"
+          rc=$?
+          printf '%s\n' "$rc" >"$EVIDENCE_DIR/checks/mutation-self-test.rc"
+          tail -n 120 "$EVIDENCE_DIR/checks/mutation-self-test.stdout.log" || true
+          tail -n 120 "$EVIDENCE_DIR/checks/mutation-self-test.stderr.log" || true
+          exit "$rc"
+
+      - name: Capture postflight identity and restoration
+        id: postflight
+        if: always()
+        continue-on-error: true
+        env:
+          EXPECTED_ENGINE_TREE_SHA256: ${{ inputs.expected_engine_tree_sha256 }}
+        shell: bash
+        run: |
+          set -o pipefail
+          python -B - <<'PY' 2>&1 | tee "$EVIDENCE_DIR/identity/postflight.log"
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          from tests.m03.test_adversarial_harness import engine_identity
+
+          identity = engine_identity()
+          status = subprocess.check_output(['git', 'status', '--porcelain'], text=True)
+          pyc_paths = sorted(
+              path.relative_to(Path('.').resolve()).as_posix()
+              for path in Path('.').resolve().rglob('*')
+              if path.is_file() and (path.suffix.lower() == '.pyc' or '__pycache__' in path.parts)
+          )
+          failures = []
+          if identity.get('tree_sha256') != os.environ['EXPECTED_ENGINE_TREE_SHA256'].strip().lower():
+              failures.append('FAIL_POSTFLIGHT_ENGINE_TREE_SHA256')
+          if identity.get('file_count') != 981 or identity.get('byte_count') != 47_302_063:
+              failures.append('FAIL_POSTFLIGHT_ENGINE_IDENTITY')
+          if status.strip():
+              failures.append('FAIL_POSTFLIGHT_REPOSITORY_NOT_CLEAN')
+          if pyc_paths:
+              failures.append('FAIL_POSTFLIGHT_PYC_OR_PYCACHE')
+          report = {
+              **identity,
+              'repository_clean': not bool(status.strip()),
+              'git_status': status.splitlines(),
+              'pyc_paths': pyc_paths,
+              'result': 'PASS' if not failures else 'FAIL',
+              'fail_codes': failures,
+          }
+          output = Path(os.environ['EVIDENCE_DIR']) / 'identity' / 'POSTFLIGHT.json'
+          output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          (output.parent / 'git-status-postflight.txt').write_text(status, encoding='utf-8')
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          raise SystemExit(0 if report['result'] == 'PASS' else 1)
+          PY
+
+      - name: Consolidate M03 technical evidence
+        if: always()
+        shell: bash
+        run: |
+          python -B - <<'PY'
+          from __future__ import annotations
+
+          import json
+          import os
+          from pathlib import Path
+
+          evidence = Path(os.environ['EVIDENCE_DIR'])
+
+          def load_json(path: Path) -> dict:
+              try:
+                  return json.loads(path.read_text(encoding='utf-8'))
+              except Exception:
+                  return {}
+
+          def read_rc(path: Path) -> int | None:
+              try:
+                  return int(path.read_text(encoding='utf-8').strip())
+              except Exception:
+                  return None
+
+          preflight = load_json(evidence / 'identity' / 'PREFLIGHT.json')
+          postflight = load_json(evidence / 'identity' / 'POSTFLIGHT.json')
+          lineage = load_json(evidence / 'lineage' / 'LINEAGE_VALIDATION.json')
+          harness = load_json(evidence / 'M03_ADVERSARIAL_RESULT.json')
+          validator = load_json(evidence / 'checks' / 'runtime-validator.stdout.log')
+          matrix = load_json(evidence / 'matrix' / 'H238_FULL_31_PROJECT_MATRIX_SUMMARY.json')
+          mutation = load_json(evidence / 'mutation' / 'mutation-result.json')
+          command_rc = {
+              'm03_harness': read_rc(evidence / 'checks' / 'm03-harness.rc'),
+              'runtime_validator': read_rc(evidence / 'checks' / 'runtime-validator.rc'),
+              'project_matrix': read_rc(evidence / 'checks' / 'project-matrix.rc'),
+              'mutation_self_test': read_rc(evidence / 'checks' / 'mutation-self-test.rc'),
+          }
+
+          gates = {
+              'preflight_pass': preflight.get('result') == 'PASS',
+              'lineage_25_2_23_0': (
+                  lineage.get('result') == 'PASS'
+                  and lineage.get('case_count') == 25
+                  and lineage.get('classification_counts') == {
+                      'RECUPERADO_EXACTO': 2,
+                      'RECONSTRUIDO_TRAZABLE': 23,
+                      'NO_RECUPERABLE': 0,
+                  }
+              ),
+              'harness_25_of_25_pass': (
+                  command_rc['m03_harness'] == 0
+                  and harness.get('result') == 'PASS'
+                  and harness.get('case_count') == 25
+                  and harness.get('executed_case_count') == 25
+                  and harness.get('pass_count') == 25
+                  and harness.get('fail_count') == 0
+              ),
+              'restoration_25_of_25_pass': harness.get('restoration_pass_count') == 25,
+              'classification_exact_2_traceable_23_nonrecoverable_0': (
+                  harness.get('exact_recovered_count') == 2
+                  and harness.get('traceable_reconstructed_count') == 23
+                  and harness.get('non_recoverable_count') == 0
+              ),
+              'runtime_validator_pass': (
+                  command_rc['runtime_validator'] == 0
+                  and validator.get('result') == 'PASS'
+                  and validator.get('validators_fail') == 0
+                  and validator.get('blocking_warnings') == 0
+                  and validator.get('fail_codes') == []
+              ),
+              'matrix_30_of_30_pass': (
+                  command_rc['project_matrix'] == 0
+                  and matrix.get('result') == 'PASS'
+                  and matrix.get('case_count') == 30
+                  and matrix.get('pass_count') == 30
+                  and matrix.get('fail_count') == 0
+                  and matrix.get('PROJECT_N1_N10_X3_MATRIX_PASS_COUNT') == '30/30'
+              ),
+              'mutation_506_of_506_pass': (
+                  command_rc['mutation_self_test'] == 0
+                  and mutation.get('result') == 'PASS'
+                  and mutation.get('mutation_count') == 506
+                  and mutation.get('cases_pass') == 506
+                  and mutation.get('cases_fail') == 0
+              ),
+              'positive_fixture_pass': mutation.get('positive_fixture') == 'PASS',
+              'restoration_retest_pass': mutation.get('restoration_retest') == 'PASS',
+              'engine_sha_matches_pre_and_post': (
+                  preflight.get('engine_tree_sha256')
+                  == harness.get('engine_tree_sha256')
+                  == postflight.get('tree_sha256')
+                  == '${{ inputs.expected_engine_tree_sha256 }}'.strip().lower()
+              ),
+              'repository_clean_postflight': postflight.get('repository_clean') is True,
+              'postflight_pass': postflight.get('result') == 'PASS',
+              'historical_harness_not_claimed_recovered': harness.get('historical_harness_recovered') is False,
+              'reconstruction_truthfulness_pass': harness.get('reconstruction_truthfulness') == 'PASS',
+              'creative_output_not_certified': harness.get('CREATIVE_OUTPUT_CERTIFIED') is False,
+          }
+          failures = [name for name, passed in gates.items() if not passed]
+          technical_result = 'PASS' if not failures else 'FAIL'
+          summary = {
+              'schema_version': 1,
+              'audit_id': 'AUD-027',
+              'repository_commit': preflight.get('repository_commit') or os.environ.get('GITHUB_SHA'),
+              'workflow_run_id': os.environ.get('GITHUB_RUN_ID'),
+              'workflow_run_attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
+              'engine_tree_sha256': postflight.get('tree_sha256') or preflight.get('engine_tree_sha256'),
+              'engine_file_count': postflight.get('file_count') or preflight.get('engine_file_count'),
+              'engine_byte_count': postflight.get('byte_count') or preflight.get('engine_byte_count'),
+              'case_count': harness.get('case_count'),
+              'pass_count': harness.get('pass_count'),
+              'fail_count': harness.get('fail_count'),
+              'restoration_pass_count': harness.get('restoration_pass_count'),
+              'exact_recovered_count': harness.get('exact_recovered_count'),
+              'traceable_reconstructed_count': harness.get('traceable_reconstructed_count'),
+              'non_recoverable_count': harness.get('non_recoverable_count'),
+              'command_rc': command_rc,
+              'validator': {
+                  'result': validator.get('result'),
+                  'validators_fail': validator.get('validators_fail'),
+                  'blocking_warnings': validator.get('blocking_warnings'),
+                  'fail_codes': validator.get('fail_codes'),
+              },
+              'matrix': {
+                  'result': matrix.get('result'),
+                  'case_count': matrix.get('case_count'),
+                  'pass_count': matrix.get('pass_count'),
+                  'fail_count': matrix.get('fail_count'),
+                  'pass_count_contract': matrix.get('PROJECT_N1_N10_X3_MATRIX_PASS_COUNT'),
+              },
+              'mutation': {
+                  'result': mutation.get('result'),
+                  'mutation_count': mutation.get('mutation_count'),
+                  'cases_pass': mutation.get('cases_pass'),
+                  'cases_fail': mutation.get('cases_fail'),
+                  'positive_fixture': mutation.get('positive_fixture'),
+                  'restoration_retest': mutation.get('restoration_retest'),
+              },
+              'gates': gates,
+              'technical_result': technical_result,
+              'technical_failures': failures,
+              'historical_harness_recovered': False,
+              'reconstruction_truthfulness': harness.get('reconstruction_truthfulness'),
+              'M03_DECISION': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
+              'CREATIVE_OUTPUT_CERTIFIED': False,
+          }
+          (evidence / 'M03_EXECUTION_SUMMARY.json').write_text(
+              json.dumps(summary, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8',
+          )
+          markdown = [
+              '# IDUNEX M03 Adversarial Technical Evidence',
+              '',
+              f"- Technical result: `{technical_result}`",
+              f"- Repository commit: `{summary['repository_commit']}`",
+              f"- Engine tree SHA-256: `{summary['engine_tree_sha256']}`",
+              f"- M03 cases: `{summary['pass_count']}/25`",
+              f"- Restorations: `{summary['restoration_pass_count']}/25`",
+              f"- Classification: `{summary['exact_recovered_count']}/2 exact, {summary['traceable_reconstructed_count']}/23 traceable, {summary['non_recoverable_count']}/0 non-recoverable`",
+              f"- Validator: `{summary['validator']['result']}`",
+              f"- Matrix: `{summary['matrix']['pass_count']}/30`",
+              f"- Mutation: `{summary['mutation']['cases_pass']}/506`",
+              '- M03 decision: `NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY`',
+              '- Creative output certified: `false`',
+              '',
+              '## Failed gates',
+              '',
+          ]
+          markdown.extend([f'- `{failure}`' for failure in failures] or ['- None'])
+          (evidence / 'M03_EXECUTION_SUMMARY.md').write_text('\n'.join(markdown) + '\n', encoding='utf-8')
+          print(json.dumps(summary, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Upload complete M03 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: idunex-m03-adversarial-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/idunex-m03-evidence
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
+
+      - name: Enforce final M03 technical gate
+        if: always()
+        shell: bash
+        run: |
+          python -B - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          summary_path = Path(os.environ['EVIDENCE_DIR']) / 'M03_EXECUTION_SUMMARY.json'
+          if not summary_path.is_file():
+              raise SystemExit('M03 evidence summary missing')
+          summary = json.loads(summary_path.read_text(encoding='utf-8'))
+          print(f"TECHNICAL_RESULT={summary.get('technical_result')}")
+          print('M03_DECISION=NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY')
+          raise SystemExit(0 if summary.get('technical_result') == 'PASS' else 1)
+          PY
