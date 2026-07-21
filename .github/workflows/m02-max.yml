@@ -1,0 +1,407 @@
+name: IDUNEX M02 Maximum Reaudit
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_engine_tree_sha256:
+        description: Expected SHA-256 of the current engine/IDUNEX physical tree
+        required: true
+        default: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
+        type: string
+      timeout_per_case:
+        description: Maximum seconds for each generated matrix process
+        required: true
+        default: '300'
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: idunex-m02-max-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  m02-max:
+    name: M02 maximum evidence recomputation
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+
+    steps:
+      - name: Checkout frozen workflow ref
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned audit dependency
+        run: python -m pip install python-docx==1.2.0
+
+      - name: Initialize isolated evidence directories
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "EVIDENCE_DIR=${RUNNER_TEMP}/idunex-m02-evidence" >> "$GITHUB_ENV"
+          echo "MATRIX_WORK=${RUNNER_TEMP}/idunex-m02-matrix-work" >> "$GITHUB_ENV"
+          echo "MUTATION_WORK=${RUNNER_TEMP}/idunex-m02-mutation-work" >> "$GITHUB_ENV"
+          mkdir -p "${RUNNER_TEMP}/idunex-m02-evidence/identity"
+          mkdir -p "${RUNNER_TEMP}/idunex-m02-evidence/checks"
+          mkdir -p "${RUNNER_TEMP}/idunex-m02-evidence/matrix"
+          mkdir -p "${RUNNER_TEMP}/idunex-m02-evidence/mutation"
+
+      - name: Recompute and freeze repository identity
+        id: preflight
+        continue-on-error: true
+        env:
+          EXPECTED_ENGINE_TREE_SHA256: ${{ inputs.expected_engine_tree_sha256 }}
+        shell: bash
+        run: |
+          set -o pipefail
+          python - <<'PY' 2>&1 | tee "$EVIDENCE_DIR/identity/preflight.log"
+          from __future__ import annotations
+
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          root = Path('.').resolve()
+          engine = root / 'engine' / 'IDUNEX'
+          manifest_path = root / 'governance' / 'baseline' / 'IDUNEX_CURRENT_TREE_MANIFEST.json'
+          state_path = root / 'governance' / 'CURRENT_STATE.json'
+          expected = os.environ['EXPECTED_ENGINE_TREE_SHA256'].strip().lower()
+
+          failures: list[str] = []
+          if not engine.is_dir():
+              failures.append('FAIL_ENGINE_ROOT_MISSING')
+
+          files = sorted(
+              (p for p in engine.rglob('*') if p.is_file()),
+              key=lambda p: p.relative_to(root).as_posix(),
+          ) if engine.is_dir() else []
+
+          aggregate = hashlib.sha256()
+          byte_count = 0
+          pyc_paths: list[str] = []
+          for path in files:
+              rel = path.relative_to(root).as_posix()
+              data = path.read_bytes()
+              digest = hashlib.sha256(data).hexdigest()
+              size = len(data)
+              byte_count += size
+              aggregate.update(rel.encode('utf-8'))
+              aggregate.update(b'\0')
+              aggregate.update(str(size).encode('ascii'))
+              aggregate.update(b'\0')
+              aggregate.update(digest.encode('ascii'))
+              aggregate.update(b'\n')
+              if path.suffix.lower() == '.pyc' or '__pycache__' in path.parts:
+                  pyc_paths.append(rel)
+
+          actual_tree = aggregate.hexdigest()
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.is_file() else {}
+          state = json.loads(state_path.read_text(encoding='utf-8')) if state_path.is_file() else {}
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          status = subprocess.check_output(['git', 'status', '--porcelain'], text=True)
+
+          if actual_tree != expected:
+              failures.append('FAIL_EXPECTED_ENGINE_TREE_SHA256_MISMATCH')
+          if manifest.get('tree_sha256') != actual_tree:
+              failures.append('FAIL_BASELINE_MANIFEST_TREE_SHA256_MISMATCH')
+          if manifest.get('file_count') != len(files):
+              failures.append('FAIL_BASELINE_MANIFEST_FILE_COUNT_MISMATCH')
+          if manifest.get('byte_count') != byte_count:
+              failures.append('FAIL_BASELINE_MANIFEST_BYTE_COUNT_MISMATCH')
+          if pyc_paths:
+              failures.append('FAIL_ACTIVE_PYC_OR_PYCACHE_PRESENT')
+          if status.strip():
+              failures.append('FAIL_REPOSITORY_NOT_CLEAN_AT_PREFLIGHT')
+
+          required_state = {
+              'motor_status': 'EN_REVISION',
+              'ready_for_project_demo_generation': False,
+              'release_authorized': False,
+              'tag_authorized': False,
+              'productive_closure_authorized': False,
+              'creative_output_certified': False,
+          }
+          state_mismatches = {
+              key: {'expected': value, 'actual': state.get(key)}
+              for key, value in required_state.items()
+              if state.get(key) != value
+          }
+          if state_mismatches:
+              failures.append('FAIL_GOVERNANCE_INTERLOCK_MISMATCH')
+
+          result = {
+              'schema_version': 1,
+              'audit_scope': 'M02_MAXIMUM_EVIDENCE_RECOMPUTATION_PREFLIGHT',
+              'repository_commit': head,
+              'engine_scope': 'engine/IDUNEX',
+              'engine_file_count': len(files),
+              'engine_byte_count': byte_count,
+              'engine_tree_sha256': actual_tree,
+              'expected_engine_tree_sha256': expected,
+              'manifest_tree_sha256': manifest.get('tree_sha256'),
+              'manifest_file_count': manifest.get('file_count'),
+              'manifest_byte_count': manifest.get('byte_count'),
+              'repository_clean': not bool(status.strip()),
+              'pyc_or_pycache_paths': pyc_paths,
+              'governance_required': required_state,
+              'governance_actual': {key: state.get(key) for key in required_state},
+              'governance_mismatches': state_mismatches,
+              'result': 'PASS' if not failures else 'FAIL',
+              'fail_codes': failures,
+              'm02_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
+              'creative_output_certified': False,
+          }
+          output = Path(os.environ['EVIDENCE_DIR']) / 'identity' / 'IDENTITY_PREFLIGHT.json'
+          output.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          print(json.dumps(result, indent=2, ensure_ascii=False))
+          raise SystemExit(0 if result['result'] == 'PASS' else 1)
+          PY
+
+      - name: Run complete M02 technical suite
+        if: steps.preflight.outcome == 'success'
+        shell: bash
+        run: |
+          set -uo pipefail
+
+          run_check() {
+            local name="$1"
+            shift
+            echo "::group::${name}"
+            echo "COMMAND: $*"
+            "$@" >"$EVIDENCE_DIR/checks/${name}.stdout.log" 2>"$EVIDENCE_DIR/checks/${name}.stderr.log"
+            local rc=$?
+            printf '%s\n' "$rc" >"$EVIDENCE_DIR/checks/${name}.rc"
+            echo "RC=${rc}"
+            tail -n 80 "$EVIDENCE_DIR/checks/${name}.stdout.log" || true
+            tail -n 80 "$EVIDENCE_DIR/checks/${name}.stderr.log" || true
+            echo "::endgroup::"
+          }
+
+          run_check intake_audit \
+            python -B tools/audit/intake_audit.py --repo-root .
+          run_check governance_state_check \
+            python -B tools/audit/governance_state_check.py --repo-root .
+          run_check baseline_scanner \
+            python -B tools/audit/baseline_scanner.py --repo-root .
+          run_check no_bloat_no_history_check \
+            python -B tools/audit/no_bloat_no_history_check.py --repo-root .
+          run_check validator_entrypoint_check \
+            python -B tools/audit/validator_entrypoint_check.py --repo-root .
+          run_check demo_hardcoding_check \
+            python -B tools/audit/demo_hardcoding_check.py --repo-root .
+          run_check windows_path_remap_check \
+            python -B tools/audit/windows_path_remap_check.py --repo-root .
+          run_check security_lite_scan \
+            python -B tools/audit/security_lite_scan.py --repo-root .
+          run_check runtime_validator \
+            python -B engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py engine/IDUNEX
+          run_check project_matrix_n1_n10_x3 \
+            python -B engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py \
+              --work "$MATRIX_WORK" \
+              --output-dir "$EVIDENCE_DIR/matrix" \
+              --timeout "${{ inputs.timeout_per_case }}" \
+              --stream-progress
+          run_check mutation_self_test \
+            python -B engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py \
+              mutation-self-test \
+              --work "$MUTATION_WORK" \
+              --summary \
+              --output-json "$EVIDENCE_DIR/mutation/mutation_result.json"
+
+          git status --porcelain > "$EVIDENCE_DIR/identity/git-status-after-suite.txt"
+          git rev-parse HEAD > "$EVIDENCE_DIR/identity/repository-commit.txt"
+          git show -s --format='%H%n%P%n%an%n%ae%n%aI%n%s' HEAD > "$EVIDENCE_DIR/identity/repository-commit-metadata.txt"
+
+      - name: Consolidate recomputed evidence
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+
+          import json
+          import os
+          from pathlib import Path
+
+          evidence = Path(os.environ['EVIDENCE_DIR'])
+          checks_dir = evidence / 'checks'
+
+          required_checks = [
+              'intake_audit',
+              'governance_state_check',
+              'baseline_scanner',
+              'no_bloat_no_history_check',
+              'validator_entrypoint_check',
+              'demo_hardcoding_check',
+              'windows_path_remap_check',
+              'security_lite_scan',
+              'runtime_validator',
+              'project_matrix_n1_n10_x3',
+              'mutation_self_test',
+          ]
+
+          def load_json(path: Path) -> dict:
+              try:
+                  return json.loads(path.read_text(encoding='utf-8'))
+              except Exception:
+                  return {}
+
+          def read_rc(name: str) -> int | None:
+              path = checks_dir / f'{name}.rc'
+              try:
+                  return int(path.read_text(encoding='utf-8').strip())
+              except Exception:
+                  return None
+
+          identity = load_json(evidence / 'identity' / 'IDENTITY_PREFLIGHT.json')
+          matrix = load_json(evidence / 'matrix' / 'H238_FULL_31_PROJECT_MATRIX_SUMMARY.json')
+          mutation = load_json(evidence / 'mutation' / 'mutation_result.json')
+          runtime = load_json(checks_dir / 'runtime_validator.stdout.log')
+          rc_map = {name: read_rc(name) for name in required_checks}
+          missing_rc = [name for name, rc in rc_map.items() if rc is None]
+          nonzero_rc = {name: rc for name, rc in rc_map.items() if rc not in (None, 0)}
+
+          git_status_path = evidence / 'identity' / 'git-status-after-suite.txt'
+          git_status = git_status_path.read_text(encoding='utf-8') if git_status_path.is_file() else 'NOT_EXECUTED'
+
+          gates = {
+              'identity_preflight': identity.get('result') == 'PASS',
+              'all_commands_executed': not missing_rc,
+              'all_command_rc_zero': not missing_rc and not nonzero_rc,
+              'runtime_validator_pass': (
+                  runtime.get('result') == 'PASS'
+                  and runtime.get('validators_fail') == 0
+                  and runtime.get('blocking_warnings') == 0
+                  and runtime.get('fail_codes') == []
+              ),
+              'matrix_30_of_30_pass': (
+                  matrix.get('result') == 'PASS'
+                  and matrix.get('pass_count') == 30
+                  and matrix.get('fail_count') == 0
+                  and matrix.get('PROJECT_N1_N10_X3_MATRIX_PASS_COUNT') == '30/30'
+              ),
+              'mutation_506_of_506_pass': (
+                  mutation.get('result') == 'PASS'
+                  and mutation.get('mutation_count') == 506
+                  and mutation.get('cases_pass') == 506
+                  and mutation.get('cases_fail') == 0
+                  and mutation.get('positive_fixture') == 'PASS'
+                  and mutation.get('restoration_retest') == 'PASS'
+              ),
+              'repository_clean_after_suite': git_status == '',
+              'creative_output_certified_false': identity.get('creative_output_certified') is False,
+          }
+
+          failures = [name for name, passed in gates.items() if not passed]
+          technical_result = 'PASS' if not failures else 'FAIL'
+          summary = {
+              'schema_version': 1,
+              'audit_id': 'AUD-026-M02-POST-PR44',
+              'audit_scope': 'M02_MAXIMUM_TECHNICAL_EVIDENCE_RECOMPUTATION',
+              'repository_commit': os.environ.get('GITHUB_SHA'),
+              'workflow_run_id': os.environ.get('GITHUB_RUN_ID'),
+              'workflow_run_attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
+              'engine_tree_sha256': identity.get('engine_tree_sha256'),
+              'engine_file_count': identity.get('engine_file_count'),
+              'engine_byte_count': identity.get('engine_byte_count'),
+              'command_rc': rc_map,
+              'missing_command_results': missing_rc,
+              'nonzero_command_results': nonzero_rc,
+              'runtime_validator': {
+                  'result': runtime.get('result'),
+                  'validators_fail': runtime.get('validators_fail'),
+                  'blocking_warnings': runtime.get('blocking_warnings'),
+                  'fail_codes': runtime.get('fail_codes'),
+              },
+              'matrix': {
+                  'result': matrix.get('result'),
+                  'case_count': matrix.get('case_count'),
+                  'pass_count': matrix.get('pass_count'),
+                  'fail_count': matrix.get('fail_count'),
+                  'pass_count_contract': matrix.get('PROJECT_N1_N10_X3_MATRIX_PASS_COUNT'),
+                  'elapsed_seconds': matrix.get('elapsed_seconds'),
+              },
+              'mutation': {
+                  'result': mutation.get('result'),
+                  'mutation_count': mutation.get('mutation_count'),
+                  'cases_pass': mutation.get('cases_pass'),
+                  'cases_fail': mutation.get('cases_fail'),
+                  'positive_fixture': mutation.get('positive_fixture'),
+                  'restoration_retest': mutation.get('restoration_retest'),
+                  'delivery_status': mutation.get('delivery_status'),
+              },
+              'gates': gates,
+              'technical_result': technical_result,
+              'technical_failures': failures,
+              'score': '10/10' if technical_result == 'PASS' else 'BLOCKED',
+              'm02_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
+              'demo_generation_authorized': False,
+              'release_authorized': False,
+              'tag_authorized': False,
+              'productive_closure_authorized': False,
+              'creative_output_certified': False,
+          }
+          (evidence / 'M02_EXECUTION_SUMMARY.json').write_text(
+              json.dumps(summary, indent=2, ensure_ascii=False) + '\n',
+              encoding='utf-8',
+          )
+          (evidence / 'M02_GATE_STATUS.txt').write_text(technical_result + '\n', encoding='utf-8')
+
+          markdown = [
+              '# IDUNEX M02 Maximum Technical Evidence',
+              '',
+              f"- Technical result: `{technical_result}`",
+              f"- Repository commit: `{summary['repository_commit']}`",
+              f"- Engine tree SHA-256: `{summary['engine_tree_sha256']}`",
+              f"- Matrix: `{summary['matrix']['pass_count']}/30`",
+              f"- Mutation: `{summary['mutation']['cases_pass']}/506`",
+              f"- Runtime validator: `{summary['runtime_validator']['result']}`",
+              '- M02 decision: `NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY`',
+              '- Demo/release/tag/productive closure: `NOT_AUTHORIZED`',
+              '',
+              '## Failed gates',
+              '',
+          ]
+          markdown.extend([f'- `{failure}`' for failure in failures] or ['- None'])
+          (evidence / 'M02_EXECUTION_SUMMARY.md').write_text('\n'.join(markdown) + '\n', encoding='utf-8')
+          print(json.dumps(summary, indent=2, ensure_ascii=False))
+          PY
+
+      - name: Upload complete M02 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: idunex-m02-max-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/idunex-m02-evidence
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6
+
+      - name: Enforce technical evidence gate
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          summary_path = Path(os.environ['EVIDENCE_DIR']) / 'M02_EXECUTION_SUMMARY.json'
+          if not summary_path.is_file():
+              raise SystemExit('M02 evidence summary missing')
+          summary = json.loads(summary_path.read_text(encoding='utf-8'))
+          print(f"TECHNICAL_RESULT={summary.get('technical_result')}")
+          print('M02_DECISION=NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY')
+          raise SystemExit(0 if summary.get('technical_result') == 'PASS' else 1)
+          PY
