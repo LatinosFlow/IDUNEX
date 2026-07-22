@@ -15,6 +15,9 @@ FACTORY_REL = Path("engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT
 RUNNER_REL = Path("engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py")
 GATE_REL = Path("engine/IDUNEX/03_PROJECT_FACTORY/04_DELIVERY_GATES/PROJECT_DEMO_PASS_GATE.json")
 READINESS_REL = Path("engine/IDUNEX/03_PROJECT_FACTORY/06_PROJECT_TEMPL_72024b88/DEMO_TEMPLATE_READINESS.md")
+ACTIVE_DEMO_PROMPT_REL = Path(
+    "governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt"
+)
 REGISTRY_RELS = (
     Path("engine/IDUNEX/01_CANON_REGISTRIES/MASTER_GOVERNANCE_RULE_REGISTRY.json"),
     Path("engine/IDUNEX/00_INDEX/MASTER_GOVERNANCE_MAP.json"),
@@ -74,6 +77,8 @@ def hardcoded_named_project_branches(path: Path) -> list[dict]:
 
 def _classify_literal_reference(relative_path: str) -> str:
     normalized = relative_path.replace("\\", "/")
+    if normalized == ACTIVE_DEMO_PROMPT_REL.as_posix():
+        return "EXTERNAL_FIXTURE_OR_AUTHORITY_INPUT"
     if normalized.startswith(("governance/authority/REFERENCIA/", "docs/project-demo/")):
         return "EXTERNAL_FIXTURE_OR_AUTHORITY_INPUT"
     if normalized.startswith(("docs/", "governance/decisions/")) or normalized in {"README.md", "GOVERNANCE_STATUS.md"}:
