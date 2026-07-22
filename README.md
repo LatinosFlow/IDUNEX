@@ -10,9 +10,7 @@ Repositorio técnico privado para el motor IDUNEX.
 **Autoridad de estado:** `governance/CURRENT_STATE.json`  
 **Versión declarada de baseline:** `v1.0.0`
 
-El motor está extraído en `engine/IDUNEX/`. Los documentos históricos se conservan en
-`governance/authority/REFERENCIA/` y la autoridad operativa activa en
-`governance/authority/ACTIVO/`.
+Este repositorio contiene el motor extraído en `engine/IDUNEX/`. Los documentos históricos se conservan en `governance/authority/REFERENCIA/` y la autoridad operativa activa en `governance/authority/ACTIVO/`.
 
 ## Regla de autoridad
 
@@ -20,27 +18,15 @@ El motor está extraído en `engine/IDUNEX/`. Los documentos históricos se cons
 - SharePoint/OneDrive conserva los artefactos documentales empresariales oficiales.
 - No se acepta `PASS` declarado sin recomputar.
 - `governance/CURRENT_STATE.json` es la única autoridad legible por máquina del estado global.
-- La generación general del Proyecto Demo permanece bloqueada:
-  `ready_for_project_demo_generation=false`.
-- Release, tag, `OFICIAL`, cierre productivo, carga de agentes y certificación creativa
-  permanecen bloqueados.
+- La generación general del Proyecto Demo permanece bloqueada: `ready_for_project_demo_generation=false`.
+- La certificación creativa permanece bloqueada: `creative_output_certified=false`.
+- Release, tag, `OFICIAL`, cierre productivo y carga de agentes permanecen bloqueados.
 
 ## Ejecución externa controlada del Demo
 
-AUD-028 autoriza una única ejecución externa en ChatGPT normal:
+AUD-028 define una única ejecución externa en ChatGPT normal, sujeta íntegramente al objeto `controlled_external_demo_execution` de `CURRENT_STATE.json`.
 
-```text
-controlled_external_demo_execution.status=AUTHORIZED_NOT_CONSUMED
-controlled_external_demo_execution.authorized=true
-controlled_external_demo_execution.consumed=false
-controlled_external_demo_execution.execution_limit=1
-controlled_external_demo_execution.generate_executions_allowed=1
-controlled_external_demo_execution.validate_executions_allowed=1
-```
-
-Esta excepción no habilita generación general. Debe utilizar exactamente el paquete, Informe Maestro
-y prompt fijados por SHA en `CURRENT_STATE.json`. Cuando `generate` comience, la autorización queda
-consumida y no puede reutilizarse.
+Esta excepción no habilita generación general. Debe utilizar exactamente el paquete, Informe Maestro y prompt fijados por SHA en la autoridad machine-readable. Cuando `generate` comience, la autorización queda consumida y no puede reutilizarse.
 
 ## Siguiente flujo
 
