@@ -34,6 +34,18 @@ class DemoHardcodingTest(unittest.TestCase):
         self.assertEqual(result["active_named_project_branch_count"], 0)
         self.assertEqual(result["prohibited_active_literal_reference_count"], 0)
 
+    def test_only_exact_active_demo_prompt_path_is_allowed(self):
+        canonical = "governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt"
+        sibling = "governance/authority/ACTIVO/OTRO_PROMPT_DEMO.txt"
+        self.assertEqual(
+            self.audit._classify_literal_reference(canonical),
+            "EXTERNAL_FIXTURE_OR_AUTHORITY_INPUT",
+        )
+        self.assertEqual(
+            self.audit._classify_literal_reference(sibling),
+            "PROHIBITED_ACTIVE",
+        )
+
     def test_ast_guard_rejects_exact_project_name_comparison(self):
         with tempfile.TemporaryDirectory(prefix="aud007_ast_exact_") as temp_dir:
             mutated = Path(temp_dir) / "mutated_factory.py"
