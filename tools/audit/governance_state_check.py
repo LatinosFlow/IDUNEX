@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AUD-006/AUD-029 governance-state consistency check.
+"""AUD-006/AUD-030 governance-state consistency check.
 
 This check validates global repository state only. It does not execute or
 certify engine functionality. General Demo generation, release, tag and
@@ -16,6 +16,8 @@ from typing import Any
 
 
 STATE_PATH = Path("governance/CURRENT_STATE.json")
+ENGINE_TREE_MANIFEST_PATH = Path("governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json")
+AUD030_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD030"
 
 JSON_STATE_SURFACES = (
     STATE_PATH,
@@ -220,14 +222,18 @@ def validate_controlled_external_demo_execution(data: Any) -> list[str]:
 
 
 def validate_current_state_data(data: dict[str, Any]) -> list[str]:
-    """Return violations of the fail-closed AUD-006/AUD-029 root state."""
+    """Return violations of the fail-closed post-AUD-030 root state."""
     expected = {
+        "issue": "AUD-030",
         "motor_status": "EN_REVISION",
-        "m02_result": "M02_PASS",
+        "m02_result": AUD030_RECOMPUTATION_STATE,
+        "m03_result": AUD030_RECOMPUTATION_STATE,
         "ready_for_project_demo_generation": False,
         "release_authorized": False,
         "tag_authorized": False,
         "productive_closure_authorized": False,
+        "oficial_authorized": False,
+        "agent_load_authorized": False,
         "creative_output_certified": False,
     }
     findings: list[str] = []
@@ -243,7 +249,10 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         findings.append("governance/CURRENT_STATE.json: interlock must be an object")
     else:
         denied = set(interlock.get("denied_capabilities", []))
-        required = {"PROJECT_DEMO_GENERATION", "RELEASE", "TAG", "PRODUCTIVE_CLOSURE"}
+        required = {
+            "PROJECT_DEMO_GENERATION", "RELEASE", "TAG", "PRODUCTIVE_CLOSURE",
+            "OFICIAL", "AGENT_LOAD",
+        }
         missing = sorted(required - denied)
         if missing:
             findings.append(
@@ -251,11 +260,54 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
                 + ", ".join(missing)
             )
 
-    findings.extend(
-        validate_controlled_external_demo_execution(
-            data.get("controlled_external_demo_execution")
-        )
-    )
+    controlled=data.get("controlled_external_demo_execution")
+    findings.extend(validate_controlled_external_demo_execution(controlled))
+    if isinstance(controlled, dict):
+        post_aud030_expected={
+            "status":"CONSUMED",
+            "authorized":False,
+            "consumed":True,
+            "execution_count":1,
+            "generate_executions_allowed":0,
+            "validate_executions_allowed":0,
+            "authorization_id":"AUD-028",
+            "project_audit_status":"PROJECT_AUDIT_FAIL_EXTERNAL_SURFACE_DESYNC",
+            "project_agent_load_pass":False,
+            "project_ready_for_production":False,
+            "allows_release":False,
+            "allows_tag":False,
+            "allows_oficial":False,
+            "allows_productive_closure":False,
+            "allows_agent_load":False,
+            "creative_output_certified":False,
+        }
+        for field,expected_value in post_aud030_expected.items():
+            if controlled.get(field)!=expected_value:
+                findings.append(_finding(field, expected_value, controlled.get(field)))
+    engine_change=data.get("engine_change_control")
+    if not isinstance(engine_change, dict):
+        findings.append("governance/CURRENT_STATE.json: engine_change_control must be an object")
+    else:
+        engine_expected={
+            "issue":"AUD-030",
+            "base_commit":"fb13a4f5d4bd559b4f1268103630a735b53c8999",
+            "previous_engine_tree_sha256":"628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9",
+            "current_engine_file_count":981,
+            "manifests_recomputed_with_canonical_scanner":True,
+            "m02_result":AUD030_RECOMPUTATION_STATE,
+            "m03_result":AUD030_RECOMPUTATION_STATE,
+        }
+        for field,expected_value in engine_expected.items():
+            if engine_change.get(field)!=expected_value:
+                findings.append(
+                    f"governance/CURRENT_STATE.json: engine_change_control.{field} must be {expected_value!r}, got {engine_change.get(field)!r}"
+                )
+        current_sha=engine_change.get("current_engine_tree_sha256")
+        if not isinstance(current_sha, str) or not SHA256_RE.fullmatch(current_sha):
+            findings.append("governance/CURRENT_STATE.json: engine_change_control.current_engine_tree_sha256 must be 64 lowercase hexadecimal characters")
+        byte_count=engine_change.get("current_engine_byte_count")
+        if not isinstance(byte_count, int) or isinstance(byte_count, bool) or byte_count<=0:
+            findings.append("governance/CURRENT_STATE.json: engine_change_control.current_engine_byte_count must be a positive integer")
     return findings
 
 
@@ -277,7 +329,9 @@ def scan_contradictions(root: Path) -> tuple[list[str], int]:
             continue
 
         marked_reference = any(marker in text for marker in REFERENCE_MARKERS)
-        has_m02_marker = bool(re.search(r"M02_(?:FAIL|PASS)", text))
+        has_m02_marker = bool(
+            re.search(r"M02_(?:FAIL|PASS)|NOT_RECOMPUTED_POST_AUD030", text)
+        )
         has_demo_false = bool(
             re.search(
                 r"READY_FOR_PROJECT_DEMO_GENERATION[\"\s]*[:=]\s*(?:FALSE|false)",
@@ -302,7 +356,8 @@ def _validate_json_surface(path: Path, data: dict[str, Any]) -> list[str]:
     findings: list[str] = []
     expected = (
         (("motor_status", "MOTOR_STATUS"), "EN_REVISION"),
-        (("m02_result", "M02_RESULT"), "M02_PASS"),
+        (("m02_result", "M02_RESULT"), AUD030_RECOMPUTATION_STATE),
+        (("m03_result", "M03_RESULT"), AUD030_RECOMPUTATION_STATE),
         (("ready_for_project_demo_generation", "READY_FOR_PROJECT_DEMO_GENERATION"), False),
         (("release_authorized", "RELEASE_AUTHORIZED"), False),
         (("productive_closure_authorized", "PRODUCTIVE_CLOSURE_AUTHORIZED"), False),
@@ -344,8 +399,34 @@ def audit_repository(root: Path) -> dict[str, Any]:
             continue
         findings.extend(_validate_json_surface(relative, data))
 
+    engine_manifest={}
+    engine_manifest_path=root/ENGINE_TREE_MANIFEST_PATH
+    if not engine_manifest_path.is_file():
+        findings.append(f"Missing engine tree manifest: {ENGINE_TREE_MANIFEST_PATH.as_posix()}")
+    else:
+        try:
+            engine_manifest=json.loads(_read_text(engine_manifest_path))
+        except json.JSONDecodeError as exc:
+            findings.append(f"{ENGINE_TREE_MANIFEST_PATH.as_posix()}: invalid JSON: {exc}")
+    engine_change=state.get("engine_change_control", {}) if isinstance(state, dict) else {}
+    if isinstance(engine_change, dict) and engine_manifest:
+        parity=(
+            engine_change.get("current_engine_tree_sha256")==engine_manifest.get("tree_sha256")
+            and engine_change.get("current_engine_file_count")==engine_manifest.get("file_count")
+            and engine_change.get("current_engine_byte_count")==engine_manifest.get("byte_count")
+        )
+        if not parity:
+            findings.append("governance/CURRENT_STATE.json: engine_change_control does not match canonical engine tree manifest")
+
     required_text_patterns = (
-        ("M02_PASS", re.compile(r"M02_PASS")),
+        (
+            "M02_RESULT=NOT_RECOMPUTED_POST_AUD030",
+            re.compile(r"M02_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE),
+        ),
+        (
+            "M03_RESULT=NOT_RECOMPUTED_POST_AUD030",
+            re.compile(r"M03_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE),
+        ),
         ("EN_REVISION", re.compile(r"EN_REVISION")),
         (
             "READY_FOR_PROJECT_DEMO_GENERATION=false",
@@ -375,9 +456,10 @@ def audit_repository(root: Path) -> dict[str, Any]:
     controlled = state.get("controlled_external_demo_execution", {})
     return {
         "result": "CONSISTENT" if not findings else "INCONSISTENT",
-        "scope": "AUD-006_AUD-029_governance_state_only",
+        "scope": "AUD-006_AUD-030_governance_state_only",
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),
+        "m03_result": state.get("m03_result"),
         "ready_for_project_demo_generation": state.get(
             "ready_for_project_demo_generation"
         ),
@@ -388,6 +470,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
         "controlled_external_demo_status": controlled.get("status"),
         "controlled_external_demo_authorized": controlled.get("authorized"),
         "controlled_external_demo_consumed": controlled.get("consumed"),
+        "current_engine_tree_sha256": engine_change.get("current_engine_tree_sha256") if isinstance(engine_change, dict) else None,
         "active_contradiction_count": len(contradiction_findings),
         "historical_reference_match_count": historical_reference_matches,
         "findings": findings,

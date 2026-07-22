@@ -1,12 +1,13 @@
 {
   "surface_id": "PRODUCTIVE_BASE_ENGINE_STATUS",
   "semantic_version": "v1.0.0",
-  "issue": "AUD-006",
+  "issue": "AUD-030",
   "state_authority": "governance/CURRENT_STATE.json",
   "status": "EN_REVISION",
   "motor_status": "EN_REVISION",
-  "m02_result": "M02_PASS",
-  "result": "M02_PASS",
+  "m02_result": "NOT_RECOMPUTED_POST_AUD030",
+  "m03_result": "NOT_RECOMPUTED_POST_AUD030",
+  "result": "NOT_RECOMPUTED_POST_AUD030",
   "ready_for_project_demo_generation": false,
   "release_authorized": false,
   "productive_closure_authorized": false,
@@ -18,5 +19,5 @@
     "current_governance_effect": "NONE",
     "evidence_pointer": "git history and engine/IDUNEX/11_RELEASE_INTERNAL"
   },
-  "interlock": "EN_REVISION blocks Demo, release, tag and productive closure regardless of any prior internal result."
+  "interlock": "EN_REVISION with M02/M03 not recomputed after AUD-030 blocks Demo, release, tag, OFICIAL, agent loading and productive closure regardless of any prior internal result."
 }

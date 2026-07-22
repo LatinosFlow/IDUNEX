@@ -22,7 +22,7 @@ import signal
 import zipfile
 from collections import Counter
 from datetime import datetime, timezone
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from docx import Document
 
@@ -5430,34 +5430,198 @@ def _canonical_external_artifacts_required(project_zip: Path) -> bool:
     return bool(re.fullmatch(r"IDUNEX_PROJECT_[A-Z0-9_]+_v\d+\.\d+\.\d+\.zip", project_zip.name))
 
 
-def write_external_project_artifacts(root: Path, project_zip: Path, companion: Path, validation: dict) -> dict:
-    paths=_external_project_artifact_paths(project_zip)
+_EXTERNAL_ARTIFACT_INTERNAL_MEMBERS = {
+    "final_audit_report": "10_RELEASE/FINAL_AUDIT_REPORT.md",
+    "release_certificate": "10_RELEASE/RELEASE_CERTIFICATE.txt",
+    "readme_for_human_operator": "00_PROJECT_INDEX/README_FOR_HUMAN_OPERATOR.md",
+    "post_export_finalizer_report": "09_MANIFESTS_SHA/POST_EXPORT_FINALIZER_REPORT.json",
+    "content_tree_proof": "09_MANIFESTS_SHA/CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA.json",
+}
+
+
+def _external_artifact_zip_member_error(detail: str) -> InputContractError:
+    return InputContractError("FAIL_EXTERNAL_ARTIFACT_ZIP_UNSAFE", detail)
+
+
+def _safe_final_zip_member_index(project_zip: Path) -> tuple[zipfile.ZipFile, str, dict[str, zipfile.ZipInfo]]:
+    """Open and index a final ZIP without trusting extraction or ambiguous names."""
+    try:
+        archive=zipfile.ZipFile(project_zip)
+    except (OSError, zipfile.BadZipFile) as exc:
+        raise InputContractError("FAIL_EXTERNAL_ARTIFACT_ZIP_CRC", str(exc)) from exc
+    try:
+        try:
+            bad=archive.testzip()
+        except (OSError, RuntimeError, zipfile.BadZipFile) as exc:
+            raise InputContractError("FAIL_EXTERNAL_ARTIFACT_ZIP_CRC", str(exc)) from exc
+        if bad is not None:
+            raise InputContractError("FAIL_EXTERNAL_ARTIFACT_ZIP_CRC", bad)
+        infos=archive.infolist()
+        if not infos:
+            raise _external_artifact_zip_member_error("ZIP has no members")
+        by_path: dict[str, zipfile.ZipInfo]={}
+        casefold_paths: dict[str, str]={}
+        roots=set()
+        for info in infos:
+            name=info.filename
+            if not name or "\x00" in name or "\\" in name or name.startswith("/"):
+                raise _external_artifact_zip_member_error(f"unsafe member path: {name!r}")
+            is_directory=info.is_dir() or name.endswith("/")
+            trimmed=name[:-1] if is_directory else name
+            if not trimmed:
+                raise _external_artifact_zip_member_error(f"unsafe member path: {name!r}")
+            parts=trimmed.split("/")
+            if (
+                any(not part or part in {".", ".."} for part in parts)
+                or any(part != part.strip() or ":" in part for part in parts)
+                or PurePosixPath(*parts).as_posix()!=trimmed
+            ):
+                raise _external_artifact_zip_member_error(f"unsafe member path: {name!r}")
+            unix_mode=(info.external_attr >> 16) & 0o170000
+            if unix_mode==0o120000:
+                raise _external_artifact_zip_member_error(f"symbolic link member forbidden: {name!r}")
+            if info.flag_bits & 0x1:
+                raise _external_artifact_zip_member_error(f"encrypted member forbidden: {name!r}")
+            folded=trimmed.casefold()
+            if trimmed in by_path or folded in casefold_paths:
+                prior=casefold_paths.get(folded, trimmed)
+                raise _external_artifact_zip_member_error(f"duplicate or ambiguous members: {prior!r}, {name!r}")
+            by_path[trimmed]=info
+            casefold_paths[folded]=trimmed
+            roots.add(parts[0])
+        if len(roots)!=1:
+            raise _external_artifact_zip_member_error(f"expected one internal root, found {sorted(roots)!r}")
+        root_name=next(iter(roots))
+        if root_name in by_path and not by_path[root_name].is_dir():
+            raise _external_artifact_zip_member_error("internal root is a file")
+        return archive, root_name, by_path
+    except Exception:
+        archive.close()
+        raise
+
+
+def _content_tree_sha256_claims(text: str) -> list[str]:
+    return re.findall(
+        r"(?i)(?<![A-Z0-9_])CONTENT_TREE_SHA256\s*[:=]\s*([0-9A-F]{64})(?![0-9A-F])",
+        text,
+    )
+
+
+def read_external_project_artifact_sources_from_zip(project_zip: Path) -> dict:
+    """Read the documentary authority and finalizer proofs from the reopened ZIP."""
+    if not project_zip.is_file():
+        raise InputContractError("FAIL_EXTERNAL_ARTIFACT_INTERNAL_SOURCE_MISSING", str(project_zip))
+    archive, root_name, by_path=_safe_final_zip_member_index(project_zip)
+    try:
+        raw: dict[str, bytes]={}
+        missing=[]
+        for key, relative in _EXTERNAL_ARTIFACT_INTERNAL_MEMBERS.items():
+            member=f"{root_name}/{relative}"
+            info=by_path.get(member)
+            if info is None or info.is_dir():
+                missing.append(relative)
+                continue
+            try:
+                raw[key]=archive.read(info)
+            except (OSError, RuntimeError, zipfile.BadZipFile) as exc:
+                raise InputContractError("FAIL_EXTERNAL_ARTIFACT_INTERNAL_SOURCE_MISSING", f"{relative}: {exc}") from exc
+        if missing:
+            raise InputContractError("FAIL_EXTERNAL_ARTIFACT_INTERNAL_SOURCE_MISSING", ", ".join(missing))
+    finally:
+        archive.close()
+    try:
+        internal_report=raw["final_audit_report"].decode("utf-8")
+        internal_cert=raw["release_certificate"].decode("utf-8")
+        internal_readme=raw["readme_for_human_operator"].decode("utf-8")
+        post_export=json.loads(raw["post_export_finalizer_report"].decode("utf-8"))
+        content_proof=json.loads(raw["content_tree_proof"].decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise InputContractError("FAIL_EXTERNAL_ARTIFACT_INTERNAL_SOURCE_INVALID", str(exc)) from exc
+    report_claims=_content_tree_sha256_claims(internal_report)
+    cert_claims=_content_tree_sha256_claims(internal_cert)
+    claims={
+        "FINAL_AUDIT_REPORT": report_claims[0] if len(set(report_claims))==1 and report_claims else None,
+        "RELEASE_CERTIFICATE": cert_claims[0] if len(set(cert_claims))==1 and cert_claims else None,
+        "POST_EXPORT_FINALIZER_REPORT": post_export.get("content_tree_sha256") if isinstance(post_export, dict) else None,
+        "CONTENT_TREE_PROOF_NOT_FINAL_ZIP_SHA": content_proof.get("content_tree_sha256") if isinstance(content_proof, dict) else None,
+    }
+    values=list(claims.values())
+    if any(not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{64}", value) is None for value in values) or len(set(values))!=1:
+        raise InputContractError(
+            "FAIL_EXTERNAL_ARTIFACT_INTERNAL_CONTENT_TREE_MISMATCH",
+            json.dumps(claims, ensure_ascii=False, sort_keys=True),
+        )
+    return {
+        "project_id":root_name,
+        "content_tree_sha256":values[0],
+        "final_audit_report":internal_report,
+        "release_certificate":internal_cert,
+        "readme_for_human_operator":internal_readme,
+        "post_export_finalizer_report":post_export,
+        "content_tree_proof":content_proof,
+    }
+
+
+def _external_project_artifact_payloads(project_zip: Path, companion: Path, validation: dict, sources: dict) -> dict[str, str]:
     zip_sha=sha(project_zip)
-    project_id=root.name
-    internal_cert=_project_text_content(root/"10_RELEASE"/"RELEASE_CERTIFICATE.txt")
-    internal_report=_project_text_content(root/"10_RELEASE"/"FINAL_AUDIT_REPORT.md")
-    internal_readme=_project_text_content(root/"00_PROJECT_INDEX"/"README_FOR_HUMAN_OPERATOR.md")
-    write_text(paths["release_certificate"], "\n".join([
-        f"PROJECT_ID={project_id}",f"SEMANTIC_VERSION={SEMANTIC_VERSION}","MOTOR_STATUS=EN_REVISION",
-        "CERTIFICATE_SCOPE=PROJECT_DELIVERY_SURFACE_NOT_ENGINE_RELEASE","PROJECT_STATUS=PROJECT_GENERATED_NOT_AUDITED",
-        "PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE","PROJECT_READY_FOR_PRODUCTION=FALSE",
-        f"PROJECT_ZIP_SHA256={zip_sha}",f"COMPANION_FILE={companion.name}",
-        f"VALIDATORS_FAIL={validation.get('validators_fail',0)}",f"BLOCKING_WARNINGS={validation.get('blocking_warnings',0)}",
-        "CREATIVE_OUTPUT_CERTIFIED=FALSE","NO_RELEASE_TAG_OR_OFICIAL_AUTHORIZED=TRUE","",internal_cert,
-    ]))
-    write_text(paths["final_audit_report"], "\n".join([
-        f"# External FINAL_AUDIT_REPORT — {project_id}","",f"PROJECT_ZIP_SHA256={zip_sha}",
-        "MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE",
-        "PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE","",
-        "This is the external delivery copy of the internal recomputational report. It does not replace independent external audit.","",internal_report,
-    ]))
-    write_text(paths["readme_for_human_operator"], "\n".join([
-        f"# External README_FOR_HUMAN_OPERATOR — {project_id}","",f"PROJECT_ZIP_SHA256={zip_sha}",
-        "MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE",
-        "PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE","",
-        "Do not load agents until an independent external audit returns PROJECT_AUDIT_PASS.",
-        "When authorized, use each platform's 03_AGENTS/<PLATFORM>/02_AGENT_LOAD_SURFACES and load exactly 10+N runtime files.","",internal_readme,
-    ]))
+    project_id=sources["project_id"]
+    internal_cert=sources["release_certificate"]
+    internal_report=sources["final_audit_report"]
+    internal_readme=sources["readme_for_human_operator"]
+    return {
+        "release_certificate":"\n".join([
+            f"PROJECT_ID={project_id}",f"SEMANTIC_VERSION={SEMANTIC_VERSION}","MOTOR_STATUS=EN_REVISION",
+            "CERTIFICATE_SCOPE=PROJECT_DELIVERY_SURFACE_NOT_ENGINE_RELEASE","PROJECT_STATUS=PROJECT_GENERATED_NOT_AUDITED",
+            "PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE","PROJECT_READY_FOR_PRODUCTION=FALSE",
+            f"PROJECT_ZIP_SHA256={zip_sha}",f"COMPANION_FILE={companion.name}",
+            f"VALIDATORS_FAIL={validation.get('validators_fail',0)}",f"BLOCKING_WARNINGS={validation.get('blocking_warnings',0)}",
+            "CREATIVE_OUTPUT_CERTIFIED=FALSE","NO_RELEASE_TAG_OR_OFICIAL_AUTHORIZED=TRUE","",internal_cert,
+        ]),
+        "final_audit_report":"\n".join([
+            f"# External FINAL_AUDIT_REPORT — {project_id}","",f"PROJECT_ZIP_SHA256={zip_sha}",
+            "MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE",
+            "PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE","",
+            "This is the external delivery copy of the internal recomputational report. It does not replace independent external audit.","",internal_report,
+        ]),
+        "readme_for_human_operator":"\n".join([
+            f"# External README_FOR_HUMAN_OPERATOR — {project_id}","",f"PROJECT_ZIP_SHA256={zip_sha}",
+            "MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE",
+            "PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE","",
+            "Do not load agents until an independent external audit returns PROJECT_AUDIT_PASS.",
+            "When authorized, use each platform's 03_AGENTS/<PLATFORM>/02_AGENT_LOAD_SURFACES and load exactly 10+N runtime files.","",internal_readme,
+        ]),
+    }
+
+
+def _atomic_replace_external_artifact_texts(paths: dict[str, Path], payloads: dict[str, str]) -> None:
+    temporary: dict[str, Path]={}
+    try:
+        for key,text in payloads.items():
+            target=paths[key]
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with tempfile.NamedTemporaryFile(
+                mode="w", encoding="utf-8", newline="\n", delete=False,
+                dir=target.parent, prefix=f".{target.name}.", suffix=".tmp.NON_DELIVERY",
+            ) as handle:
+                handle.write(text.rstrip()+"\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+                temporary[key]=Path(handle.name)
+        for key in payloads:
+            os.replace(temporary.pop(key), paths[key])
+    finally:
+        for path in temporary.values():
+            path.unlink(missing_ok=True)
+
+
+def write_external_project_artifacts(root: Path, project_zip: Path, companion: Path, validation: dict) -> dict:
+    # ``root`` remains in the public signature for compatibility only. Documentary
+    # authority is exclusively the reopened final ZIP after H410 convergence.
+    _=root
+    paths=_external_project_artifact_paths(project_zip)
+    sources=read_external_project_artifact_sources_from_zip(project_zip)
+    payloads=_external_project_artifact_payloads(project_zip, companion, validation, sources)
+    _atomic_replace_external_artifact_texts(paths, payloads)
     return {k:str(v) for k,v in paths.items()}
 
 
@@ -5471,17 +5635,188 @@ def validate_external_project_artifacts(project_zip: Path, companion: Path) -> d
     if failures:
         return {"result":"FAIL","required":True,"validators_fail":len(failures),"failures":failures,"fail_codes":[x["fail_code"] for x in failures],"paths":{k:str(v) for k,v in paths.items()}}
     zip_sha=sha(project_zip)
-    declared=companion.read_text(encoding="utf-8", errors="ignore").split()[0].lower()
-    if declared!=zip_sha: failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_SHA_MISMATCH", f"declared={declared} actual={zip_sha}"))
-    cert=paths["release_certificate"].read_text(encoding="utf-8", errors="ignore")
-    required_tokens=[f"PROJECT_ZIP_SHA256={zip_sha}","MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE","PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE"]
-    for token in required_tokens:
-        if token not in cert: failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT", f"RELEASE_CERTIFICATE:{token}"))
-    for key in ["final_audit_report","readme_for_human_operator"]:
-        text=paths[key].read_text(encoding="utf-8", errors="ignore")
-        if zip_sha not in text or "CREATIVE_OUTPUT_CERTIFIED=FALSE" not in text:
-            failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT", key))
+    try:
+        companion_tokens=companion.read_text(encoding="utf-8").split()
+        declared=companion_tokens[0].lower() if companion_tokens else ""
+        declared_name=companion_tokens[1] if len(companion_tokens)>1 else ""
+    except (OSError, UnicodeDecodeError) as exc:
+        declared=f"UNREADABLE:{exc}"
+        declared_name="UNREADABLE"
+    canonical_companion=paths["project_zip_sha256"].resolve(strict=False)
+    if (
+        declared!=zip_sha
+        or declared_name!=project_zip.name
+        or companion.resolve(strict=False)!=canonical_companion
+    ):
+        failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_SHA_MISMATCH", f"declared={declared} actual={zip_sha} declared_name={declared_name} expected_name={project_zip.name} companion={companion}"))
+    try:
+        sources=read_external_project_artifact_sources_from_zip(project_zip)
+    except InputContractError as exc:
+        failures.append(_contract_fail(exc.fail_code, exc.detail))
+        return {"result":"FAIL","required":True,"validators_fail":len(failures),"failures":failures,"fail_codes":sorted({x["fail_code"] for x in failures}),"paths":{k:str(v) for k,v in paths.items()},"artifact_count":5,"zip_sha256":zip_sha}
+    external_text={}
+    for key in ("release_certificate","final_audit_report","readme_for_human_operator"):
+        try:
+            external_text[key]=paths[key].read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError) as exc:
+            failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT", f"{key}:{exc}"))
+            external_text[key]=""
+    common_tokens=[f"PROJECT_ZIP_SHA256={zip_sha}","MOTOR_STATUS=EN_REVISION","PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE","PROJECT_READY_FOR_PRODUCTION=FALSE","CREATIVE_OUTPUT_CERTIFIED=FALSE"]
+    for key,text in external_text.items():
+        for token in common_tokens:
+            if token not in text:
+                failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT", f"{key}:{token}"))
+    cert=external_text["release_certificate"]
+    validator_matches=re.findall(r"(?m)^VALIDATORS_FAIL=(\d+)$", cert)
+    warning_matches=re.findall(r"(?m)^BLOCKING_WARNINGS=(\d+)$", cert)
+    if len(validator_matches)!=1 or len(warning_matches)!=1:
+        failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT", "release_certificate:validation headers"))
+        derived_validation={"validators_fail":0,"blocking_warnings":0}
+    else:
+        derived_validation={"validators_fail":int(validator_matches[0]),"blocking_warnings":int(warning_matches[0])}
+    expected_payloads=_external_project_artifact_payloads(project_zip, companion, derived_validation, sources)
+    for key,expected in expected_payloads.items():
+        if external_text.get(key)!=(expected.rstrip()+"\n"):
+            failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT", f"{key}:not derived exactly from reopened ZIP member"))
+    final_tree=sources["content_tree_sha256"]
+    for key in ("release_certificate","final_audit_report"):
+        claims=_content_tree_sha256_claims(external_text.get(key,""))
+        if not claims or set(claims)!={final_tree}:
+            failures.append(_contract_fail("FAIL_EXTERNAL_ARTIFACT_CONTENT_TREE_MISMATCH", f"{key}:external={sorted(set(claims))} internal={final_tree}"))
     return {"result":"PASS" if not failures else "FAIL","required":True,"validators_fail":len(failures),"failures":failures,"fail_codes":sorted({x["fail_code"] for x in failures}),"paths":{k:str(v) for k,v in paths.items()},"artifact_count":5,"zip_sha256":zip_sha}
+
+
+def _external_artifact_file_snapshot(path: Path) -> dict:
+    if not path.is_file():
+        return {"sha256":"NOT_AVAILABLE_FILE_MISSING","bytes":"NOT_AVAILABLE_FILE_MISSING"}
+    return {"sha256":sha(path),"bytes":path.stat().st_size}
+
+
+def refresh_external_project_artifacts(project_zip: Path) -> dict:
+    """Refresh only the three external documentary surfaces from a final ZIP."""
+    project_zip=Path(project_zip)
+    companion=Path(f"{project_zip}.sha256")
+    paths=_external_project_artifact_paths(project_zip)
+    document_paths={
+        key:str(paths[key])
+        for key in ("release_certificate","final_audit_report","readme_for_human_operator")
+    }
+    before_zip=_external_artifact_file_snapshot(project_zip)
+    before_companion=_external_artifact_file_snapshot(companion)
+    out={
+        "result":"FAIL",
+        "project_zip_sha256_before":before_zip["sha256"],
+        "project_zip_sha256_after":before_zip["sha256"],
+        "project_zip_bytes_before":before_zip["bytes"],
+        "project_zip_bytes_after":before_zip["bytes"],
+        "companion_sha256_before":before_companion["sha256"],
+        "companion_sha256_after":before_companion["sha256"],
+        "companion_bytes_before":before_companion["bytes"],
+        "companion_bytes_after":before_companion["bytes"],
+        "content_tree_sha256":"NOT_AVAILABLE_INTERNAL_SOURCE_VALIDATION_FAILED",
+        "external_artifact_paths":document_paths,
+        "validators_fail":1,
+        "blocking_warnings":0,
+        "fail_codes":[],
+        "ZIP_UNCHANGED":False,
+        "COMPANION_UNCHANGED":False,
+        "CREATIVE_OUTPUT_CERTIFIED":False,
+        "creative_output_certified":False,
+        "operation":"refresh-external-artifacts",
+        "generate_executed":False,
+    }
+
+    def finalize_snapshots() -> None:
+        after_zip=_external_artifact_file_snapshot(project_zip)
+        after_companion=_external_artifact_file_snapshot(companion)
+        out["project_zip_sha256_after"]=after_zip["sha256"]
+        out["project_zip_bytes_after"]=after_zip["bytes"]
+        out["companion_sha256_after"]=after_companion["sha256"]
+        out["companion_bytes_after"]=after_companion["bytes"]
+        out["ZIP_UNCHANGED"]=(before_zip==after_zip and project_zip.is_file())
+        out["COMPANION_UNCHANGED"]=(before_companion==after_companion and companion.is_file())
+
+    if not project_zip.is_file() or not companion.is_file():
+        out["fail_codes"]=["FAIL_ZIP_OR_COMPANION_MISSING"]
+        finalize_snapshots()
+        return out
+    try:
+        companion_tokens=companion.read_text(encoding="utf-8").split()
+    except (OSError, UnicodeDecodeError) as exc:
+        out["fail_codes"]=["FAIL_EXTERNAL_ARTIFACT_SHA_MISMATCH"]
+        out["detail"]=str(exc)
+        finalize_snapshots()
+        return out
+    if (
+        len(companion_tokens)<2
+        or companion_tokens[0].lower()!=before_zip["sha256"]
+        or companion_tokens[1]!=project_zip.name
+    ):
+        out["fail_codes"]=["FAIL_EXTERNAL_ARTIFACT_SHA_MISMATCH"]
+        out["detail"]="companion must contain the final ZIP SHA-256 and exact ZIP filename"
+        finalize_snapshots()
+        return out
+    try:
+        sources=read_external_project_artifact_sources_from_zip(project_zip)
+        out["content_tree_sha256"]=sources["content_tree_sha256"]
+        payloads=_external_project_artifact_payloads(
+            project_zip, companion, {"validators_fail":0,"blocking_warnings":0}, sources
+        )
+        _atomic_replace_external_artifact_texts(paths, payloads)
+    except InputContractError as exc:
+        out["fail_codes"]=[exc.fail_code]
+        out["detail"]=exc.detail
+        finalize_snapshots()
+        return out
+    except Exception as exc:
+        out["fail_codes"]=["FAIL_EXTERNAL_ARTIFACT_REFRESH_WRITE"]
+        out["detail"]=f"{exc.__class__.__name__}: {exc}"
+        finalize_snapshots()
+        return out
+
+    finalize_snapshots()
+    if not out["ZIP_UNCHANGED"]:
+        out["fail_codes"]=["FAIL_EXTERNAL_ARTIFACT_REFRESH_ZIP_MUTATED"]
+        return out
+    if not out["COMPANION_UNCHANGED"]:
+        out["fail_codes"]=["FAIL_EXTERNAL_ARTIFACT_REFRESH_COMPANION_MUTATED"]
+        return out
+
+    validation=validate_reopened_zip(project_zip, companion)
+    out["reopened_validation"]=validation
+    out["validators_fail"]=int(validation.get("validators_fail", 0) or 0)
+    out["blocking_warnings"]=int(validation.get("blocking_warnings", 0) or 0)
+    finalize_snapshots()
+    mutation_codes=[]
+    if not out["ZIP_UNCHANGED"]:
+        mutation_codes.append("FAIL_EXTERNAL_ARTIFACT_REFRESH_ZIP_MUTATED")
+    if not out["COMPANION_UNCHANGED"]:
+        mutation_codes.append("FAIL_EXTERNAL_ARTIFACT_REFRESH_COMPANION_MUTATED")
+    external_pass=validation.get("EXTERNAL_ARTIFACTS_5_OF_5")=="PASS"
+    validation_pass=(
+        validation.get("result")=="PASS"
+        and out["validators_fail"]==0
+        and out["blocking_warnings"]==0
+        and external_pass
+    )
+    if mutation_codes:
+        out["fail_codes"]=_dedupe_fail_codes(mutation_codes+validation.get("fail_codes", []))
+    elif not validation_pass:
+        out["fail_codes"]=_dedupe_fail_codes(
+            validation.get("fail_codes", [])
+            + ([] if external_pass else ["FAIL_EXTERNAL_ARTIFACT_SET_5_OF_5"])
+            + ([] if validation.get("fail_codes") else ["FAIL_EXTERNAL_ARTIFACT_REFRESH_VALIDATION"])
+        )
+    else:
+        out["result"]="PASS"
+        out["validators_fail"]=0
+        out["blocking_warnings"]=0
+        out["fail_codes"]=[]
+        out["EXTERNAL_ARTIFACTS_5_OF_5"]="PASS"
+    if out["result"]!="PASS" and out["validators_fail"]==0:
+        out["validators_fail"]=max(1,len(out["fail_codes"]))
+    return out
+
 
 def make_project(spec: dict, destination: Path, engine_profile_registry: list[dict] | None=None, engine_tech_registry: dict | None=None) -> Path:
     spec = _project_policy_enforce_input_gate(dict(spec))
@@ -8726,6 +9061,7 @@ KNOWN_SIMULATED_TARGET_ENGINES = {
 }
 
 RELATED_CLI_PATH_ARGUMENTS = {
+    "refresh-external-artifacts": ("project_zip", "output_json"),
     "update-project": ("project", "update", "output", "output_json"),
     "migrate-project": ("project", "output", "output_json"),
     "update-project-by-engine": ("project", "output", "output_json"),
@@ -10707,6 +11043,7 @@ def main() -> int:
     up=sub.add_parser("update-project"); up.add_argument("--project",required=True); up.add_argument("--update",required=True); up.add_argument("--output",required=True); _add_common_cli_output_flags(up)
     mg=sub.add_parser("migrate-project"); mg.add_argument("--project",required=True); mg.add_argument("--target-engine",required=True); mg.add_argument("--output",required=True); _add_common_cli_output_flags(mg)
     ube=sub.add_parser("update-project-by-engine"); ube.add_argument("--project",required=True); ube.add_argument("--target-engine",required=True); ube.add_argument("--output",required=True); _add_common_cli_output_flags(ube)
+    refresh=sub.add_parser("refresh-external-artifacts"); refresh.add_argument("project_zip"); refresh.add_argument("--summary",action="store_true"); refresh.add_argument("--output-json",required=True)
     m=sub.add_parser("mutation-self-test"); m.add_argument("--work",required=True); _add_common_cli_output_flags(m)
     args=_normalize_related_cli_paths(ap.parse_args())
     out={"result":"FAIL","fail_codes":["FAIL_CLI_UNHANDLED_COMMAND"]}
@@ -10747,6 +11084,28 @@ def main() -> int:
                 _emit_json_safely(out, command=args.cmd, summary=args.summary, output_json=args.output_json)
                 return _cli_exit_code_for_result(out)
             out=validate_project(target,final_reopened=bool(temp),companion_verified=False)
+            _emit_json_safely(out, command=args.cmd, summary=args.summary, output_json=args.output_json)
+            return _cli_exit_code_for_result(out)
+        if args.cmd=="refresh-external-artifacts":
+            project_zip=Path(args.project_zip)
+            companion=Path(f"{project_zip}.sha256")
+            protected={path.resolve(strict=False) for path in _external_project_artifact_paths(project_zip).values()}
+            output_path=Path(args.output_json).resolve(strict=False)
+            if output_path in protected or output_path==companion.resolve(strict=False):
+                out={
+                    "result":"FAIL",
+                    "operation":"refresh-external-artifacts",
+                    "validators_fail":1,
+                    "blocking_warnings":0,
+                    "fail_codes":["FAIL_EXTERNAL_ARTIFACT_REFRESH_OUTPUT_PATH_PROTECTED"],
+                    "ZIP_UNCHANGED":True,
+                    "COMPANION_UNCHANGED":True,
+                    "CREATIVE_OUTPUT_CERTIFIED":False,
+                    "creative_output_certified":False,
+                }
+                _emit_json_safely(out, command=args.cmd, summary=args.summary, output_json=None)
+                return _cli_exit_code_for_result(out)
+            out=refresh_external_project_artifacts(project_zip)
             _emit_json_safely(out, command=args.cmd, summary=args.summary, output_json=args.output_json)
             return _cli_exit_code_for_result(out)
         if args.cmd=="validate-update-contract":

@@ -30,6 +30,7 @@ RECEIPT_REL = Path("governance/baseline/IDUNEX_MOTOR_v1.0.0_BASELINE_RECEIPT.jso
 REMAP_REL = Path("governance/baseline/WINDOWS_PATH_SAFE_REMAP.json")
 MOVEMENT_REL = Path("docs/audits/AUD-008-movement-reversal-manifest.json")
 STATE_REL = Path("governance/CURRENT_STATE.json")
+AUD030_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD030"
 
 INTERNAL_JSON_MANIFESTS = (
     "99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json",
@@ -122,16 +123,17 @@ def _write_json(path: Path, payload: dict[str, Any]) -> None:
     )
 
 
-def _internal_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
+def _internal_payload(records: list[dict[str, Any]], m02_result: str, m03_result: str) -> dict[str, Any]:
     return {
         "schema_version": 2,
         "manifest_class": "CURRENT_PHYSICAL_ENGINE_INTERNAL_NON_SELF_REFERENTIAL",
         "semantic_version": "v1.0.0",
         "version_bump": "NO",
         "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
-        "correction_scope": "AUD-003_BASELINE_LEDGER_REMAP",
+        "correction_scope": "AUD-030_EXTERNAL_ARTIFACTS_POST_H410",
         "motor_status": "EN_REVISION",
-        "m02_result": "M02_PASS",
+        "m02_result": m02_result,
+        "m03_result": m03_result,
         "release_authorized": False,
         "file_count": len(records),
         "byte_count": sum(item["bytes"] for item in records),
@@ -145,7 +147,7 @@ def _internal_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def _external_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
+def _external_payload(records: list[dict[str, Any]], m02_result: str, m03_result: str) -> dict[str, Any]:
     repository_records = [dict(item, path=f"engine/IDUNEX/{item['path']}") for item in records]
     return {
         "schema_version": 1,
@@ -154,7 +156,8 @@ def _external_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
         "scope": "engine/IDUNEX",
         "semantic_version": "v1.0.0",
         "motor_status": "EN_REVISION",
-        "m02_result": "M02_PASS",
+        "m02_result": m02_result,
+        "m03_result": m03_result,
         "release_authorized": False,
         "coverage": "ALL_PHYSICAL_FILES_IN_SCOPE",
         "file_count": len(repository_records),
@@ -168,13 +171,14 @@ def _external_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def _internal_text(records: list[dict[str, Any]]) -> str:
+def _internal_text(records: list[dict[str, Any]], m02_result: str, m03_result: str) -> str:
     header = (
         "# manifest_class=CURRENT_PHYSICAL_ENGINE_INTERNAL_NON_SELF_REFERENTIAL\n"
         "# semantic_version=v1.0.0\n"
-        "# correction_scope=AUD-003_BASELINE_LEDGER_REMAP\n"
+        "# correction_scope=AUD-030_EXTERNAL_ARTIFACTS_POST_H410\n"
         "# motor_status=EN_REVISION\n"
-        "# m02_result=M02_PASS\n"
+        f"# m02_result={m02_result}\n"
+        f"# m03_result={m03_result}\n"
         "# release_authorized=false\n"
         "# exclusions=99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json,"
         "99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json,"
@@ -285,7 +289,7 @@ def build_diff(root: Path, current_indexable: list[dict[str, Any]]) -> dict[str,
         "modified": modified,
         "missing_after_resolution": missing,
         "added_current": added,
-        "global_conclusion": "AUD003_BASELINE_SCOPE_RECOMPUTED_M02_ALIGNED_PASS_EN_REVISION",
+        "global_conclusion": "AUD030_ENGINE_TREE_REBUILT_M02_M03_NOT_RECOMPUTED_EN_REVISION",
     }
 
 
@@ -296,17 +300,26 @@ def write_artifacts(root: Path) -> dict[str, Any]:
             f"Historical received ledger must be preserved before regeneration: {RECEIVED_LEDGER_REL}"
         )
     engine_root = root / ENGINE_REL
+    state = json.loads((root / STATE_REL).read_text(encoding="utf-8"))
+    m02_result=state.get("m02_result")
+    m03_result=state.get("m03_result")
+    if (
+        state.get("issue")!="AUD-030"
+        or m02_result!=AUD030_RECOMPUTATION_STATE
+        or m03_result!=AUD030_RECOMPUTATION_STATE
+    ):
+        raise ValueError("AUD030_BLOCKED_INCOHERENT_RECOMPUTATION_STATE")
     indexable = snapshot_tree(engine_root, exclude_internal=True)
-    internal_payload = _internal_payload(indexable)
+    internal_payload = _internal_payload(indexable, m02_result, m03_result)
     for relative in INTERNAL_JSON_MANIFESTS:
         _write_json(engine_root / relative, internal_payload)
 
-    text = _internal_text(indexable)
+    text = _internal_text(indexable, m02_result, m03_result)
     for relative in INTERNAL_TEXT_MANIFESTS:
         (engine_root / relative).write_text(text, encoding="utf-8", newline="\n")
 
     complete = snapshot_tree(engine_root)
-    external_payload = _external_payload(complete)
+    external_payload = _external_payload(complete, m02_result, m03_result)
     _write_json(root / CURRENT_MANIFEST_REL, external_payload)
     (root / CURRENT_SHA_REL).write_text(
         "# AUD-003 current physical engine tree aggregate; not a ZIP or release SHA256\n"
@@ -391,6 +404,8 @@ def _verify_internal_manifest(root: Path, relative: str) -> dict[str, Any]:
         "duplicate_path_count": len(observed) - len(observed_paths),
         "declared_file_count_matches": payload.get("file_count") == len(observed),
         "declared_tree_sha256_matches": payload.get("tree_sha256") == aggregate_sha256(observed),
+        "m02_result": payload.get("m02_result"),
+        "m03_result": payload.get("m03_result"),
     }
 
 
@@ -419,6 +434,9 @@ def _stale_manifest_paths(root: Path) -> list[dict[str, str]]:
 def audit_repository(root: Path) -> dict[str, Any]:
     root = root.resolve()
     findings: list[str] = []
+    state = json.loads((root / STATE_REL).read_text(encoding="utf-8"))
+    expected_m02=state.get("m02_result")
+    expected_m03=state.get("m03_result")
     current = json.loads((root / CURRENT_MANIFEST_REL).read_text(encoding="utf-8"))
     external = verify_manifest_records(
         root / ENGINE_REL, current.get("files", []), repository_paths=True
@@ -438,6 +456,8 @@ def audit_repository(root: Path) -> dict[str, Any]:
     declared_count_ok = current.get("file_count") == len(external_records)
     if not declared_tree_ok or not declared_count_ok:
         findings.append("CURRENT_EXTERNAL_SUMMARY_MISMATCH")
+    if current.get("m02_result")!=expected_m02 or current.get("m03_result")!=expected_m03:
+        findings.append("CURRENT_EXTERNAL_RECOMPUTATION_STATE_MISMATCH")
 
     sha_lines = (root / CURRENT_SHA_REL).read_text(encoding="utf-8").splitlines()
     sha_matches = [HASH_LINE.match(line) for line in sha_lines]
@@ -456,11 +476,13 @@ def audit_repository(root: Path) -> dict[str, Any]:
             or result["duplicate_path_count"]
             or not result["declared_file_count_matches"]
             or not result["declared_tree_sha256_matches"]
+            or result["m02_result"]!=expected_m02
+            or result["m03_result"]!=expected_m03
         ):
             findings.append(f"INTERNAL_MANIFEST_MISMATCH:{result['path']}")
 
     actual_indexable = snapshot_tree(root / ENGINE_REL, exclude_internal=True)
-    expected_text = _internal_text(actual_indexable).encode("utf-8")
+    expected_text = _internal_text(actual_indexable, expected_m02, expected_m03).encode("utf-8")
     text_manifest_sync = all(
         (root / ENGINE_REL / path).read_bytes() == expected_text
         for path in INTERNAL_TEXT_MANIFESTS
@@ -478,13 +500,21 @@ def audit_repository(root: Path) -> dict[str, Any]:
     if diff.get("summary", {}).get("missing_after_resolution_count") != 0:
         findings.append("RECEIVED_LEDGER_PATH_UNRESOLVED")
 
-    state = json.loads((root / STATE_REL).read_text(encoding="utf-8"))
+    engine_change=state.get("engine_change_control", {})
     state_ok = (
-        state.get("motor_status") == "EN_REVISION"
-        and state.get("m02_result") == "M02_PASS"
+        state.get("issue") == "AUD-030"
+        and state.get("motor_status") == "EN_REVISION"
+        and state.get("m02_result") == AUD030_RECOMPUTATION_STATE
+        and state.get("m03_result") == AUD030_RECOMPUTATION_STATE
         and state.get("ready_for_project_demo_generation") is False
         and state.get("release_authorized") is False
         and state.get("tag_authorized") is False
+        and state.get("oficial_authorized") is False
+        and state.get("agent_load_authorized") is False
+        and isinstance(engine_change, dict)
+        and engine_change.get("current_engine_tree_sha256")==current.get("tree_sha256")
+        and engine_change.get("current_engine_file_count")==current.get("file_count")
+        and engine_change.get("current_engine_byte_count")==current.get("byte_count")
     )
     if not state_ok:
         findings.append("GLOBAL_STATE_INTERLOCK_CHANGED")
@@ -495,6 +525,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
         "aud003_scope_result": "PARTIAL_PASS" if not findings else "FAIL",
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),
+        "m03_result": state.get("m03_result"),
         "release_authorized": state.get("release_authorized"),
         "current_tree_manifest": CURRENT_MANIFEST_REL.as_posix(),
         "current_tree_sha256": current.get("tree_sha256"),
