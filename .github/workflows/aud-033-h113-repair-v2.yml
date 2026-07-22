@@ -108,21 +108,55 @@ jobs:
         if: steps.validation.outcome == 'success'
         shell: bash
         run: |
-          set -euo pipefail
+          set +e
+          mkdir -p .aud033-evidence/commit
           git config user.name "aleducase"
           git config user.email "232152987+aleducase@users.noreply.github.com"
-          git add engine/IDUNEX governance/CURRENT_STATE.json governance/baseline REPOSITORY_MANIFEST.yml tests/intake/test_h113_current_tree_identity_generate.py docs/audits/GOV-IDUNEX-CorreccionResolucionIdentidadH113-20260722-v1-EN_REVISION.md
-          git diff --cached --check
+
+          git add engine/IDUNEX governance/CURRENT_STATE.json governance/baseline REPOSITORY_MANIFEST.yml tests/intake/test_h113_current_tree_identity_generate.py docs/audits/GOV-IDUNEX-CorreccionResolucionIdentidadH113-20260722-v1-EN_REVISION.md \
+            > .aud033-evidence/commit/git-add.stdout.log \
+            2> .aud033-evidence/commit/git-add.stderr.log
+          add_rc=$?
+          printf '%s\n' "$add_rc" > .aud033-evidence/commit/git-add.rc
+          git status --porcelain=v1 > .aud033-evidence/commit/git-status-after-add.txt
+          git diff --cached --stat > .aud033-evidence/commit/staged-stat.txt
+
+          git diff --cached --check \
+            > .aud033-evidence/commit/diff-check.stdout.log \
+            2> .aud033-evidence/commit/diff-check.stderr.log
+          check_rc=$?
+          printf '%s\n' "$check_rc" > .aud033-evidence/commit/diff-check.rc
+
+          if [[ "$add_rc" -ne 0 || "$check_rc" -ne 0 ]]; then
+            echo "created=false" >> "$GITHUB_OUTPUT"
+            cat .aud033-evidence/commit/git-add.stderr.log || true
+            cat .aud033-evidence/commit/diff-check.stdout.log || true
+            cat .aud033-evidence/commit/diff-check.stderr.log || true
+            exit 1
+          fi
+
           if git diff --cached --quiet; then
             echo "created=false" >> "$GITHUB_OUTPUT"
             git rev-parse HEAD > .aud033-evidence/validated-commit.txt
             exit 0
           fi
+
           git diff --cached --binary > .aud033-evidence/validated-correction.patch
-          git commit -m "fix(aud-033): resolve H113 identity and external certificate parity"
+          git commit -m "fix(aud-033): resolve H113 identity and external certificate parity" \
+            > .aud033-evidence/commit/git-commit.stdout.log \
+            2> .aud033-evidence/commit/git-commit.stderr.log
+          commit_rc=$?
+          printf '%s\n' "$commit_rc" > .aud033-evidence/commit/git-commit.rc
+          cat .aud033-evidence/commit/git-commit.stdout.log || true
+          cat .aud033-evidence/commit/git-commit.stderr.log || true
+          if [[ "$commit_rc" -ne 0 ]]; then
+            echo "created=false" >> "$GITHUB_OUTPUT"
+            exit "$commit_rc"
+          fi
           git rev-parse HEAD > .aud033-evidence/validated-commit.txt
           git show --stat --oneline HEAD > .aud033-evidence/validated-commit-stat.txt
           echo "created=true" >> "$GITHUB_OUTPUT"
+          exit 0
 
       - name: Push validated correction
         id: push
