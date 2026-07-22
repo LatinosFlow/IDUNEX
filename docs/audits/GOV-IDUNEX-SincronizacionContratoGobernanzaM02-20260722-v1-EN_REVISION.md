@@ -18,6 +18,16 @@ Se sincroniza únicamente la expectativa `M02_RESULT` del contrato activo con `N
 - árbol previo: `8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd` — 981 archivos / 47,321,777 bytes;
 - árbol post-AUD031: `d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d` — 981 archivos / 47,322,002 bytes.
 
+## Validación previa al merge
+
+- workflow correctivo `29930608086`: PASS;
+- baseline, governance, intake, security, AUD-008 y runtime validator: PASS;
+- unit tests relevantes: PASS;
+- CI del PR: IDUNEX Security Lite e IDUNEX Intake Audit PASS;
+- ejecutores temporales: ausentes del diff final.
+
+Los defaults de los workflows M02/M03 no se modifican en AUD-031. La próxima ejecución M02 debe recibir explícitamente el SHA post-AUD031; la alineación permanente del workflow M03 debe cerrarse antes de ejecutar M03.
+
 ## Estado
 
 ```text
