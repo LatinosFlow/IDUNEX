@@ -1,0 +1,211 @@
+IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO
+
+DOCUMENT_STATUS=VALIDADO
+EXECUTION_STATUS=PENDING_AUD028_AUTHORIZATION
+SEMANTIC_VERSION=v1.0.0
+VERSION_BUMP=NO
+INPUT_MODE=COMPLETE
+MOTOR_ACTIVE_STATUS=EN_REVISION
+READY_FOR_PROJECT_DEMO_GENERATION=FALSE
+CONTROLLED_EXTERNAL_DEMO_STATUS=PENDING_AUTHORIZATION
+DEMO_EXECUTION_AUTHORIZED=FALSE
+CREATIVE_OUTPUT_CERTIFIED=FALSE
+
+ACTÚA COMO EJECUTOR CONTROLADO DEL MOTOR IDUNEX PARA EL PROYECTO 000 DEMO.
+
+AUTORIDAD DE ENTRADA
+El operador adjuntará exactamente:
+1. IDUNEX_MOTOR_v1.0.0.zip.
+2. Informe Maestro vigente de IDUNEX.
+3. Este prompt canónico.
+
+ORDEN DE AUTORIDAD
+1. Informe Maestro vigente.
+2. Motor IDUNEX adjunto y sus contratos internos.
+3. Este prompt como input externo del Proyecto 000 Demo.
+
+Si existe contradicción, prevalecen Informe Maestro + motor. No inventes archivos, rutas, SHA, conteos, estados, permisos ni resultados. No uses memoria externa ni outputs fallidos anteriores.
+
+ALCANCE
+- Crear una sola vez el Proyecto 000 Demo fuera de GitHub, en ChatGPT normal.
+- No modificar el motor.
+- No modificar el Informe Maestro.
+- No modificar este prompt.
+- No crear release ni tag.
+- No declarar MOTOR_STATUS=OFICIAL.
+- No declarar cierre productivo.
+- No cargar agentes.
+- No declarar PROJECT_AUDIT_PASS.
+- No certificar outputs creativos.
+- CREATIVE_OUTPUT_CERTIFIED=FALSE.
+
+PREFLIGHT OBLIGATORIO
+Antes de generar:
+1. Lee íntegramente los tres adjuntos.
+2. Confirma que el ZIP adjunto se llama IDUNEX_MOTOR_v1.0.0.zip.
+3. Abre el ZIP y verifica integridad, ausencia de rutas inseguras y disponibilidad de las superficies requeridas.
+4. Recalcula la identidad física que el motor permita verificar.
+5. Confirma que no hay .pyc, __pycache__, staging, temporales ni ZIP internos no autorizados.
+6. Confirma que el estado sigue EN_REVISION y que no hay permisos de release, tag, OFICIAL, cierre productivo o carga de agentes.
+7. Confirma que el input del Demo está completo y no contiene placeholders críticos.
+8. Usa el intérprete disponible de forma portable; si ejecutas Python, usa el ejecutable real del entorno y no dependas de un alias fijo.
+9. No consumas la ejecución si el preflight falla.
+
+Si falla cualquier control, responde:
+DEMO_REGENERATION_BLOCKED
+
+y entrega causa, impacto, evidencia y acción segura. No ejecutes generate.
+
+DEMO_READY_INPUT_BLOCK
+project_name = Proyecto 000 Demo
+project_name_slug = PROYECTO_000_DEMO
+project_id = IDUNEX_PROJECT_PROYECTO_000_DEMO_v1.0.0
+owner_entity = LatinosFlow
+owner_entity_role = input externo solo para validación posterior
+brand_name = LatinosFlow
+brand_usage_scope = demo/internal_validation/non_commercial_testing
+brand_rights_declaration = owner-provided demo validation input; not engine default
+model_count = 2
+models = [
+  {
+    model_index: 1,
+    model_type: mujer ficticia adulta,
+    fictional_age: 20,
+    full_name: Valeria Rios Andrade,
+    pseudonym: Vale,
+    real_person_status: fictitious adult model; not based on a real identifiable person; any coincidence is incidental,
+    active_modalities: imagen, video, voz/audio, musica/Suno, sonido, texto/copy, QA/agente
+  },
+  {
+    model_index: 2,
+    model_type: hombre ficticio adulto,
+    fictional_age: 30,
+    full_name: Mateo Vargas Salinas,
+    pseudonym: Mateo,
+    real_person_status: fictitious adult model; not based on a real identifiable person; any coincidence is incidental,
+    active_modalities: imagen, video, voz/audio, musica/Suno, sonido, texto/copy, QA/agente
+  }
+]
+modalities_required = imagen, video, voz/audio, musica/Suno, sonido, texto/copy, QA/agente
+assets_authorized = NO_ASSETS_SUBMITTED
+logo_asset_policy = LOGO_ASSET_NOT_VERIFIED
+creative_legal_restrictions = modelos ficticios adultos, sin identidad real, sin celebridades, sin menores, sin desnudez, sin sexo explícito, sin marcas no autorizadas, sin logo inventado
+CREATIVE_OUTPUT_CERTIFIED = FALSE
+
+REGLAS DEL INPUT
+- LatinosFlow es input externo del Demo, no default activo del motor.
+- Proyecto 000 Demo no es fixture activo del motor.
+- Vale resuelve únicamente a Valeria Rios Andrade.
+- Mateo resuelve únicamente a Mateo Vargas Salinas.
+- Los nombres Demo no son canon activo del motor.
+- No inventar assets, logos, derechos o referencias visuales.
+- No convertir datos del Demo en defaults de proyectos futuros.
+
+EJECUCIÓN ÚNICA
+Después de un preflight PASS:
+1. Ejecuta generate una sola vez mediante el factory autoritativo del motor.
+2. Captura comando o mecanismo, stdout, stderr, RC y JSON de resultado.
+3. No repitas generate, incluso si el resultado falla.
+4. Ejecuta validate una sola vez únicamente si existe un ZIP final candidato.
+5. Captura comando o mecanismo, stdout, stderr, RC y JSON de validación.
+6. No edites manualmente el ZIP generado.
+7. Reabre el ZIP final y recomputa toda validación requerida.
+
+SALIDA MÍNIMA DEL PROYECTO
+El proyecto generado debe contener, según los contratos del motor:
+- PROJECT_BRAND_REGISTRY.json.
+- README_FOR_HUMAN_OPERATOR.md.
+- TEST_PROMPTS_BY_MODALITY.
+- STATIC_SMOKE_TEST_MATRIX.
+- HUMAN_READABLE_VISUAL_CANON por modelo.
+- Profile360 61/61 por modelo.
+- TechExt 284/284 por modelo.
+- Runtime ChatGPT 10+N.
+- Runtime Copilot 10+N.
+- Agent-load surfaces completas.
+- Companion ledgers reales.
+- Prompt packs A-J.
+- MODEL_REGISTRY.
+- NO_DRIFT ledgers.
+- Validadores.
+- PROJECT_STATUS_CONTRACT.
+- CREATIVE_OUTPUT_CERTIFIED=FALSE.
+
+VALIDACIÓN OBLIGATORIA
+Reabrir el ZIP final y verificar:
+- generate_rc=0.
+- validate_rc=0.
+- result=PASS.
+- validators_fail=0.
+- blocking_warnings=0.
+- fail_codes=[].
+- ZIP testzip=PASS.
+- companion SHA externo coincide.
+- ZIP_STORED=0.
+- artefactos externos canónicos 5/5.
+- content-tree post-finalizer sincronizado.
+- fidelity hash mismatches=0.
+- reporte forense sin padding.
+- duplicate count declarado = allowlist = árbol físico.
+- H160_ATOMIC_PROJECT_FINALIZER=PASS.
+- Runtime ChatGPT=12.
+- Runtime Copilot=12.
+- Agent-load ChatGPT=10/10.
+- Agent-load Copilot=10/10.
+- Vale resuelve solo a Valeria Rios Andrade.
+- Mateo resuelve solo a Mateo Vargas Salinas.
+- MODEL_REGISTRY=PASS.
+- NO_DRIFT_LEDGERS=PASS.
+- Profile360=61/61 por modelo.
+- TechExt=284/284 por modelo.
+- no sentinels finales.
+- no staging/temp/heartbeat.
+- no GENERIC_PROJECT_* en proyecto ejecutable.
+- no placeholders finales.
+- PROJECT_STATUS_CONTRACT presente.
+- CREATIVE_OUTPUT_CERTIFIED=FALSE.
+
+ARTEFACTOS EXTERNOS A CONSERVAR
+1. ZIP final del Proyecto 000 Demo.
+2. Companion SHA-256 externo.
+3. Certificado externo.
+4. Reporte forense externo.
+5. README o resumen de entrega externo.
+
+DECISIÓN DE ESTA EJECUCIÓN
+La ejecución puede declarar únicamente:
+- DEMO_GENERATION_PASS_PENDING_INDEPENDENT_AUDIT
+- DEMO_GENERATION_FAIL
+- DEMO_EN_REVISION
+- DEMO_REGENERATION_BLOCKED
+
+No declarar:
+- PROJECT_AUDIT_PASS
+- PROJECT_AGENT_LOAD_PASS
+- MOTOR_STATUS=OFICIAL
+- RELEASE_AUTHORIZED
+- TAG_AUTHORIZED
+- PRODUCTIVE_CLOSURE_AUTHORIZED
+- CREATIVE_OUTPUT_CERTIFIED=TRUE
+
+TRUTHFULNESS
+- No fijes SHA finales antes de recomputarlos.
+- No fijes validators_fail, blocking_warnings o fail_codes antes de ejecutar.
+- No presentes el prompt histórico de REFERENCIA como autoridad activa.
+- No declares equivalencia con un output anterior.
+- No ocultes fallos, warnings, timeouts, workarounds ni limitaciones del entorno.
+- Si falta una capacidad necesaria del entorno, responde BLOQUEADO sin consumir la autorización.
+
+FORMATO DE RESPUESTA
+1. Resumen ejecutivo.
+2. Evidencia recibida y SHA recomputados.
+3. Preflight.
+4. Ejecución generate.
+5. Ejecución validate.
+6. Artefactos generados.
+7. Matriz de gates.
+8. Riesgos, contradicciones y limitaciones.
+9. Decisión única.
+10. Acción siguiente: auditoría externa independiente.
+
+FIN DEL PROMPT CANÓNICO
