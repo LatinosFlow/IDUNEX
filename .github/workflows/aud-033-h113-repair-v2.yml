@@ -46,6 +46,13 @@ jobs:
           python -B tools/audit/aud033_external_certificate_header_fix.py \
             > .aud033-cert-header-repair.stdout.log \
             2> .aud033-cert-header-repair.stderr.log
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          path=Path('docs/audits/GOV-IDUNEX-CorreccionResolucionIdentidadH113-20260722-v1-EN_REVISION.md')
+          text=path.read_text(encoding='utf-8')
+          path.write_text(re.sub(r'[ \t]+\n', '\n', text), encoding='utf-8', newline='\n')
+          PY
           mkdir -p .aud033-evidence
           mv .aud033-repair.stdout.log .aud033-evidence/repair.stdout.log
           mv .aud033-repair.stderr.log .aud033-evidence/repair.stderr.log
