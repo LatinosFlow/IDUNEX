@@ -75,7 +75,7 @@ def authorized_state() -> dict:
             "generate_executions_allowed": 1,
             "validate_executions_allowed": 1,
             "authorization_id": "AUD-028",
-            "prompt_path": "governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt",
+            "prompt_path": "governance/authority/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt",
             "prompt_sha256": PROMPT_SHA,
         }
     )
@@ -110,12 +110,9 @@ class GovernanceStateTest(unittest.TestCase):
         report = json.loads(result.stdout)
         self.assertEqual(report["result"], "CONSISTENT")
         self.assertEqual(report["active_contradiction_count"], 0)
-        self.assertEqual(
-            report["controlled_external_demo_status"],
-            "AUTHORIZED_NOT_CONSUMED",
-        )
-        self.assertTrue(report["controlled_external_demo_authorized"])
-        self.assertFalse(report["controlled_external_demo_consumed"])
+        self.assertEqual(report["controlled_external_demo_status"], "CONSUMED")
+        self.assertFalse(report["controlled_external_demo_authorized"])
+        self.assertTrue(report["controlled_external_demo_consumed"])
 
     def test_02_pending_authorization_is_valid(self):
         self.assertEqual(validate_current_state_data(pending_state()), [])

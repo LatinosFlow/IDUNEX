@@ -67,7 +67,7 @@ current_tree_audit:
   m03_historical_harness_recovered: false
   m03_matrix: 30/30
   m03_mutation: 506/506
-  controlled_demo_generation: AUTHORIZED_EXTERNAL_ONE_SHOT_AUD028
+  controlled_demo_generation: CONSUMED_AUD028_PROJECT_AUDIT_BLOCKED
 current_motor_package_candidate:
   status: VALIDADO_CANDIDATE_NOT_RELEASE
   workflow_run_id: 29884622077
@@ -84,15 +84,17 @@ current_motor_package_candidate:
   physical_zip_in_repository: false
 controlled_external_demo_execution:
   controlling_issue: 53
+  corrective_issue: 58
   authorization_id: AUD-028
   authorization_document: docs/audits/GOV-IDUNEX-AutorizacionEjecucionExternaProyecto000Demo-20260722-v1-EN_REVISION.md
-  schema_status: AUTHORIZED_NOT_CONSUMED
-  authorized: true
-  consumed: false
+  schema_status: CONSUMED
+  authorized: false
+  consumed: true
+  consumed_at: 2026-07-22T00:19:09-05:00
   execution_limit: 1
-  execution_count: 0
-  generate_executions_allowed: 1
-  validate_executions_allowed: 1
+  execution_count: 1
+  generate_executions_allowed: 0
+  validate_executions_allowed: 0
   general_project_generation_enabled: false
   allowed_environment: CHATGPT_NORMAL_EXTERNAL
   package_sha256: 53711cae748d3f8cda29e17d0a7663c3f73dbae6a691c82edfce704292cb2ac5
@@ -100,15 +102,30 @@ controlled_external_demo_execution:
   prompt_path: governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt
   prompt_sha256: 710b01f5603331f2a46f8fede16938e86b4577d3e0e5af2d68f2b50a284abc1f
   prompt_bytes: 8982
-  execution_authorized: true
-  demo_status: AUTHORIZED_NOT_CONSUMED
+  execution_authorized: false
+  demo_status: CONSUMED
+current_demo_project:
+  project_id: IDUNEX_PROJECT_PROYECTO_000_DEMO_v1.0.0
+  status: PROJECT_GENERATED_NOT_AUDITED
+  zip_filename: IDUNEX_PROJECT_PROYECTO_000_DEMO_v1.0.0.zip
+  zip_sha256: 539cc5b7077e12025deefa0304525a9aa8bfaa627a4d408cf01127e8beb8460b
+  zip_bytes: 1380284
+  entries: 304
+  operational_validation: PASS
+  internal_content_tree_sha256: 806a308dbefb650687b35d034bd90133997ebb5a3598ae78b41e6f5cb4dc3b35
+  stale_external_content_tree_sha256: f37d5c761bd389e26d3cebfe73ea379d37421dd626b193517229892c1dc70386
+  independent_audit_status: PROJECT_AUDIT_FAIL_EXTERNAL_SURFACE_DESYNC
+  project_external_validation_pass: false
+  project_agent_load_pass: false
+  project_ready_for_production: false
+  creative_output_certified: false
 current_demo_authority:
   active_document: docs/audits/GOV-IDUNEX-AutorizacionEjecucionExternaProyecto000Demo-20260722-v1-EN_REVISION.md
   aud025_v1_status: SUSTITUIDO_REFERENCIA_NO_EXECUTION_AUTHORITY
-  aud028_status: EN_REVISION_AUTHORIZED_NOT_CONSUMED
+  aud028_status: CONSUMED
   repository_zip_sha_authority: EXTERNAL_COMPANION_VALIDATED
   active_prompt: governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt
-  active_prompt_status: VALIDADO_AUTHORIZED_NOT_CONSUMED
+  active_prompt_status: EXECUTED_EVIDENCE_NOT_REUSABLE
   active_prompt_sha256: 710b01f5603331f2a46f8fede16938e86b4577d3e0e5af2d68f2b50a284abc1f
   historical_prompt: governance/authority/REFERENCIA/IDUNEX_PROMPT_CANO_16f1f470.txt
   historical_prompt_status: SUSTITUIDO_REFERENCIA
@@ -126,3 +143,5 @@ policy:
   post_engine_change_requires_m02_m03_recomputation: true
   controlled_external_demo_requires_machine_readable_authorization: true
   authorization_consumed_when_generate_starts: true
+  no_retry_after_aud028_consumption: true
+  agent_load_blocked_until_project_audit_pass: true
