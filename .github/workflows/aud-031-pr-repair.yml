@@ -101,19 +101,37 @@ jobs:
           git diff --check
 
       - name: Commit canonical correction and remove temporary executors
+        id: commit
+        continue-on-error: true
         shell: bash
         run: |
-          set -euo pipefail
-          rm -f \
-            .github/workflows/aud-031-contract-sync-one-shot.yml \
-            .github/workflows/aud-031-pr-repair.yml \
-            tools/audit/aud031_contract_sync_repair.py
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --cached --check
-          git commit -m "fix(aud-031): sincronizar contrato maestro post-AUD030"
-          git push origin HEAD:fix/aud-031-master-governance-contract-sync
+          set -o pipefail
+          {
+            set -euo pipefail
+            rm -f \
+              .github/workflows/aud-031-contract-sync-one-shot.yml \
+              .github/workflows/aud-031-pr-repair.yml \
+              tools/audit/aud031_contract_sync_repair.py
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git diff --cached --check
+            git commit -m "fix(aud-031): sincronizar contrato maestro post-AUD030"
+            git push origin HEAD:fix/aud-031-master-governance-contract-sync
+          } 2>&1 | tee /tmp/aud031_commit.log
+
+      - name: Upload commit diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aud031-commit-diagnostics-${{ github.run_id }}
+          path: /tmp/aud031_commit.log
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Enforce commit result
+        if: steps.commit.outcome != 'success'
+        run: exit 1
 
       - name: Publish result summary
         run: cat /tmp/aud031_identity.json >> "$GITHUB_STEP_SUMMARY"
