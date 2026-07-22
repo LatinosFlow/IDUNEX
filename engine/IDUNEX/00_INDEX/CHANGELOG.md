@@ -52,3 +52,4 @@ PROJECT_DEMO_NEXT_PHASE_REQUIRED=FALSE
 - B01 PASS: H269-H280 aggregate validator runs child validators with explicit timeout, process-group kill-tree, bounded stdout/stderr capture and real rc observation.
 - B02 PASS: active matrix runner derives project IDs from SEMANTIC_VERSION v1.0.0; current 31/31 matrix PASS emits v1.0.0 project IDs.
 - CREATIVE_OUTPUT_CERTIFIED remains FALSE.
+- 2026-07-22 — AUD-033: H113 repository current-tree identity resolution decoupled from M02 approval; identity remains non-release and governance interlocks remain authoritative.

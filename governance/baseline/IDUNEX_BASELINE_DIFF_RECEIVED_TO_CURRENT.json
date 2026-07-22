@@ -90,8 +90,8 @@
       "received_path": "00_INDEX/CHANGELOG.md",
       "current_path": "00_INDEX/CHANGELOG.md",
       "received_sha256": "abebb4e4c20a4df6aef8be8c6ebaad577a42d75a51da230c434878b920ce6222",
-      "current_sha256": "63bb2e12ead12994622b541505582a087f1c93adaf31f2d87cc45527a34dec18",
-      "current_bytes": 3294
+      "current_sha256": "a65a5dfe30c1687ed130021b82e83f3e6a5807978562e197214122309200075c",
+      "current_bytes": 3475
     },
     {
       "received_path": "00_INDEX/FINAL_AUDIT_REPORT.md",
@@ -160,15 +160,15 @@
       "received_path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
       "current_path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py",
       "received_sha256": "88959e9d0c08e6fff03b7e869396aa0b57cd197840d913d72a41a75c483da8a1",
-      "current_sha256": "12445be8abf76dd29e195c8f81808e3b80288c0ec9aae6061603de78993444e3",
-      "current_bytes": 892007
+      "current_sha256": "4b608247e370233772af07efbf82cdd2b32fd185e884df9232a2db5edc1c4d9c",
+      "current_bytes": 892801
     },
     {
       "received_path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
       "current_path": "03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py",
       "received_sha256": "710bfc7f642722f09bd53fdc9b2b6b3692194d6d18ba52479ffeb405cab2c103",
-      "current_sha256": "cf8d000e5faae3526e4cdac10d782477bd6d53c865bd0d34e1db3a9d8a163844",
-      "current_bytes": 22854
+      "current_sha256": "be23af93c448865c50a4fa077a996c2beb688ba9264c0c38cd5e295901778004",
+      "current_bytes": 23451
     },
     {
       "received_path": "03_PROJECT_FACTORY/04_DELIVERY_GATES/GENERIC_SKELETON_NON_AUTHORITY_GATE.json",

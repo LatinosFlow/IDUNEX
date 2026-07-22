@@ -266,6 +266,14 @@ def run_case(case: dict, work: Path, timeout: int) -> dict:
     else:
         row["fail_codes"].append("FAIL_GENERATE_JSON_MISSING")
     row["generate_result"] = gen.get("result")
+    row["generate_fail_codes"] = list(gen.get("fail_codes") or [])
+    row["generate_root_cause_fail_codes"] = list(gen.get("root_cause_fail_codes") or [])
+    row["generate_root_cause_phase"] = gen.get("root_cause_phase")
+    row["generate_root_cause_detail"] = gen.get("root_cause_detail")
+    row["generate_stdout_tail"] = (gen_stdout or "")[-4000:]
+    row["generate_stderr_tail"] = (gen_stderr or "")[-4000:]
+    if row["generate_result"] != "PASS" and row["generate_fail_codes"]:
+        row["fail_codes"].extend(code for code in row["generate_fail_codes"] if code not in row["fail_codes"])
     row["generated_zip"] = gen.get("project_zip")
     row["generated_companion"] = gen.get("companion")
     zip_path = Path(str(gen.get("project_zip", "")))

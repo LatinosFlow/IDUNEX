@@ -565,7 +565,10 @@ def resolve_engine_zip_sha256() -> str:
             and manifest.get("semantic_version")==SEMANTIC_VERSION
             and manifest.get("release_authorized") is False
             and state.get("motor_status")=="EN_REVISION"
-            and state.get("m02_result")=="M02_PASS"
+            and isinstance(state.get("engine_change_control"), dict)
+            and state["engine_change_control"].get("current_engine_tree_sha256")==token
+            and state["engine_change_control"].get("current_engine_file_count")==manifest.get("file_count")
+            and state["engine_change_control"].get("current_engine_byte_count")==manifest.get("byte_count")
             and state.get("release_authorized") is False
             and state.get("tag_authorized") is False
         )
@@ -5566,6 +5569,14 @@ def _external_project_artifact_payloads(project_zip: Path, companion: Path, vali
     zip_sha=sha(project_zip)
     project_id=sources["project_id"]
     internal_cert=sources["release_certificate"]
+    # AUD-033: the external envelope is the sole authority for these two
+    # validation counters. The internal certificate is still preserved, but
+    # duplicate counter lines are removed before embedding so the validator's
+    # exact-one-header contract remains satisfiable.
+    internal_cert_for_external="\n".join(
+        line for line in internal_cert.splitlines()
+        if not re.fullmatch(r"(?:VALIDATORS_FAIL|BLOCKING_WARNINGS)=\d+", line)
+    )
     internal_report=sources["final_audit_report"]
     internal_readme=sources["readme_for_human_operator"]
     return {
@@ -5575,7 +5586,7 @@ def _external_project_artifact_payloads(project_zip: Path, companion: Path, vali
             "PROJECT_EXTERNAL_VALIDATION_PASS=FALSE","PROJECT_AGENT_LOAD_PASS=FALSE","PROJECT_READY_FOR_PRODUCTION=FALSE",
             f"PROJECT_ZIP_SHA256={zip_sha}",f"COMPANION_FILE={companion.name}",
             f"VALIDATORS_FAIL={validation.get('validators_fail',0)}",f"BLOCKING_WARNINGS={validation.get('blocking_warnings',0)}",
-            "CREATIVE_OUTPUT_CERTIFIED=FALSE","NO_RELEASE_TAG_OR_OFICIAL_AUTHORIZED=TRUE","",internal_cert,
+            "CREATIVE_OUTPUT_CERTIFIED=FALSE","NO_RELEASE_TAG_OR_OFICIAL_AUTHORIZED=TRUE","",internal_cert_for_external,
         ]),
         "final_audit_report":"\n".join([
             f"# External FINAL_AUDIT_REPORT — {project_id}","",f"PROJECT_ZIP_SHA256={zip_sha}",

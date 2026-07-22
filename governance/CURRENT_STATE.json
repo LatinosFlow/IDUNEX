@@ -31,16 +31,19 @@
     "issue": "AUD-030",
     "base_commit": "fb13a4f5d4bd559b4f1268103630a735b53c8999",
     "previous_engine_tree_sha256": "628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9",
-    "current_engine_tree_sha256": "d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d",
+    "current_engine_tree_sha256": "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
     "current_engine_file_count": 981,
-    "current_engine_byte_count": 47322002,
+    "current_engine_byte_count": 47323574,
     "manifests_recomputed_with_canonical_scanner": true,
     "m02_result": "NOT_RECOMPUTED_POST_AUD030",
     "m03_result": "NOT_RECOMPUTED_POST_AUD030",
-    "previous_current_engine_tree_sha256": "8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd",
+    "previous_current_engine_tree_sha256": "d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d",
     "child_correction_issue": "AUD-031",
     "child_correction_base_commit": "2790468f6b3bcc5286761def779276e8a77b6d20",
-    "child_correction_reason": "MASTER_GOVERNANCE_VALIDATION_CONTRACT_SYNC"
+    "child_correction_reason": "MASTER_GOVERNANCE_VALIDATION_CONTRACT_SYNC",
+    "subsequent_correction_issue": "AUD-033",
+    "subsequent_correction_base_commit": "7852cea334d3e94d6c3821e2db516ae6bc8b8cd8",
+    "subsequent_correction_reason": "H113_IDENTITY_AND_EXTERNAL_CERTIFICATE_HEADER_PARITY"
   },
   "controlled_external_demo_execution": {
     "schema_version": 1,
@@ -87,5 +90,9 @@
     "engine/IDUNEX/00_INDEX",
     "engine/IDUNEX/11_RELEASE_INTERNAL",
     "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE"
-  ]
+  ],
+  "last_correction_issue": "AUD-033",
+  "last_failed_m02_run": 29936388876,
+  "last_diagnostic_run": 29937730988,
+  "last_external_certificate_contract_fix": "AUD-033_EXACT_ONE_VALIDATION_HEADER"
 }
