@@ -26,7 +26,7 @@ current_corrected_tree:
   scope: engine/IDUNEX
   classification: CURRENT_REPRODUCIBLE_REPOSITORY_TREE_NOT_RELEASE
   repository_commit_at_reconciliation: 9f39ad4712cc3235bc94b1def317265182b5dcdc
-  current_repository_commit_at_aud029_base: 53a235461a99c37cda7e2fc6c4bd31df4b5bd736
+  current_repository_commit_at_aud028_base: 98f13b62e0e0635d675fa1fb936ecc51c6c67bcc
   file_count: 981
   bytes: 47302063
   tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
@@ -42,7 +42,7 @@ current_corrected_tree:
   aud003_scope_result: PASS_CURRENT_TREE_REPRODUCED
   release_created: false
 current_tree_audit:
-  decision: CURRENT_TREE_M02_M03_RECOMPUTED_PASS_PENDING_DEMO_AUTHORITY_RECONCILIATION
+  decision: CURRENT_TREE_M02_M03_RECOMPUTED_PASS
   reason: M02_AND_M03_RECOMPUTED_PASS_ON_SAME_ENGINE_TREE
   m02_current_tree: M02_PASS_RECOMPUTED_POST_PR44
   m02_report: docs/audits/IA-IDUNEX-ReauditoriaMotorM02PostPR44-20260721-v1-EN_REVISION.md
@@ -67,12 +67,7 @@ current_tree_audit:
   m03_historical_harness_recovered: false
   m03_matrix: 30/30
   m03_mutation: 506/506
-  historical_m02_result: M02_PASS
-  historical_m03_result: M03_PASS
-  historical_pass_may_promote_current_tree: false
-  controlling_issue: 46
-  m03_controlling_issue: 50
-  controlled_demo_generation: BLOCKED_PENDING_AUD028_AUTHORIZATION
+  controlled_demo_generation: AUTHORIZED_EXTERNAL_ONE_SHOT_AUD028
 current_motor_package_candidate:
   status: VALIDADO_CANDIDATE_NOT_RELEASE
   workflow_run_id: 29884622077
@@ -88,30 +83,33 @@ current_motor_package_candidate:
   external_companion_required: true
   physical_zip_in_repository: false
 controlled_external_demo_execution:
-  controlling_issue: 54
-  schema_status: PENDING_AUTHORIZATION
-  authorized: false
+  controlling_issue: 53
+  authorization_id: AUD-028
+  authorization_document: docs/audits/GOV-IDUNEX-AutorizacionEjecucionExternaProyecto000Demo-20260722-v1-EN_REVISION.md
+  schema_status: AUTHORIZED_NOT_CONSUMED
+  authorized: true
   consumed: false
   execution_limit: 1
   execution_count: 0
+  generate_executions_allowed: 1
+  validate_executions_allowed: 1
   general_project_generation_enabled: false
   allowed_environment: CHATGPT_NORMAL_EXTERNAL
   package_sha256: 53711cae748d3f8cda29e17d0a7663c3f73dbae6a691c82edfce704292cb2ac5
   master_report_sha256: 1158d68f4863ead61c22472bc604a2aa32b475f4f3a6ed85d9e2d6d7d2d6708f
-  prompt_path: null
-  prompt_sha256: null
-  prompt_candidate_path: governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt
-  prompt_candidate_sha256: 53411b87c07cc054546d73adcc7e132d031e02d5e5d90606580abbe7f1d7d3ea
-  prompt_candidate_bytes: 7698
-  execution_authorized: false
-  demo_status: BLOCKED_PENDING_AUD028_AUTHORIZATION
+  prompt_path: governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt
+  prompt_sha256: 710b01f5603331f2a46f8fede16938e86b4577d3e0e5af2d68f2b50a284abc1f
+  prompt_bytes: 8982
+  execution_authorized: true
+  demo_status: AUTHORIZED_NOT_CONSUMED
 current_demo_authority:
-  active_document: docs/audits/GOV-IDUNEX-ReconciliacionAutoridadPostPR44-20260721-v1-EN_REVISION.md
+  active_document: docs/audits/GOV-IDUNEX-AutorizacionEjecucionExternaProyecto000Demo-20260722-v1-EN_REVISION.md
   aud025_v1_status: SUSTITUIDO_REFERENCIA_NO_EXECUTION_AUTHORITY
-  repository_zip_sha_authority: EXTERNAL_COMPANION_REQUIRED
-  active_prompt_candidate: governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt
-  active_prompt_candidate_status: VALIDADO_PENDING_AUD028_AUTHORIZATION
-  active_prompt_candidate_sha256: 53411b87c07cc054546d73adcc7e132d031e02d5e5d90606580abbe7f1d7d3ea
+  aud028_status: EN_REVISION_AUTHORIZED_NOT_CONSUMED
+  repository_zip_sha_authority: EXTERNAL_COMPANION_VALIDATED
+  active_prompt: governance/authority/ACTIVO/IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO.txt
+  active_prompt_status: VALIDADO_AUTHORIZED_NOT_CONSUMED
+  active_prompt_sha256: 710b01f5603331f2a46f8fede16938e86b4577d3e0e5af2d68f2b50a284abc1f
   historical_prompt: governance/authority/REFERENCIA/IDUNEX_PROMPT_CANO_16f1f470.txt
   historical_prompt_status: SUSTITUIDO_REFERENCIA
 paths:
@@ -122,9 +120,9 @@ paths:
   package_tools: tools/package
 policy:
   no_pass_declarativo: true
-  project_demo_blocked_until_motor_audit: true
+  project_demo_general_generation_blocked: true
   future_projects_blocked_until_demo_100: true
   creative_output_certified: false
-  m02_fail_blocks_internal_certificates: true
   post_engine_change_requires_m02_m03_recomputation: true
   controlled_external_demo_requires_machine_readable_authorization: true
+  authorization_consumed_when_generate_starts: true

@@ -10,54 +10,31 @@ Repositorio técnico privado para el motor IDUNEX.
 **Autoridad de estado:** `governance/CURRENT_STATE.json`  
 **Versión declarada de baseline:** `v1.0.0`
 
-Este repositorio contiene el motor extraído en:
-
-```text
-engine/IDUNEX/
-```
-
-Los documentos externos de referencia se ubican en:
-
-```text
-governance/authority/REFERENCIA/
-```
+Este repositorio contiene el motor extraído en `engine/IDUNEX/`. Los documentos históricos se conservan en `governance/authority/REFERENCIA/` y la autoridad operativa activa en `governance/authority/ACTIVO/`.
 
 ## Regla de autoridad
 
 - GitHub controla código, estructura técnica, pruebas, issues, PRs y releases.
-- SharePoint/OneDrive debe conservar los artefactos documentales empresariales oficiales.
-- El ZIP fuente original no debe tratarse como equivalente a un release oficial futuro si no pasa auditoría recomputada.
+- SharePoint/OneDrive conserva los artefactos documentales empresariales oficiales.
 - No se acepta `PASS` declarado sin recomputar.
 - `governance/CURRENT_STATE.json` es la única autoridad legible por máquina del estado global.
-- Mientras `MOTOR_STATUS=EN_REVISION`, la generación general del Proyecto Demo, release, tag y cierre productivo permanecen bloqueados.
-- `ready_for_project_demo_generation=false` y `creative_output_certified=false` siguen siendo interlocks vigentes.
+- La generación general del Proyecto Demo permanece bloqueada: `ready_for_project_demo_generation=false`.
+- La certificación creativa permanece bloqueada: `creative_output_certified=false`.
+- Release, tag, `OFICIAL`, cierre productivo y carga de agentes permanecen bloqueados.
 
 ## Ejecución externa controlada del Demo
 
-AUD-029 incorpora un estado machine-readable separado:
+AUD-028 define una única ejecución externa en ChatGPT normal, sujeta íntegramente al objeto `controlled_external_demo_execution` de `CURRENT_STATE.json`.
 
-```text
-controlled_external_demo_execution.status=PENDING_AUTHORIZATION
-controlled_external_demo_execution.authorized=false
-controlled_external_demo_execution.consumed=false
-controlled_external_demo_execution.execution_limit=1
-```
-
-Este objeto no habilita todavía el Proyecto 000 Demo. Solo define una máquina de estados auditable para una futura ejecución externa única en ChatGPT normal:
-
-1. `PENDING_AUTHORIZATION`;
-2. `AUTHORIZED_NOT_CONSUMED`;
-3. `CONSUMED`.
-
-La capacidad general continúa bloqueada y `PROJECT_DEMO_GENERATION` permanece dentro de `denied_capabilities`. La excepción futura no puede autorizar release, tag, `OFICIAL`, cierre productivo, carga de agentes ni certificación creativa.
+Esta excepción no habilita generación general. Debe utilizar exactamente el paquete, Informe Maestro y prompt fijados por SHA en la autoridad machine-readable. Cuando `generate` comience, la autorización queda consumida y no puede reutilizarse.
 
 ## Siguiente flujo
 
 ```text
-M02 PASS → M03 PASS → reconciliar interlock → autorizar Demo único → Proyecto 000 Demo → auditoría de Demo → carga agente → motor productivo
+AUD-028 autorizado → ejecución externa única → marcar CONSUMED → auditoría independiente del Demo → carga agente → evaluación productiva
 ```
 
-## Comandos iniciales
+## Comandos de control
 
 ```bash
 python tools/audit/intake_audit.py --repo-root .
@@ -65,8 +42,4 @@ python tools/audit/governance_state_check.py --repo-root .
 python tools/package/package_engine.py --repo-root . --version v1.0.0
 ```
 
-El empaquetador escribe artefactos en `dist/`, carpeta excluida de Git.
-
-## Nota de carga Windows-safe
-
-Este paquete usa un remapeo de rutas largas para evitar `Filename too long` en GitHub Desktop sobre Windows. Ver `governance/baseline/WINDOWS_PATH_SAFE_REMAP.md`. El estado sigue siendo `EN_REVISION`; no es release oficial.
+El estado sigue `EN_REVISION`; no existe release oficial.

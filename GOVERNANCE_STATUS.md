@@ -11,34 +11,33 @@ RELEASE_AUTHORIZED=FALSE
 TAG_AUTHORIZED=FALSE
 PRODUCTIVE_CLOSURE_AUTHORIZED=FALSE
 CREATIVE_OUTPUT_CERTIFIED=FALSE
-CONTROLLED_EXTERNAL_DEMO_STATUS=PENDING_AUTHORIZATION
-CONTROLLED_EXTERNAL_DEMO_AUTHORIZED=FALSE
+CONTROLLED_EXTERNAL_DEMO_STATUS=AUTHORIZED_NOT_CONSUMED
+CONTROLLED_EXTERNAL_DEMO_AUTHORIZED=TRUE
+CONTROLLED_EXTERNAL_DEMO_CONSUMED=FALSE
+CONTROLLED_EXTERNAL_DEMO_EXECUTION_LIMIT=1
 ```
 
 | Superficie | Estado | Decisión |
 |---|---|---|
-| Motor extraído | EN_REVISION | Árbol técnico reauditorado, todavía no oficial/productivo |
-| ZIP candidato del motor | VALIDADO | Preservar externo; no versionar como release activo |
-| Certificado recibido | REFERENCIA | Contrastar contra recomputación independiente |
-| Informe Maestro | REFERENCIA / autoridad de trabajo | Debe permanecer fuera de cambios destructivos |
+| Motor | EN_REVISION | Reauditorado; no oficial/productivo |
+| ZIP candidato | VALIDADO | Paquete externo fijado por SHA |
+| Informe Maestro | VALIDADO como autoridad operativa | Fijado por SHA externo |
+| Prompt canónico | VALIDADO / ACTIVO | Autorizado para una ejecución |
 | Proyecto 000 Demo general | BLOQUEADO | `ready_for_project_demo_generation=false` |
-| Excepción externa única | PENDING_AUTHORIZATION | Schema implementado; ejecución todavía no autorizada |
-| ChatGPT/Copilot runtime | BLOQUEADO | Solo después de Demo auditado |
-| Proyectos futuros | BLOQUEADO | Solo después de Demo 100% y motor productivo |
+| Excepción externa AUD-028 | AUTHORIZED_NOT_CONSUMED | Una ejecución externa en ChatGPT normal |
+| Release / tag / OFICIAL / cierre | BLOQUEADO | No autorizado |
+| Carga de agentes | BLOQUEADO | Solo después de auditoría independiente del Demo |
 
-## Máquina de estados de ejecución externa
-
-La capacidad general de generación continúa bloqueada. AUD-029 define exclusivamente una máquina de estados para una futura ejecución externa, única y trazable:
+## Máquina de estados
 
 | Estado | Authorized | Consumed | Generate permitido | Decisión |
 |---|---:|---:|---:|---|
-| `PENDING_AUTHORIZATION` | false | false | 0 | Preparación documental y técnica solamente |
-| `AUTHORIZED_NOT_CONSUMED` | true | false | 1 | Una ejecución externa identificada por SHA y autorización |
-| `CONSUMED` | false | true | 0 | Autorización agotada; no repetir |
+| `PENDING_AUTHORIZATION` | false | false | 0 | Preparación |
+| `AUTHORIZED_NOT_CONSUMED` | true | false | 1 | Una ejecución externa |
+| `CONSUMED` | false | true | 0 | Autorización agotada |
 
-La transición futura a `AUTHORIZED_NOT_CONSUMED` exige autorización ID, commit, tree SHA, package SHA, Informe Maestro SHA, prompt activo y prompt SHA. No puede habilitar release, tag, `OFICIAL`, cierre productivo, carga de agentes ni certificación creativa.
-
-Los certificados, reportes y resultados internos anteriores quedan como `REFERENCIA_SUSTITUIDA`. Pueden conservar resultados históricos o declarativos para lineage, pero no son autoridad vigente y no habilitan por sí mismos la siguiente fase.
+La autorización AUD-028 se limita a los tres adjuntos fijados por SHA. El inicio de `generate`
+consume la autorización. Un fallo posterior no permite reintento.
 
 ## Estados documentales permitidos
 
@@ -52,6 +51,5 @@ Los certificados, reportes y resultados internos anteriores quedan como `REFEREN
 
 ## Regla de cierre
 
-No se declara motor productivo si existe cualquier falla, workaround manual, timeout, PASS declarativo o evidencia incompleta.
-
-Mientras `MOTOR_STATUS=EN_REVISION`, ningún certificado interno ni evidencia derivada puede habilitar generación general del Proyecto Demo, release, tag o cierre productivo. La futura excepción externa solo será válida a través del objeto machine-readable `controlled_external_demo_execution` y sus gates completos.
+La excepción AUD-028 no promueve el motor ni el Demo. Solo una auditoría independiente posterior
+puede declarar `PROJECT_AUDIT_PASS`.

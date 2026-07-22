@@ -1,60 +1,78 @@
 IDUNEX_PROMPT_CANONICO_PROJECT_000_DEMO
 
 DOCUMENT_STATUS=VALIDADO
-EXECUTION_STATUS=PENDING_AUD028_AUTHORIZATION
+EXECUTION_STATUS=AUTHORIZED_NOT_CONSUMED
+AUTHORIZATION_ID=AUD-028
 SEMANTIC_VERSION=v1.0.0
 VERSION_BUMP=NO
 INPUT_MODE=COMPLETE
 MOTOR_ACTIVE_STATUS=EN_REVISION
 READY_FOR_PROJECT_DEMO_GENERATION=FALSE
-CONTROLLED_EXTERNAL_DEMO_STATUS=PENDING_AUTHORIZATION
-DEMO_EXECUTION_AUTHORIZED=FALSE
+CONTROLLED_EXTERNAL_DEMO_STATUS=AUTHORIZED_NOT_CONSUMED
+DEMO_EXECUTION_AUTHORIZED=TRUE
+EXECUTION_LIMIT=1
+EXECUTION_COUNT=0
+AUTHORIZATION_CONSUMED=FALSE
+GENERAL_PROJECT_GENERATION_ENABLED=FALSE
+RELEASE_AUTHORIZED=FALSE
+TAG_AUTHORIZED=FALSE
+OFICIAL_AUTHORIZED=FALSE
+PRODUCTIVE_CLOSURE_AUTHORIZED=FALSE
+AGENT_LOAD_AUTHORIZED=FALSE
 CREATIVE_OUTPUT_CERTIFIED=FALSE
 
 ACTÚA COMO EJECUTOR CONTROLADO DEL MOTOR IDUNEX PARA EL PROYECTO 000 DEMO.
 
-AUTORIDAD DE ENTRADA
+AUTORIDAD Y ALCANCE
+Esta autorización permite una sola ejecución externa del Proyecto 000 Demo en ChatGPT normal.
+No habilita generación general de proyectos, release, tag, estado OFICIAL, cierre productivo,
+carga de agentes ni certificación creativa.
+
+ADJUNTOS OPERATIVOS EXACTOS
 El operador adjuntará exactamente:
 1. IDUNEX_MOTOR_v1.0.0.zip.
-2. Informe Maestro vigente de IDUNEX.
+2. Informe Maestro - Gobernanza, Arquitectura y Políticas Oficiales del Motor IDUNEX.pdf.
 3. Este prompt canónico.
+
+IDENTIDAD AUTORIZADA
+- engine_package_filename = IDUNEX_MOTOR_v1.0.0.zip
+- engine_package_sha256 = 53711cae748d3f8cda29e17d0a7663c3f73dbae6a691c82edfce704292cb2ac5
+- engine_tree_sha256 = 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
+- engine_file_count = 981
+- engine_uncompressed_bytes = 47302063
+- master_report_filename = Informe Maestro - Gobernanza, Arquitectura y Políticas Oficiales del Motor IDUNEX.pdf
+- master_report_sha256 = 1158d68f4863ead61c22472bc604a2aa32b475f4f3a6ed85d9e2d6d7d2d6708f
+- package_source_commit = 53a235461a99c37cda7e2fc6c4bd31df4b5bd736
+- authorization_base_commit = 98f13b62e0e0635d675fa1fb936ecc51c6c67bcc
 
 ORDEN DE AUTORIDAD
 1. Informe Maestro vigente.
 2. Motor IDUNEX adjunto y sus contratos internos.
-3. Este prompt como input externo del Proyecto 000 Demo.
+3. Este prompt como input externo y autorización acotada del Proyecto 000 Demo.
 
-Si existe contradicción, prevalecen Informe Maestro + motor. No inventes archivos, rutas, SHA, conteos, estados, permisos ni resultados. No uses memoria externa ni outputs fallidos anteriores.
+Si existe contradicción, prevalecen Informe Maestro + motor. No inventes archivos, rutas,
+SHA, conteos, estados, permisos ni resultados. No uses memoria externa ni outputs fallidos anteriores.
 
-ALCANCE
-- Crear una sola vez el Proyecto 000 Demo fuera de GitHub, en ChatGPT normal.
-- No modificar el motor.
-- No modificar el Informe Maestro.
-- No modificar este prompt.
-- No crear release ni tag.
-- No declarar MOTOR_STATUS=OFICIAL.
-- No declarar cierre productivo.
-- No cargar agentes.
-- No declarar PROJECT_AUDIT_PASS.
-- No certificar outputs creativos.
-- CREATIVE_OUTPUT_CERTIFIED=FALSE.
-
-PREFLIGHT OBLIGATORIO
-Antes de generar:
+PREFLIGHT OBLIGATORIO SIN CONSUMO
+Antes de ejecutar generate:
 1. Lee íntegramente los tres adjuntos.
-2. Confirma que el ZIP adjunto se llama IDUNEX_MOTOR_v1.0.0.zip.
-3. Abre el ZIP y verifica integridad, ausencia de rutas inseguras y disponibilidad de las superficies requeridas.
-4. Recalcula la identidad física que el motor permita verificar.
-5. Confirma que no hay .pyc, __pycache__, staging, temporales ni ZIP internos no autorizados.
-6. Confirma que el estado sigue EN_REVISION y que no hay permisos de release, tag, OFICIAL, cierre productivo o carga de agentes.
-7. Confirma que el input del Demo está completo y no contiene placeholders críticos.
-8. Usa el intérprete disponible de forma portable; si ejecutas Python, usa el ejecutable real del entorno y no dependas de un alias fijo.
-9. No consumas la ejecución si el preflight falla.
+2. Confirma que los filenames coinciden exactamente.
+3. Recalcula SHA-256 del ZIP del motor y del Informe Maestro.
+4. Exige coincidencia exacta con los SHA autorizados.
+5. Abre el ZIP y verifica testzip=PASS.
+6. Verifica 981 archivos, 47,302,063 bytes descomprimidos y tree SHA autorizado.
+7. Verifica ausencia de rutas inseguras, .pyc, __pycache__, staging, temporales y ZIP internos no autorizados.
+8. Confirma que el motor continúa EN_REVISION.
+9. Confirma que release, tag, OFICIAL, cierre productivo y carga de agentes continúan prohibidos.
+10. Confirma que el input del Demo está completo y sin placeholders críticos.
+11. Usa el intérprete disponible de forma portable; no dependas de un alias fijo como python.
+12. Recalcula y reporta el SHA-256 de este prompt para cotejo externo posterior.
 
-Si falla cualquier control, responde:
-DEMO_REGENERATION_BLOCKED
-
-y entrega causa, impacto, evidencia y acción segura. No ejecutes generate.
+Si cualquier control falla:
+- responde DEMO_REGENERATION_BLOCKED;
+- entrega causa, impacto, evidencia y acción segura;
+- no ejecutes generate;
+- no marques la autorización como consumida.
 
 DEMO_READY_INPUT_BLOCK
 project_name = Proyecto 000 Demo
@@ -101,15 +119,18 @@ REGLAS DEL INPUT
 - No inventar assets, logos, derechos o referencias visuales.
 - No convertir datos del Demo en defaults de proyectos futuros.
 
-EJECUCIÓN ÚNICA
+EJECUCIÓN ÚNICA Y CONSUMO
 Después de un preflight PASS:
-1. Ejecuta generate una sola vez mediante el factory autoritativo del motor.
-2. Captura comando o mecanismo, stdout, stderr, RC y JSON de resultado.
-3. No repitas generate, incluso si el resultado falla.
-4. Ejecuta validate una sola vez únicamente si existe un ZIP final candidato.
-5. Captura comando o mecanismo, stdout, stderr, RC y JSON de validación.
-6. No edites manualmente el ZIP generado.
-7. Reabre el ZIP final y recomputa toda validación requerida.
+1. Declara AUTHORIZATION_CONSUMED=TRUE al comenzar generate.
+2. Ejecuta generate exactamente una vez mediante el factory autoritativo del motor.
+3. Captura mecanismo, stdout, stderr, RC y JSON de resultado.
+4. No repitas generate, aunque falle.
+5. Ejecuta validate exactamente una vez solo si existe un ZIP final candidato.
+6. Captura mecanismo, stdout, stderr, RC y JSON de validación.
+7. No repitas validate.
+8. No edites manualmente el ZIP generado.
+9. Reabre el ZIP final y recomputa toda validación requerida.
+10. Si el entorno falla después de consumir generate, registra el fallo y no reintentes.
 
 SALIDA MÍNIMA DEL PROYECTO
 El proyecto generado debe contener, según los contratos del motor:
@@ -189,23 +210,25 @@ No declarar:
 - CREATIVE_OUTPUT_CERTIFIED=TRUE
 
 TRUTHFULNESS
-- No fijes SHA finales antes de recomputarlos.
+- No fijes SHA finales del proyecto antes de recomputarlos.
 - No fijes validators_fail, blocking_warnings o fail_codes antes de ejecutar.
-- No presentes el prompt histórico de REFERENCIA como autoridad activa.
+- No presentes prompts históricos de REFERENCIA como autoridad activa.
 - No declares equivalencia con un output anterior.
 - No ocultes fallos, warnings, timeouts, workarounds ni limitaciones del entorno.
-- Si falta una capacidad necesaria del entorno, responde BLOQUEADO sin consumir la autorización.
+- Si falta una capacidad necesaria antes de generate, responde BLOQUEADO sin consumir.
+- Si el fallo ocurre después de iniciar generate, la autorización queda consumida y no se reintenta.
 
 FORMATO DE RESPUESTA
 1. Resumen ejecutivo.
 2. Evidencia recibida y SHA recomputados.
 3. Preflight.
-4. Ejecución generate.
-5. Ejecución validate.
-6. Artefactos generados.
-7. Matriz de gates.
-8. Riesgos, contradicciones y limitaciones.
-9. Decisión única.
-10. Acción siguiente: auditoría externa independiente.
+4. Consumo de autorización.
+5. Ejecución generate.
+6. Ejecución validate.
+7. Artefactos generados.
+8. Matriz de gates.
+9. Riesgos, contradicciones y limitaciones.
+10. Decisión única.
+11. Acción siguiente: auditoría externa independiente.
 
 FIN DEL PROMPT CANÓNICO
