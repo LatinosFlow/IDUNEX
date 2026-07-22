@@ -52,22 +52,6 @@ jobs:
           mv .aud033-cert-header-repair.stdout.log .aud033-evidence/cert-header-repair.stdout.log
           mv .aud033-cert-header-repair.stderr.log .aud033-evidence/cert-header-repair.stderr.log
 
-      - name: Instrument full H113 test payload capture
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          path=Path('tests/intake/test_h113_current_tree_identity_generate.py')
-          text=path.read_text(encoding='utf-8')
-          old='''            self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)\n            result = json.loads(result_path.read_text(encoding="utf-8"))\n'''
-          new='''            result = json.loads(result_path.read_text(encoding="utf-8"))\n            evidence_dir = REPO_ROOT / ".aud033-evidence" / "h113-generate"\n            evidence_dir.mkdir(parents=True, exist_ok=True)\n            (evidence_dir / "generate.full.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")\n            (evidence_dir / "generate.stdout.log").write_text(completed.stdout, encoding="utf-8")\n            (evidence_dir / "generate.stderr.log").write_text(completed.stderr, encoding="utf-8")\n            (evidence_dir / "generate.rc").write_text(str(completed.returncode) + "\\n", encoding="utf-8")\n            self.assertEqual(completed.returncode, 0, json.dumps(result, ensure_ascii=False, indent=2))\n'''
-          if new not in text:
-              if text.count(old) != 1:
-                  raise SystemExit('AUD033_TEST_INSTRUMENTATION_BLOCKED')
-              path.write_text(text.replace(old,new), encoding='utf-8', newline='\n')
-          PY
-
       - name: Run all validation checks without fail-fast loss
         id: validation
         shell: bash
@@ -112,6 +96,42 @@ jobs:
           fi
           exit 0
 
+      - name: Create validated correction commit
+        id: commit
+        if: steps.validation.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "aleducase"
+          git config user.email "232152987+aleducase@users.noreply.github.com"
+          git add engine/IDUNEX governance/CURRENT_STATE.json governance/baseline REPOSITORY_MANIFEST.yml tests/intake/test_h113_current_tree_identity_generate.py docs/audits/GOV-IDUNEX-CorreccionResolucionIdentidadH113-20260722-v1-EN_REVISION.md
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "created=false" >> "$GITHUB_OUTPUT"
+            git rev-parse HEAD > .aud033-evidence/validated-commit.txt
+            exit 0
+          fi
+          git diff --cached --binary > .aud033-evidence/validated-correction.patch
+          git commit -m "fix(aud-033): resolve H113 identity and external certificate parity"
+          git rev-parse HEAD > .aud033-evidence/validated-commit.txt
+          git show --stat --oneline HEAD > .aud033-evidence/validated-commit-stat.txt
+          echo "created=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push validated correction
+        id: push
+        if: steps.commit.outputs.created == 'true'
+        shell: bash
+        run: |
+          set +e
+          git push origin HEAD:${{ github.head_ref }} \
+            > .aud033-evidence/push.stdout.log \
+            2> .aud033-evidence/push.stderr.log
+          rc=$?
+          printf '%s\n' "$rc" > .aud033-evidence/push.rc
+          cat .aud033-evidence/push.stdout.log || true
+          cat .aud033-evidence/push.stderr.log || true
+          exit "$rc"
+
       - name: Upload complete AUD-033 repair evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -122,17 +142,3 @@ jobs:
           if-no-files-found: error
           retention-days: 30
           compression-level: 6
-
-      - name: Commit validated correction
-        if: steps.validation.outcome == 'success'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "aleducase"
-          git config user.email "232152987+aleducase@users.noreply.github.com"
-          rm -rf .aud033-evidence
-          git add engine/IDUNEX governance/CURRENT_STATE.json governance/baseline REPOSITORY_MANIFEST.yml tests/intake/test_h113_current_tree_identity_generate.py docs/audits/GOV-IDUNEX-CorreccionResolucionIdentidadH113-20260722-v1-EN_REVISION.md
-          git diff --cached --check
-          git commit -m "fix(aud-033): resolve current-tree identity and external certificate parity"
-          git push origin HEAD:${{ github.head_ref }}
-          git rev-parse HEAD
