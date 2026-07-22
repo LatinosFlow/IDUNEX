@@ -16,7 +16,7 @@ semantic_version: v1.0.0
 historical_received_baseline:
   filename: IDUNEX_MOTOR_v1.0.0.zip
   sha256: bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6
-  bytes: 47323574
+  bytes: 4277381
   entry_count: 977
   directories: 0
   stored_entries: 0
@@ -34,7 +34,7 @@ current_corrected_tree:
   current_repository_commit_at_aud031_base: 2790468f6b3bcc5286761def779276e8a77b6d20
   current_repository_commit_at_aud033_base: 7852cea334d3e94d6c3821e2db516ae6bc8b8cd8
   file_count: 981
-  bytes: 47322002
+  bytes: 47323574
   tree_sha256: 58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7
   manifest: governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json
   sha256_companion: governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
