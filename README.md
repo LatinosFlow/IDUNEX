@@ -5,10 +5,10 @@ Repositorio técnico privado para el motor IDUNEX.
 ## Estado actual
 
 **Estado:** `EN_REVISION`  
-**Decisión M02 vigente:** `M02_PASS`<br>
-**Autoridad de estado:** `governance/CURRENT_STATE.json`<br>
-**Versión declarada de baseline:** `v1.0.0`  
-**SHA256 del ZIP fuente recibido:** `bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6`
+**Decisión M02 vigente:** `M02_PASS_RECOMPUTED_POST_PR44`  
+**Decisión M03 vigente:** `M03_PASS_RECOMPUTED_POST_PR44`  
+**Autoridad de estado:** `governance/CURRENT_STATE.json`  
+**Versión declarada de baseline:** `v1.0.0`
 
 Este repositorio contiene el motor extraído en:
 
@@ -28,19 +28,40 @@ governance/authority/REFERENCIA/
 - SharePoint/OneDrive debe conservar los artefactos documentales empresariales oficiales.
 - El ZIP fuente original no debe tratarse como equivalente a un release oficial futuro si no pasa auditoría recomputada.
 - No se acepta `PASS` declarado sin recomputar.
-- Mientras `MOTOR_STATUS=EN_REVISION`, ningún certificado interno puede habilitar Proyecto Demo, release, tag o cierre productivo.
-- `READY_FOR_PROJECT_DEMO_GENERATION=FALSE` y `CREATIVE_OUTPUT_CERTIFIED=FALSE` son interlocks vigentes.
+- `governance/CURRENT_STATE.json` es la única autoridad legible por máquina del estado global.
+- Mientras `MOTOR_STATUS=EN_REVISION`, la generación general del Proyecto Demo, release, tag y cierre productivo permanecen bloqueados.
+- `ready_for_project_demo_generation=false` y `creative_output_certified=false` siguen siendo interlocks vigentes.
+
+## Ejecución externa controlada del Demo
+
+AUD-029 incorpora un estado machine-readable separado:
+
+```text
+controlled_external_demo_execution.status=PENDING_AUTHORIZATION
+controlled_external_demo_execution.authorized=false
+controlled_external_demo_execution.consumed=false
+controlled_external_demo_execution.execution_limit=1
+```
+
+Este objeto no habilita todavía el Proyecto 000 Demo. Solo define una máquina de estados auditable para una futura ejecución externa única en ChatGPT normal:
+
+1. `PENDING_AUTHORIZATION`;
+2. `AUTHORIZED_NOT_CONSUMED`;
+3. `CONSUMED`.
+
+La capacidad general continúa bloqueada y `PROJECT_DEMO_GENERATION` permanece dentro de `denied_capabilities`. La excepción futura no puede autorizar release, tag, `OFICIAL`, cierre productivo, carga de agentes ni certificación creativa.
 
 ## Siguiente flujo
 
 ```text
-Importar baseline → ejecutar auditoría M02 → corregir hallazgos → auditoría M03 → Proyecto 000 Demo → auditoría de Demo → carga agente → motor productivo
+M02 PASS → M03 PASS → reconciliar interlock → autorizar Demo único → Proyecto 000 Demo → auditoría de Demo → carga agente → motor productivo
 ```
 
 ## Comandos iniciales
 
 ```bash
 python tools/audit/intake_audit.py --repo-root .
+python tools/audit/governance_state_check.py --repo-root .
 python tools/package/package_engine.py --repo-root . --version v1.0.0
 ```
 

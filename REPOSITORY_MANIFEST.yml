@@ -25,7 +25,8 @@ historical_received_baseline:
 current_corrected_tree:
   scope: engine/IDUNEX
   classification: CURRENT_REPRODUCIBLE_REPOSITORY_TREE_NOT_RELEASE
-  repository_commit: 9f39ad4712cc3235bc94b1def317265182b5dcdc
+  repository_commit_at_reconciliation: 9f39ad4712cc3235bc94b1def317265182b5dcdc
+  current_repository_commit_at_aud029_base: 53a235461a99c37cda7e2fc6c4bd31df4b5bd736
   file_count: 981
   bytes: 47302063
   tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
@@ -71,11 +72,40 @@ current_tree_audit:
   historical_pass_may_promote_current_tree: false
   controlling_issue: 46
   m03_controlling_issue: 50
-  controlled_demo_generation: BLOCKED_PENDING_NEW_CONTROLLED_DEMO_AUTHORIZATION
+  controlled_demo_generation: BLOCKED_PENDING_AUD029_AND_AUD028
+current_motor_package_candidate:
+  status: VALIDADO_CANDIDATE_NOT_RELEASE
+  workflow_run_id: 29884622077
+  workflow_job_id: 88812549288
+  artifact_id: 8516071049
+  artifact_name: idunex-engine-package
+  source_commit: 53a235461a99c37cda7e2fc6c4bd31df4b5bd736
+  filename: IDUNEX_MOTOR_v1.0.0.zip
+  sha256: 53711cae748d3f8cda29e17d0a7663c3f73dbae6a691c82edfce704292cb2ac5
+  entries: 981
+  uncompressed_bytes: 47302063
+  testzip: PASS
+  external_companion_required: true
+  physical_zip_in_repository: false
+controlled_external_demo_execution:
+  controlling_issue: 54
+  schema_status: PENDING_AUTHORIZATION
+  authorized: false
+  consumed: false
+  execution_limit: 1
+  execution_count: 0
+  general_project_generation_enabled: false
+  allowed_environment: CHATGPT_NORMAL_EXTERNAL
+  package_sha256: 53711cae748d3f8cda29e17d0a7663c3f73dbae6a691c82edfce704292cb2ac5
+  master_report_sha256: 1158d68f4863ead61c22472bc604a2aa32b475f4f3a6ed85d9e2d6d7d2d6708f
+  prompt_path: null
+  prompt_sha256: null
+  execution_authorized: false
+  demo_status: BLOCKED_PENDING_PROMPT_AND_AUD028
 current_demo_authority:
   active_document: docs/audits/GOV-IDUNEX-ReconciliacionAutoridadPostPR44-20260721-v1-EN_REVISION.md
   aud025_v1_status: SUSTITUIDO_REFERENCIA_NO_EXECUTION_AUTHORITY
-  repository_zip_sha_authority: EXTERNAL_COMPANION_REQUIRED_NOT_RECOVERED
+  repository_zip_sha_authority: EXTERNAL_COMPANION_REQUIRED
 paths:
   engine_root: engine/IDUNEX
   reference_authority: governance/authority/REFERENCIA
@@ -88,3 +118,4 @@ policy:
   creative_output_certified: false
   m02_fail_blocks_internal_certificates: true
   post_engine_change_requires_m02_m03_recomputation: true
+  controlled_external_demo_requires_machine_readable_authorization: true

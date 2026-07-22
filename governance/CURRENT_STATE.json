@@ -1,8 +1,8 @@
 {
-  "schema_version": 1,
-  "issue": "AUD-021",
+  "schema_version": 2,
+  "issue": "AUD-029",
   "authority": "governance/CURRENT_STATE.json",
-  "effective_date": "2026-07-17",
+  "effective_date": "2026-07-22",
   "motor_status": "EN_REVISION",
   "m02_result": "M02_PASS",
   "m03_result": "M03_PASS",
@@ -15,7 +15,7 @@
   "creative_output_certified": false,
   "interlock": {
     "condition": "motor_status == EN_REVISION",
-    "rule": "While the motor remains EN_REVISION, no internal certificate or derived evidence may enable Project Demo generation, a release, a tag, productive closure, or OFICIAL status.",
+    "rule": "While the motor remains EN_REVISION, general Project Demo generation, release, tag, productive closure and OFICIAL status remain denied. A single external Demo execution is only eligible when controlled_external_demo_execution is AUTHORIZED_NOT_CONSUMED and passes every machine-readable constraint.",
     "denied_capabilities": [
       "PROJECT_DEMO_GENERATION",
       "RELEASE",
@@ -23,9 +23,36 @@
       "PRODUCTIVE_CLOSURE"
     ]
   },
+  "controlled_external_demo_execution": {
+    "schema_version": 1,
+    "status": "PENDING_AUTHORIZATION",
+    "authorized": false,
+    "consumed": false,
+    "execution_limit": 1,
+    "execution_count": 0,
+    "allowed_environment": "CHATGPT_NORMAL_EXTERNAL",
+    "general_project_generation_enabled": false,
+    "generate_executions_allowed": 0,
+    "validate_executions_allowed": 0,
+    "authorization_id": null,
+    "repository_commit": "53a235461a99c37cda7e2fc6c4bd31df4b5bd736",
+    "engine_tree_sha256": "628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9",
+    "engine_package_filename": "IDUNEX_MOTOR_v1.0.0.zip",
+    "engine_package_sha256": "53711cae748d3f8cda29e17d0a7663c3f73dbae6a691c82edfce704292cb2ac5",
+    "master_report_filename": "Informe Maestro - Gobernanza, Arquitectura y Políticas Oficiales del Motor IDUNEX.pdf",
+    "master_report_sha256": "1158d68f4863ead61c22472bc604a2aa32b475f4f3a6ed85d9e2d6d7d2d6708f",
+    "prompt_path": null,
+    "prompt_sha256": null,
+    "allows_release": false,
+    "allows_tag": false,
+    "allows_oficial": false,
+    "allows_productive_closure": false,
+    "allows_agent_load": false,
+    "creative_output_certified": false
+  },
   "evidence_classes": {
     "historical_or_declared": "REFERENCIA_SUSTITUIDA; retained only for lineage and never authoritative",
-    "prior_recomputed": "REFERENCIA_SUSTITUIDA; scoped execution evidence that cannot override the current M02 decision",
+    "prior_recomputed": "VALIDATED_SCOPED_EVIDENCE; cannot override this current repository state",
     "current_repository_state": "Only this file is authoritative for current global motor state"
   },
   "superseded_surfaces": [
