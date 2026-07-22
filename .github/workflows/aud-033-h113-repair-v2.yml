@@ -46,6 +46,22 @@ jobs:
           mv .aud033-repair.stdout.log .aud033-evidence/repair.stdout.log
           mv .aud033-repair.stderr.log .aud033-evidence/repair.stderr.log
 
+      - name: Instrument full H113 test payload capture
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path=Path('tests/intake/test_h113_current_tree_identity_generate.py')
+          text=path.read_text(encoding='utf-8')
+          old='''            self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)\n            result = json.loads(result_path.read_text(encoding="utf-8"))\n'''
+          new='''            result = json.loads(result_path.read_text(encoding="utf-8"))\n            evidence_dir = REPO_ROOT / ".aud033-evidence" / "h113-generate"\n            evidence_dir.mkdir(parents=True, exist_ok=True)\n            (evidence_dir / "generate.full.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")\n            (evidence_dir / "generate.stdout.log").write_text(completed.stdout, encoding="utf-8")\n            (evidence_dir / "generate.stderr.log").write_text(completed.stderr, encoding="utf-8")\n            (evidence_dir / "generate.rc").write_text(str(completed.returncode) + "\\n", encoding="utf-8")\n            self.assertEqual(completed.returncode, 0, json.dumps(result, ensure_ascii=False, indent=2))\n'''
+          if new not in text:
+              if text.count(old) != 1:
+                  raise SystemExit('AUD033_TEST_INSTRUMENTATION_BLOCKED')
+              path.write_text(text.replace(old,new), encoding='utf-8', newline='\n')
+          PY
+
       - name: Run all validation checks without fail-fast loss
         id: validation
         shell: bash
