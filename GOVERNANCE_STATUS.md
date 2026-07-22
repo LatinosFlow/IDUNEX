@@ -80,3 +80,13 @@ La integridad operativa del ZIP no sustituye la auditoría independiente del set
 No cargar agentes, no promover a producción y no declarar `PROJECT_AUDIT_PASS`. M02 y M03 deben
 recomputarse para el nuevo árbol del motor después del merge; la auditoría del Proyecto 000 Demo
 continúa fallida hasta un refresco autorizado y una nueva auditoría independiente.
+
+## Corrección AUD-031
+
+La primera recomputación M02 post-AUD030 quedó bloqueada antes de matriz y mutation por una expectativa heredada `M02_PASS` en el contrato activo de validación maestra. AUD-031 sincroniza esa superficie con `NOT_RECOMPUTED_POST_AUD030`, regenera los manifiestos canónicos y exige una nueva ejecución M02 completa.
+
+- Run origen: `29928852782`;
+- árbol previo: `8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd`;
+- árbol post-AUD031: `d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d`;
+- M02/M03: `NOT_RECOMPUTED_POST_AUD030`;
+- Demo, refresh real, agentes, release, tag y OFICIAL: `BLOQUEADO`.
