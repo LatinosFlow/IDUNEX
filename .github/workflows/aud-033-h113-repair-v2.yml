@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/aud-033-h113-repair-v2.yml
       - tools/audit/aud033_h113_repair.py
+      - tools/audit/aud033_external_certificate_header_fix.py
 
 permissions:
   contents: write
@@ -42,9 +43,14 @@ jobs:
           python -B tools/audit/aud033_h113_repair.py \
             > .aud033-repair.stdout.log \
             2> .aud033-repair.stderr.log
+          python -B tools/audit/aud033_external_certificate_header_fix.py \
+            > .aud033-cert-header-repair.stdout.log \
+            2> .aud033-cert-header-repair.stderr.log
           mkdir -p .aud033-evidence
           mv .aud033-repair.stdout.log .aud033-evidence/repair.stdout.log
           mv .aud033-repair.stderr.log .aud033-evidence/repair.stderr.log
+          mv .aud033-cert-header-repair.stdout.log .aud033-evidence/cert-header-repair.stdout.log
+          mv .aud033-cert-header-repair.stderr.log .aud033-evidence/cert-header-repair.stderr.log
 
       - name: Instrument full H113 test payload capture
         shell: bash
@@ -127,6 +133,6 @@ jobs:
           rm -rf .aud033-evidence
           git add engine/IDUNEX governance/CURRENT_STATE.json governance/baseline REPOSITORY_MANIFEST.yml tests/intake/test_h113_current_tree_identity_generate.py docs/audits/GOV-IDUNEX-CorreccionResolucionIdentidadH113-20260722-v1-EN_REVISION.md
           git diff --cached --check
-          git commit -m "fix(aud-033): resolve current-tree identity without M02 circularity"
+          git commit -m "fix(aud-033): resolve current-tree identity and external certificate parity"
           git push origin HEAD:${{ github.head_ref }}
           git rev-parse HEAD
