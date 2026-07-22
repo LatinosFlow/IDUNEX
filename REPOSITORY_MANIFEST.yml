@@ -16,7 +16,7 @@ semantic_version: v1.0.0
 historical_received_baseline:
   filename: IDUNEX_MOTOR_v1.0.0.zip
   sha256: bbef200d6f0d7bf116853e0d763b90dc0b6454efee831e6dee1b040c78fce0d6
-  bytes: 4277381
+  bytes: 47323574
   entry_count: 977
   directories: 0
   stored_entries: 0
@@ -32,9 +32,10 @@ current_corrected_tree:
   current_repository_commit_at_aud028_base: 98f13b62e0e0635d675fa1fb936ecc51c6c67bcc
   current_repository_commit_at_aud030_base: fb13a4f5d4bd559b4f1268103630a735b53c8999
   current_repository_commit_at_aud031_base: 2790468f6b3bcc5286761def779276e8a77b6d20
+  current_repository_commit_at_aud033_base: 7852cea334d3e94d6c3821e2db516ae6bc8b8cd8
   file_count: 981
   bytes: 47322002
-  tree_sha256: d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d
+  tree_sha256: 58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7
   manifest: governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json
   sha256_companion: governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
   difference_report: governance/baseline/IDUNEX_BASELINE_DIFF_RECEIVED_TO_CURRENT.json
@@ -193,3 +194,34 @@ aud031_master_governance_contract_sync:
   oficial_authorized: false
   agent_load_authorized: false
   creative_output_certified: false
+
+aud033_h113_current_tree_identity:
+  controlling_issue: 64
+  source_m02_run_id: 29936388876
+  diagnostic_run_id: 29937730988
+  base_commit: 7852cea334d3e94d6c3821e2db516ae6bc8b8cd8
+  previous_engine_tree_sha256: d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d
+  current_engine_tree_sha256: 58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7
+  current_engine_file_count: 981
+  current_engine_bytes: 47323574
+  status: IMPLEMENTED_PENDING_PR_REVIEW
+  root_failcode: FAIL_H113_DEFERRED_ENGINE_SHA_ACTIVE
+  m02_result: NOT_RECOMPUTED_POST_AUD030
+  m03_result: NOT_RECOMPUTED_POST_AUD030
+  demo_executed: false
+  refresh_external_artifacts_executed: false
+  release_authorized: false
+  tag_authorized: false
+  oficial_authorized: false
+  agent_load_authorized: false
+  creative_output_certified: false
+
+external_certificate_validation_headers:
+  controlling_issue: 64
+  source_failure: FAIL_EXTERNAL_ARTIFACT_CONTENT
+  source_detail: release_certificate_validation_headers
+  validators_fail_header_count: 1
+  blocking_warnings_header_count: 1
+  internal_certificate_preserved: true
+  duplicate_counter_lines_removed_before_external_embedding: true
+  status: IMPLEMENTED_PENDING_PR_REVIEW
