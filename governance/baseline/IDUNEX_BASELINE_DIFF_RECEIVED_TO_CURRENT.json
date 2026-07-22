@@ -314,8 +314,8 @@
       "received_path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
       "current_path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
       "received_sha256": "6e1993188d5fa8c28c0babd768b159d90b5d4f1fd6476fb3ab356a25dea116f9",
-      "current_sha256": "5100ff9619fcc3388ddc9ab35351f4470a2a624f07ac2d630fda1ba4bbcb3613",
-      "current_bytes": 1159
+      "current_sha256": "418753a5307b05958b4177e06c9eff1f5956fa48ae352da3a6bc6e3dbdac496b",
+      "current_bytes": 1384
     },
     {
       "received_path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/NO_BLOAT_NO_HISTORY_POLICY.json",

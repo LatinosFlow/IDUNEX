@@ -31,12 +31,16 @@
     "issue": "AUD-030",
     "base_commit": "fb13a4f5d4bd559b4f1268103630a735b53c8999",
     "previous_engine_tree_sha256": "628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9",
-    "current_engine_tree_sha256": "8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd",
+    "current_engine_tree_sha256": "d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d",
     "current_engine_file_count": 981,
-    "current_engine_byte_count": 47321777,
+    "current_engine_byte_count": 47322002,
     "manifests_recomputed_with_canonical_scanner": true,
     "m02_result": "NOT_RECOMPUTED_POST_AUD030",
-    "m03_result": "NOT_RECOMPUTED_POST_AUD030"
+    "m03_result": "NOT_RECOMPUTED_POST_AUD030",
+    "previous_current_engine_tree_sha256": "8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd",
+    "child_correction_issue": "AUD-031",
+    "child_correction_base_commit": "2790468f6b3bcc5286761def779276e8a77b6d20",
+    "child_correction_reason": "MASTER_GOVERNANCE_VALIDATION_CONTRACT_SYNC"
   },
   "controlled_external_demo_execution": {
     "schema_version": 1,
