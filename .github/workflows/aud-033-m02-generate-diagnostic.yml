@@ -1,0 +1,154 @@
+name: AUD-033 M02 Generate Diagnostic
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/aud-033-m02-generate-diagnostic.yml
+      - engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py
+      - engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_MATRIX_31_RUNNER.py
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostic:
+    name: Capture one synthetic N1 generate result
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned dependency
+        run: python -m pip install python-docx==1.2.0
+
+      - name: Run one non-Demo synthetic generate and preserve evidence
+        shell: bash
+        run: |
+          set -uo pipefail
+          set +e
+
+          evidence="${RUNNER_TEMP}/aud-033-diagnostic"
+          work="${RUNNER_TEMP}/aud-033-work"
+          mkdir -p "$evidence" "$work/output"
+
+          cat > "$work/input.json" <<'JSON'
+          {
+            "project_id": "IDUNEX_PROJECT_AUD033_DIAGNOSTIC_N1_v1.0.0",
+            "models": [
+              {}
+            ]
+          }
+          JSON
+
+          factory="engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
+          command=(
+            python -B "$factory" generate
+            --input "$work/input.json"
+            --output "$work/output"
+            --summary
+            --output-json "$work/generate.json"
+          )
+
+          printf '%q ' "${command[@]}" > "$evidence/command.txt"
+          printf '\n' >> "$evidence/command.txt"
+          cp "$work/input.json" "$evidence/input.json"
+
+          "${command[@]}" > "$evidence/generate.stdout.log" 2> "$evidence/generate.stderr.log"
+          rc=$?
+          printf '%s\n' "$rc" > "$evidence/generate.rc"
+
+          if [[ -f "$work/generate.json" ]]; then
+            cp "$work/generate.json" "$evidence/generate.json"
+          fi
+
+          find "$work" -maxdepth 5 -type f -printf '%P\t%s bytes\n' | sort > "$evidence/work-file-list.txt"
+          git status --porcelain > "$evidence/git-status-after-diagnostic.txt"
+          git rev-parse HEAD > "$evidence/repository-commit.txt"
+
+          EVIDENCE="$evidence" WORK="$work" GENERATE_RC="$rc" python - <<'PY'
+          from __future__ import annotations
+
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          evidence = Path(os.environ['EVIDENCE'])
+          work = Path(os.environ['WORK'])
+          generate_path = work / 'generate.json'
+          payload = {}
+          parse_error = None
+          if generate_path.is_file():
+              try:
+                  payload = json.loads(generate_path.read_text(encoding='utf-8'))
+              except Exception as exc:
+                  parse_error = repr(exc)
+
+          def digest(path: Path) -> dict:
+              if not path.is_file():
+                  return {'present': False}
+              data = path.read_bytes()
+              return {
+                  'present': True,
+                  'bytes': len(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+              }
+
+          summary = {
+              'schema_version': 1,
+              'audit_id': 'AUD-033',
+              'scope': 'ONE_SYNTHETIC_NON_DEMO_N1_GENERATE_DIAGNOSTIC',
+              'repository_commit': (evidence / 'repository-commit.txt').read_text(encoding='utf-8').strip(),
+              'generate_rc': int(os.environ['GENERATE_RC']),
+              'generate_json_present': generate_path.is_file(),
+              'generate_json_parse_error': parse_error,
+              'factory_result': payload.get('result'),
+              'delivery_status': payload.get('delivery_status'),
+              'fail_codes': payload.get('fail_codes'),
+              'root_cause_fail_codes': payload.get('root_cause_fail_codes'),
+              'root_cause_phase': payload.get('root_cause_phase'),
+              'root_cause_detail': payload.get('root_cause_detail'),
+              'validators_fail': payload.get('validators_fail'),
+              'blocking_warnings': payload.get('blocking_warnings'),
+              'project_zip': payload.get('project_zip'),
+              'companion': payload.get('companion'),
+              'final_reopened_validation': payload.get('final_reopened_validation'),
+              'stdout': digest(evidence / 'generate.stdout.log'),
+              'stderr': digest(evidence / 'generate.stderr.log'),
+              'input': digest(evidence / 'input.json'),
+              'creative_output_certified': False,
+              'demo_executed': False,
+              'aud028_reused': False,
+              'diagnostic_capture': 'PASS',
+          }
+          (evidence / 'AUD033_DIAGNOSTIC_SUMMARY.json').write_text(
+              json.dumps(summary, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8',
+          )
+          print(json.dumps(summary, ensure_ascii=False, indent=2))
+          PY
+
+          exit 0
+
+      - name: Upload AUD-033 diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aud-033-m02-generate-diagnostic-${{ github.run_id }}
+          path: ${{ runner.temp }}/aud-033-diagnostic
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 6
