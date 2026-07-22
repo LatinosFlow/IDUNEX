@@ -14,6 +14,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 FACTORY = REPO_ROOT / "engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
 BASELINE = REPO_ROOT / "governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json"
 STATE = REPO_ROOT / "governance/CURRENT_STATE.json"
+REPOSITORY_MANIFEST = REPO_ROOT / "REPOSITORY_MANIFEST.yml"
 SENTINEL = "ENGINE_ZIP_SHA256_EXTERNAL_COMPANION_REQUIRED"
 
 
@@ -21,6 +22,7 @@ class H113CurrentTreeIdentityGenerateTest(unittest.TestCase):
     def test_non_release_current_tree_identity_generates_n1_without_circular_m02_dependency(self):
         baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
         state = json.loads(STATE.read_text(encoding="utf-8"))
+        repository_manifest = REPOSITORY_MANIFEST.read_text(encoding="utf-8")
         self.assertEqual(state["motor_status"], "EN_REVISION")
         self.assertEqual(state["m02_result"], "NOT_RECOMPUTED_POST_AUD030")
         self.assertFalse(state["release_authorized"])
@@ -28,6 +30,22 @@ class H113CurrentTreeIdentityGenerateTest(unittest.TestCase):
         self.assertEqual(state["engine_change_control"]["current_engine_tree_sha256"], baseline["tree_sha256"])
         self.assertEqual(state["engine_change_control"]["current_engine_file_count"], baseline["file_count"])
         self.assertEqual(state["engine_change_control"]["current_engine_byte_count"], baseline["byte_count"])
+
+        historical = re.search(
+            r"historical_received_baseline:\n(?:.*\n)*?  bytes: (\d+)\n",
+            repository_manifest,
+        )
+        current = re.search(
+            r"current_corrected_tree:\n(?:.*\n)*?  file_count: (\d+)\n"
+            r"  bytes: (\d+)\n  tree_sha256: ([0-9a-f]{64})\n",
+            repository_manifest,
+        )
+        self.assertIsNotNone(historical)
+        self.assertIsNotNone(current)
+        self.assertEqual(int(historical.group(1)), 4_277_381)
+        self.assertEqual(int(current.group(1)), baseline["file_count"])
+        self.assertEqual(int(current.group(2)), baseline["byte_count"])
+        self.assertEqual(current.group(3), baseline["tree_sha256"])
 
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
