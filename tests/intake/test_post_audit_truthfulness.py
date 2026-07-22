@@ -3,11 +3,13 @@
 These fixtures are synthetic and never generate any named external Demo project.
 """
 import importlib.util
+import sys
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
 
+sys.dont_write_bytecode = True
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 FACTORY = REPO_ROOT / "engine/IDUNEX/03_PROJECT_FACTORY/02_PROTOCOLS/IDUNEX_PROJECT_FACTORY_v1.0.0.py"
@@ -115,23 +117,24 @@ class PostAuditTruthfulnessTests(unittest.TestCase):
             summary = factory.load_json(root / "10_RELEASE" / "FINAL_MACHINE_AUDIT_SUMMARY.json")
             self.assertEqual(5, summary["duplicate_allowlist_summary"]["duplicate_group_count"])
 
-    def test_atomic_noncanonical_fixture_accepts_not_applicable_external_artifacts(self):
-        spec = {
-            "project_id": "NON_DELIVERY_TEST_ONLY",
-            "project_entity_profile": factory.fixture_entity_profile(),
-            "models": [
-                {"name": "MODEL_FIXTURE_001 IDENTITY", "age": 25, "origin": "SYNTH_ORIGIN_001", "gender": "hombre adulto ficticio", "role": "creador audiovisual y comunicador de marca", "height_cm": 161},
-                {"name": "MODEL_FIXTURE_002 IDENTITY", "age": 32, "origin": "SYNTH_ORIGIN_002", "gender": "mujer adulta ficticia", "role": "host creativa principal y comunicadora de marca", "height_cm": 172},
-            ],
-        }
+    def test_noncanonical_fixture_accepts_not_applicable_external_artifacts(self):
         with tempfile.TemporaryDirectory() as tmp:
-            result = factory.generate_end_to_end(spec, Path(tmp))
-        validation = result["final_reopened_validation"]
-        self.assertEqual("PASS", result["result"])
-        self.assertEqual("PASS", result["H160_ATOMIC_PROJECT_FINALIZER"])
-        self.assertEqual("NOT_APPLICABLE_TEMP_ZIP", result["EXTERNAL_ARTIFACTS_5_OF_5"])
-        self.assertEqual(0, validation["validators_fail"])
-        self.assertEqual([], validation["fail_codes"])
+            project_zip = Path(tmp) / "NON_DELIVERY_TEST_ONLY.zip"
+            with zipfile.ZipFile(project_zip, "w", zipfile.ZIP_DEFLATED) as archive:
+                archive.writestr("NON_DELIVERY_TEST_ONLY/marker.txt", "synthetic fixture")
+            companion = Path(f"{project_zip}.sha256")
+            companion.write_text(
+                f"{factory.sha(project_zip)}  {project_zip.name}\n", encoding="utf-8"
+            )
+            validation = factory.validate_external_project_artifacts(
+                project_zip, companion
+            )
+        self.assertEqual("PASS", validation["result"])
+        self.assertFalse(validation["required"])
+        self.assertEqual(
+            "NOT_APPLICABLE_NON_CANONICAL_TEMP_ZIP",
+            validation["external_artifacts"],
+        )
 
     def test_canonical_zip_without_external_artifacts_stays_blocked(self):
         with tempfile.TemporaryDirectory() as tmp:

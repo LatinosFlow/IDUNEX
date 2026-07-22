@@ -2,16 +2,24 @@
 
 AUTHORITY_STATUS=REFERENCIA_HISTORICA_SUSTITUIDA
 CURRENT_MOTOR_STATUS=EN_REVISION
-M02_RESULT=M02_PASS
+M02_RESULT=NOT_RECOMPUTED_POST_AUD030
+M03_RESULT=NOT_RECOMPUTED_POST_AUD030
 CURRENT_READY_FOR_PROJECT_DEMO_GENERATION=FALSE
 
 SEMANTIC_VERSION=v1.0.0
 VERSION_BUMP=NO
 CORRECTION_MODE=DIRECT_CANONICAL_NO_PATCH
-CORRECTION_SCOPE=RENORMALIZACION_VERSION_OFICIAL_v1.0.0_Y_DEMO_000_2_MODELOS
+CORRECTION_SCOPE=AUD-030_EXTERNAL_ARTIFACTS_POST_H410
 PREVIOUS_SCOPE_COMPATIBILITY=MUTATION_SELF_TEST_H62_MATRIX_PROOF_PARITY_AND_ACTIVE_LEDGER_EXCLUSION_CLARITY
 LEGACY_SCOPE_COMPATIBILITY=DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY
 CREATIVE_OUTPUT_CERTIFIED=FALSE
+
+## 2026-07-22 - AUD-030 external documentary emission post-H410
+- The authoritative Project Factory reads the internal report, certificate, operator README and both content-tree proofs directly from the final reopened ZIP.
+- `refresh-external-artifacts` refreshes only the three external documentary surfaces and fails if ZIP or companion SHA/size changes.
+- AUD-028 remains consumed; no Demo generation or validation authorization was created.
+- M02 and M03 are `NOT_RECOMPUTED_POST_AUD030` for the changed engine tree.
+- Release, tag, OFICIAL, productive closure, agent loading and creative certification remain blocked.
 
 ## 2026-07-08 - Active surface scope drift and duplicate retention allowlist stale-pass closure
 - B01_ACTIVE_SURFACE_SCOPE_DRIFT corrected: active control surfaces no longer declare the legacy duplicate-governance correction scope as vigente PASS scope.

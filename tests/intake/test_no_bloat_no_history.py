@@ -29,7 +29,8 @@ class NoBloatNoHistoryTest(unittest.TestCase):
         self.assertEqual(result["active_tree"]["active_h_route_count"], 0)
         self.assertEqual(result["historical_authority_conflict_count"], 0)
         self.assertEqual(result["motor_status"], "EN_REVISION")
-        self.assertEqual(result["m02_result"], "M02_PASS")
+        self.assertEqual(result["m02_result"], "NOT_RECOMPUTED_POST_AUD030")
+        self.assertEqual(result["m03_result"], "NOT_RECOMPUTED_POST_AUD030")
 
     def test_exact_duplicate_mutation_is_rejected(self):
         with tempfile.TemporaryDirectory(prefix="aud008_duplicate_") as temp_dir:

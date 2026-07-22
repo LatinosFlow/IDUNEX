@@ -5,10 +5,18 @@ Repositorio técnico privado para el motor IDUNEX.
 ## Estado actual
 
 **Estado:** `EN_REVISION`  
-**Decisión M02 vigente:** `M02_PASS_RECOMPUTED_POST_PR44`  
-**Decisión M03 vigente:** `M03_PASS_RECOMPUTED_POST_PR44`  
+**Decisión M02 vigente:** `NOT_RECOMPUTED_POST_AUD030`
+**Decisión M03 vigente:** `NOT_RECOMPUTED_POST_AUD030`
 **Autoridad de estado:** `governance/CURRENT_STATE.json`  
 **Versión declarada de baseline:** `v1.0.0`
+
+```text
+MOTOR_STATUS=EN_REVISION
+M02_RESULT=NOT_RECOMPUTED_POST_AUD030
+M03_RESULT=NOT_RECOMPUTED_POST_AUD030
+READY_FOR_PROJECT_DEMO_GENERATION=FALSE
+CREATIVE_OUTPUT_CERTIFIED=FALSE
+```
 
 El motor está extraído en `engine/IDUNEX/`. Los documentos históricos se conservan en
 `governance/authority/REFERENCIA/` y la autoridad operativa activa en
@@ -25,6 +33,7 @@ El motor está extraído en `engine/IDUNEX/`. Los documentos históricos se cons
 - La certificación creativa permanece bloqueada:
   `creative_output_certified=false`.
 - Release, tag, `OFICIAL`, cierre productivo y carga de agentes permanecen bloqueados.
+- Los PASS M02/M03 del árbol anterior son evidencia previa y no aplican al árbol modificado por AUD-030.
 
 ## Ejecución externa controlada del Demo
 
@@ -59,10 +68,27 @@ PROJECT_READY_FOR_PRODUCTION=false
 
 No repetir `generate` ni `validate` bajo AUD-028. La corrección se controla mediante el issue #58.
 
+## Corrección AUD-030
+
+El factory autoritativo lee el reporte, certificado, README y las dos pruebas de content-tree
+directamente desde el ZIP final reabierto. `write_external_project_artifacts()` ya no usa el
+directorio materializado como autoridad documental.
+
+La operación autoritativa de refresco es:
+
+```text
+refresh-external-artifacts <project_zip> --output-json <resultado.json>
+```
+
+Solo reemplaza atómicamente `*_RELEASE_CERTIFICATE.txt`, `*_FINAL_AUDIT_REPORT.md` y
+`*_README_FOR_HUMAN_OPERATOR.md`; exige companion `<project_zip>.sha256`, valida el set externo
+5/5 y falla si cambian SHA o tamaño del ZIP o del companion. No ejecuta `generate`, no modifica
+gobernanza y no consume ni reactiva AUD-028.
+
 ## Siguiente flujo
 
 ```text
-AUD-028 CONSUMED → corregir emisión externa post-H410 → regenerar solo superficies documentales externas mediante flujo autorizado → auditoría independiente → carga de agentes
+AUD-028 CONSUMED → AUD-030 implementado pendiente de revisión → M02/M03 post-merge → refresco externo autorizado → auditoría independiente → carga de agentes
 ```
 
 ## Comandos de control

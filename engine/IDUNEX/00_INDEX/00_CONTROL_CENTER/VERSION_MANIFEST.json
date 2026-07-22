@@ -2,12 +2,13 @@
   "semantic_version": "v1.0.0",
   "version_bump": "NO",
   "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
-  "correction_scope": "AUD-006_GOVERNANCE_STATE_MACHINE",
+  "correction_scope": "AUD-030_EXTERNAL_ARTIFACTS_POST_H410",
   "state_authority": "governance/CURRENT_STATE.json",
   "motor_status": "EN_REVISION",
-  "m02_result": "M02_PASS",
-  "result": "M02_PASS",
-  "decision": "EN_REVISION_M02_PASS",
+  "m02_result": "NOT_RECOMPUTED_POST_AUD030",
+  "m03_result": "NOT_RECOMPUTED_POST_AUD030",
+  "result": "NOT_RECOMPUTED_POST_AUD030",
+  "decision": "EN_REVISION_M02_M03_NOT_RECOMPUTED_POST_AUD030",
   "closure_decision": "BLOCKED_BY_EN_REVISION",
   "score": "BLOCKED_BY_EN_REVISION",
   "ready_for_project_demo_generation": false,
@@ -19,7 +20,8 @@
     "current_tree_manifest": "governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json",
     "current_tree_sha256_companion": "governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt",
     "current_tree_is_release": false,
-    "m02_result_after_correction": "M02_PASS"
+    "m02_result_after_correction": "NOT_RECOMPUTED_POST_AUD030",
+    "m03_result_after_correction": "NOT_RECOMPUTED_POST_AUD030"
   },
   "historical_internal_claim": {
     "authority_status": "REFERENCIA_SUSTITUIDA",

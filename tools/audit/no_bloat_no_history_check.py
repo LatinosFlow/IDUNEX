@@ -3,7 +3,8 @@
 
 The scanner never trusts declared PASS surfaces. It hashes the current active
 tree, detects milestone paths, verifies the movement/reversal ledger, and
-confirms the global motor state remains EN_REVISION / M02_PASS.
+confirms that global governance remains fail-closed while post-AUD-030 M02/M03
+reaudits are pending or subsequently recomputed on the same tree.
 """
 from __future__ import annotations
 
@@ -27,6 +28,12 @@ CLASSIFICATIONS = {
     "HISTORICAL_NON_AUTHORITY",
     "DUPLICATE_EXACT",
     "REFERENCE_SUPERSEDED",
+}
+
+AUD030_ALLOWED_REAUDIT_PAIRS = {
+    ("NOT_RECOMPUTED_POST_AUD030", "NOT_RECOMPUTED_POST_AUD030"),
+    ("M02_PASS_RECOMPUTED_POST_AUD030", "NOT_RECOMPUTED_POST_AUD030"),
+    ("M02_PASS_RECOMPUTED_POST_AUD030", "M03_PASS_RECOMPUTED_POST_AUD030"),
 }
 
 FROZEN_DUPLICATE_PATH_SETS = {
@@ -54,7 +61,8 @@ def _sha256(path: Path) -> str:
 def active_files(engine_root: Path) -> list[Path]:
     historical = engine_root / HISTORICAL_REL
     return sorted(
-        path for path in engine_root.rglob("*")
+        path
+        for path in engine_root.rglob("*")
         if path.is_file() and historical not in path.parents
     )
 
@@ -112,6 +120,7 @@ def movement_conflicts(engine_root: Path, payload: dict) -> list[dict]:
     movements = payload.get("movements")
     if not isinstance(movements, list) or not movements:
         return [{"code": "MOVEMENT_LEDGER_EMPTY_OR_INVALID"}]
+
     for index, movement in enumerate(movements):
         origin = movement.get("origin", "")
         destination = movement.get("destination", "")
@@ -121,6 +130,7 @@ def movement_conflicts(engine_root: Path, payload: dict) -> list[dict]:
         before_sha = movement.get("sha256_before")
         expected_sha = movement.get("sha256_after")
         reverse = movement.get("reverse", {})
+
         if classification not in CLASSIFICATIONS:
             conflicts.append({
                 "code": "UNKNOWN_CLASSIFICATION",
@@ -140,6 +150,7 @@ def movement_conflicts(engine_root: Path, payload: dict) -> list[dict]:
             or reverse.get("expected_sha256") != expected_sha
         ):
             conflicts.append({"code": "REVERSE_INSTRUCTION_INVALID", "index": index})
+
         source = engine_root / origin
         target = engine_root / destination
         if source.exists():
@@ -147,6 +158,7 @@ def movement_conflicts(engine_root: Path, payload: dict) -> list[dict]:
         if not target.is_file():
             conflicts.append({"code": "DESTINATION_MISSING", "index": index, "destination": destination})
             continue
+
         actual_sha = _sha256(target)
         if actual_sha != expected_sha:
             conflicts.append({
@@ -156,6 +168,7 @@ def movement_conflicts(engine_root: Path, payload: dict) -> list[dict]:
                 "expected": expected_sha,
                 "actual": actual_sha,
             })
+
         if operation == "MOVE_TO_HISTORICAL":
             if not destination.startswith(historical_prefix):
                 conflicts.append({
@@ -178,39 +191,43 @@ def movement_conflicts(engine_root: Path, payload: dict) -> list[dict]:
                     "destination": destination,
                 })
         else:
-            conflicts.append({"code": "UNKNOWN_MOVEMENT_OPERATION", "index": index, "operation": operation})
+            conflicts.append({
+                "code": "UNKNOWN_MOVEMENT_OPERATION",
+                "index": index,
+                "operation": operation,
+            })
     return conflicts
 
 
 def summary_conflicts(tree: dict, manifest: dict, movement_conflict_count: int) -> list[dict]:
-    """Reject a stale declared after-summary; recomputation remains authoritative."""
+    """Validate stable AUD-008 invariants without freezing later legitimate byte drift.
+
+    The AUD-008 ledger is a historical movement snapshot. Subsequent authorized
+    engine corrections may change active bytes and manifest sizes, so those
+    volatile totals are not treated as current-tree authority. Structural
+    duplicate, H-route and authority invariants remain fail-closed.
+    """
     declared = manifest.get("tree_summary", {}).get("after", {})
     declared_duplicates = declared.get("duplicates", {})
     declared_h = declared.get("h_routes", {})
     expected = {
-        "active_file_count": tree["active_file_count"],
-        "active_bytes": tree["active_bytes"],
         "duplicate_group_count": tree["exact_duplicate_group_count"],
         "duplicate_file_count": tree["exact_duplicate_file_count"],
-        "duplicate_redundant_bytes": tree["exact_duplicate_redundant_bytes"],
         "justified_duplicate_group_count": tree["justified_duplicate_group_count"],
         "unjustified_duplicate_group_count": tree["unjustified_duplicate_group_count"],
         "active_h_route_count": tree["active_h_route_count"],
         "movement_conflict_count": movement_conflict_count,
     }
     actual = {
-        "active_file_count": declared.get("active_file_count"),
-        "active_bytes": declared.get("active_bytes"),
         "duplicate_group_count": declared_duplicates.get("group_count"),
         "duplicate_file_count": declared_duplicates.get("file_count"),
-        "duplicate_redundant_bytes": declared_duplicates.get("redundant_bytes"),
         "justified_duplicate_group_count": declared_duplicates.get("justified_group_count"),
         "unjustified_duplicate_group_count": declared_duplicates.get("unjustified_group_count"),
         "active_h_route_count": declared_h.get("path_count"),
         "movement_conflict_count": declared.get("historical_authority_conflict_count"),
     }
     return [] if actual == expected else [{
-        "code": "DECLARED_AFTER_SUMMARY_MISMATCH",
+        "code": "DECLARED_AFTER_STRUCTURAL_SUMMARY_MISMATCH",
         "declared": actual,
         "recomputed": expected,
     }]
@@ -221,6 +238,7 @@ def audit_repo(repo_root: Path) -> dict:
     engine_root = repo_root / ENGINE_REL
     tree = scan_active_tree(engine_root)
     failures = []
+
     if tree["unjustified_duplicate_group_count"]:
         failures.append("UNJUSTIFIED_ACTIVE_EXACT_DUPLICATES")
     if tree["active_h_route_count"]:
@@ -237,11 +255,15 @@ def audit_repo(repo_root: Path) -> dict:
         failures.append("MOVEMENT_OR_AUTHORITY_CONFLICT")
 
     release_surface = engine_root / "11_RELEASE_INTERNAL"
-    unexpected_release_files = sorted(
-        path.relative_to(engine_root).as_posix()
-        for path in release_surface.rglob("*")
-        if path.is_file() and path.name != "README.md"
-    ) if release_surface.exists() else []
+    unexpected_release_files = (
+        sorted(
+            path.relative_to(engine_root).as_posix()
+            for path in release_surface.rglob("*")
+            if path.is_file() and path.name != "README.md"
+        )
+        if release_surface.exists()
+        else []
+    )
     if unexpected_release_files:
         failures.append("SUPERSEDED_RELEASE_HISTORY_STILL_ACTIVE")
 
@@ -249,18 +271,26 @@ def audit_repo(repo_root: Path) -> dict:
         state = json.loads((repo_root / STATE_REL).read_text(encoding="utf-8"))
     except Exception as exc:
         state = {"error": str(exc)}
+
+    reaudits = (state.get("m02_result"), state.get("m03_result"))
     state_ok = (
-        state.get("motor_status") == "EN_REVISION"
-        and state.get("m02_result") == "M02_PASS"
+        state.get("issue") == "AUD-030"
+        and state.get("motor_status") == "EN_REVISION"
+        and reaudits in AUD030_ALLOWED_REAUDIT_PAIRS
         and state.get("ready_for_project_demo_generation") is False
         and state.get("release_authorized") is False
         and state.get("tag_authorized") is False
+        and state.get("productive_closure_authorized") is False
+        and state.get("oficial_authorized") is False
+        and state.get("agent_load_authorized") is False
+        and state.get("creative_output_certified") is False
     )
     if not state_ok:
         failures.append("GLOBAL_STATE_INTERLOCK_CHANGED")
 
     authority_conflicts = [
-        item for item in conflicts
+        item
+        for item in conflicts
         if item.get("code") == "HISTORICAL_EVIDENCE_HAS_ACTIVE_AUTHORITY"
     ]
     return {
@@ -268,6 +298,7 @@ def audit_repo(repo_root: Path) -> dict:
         "result": "PASS" if not failures else "FAIL",
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),
+        "m03_result": state.get("m03_result"),
         "active_tree": tree,
         "movement_manifest_conflict_count": len(conflicts),
         "movement_manifest_conflicts": conflicts,

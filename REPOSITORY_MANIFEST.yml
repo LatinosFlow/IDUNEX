@@ -2,12 +2,15 @@ repository: idunex
 system: IDUNEX
 area: IA
 status: EN_REVISION
-m02_result: M02_PASS
+m02_result: NOT_RECOMPUTED_POST_AUD030
+m03_result: NOT_RECOMPUTED_POST_AUD030
 state_authority: governance/CURRENT_STATE.json
 ready_for_project_demo_generation: false
 release_authorized: false
 tag_authorized: false
 productive_closure_authorized: false
+oficial_authorized: false
+agent_load_authorized: false
 creative_output_certified: false
 semantic_version: v1.0.0
 historical_received_baseline:
@@ -25,11 +28,12 @@ historical_received_baseline:
 current_corrected_tree:
   scope: engine/IDUNEX
   classification: CURRENT_REPRODUCIBLE_REPOSITORY_TREE_NOT_RELEASE
-  repository_commit_at_reconciliation: 9f39ad4712cc3235bc94b1def317265182b5dcdc
+  prior_repository_commit_at_reconciliation: 9f39ad4712cc3235bc94b1def317265182b5dcdc
   current_repository_commit_at_aud028_base: 98f13b62e0e0635d675fa1fb936ecc51c6c67bcc
+  current_repository_commit_at_aud030_base: fb13a4f5d4bd559b4f1268103630a735b53c8999
   file_count: 981
-  bytes: 47302063
-  tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
+  bytes: 47321777
+  tree_sha256: 8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd
   manifest: governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json
   sha256_companion: governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
   difference_report: governance/baseline/IDUNEX_BASELINE_DIFF_RECEIVED_TO_CURRENT.json
@@ -39,37 +43,40 @@ current_corrected_tree:
   physical_unmanifested_paths: 0
   stale_active_manifest_paths: 0
   obsolete_hashes: 0
-  aud003_scope_result: PASS_CURRENT_TREE_REPRODUCED
+  aud003_scope_result: PASS_CURRENT_TREE_REPRODUCED_POST_AUD030
   release_created: false
 current_tree_audit:
-  decision: CURRENT_TREE_M02_M03_RECOMPUTED_PASS
-  reason: M02_AND_M03_RECOMPUTED_PASS_ON_SAME_ENGINE_TREE
-  m02_current_tree: M02_PASS_RECOMPUTED_POST_PR44
-  m02_report: docs/audits/IA-IDUNEX-ReauditoriaMotorM02PostPR44-20260721-v1-EN_REVISION.md
-  m02_repository_commit: 75d64e1994366428eeccd2fadd345554fa6db581
-  m02_engine_tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
-  m02_workflow_run_id: 29858513365
-  m02_workflow_job_id: 88728860232
-  m02_artifact_id: 8507003060
-  m02_artifact_sha256: f4422a331d54b25edf057ef13112edd4f9391429f12a84701af18a31b367b6b8
-  m02_score: 10/10
-  m03_current_tree: M03_PASS_RECOMPUTED_POST_PR44
-  m03_report: docs/audits/IA-IDUNEX-ReauditoriaAdversarialM03PostPR44-20260721-v1-EN_REVISION.md
-  m03_repository_commit: 4357093167feea65799f295dfbb50295cfe84b91
-  m03_engine_tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
-  m03_workflow_run_id: 29870466999
-  m03_workflow_job_id: 88769080352
-  m03_artifact_id: 8511538539
-  m03_artifact_sha256: 76df161607bc665c6d8a7bbbcbea0a88e6ef38fb0a86a80a9ac501417281343a
-  m03_cases: 25/25
-  m03_restorations: 25/25
-  m03_lineage: 2_RECUPERADO_EXACTO_23_RECONSTRUIDO_TRAZABLE_0_NO_RECUPERABLE
-  m03_historical_harness_recovered: false
-  m03_matrix: 30/30
-  m03_mutation: 506/506
+  decision: CURRENT_TREE_M02_M03_NOT_RECOMPUTED_POST_AUD030
+  reason: ENGINE_TREE_CHANGED_BY_AUD030_REQUIRES_FRESH_M02_AND_M03
+  m02_current_tree: NOT_RECOMPUTED_POST_AUD030
+  m03_current_tree: NOT_RECOMPUTED_POST_AUD030
+  prior_m02_evidence_class: PRIOR_RECOMPUTED_EVIDENCE_NOT_CURRENT_TREE
+  prior_m02_report: docs/audits/IA-IDUNEX-ReauditoriaMotorM02PostPR44-20260721-v1-EN_REVISION.md
+  prior_m02_repository_commit: 75d64e1994366428eeccd2fadd345554fa6db581
+  prior_m02_engine_tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
+  prior_m02_workflow_run_id: 29858513365
+  prior_m02_workflow_job_id: 88728860232
+  prior_m02_artifact_id: 8507003060
+  prior_m02_artifact_sha256: f4422a331d54b25edf057ef13112edd4f9391429f12a84701af18a31b367b6b8
+  prior_m02_score: 10/10
+  prior_m03_evidence_class: PRIOR_RECOMPUTED_EVIDENCE_NOT_CURRENT_TREE
+  prior_m03_report: docs/audits/IA-IDUNEX-ReauditoriaAdversarialM03PostPR44-20260721-v1-EN_REVISION.md
+  prior_m03_repository_commit: 4357093167feea65799f295dfbb50295cfe84b91
+  prior_m03_engine_tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
+  prior_m03_workflow_run_id: 29870466999
+  prior_m03_workflow_job_id: 88769080352
+  prior_m03_artifact_id: 8511538539
+  prior_m03_artifact_sha256: 76df161607bc665c6d8a7bbbcbea0a88e6ef38fb0a86a80a9ac501417281343a
+  prior_m03_cases: 25/25
+  prior_m03_restorations: 25/25
+  prior_m03_lineage: 2_RECUPERADO_EXACTO_23_RECONSTRUIDO_TRAZABLE_0_NO_RECUPERABLE
+  prior_m03_historical_harness_recovered: false
+  prior_m03_matrix: 30/30
+  prior_m03_mutation: 506/506
   controlled_demo_generation: CONSUMED_AUD028_PROJECT_AUDIT_BLOCKED
 current_motor_package_candidate:
-  status: VALIDADO_CANDIDATE_NOT_RELEASE
+  status: PRIOR_VALIDATED_CANDIDATE_NOT_CURRENT_AUD030_ENGINE_TREE
+  current_tree_package_built: false
   workflow_run_id: 29884622077
   workflow_job_id: 88812549288
   artifact_id: 8516071049
@@ -104,6 +111,26 @@ controlled_external_demo_execution:
   prompt_bytes: 8982
   execution_authorized: false
   demo_status: CONSUMED
+aud030_external_artifact_correction:
+  controlling_issue: 58
+  document: docs/audits/GOV-IDUNEX-CorreccionEmisionExternaPostH410-20260722-v1-EN_REVISION.md
+  status: IMPLEMENTED_PENDING_PR_REVIEW
+  refresh_operation: refresh-external-artifacts
+  generate_executed: false
+  demo_regenerated: false
+  aud028_status: CONSUMED
+  m02_result: NOT_RECOMPUTED_POST_AUD030
+  m03_result: NOT_RECOMPUTED_POST_AUD030
+  previous_engine_tree_sha256: 628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9
+  current_engine_tree_sha256: 8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd
+  current_engine_file_count: 981
+  current_engine_bytes: 47321777
+  release_authorized: false
+  tag_authorized: false
+  oficial_authorized: false
+  productive_closure_authorized: false
+  agent_load_authorized: false
+  creative_output_certified: false
 current_demo_project:
   project_id: IDUNEX_PROJECT_PROYECTO_000_DEMO_v1.0.0
   status: PROJECT_GENERATED_NOT_AUDITED
