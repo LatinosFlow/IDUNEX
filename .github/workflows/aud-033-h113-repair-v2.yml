@@ -96,6 +96,7 @@ jobs:
         with:
           name: aud-033-h113-repair-${{ github.run_id }}
           path: .aud033-evidence
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
           compression-level: 6
