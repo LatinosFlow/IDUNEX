@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""AUD-006 governance-state consistency check.
+"""AUD-006/AUD-029 governance-state consistency check.
 
 This check validates global repository state only. It does not execute or
-certify engine functionality and it never enables Demo, release, or closure.
+certify engine functionality. General Demo generation, release, tag and
+productive closure remain fail-closed while the motor is EN_REVISION.
 """
 from __future__ import annotations
 
@@ -68,6 +69,14 @@ REFERENCE_MARKERS = (
     "REFERENCIA_HISTORICA_SUSTITUIDA",
 )
 
+CONTROLLED_EXTERNAL_DEMO_STATUSES = {
+    "PENDING_AUTHORIZATION",
+    "AUTHORIZED_NOT_CONSUMED",
+    "CONSUMED",
+}
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+GIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+
 
 def _is_under(path: Path, prefix: Path) -> bool:
     try:
@@ -92,8 +101,126 @@ def _value(data: dict[str, Any], *keys: str) -> Any:
     return None
 
 
+def _finding(field: str, expected: Any, actual: Any) -> str:
+    return (
+        "governance/CURRENT_STATE.json: controlled_external_demo_execution."
+        f"{field} must be {expected!r}, got {actual!r}"
+    )
+
+
+def _require_exact(
+    controlled: dict[str, Any], field: str, expected: Any, findings: list[str]
+) -> None:
+    actual = controlled.get(field)
+    if actual != expected:
+        findings.append(_finding(field, expected, actual))
+
+
+def _require_nonempty_string(
+    controlled: dict[str, Any], field: str, findings: list[str]
+) -> None:
+    value = controlled.get(field)
+    if not isinstance(value, str) or not value.strip():
+        findings.append(_finding(field, "non-empty string", value))
+
+
+def _require_sha256(
+    controlled: dict[str, Any], field: str, findings: list[str]
+) -> None:
+    value = controlled.get(field)
+    if not isinstance(value, str) or not SHA256_RE.fullmatch(value):
+        findings.append(_finding(field, "64 lowercase hexadecimal characters", value))
+
+
+def validate_controlled_external_demo_execution(data: Any) -> list[str]:
+    """Validate the fail-closed single external Demo execution state machine."""
+    if not isinstance(data, dict):
+        return [
+            "governance/CURRENT_STATE.json: controlled_external_demo_execution must be an object"
+        ]
+
+    findings: list[str] = []
+    status = data.get("status")
+
+    _require_exact(data, "schema_version", 1, findings)
+    if status not in CONTROLLED_EXTERNAL_DEMO_STATUSES:
+        findings.append(
+            _finding("status", sorted(CONTROLLED_EXTERNAL_DEMO_STATUSES), status)
+        )
+
+    _require_exact(data, "execution_limit", 1, findings)
+    _require_exact(data, "allowed_environment", "CHATGPT_NORMAL_EXTERNAL", findings)
+    _require_exact(data, "general_project_generation_enabled", False, findings)
+    _require_exact(data, "allows_release", False, findings)
+    _require_exact(data, "allows_tag", False, findings)
+    _require_exact(data, "allows_oficial", False, findings)
+    _require_exact(data, "allows_productive_closure", False, findings)
+    _require_exact(data, "allows_agent_load", False, findings)
+    _require_exact(data, "creative_output_certified", False, findings)
+
+    execution_count = data.get("execution_count")
+    if not isinstance(execution_count, int) or isinstance(execution_count, bool):
+        findings.append(_finding("execution_count", "integer 0 or 1", execution_count))
+    elif execution_count not in {0, 1}:
+        findings.append(_finding("execution_count", "0 or 1", execution_count))
+
+    repository_commit = data.get("repository_commit")
+    if not isinstance(repository_commit, str) or not GIT_SHA_RE.fullmatch(repository_commit):
+        findings.append(
+            _finding("repository_commit", "40 lowercase hexadecimal characters", repository_commit)
+        )
+    _require_sha256(data, "engine_tree_sha256", findings)
+    _require_sha256(data, "engine_package_sha256", findings)
+    _require_sha256(data, "master_report_sha256", findings)
+    _require_nonempty_string(data, "engine_package_filename", findings)
+    _require_nonempty_string(data, "master_report_filename", findings)
+
+    authorized = data.get("authorized")
+    consumed = data.get("consumed")
+    if authorized is True and consumed is True:
+        findings.append(
+            "governance/CURRENT_STATE.json: controlled_external_demo_execution cannot be authorized and consumed simultaneously"
+        )
+
+    if status == "PENDING_AUTHORIZATION":
+        _require_exact(data, "authorized", False, findings)
+        _require_exact(data, "consumed", False, findings)
+        _require_exact(data, "execution_count", 0, findings)
+        _require_exact(data, "generate_executions_allowed", 0, findings)
+        _require_exact(data, "validate_executions_allowed", 0, findings)
+        _require_exact(data, "authorization_id", None, findings)
+        _require_exact(data, "prompt_path", None, findings)
+        _require_exact(data, "prompt_sha256", None, findings)
+
+    elif status == "AUTHORIZED_NOT_CONSUMED":
+        _require_exact(data, "authorized", True, findings)
+        _require_exact(data, "consumed", False, findings)
+        _require_exact(data, "execution_count", 0, findings)
+        _require_exact(data, "generate_executions_allowed", 1, findings)
+        validate_allowed = data.get("validate_executions_allowed")
+        if validate_allowed not in {0, 1} or isinstance(validate_allowed, bool):
+            findings.append(
+                _finding("validate_executions_allowed", "integer 0 or 1", validate_allowed)
+            )
+        _require_nonempty_string(data, "authorization_id", findings)
+        _require_nonempty_string(data, "prompt_path", findings)
+        _require_sha256(data, "prompt_sha256", findings)
+
+    elif status == "CONSUMED":
+        _require_exact(data, "authorized", False, findings)
+        _require_exact(data, "consumed", True, findings)
+        _require_exact(data, "execution_count", 1, findings)
+        _require_exact(data, "generate_executions_allowed", 0, findings)
+        _require_exact(data, "validate_executions_allowed", 0, findings)
+        _require_nonempty_string(data, "authorization_id", findings)
+        _require_nonempty_string(data, "prompt_path", findings)
+        _require_sha256(data, "prompt_sha256", findings)
+
+    return findings
+
+
 def validate_current_state_data(data: dict[str, Any]) -> list[str]:
-    """Return violations of the fail-closed AUD-006 root state."""
+    """Return violations of the fail-closed AUD-006/AUD-029 root state."""
     expected = {
         "motor_status": "EN_REVISION",
         "m02_result": "M02_PASS",
@@ -123,6 +250,12 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
                 "governance/CURRENT_STATE.json: interlock missing denied capabilities: "
                 + ", ".join(missing)
             )
+
+    findings.extend(
+        validate_controlled_external_demo_execution(
+            data.get("controlled_external_demo_execution")
+        )
+    )
     return findings
 
 
@@ -239,9 +372,10 @@ def audit_repository(root: Path) -> dict[str, Any]:
     contradiction_findings, historical_reference_matches = scan_contradictions(root)
     findings.extend(contradiction_findings)
 
+    controlled = state.get("controlled_external_demo_execution", {})
     return {
         "result": "CONSISTENT" if not findings else "INCONSISTENT",
-        "scope": "AUD-006_governance_state_only",
+        "scope": "AUD-006_AUD-029_governance_state_only",
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),
         "ready_for_project_demo_generation": state.get(
@@ -251,6 +385,9 @@ def audit_repository(root: Path) -> dict[str, Any]:
         "tag_authorized": state.get("tag_authorized"),
         "productive_closure_authorized": state.get("productive_closure_authorized"),
         "creative_output_certified": state.get("creative_output_certified"),
+        "controlled_external_demo_status": controlled.get("status"),
+        "controlled_external_demo_authorized": controlled.get("authorized"),
+        "controlled_external_demo_consumed": controlled.get("consumed"),
         "active_contradiction_count": len(contradiction_findings),
         "historical_reference_match_count": historical_reference_matches,
         "findings": findings,
