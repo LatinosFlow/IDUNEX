@@ -1,0 +1,44 @@
+name: AUD-033 Final Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/aud-033-final-validation.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: python -m pip install python-docx==1.2.0
+
+      - name: Execute AUD-033 integral and regression suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest tests.intake.test_h113_current_tree_identity_generate -v
+          python -B -m unittest tests.intake.test_generate_windows_watchdog -v
+          python -B -m unittest tests.intake.test_external_artifact_refresh -v
+          python -B -m unittest tests.intake.test_post_audit_truthfulness -v
+          python -B -m unittest tests.intake.test_governance_state -v
+          python -B tools/audit/baseline_scanner.py --repo-root .
+          python -B tools/audit/governance_state_check.py --repo-root .
+          python -B tools/audit/intake_audit.py --repo-root .
+          python -B tools/audit/security_lite_scan.py --repo-root .
+          python -B engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py engine/IDUNEX
+          git diff --check
