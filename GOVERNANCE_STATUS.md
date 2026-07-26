@@ -4,7 +4,7 @@
 
 ```text
 MOTOR_STATUS=EN_REVISION
-M02_RESULT=NOT_RECOMPUTED_POST_AUD030
+M02_RESULT=M02_PASS_RECOMPUTED_POST_AUD033
 M03_RESULT=NOT_RECOMPUTED_POST_AUD030
 READY_FOR_PROJECT_DEMO_GENERATION=FALSE
 RELEASE_AUTHORIZED=FALSE
@@ -22,7 +22,7 @@ CONTROLLED_EXTERNAL_DEMO_EXECUTION_COUNT=1
 
 | Superficie | Estado | Decisión |
 |---|---|---|
-| Motor | EN_REVISION | Factory corregido; M02/M03 pendientes para el nuevo árbol |
+| Motor | EN_REVISION | M02 recomputado post-AUD-033; M03 pendiente y bloqueado por AUD-032 |
 | ZIP candidato del motor | REFERENCIA PREVIA | No representa el árbol post-AUD030 |
 | Informe Maestro | VALIDADO como autoridad operativa | Fijado por SHA externo |
 | Prompt canónico AUD-028 | CONSUMED / EVIDENCIA | No reutilizable para otra ejecución |
@@ -31,7 +31,7 @@ CONTROLLED_EXTERNAL_DEMO_EXECUTION_COUNT=1
 | Excepción externa AUD-028 | CONSUMED | Sin ejecuciones restantes |
 | Release / tag / OFICIAL / cierre | BLOQUEADO | No autorizado |
 | Carga de agentes | BLOQUEADO | Solo después de `PROJECT_AUDIT_PASS` |
-| Corrección AUD-030 | IMPLEMENTADA / EN_REVISION | Pendiente de revisión del Draft PR y recomputación M02/M03 |
+| Reconciliación AUD-034 | EN_REVISION | M02 recomputado; M03 pendiente y bloqueado por AUD-032 |
 
 ## Máquina de estados
 
@@ -77,9 +77,15 @@ auditoría independiente del Proyecto 000 Demo.
 ## Regla de cierre
 
 La integridad operativa del ZIP no sustituye la auditoría independiente del set externo completo.
-No cargar agentes, no promover a producción y no declarar `PROJECT_AUDIT_PASS`. M02 y M03 deben
-recomputarse para el nuevo árbol del motor después del merge; la auditoría del Proyecto 000 Demo
-continúa fallida hasta un refresco autorizado y una nueva auditoría independiente.
+No cargar agentes, no promover a producción y no declarar `PROJECT_AUDIT_PASS`. M02 fue
+recomputado para el árbol actual; M03 sigue pendiente y bloqueado por AUD-032. La auditoría del
+Proyecto 000 Demo continúa fallida hasta un refresco autorizado y una nueva auditoría independiente.
+
+## Reconciliación AUD-034
+
+La autoridad canónica declara `M02_PASS_RECOMPUTED_POST_AUD033` con evidencia del run `29941393366`: matriz `30/30_PASS`, mutation `506/506_PASS`, retest de restauración `PASS` y score técnico `10/10`. El identificador heredado `AUD-026-M02-POST-PR44` es únicamente `METADATA_HEREDADA_NO_AUTORIDAD_NOMINAL`.
+
+M03 continúa `NOT_RECOMPUTED_POST_AUD030` y bloqueado por AUD-032. El PASS de M02 no habilita Demo general; AUD-028 permanece `CONSUMED`, y release, tag, OFICIAL, cierre productivo y carga de agentes siguen bloqueados.
 
 ## Corrección AUD-031
 

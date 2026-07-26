@@ -5,14 +5,14 @@ Repositorio técnico privado para el motor IDUNEX.
 ## Estado actual
 
 **Estado:** `EN_REVISION`  
-**Decisión M02 vigente:** `NOT_RECOMPUTED_POST_AUD030`
+**Decisión M02 vigente:** `M02_PASS_RECOMPUTED_POST_AUD033`
 **Decisión M03 vigente:** `NOT_RECOMPUTED_POST_AUD030`
 **Autoridad de estado:** `governance/CURRENT_STATE.json`  
 **Versión declarada de baseline:** `v1.0.0`
 
 ```text
 MOTOR_STATUS=EN_REVISION
-M02_RESULT=NOT_RECOMPUTED_POST_AUD030
+M02_RESULT=M02_PASS_RECOMPUTED_POST_AUD033
 M03_RESULT=NOT_RECOMPUTED_POST_AUD030
 READY_FOR_PROJECT_DEMO_GENERATION=FALSE
 CREATIVE_OUTPUT_CERTIFIED=FALSE
@@ -33,7 +33,8 @@ El motor está extraído en `engine/IDUNEX/`. Los documentos históricos se cons
 - La certificación creativa permanece bloqueada:
   `creative_output_certified=false`.
 - Release, tag, `OFICIAL`, cierre productivo y carga de agentes permanecen bloqueados.
-- Los PASS M02/M03 del árbol anterior son evidencia previa y no aplican al árbol modificado por AUD-030.
+- M02 fue recomputado y validado para el árbol actual post-AUD-033; M03 permanece sin recomputar post-AUD-030 y bloqueado por AUD-032.
+- El PASS de M02 por sí solo no habilita la generación general del Proyecto Demo ni ninguna capacidad bloqueada.
 
 ## Ejecución externa controlada del Demo
 
@@ -88,7 +89,7 @@ gobernanza y no consume ni reactiva AUD-028.
 ## Siguiente flujo
 
 ```text
-AUD-028 CONSUMED → AUD-030 implementado pendiente de revisión → M02/M03 post-merge → refresco externo autorizado → auditoría independiente → carga de agentes
+AUD-028 CONSUMED → M02 recomputado post-AUD-033 → M03 pendiente y bloqueado por AUD-032 → refresco externo autorizado → auditoría independiente → carga de agentes
 ```
 
 ## Comandos de control

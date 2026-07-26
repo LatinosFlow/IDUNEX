@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "issue": "AUD-030",
+  "issue": "AUD-034",
   "authority": "governance/CURRENT_STATE.json",
   "effective_date": "2026-07-22",
   "motor_status": "EN_REVISION",
-  "m02_result": "NOT_RECOMPUTED_POST_AUD030",
+  "m02_result": "M02_PASS_RECOMPUTED_POST_AUD033",
   "m03_result": "NOT_RECOMPUTED_POST_AUD030",
   "m04_result": "M04_PASS",
   "aud020_result": "AUD020_PASS",
@@ -17,7 +17,7 @@
   "creative_output_certified": false,
   "interlock": {
     "condition": "motor_status == EN_REVISION",
-    "rule": "While the motor remains EN_REVISION and M02/M03 are NOT_RECOMPUTED_POST_AUD030 for the changed engine tree, general Project Demo generation, release, tag, productive closure, OFICIAL status and agent loading remain denied. AUD-028 stays consumed and cannot authorize another execution.",
+    "rule": "M02 is recomputed and validated for the current engine tree, while M03 remains NOT_RECOMPUTED_POST_AUD030 and blocked by AUD-032. An M02 PASS alone does not enable general Project Demo generation. AUD-028 remains CONSUMED and cannot be reused. Agent loading, release, tag, OFICIAL status and productive closure remain denied while the motor is EN_REVISION.",
     "denied_capabilities": [
       "PROJECT_DEMO_GENERATION",
       "RELEASE",
@@ -28,14 +28,14 @@
     ]
   },
   "engine_change_control": {
-    "issue": "AUD-030",
-    "base_commit": "fb13a4f5d4bd559b4f1268103630a735b53c8999",
+    "issue": "AUD-034",
+    "base_commit": "1fc082bfcae5b590066309727c120500de976378",
     "previous_engine_tree_sha256": "628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9",
     "current_engine_tree_sha256": "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
     "current_engine_file_count": 981,
     "current_engine_byte_count": 47323574,
     "manifests_recomputed_with_canonical_scanner": true,
-    "m02_result": "NOT_RECOMPUTED_POST_AUD030",
+    "m02_result": "M02_PASS_RECOMPUTED_POST_AUD033",
     "m03_result": "NOT_RECOMPUTED_POST_AUD030",
     "previous_current_engine_tree_sha256": "d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d",
     "child_correction_issue": "AUD-031",
@@ -80,6 +80,26 @@
     "allows_productive_closure": false,
     "allows_agent_load": false,
     "creative_output_certified": false
+  },
+  "m02_recomputation": {
+    "run_id": 29941393366,
+    "job_id": 88995880545,
+    "artifact_id": 8539029665,
+    "artifact_name": "idunex-m02-max-29941393366-attempt-1",
+    "artifact_sha256": "fd5c9334b96989c714300607dadf742ff63783b8090d90fc3d404b3a22355270",
+    "repository_commit": "1fc082bfcae5b590066309727c120500de976378",
+    "engine_tree_sha256": "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
+    "engine_file_count": 981,
+    "engine_byte_count": 47323574,
+    "runtime_validator": "PASS",
+    "matrix": "30/30_PASS",
+    "mutation": "506/506_PASS",
+    "positive_fixture": "PASS",
+    "restoration_retest": "PASS",
+    "technical_score": "10/10",
+    "creative_output_certified": false,
+    "inherited_audit_id": "AUD-026-M02-POST-PR44",
+    "inherited_audit_id_classification": "METADATA_HEREDADA_NO_AUTORIDAD_NOMINAL"
   },
   "evidence_classes": {
     "historical_or_declared": "REFERENCIA_SUSTITUIDA; retained only for lineage and never authoritative",
