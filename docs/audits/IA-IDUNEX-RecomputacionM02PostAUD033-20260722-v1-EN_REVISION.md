@@ -41,7 +41,7 @@ AUD-028 permanece `CONSUMED` y no puede reutilizarse. Agentes, release, tag, OFI
 
 ## Alcance, pruebas y reversa
 
-Archivos modificados: los siete archivos de gobernanza originales, este documento y los dos archivos de corrección secuencial `tools/audit/baseline_scanner.py` y `tests/intake/test_baseline_scanner.py`; el alcance total es de nueve archivos autorizados. No se modificó `engine/IDUNEX`.
+Archivos modificados: los siete archivos originalmente autorizados, incluido este documento, más los dos archivos de corrección secuencial `tools/audit/baseline_scanner.py` y `tests/intake/test_baseline_scanner.py`; el alcance total es de nueve archivos autorizados. No se modificó `engine/IDUNEX`.
 
 Las pruebas de gobernanza, intake, seguridad ligera y consistencia de diff se ejecutan antes de la entrega. La reversa consiste en revertir el commit de AUD-034, lo que restituye el estado canónico anterior sin alterar el árbol del motor.
 
