@@ -2,7 +2,7 @@ repository: idunex
 system: IDUNEX
 area: IA
 status: EN_REVISION
-m02_result: NOT_RECOMPUTED_POST_AUD030
+m02_result: M02_PASS_RECOMPUTED_POST_AUD033
 m03_result: NOT_RECOMPUTED_POST_AUD030
 state_authority: governance/CURRENT_STATE.json
 ready_for_project_demo_generation: false
@@ -48,9 +48,9 @@ current_corrected_tree:
   aud003_scope_result: PASS_CURRENT_TREE_REPRODUCED_POST_AUD030
   release_created: false
 current_tree_audit:
-  decision: CURRENT_TREE_M02_M03_NOT_RECOMPUTED_POST_AUD030
-  reason: ENGINE_TREE_CHANGED_BY_AUD030_REQUIRES_FRESH_M02_AND_M03
-  m02_current_tree: NOT_RECOMPUTED_POST_AUD030
+  decision: CURRENT_TREE_M02_RECOMPUTED_POST_AUD033_M03_NOT_RECOMPUTED_POST_AUD030
+  reason: M02_RECOMPUTED_AND_VALIDATED_FOR_CURRENT_TREE_M03_REMAINS_BLOCKED_BY_AUD032
+  m02_current_tree: M02_PASS_RECOMPUTED_POST_AUD033
   m03_current_tree: NOT_RECOMPUTED_POST_AUD030
   prior_m02_evidence_class: PRIOR_RECOMPUTED_EVIDENCE_NOT_CURRENT_TREE
   prior_m02_report: docs/audits/IA-IDUNEX-ReauditoriaMotorM02PostPR44-20260721-v1-EN_REVISION.md
@@ -76,6 +76,38 @@ current_tree_audit:
   prior_m03_matrix: 30/30
   prior_m03_mutation: 506/506
   controlled_demo_generation: CONSUMED_AUD028_PROJECT_AUDIT_BLOCKED
+
+aud034_m02_recomputation:
+  controlling_issue: 67
+  status: EN_REVISION
+  m02_result: M02_PASS_RECOMPUTED_POST_AUD033
+  run_id: 29941393366
+  job_id: 88995880545
+  artifact_id: 8539029665
+  artifact_name: idunex-m02-max-29941393366-attempt-1
+  artifact_sha256: fd5c9334b96989c714300607dadf742ff63783b8090d90fc3d404b3a22355270
+  repository_commit: 1fc082bfcae5b590066309727c120500de976378
+  engine_tree_sha256: 58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7
+  engine_file_count: 981
+  engine_byte_count: 47323574
+  runtime_validator: PASS
+  matrix: 30/30_PASS
+  mutation: 506/506_PASS
+  positive_fixture: PASS
+  restoration_retest: PASS
+  technical_score: 10/10
+  inherited_audit_id: AUD-026-M02-POST-PR44
+  inherited_audit_id_classification: METADATA_HEREDADA_NO_AUTORIDAD_NOMINAL
+  m03_result: NOT_RECOMPUTED_POST_AUD030
+  m03_blocked_by: AUD-032
+  aud028_status: CONSUMED
+  ready_for_project_demo_generation: false
+  release_authorized: false
+  tag_authorized: false
+  oficial_authorized: false
+  productive_closure_authorized: false
+  agent_load_authorized: false
+  creative_output_certified: false
 current_motor_package_candidate:
   status: PRIOR_VALIDATED_CANDIDATE_NOT_CURRENT_AUD030_ENGINE_TREE
   current_tree_package_built: false

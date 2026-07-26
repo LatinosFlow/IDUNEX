@@ -4,7 +4,8 @@
 The scanner never trusts declared PASS surfaces. It hashes the current active
 tree, detects milestone paths, verifies the movement/reversal ledger, and
 confirms that global governance remains fail-closed while post-AUD-030 M02/M03
-reaudits are pending or subsequently recomputed on the same tree.
+reaudits are pending or subsequently recomputed on the same tree. The AUD-008
+movement ledger is historical evidence and never replaces root governance.
 """
 from __future__ import annotations
 
@@ -30,10 +31,18 @@ CLASSIFICATIONS = {
     "REFERENCE_SUPERSEDED",
 }
 
-AUD030_ALLOWED_REAUDIT_PAIRS = {
-    ("NOT_RECOMPUTED_POST_AUD030", "NOT_RECOMPUTED_POST_AUD030"),
-    ("M02_PASS_RECOMPUTED_POST_AUD030", "NOT_RECOMPUTED_POST_AUD030"),
-    ("M02_PASS_RECOMPUTED_POST_AUD030", "M03_PASS_RECOMPUTED_POST_AUD030"),
+ROOT_ISSUE = "AUD-034"
+ROOT_MOTOR_STATUS = "EN_REVISION"
+ROOT_M02_RESULT = "M02_PASS_RECOMPUTED_POST_AUD033"
+ROOT_M03_RESULT = "NOT_RECOMPUTED_POST_AUD030"
+ROOT_INTERLOCK = {
+    "ready_for_project_demo_generation": False,
+    "release_authorized": False,
+    "tag_authorized": False,
+    "productive_closure_authorized": False,
+    "oficial_authorized": False,
+    "agent_load_authorized": False,
+    "creative_output_certified": False,
 }
 
 FROZEN_DUPLICATE_PATH_SETS = {
@@ -233,6 +242,24 @@ def summary_conflicts(tree: dict, manifest: dict, movement_conflict_count: int) 
     }]
 
 
+def validate_root_state(state: dict) -> list[str]:
+    """Validate the sole current governance authority for AUD-008 checks."""
+    findings = []
+    expected = {
+        "issue": ROOT_ISSUE,
+        "motor_status": ROOT_MOTOR_STATUS,
+        "m02_result": ROOT_M02_RESULT,
+        "m03_result": ROOT_M03_RESULT,
+        **ROOT_INTERLOCK,
+    }
+    for field, expected_value in expected.items():
+        if state.get(field) != expected_value:
+            findings.append(
+                f"ROOT_STATE_MISMATCH:{field}:expected={expected_value!r}:actual={state.get(field)!r}"
+            )
+    return findings
+
+
 def audit_repo(repo_root: Path) -> dict:
     repo_root = repo_root.resolve()
     engine_root = repo_root / ENGINE_REL
@@ -272,20 +299,9 @@ def audit_repo(repo_root: Path) -> dict:
     except Exception as exc:
         state = {"error": str(exc)}
 
-    reaudits = (state.get("m02_result"), state.get("m03_result"))
-    state_ok = (
-        state.get("issue") == "AUD-030"
-        and state.get("motor_status") == "EN_REVISION"
-        and reaudits in AUD030_ALLOWED_REAUDIT_PAIRS
-        and state.get("ready_for_project_demo_generation") is False
-        and state.get("release_authorized") is False
-        and state.get("tag_authorized") is False
-        and state.get("productive_closure_authorized") is False
-        and state.get("oficial_authorized") is False
-        and state.get("agent_load_authorized") is False
-        and state.get("creative_output_certified") is False
-    )
-    if not state_ok:
+    root_state_findings = validate_root_state(state)
+    state_ok = not root_state_findings
+    if root_state_findings:
         failures.append("GLOBAL_STATE_INTERLOCK_CHANGED")
 
     authority_conflicts = [
@@ -296,6 +312,7 @@ def audit_repo(repo_root: Path) -> dict:
     return {
         "audit": "AUD-008_NO_BLOAT_NO_HISTORY",
         "result": "PASS" if not failures else "FAIL",
+        "root_issue": state.get("issue"),
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),
         "m03_result": state.get("m03_result"),

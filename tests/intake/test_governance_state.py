@@ -7,18 +7,18 @@ import unittest
 from pathlib import Path
 
 from tools.audit.governance_state_check import (
+    M02_RECOMPUTATION_STATE,
     scan_contradictions,
-    validate_controlled_external_demo_execution,
     validate_current_state_data,
 )
 
 
-def aud030_state() -> dict:
+def aud034_state() -> dict:
     return json.loads(Path("governance/CURRENT_STATE.json").read_text(encoding="utf-8"))
 
 
 class GovernanceStateTest(unittest.TestCase):
-    def test_01_governance_state_is_consistent(self):
+    def test_01_current_aud034_state_passes_checker(self):
         result = subprocess.run(
             [sys.executable, "tools/audit/governance_state_check.py", "--repo-root", "."],
             check=False,
@@ -28,67 +28,71 @@ class GovernanceStateTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         report = json.loads(result.stdout)
         self.assertEqual(report["result"], "CONSISTENT")
-        self.assertEqual(report["active_contradiction_count"], 0)
-        self.assertEqual(report["m02_result"], "NOT_RECOMPUTED_POST_AUD030")
+        self.assertEqual(report["m02_result"], M02_RECOMPUTATION_STATE)
         self.assertEqual(report["m03_result"], "NOT_RECOMPUTED_POST_AUD030")
-        self.assertEqual(report["controlled_external_demo_status"], "CONSUMED")
-        self.assertFalse(report["controlled_external_demo_authorized"])
-        self.assertTrue(report["controlled_external_demo_consumed"])
 
-    def test_02_exact_aud030_transition_is_valid(self):
-        self.assertEqual(validate_current_state_data(aud030_state()), [])
-
-    def test_03_prior_m02_pass_is_rejected_for_changed_tree(self):
-        state = aud030_state()
+    def test_02_generic_m02_pass_is_rejected(self):
+        state = aud034_state()
         state["m02_result"] = "M02_PASS"
-        findings = validate_current_state_data(state)
-        self.assertTrue(any("m02_result" in finding for finding in findings))
+        self.assertTrue(any("m02_result" in finding for finding in validate_current_state_data(state)))
 
-    def test_04_prior_m03_pass_is_rejected_for_changed_tree(self):
-        state = aud030_state()
+    def test_03_post_pr44_m02_pass_is_rejected(self):
+        state = aud034_state()
+        state["m02_result"] = "M02_PASS_RECOMPUTED_POST_PR44"
+        self.assertTrue(any("m02_result" in finding for finding in validate_current_state_data(state)))
+
+    def test_04_old_m02_not_recomputed_state_is_rejected(self):
+        state = aud034_state()
+        state["m02_result"] = "NOT_RECOMPUTED_POST_AUD030"
+        self.assertTrue(any("m02_result" in finding for finding in validate_current_state_data(state)))
+
+    def test_05_m03_pass_is_rejected(self):
+        state = aud034_state()
         state["m03_result"] = "M03_PASS"
-        findings = validate_current_state_data(state)
-        self.assertTrue(any("m03_result" in finding for finding in findings))
+        self.assertTrue(any("m03_result" in finding for finding in validate_current_state_data(state)))
 
-    def test_05_aud028_cannot_be_unconsumed_or_reauthorized(self):
-        state = aud030_state()
-        controlled = state["controlled_external_demo_execution"]
-        controlled.update({"status": "AUTHORIZED_NOT_CONSUMED", "authorized": True, "consumed": False})
+    def test_06_aud028_cannot_be_reauthorized(self):
+        state = aud034_state()
+        state["controlled_external_demo_execution"].update(
+            {"status": "AUTHORIZED_NOT_CONSUMED", "authorized": True, "consumed": False}
+        )
         findings = validate_current_state_data(state)
         self.assertTrue(any("status" in finding for finding in findings))
         self.assertTrue(any("authorized" in finding for finding in findings))
         self.assertTrue(any("consumed" in finding for finding in findings))
 
-    def test_06_execution_counters_must_remain_zero(self):
-        state = aud030_state()
+    def test_07_generate_execution_counter_must_remain_zero(self):
+        state = aud034_state()
         state["controlled_external_demo_execution"]["generate_executions_allowed"] = 1
-        findings = validate_current_state_data(state)
-        self.assertTrue(any("generate_executions_allowed" in finding for finding in findings))
+        self.assertTrue(any("generate_executions_allowed" in finding for finding in validate_current_state_data(state)))
 
-    def test_07_project_audit_and_agent_load_remain_blocked(self):
-        state = aud030_state()
-        controlled = state["controlled_external_demo_execution"]
-        controlled["project_audit_status"] = "PROJECT_AUDIT_PASS"
-        controlled["project_agent_load_pass"] = True
-        findings = validate_current_state_data(state)
-        self.assertTrue(any("project_audit_status" in finding for finding in findings))
-        self.assertTrue(any("project_agent_load_pass" in finding for finding in findings))
+    def test_08_artifact_sha_must_match_authorized_evidence(self):
+        state = aud034_state()
+        state["m02_recomputation"]["artifact_sha256"] = "0" * 64
+        self.assertTrue(any("artifact_sha256" in finding for finding in validate_current_state_data(state)))
 
-    def test_08_release_oficial_and_global_agent_load_remain_false(self):
-        state = aud030_state()
+    def test_09_engine_tree_sha_must_match_authorized_evidence(self):
+        state = aud034_state()
+        state["m02_recomputation"]["engine_tree_sha256"] = "0" * 64
+        self.assertTrue(any("engine_tree_sha256" in finding for finding in validate_current_state_data(state)))
+
+    def test_10_release_oficial_and_agent_load_remain_disabled(self):
+        state = aud034_state()
         state.update({"release_authorized": True, "oficial_authorized": True, "agent_load_authorized": True})
         findings = validate_current_state_data(state)
         self.assertTrue(any("release_authorized" in finding for finding in findings))
         self.assertTrue(any("oficial_authorized" in finding for finding in findings))
         self.assertTrue(any("agent_load_authorized" in finding for finding in findings))
 
-    def test_09_controlled_execution_schema_still_rejects_limit_above_one(self):
-        controlled = copy.deepcopy(aud030_state()["controlled_external_demo_execution"])
-        controlled["execution_limit"] = 2
-        findings = validate_controlled_external_demo_execution(controlled)
-        self.assertTrue(any("execution_limit" in finding for finding in findings))
+    def test_11_creative_output_certification_must_remain_false(self):
+        state = aud034_state()
+        state["creative_output_certified"] = True
+        self.assertTrue(any("creative_output_certified" in finding for finding in validate_current_state_data(state)))
 
-    def test_10_scanner_rejects_unclassified_ready_true(self):
+    def test_12_intact_current_state_passes_direct_validation(self):
+        self.assertEqual(validate_current_state_data(copy.deepcopy(aud034_state())), [])
+
+    def test_13_scanner_rejects_unclassified_demo_enablement(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
             rogue = root / "engine" / "IDUNEX" / "00_INDEX" / "ROGUE_CERTIFICATE.txt"

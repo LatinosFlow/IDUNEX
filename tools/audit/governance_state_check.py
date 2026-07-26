@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""AUD-006/AUD-030 governance-state consistency check.
+"""AUD-034 governance-state consistency check.
 
-This check validates global repository state only. It does not execute or
-certify engine functionality. General Demo generation, release, tag and
-productive closure remain fail-closed while the motor is EN_REVISION.
+This check validates governance only. It neither executes nor certifies engine
+functionality. The engine-internal state snapshots remain deliberately
+fail-closed because AUD-034 must not modify engine/IDUNEX.
 """
 from __future__ import annotations
 
@@ -17,36 +17,58 @@ from typing import Any
 
 STATE_PATH = Path("governance/CURRENT_STATE.json")
 ENGINE_TREE_MANIFEST_PATH = Path("governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json")
-AUD030_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD030"
+M02_RECOMPUTATION_STATE = "M02_PASS_RECOMPUTED_POST_AUD033"
+M03_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD030"
+CURRENT_ENGINE_TREE_SHA256 = "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7"
+CURRENT_ENGINE_FILE_COUNT = 981
+CURRENT_ENGINE_BYTE_COUNT = 47323574
 
-JSON_STATE_SURFACES = (
-    STATE_PATH,
-    # Historical non-authority JSON surfaces (14_HISTORICAL_NON_AUTHORITY/**)
-    # are intentionally excluded to keep this scanner scoped to active authority.
+M02_RECOMPUTATION_EVIDENCE = {
+    "run_id": 29941393366,
+    "job_id": 88995880545,
+    "artifact_id": 8539029665,
+    "artifact_name": "idunex-m02-max-29941393366-attempt-1",
+    "artifact_sha256": "fd5c9334b96989c714300607dadf742ff63783b8090d90fc3d404b3a22355270",
+    "repository_commit": "1fc082bfcae5b590066309727c120500de976378",
+    "engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
+    "engine_file_count": CURRENT_ENGINE_FILE_COUNT,
+    "engine_byte_count": CURRENT_ENGINE_BYTE_COUNT,
+    "runtime_validator": "PASS",
+    "matrix": "30/30_PASS",
+    "mutation": "506/506_PASS",
+    "positive_fixture": "PASS",
+    "restoration_retest": "PASS",
+    "technical_score": "10/10",
+    "creative_output_certified": False,
+    "inherited_audit_id": "AUD-026-M02-POST-PR44",
+    "inherited_audit_id_classification": "METADATA_HEREDADA_NO_AUTORIDAD_NOMINAL",
+}
+
+# AUD-034 establishes the root authority. Engine files are retained as
+# explicitly fail-closed legacy snapshots and must not become enabling claims.
+LEGACY_ENGINE_JSON_STATE_SURFACES = (
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json"),
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json"),
     Path("engine/IDUNEX/00_INDEX/MASTER_GOVERNANCE_MAP.json"),
     Path("engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_RELEASE_STATUS.json"),
 )
-
-TEXT_STATE_SURFACES = (
+ROOT_TEXT_STATE_SURFACES = (
     Path("README.md"),
     Path("GOVERNANCE_STATUS.md"),
     Path("REPOSITORY_MANIFEST.yml"),
+)
+LEGACY_ENGINE_TEXT_STATE_SURFACES = (
     Path("engine/IDUNEX/00_INDEX/ACTIVE_VERSION.txt"),
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md"),
     Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/STATUS.md"),
     Path("engine/IDUNEX/00_INDEX/RELEASE_CERTIFICATE.txt"),
 )
-
 SCAN_SUFFIXES = {".json", ".md", ".txt", ".yml", ".yaml"}
-
 EXCLUDED_PREFIXES = (
     Path("governance/authority/REFERENCIA"),
     Path("docs/audits"),
     Path("engine/IDUNEX/14_HISTORICAL_NON_AUTHORITY"),
 )
-
 DANGEROUS_PATTERNS = (
     re.compile(r"READY_FOR_PROJECT_DEMO_GENERATION[\"\s]*[:=]\s*(?:TRUE|true)"),
     re.compile(r'"ready_for_project_demo_generation"\s*:\s*true'),
@@ -65,19 +87,16 @@ DANGEROUS_PATTERNS = (
     re.compile(r"31/31 PASS"),
     re.compile(r"PRODUCTIVE_BASE_ENGINE_READY"),
 )
-
-REFERENCE_MARKERS = (
-    "REFERENCIA_SUSTITUIDA",
-    "REFERENCIA_HISTORICA_SUSTITUIDA",
-)
-
+REFERENCE_MARKERS = ("REFERENCIA_SUSTITUIDA", "REFERENCIA_HISTORICA_SUSTITUIDA")
 CONTROLLED_EXTERNAL_DEMO_STATUSES = {
-    "PENDING_AUTHORIZATION",
-    "AUTHORIZED_NOT_CONSUMED",
-    "CONSUMED",
+    "PENDING_AUTHORIZATION", "AUTHORIZED_NOT_CONSUMED", "CONSUMED"
 }
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 GIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+
+
+def _read_text(path: Path) -> str:
+    return path.read_text(encoding="utf-8", errors="replace")
 
 
 def _is_under(path: Path, prefix: Path) -> bool:
@@ -88,21 +107,6 @@ def _is_under(path: Path, prefix: Path) -> bool:
     return True
 
 
-def _is_excluded(relative: Path) -> bool:
-    return any(_is_under(relative, prefix) for prefix in EXCLUDED_PREFIXES)
-
-
-def _read_text(path: Path) -> str:
-    return path.read_text(encoding="utf-8", errors="replace")
-
-
-def _value(data: dict[str, Any], *keys: str) -> Any:
-    for key in keys:
-        if key in data:
-            return data[key]
-    return None
-
-
 def _finding(field: str, expected: Any, actual: Any) -> str:
     return (
         "governance/CURRENT_STATE.json: controlled_external_demo_execution."
@@ -110,124 +114,72 @@ def _finding(field: str, expected: Any, actual: Any) -> str:
     )
 
 
-def _require_exact(
-    controlled: dict[str, Any], field: str, expected: Any, findings: list[str]
-) -> None:
-    actual = controlled.get(field)
-    if actual != expected:
-        findings.append(_finding(field, expected, actual))
+def _require_exact(data: dict[str, Any], field: str, expected: Any, findings: list[str]) -> None:
+    if data.get(field) != expected:
+        findings.append(_finding(field, expected, data.get(field)))
 
 
-def _require_nonempty_string(
-    controlled: dict[str, Any], field: str, findings: list[str]
-) -> None:
-    value = controlled.get(field)
-    if not isinstance(value, str) or not value.strip():
-        findings.append(_finding(field, "non-empty string", value))
-
-
-def _require_sha256(
-    controlled: dict[str, Any], field: str, findings: list[str]
-) -> None:
-    value = controlled.get(field)
+def _require_sha256(data: dict[str, Any], field: str, findings: list[str]) -> None:
+    value = data.get(field)
     if not isinstance(value, str) or not SHA256_RE.fullmatch(value):
         findings.append(_finding(field, "64 lowercase hexadecimal characters", value))
 
 
+def _require_nonempty_string(data: dict[str, Any], field: str, findings: list[str]) -> None:
+    value = data.get(field)
+    if not isinstance(value, str) or not value.strip():
+        findings.append(_finding(field, "non-empty string", value))
+
+
 def validate_controlled_external_demo_execution(data: Any) -> list[str]:
-    """Validate the fail-closed single external Demo execution state machine."""
+    """Validate the permanently consumed AUD-028 execution state machine."""
     if not isinstance(data, dict):
-        return [
-            "governance/CURRENT_STATE.json: controlled_external_demo_execution must be an object"
-        ]
-
+        return ["governance/CURRENT_STATE.json: controlled_external_demo_execution must be an object"]
     findings: list[str] = []
-    status = data.get("status")
-
     _require_exact(data, "schema_version", 1, findings)
-    if status not in CONTROLLED_EXTERNAL_DEMO_STATUSES:
-        findings.append(
-            _finding("status", sorted(CONTROLLED_EXTERNAL_DEMO_STATUSES), status)
-        )
-
-    _require_exact(data, "execution_limit", 1, findings)
-    _require_exact(data, "allowed_environment", "CHATGPT_NORMAL_EXTERNAL", findings)
-    _require_exact(data, "general_project_generation_enabled", False, findings)
-    _require_exact(data, "allows_release", False, findings)
-    _require_exact(data, "allows_tag", False, findings)
-    _require_exact(data, "allows_oficial", False, findings)
-    _require_exact(data, "allows_productive_closure", False, findings)
-    _require_exact(data, "allows_agent_load", False, findings)
-    _require_exact(data, "creative_output_certified", False, findings)
-
-    execution_count = data.get("execution_count")
-    if not isinstance(execution_count, int) or isinstance(execution_count, bool):
-        findings.append(_finding("execution_count", "integer 0 or 1", execution_count))
-    elif execution_count not in {0, 1}:
-        findings.append(_finding("execution_count", "0 or 1", execution_count))
-
+    _require_exact(data, "status", "CONSUMED", findings)
+    for field, expected in {
+        "authorized": False,
+        "consumed": True,
+        "execution_limit": 1,
+        "execution_count": 1,
+        "generate_executions_allowed": 0,
+        "validate_executions_allowed": 0,
+        "general_project_generation_enabled": False,
+        "authorization_id": "AUD-028",
+        "project_audit_status": "PROJECT_AUDIT_FAIL_EXTERNAL_SURFACE_DESYNC",
+        "project_agent_load_pass": False,
+        "project_ready_for_production": False,
+        "allows_release": False,
+        "allows_tag": False,
+        "allows_oficial": False,
+        "allows_productive_closure": False,
+        "allows_agent_load": False,
+        "creative_output_certified": False,
+    }.items():
+        _require_exact(data, field, expected, findings)
+    if data.get("status") not in CONTROLLED_EXTERNAL_DEMO_STATUSES:
+        findings.append(_finding("status", sorted(CONTROLLED_EXTERNAL_DEMO_STATUSES), data.get("status")))
+    for field in ("engine_tree_sha256", "engine_package_sha256", "master_report_sha256", "prompt_sha256"):
+        _require_sha256(data, field, findings)
+    for field in ("allowed_environment", "engine_package_filename", "master_report_filename", "prompt_path"):
+        _require_nonempty_string(data, field, findings)
+    if data.get("allowed_environment") != "CHATGPT_NORMAL_EXTERNAL":
+        findings.append(_finding("allowed_environment", "CHATGPT_NORMAL_EXTERNAL", data.get("allowed_environment")))
     repository_commit = data.get("repository_commit")
     if not isinstance(repository_commit, str) or not GIT_SHA_RE.fullmatch(repository_commit):
-        findings.append(
-            _finding("repository_commit", "40 lowercase hexadecimal characters", repository_commit)
-        )
-    _require_sha256(data, "engine_tree_sha256", findings)
-    _require_sha256(data, "engine_package_sha256", findings)
-    _require_sha256(data, "master_report_sha256", findings)
-    _require_nonempty_string(data, "engine_package_filename", findings)
-    _require_nonempty_string(data, "master_report_filename", findings)
-
-    authorized = data.get("authorized")
-    consumed = data.get("consumed")
-    if authorized is True and consumed is True:
-        findings.append(
-            "governance/CURRENT_STATE.json: controlled_external_demo_execution cannot be authorized and consumed simultaneously"
-        )
-
-    if status == "PENDING_AUTHORIZATION":
-        _require_exact(data, "authorized", False, findings)
-        _require_exact(data, "consumed", False, findings)
-        _require_exact(data, "execution_count", 0, findings)
-        _require_exact(data, "generate_executions_allowed", 0, findings)
-        _require_exact(data, "validate_executions_allowed", 0, findings)
-        _require_exact(data, "authorization_id", None, findings)
-        _require_exact(data, "prompt_path", None, findings)
-        _require_exact(data, "prompt_sha256", None, findings)
-
-    elif status == "AUTHORIZED_NOT_CONSUMED":
-        _require_exact(data, "authorized", True, findings)
-        _require_exact(data, "consumed", False, findings)
-        _require_exact(data, "execution_count", 0, findings)
-        _require_exact(data, "generate_executions_allowed", 1, findings)
-        validate_allowed = data.get("validate_executions_allowed")
-        if validate_allowed not in {0, 1} or isinstance(validate_allowed, bool):
-            findings.append(
-                _finding("validate_executions_allowed", "integer 0 or 1", validate_allowed)
-            )
-        _require_nonempty_string(data, "authorization_id", findings)
-        _require_nonempty_string(data, "prompt_path", findings)
-        _require_sha256(data, "prompt_sha256", findings)
-
-    elif status == "CONSUMED":
-        _require_exact(data, "authorized", False, findings)
-        _require_exact(data, "consumed", True, findings)
-        _require_exact(data, "execution_count", 1, findings)
-        _require_exact(data, "generate_executions_allowed", 0, findings)
-        _require_exact(data, "validate_executions_allowed", 0, findings)
-        _require_nonempty_string(data, "authorization_id", findings)
-        _require_nonempty_string(data, "prompt_path", findings)
-        _require_sha256(data, "prompt_sha256", findings)
-
+        findings.append(_finding("repository_commit", "40 lowercase hexadecimal characters", repository_commit))
     return findings
 
 
 def validate_current_state_data(data: dict[str, Any]) -> list[str]:
-    """Return violations of the fail-closed post-AUD-030 root state."""
+    """Return all deviations from the sole AUD-034 governance authority."""
+    findings: list[str] = []
     expected = {
-        "issue": "AUD-030",
+        "issue": "AUD-034",
         "motor_status": "EN_REVISION",
-        "m02_result": AUD030_RECOMPUTATION_STATE,
-        "m03_result": AUD030_RECOMPUTATION_STATE,
+        "m02_result": M02_RECOMPUTATION_STATE,
+        "m03_result": M03_RECOMPUTATION_STATE,
         "ready_for_project_demo_generation": False,
         "release_authorized": False,
         "tag_authorized": False,
@@ -236,233 +188,156 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         "agent_load_authorized": False,
         "creative_output_certified": False,
     }
-    findings: list[str] = []
     for key, expected_value in expected.items():
         if data.get(key) != expected_value:
-            findings.append(
-                f"governance/CURRENT_STATE.json: {key} must be {expected_value!r}, "
-                f"got {data.get(key)!r}"
-            )
+            findings.append(f"governance/CURRENT_STATE.json: {key} must be {expected_value!r}, got {data.get(key)!r}")
 
     interlock = data.get("interlock")
+    required_denials = {"PROJECT_DEMO_GENERATION", "RELEASE", "TAG", "PRODUCTIVE_CLOSURE", "OFICIAL", "AGENT_LOAD"}
     if not isinstance(interlock, dict):
         findings.append("governance/CURRENT_STATE.json: interlock must be an object")
-    else:
-        denied = set(interlock.get("denied_capabilities", []))
-        required = {
-            "PROJECT_DEMO_GENERATION", "RELEASE", "TAG", "PRODUCTIVE_CLOSURE",
-            "OFICIAL", "AGENT_LOAD",
-        }
-        missing = sorted(required - denied)
-        if missing:
-            findings.append(
-                "governance/CURRENT_STATE.json: interlock missing denied capabilities: "
-                + ", ".join(missing)
-            )
+    elif missing := sorted(required_denials - set(interlock.get("denied_capabilities", []))):
+        findings.append("governance/CURRENT_STATE.json: interlock missing denied capabilities: " + ", ".join(missing))
 
-    controlled=data.get("controlled_external_demo_execution")
-    findings.extend(validate_controlled_external_demo_execution(controlled))
-    if isinstance(controlled, dict):
-        post_aud030_expected={
-            "status":"CONSUMED",
-            "authorized":False,
-            "consumed":True,
-            "execution_count":1,
-            "generate_executions_allowed":0,
-            "validate_executions_allowed":0,
-            "authorization_id":"AUD-028",
-            "project_audit_status":"PROJECT_AUDIT_FAIL_EXTERNAL_SURFACE_DESYNC",
-            "project_agent_load_pass":False,
-            "project_ready_for_production":False,
-            "allows_release":False,
-            "allows_tag":False,
-            "allows_oficial":False,
-            "allows_productive_closure":False,
-            "allows_agent_load":False,
-            "creative_output_certified":False,
-        }
-        for field,expected_value in post_aud030_expected.items():
-            if controlled.get(field)!=expected_value:
-                findings.append(_finding(field, expected_value, controlled.get(field)))
-    engine_change=data.get("engine_change_control")
+    findings.extend(validate_controlled_external_demo_execution(data.get("controlled_external_demo_execution")))
+    engine_change = data.get("engine_change_control")
     if not isinstance(engine_change, dict):
         findings.append("governance/CURRENT_STATE.json: engine_change_control must be an object")
     else:
-        engine_expected={
-            "issue":"AUD-030",
-            "base_commit":"fb13a4f5d4bd559b4f1268103630a735b53c8999",
-            "previous_engine_tree_sha256":"628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9",
-            "current_engine_file_count":981,
-            "manifests_recomputed_with_canonical_scanner":True,
-            "m02_result":AUD030_RECOMPUTATION_STATE,
-            "m03_result":AUD030_RECOMPUTATION_STATE,
+        engine_expected = {
+            "issue": "AUD-034",
+            "base_commit": M02_RECOMPUTATION_EVIDENCE["repository_commit"],
+            "current_engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
+            "current_engine_file_count": CURRENT_ENGINE_FILE_COUNT,
+            "current_engine_byte_count": CURRENT_ENGINE_BYTE_COUNT,
+            "manifests_recomputed_with_canonical_scanner": True,
+            "m02_result": M02_RECOMPUTATION_STATE,
+            "m03_result": M03_RECOMPUTATION_STATE,
         }
-        for field,expected_value in engine_expected.items():
-            if engine_change.get(field)!=expected_value:
-                findings.append(
-                    f"governance/CURRENT_STATE.json: engine_change_control.{field} must be {expected_value!r}, got {engine_change.get(field)!r}"
-                )
-        current_sha=engine_change.get("current_engine_tree_sha256")
-        if not isinstance(current_sha, str) or not SHA256_RE.fullmatch(current_sha):
-            findings.append("governance/CURRENT_STATE.json: engine_change_control.current_engine_tree_sha256 must be 64 lowercase hexadecimal characters")
-        byte_count=engine_change.get("current_engine_byte_count")
-        if not isinstance(byte_count, int) or isinstance(byte_count, bool) or byte_count<=0:
-            findings.append("governance/CURRENT_STATE.json: engine_change_control.current_engine_byte_count must be a positive integer")
+        for field, expected_value in engine_expected.items():
+            if engine_change.get(field) != expected_value:
+                findings.append(f"governance/CURRENT_STATE.json: engine_change_control.{field} must be {expected_value!r}, got {engine_change.get(field)!r}")
+
+    recomputation = data.get("m02_recomputation")
+    if not isinstance(recomputation, dict):
+        findings.append("governance/CURRENT_STATE.json: m02_recomputation must be an object")
+    else:
+        for field, expected_value in M02_RECOMPUTATION_EVIDENCE.items():
+            if recomputation.get(field) != expected_value:
+                findings.append(f"governance/CURRENT_STATE.json: m02_recomputation.{field} must be {expected_value!r}, got {recomputation.get(field)!r}")
     return findings
 
 
-def scan_contradictions(root: Path) -> tuple[list[str], int]:
-    """Find active enabling claims; allow only explicitly superseded evidence."""
+def _validate_legacy_engine_json_surface(path: Path, data: dict[str, Any]) -> list[str]:
     findings: list[str] = []
-    historical_reference_matches = 0
-
-    for path in root.rglob("*"):
-        if not path.is_file() or path.suffix.lower() not in SCAN_SUFFIXES:
-            continue
-        relative = path.relative_to(root)
-        if _is_excluded(relative):
-            continue
-
-        text = _read_text(path)
-        matches = [pattern.pattern for pattern in DANGEROUS_PATTERNS if pattern.search(text)]
-        if not matches:
-            continue
-
-        marked_reference = any(marker in text for marker in REFERENCE_MARKERS)
-        has_m02_marker = bool(
-            re.search(r"M02_(?:FAIL|PASS)|NOT_RECOMPUTED_POST_AUD030", text)
-        )
-        has_demo_false = bool(
-            re.search(
-                r"READY_FOR_PROJECT_DEMO_GENERATION[\"\s]*[:=]\s*(?:FALSE|false)",
-                text,
-            )
-            or re.search(r'"ready_for_project_demo_generation"\s*:\s*false', text)
-        )
-
-        if marked_reference and has_m02_marker and has_demo_false:
-            historical_reference_matches += len(matches)
-            continue
-
-        findings.append(
-            f"{relative.as_posix()}: active or unclassified contradictory state token(s): "
-            + ", ".join(matches)
-        )
-
-    return findings, historical_reference_matches
-
-
-def _validate_json_surface(path: Path, data: dict[str, Any]) -> list[str]:
-    findings: list[str] = []
-    expected = (
+    for keys, expected in (
         (("motor_status", "MOTOR_STATUS"), "EN_REVISION"),
-        (("m02_result", "M02_RESULT"), AUD030_RECOMPUTATION_STATE),
-        (("m03_result", "M03_RESULT"), AUD030_RECOMPUTATION_STATE),
+        (("m02_result", "M02_RESULT"), M03_RECOMPUTATION_STATE),
+        (("m03_result", "M03_RESULT"), M03_RECOMPUTATION_STATE),
         (("ready_for_project_demo_generation", "READY_FOR_PROJECT_DEMO_GENERATION"), False),
         (("release_authorized", "RELEASE_AUTHORIZED"), False),
         (("productive_closure_authorized", "PRODUCTIVE_CLOSURE_AUTHORIZED"), False),
         (("creative_output_certified", "CREATIVE_OUTPUT_CERTIFIED"), False),
-    )
-    for keys, expected_value in expected:
-        observed = _value(data, *keys)
-        if observed != expected_value:
-            findings.append(
-                f"{path.as_posix()}: {'/'.join(keys)} must be {expected_value!r}, got {observed!r}"
-            )
+    ):
+        actual = next((data[key] for key in keys if key in data), None)
+        if actual != expected:
+            findings.append(f"{path.as_posix()}: {'/'.join(keys)} must remain {expected!r}, got {actual!r}")
     return findings
+
+
+def scan_contradictions(root: Path) -> tuple[list[str], int]:
+    """Find active enabling claims while preserving marked historical references."""
+    findings: list[str] = []
+    historical_matches = 0
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in SCAN_SUFFIXES:
+            continue
+        relative = path.relative_to(root)
+        if any(_is_under(relative, prefix) for prefix in EXCLUDED_PREFIXES):
+            continue
+        text = _read_text(path)
+        matches = [pattern.pattern for pattern in DANGEROUS_PATTERNS if pattern.search(text)]
+        if not matches:
+            continue
+        marked_reference = any(marker in text for marker in REFERENCE_MARKERS)
+        has_m02_marker = bool(re.search(r"M02_(?:FAIL|PASS)|NOT_RECOMPUTED_POST_AUD030", text))
+        has_demo_false = bool(re.search(r"READY_FOR_PROJECT_DEMO_GENERATION[\"\s]*[:=]\s*(?:FALSE|false)", text) or re.search(r'"ready_for_project_demo_generation"\s*:\s*false', text))
+        if marked_reference and has_m02_marker and has_demo_false:
+            historical_matches += len(matches)
+        else:
+            findings.append(f"{relative.as_posix()}: active or unclassified contradictory state token(s): " + ", ".join(matches))
+    return findings, historical_matches
+
+
+def _require_text_tokens(root: Path, surfaces: tuple[Path, ...], patterns: tuple[tuple[str, re.Pattern[str]], ...], findings: list[str]) -> None:
+    for relative in surfaces:
+        path = root / relative
+        if not path.is_file():
+            findings.append(f"Missing state surface: {relative.as_posix()}")
+            continue
+        text = _read_text(path)
+        for label, pattern in patterns:
+            if not pattern.search(text):
+                findings.append(f"{relative.as_posix()}: missing required token {label}")
 
 
 def audit_repository(root: Path) -> dict[str, Any]:
     root = root.resolve()
     findings: list[str] = []
-
-    state_file = root / STATE_PATH
     state: dict[str, Any] = {}
-    if not state_file.is_file():
+    try:
+        state = json.loads(_read_text(root / STATE_PATH))
+        findings.extend(validate_current_state_data(state))
+    except FileNotFoundError:
         findings.append(f"Missing state authority: {STATE_PATH.as_posix()}")
-    else:
-        try:
-            state = json.loads(_read_text(state_file))
-            findings.extend(validate_current_state_data(state))
-        except json.JSONDecodeError as exc:
-            findings.append(f"{STATE_PATH.as_posix()}: invalid JSON: {exc}")
+    except json.JSONDecodeError as exc:
+        findings.append(f"{STATE_PATH.as_posix()}: invalid JSON: {exc}")
 
-    for relative in JSON_STATE_SURFACES:
+    for relative in LEGACY_ENGINE_JSON_STATE_SURFACES:
         path = root / relative
         if not path.is_file():
-            findings.append(f"Missing state surface: {relative.as_posix()}")
+            findings.append(f"Missing legacy engine state surface: {relative.as_posix()}")
             continue
         try:
-            data = json.loads(_read_text(path))
+            findings.extend(_validate_legacy_engine_json_surface(relative, json.loads(_read_text(path))))
         except json.JSONDecodeError as exc:
             findings.append(f"{relative.as_posix()}: invalid JSON: {exc}")
-            continue
-        findings.extend(_validate_json_surface(relative, data))
 
-    engine_manifest={}
-    engine_manifest_path=root/ENGINE_TREE_MANIFEST_PATH
-    if not engine_manifest_path.is_file():
+    engine_manifest: dict[str, Any] = {}
+    try:
+        engine_manifest = json.loads(_read_text(root / ENGINE_TREE_MANIFEST_PATH))
+    except FileNotFoundError:
         findings.append(f"Missing engine tree manifest: {ENGINE_TREE_MANIFEST_PATH.as_posix()}")
-    else:
-        try:
-            engine_manifest=json.loads(_read_text(engine_manifest_path))
-        except json.JSONDecodeError as exc:
-            findings.append(f"{ENGINE_TREE_MANIFEST_PATH.as_posix()}: invalid JSON: {exc}")
-    engine_change=state.get("engine_change_control", {}) if isinstance(state, dict) else {}
+    except json.JSONDecodeError as exc:
+        findings.append(f"{ENGINE_TREE_MANIFEST_PATH.as_posix()}: invalid JSON: {exc}")
+    engine_change = state.get("engine_change_control", {})
     if isinstance(engine_change, dict) and engine_manifest:
-        parity=(
-            engine_change.get("current_engine_tree_sha256")==engine_manifest.get("tree_sha256")
-            and engine_change.get("current_engine_file_count")==engine_manifest.get("file_count")
-            and engine_change.get("current_engine_byte_count")==engine_manifest.get("byte_count")
-        )
-        if not parity:
+        if any((engine_change.get("current_engine_tree_sha256") != engine_manifest.get("tree_sha256"), engine_change.get("current_engine_file_count") != engine_manifest.get("file_count"), engine_change.get("current_engine_byte_count") != engine_manifest.get("byte_count"))):
             findings.append("governance/CURRENT_STATE.json: engine_change_control does not match canonical engine tree manifest")
 
-    required_text_patterns = (
-        (
-            "M02_RESULT=NOT_RECOMPUTED_POST_AUD030",
-            re.compile(r"M02_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE),
-        ),
-        (
-            "M03_RESULT=NOT_RECOMPUTED_POST_AUD030",
-            re.compile(r"M03_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE),
-        ),
+    _require_text_tokens(root, ROOT_TEXT_STATE_SURFACES, (
+        ("M02_RESULT=M02_PASS_RECOMPUTED_POST_AUD033", re.compile(r"M02_(?:RESULT)?[\"\s]*[:=]\s*M02_PASS_RECOMPUTED_POST_AUD033", re.IGNORECASE)),
+        ("M03_RESULT=NOT_RECOMPUTED_POST_AUD030", re.compile(r"M03_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE)),
         ("EN_REVISION", re.compile(r"EN_REVISION")),
-        (
-            "READY_FOR_PROJECT_DEMO_GENERATION=false",
-            re.compile(
-                r"ready_for_project_demo_generation[\"\s]*[:=]\s*false",
-                re.IGNORECASE,
-            ),
-        ),
-        (
-            "CREATIVE_OUTPUT_CERTIFIED=false",
-            re.compile(r"creative_output_certified[\"\s]*[:=]\s*false", re.IGNORECASE),
-        ),
-    )
-    for relative in TEXT_STATE_SURFACES:
-        path = root / relative
-        if not path.is_file():
-            findings.append(f"Missing state surface: {relative.as_posix()}")
-            continue
-        text = _read_text(path)
-        for label, pattern in required_text_patterns:
-            if not pattern.search(text):
-                findings.append(f"{relative.as_posix()}: missing required token {label}")
+        ("READY_FOR_PROJECT_DEMO_GENERATION=false", re.compile(r"ready_for_project_demo_generation[\"\s]*[:=]\s*false", re.IGNORECASE)),
+        ("CREATIVE_OUTPUT_CERTIFIED=false", re.compile(r"creative_output_certified[\"\s]*[:=]\s*false", re.IGNORECASE)),
+    ), findings)
+    _require_text_tokens(root, LEGACY_ENGINE_TEXT_STATE_SURFACES, (
+        ("legacy M02 not recomputed", re.compile(r"M02_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE)),
+        ("legacy M03 not recomputed", re.compile(r"M03_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE)),
+        ("EN_REVISION", re.compile(r"EN_REVISION")),
+    ), findings)
 
-    contradiction_findings, historical_reference_matches = scan_contradictions(root)
+    contradiction_findings, historical_matches = scan_contradictions(root)
     findings.extend(contradiction_findings)
-
     controlled = state.get("controlled_external_demo_execution", {})
     return {
         "result": "CONSISTENT" if not findings else "INCONSISTENT",
-        "scope": "AUD-006_AUD-030_governance_state_only",
+        "scope": "AUD-034_governance_state_only",
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),
         "m03_result": state.get("m03_result"),
-        "ready_for_project_demo_generation": state.get(
-            "ready_for_project_demo_generation"
-        ),
+        "ready_for_project_demo_generation": state.get("ready_for_project_demo_generation"),
         "release_authorized": state.get("release_authorized"),
         "tag_authorized": state.get("tag_authorized"),
         "productive_closure_authorized": state.get("productive_closure_authorized"),
@@ -472,7 +347,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
         "controlled_external_demo_consumed": controlled.get("consumed"),
         "current_engine_tree_sha256": engine_change.get("current_engine_tree_sha256") if isinstance(engine_change, dict) else None,
         "active_contradiction_count": len(contradiction_findings),
-        "historical_reference_match_count": historical_reference_matches,
+        "historical_reference_match_count": historical_matches,
         "findings": findings,
     }
 
@@ -481,7 +356,6 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
     args = parser.parse_args()
-
     report = audit_repository(Path(args.repo_root))
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return 0 if report["result"] == "CONSISTENT" else 1

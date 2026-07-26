@@ -8,8 +8,17 @@ from pathlib import Path
 
 from tools.audit.baseline_scanner import (
     CURRENT_MANIFEST_REL,
+    CURRENT_TREE_BYTE_COUNT,
+    CURRENT_TREE_FILE_COUNT,
+    CURRENT_TREE_SHA256,
+    PHYSICAL_MANIFEST_M02_SNAPSHOT,
+    PHYSICAL_MANIFEST_M03_SNAPSHOT,
+    PHYSICAL_MANIFEST_STATE_CLASSIFICATION,
+    ROOT_M02_RESULT,
+    ROOT_M03_RESULT,
     audit_repository,
     verify_manifest_records,
+    write_artifacts,
 )
 
 
@@ -21,8 +30,22 @@ class BaselineScannerTest(unittest.TestCase):
         report = audit_repository(REPO_ROOT)
         self.assertEqual(report["result"], "PASS", json.dumps(report, indent=2))
         self.assertEqual(report["aud003_scope_result"], "PARTIAL_PASS")
-        self.assertEqual(report["m02_result"], "NOT_RECOMPUTED_POST_AUD030")
-        self.assertEqual(report["m03_result"], "NOT_RECOMPUTED_POST_AUD030")
+        self.assertEqual(report["root_issue"], "AUD-034")
+        self.assertEqual(report["root_m02_result"], ROOT_M02_RESULT)
+        self.assertEqual(report["root_m03_result"], ROOT_M03_RESULT)
+        self.assertEqual(
+            report["physical_manifest_m02_snapshot"], PHYSICAL_MANIFEST_M02_SNAPSHOT
+        )
+        self.assertEqual(
+            report["physical_manifest_m03_snapshot"], PHYSICAL_MANIFEST_M03_SNAPSHOT
+        )
+        self.assertEqual(
+            report["physical_manifest_state_classification"],
+            PHYSICAL_MANIFEST_STATE_CLASSIFICATION,
+        )
+        self.assertEqual(report["current_tree_sha256"], CURRENT_TREE_SHA256)
+        self.assertEqual(report["current_tree_file_count"], CURRENT_TREE_FILE_COUNT)
+        self.assertEqual(report["current_tree_byte_count"], CURRENT_TREE_BYTE_COUNT)
         self.assertEqual(report["indexed_missing_path_count"], 0)
         self.assertEqual(report["physical_unmanifested_path_count"], 0)
         self.assertEqual(report["stale_active_manifest_path_count"], 0)
@@ -47,7 +70,19 @@ class BaselineScannerTest(unittest.TestCase):
             text=True,
         )
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertEqual(json.loads(result.stdout)["result"], "PASS")
+        report = json.loads(result.stdout)
+        self.assertEqual(report["result"], "PASS")
+        self.assertEqual(report["root_m02_result"], ROOT_M02_RESULT)
+        self.assertEqual(
+            report["physical_manifest_m02_snapshot"],
+            PHYSICAL_MANIFEST_M02_SNAPSHOT,
+        )
+
+    def test_write_is_blocked_before_any_engine_manifest_rewrite_for_aud034(self):
+        with self.assertRaisesRegex(
+            ValueError, "AUD034_BLOCKED_GOVERNANCE_ONLY_NO_ENGINE_MANIFEST_REWRITE"
+        ):
+            write_artifacts(REPO_ROOT)
 
 
 if __name__ == "__main__":

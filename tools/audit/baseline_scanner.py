@@ -30,7 +30,17 @@ RECEIPT_REL = Path("governance/baseline/IDUNEX_MOTOR_v1.0.0_BASELINE_RECEIPT.jso
 REMAP_REL = Path("governance/baseline/WINDOWS_PATH_SAFE_REMAP.json")
 MOVEMENT_REL = Path("docs/audits/AUD-008-movement-reversal-manifest.json")
 STATE_REL = Path("governance/CURRENT_STATE.json")
-AUD030_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD030"
+ROOT_ISSUE = "AUD-034"
+ROOT_M02_RESULT = "M02_PASS_RECOMPUTED_POST_AUD033"
+ROOT_M03_RESULT = "NOT_RECOMPUTED_POST_AUD030"
+PHYSICAL_MANIFEST_M02_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD030"
+PHYSICAL_MANIFEST_M03_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD030"
+PHYSICAL_MANIFEST_STATE_CLASSIFICATION = (
+    "PHYSICAL_TREE_SNAPSHOT_NON_AUTHORITY_FOR_CURRENT_M02"
+)
+CURRENT_TREE_SHA256 = "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7"
+CURRENT_TREE_FILE_COUNT = 981
+CURRENT_TREE_BYTE_COUNT = 47323574
 
 INTERNAL_JSON_MANIFESTS = (
     "99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json",
@@ -295,18 +305,20 @@ def build_diff(root: Path, current_indexable: list[dict[str, Any]]) -> dict[str,
 
 def write_artifacts(root: Path) -> dict[str, Any]:
     root = root.resolve()
+    state = json.loads((root / STATE_REL).read_text(encoding="utf-8"))
+    if state.get("issue") == ROOT_ISSUE:
+        raise ValueError("AUD034_BLOCKED_GOVERNANCE_ONLY_NO_ENGINE_MANIFEST_REWRITE")
     if not (root / RECEIVED_LEDGER_REL).is_file():
         raise FileNotFoundError(
             f"Historical received ledger must be preserved before regeneration: {RECEIVED_LEDGER_REL}"
         )
     engine_root = root / ENGINE_REL
-    state = json.loads((root / STATE_REL).read_text(encoding="utf-8"))
     m02_result=state.get("m02_result")
     m03_result=state.get("m03_result")
     if (
         state.get("issue")!="AUD-030"
-        or m02_result!=AUD030_RECOMPUTATION_STATE
-        or m03_result!=AUD030_RECOMPUTATION_STATE
+        or m02_result!=PHYSICAL_MANIFEST_M02_SNAPSHOT
+        or m03_result!=PHYSICAL_MANIFEST_M03_SNAPSHOT
     ):
         raise ValueError("AUD030_BLOCKED_INCOHERENT_RECOMPUTATION_STATE")
     indexable = snapshot_tree(engine_root, exclude_internal=True)
@@ -435,8 +447,6 @@ def audit_repository(root: Path) -> dict[str, Any]:
     root = root.resolve()
     findings: list[str] = []
     state = json.loads((root / STATE_REL).read_text(encoding="utf-8"))
-    expected_m02=state.get("m02_result")
-    expected_m03=state.get("m03_result")
     current = json.loads((root / CURRENT_MANIFEST_REL).read_text(encoding="utf-8"))
     external = verify_manifest_records(
         root / ENGINE_REL, current.get("files", []), repository_paths=True
@@ -456,8 +466,11 @@ def audit_repository(root: Path) -> dict[str, Any]:
     declared_count_ok = current.get("file_count") == len(external_records)
     if not declared_tree_ok or not declared_count_ok:
         findings.append("CURRENT_EXTERNAL_SUMMARY_MISMATCH")
-    if current.get("m02_result")!=expected_m02 or current.get("m03_result")!=expected_m03:
-        findings.append("CURRENT_EXTERNAL_RECOMPUTATION_STATE_MISMATCH")
+    if (
+        current.get("m02_result") != PHYSICAL_MANIFEST_M02_SNAPSHOT
+        or current.get("m03_result") != PHYSICAL_MANIFEST_M03_SNAPSHOT
+    ):
+        findings.append("CURRENT_EXTERNAL_PHYSICAL_SNAPSHOT_MISMATCH")
 
     sha_lines = (root / CURRENT_SHA_REL).read_text(encoding="utf-8").splitlines()
     sha_matches = [HASH_LINE.match(line) for line in sha_lines]
@@ -476,13 +489,17 @@ def audit_repository(root: Path) -> dict[str, Any]:
             or result["duplicate_path_count"]
             or not result["declared_file_count_matches"]
             or not result["declared_tree_sha256_matches"]
-            or result["m02_result"]!=expected_m02
-            or result["m03_result"]!=expected_m03
+            or result["m02_result"] != PHYSICAL_MANIFEST_M02_SNAPSHOT
+            or result["m03_result"] != PHYSICAL_MANIFEST_M03_SNAPSHOT
         ):
             findings.append(f"INTERNAL_MANIFEST_MISMATCH:{result['path']}")
 
     actual_indexable = snapshot_tree(root / ENGINE_REL, exclude_internal=True)
-    expected_text = _internal_text(actual_indexable, expected_m02, expected_m03).encode("utf-8")
+    expected_text = _internal_text(
+        actual_indexable,
+        PHYSICAL_MANIFEST_M02_SNAPSHOT,
+        PHYSICAL_MANIFEST_M03_SNAPSHOT,
+    ).encode("utf-8")
     text_manifest_sync = all(
         (root / ENGINE_REL / path).read_bytes() == expected_text
         for path in INTERNAL_TEXT_MANIFESTS
@@ -502,19 +519,24 @@ def audit_repository(root: Path) -> dict[str, Any]:
 
     engine_change=state.get("engine_change_control", {})
     state_ok = (
-        state.get("issue") == "AUD-030"
+        state.get("issue") == ROOT_ISSUE
         and state.get("motor_status") == "EN_REVISION"
-        and state.get("m02_result") == AUD030_RECOMPUTATION_STATE
-        and state.get("m03_result") == AUD030_RECOMPUTATION_STATE
+        and state.get("m02_result") == ROOT_M02_RESULT
+        and state.get("m03_result") == ROOT_M03_RESULT
         and state.get("ready_for_project_demo_generation") is False
         and state.get("release_authorized") is False
         and state.get("tag_authorized") is False
+        and state.get("productive_closure_authorized") is False
         and state.get("oficial_authorized") is False
         and state.get("agent_load_authorized") is False
+        and state.get("creative_output_certified") is False
         and isinstance(engine_change, dict)
-        and engine_change.get("current_engine_tree_sha256")==current.get("tree_sha256")
-        and engine_change.get("current_engine_file_count")==current.get("file_count")
-        and engine_change.get("current_engine_byte_count")==current.get("byte_count")
+        and engine_change.get("current_engine_tree_sha256") == CURRENT_TREE_SHA256
+        and engine_change.get("current_engine_file_count") == CURRENT_TREE_FILE_COUNT
+        and engine_change.get("current_engine_byte_count") == CURRENT_TREE_BYTE_COUNT
+        and current.get("tree_sha256") == CURRENT_TREE_SHA256
+        and current.get("file_count") == CURRENT_TREE_FILE_COUNT
+        and current.get("byte_count") == CURRENT_TREE_BYTE_COUNT
     )
     if not state_ok:
         findings.append("GLOBAL_STATE_INTERLOCK_CHANGED")
@@ -523,6 +545,12 @@ def audit_repository(root: Path) -> dict[str, Any]:
         "audit": "AUD-003_PHYSICAL_BASELINE_SCANNER",
         "result": "PASS" if not findings else "FAIL",
         "aud003_scope_result": "PARTIAL_PASS" if not findings else "FAIL",
+        "root_issue": state.get("issue"),
+        "root_m02_result": state.get("m02_result"),
+        "root_m03_result": state.get("m03_result"),
+        "physical_manifest_m02_snapshot": current.get("m02_result"),
+        "physical_manifest_m03_snapshot": current.get("m03_result"),
+        "physical_manifest_state_classification": PHYSICAL_MANIFEST_STATE_CLASSIFICATION,
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),
         "m03_result": state.get("m03_result"),
