@@ -23,10 +23,10 @@ class H113CurrentTreeIdentityGenerateTest(unittest.TestCase):
         baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
         state = json.loads(STATE.read_text(encoding="utf-8"))
         repository_manifest = REPOSITORY_MANIFEST.read_text(encoding="utf-8")
-        self.assertEqual(state["issue"], "AUD-034")
+        self.assertEqual(state["issue"], "AUD-035")
         self.assertEqual(state["motor_status"], "EN_REVISION")
-        self.assertEqual(state["m02_result"], "M02_PASS_RECOMPUTED_POST_AUD033")
-        self.assertEqual(state["m03_result"], "NOT_RECOMPUTED_POST_AUD030")
+        self.assertEqual(state["m02_result"], "NOT_RECOMPUTED_POST_AUD035")
+        self.assertEqual(state["m03_result"], "NOT_RECOMPUTED_POST_AUD035")
         self.assertFalse(state["release_authorized"])
         self.assertFalse(state["tag_authorized"])
         self.assertFalse(state["oficial_authorized"])
@@ -58,7 +58,7 @@ class H113CurrentTreeIdentityGenerateTest(unittest.TestCase):
             output_dir = root / "output"
             result_path = root / "generate.json"
             input_path.write_text(json.dumps({
-                "project_id": "IDUNEX_PROJECT_AUD033_H113_N1_v1.0.0",
+                "project_id": "IDUNEX_PROJECT_AUD035_H113_N1_v1.0.0",
                 "models": [{}],
             }), encoding="utf-8")
             completed = subprocess.run([
