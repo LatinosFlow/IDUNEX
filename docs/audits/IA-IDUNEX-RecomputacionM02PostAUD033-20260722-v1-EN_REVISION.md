@@ -41,6 +41,14 @@ AUD-028 permanece `CONSUMED` y no puede reutilizarse. Agentes, release, tag, OFI
 
 ## Alcance, pruebas y reversa
 
-Archivos modificados: `governance/CURRENT_STATE.json`, `tools/audit/governance_state_check.py`, `tests/intake/test_governance_state.py`, `README.md`, `GOVERNANCE_STATUS.md` y `REPOSITORY_MANIFEST.yml`; este documento completa el séptimo archivo autorizado. No se modificó `engine/IDUNEX`.
+Archivos modificados: los siete archivos de gobernanza originales, este documento y los dos archivos de corrección secuencial `tools/audit/baseline_scanner.py` y `tests/intake/test_baseline_scanner.py`; el alcance total es de nueve archivos autorizados. No se modificó `engine/IDUNEX`.
 
 Las pruebas de gobernanza, intake, seguridad ligera y consistencia de diff se ejecutan antes de la entrega. La reversa consiste en revertir el commit de AUD-034, lo que restituye el estado canónico anterior sin alterar el árbol del motor.
+
+## Corrección secuencial del baseline scanner
+
+El run CI fallido `30182714053` detectó que el scanner comparaba indebidamente la autoridad raíz AUD-034 contra los campos M02/M03 de los manifests físicos existentes. Los hashes, bytes, file count, rutas, remap, companion y received ledger permanecieron íntegros; no se regeneraron manifests físicos.
+
+La corrección separa la autoridad raíz `governance/CURRENT_STATE.json` (`AUD-034`, `M02_PASS_RECOMPUTED_POST_AUD033`, `NOT_RECOMPUTED_POST_AUD030`) del snapshot físico de lineage (`NOT_RECOMPUTED_POST_AUD030` para M02 y M03), clasificado como `PHYSICAL_TREE_SNAPSHOT_NON_AUTHORITY_FOR_CURRENT_M02`. La ruta `--write` queda bloqueada para AUD-034 antes de cualquier escritura: `AUD034_BLOCKED_GOVERNANCE_ONLY_NO_ENGINE_MANIFEST_REWRITE`.
+
+No hay cambios en `engine/IDUNEX` ni regeneración de manifests físicos. La reversa de esta corrección es revertir su commit en la misma rama; el árbol físico y su identidad permanecen intactos. `CREATIVE_OUTPUT_CERTIFIED=FALSE`.
