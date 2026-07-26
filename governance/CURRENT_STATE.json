@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "issue": "AUD-034",
+  "issue": "AUD-035",
   "authority": "governance/CURRENT_STATE.json",
-  "effective_date": "2026-07-22",
+  "effective_date": "2026-07-26",
   "motor_status": "EN_REVISION",
-  "m02_result": "M02_PASS_RECOMPUTED_POST_AUD033",
-  "m03_result": "NOT_RECOMPUTED_POST_AUD030",
+  "m02_result": "NOT_RECOMPUTED_POST_AUD035",
+  "m03_result": "NOT_RECOMPUTED_POST_AUD035",
   "m04_result": "M04_PASS",
   "aud020_result": "AUD020_PASS",
   "ready_for_project_demo_generation": false,
@@ -17,7 +17,7 @@
   "creative_output_certified": false,
   "interlock": {
     "condition": "motor_status == EN_REVISION",
-    "rule": "M02 is recomputed and validated for the current engine tree, while M03 remains NOT_RECOMPUTED_POST_AUD030 and blocked by AUD-032. An M02 PASS alone does not enable general Project Demo generation. AUD-028 remains CONSUMED and cannot be reused. Agent loading, release, tag, OFICIAL status and productive closure remain denied while the motor is EN_REVISION.",
+    "rule": "M02 and M03 are NOT_RECOMPUTED_POST_AUD035 for the proposed current tree until merge. Demo, agent loading, release, tag, OFICIAL status and productive closure remain denied. AUD-028 remains CONSUMED and cannot be reused.",
     "denied_capabilities": [
       "PROJECT_DEMO_GENERATION",
       "RELEASE",
@@ -28,15 +28,15 @@
     ]
   },
   "engine_change_control": {
-    "issue": "AUD-034",
+    "issue": "AUD-035",
     "base_commit": "1fc082bfcae5b590066309727c120500de976378",
     "previous_engine_tree_sha256": "628985889720f83e7c4c382791192ad48025c4c54a59314e69de0207770aafb9",
-    "current_engine_tree_sha256": "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
+    "current_engine_tree_sha256": "22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb",
     "current_engine_file_count": 981,
-    "current_engine_byte_count": 47323574,
+    "current_engine_byte_count": 47324957,
     "manifests_recomputed_with_canonical_scanner": true,
-    "m02_result": "M02_PASS_RECOMPUTED_POST_AUD033",
-    "m03_result": "NOT_RECOMPUTED_POST_AUD030",
+    "m02_result": "NOT_RECOMPUTED_POST_AUD035",
+    "m03_result": "NOT_RECOMPUTED_POST_AUD035",
     "previous_current_engine_tree_sha256": "d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d",
     "child_correction_issue": "AUD-031",
     "child_correction_base_commit": "2790468f6b3bcc5286761def779276e8a77b6d20",
@@ -81,7 +81,7 @@
     "allows_agent_load": false,
     "creative_output_certified": false
   },
-  "m02_recomputation": {
+  "prior_m02_recomputation_evidence": {
     "run_id": 29941393366,
     "job_id": 88995880545,
     "artifact_id": 8539029665,
@@ -91,12 +91,13 @@
     "engine_tree_sha256": "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
     "engine_file_count": 981,
     "engine_byte_count": 47323574,
-    "runtime_validator": "PASS",
-    "matrix": "30/30_PASS",
-    "mutation": "506/506_PASS",
-    "positive_fixture": "PASS",
-    "restoration_retest": "PASS",
-    "technical_score": "10/10",
+    "classification": "REFERENCIA_SUSTITUIDA",
+    "runtime_validator": "HISTORICAL_REFERENCE_ONLY",
+    "matrix": "HISTORICAL_REFERENCE_ONLY",
+    "mutation": "HISTORICAL_REFERENCE_ONLY",
+    "positive_fixture": "HISTORICAL_REFERENCE_ONLY",
+    "restoration_retest": "HISTORICAL_REFERENCE_ONLY",
+    "technical_score": "HISTORICAL_REFERENCE_ONLY",
     "creative_output_certified": false,
     "inherited_audit_id": "AUD-026-M02-POST-PR44",
     "inherited_audit_id_classification": "METADATA_HEREDADA_NO_AUTORIDAD_NOMINAL"
@@ -111,8 +112,8 @@
     "engine/IDUNEX/11_RELEASE_INTERNAL",
     "engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE"
   ],
-  "last_correction_issue": "AUD-033",
-  "last_failed_m02_run": 29936388876,
-  "last_diagnostic_run": 29937730988,
+  "last_correction_issue": "AUD-035",
+  "last_failed_m02_run": 30189604763,
+  "last_diagnostic_run": 30189604763,
   "last_external_certificate_contract_fix": "AUD-033_EXACT_ONE_VALIDATION_HEADER"
 }

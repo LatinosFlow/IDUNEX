@@ -15,8 +15,8 @@ WORKFLOW_PATH = REPO_ROOT / ".github" / "workflows" / "m03-adversarial.yml"
 HARNESS_PATH = REPO_ROOT / "tests" / "m03" / "test_adversarial_harness.py"
 
 FILE_COUNT = 981
-BYTE_COUNT = 47_323_574
-TREE_SHA256 = "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7"
+BYTE_COUNT = 47_324_957
+TREE_SHA256 = "22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb"
 FORBIDDEN_ACTIVE_CONTRACTS = ("8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd", "47321777", "d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d", "47322002")
 
 
@@ -48,10 +48,10 @@ def contract_failures(workflow: str, harness: str) -> list[str]:
         "FAIL_AUD032_WORKFLOW_SHA": f"default: {TREE_SHA256}",
         "FAIL_AUD032_WORKFLOW_FILE_COUNT": "if len(files) != 981:",
         "FAIL_AUD032_WORKFLOW_BYTE_COUNT": "if byte_count != 47_323_574:",
-        "FAIL_AUD032_WORKFLOW_MANIFEST_BYTES": "r'bytes:\\s*47323574\\b'",
-        "FAIL_AUD032_WORKFLOW_ISSUE": "'issue': 'AUD-034'",
-        "FAIL_AUD032_WORKFLOW_M02": "'m02_result': 'M02_PASS_RECOMPUTED_POST_AUD033'",
-        "FAIL_AUD032_WORKFLOW_M03": "'m03_result': 'NOT_RECOMPUTED_POST_AUD030'",
+        "FAIL_AUD035_WORKFLOW_MANIFEST_BYTES": "r'bytes:\\s*47324957\\b'",
+        "FAIL_AUD035_WORKFLOW_ISSUE": "'issue': 'AUD-035'",
+        "FAIL_AUD035_WORKFLOW_M02": "'m02_result': 'NOT_RECOMPUTED_POST_AUD035'",
+        "FAIL_AUD035_WORKFLOW_M03": "'m03_result': 'NOT_RECOMPUTED_POST_AUD035'",
         "FAIL_AUD032_WORKFLOW_OFICIAL_INTERLOCK": "'oficial_authorized': False",
         "FAIL_AUD032_WORKFLOW_AGENT_LOAD_INTERLOCK": "'agent_load_authorized': False",
         "FAIL_AUD032_WORKFLOW_AUD028_STATUS": "'status': 'CONSUMED'",
@@ -89,10 +89,10 @@ class M03WorkflowContractTest(unittest.TestCase):
         self.assertEqual(physical_identity(), expected)
         self.assertEqual({key: baseline.get(key) for key in expected}, expected)
         self.assertEqual(current_manifest_identity(MANIFEST_PATH.read_text(encoding="utf-8")), (FILE_COUNT, BYTE_COUNT, TREE_SHA256))
-        self.assertEqual(state.get("issue"), "AUD-034")
+        self.assertEqual(state.get("issue"), "AUD-035")
         self.assertEqual(state.get("motor_status"), "EN_REVISION")
-        self.assertEqual(state.get("m02_result"), "M02_PASS_RECOMPUTED_POST_AUD033")
-        self.assertEqual(state.get("m03_result"), "NOT_RECOMPUTED_POST_AUD030")
+        self.assertEqual(state.get("m02_result"), "NOT_RECOMPUTED_POST_AUD035")
+        self.assertEqual(state.get("m03_result"), "NOT_RECOMPUTED_POST_AUD035")
         for key in ("ready_for_project_demo_generation", "release_authorized", "tag_authorized", "productive_closure_authorized", "oficial_authorized", "agent_load_authorized", "creative_output_certified"):
             self.assertFalse(state.get(key), key)
         controlled = state.get("controlled_external_demo_execution", {})
@@ -111,10 +111,10 @@ class M03WorkflowContractTest(unittest.TestCase):
             (workflow, harness.replace(f'EXPECTED_ENGINE_TREE_SHA256 = "{TREE_SHA256}"', 'EXPECTED_ENGINE_TREE_SHA256 = "' + "0" * 64 + '"', 1), "FAIL_AUD032_HARNESS_SHA"),
             (workflow, harness.replace("EXPECTED_BYTE_COUNT = 47_323_574", "EXPECTED_BYTE_COUNT = 1", 1), "FAIL_AUD032_HARNESS_BYTE_COUNT"),
             (workflow, harness.replace("EXPECTED_FILE_COUNT = 981", "EXPECTED_FILE_COUNT = 1", 1), "FAIL_AUD032_HARNESS_FILE_COUNT"),
-            (workflow.replace("'issue': 'AUD-034'", "'issue': 'AUD-030'", 1), harness, "FAIL_AUD032_WORKFLOW_ISSUE"),
-            (workflow.replace("'m02_result': 'M02_PASS_RECOMPUTED_POST_AUD033'", "'m02_result': 'M02_PASS'", 1), harness, "FAIL_AUD032_WORKFLOW_M02"),
-            (workflow.replace("'m02_result': 'M02_PASS_RECOMPUTED_POST_AUD033'", "'m02_result': 'NOT_RECOMPUTED_POST_AUD030'", 1), harness, "FAIL_AUD032_WORKFLOW_M02"),
-            (workflow.replace("'m03_result': 'NOT_RECOMPUTED_POST_AUD030'", "'m03_result': 'M03_PASS'", 1), harness, "FAIL_AUD032_WORKFLOW_M03"),
+            (workflow.replace("'issue': 'AUD-035'", "'issue': 'AUD-030'", 1), harness, "FAIL_AUD035_WORKFLOW_ISSUE"),
+            (workflow.replace("'m02_result': 'NOT_RECOMPUTED_POST_AUD035'", "'m02_result': 'M02_PASS'", 1), harness, "FAIL_AUD035_WORKFLOW_M02"),
+            (workflow.replace("'m02_result': 'NOT_RECOMPUTED_POST_AUD035'", "'m02_result': 'NOT_RECOMPUTED_POST_AUD030'", 1), harness, "FAIL_AUD035_WORKFLOW_M02"),
+            (workflow.replace("'m03_result': 'NOT_RECOMPUTED_POST_AUD035'", "'m03_result': 'M03_PASS'", 1), harness, "FAIL_AUD035_WORKFLOW_M03"),
             (workflow.replace("workflow_dispatch:", "push:", 1), harness, "FAIL_AUD032_M03_PUSH_TRIGGER"),
             (workflow.replace("workflow_dispatch:", "pull_request:", 1), harness, "FAIL_AUD032_M03_PULL_REQUEST_TRIGGER"),
             (workflow.replace("workflow_dispatch:", "schedule:", 1), harness, "FAIL_AUD032_M03_SCHEDULE_TRIGGER"),

@@ -18,7 +18,7 @@ def aud034_state() -> dict:
 
 
 class GovernanceStateTest(unittest.TestCase):
-    def test_01_current_aud034_state_passes_checker(self):
+    def test_01_current_aud035_state_passes_checker(self):
         result = subprocess.run(
             [sys.executable, "tools/audit/governance_state_check.py", "--repo-root", "."],
             check=False,
@@ -29,7 +29,7 @@ class GovernanceStateTest(unittest.TestCase):
         report = json.loads(result.stdout)
         self.assertEqual(report["result"], "CONSISTENT")
         self.assertEqual(report["m02_result"], M02_RECOMPUTATION_STATE)
-        self.assertEqual(report["m03_result"], "NOT_RECOMPUTED_POST_AUD030")
+        self.assertEqual(report["m03_result"], "NOT_RECOMPUTED_POST_AUD035")
 
     def test_02_generic_m02_pass_is_rejected(self):
         state = aud034_state()
@@ -68,12 +68,12 @@ class GovernanceStateTest(unittest.TestCase):
 
     def test_08_artifact_sha_must_match_authorized_evidence(self):
         state = aud034_state()
-        state["m02_recomputation"]["artifact_sha256"] = "0" * 64
+        state["prior_m02_recomputation_evidence"]["artifact_sha256"] = "0" * 64
         self.assertTrue(any("artifact_sha256" in finding for finding in validate_current_state_data(state)))
 
     def test_09_engine_tree_sha_must_match_authorized_evidence(self):
         state = aud034_state()
-        state["m02_recomputation"]["engine_tree_sha256"] = "0" * 64
+        state["prior_m02_recomputation_evidence"]["engine_tree_sha256"] = "0" * 64
         self.assertTrue(any("engine_tree_sha256" in finding for finding in validate_current_state_data(state)))
 
     def test_10_release_oficial_and_agent_load_remain_disabled(self):

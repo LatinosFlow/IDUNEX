@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AUD-034 governance-state consistency check.
+"""AUD-035 governance-state consistency check.
 
 This check validates governance only. It neither executes nor certifies engine
 functionality. The engine-internal state snapshots remain deliberately
@@ -17,11 +17,11 @@ from typing import Any
 
 STATE_PATH = Path("governance/CURRENT_STATE.json")
 ENGINE_TREE_MANIFEST_PATH = Path("governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json")
-M02_RECOMPUTATION_STATE = "M02_PASS_RECOMPUTED_POST_AUD033"
-M03_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD030"
-CURRENT_ENGINE_TREE_SHA256 = "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7"
+M02_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD035"
+M03_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD035"
+CURRENT_ENGINE_TREE_SHA256 = "22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb"
 CURRENT_ENGINE_FILE_COUNT = 981
-CURRENT_ENGINE_BYTE_COUNT = 47323574
+CURRENT_ENGINE_BYTE_COUNT = 47324957
 
 M02_RECOMPUTATION_EVIDENCE = {
     "run_id": 29941393366,
@@ -30,15 +30,16 @@ M02_RECOMPUTATION_EVIDENCE = {
     "artifact_name": "idunex-m02-max-29941393366-attempt-1",
     "artifact_sha256": "fd5c9334b96989c714300607dadf742ff63783b8090d90fc3d404b3a22355270",
     "repository_commit": "1fc082bfcae5b590066309727c120500de976378",
-    "engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
-    "engine_file_count": CURRENT_ENGINE_FILE_COUNT,
-    "engine_byte_count": CURRENT_ENGINE_BYTE_COUNT,
-    "runtime_validator": "PASS",
-    "matrix": "30/30_PASS",
-    "mutation": "506/506_PASS",
-    "positive_fixture": "PASS",
-    "restoration_retest": "PASS",
-    "technical_score": "10/10",
+    "engine_tree_sha256": "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
+    "engine_file_count": 981,
+    "engine_byte_count": 47323574,
+    "classification": "REFERENCIA_SUSTITUIDA",
+    "runtime_validator": "HISTORICAL_REFERENCE_ONLY",
+    "matrix": "HISTORICAL_REFERENCE_ONLY",
+    "mutation": "HISTORICAL_REFERENCE_ONLY",
+    "positive_fixture": "HISTORICAL_REFERENCE_ONLY",
+    "restoration_retest": "HISTORICAL_REFERENCE_ONLY",
+    "technical_score": "HISTORICAL_REFERENCE_ONLY",
     "creative_output_certified": False,
     "inherited_audit_id": "AUD-026-M02-POST-PR44",
     "inherited_audit_id_classification": "METADATA_HEREDADA_NO_AUTORIDAD_NOMINAL",
@@ -46,12 +47,7 @@ M02_RECOMPUTATION_EVIDENCE = {
 
 # AUD-034 establishes the root authority. Engine files are retained as
 # explicitly fail-closed legacy snapshots and must not become enabling claims.
-LEGACY_ENGINE_JSON_STATE_SURFACES = (
-    Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json"),
-    Path("engine/IDUNEX/00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json"),
-    Path("engine/IDUNEX/00_INDEX/MASTER_GOVERNANCE_MAP.json"),
-    Path("engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/FINAL_RELEASE_STATUS.json"),
-)
+LEGACY_ENGINE_JSON_STATE_SURFACES = ()
 ROOT_TEXT_STATE_SURFACES = (
     Path("README.md"),
     Path("GOVERNANCE_STATUS.md"),
@@ -173,10 +169,10 @@ def validate_controlled_external_demo_execution(data: Any) -> list[str]:
 
 
 def validate_current_state_data(data: dict[str, Any]) -> list[str]:
-    """Return all deviations from the sole AUD-034 governance authority."""
+    """Return all deviations from the sole AUD-035 governance authority."""
     findings: list[str] = []
     expected = {
-        "issue": "AUD-034",
+        "issue": "AUD-035",
         "motor_status": "EN_REVISION",
         "m02_result": M02_RECOMPUTATION_STATE,
         "m03_result": M03_RECOMPUTATION_STATE,
@@ -205,7 +201,7 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         findings.append("governance/CURRENT_STATE.json: engine_change_control must be an object")
     else:
         engine_expected = {
-            "issue": "AUD-034",
+            "issue": "AUD-035",
             "base_commit": M02_RECOMPUTATION_EVIDENCE["repository_commit"],
             "current_engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
             "current_engine_file_count": CURRENT_ENGINE_FILE_COUNT,
@@ -218,13 +214,13 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
             if engine_change.get(field) != expected_value:
                 findings.append(f"governance/CURRENT_STATE.json: engine_change_control.{field} must be {expected_value!r}, got {engine_change.get(field)!r}")
 
-    recomputation = data.get("m02_recomputation")
+    recomputation = data.get("prior_m02_recomputation_evidence")
     if not isinstance(recomputation, dict):
-        findings.append("governance/CURRENT_STATE.json: m02_recomputation must be an object")
+        findings.append("governance/CURRENT_STATE.json: prior_m02_recomputation_evidence must be an object")
     else:
         for field, expected_value in M02_RECOMPUTATION_EVIDENCE.items():
             if recomputation.get(field) != expected_value:
-                findings.append(f"governance/CURRENT_STATE.json: m02_recomputation.{field} must be {expected_value!r}, got {recomputation.get(field)!r}")
+                findings.append(f"governance/CURRENT_STATE.json: prior_m02_recomputation_evidence.{field} must be {expected_value!r}, got {recomputation.get(field)!r}")
     return findings
 
 
@@ -316,24 +312,44 @@ def audit_repository(root: Path) -> dict[str, Any]:
             findings.append("governance/CURRENT_STATE.json: engine_change_control does not match canonical engine tree manifest")
 
     _require_text_tokens(root, ROOT_TEXT_STATE_SURFACES, (
-        ("M02_RESULT=M02_PASS_RECOMPUTED_POST_AUD033", re.compile(r"M02_(?:RESULT)?[\"\s]*[:=]\s*M02_PASS_RECOMPUTED_POST_AUD033", re.IGNORECASE)),
-        ("M03_RESULT=NOT_RECOMPUTED_POST_AUD030", re.compile(r"M03_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE)),
+        ("M02_RESULT=NOT_RECOMPUTED_POST_AUD035", re.compile(r"M02_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD035", re.IGNORECASE)),
+        ("M03_RESULT=NOT_RECOMPUTED_POST_AUD035", re.compile(r"M03_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD035", re.IGNORECASE)),
         ("EN_REVISION", re.compile(r"EN_REVISION")),
         ("READY_FOR_PROJECT_DEMO_GENERATION=false", re.compile(r"ready_for_project_demo_generation[\"\s]*[:=]\s*false", re.IGNORECASE)),
         ("CREATIVE_OUTPUT_CERTIFIED=false", re.compile(r"creative_output_certified[\"\s]*[:=]\s*false", re.IGNORECASE)),
     ), findings)
     _require_text_tokens(root, LEGACY_ENGINE_TEXT_STATE_SURFACES, (
-        ("legacy M02 not recomputed", re.compile(r"M02_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE)),
-        ("legacy M03 not recomputed", re.compile(r"M03_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD030", re.IGNORECASE)),
+        ("derived M02 not recomputed", re.compile(r"M02_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD035", re.IGNORECASE)),
+        ("derived M03 not recomputed", re.compile(r"M03_(?:RESULT)?[\"\s]*[:=]\s*NOT_RECOMPUTED_POST_AUD035", re.IGNORECASE)),
         ("EN_REVISION", re.compile(r"EN_REVISION")),
     ), findings)
+
+    contract_path = root / "engine/IDUNEX/07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json"
+    try:
+        contract = json.loads(_read_text(contract_path))
+        expected_contract = {
+            "MOTOR_STATUS": state.get("motor_status"),
+            "M02_RESULT": state.get("m02_result"),
+            "M03_RESULT": state.get("m03_result"),
+            "READY_FOR_PROJECT_DEMO_GENERATION": state.get("ready_for_project_demo_generation"),
+            "RELEASE_AUTHORIZED": state.get("release_authorized"),
+            "PRODUCTIVE_CLOSURE_AUTHORIZED": state.get("productive_closure_authorized"),
+            "TAG_AUTHORIZED": state.get("tag_authorized"),
+            "OFICIAL_AUTHORIZED": state.get("oficial_authorized"),
+            "AGENT_LOAD_AUTHORIZED": state.get("agent_load_authorized"),
+            "CREATIVE_OUTPUT_CERTIFIED": state.get("creative_output_certified"),
+        }
+        if contract.get("state_authority") != "governance/CURRENT_STATE.json" or contract.get("expected_current_state") != expected_contract or contract.get("last_sync_issue") != "AUD-035":
+            findings.append("MASTER_GOVERNANCE_VALIDATION_CONTRACT out of sync with CURRENT_STATE")
+    except (FileNotFoundError, json.JSONDecodeError):
+        findings.append("MASTER_GOVERNANCE_VALIDATION_CONTRACT missing or unreadable")
 
     contradiction_findings, historical_matches = scan_contradictions(root)
     findings.extend(contradiction_findings)
     controlled = state.get("controlled_external_demo_execution", {})
     return {
         "result": "CONSISTENT" if not findings else "INCONSISTENT",
-        "scope": "AUD-034_governance_state_only",
+        "scope": "AUD-035_internal_governance_surface_sync",
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),
         "m03_result": state.get("m03_result"),

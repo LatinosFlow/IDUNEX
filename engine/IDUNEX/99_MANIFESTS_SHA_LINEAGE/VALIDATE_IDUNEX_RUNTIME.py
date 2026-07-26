@@ -114,9 +114,13 @@ def _active_surface_scope_sync_gate(root: Path):
             state_fields={
                 'MOTOR_STATUS': state.get('motor_status'),
                 'M02_RESULT': state.get('m02_result'),
+                'M03_RESULT': state.get('m03_result'),
                 'READY_FOR_PROJECT_DEMO_GENERATION': state.get('ready_for_project_demo_generation'),
                 'RELEASE_AUTHORIZED': state.get('release_authorized'),
                 'PRODUCTIVE_CLOSURE_AUTHORIZED': state.get('productive_closure_authorized'),
+                'TAG_AUTHORIZED': state.get('tag_authorized'),
+                'OFICIAL_AUTHORIZED': state.get('oficial_authorized'),
+                'AGENT_LOAD_AUTHORIZED': state.get('agent_load_authorized'),
                 'CREATIVE_OUTPUT_CERTIFIED': state.get('creative_output_certified'),
             }
             historical=d.get('historical_evidence_policy', {})
@@ -124,7 +128,7 @@ def _active_surface_scope_sync_gate(root: Path):
                 expected==state_fields
                 and d.get('state_authority')=='governance/CURRENT_STATE.json'
                 and historical.get('may_override_current_state') is False
-                and 'M02_FAIL' in str(d.get('interlock', ''))
+                and 'NOT_RECOMPUTED_POST_AUD035' in str(d.get('interlock', ''))
             )
             if not contract_synced:
                 failures.append({'path':'07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json','code':'FAIL_MASTER_GOVERNANCE_VALIDATION_CONTRACT_NOT_SYNCED'})

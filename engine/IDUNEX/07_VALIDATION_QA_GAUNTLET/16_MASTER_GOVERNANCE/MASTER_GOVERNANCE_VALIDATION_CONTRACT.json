@@ -1,6 +1,6 @@
 {
   "contract_id": "MASTER_GOVERNANCE_VALIDATION_CONTRACT",
-  "issue": "AUD-006",
+  "issue": "AUD-035",
   "state_authority": "governance/CURRENT_STATE.json",
   "required_checks": [
     "stable_family_coverage",
@@ -25,18 +25,22 @@
   ],
   "expected_current_state": {
     "MOTOR_STATUS": "EN_REVISION",
-    "M02_RESULT": "NOT_RECOMPUTED_POST_AUD030",
+    "M02_RESULT": "NOT_RECOMPUTED_POST_AUD035",
+    "M03_RESULT": "NOT_RECOMPUTED_POST_AUD035",
     "READY_FOR_PROJECT_DEMO_GENERATION": false,
     "RELEASE_AUTHORIZED": false,
     "PRODUCTIVE_CLOSURE_AUTHORIZED": false,
+    "TAG_AUTHORIZED": false,
+    "OFICIAL_AUTHORIZED": false,
+    "AGENT_LOAD_AUTHORIZED": false,
     "CREATIVE_OUTPUT_CERTIFIED": false
   },
   "historical_evidence_policy": {
     "authority_status": "REFERENCIA_SUSTITUIDA",
     "may_override_current_state": false
   },
-  "interlock": "M02_FAIL or NOT_RECOMPUTED_POST_AUD030 prevents any internal certificate from enabling Demo, release, tag, OFICIAL, agent loading or productive closure.",
-  "last_sync_issue": "AUD-031",
-  "last_sync_source_run": 29928852782,
-  "last_sync_reason": "MASTER_GOVERNANCE_VALIDATION_CONTRACT_POST_AUD030_PARITY"
+  "interlock": "NOT_RECOMPUTED_POST_AUD035 prevents any internal certificate from enabling Demo, release, tag, OFICIAL, agent loading or productive closure; no M02 or M03 PASS is declared.",
+  "last_sync_issue": "AUD-035",
+  "last_sync_source_run": 30189604763,
+  "last_sync_reason": "MASTER_GOVERNANCE_VALIDATION_CONTRACT_POST_AUD034_INTERNAL_SURFACE_PARITY"
 }

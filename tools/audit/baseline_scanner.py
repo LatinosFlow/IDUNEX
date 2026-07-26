@@ -30,17 +30,17 @@ RECEIPT_REL = Path("governance/baseline/IDUNEX_MOTOR_v1.0.0_BASELINE_RECEIPT.jso
 REMAP_REL = Path("governance/baseline/WINDOWS_PATH_SAFE_REMAP.json")
 MOVEMENT_REL = Path("docs/audits/AUD-008-movement-reversal-manifest.json")
 STATE_REL = Path("governance/CURRENT_STATE.json")
-ROOT_ISSUE = "AUD-034"
-ROOT_M02_RESULT = "M02_PASS_RECOMPUTED_POST_AUD033"
-ROOT_M03_RESULT = "NOT_RECOMPUTED_POST_AUD030"
-PHYSICAL_MANIFEST_M02_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD030"
-PHYSICAL_MANIFEST_M03_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD030"
+ROOT_ISSUE = "AUD-035"
+ROOT_M02_RESULT = "NOT_RECOMPUTED_POST_AUD035"
+ROOT_M03_RESULT = "NOT_RECOMPUTED_POST_AUD035"
+PHYSICAL_MANIFEST_M02_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD035"
+PHYSICAL_MANIFEST_M03_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD035"
 PHYSICAL_MANIFEST_STATE_CLASSIFICATION = (
     "PHYSICAL_TREE_SNAPSHOT_NON_AUTHORITY_FOR_CURRENT_M02"
 )
-CURRENT_TREE_SHA256 = "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7"
+CURRENT_TREE_SHA256 = "22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb"
 CURRENT_TREE_FILE_COUNT = 981
-CURRENT_TREE_BYTE_COUNT = 47323574
+CURRENT_TREE_BYTE_COUNT = 47324957
 
 INTERNAL_JSON_MANIFESTS = (
     "99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json",
@@ -306,8 +306,6 @@ def build_diff(root: Path, current_indexable: list[dict[str, Any]]) -> dict[str,
 def write_artifacts(root: Path) -> dict[str, Any]:
     root = root.resolve()
     state = json.loads((root / STATE_REL).read_text(encoding="utf-8"))
-    if state.get("issue") == ROOT_ISSUE:
-        raise ValueError("AUD034_BLOCKED_GOVERNANCE_ONLY_NO_ENGINE_MANIFEST_REWRITE")
     if not (root / RECEIVED_LEDGER_REL).is_file():
         raise FileNotFoundError(
             f"Historical received ledger must be preserved before regeneration: {RECEIVED_LEDGER_REL}"
@@ -316,11 +314,11 @@ def write_artifacts(root: Path) -> dict[str, Any]:
     m02_result=state.get("m02_result")
     m03_result=state.get("m03_result")
     if (
-        state.get("issue")!="AUD-030"
+        state.get("issue")!=ROOT_ISSUE
         or m02_result!=PHYSICAL_MANIFEST_M02_SNAPSHOT
         or m03_result!=PHYSICAL_MANIFEST_M03_SNAPSHOT
     ):
-        raise ValueError("AUD030_BLOCKED_INCOHERENT_RECOMPUTATION_STATE")
+        raise ValueError("AUD035_BLOCKED_INCOHERENT_RECOMPUTATION_STATE")
     indexable = snapshot_tree(engine_root, exclude_internal=True)
     internal_payload = _internal_payload(indexable, m02_result, m03_result)
     for relative in INTERNAL_JSON_MANIFESTS:
