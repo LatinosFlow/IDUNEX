@@ -162,6 +162,26 @@ jobs:
           if governance_mismatches:
               failures.append('FAIL_GOVERNANCE_NON_RELEASE_INTERLOCK')
 
+          controlled = state.get('controlled_external_demo_execution', {})
+          controlled_external_demo_required = {
+              'status': 'CONSUMED',
+              'authorized': False,
+              'consumed': True,
+              'generate_executions_allowed': 0,
+              'validate_executions_allowed': 0,
+          }
+          controlled_external_demo_actual = {
+              key: controlled.get(key)
+              for key in controlled_external_demo_required
+          }
+          controlled_external_demo_mismatches = {
+              key: {'expected': value, 'actual': controlled_external_demo_actual[key]}
+              for key, value in controlled_external_demo_required.items()
+              if controlled_external_demo_actual[key] != value
+          }
+          if controlled_external_demo_mismatches:
+              failures.append('FAIL_AUD028_CONSUMED_INTERLOCK')
+
           result = {
               'schema_version': 1,
               'audit_id': 'AUD-027',
@@ -183,6 +203,9 @@ jobs:
               'governance_required': required_state,
               'governance_actual': {key: state.get(key) for key in required_state},
               'governance_mismatches': governance_mismatches,
+              'controlled_external_demo_required': controlled_external_demo_required,
+              'controlled_external_demo_actual': controlled_external_demo_actual,
+              'controlled_external_demo_mismatches': controlled_external_demo_mismatches,
               'M03_DECISION': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
               'CREATIVE_OUTPUT_CERTIFIED': False,
               'result': 'PASS' if not failures else 'FAIL',
