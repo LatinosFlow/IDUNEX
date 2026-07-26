@@ -17,7 +17,15 @@ HARNESS_PATH = REPO_ROOT / "tests" / "m03" / "test_adversarial_harness.py"
 FILE_COUNT = 981
 BYTE_COUNT = 47_324_957
 TREE_SHA256 = "22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb"
-FORBIDDEN_ACTIVE_CONTRACTS = ("8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd", "47321777", "d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d", "47322002")
+FORBIDDEN_ACTIVE_CONTRACTS = (
+    "8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd",
+    "47321777",
+    "d6a66c316650a86c64ed20752b39e593f43f25e88b654538095124b7ebfedf8d",
+    "47322002",
+    "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
+    "47_323_574",
+    "47323574",
+)
 
 
 def physical_identity() -> dict[str, object]:
@@ -47,7 +55,8 @@ def contract_failures(workflow: str, harness: str) -> list[str]:
         "FAIL_AUD032_WORKFLOW_DISPATCH_ONLY": "on:\n  workflow_dispatch:",
         "FAIL_AUD032_WORKFLOW_SHA": f"default: {TREE_SHA256}",
         "FAIL_AUD032_WORKFLOW_FILE_COUNT": "if len(files) != 981:",
-        "FAIL_AUD032_WORKFLOW_BYTE_COUNT": "if byte_count != 47_323_574:",
+        "FAIL_AUD035_WORKFLOW_BYTE_COUNT": "if byte_count != 47_324_957:",
+        "FAIL_AUD035_WORKFLOW_POSTFLIGHT_BYTE_COUNT": "identity.get('byte_count') != 47_324_957",
         "FAIL_AUD035_WORKFLOW_MANIFEST_BYTES": "r'bytes:\\s*47324957\\b'",
         "FAIL_AUD035_WORKFLOW_ISSUE": "'issue': 'AUD-035'",
         "FAIL_AUD035_WORKFLOW_M02": "'m02_result': 'NOT_RECOMPUTED_POST_AUD035'",
@@ -65,7 +74,7 @@ def contract_failures(workflow: str, harness: str) -> list[str]:
     }
     required_harness = {
         "FAIL_AUD032_HARNESS_FILE_COUNT": "EXPECTED_FILE_COUNT = 981",
-        "FAIL_AUD032_HARNESS_BYTE_COUNT": "EXPECTED_BYTE_COUNT = 47_323_574",
+        "FAIL_AUD035_HARNESS_BYTE_COUNT": "EXPECTED_BYTE_COUNT = 47_324_957",
         "FAIL_AUD032_HARNESS_SHA": f'EXPECTED_ENGINE_TREE_SHA256 = "{TREE_SHA256}"',
         "FAIL_AUD032_HARNESS_DECISION": 'M03_DECISION = "NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY"',
         "FAIL_AUD032_HARNESS_CREATIVE": '"CREATIVE_OUTPUT_CERTIFIED": False',
@@ -106,10 +115,11 @@ class M03WorkflowContractTest(unittest.TestCase):
         harness = HARNESS_PATH.read_text(encoding="utf-8")
         cases = (
             (workflow.replace(f"default: {TREE_SHA256}", "default: " + "0" * 64, 1), harness, "FAIL_AUD032_WORKFLOW_SHA"),
-            (workflow.replace("if byte_count != 47_323_574:", "if byte_count != 1:", 1), harness, "FAIL_AUD032_WORKFLOW_BYTE_COUNT"),
+            (workflow.replace("if byte_count != 47_324_957:", "if byte_count != 1:", 1), harness, "FAIL_AUD035_WORKFLOW_BYTE_COUNT"),
+            (workflow.replace("identity.get('byte_count') != 47_324_957", "identity.get('byte_count') != 1", 1), harness, "FAIL_AUD035_WORKFLOW_POSTFLIGHT_BYTE_COUNT"),
             (workflow.replace("if len(files) != 981:", "if len(files) != 1:", 1), harness, "FAIL_AUD032_WORKFLOW_FILE_COUNT"),
             (workflow, harness.replace(f'EXPECTED_ENGINE_TREE_SHA256 = "{TREE_SHA256}"', 'EXPECTED_ENGINE_TREE_SHA256 = "' + "0" * 64 + '"', 1), "FAIL_AUD032_HARNESS_SHA"),
-            (workflow, harness.replace("EXPECTED_BYTE_COUNT = 47_323_574", "EXPECTED_BYTE_COUNT = 1", 1), "FAIL_AUD032_HARNESS_BYTE_COUNT"),
+            (workflow, harness.replace("EXPECTED_BYTE_COUNT = 47_324_957", "EXPECTED_BYTE_COUNT = 1", 1), "FAIL_AUD035_HARNESS_BYTE_COUNT"),
             (workflow, harness.replace("EXPECTED_FILE_COUNT = 981", "EXPECTED_FILE_COUNT = 1", 1), "FAIL_AUD032_HARNESS_FILE_COUNT"),
             (workflow.replace("'issue': 'AUD-035'", "'issue': 'AUD-030'", 1), harness, "FAIL_AUD035_WORKFLOW_ISSUE"),
             (workflow.replace("'m02_result': 'NOT_RECOMPUTED_POST_AUD035'", "'m02_result': 'M02_PASS'", 1), harness, "FAIL_AUD035_WORKFLOW_M02"),
@@ -127,6 +137,15 @@ class M03WorkflowContractTest(unittest.TestCase):
         for mutated_workflow, mutated_harness, expected_code in cases:
             with self.subTest(expected_code=expected_code):
                 self.assert_rejected(mutated_workflow, mutated_harness, expected_code)
+
+    def test_legacy_aud034_byte_identity_is_rejected_in_workflow_and_harness(self):
+        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
+        harness = HARNESS_PATH.read_text(encoding="utf-8")
+        for legacy in ("47_323_574", "47323574"):
+            with self.subTest(surface="workflow", legacy=legacy):
+                self.assertTrue(contract_failures(workflow + f"\n# {legacy}\n", harness))
+            with self.subTest(surface="harness", legacy=legacy):
+                self.assertTrue(contract_failures(workflow, harness + f"\n# {legacy}\n"))
 
 
 if __name__ == "__main__":

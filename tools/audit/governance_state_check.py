@@ -22,6 +22,8 @@ M03_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD035"
 CURRENT_ENGINE_TREE_SHA256 = "22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb"
 CURRENT_ENGINE_FILE_COUNT = 981
 CURRENT_ENGINE_BYTE_COUNT = 47324957
+AUD035_BASE_COMMIT = "2eb99d5c43bae4b2b077c38d0e40923ef7072857"
+PREVIOUS_ENGINE_TREE_SHA256 = "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7"
 
 M02_RECOMPUTATION_EVIDENCE = {
     "run_id": 29941393366,
@@ -33,7 +35,10 @@ M02_RECOMPUTATION_EVIDENCE = {
     "engine_tree_sha256": "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
     "engine_file_count": 981,
     "engine_byte_count": 47323574,
-    "classification": "REFERENCIA_SUSTITUIDA",
+    "m02_result": "M02_PASS_RECOMPUTED_POST_AUD033",
+    "evidence_class": "REFERENCIA_SUSTITUIDA",
+    "current_tree_applicability": False,
+    "superseded_by": "AUD-035",
     "runtime_validator": "HISTORICAL_REFERENCE_ONLY",
     "matrix": "HISTORICAL_REFERENCE_ONLY",
     "mutation": "HISTORICAL_REFERENCE_ONLY",
@@ -183,6 +188,9 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         "oficial_authorized": False,
         "agent_load_authorized": False,
         "creative_output_certified": False,
+        "last_failed_m03_run": 30189604763,
+        "last_failed_m03_case": "M03-19",
+        "last_failed_m03_result": "VALIDATED_FAIL",
     }
     for key, expected_value in expected.items():
         if data.get(key) != expected_value:
@@ -202,7 +210,8 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
     else:
         engine_expected = {
             "issue": "AUD-035",
-            "base_commit": M02_RECOMPUTATION_EVIDENCE["repository_commit"],
+            "base_commit": AUD035_BASE_COMMIT,
+            "previous_engine_tree_sha256": PREVIOUS_ENGINE_TREE_SHA256,
             "current_engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
             "current_engine_file_count": CURRENT_ENGINE_FILE_COUNT,
             "current_engine_byte_count": CURRENT_ENGINE_BYTE_COUNT,
@@ -214,6 +223,9 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
             if engine_change.get(field) != expected_value:
                 findings.append(f"governance/CURRENT_STATE.json: engine_change_control.{field} must be {expected_value!r}, got {engine_change.get(field)!r}")
 
+    if "last_failed_m02_run" in data:
+        findings.append("governance/CURRENT_STATE.json: last_failed_m02_run must be absent when no current verified M02 failure run exists")
+
     recomputation = data.get("prior_m02_recomputation_evidence")
     if not isinstance(recomputation, dict):
         findings.append("governance/CURRENT_STATE.json: prior_m02_recomputation_evidence must be an object")
@@ -221,6 +233,8 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         for field, expected_value in M02_RECOMPUTATION_EVIDENCE.items():
             if recomputation.get(field) != expected_value:
                 findings.append(f"governance/CURRENT_STATE.json: prior_m02_recomputation_evidence.{field} must be {expected_value!r}, got {recomputation.get(field)!r}")
+        if recomputation.get("engine_tree_sha256") == CURRENT_ENGINE_TREE_SHA256:
+            findings.append("governance/CURRENT_STATE.json: historical M02 evidence must not be linked to the current AUD-035 tree")
     return findings
 
 

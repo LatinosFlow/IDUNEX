@@ -1,19 +1,31 @@
 # AUD-035 — Sincronización de gobernanza interna post-AUD034
 
-Refs #70. Ejecución M03 `30189604763`, job `89760318680`, artifact `8628320119` (SHA-256 conservado como evidencia histórica en el tracker del issue).
+Refs #70.
 
-## Hallazgo y corrección
+```text
+M03_RUN=30189604763
+M03_JOB=89760318680
+M03_ARTIFACT_ID=8628320119
+M03_ARTIFACT_SHA256=0e3e014e62d46bbfb383d3cf69902ab0ae88fe3dd6a7e2165c56c77b37ed0974
+BASE_COMMIT=2eb99d5c43bae4b2b077c38d0e40923ef7072857
+PREVIOUS_ENGINE_TREE=981 / 47323574 / 58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7
+NEW_ENGINE_TREE=981 / 47324957 / 22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb
+```
 
-El caso M03-19 reprodujo los failcodes globales `DOCUMENT_TRUTHFULNESS_PARITY_H245_H260` y `DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY`. La causa raíz fue la divergencia entre CURRENT_STATE, cinco superficies internas derivadas y el master governance contract. Se actualizaron esas superficies, el validador integrado, los scanners/contratos estáticos y los workflows/harnesses para rechazar la identidad anterior.
+## Hallazgo y causa raíz
 
-Identidad anterior: `981` archivos, `47323574` bytes, `58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7`.
+El caso M03-19 reprodujo `DOCUMENT_TRUTHFULNESS_PARITY_H245_H260` y `DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY`. La causa raíz fue la divergencia entre `CURRENT_STATE`, cinco superficies internas derivadas y el master governance contract.
 
-NEW_ENGINE_IDENTITY: `981` archivos, `47324957` bytes, `22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb`; el cálculo se repitió dos veces con igualdad exacta. Los seis manifests no autorreferenciales fueron regenerados por `tools/audit/baseline_scanner.py --write` bajo `NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY`.
+La recomputación M02 de AUD-034 permanece como evidencia válida exclusivamente para el árbol anterior. Se clasifica `REFERENCIA_SUSTITUIDA`, tiene `current_tree_applicability=false` y no se reasigna al árbol actual `22d64b...`.
 
-M02 y M03 quedan `NOT_RECOMPUTED_POST_AUD035`, `ESTADO_PROPUESTO_EN_REVISION_HASTA_MERGE`. Demo, release, tag, OFICIAL, agentes y cierre siguen bloqueados; AUD-028 continúa `CONSUMED`, no autorizado, con generate/validate en cero y `CREATIVE_OUTPUT_CERTIFIED=FALSE`.
+## Corrección
+
+Se sincronizaron las superficies internas, el validador integrado, los scanners, los contratos estáticos y los workflows/harnesses. Los seis manifests no autorreferenciales fueron regenerados mediante el scanner canónico bajo `NON_SELF_REFERENTIAL_INTERNAL_MANIFEST_POLICY`.
+
+M02 y M03 quedan `NOT_RECOMPUTED_POST_AUD035`, clasificación `ESTADO_PROPUESTO_EN_REVISION_HASTA_MERGE`. Demo, release, tag, OFICIAL, carga de agentes y cierre siguen bloqueados. AUD-028 continúa `CONSUMED`, no autorizado, con generate/validate en cero. `CREATIVE_OUTPUT_CERTIFIED=FALSE`.
 
 ## Validación y reversa
 
-El validador global pasó con `validators_fail=0`, `blocking_warnings=0` y `fail_codes=[]`; no se ejecutaron M02, M03, Demo, generate real ni refresh externo. Las pruebas preventivas conservan M03-19 como rechazo de un validator FAIL.
+No se ejecutaron M02, M03, el Proyecto 000 Demo ni `refresh-external-artifacts` real. M03-19 conserva como resultado esperado el rechazo de un validator FAIL.
 
-Reversa: revertir atómicamente el commit del PR; regenerar manifests con el scanner canónico y volver a ejecutar los checks locales. No se creó release, tag ni merge.
+Plan de reversa: revertir atómicamente los commits de AUD-035, regenerar manifests con el scanner canónico y repetir los checks locales. No se creó release, tag ni merge.

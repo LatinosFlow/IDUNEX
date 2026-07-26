@@ -7,7 +7,10 @@ import unittest
 from pathlib import Path
 
 from tools.audit.governance_state_check import (
+    AUD035_BASE_COMMIT,
+    CURRENT_ENGINE_TREE_SHA256,
     M02_RECOMPUTATION_STATE,
+    PREVIOUS_ENGINE_TREE_SHA256,
     scan_contradictions,
     validate_current_state_data,
 )
@@ -15,6 +18,11 @@ from tools.audit.governance_state_check import (
 
 def aud034_state() -> dict:
     return json.loads(Path("governance/CURRENT_STATE.json").read_text(encoding="utf-8"))
+
+
+def aud034_m02_manifest_block() -> str:
+    text = Path("REPOSITORY_MANIFEST.yml").read_text(encoding="utf-8")
+    return text.split("aud034_m02_recomputation:\n", 1)[1].split("\ncurrent_motor_package_candidate:", 1)[0]
 
 
 class GovernanceStateTest(unittest.TestCase):
@@ -104,6 +112,63 @@ class GovernanceStateTest(unittest.TestCase):
             findings, historical_matches = scan_contradictions(root)
         self.assertTrue(findings)
         self.assertEqual(historical_matches, 0)
+
+    def test_14_historical_m02_bytes_and_binding_are_immutable(self):
+        state = aud034_state()
+        evidence = state["prior_m02_recomputation_evidence"]
+        self.assertEqual(evidence["engine_tree_sha256"], PREVIOUS_ENGINE_TREE_SHA256)
+        self.assertEqual(evidence["engine_byte_count"], 47_323_574)
+        self.assertEqual(evidence["m02_result"], "M02_PASS_RECOMPUTED_POST_AUD033")
+        self.assertEqual(evidence["evidence_class"], "REFERENCIA_SUSTITUIDA")
+        self.assertFalse(evidence["current_tree_applicability"])
+        self.assertEqual(evidence["superseded_by"], "AUD-035")
+        mutated = copy.deepcopy(state)
+        mutated["prior_m02_recomputation_evidence"]["engine_byte_count"] = 47_324_957
+        self.assertTrue(any("engine_byte_count" in finding for finding in validate_current_state_data(mutated)))
+        mutated = copy.deepcopy(state)
+        mutated["prior_m02_recomputation_evidence"]["engine_tree_sha256"] = CURRENT_ENGINE_TREE_SHA256
+        mutated["prior_m02_recomputation_evidence"]["current_tree_applicability"] = True
+        findings = validate_current_state_data(mutated)
+        self.assertTrue(any("historical M02 evidence" in finding for finding in findings))
+
+    def test_15_aud035_base_previous_tree_and_m03_failure_are_exact(self):
+        state = aud034_state()
+        control = state["engine_change_control"]
+        self.assertEqual(control["base_commit"], AUD035_BASE_COMMIT)
+        self.assertEqual(control["previous_engine_tree_sha256"], PREVIOUS_ENGINE_TREE_SHA256)
+        self.assertEqual(state["last_failed_m03_run"], 30189604763)
+        self.assertEqual(state["last_failed_m03_case"], "M03-19")
+        self.assertEqual(state["last_failed_m03_result"], "VALIDATED_FAIL")
+        self.assertNotIn("last_failed_m02_run", state)
+        mutated = copy.deepcopy(state)
+        mutated["engine_change_control"]["base_commit"] = "0" * 40
+        self.assertTrue(any("base_commit" in finding for finding in validate_current_state_data(mutated)))
+        mutated = copy.deepcopy(state)
+        mutated["engine_change_control"]["previous_engine_tree_sha256"] = "0" * 64
+        self.assertTrue(any("previous_engine_tree_sha256" in finding for finding in validate_current_state_data(mutated)))
+        mutated = copy.deepcopy(state)
+        mutated["last_failed_m02_run"] = 30189604763
+        self.assertTrue(any("last_failed_m02_run" in finding for finding in validate_current_state_data(mutated)))
+
+    def test_16_repository_manifest_preserves_aud034_m02_evidence(self):
+        block = aud034_m02_manifest_block()
+        for token in (
+            "m02_result: M02_PASS_RECOMPUTED_POST_AUD033",
+            "run_id: 29941393366",
+            "job_id: 88995880545",
+            "artifact_id: 8539029665",
+            "artifact_sha256: fd5c9334b96989c714300607dadf742ff63783b8090d90fc3d404b3a22355270",
+            "repository_commit: 1fc082bfcae5b590066309727c120500de976378",
+            f"engine_tree_sha256: {PREVIOUS_ENGINE_TREE_SHA256}",
+            "engine_file_count: 981",
+            "engine_byte_count: 47323574",
+            "evidence_class: REFERENCIA_SUSTITUIDA",
+            "current_tree_applicability: false",
+            "superseded_by: AUD-035",
+        ):
+            with self.subTest(token=token):
+                self.assertIn(token, block)
+        self.assertNotIn(CURRENT_ENGINE_TREE_SHA256, block)
 
 
 if __name__ == "__main__":

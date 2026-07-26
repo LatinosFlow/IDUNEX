@@ -79,17 +79,20 @@ current_tree_audit:
 
 aud034_m02_recomputation:
   controlling_issue: 67
-  status: EN_REVISION
-  m02_result: NOT_RECOMPUTED_POST_AUD035
+  status: REFERENCIA_SUSTITUIDA
+  evidence_class: REFERENCIA_SUSTITUIDA
+  current_tree_applicability: false
+  superseded_by: AUD-035
+  m02_result: M02_PASS_RECOMPUTED_POST_AUD033
   run_id: 29941393366
   job_id: 88995880545
   artifact_id: 8539029665
   artifact_name: idunex-m02-max-29941393366-attempt-1
   artifact_sha256: fd5c9334b96989c714300607dadf742ff63783b8090d90fc3d404b3a22355270
   repository_commit: 1fc082bfcae5b590066309727c120500de976378
-  engine_tree_sha256: 22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb
+  engine_tree_sha256: 58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7
   engine_file_count: 981
-  engine_byte_count: 47324957
+  engine_byte_count: 47323574
   runtime_validator: PASS
   matrix: 30/30_PASS
   mutation: 506/506_PASS
@@ -98,8 +101,7 @@ aud034_m02_recomputation:
   technical_score: 10/10
   inherited_audit_id: AUD-026-M02-POST-PR44
   inherited_audit_id_classification: METADATA_HEREDADA_NO_AUTORIDAD_NOMINAL
-  m03_result: NOT_RECOMPUTED_POST_AUD035
-  m03_blocked_by: AUD-032
+  m03_result: NOT_APPLICABLE_TO_M02_AUD034_EVIDENCE
   aud028_status: CONSUMED
   ready_for_project_demo_generation: false
   release_authorized: false
