@@ -52,3 +52,11 @@ El run CI fallido `30182714053` detectó que el scanner comparaba indebidamente 
 La corrección separa la autoridad raíz `governance/CURRENT_STATE.json` (`AUD-034`, `M02_PASS_RECOMPUTED_POST_AUD033`, `NOT_RECOMPUTED_POST_AUD030`) del snapshot físico de lineage (`NOT_RECOMPUTED_POST_AUD030` para M02 y M03), clasificado como `PHYSICAL_TREE_SNAPSHOT_NON_AUTHORITY_FOR_CURRENT_M02`. La ruta `--write` queda bloqueada para AUD-034 antes de cualquier escritura: `AUD034_BLOCKED_GOVERNANCE_ONLY_NO_ENGINE_MANIFEST_REWRITE`.
 
 No hay cambios en `engine/IDUNEX` ni regeneración de manifests físicos. La reversa de esta corrección es revertir su commit en la misma rama; el árbol físico y su identidad permanecen intactos. `CREATIVE_OUTPUT_CERTIFIED=FALSE`.
+
+## Corrección secuencial AUD-008
+
+El run CI `30183246767` confirmó PASS para AUD-003 y AUD-007, además de intake, gobernanza, remap de Windows y Security Lite. El único fallo fue AUD-008: su scanner todavía exigía la autoridad raíz AUD-030 y combinaciones M02/M03 obsoletas.
+
+La corrección alinea exclusivamente la autoridad raíz de AUD-008 con `AUD-034`, `M02_PASS_RECOMPUTED_POST_AUD033`, `NOT_RECOMPUTED_POST_AUD030` y `EN_REVISION`, manteniendo todos los interlocks en falso. El ledger histórico AUD-008, los duplicados justificados, rutas H históricas, movimientos, reversibilidad y SHA antes/después se preservan como controles físicos e históricos que no sustituyen la autoridad raíz.
+
+El alcance controlado suma `tools/audit/no_bloat_no_history_check.py` y `tests/intake/test_no_bloat_no_history.py`, para un total de once archivos autorizados. No hubo cambios bajo `engine/IDUNEX` ni regeneración de manifests físicos. La reversa consiste en revertir el commit AUD-008 de esta rama. `CREATIVE_OUTPUT_CERTIFIED=FALSE`.

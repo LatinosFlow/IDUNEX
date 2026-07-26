@@ -28,9 +28,11 @@ class NoBloatNoHistoryTest(unittest.TestCase):
         self.assertEqual(result["active_tree"]["unjustified_duplicate_group_count"], 0)
         self.assertEqual(result["active_tree"]["active_h_route_count"], 0)
         self.assertEqual(result["historical_authority_conflict_count"], 0)
+        self.assertEqual(result["root_issue"], "AUD-034")
         self.assertEqual(result["motor_status"], "EN_REVISION")
-        self.assertEqual(result["m02_result"], "NOT_RECOMPUTED_POST_AUD030")
+        self.assertEqual(result["m02_result"], "M02_PASS_RECOMPUTED_POST_AUD033")
         self.assertEqual(result["m03_result"], "NOT_RECOMPUTED_POST_AUD030")
+        self.assertTrue(result["state_interlock_consistent"])
 
     def test_exact_duplicate_mutation_is_rejected(self):
         with tempfile.TemporaryDirectory(prefix="aud008_duplicate_") as temp_dir:
@@ -75,6 +77,33 @@ class NoBloatNoHistoryTest(unittest.TestCase):
             }
             conflicts = self.audit.movement_conflicts(engine, payload)
         self.assertTrue(any(item["code"] == "HISTORICAL_EVIDENCE_HAS_ACTIVE_AUTHORITY" for item in conflicts))
+
+    def test_old_or_generic_m02_and_m03_pass_are_rejected_as_root_state(self):
+        state = json.loads((REPO_ROOT / "governance/CURRENT_STATE.json").read_text(encoding="utf-8"))
+        for field, value in (
+            ("m02_result", "NOT_RECOMPUTED_POST_AUD030"),
+            ("m02_result", "M02_PASS"),
+            ("m02_result", "M02_PASS_RECOMPUTED_POST_AUD030"),
+            ("m03_result", "M03_PASS"),
+            ("m03_result", "M03_PASS_RECOMPUTED_POST_AUD030"),
+        ):
+            with self.subTest(field=field, value=value):
+                mutated = dict(state)
+                mutated[field] = value
+                self.assertTrue(self.audit.validate_root_state(mutated))
+
+    def test_enabled_demo_release_oficial_or_agents_are_rejected(self):
+        state = json.loads((REPO_ROOT / "governance/CURRENT_STATE.json").read_text(encoding="utf-8"))
+        for field in (
+            "ready_for_project_demo_generation",
+            "release_authorized",
+            "oficial_authorized",
+            "agent_load_authorized",
+        ):
+            with self.subTest(field=field):
+                mutated = dict(state)
+                mutated[field] = True
+                self.assertTrue(self.audit.validate_root_state(mutated))
 
 
 if __name__ == "__main__":
