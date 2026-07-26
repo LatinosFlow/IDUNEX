@@ -15,7 +15,7 @@ LEGACY_SCOPE_COMPATIBILITY=DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY
 CREATIVE_OUTPUT_CERTIFIED=FALSE
 
 ## 2026-07-26 - AUD-035 internal governance surface synchronization
-- CURRENT_STATE is authoritative: M02 and M03 are `NOT_RECOMPUTED_POST_AUD035` and this is `ESTADO_PROPUESTO_EN_REVISION_HASTA_MERGE`.
+- CURRENT_STATE is authoritative: M02 and M03 are `NOT_RECOMPUTED_POST_AUD035`, classified `EN_REVISION_M02_M03_NOT_RECOMPUTED_POST_AUD035`.
 - Demo, release, tag, OFICIAL, agent loading, productive closure and creative certification remain blocked.
 - The six non-self-referential internal manifests were regenerated from the canonical scanner.
 

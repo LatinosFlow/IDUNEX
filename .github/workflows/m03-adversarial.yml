@@ -6,7 +6,7 @@ on:
       expected_engine_tree_sha256:
         description: Expected SHA-256 of the current engine/IDUNEX physical tree
         required: true
-        default: 22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb
+        default: c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e
         type: string
       timeout_per_case:
         description: Maximum seconds for each generated matrix process
@@ -123,7 +123,7 @@ jobs:
 
           if len(files) != 981:
               failures.append('FAIL_ENGINE_FILE_COUNT')
-          if byte_count != 47_324_957:
+          if byte_count != 47_324_981:
               failures.append('FAIL_ENGINE_BYTE_COUNT')
           if actual_tree != expected:
               failures.append('FAIL_EXPECTED_ENGINE_TREE_SHA256_MISMATCH')
@@ -131,7 +131,7 @@ jobs:
               failures.append('FAIL_BASELINE_MANIFEST_IDENTITY_MISMATCH')
           manifest_contracts = [
               bool(re.search(r'file_count:\s*981\b', repository_manifest)),
-              bool(re.search(r'bytes:\s*47324957\b', repository_manifest)),
+              bool(re.search(r'bytes:\s*47324981\b', repository_manifest)),
               actual_tree in repository_manifest,
           ]
           if not all(manifest_contracts):
@@ -356,7 +356,7 @@ jobs:
           failures = []
           if identity.get('tree_sha256') != os.environ['EXPECTED_ENGINE_TREE_SHA256'].strip().lower():
               failures.append('FAIL_POSTFLIGHT_ENGINE_TREE_SHA256')
-          if identity.get('file_count') != 981 or identity.get('byte_count') != 47_324_957:
+          if identity.get('file_count') != 981 or identity.get('byte_count') != 47_324_981:
               failures.append('FAIL_POSTFLIGHT_ENGINE_IDENTITY')
           if status.strip():
               failures.append('FAIL_POSTFLIGHT_REPOSITORY_NOT_CLEAN')

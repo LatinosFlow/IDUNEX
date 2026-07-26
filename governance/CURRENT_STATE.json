@@ -17,7 +17,7 @@
   "creative_output_certified": false,
   "interlock": {
     "condition": "motor_status == EN_REVISION",
-    "rule": "M02 and M03 are NOT_RECOMPUTED_POST_AUD035 for the proposed current tree until merge. Demo, agent loading, release, tag, OFICIAL status and productive closure remain denied. AUD-028 remains CONSUMED and cannot be reused.",
+    "rule": "M02 and M03 are NOT_RECOMPUTED_POST_AUD035 for the current AUD-035 engine tree pending fresh recomputation and formal reconciliation. Demo, agent loading, release, tag, OFICIAL status and productive closure remain denied. AUD-028 remains CONSUMED and cannot be reused.",
     "denied_capabilities": [
       "PROJECT_DEMO_GENERATION",
       "RELEASE",
@@ -30,10 +30,12 @@
   "engine_change_control": {
     "issue": "AUD-035",
     "base_commit": "2eb99d5c43bae4b2b077c38d0e40923ef7072857",
-    "previous_engine_tree_sha256": "58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7",
-    "current_engine_tree_sha256": "22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb",
+    "previous_engine_tree_sha256": "22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb",
+    "previous_engine_byte_count": 47324957,
+    "previous_engine_tree_classification": "INTERMEDIATE_DRAFT_PR71_IDENTITY_SUPERSEDED_BY_FINAL_TRUTHFULNESS",
+    "current_engine_tree_sha256": "c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e",
     "current_engine_file_count": 981,
-    "current_engine_byte_count": 47324957,
+    "current_engine_byte_count": 47324981,
     "manifests_recomputed_with_canonical_scanner": true,
     "m02_result": "NOT_RECOMPUTED_POST_AUD035",
     "m03_result": "NOT_RECOMPUTED_POST_AUD035",
