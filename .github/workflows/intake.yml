@@ -47,3 +47,7 @@ jobs:
         run: python tools/audit/validator_entrypoint_check.py --repo-root .
       - name: Run validator entrypoint adversarial tests (AUD-009)
         run: python -m unittest discover -s tests/intake -p 'test_validator_entrypoint.py'
+      - name: Run global runtime validator on current engine tree
+        run: python -B engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py engine/IDUNEX
+      - name: Run complete Intake unittest suite
+        run: python -B -m unittest discover -s tests/intake -v
