@@ -6,7 +6,7 @@ on:
       expected_engine_tree_sha256:
         description: Expected SHA-256 of the current engine/IDUNEX physical tree
         required: true
-        default: 8a3c191c266647acd754a56c1e5555ca1a36ab807d2e04e72a5ff21edb3e92bd
+        default: 58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7
         type: string
       timeout_per_case:
         description: Maximum seconds for each generated matrix process
@@ -123,7 +123,7 @@ jobs:
 
           if len(files) != 981:
               failures.append('FAIL_ENGINE_FILE_COUNT')
-          if byte_count != 47_321_777:
+          if byte_count != 47_323_574:
               failures.append('FAIL_ENGINE_BYTE_COUNT')
           if actual_tree != expected:
               failures.append('FAIL_EXPECTED_ENGINE_TREE_SHA256_MISMATCH')
@@ -131,7 +131,7 @@ jobs:
               failures.append('FAIL_BASELINE_MANIFEST_IDENTITY_MISMATCH')
           manifest_contracts = [
               bool(re.search(r'file_count:\s*981\b', repository_manifest)),
-              bool(re.search(r'bytes:\s*47321777\b', repository_manifest)),
+              bool(re.search(r'bytes:\s*47323574\b', repository_manifest)),
               actual_tree in repository_manifest,
           ]
           if not all(manifest_contracts):
@@ -142,11 +142,16 @@ jobs:
               failures.append('FAIL_PYC_OR_PYCACHE_PRESENT')
 
           required_state = {
+              'issue': 'AUD-034',
               'motor_status': 'EN_REVISION',
+              'm02_result': 'M02_PASS_RECOMPUTED_POST_AUD033',
+              'm03_result': 'NOT_RECOMPUTED_POST_AUD030',
               'ready_for_project_demo_generation': False,
               'release_authorized': False,
               'tag_authorized': False,
               'productive_closure_authorized': False,
+              'oficial_authorized': False,
+              'agent_load_authorized': False,
               'creative_output_certified': False,
           }
           governance_mismatches = {
@@ -156,6 +161,26 @@ jobs:
           }
           if governance_mismatches:
               failures.append('FAIL_GOVERNANCE_NON_RELEASE_INTERLOCK')
+
+          controlled = state.get('controlled_external_demo_execution', {})
+          controlled_external_demo_required = {
+              'status': 'CONSUMED',
+              'authorized': False,
+              'consumed': True,
+              'generate_executions_allowed': 0,
+              'validate_executions_allowed': 0,
+          }
+          controlled_external_demo_actual = {
+              key: controlled.get(key)
+              for key in controlled_external_demo_required
+          }
+          controlled_external_demo_mismatches = {
+              key: {'expected': value, 'actual': controlled_external_demo_actual[key]}
+              for key, value in controlled_external_demo_required.items()
+              if controlled_external_demo_actual[key] != value
+          }
+          if controlled_external_demo_mismatches:
+              failures.append('FAIL_AUD028_CONSUMED_INTERLOCK')
 
           result = {
               'schema_version': 1,
@@ -178,6 +203,9 @@ jobs:
               'governance_required': required_state,
               'governance_actual': {key: state.get(key) for key in required_state},
               'governance_mismatches': governance_mismatches,
+              'controlled_external_demo_required': controlled_external_demo_required,
+              'controlled_external_demo_actual': controlled_external_demo_actual,
+              'controlled_external_demo_mismatches': controlled_external_demo_mismatches,
               'M03_DECISION': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
               'CREATIVE_OUTPUT_CERTIFIED': False,
               'result': 'PASS' if not failures else 'FAIL',
@@ -328,7 +356,7 @@ jobs:
           failures = []
           if identity.get('tree_sha256') != os.environ['EXPECTED_ENGINE_TREE_SHA256'].strip().lower():
               failures.append('FAIL_POSTFLIGHT_ENGINE_TREE_SHA256')
-          if identity.get('file_count') != 981 or identity.get('byte_count') != 47_321_777:
+          if identity.get('file_count') != 981 or identity.get('byte_count') != 47_323_574:
               failures.append('FAIL_POSTFLIGHT_ENGINE_IDENTITY')
           if status.strip():
               failures.append('FAIL_POSTFLIGHT_REPOSITORY_NOT_CLEAN')
