@@ -342,7 +342,7 @@ jobs:
           technical_result = 'PASS' if not failures else 'FAIL'
           summary = {
               'schema_version': 1,
-              'audit_id': 'AUD-026-M02-POST-PR44',
+              'audit_id': 'AUD-038-M02-POST-AUD037',
               'audit_scope': 'M02_MAXIMUM_TECHNICAL_EVIDENCE_RECOMPUTATION',
               'repository_commit': os.environ.get('GITHUB_SHA'),
               'workflow_run_id': os.environ.get('GITHUB_RUN_ID'),
