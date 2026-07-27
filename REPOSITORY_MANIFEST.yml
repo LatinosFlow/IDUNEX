@@ -2,9 +2,18 @@ repository: idunex
 system: IDUNEX
 area: IA
 status: EN_REVISION
-m02_result: NOT_RECOMPUTED_POST_AUD035
-m03_result: NOT_RECOMPUTED_POST_AUD035
 state_authority: governance/CURRENT_STATE.json
+state_values_authoritative_in_this_manifest: false
+build_state_snapshot_authority: false
+build_state_snapshot_classification: NON_AUTHORITY_BUILD_SNAPSHOT
+build_state_snapshot:
+  motor_status: EN_REVISION
+  m02_result: NOT_RECOMPUTED_POST_AUD037
+  m03_result: NOT_RECOMPUTED_POST_AUD037
+state_boundary_tokens:
+  - STATE_AUTHORITY=governance/CURRENT_STATE.json
+  - READY_FOR_PROJECT_DEMO_GENERATION=FALSE
+  - CREATIVE_OUTPUT_CERTIFIED=FALSE
 ready_for_project_demo_generation: false
 release_authorized: false
 tag_authorized: false
@@ -33,13 +42,16 @@ current_corrected_tree:
   current_repository_commit_at_aud030_base: fb13a4f5d4bd559b4f1268103630a735b53c8999
   current_repository_commit_at_aud031_base: 2790468f6b3bcc5286761def779276e8a77b6d20
   current_repository_commit_at_aud033_base: 7852cea334d3e94d6c3821e2db516ae6bc8b8cd8
+  current_repository_commit_at_aud037_base: f9a2b84415ef53a8602911e39835617575ff3864
   intermediate_draft_pr71_classification: INTERMEDIATE_DRAFT_PR71_IDENTITY_SUPERSEDED_BY_FINAL_TRUTHFULNESS
   intermediate_draft_pr71_file_count: 981
   intermediate_draft_pr71_bytes: 47324957
   intermediate_draft_pr71_tree_sha256: 22d64b639ed7657605787051d936bffc736cfa3d45b8799475adc28ef7ea0aeb
+  previous_aud035_bytes: 47324981
+  previous_aud035_tree_sha256: c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e
   file_count: 981
-  bytes: 47324981
-  tree_sha256: c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e
+  bytes: 47350130
+  tree_sha256: b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4
   manifest: governance/baseline/IDUNEX_CURRENT_TREE_MANIFEST.json
   sha256_companion: governance/baseline/IDUNEX_CURRENT_TREE_SHA256.txt
   difference_report: governance/baseline/IDUNEX_BASELINE_DIFF_RECEIVED_TO_CURRENT.json
@@ -49,13 +61,15 @@ current_corrected_tree:
   physical_unmanifested_paths: 0
   stale_active_manifest_paths: 0
   obsolete_hashes: 0
-  aud003_scope_result: PASS_CURRENT_TREE_REPRODUCED_POST_AUD030
+  aud003_scope_result: PASS_CURRENT_TREE_REPRODUCED_POST_AUD037
   release_created: false
-current_tree_audit:
-  decision: CURRENT_TREE_M02_M03_NOT_RECOMPUTED_POST_AUD035
-  reason: ENGINE_TREE_CHANGED_BY_AUD035_REQUIRES_FRESH_M02_AND_M03
-  m02_current_tree: NOT_RECOMPUTED_POST_AUD035
-  m03_current_tree: NOT_RECOMPUTED_POST_AUD035
+current_tree_build_snapshot:
+  authority: false
+  classification: NON_AUTHORITY_BUILD_SNAPSHOT
+  decision_at_build: CURRENT_TREE_M02_M03_NOT_RECOMPUTED_POST_AUD037
+  reason: ENGINE_TREE_CHANGED_BY_AUD037_REQUIRES_FRESH_M02_AND_M03
+  m02_at_build: NOT_RECOMPUTED_POST_AUD037
+  m03_at_build: NOT_RECOMPUTED_POST_AUD037
   prior_m02_evidence_class: PRIOR_RECOMPUTED_EVIDENCE_NOT_CURRENT_TREE
   prior_m02_report: docs/audits/IA-IDUNEX-ReauditoriaMotorM02PostPR44-20260721-v1-EN_REVISION.md
   prior_m02_repository_commit: 75d64e1994366428eeccd2fadd345554fa6db581
@@ -81,31 +95,29 @@ current_tree_audit:
   prior_m03_mutation: 506/506
   controlled_demo_generation: CONSUMED_AUD028_PROJECT_AUDIT_BLOCKED
 
-aud034_m02_recomputation:
-  controlling_issue: 67
+aud037_superseded_m02_scoped_evidence:
+  controlling_issue: 73
   status: REFERENCIA_SUSTITUIDA
   evidence_class: REFERENCIA_SUSTITUIDA
+  scoped_classification: VALIDATED_SCOPED_EVIDENCE_FOR_C5CB2F4B_NOT_GOVERNANCE_AUTHORITY
   current_tree_applicability: false
-  superseded_by: AUD-035
-  m02_result: M02_PASS_RECOMPUTED_POST_AUD033
-  run_id: 29941393366
-  job_id: 88995880545
-  artifact_id: 8539029665
-  artifact_name: idunex-m02-max-29941393366-attempt-1
-  artifact_sha256: fd5c9334b96989c714300607dadf742ff63783b8090d90fc3d404b3a22355270
-  repository_commit: 1fc082bfcae5b590066309727c120500de976378
-  engine_tree_sha256: 58454565d354e0f641c1fc4954e867822fd90d4b316c803922a087cd4e7601c7
+  superseded_by: AUD-037
+  technical_result: PASS
+  m02_decision: NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY
+  run_id: 30194513740
+  job_id: 89773509632
+  artifact_id: 8629888949
+  artifact_name: idunex-m02-max-30194513740-attempt-1
+  artifact_sha256: 797d705d9e75317f0cb8dacebcee22e1376369bfadae05ad453943988ad14dde
+  repository_commit: f9a2b84415ef53a8602911e39835617575ff3864
+  engine_tree_sha256: c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e
   engine_file_count: 981
-  engine_byte_count: 47323574
+  engine_byte_count: 47324981
   runtime_validator: PASS
-  matrix: 30/30_PASS
-  mutation: 506/506_PASS
-  positive_fixture: PASS
-  restoration_retest: PASS
+  matrix: 30/30
+  mutation: 506/506
   technical_score: 10/10
-  inherited_audit_id: AUD-026-M02-POST-PR44
-  inherited_audit_id_classification: METADATA_HEREDADA_NO_AUTORIDAD_NOMINAL
-  m03_result: NOT_APPLICABLE_TO_M02_AUD034_EVIDENCE
+  m03_result: NOT_APPLICABLE_TO_M02_SCOPED_EVIDENCE
   aud028_status: CONSUMED
   ready_for_project_demo_generation: false
   release_authorized: false

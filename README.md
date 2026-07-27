@@ -2,102 +2,51 @@
 
 Repositorio técnico privado para el motor IDUNEX.
 
-## Estado actual
+## Autoridad y estado
 
-**Estado:** `EN_REVISION`  
-**Decisión M02 vigente:** `NOT_RECOMPUTED_POST_AUD035`
-**Decisión M03 vigente:** `NOT_RECOMPUTED_POST_AUD035`
-**Autoridad de estado:** `governance/CURRENT_STATE.json`  
-**Versión declarada de baseline:** `v1.0.0`
+`governance/CURRENT_STATE.json` es la única autoridad mutable del estado global. Los documentos y manifests internos de `engine/IDUNEX` conservan únicamente snapshots de build no autoritativos.
 
 ```text
+STATE_AUTHORITY=governance/CURRENT_STATE.json
 MOTOR_STATUS=EN_REVISION
-M02_RESULT=NOT_RECOMPUTED_POST_AUD035
-M03_RESULT=NOT_RECOMPUTED_POST_AUD035
+M02_RESULT=NOT_RECOMPUTED_POST_AUD037
+M03_RESULT=NOT_RECOMPUTED_POST_AUD037
 READY_FOR_PROJECT_DEMO_GENERATION=FALSE
+RELEASE_AUTHORIZED=FALSE
+TAG_AUTHORIZED=FALSE
+PRODUCTIVE_CLOSURE_AUTHORIZED=FALSE
+OFICIAL_AUTHORIZED=FALSE
+AGENT_LOAD_AUTHORIZED=FALSE
 CREATIVE_OUTPUT_CERTIFIED=FALSE
 ```
 
-El motor está extraído en `engine/IDUNEX/`. Los documentos históricos se conservan en
-`governance/authority/REFERENCIA/` y la autoridad operativa activa en
-`governance/authority/ACTIVO/`.
+La frontera introducida por AUD-037 permite formalizar `M02_PASS` o `M03_PASS` en la autoridad externa, con evidencia ligada al árbol físico, sin modificar posteriormente el SHA de `engine/IDUNEX`. Los tokens PASS son exactos; una cadena que sólo contenga la palabra `PASS` no es válida.
 
-## Regla de autoridad
+## Interlocks
 
-- GitHub controla código, estructura técnica, pruebas, issues, PRs y releases.
-- SharePoint/OneDrive conserva los artefactos documentales empresariales oficiales.
-- No se acepta `PASS` declarado sin recomputar.
-- `governance/CURRENT_STATE.json` es la única autoridad legible por máquina del estado global.
-- La generación general del Proyecto Demo permanece bloqueada:
-  `ready_for_project_demo_generation=false`.
-- La certificación creativa permanece bloqueada:
-  `creative_output_certified=false`.
-- Release, tag, `OFICIAL`, cierre productivo y carga de agentes permanecen bloqueados.
-- M02 fue recomputado y validado para el árbol actual post-AUD-033; M03 permanece sin recomputar post-AUD-030 y bloqueado por AUD-032.
-- El PASS de M02 por sí solo no habilita la generación general del Proyecto Demo ni ninguna capacidad bloqueada.
+Mientras `MOTOR_STATUS=EN_REVISION`, continúan bloqueados:
 
-## Ejecución externa controlada del Demo
+- Proyecto 000 Demo y cualquier generación general;
+- release, tag y estado `OFICIAL`;
+- cierre productivo y carga de agentes;
+- certificación de output creativo.
 
-AUD-028 fue utilizada una sola vez y está consumida:
+AUD-028 permanece `CONSUMED`, no autorizado y sin ejecuciones `generate` o `validate` disponibles.
 
-```text
-controlled_external_demo_execution.status=CONSUMED
-controlled_external_demo_execution.authorized=false
-controlled_external_demo_execution.consumed=true
-controlled_external_demo_execution.execution_limit=1
-controlled_external_demo_execution.execution_count=1
-controlled_external_demo_execution.generate_executions_allowed=0
-controlled_external_demo_execution.validate_executions_allowed=0
-```
+## Evidencia M02 sustituida
 
-Proyecto generado:
+El run `30194513740`, job `89773509632`, artifact `8629888949` y artifact SHA-256 `797d705d9e75317f0cb8dacebcee22e1376369bfadae05ad453943988ad14dde` constituyen evidencia técnica validada sólo para el árbol anterior `c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e` (`981` archivos, `47324981` bytes). Su decisión fue `NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY`; para el árbol AUD-037 queda como `REFERENCIA_SUSTITUIDA` y `current_tree_applicability=false`.
 
-```text
-IDUNEX_PROJECT_PROYECTO_000_DEMO_v1.0.0.zip
-SHA-256=539cc5b7077e12025deefa0304525a9aa8bfaa627a4d408cf01127e8beb8460b
-```
+## Flujos
 
-La validación operativa del ZIP es `PASS`, pero la auditoría independiente detectó una
-desincronización bloqueante entre el content-tree final interno y dos superficies documentales
-externas. Estado vigente:
-
-```text
-PROJECT_AUDIT_DECISION=PROJECT_AUDIT_FAIL_EXTERNAL_SURFACE_DESYNC
-PROJECT_AGENT_LOAD_PASS=false
-PROJECT_READY_FOR_PRODUCTION=false
-```
-
-No repetir `generate` ni `validate` bajo AUD-028. La corrección se controla mediante el issue #58.
-
-## Corrección AUD-030
-
-El factory autoritativo lee el reporte, certificado, README y las dos pruebas de content-tree
-directamente desde el ZIP final reabierto. `write_external_project_artifacts()` ya no usa el
-directorio materializado como autoridad documental.
-
-La operación autoritativa de refresco es:
-
-```text
-refresh-external-artifacts <project_zip> --output-json <resultado.json>
-```
-
-Solo reemplaza atómicamente `*_RELEASE_CERTIFICATE.txt`, `*_FINAL_AUDIT_REPORT.md` y
-`*_README_FOR_HUMAN_OPERATOR.md`; exige companion `<project_zip>.sha256`, valida el set externo
-5/5 y falla si cambian SHA o tamaño del ZIP o del companion. No ejecuta `generate`, no modifica
-gobernanza y no consume ni reactiva AUD-028.
-
-## Siguiente flujo
-
-```text
-AUD-028 CONSUMED → M02 recomputado post-AUD-033 → M03 pendiente y bloqueado por AUD-032 → refresco externo autorizado → auditoría independiente → carga de agentes
-```
+M02 queda preparado para una única ejecución manual futura sobre la identidad AUD-037. M03 exige primero un `M02_PASS` formalizado para el mismo árbol, por lo que permanece bloqueado en el estado actual. Este cambio no ejecuta M02, M03, Demo, refresh real ni carga de agentes.
 
 ## Comandos de control
 
 ```bash
-python tools/audit/intake_audit.py --repo-root .
-python tools/audit/governance_state_check.py --repo-root .
-python tools/package/package_engine.py --repo-root . --version v1.0.0
+python -B engine/IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py engine/IDUNEX
+python -B tools/audit/governance_state_check.py --repo-root .
+python -B tools/audit/baseline_scanner.py --repo-root .
 ```
 
-El estado sigue `EN_REVISION`; no existe release oficial.
+No existe release oficial.

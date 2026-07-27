@@ -61,6 +61,352 @@ def _current_governance_state():
     state_path=ROOT.parent.parent/'governance/CURRENT_STATE.json'
     return read_json(state_path) if state_path.is_file() else {}
 
+STATE_AUTHORITY_PATH = 'governance/CURRENT_STATE.json'
+BUILD_STATE_SNAPSHOT_CLASSIFICATION = 'NON_AUTHORITY_BUILD_SNAPSHOT'
+ALLOWED_MOTOR_STATUS = {'EN_REVISION', 'OFICIAL'}
+ISSUE_TOKEN_RE = re.compile(r'^AUD-[0-9]{3}$')
+M02_RESULT_RE = re.compile(r'^(?:NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?|M02_PASS)$')
+M03_RESULT_RE = re.compile(r'^(?:NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?|M03_PASS)$')
+SHA256_TOKEN_RE = re.compile(r'^[0-9a-f]{64}$')
+GIT_SHA_TOKEN_RE = re.compile(r'^[0-9a-f]{40}$')
+INTERNAL_BUILD_STATE_TEXT_SURFACES = (
+    '00_INDEX/RELEASE_CERTIFICATE.txt',
+    '00_INDEX/CHANGELOG.md',
+    '00_INDEX/ACTIVE_VERSION.txt',
+    '00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md',
+    '00_INDEX/00_CONTROL_CENTER/STATUS.md',
+    '00_INDEX/SHA256SUMS_POINTER.txt',
+    '00_INDEX/FINAL_AUDIT_REPORT.md',
+    '99_MANIFESTS_SHA_LINEAGE/21_MANIFESTS_LINEAGE/HASH_REGENERATION_POLICY.md',
+    '07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATORS_PRODUCTIVE_BASE_ENGINE.md',
+    '07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/README_CANONICAL_BRIDGE.md',
+    '07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_CANONICAL_INDEX.md',
+    '07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_FINAL_RELEASE_GATE.md',
+)
+INTERNAL_BUILD_STATE_JSON_SURFACES = (
+    '00_INDEX/MASTER_GOVERNANCE_MAP.json',
+    '00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json',
+    '00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json',
+    '00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json',
+    '07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/NO_BLOAT_NO_HISTORY_POLICY.json',
+    '07_VALIDATION_QA_GAUNTLET/14_POLICIES/VALIDATOR_REGISTRY.json',
+    '07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_VALIDATOR_REGISTRY.json',
+    '99_MANIFESTS_SHA_LINEAGE/FINAL_RELEASE_STATUS.json',
+)
+INTERNAL_BUILD_STATE_JSON_MANIFESTS = (
+    '99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json',
+    '99_MANIFESTS_SHA_LINEAGE/HASH_MANIFEST.json',
+    '99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json',
+    '99_MANIFESTS_SHA_LINEAGE/MANIFEST.json',
+)
+INTERNAL_BUILD_STATE_TEXT_MANIFESTS = (
+    '99_MANIFESTS_SHA_LINEAGE/MANIFEST.txt',
+    '99_MANIFESTS_SHA_LINEAGE/SHA256SUMS.txt',
+)
+
+def _governance_failure(failures, code, path, detail=None):
+    row = {'path': path, 'code': code}
+    if detail is not None:
+        row['detail'] = detail
+    failures.append(row)
+
+def _physical_engine_identity(root: Path):
+    rows = []
+    byte_count = 0
+    for path in sorted(
+        (candidate for candidate in root.rglob('*') if candidate.is_file()),
+        key=lambda candidate: candidate.relative_to(root).as_posix(),
+    ):
+        relative = f"engine/IDUNEX/{path.relative_to(root).as_posix()}"
+        size = path.stat().st_size
+        byte_count += size
+        rows.append((relative, size, sha(path)))
+    aggregate = hashlib.sha256()
+    for relative, size, file_sha256 in rows:
+        aggregate.update(f'{relative}\0{size}\0{file_sha256}\n'.encode('utf-8'))
+    return {
+        'file_count': len(rows),
+        'byte_count': byte_count,
+        'tree_sha256': aggregate.hexdigest(),
+    }
+
+def _validate_bound_evidence(phase, evidence, physical, failures):
+    prefix = phase.upper()
+    path = f'{STATE_AUTHORITY_PATH}:{phase.lower()}_evidence'
+    if not isinstance(evidence, dict):
+        _governance_failure(failures, f'FAIL_{prefix}_EVIDENCE_MISSING', path)
+        return
+    for field in ('run_id', 'job_id', 'artifact_id'):
+        value = evidence.get(field)
+        if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
+            _governance_failure(
+                failures,
+                f'FAIL_{prefix}_EVIDENCE_{field.upper()}_MISSING',
+                path,
+                {'actual': value},
+            )
+    artifact_name = evidence.get('artifact_name')
+    if not isinstance(artifact_name, str) or not artifact_name.strip():
+        _governance_failure(failures, f'FAIL_{prefix}_EVIDENCE_ARTIFACT_NAME_MISSING', path)
+    artifact_sha = evidence.get('artifact_sha256')
+    if not isinstance(artifact_sha, str) or not SHA256_TOKEN_RE.fullmatch(artifact_sha):
+        _governance_failure(failures, f'FAIL_{prefix}_EVIDENCE_ARTIFACT_SHA256_INVALID', path)
+    repository_commit = evidence.get('repository_commit')
+    if not isinstance(repository_commit, str) or not GIT_SHA_TOKEN_RE.fullmatch(repository_commit):
+        _governance_failure(failures, f'FAIL_{prefix}_EVIDENCE_REPOSITORY_COMMIT_INVALID', path)
+    for field, suffix in (
+        ('engine_tree_sha256', 'ENGINE_TREE_SHA256_MISMATCH'),
+        ('engine_file_count', 'ENGINE_FILE_COUNT_MISMATCH'),
+        ('engine_byte_count', 'ENGINE_BYTE_COUNT_MISMATCH'),
+    ):
+        if evidence.get(field) != physical[field.removeprefix('engine_')]:
+            _governance_failure(
+                failures,
+                f'FAIL_{prefix}_EVIDENCE_{suffix}',
+                path,
+                {'expected': physical[field.removeprefix('engine_')], 'actual': evidence.get(field)},
+            )
+
+def _governance_state_boundary_gate(root: Path):
+    failures = []
+    contract_rel = '07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json'
+    contract_path = root / contract_rel
+    contract = None
+    if not contract_path.is_file():
+        _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_VALIDATION_CONTRACT_MISSING', contract_rel)
+    else:
+        try:
+            contract = read_json(contract_path)
+        except Exception as exc:
+            _governance_failure(
+                failures,
+                'FAIL_MASTER_GOVERNANCE_VALIDATION_CONTRACT_UNREADABLE',
+                contract_rel,
+                {'error': exc.__class__.__name__},
+            )
+
+    if isinstance(contract, dict):
+        if 'expected_current_state' in contract:
+            _governance_failure(
+                failures,
+                'FAIL_MASTER_GOVERNANCE_AUDIT_SPECIFIC_STATE_EQUALITY',
+                contract_rel,
+            )
+        if contract.get('state_authority') != STATE_AUTHORITY_PATH:
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_STATE_AUTHORITY', contract_rel)
+        if contract.get('build_state_snapshot_authority') is not False:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_AUTHORITY', contract_rel)
+        if contract.get('build_state_snapshot_classification') != BUILD_STATE_SNAPSHOT_CLASSIFICATION:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_CLASSIFICATION', contract_rel)
+        schema = contract.get('mutable_state_schema', {})
+        schema_ok = (
+            isinstance(schema, dict)
+            and schema.get('issue_pattern') == '^AUD-[0-9]{3}$'
+            and schema.get('motor_status_allowed') == ['EN_REVISION', 'OFICIAL']
+            and schema.get('m02_result', {}).get('not_recomputed_pattern') == '^NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?$'
+            and schema.get('m02_result', {}).get('pass_token') == 'M02_PASS'
+            and schema.get('m03_result', {}).get('not_recomputed_pattern') == '^NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?$'
+            and schema.get('m03_result', {}).get('pass_token') == 'M03_PASS'
+        )
+        if not schema_ok:
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_MUTABLE_STATE_SCHEMA', contract_rel)
+        transition_rules = contract.get('state_transition_rules', {})
+        if not (
+            isinstance(transition_rules, dict)
+            and transition_rules.get('not_recomputed_must_bind_current_issue') is True
+            and transition_rules.get('pass_requires_evidence') is True
+            and transition_rules.get('state_changes_do_not_require_engine_changes') is True
+        ):
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_STATE_TRANSITION_RULES', contract_rel)
+        serialized_rules = json.dumps(transition_rules, ensure_ascii=True, sort_keys=True)
+        if re.search(r'AUD-?[0-9]{3}', serialized_rules):
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_AUDIT_SPECIFIC_TRANSITION', contract_rel)
+        evidence_rules = contract.get('evidence_binding_rules', {})
+        if not (
+            isinstance(evidence_rules, dict)
+            and evidence_rules.get('physical_tree_authority') == 'engine/IDUNEX'
+            and evidence_rules.get('required_identifiers') == ['run_id', 'job_id', 'artifact_id', 'artifact_name', 'artifact_sha256', 'repository_commit']
+            and evidence_rules.get('required_engine_identity') == ['engine_tree_sha256', 'engine_file_count', 'engine_byte_count']
+        ):
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_EVIDENCE_BINDING_RULES', contract_rel)
+        if contract.get('M02_before_M03') is not True:
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_M02_BEFORE_M03_RULE', contract_rel)
+        if contract.get('same_tree_evidence_requirement') is not True:
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_SAME_TREE_EVIDENCE_RULE', contract_rel)
+        aud028 = contract.get('AUD028_consumed_interlock', {})
+        if aud028 != {
+            'status': 'CONSUMED',
+            'authorized': False,
+            'consumed': True,
+            'generate_executions_allowed': 0,
+            'validate_executions_allowed': 0,
+        }:
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_AUD028_INTERLOCK', contract_rel)
+        if contract.get('creative_output_false_interlock') is not True:
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_CREATIVE_OUTPUT_INTERLOCK', contract_rel)
+
+    state_path = root.parent.parent / STATE_AUTHORITY_PATH
+    state = None
+    if not state_path.is_file():
+        _governance_failure(failures, 'FAIL_CURRENT_STATE_MISSING', STATE_AUTHORITY_PATH)
+    else:
+        try:
+            state = read_json(state_path)
+        except Exception as exc:
+            _governance_failure(
+                failures,
+                'FAIL_CURRENT_STATE_UNREADABLE',
+                STATE_AUTHORITY_PATH,
+                {'error': exc.__class__.__name__},
+            )
+    if isinstance(state, dict):
+        if state.get('authority') != STATE_AUTHORITY_PATH:
+            _governance_failure(failures, 'FAIL_CURRENT_STATE_AUTHORITY', STATE_AUTHORITY_PATH)
+        issue = state.get('issue')
+        if not isinstance(issue, str) or not ISSUE_TOKEN_RE.fullmatch(issue):
+            _governance_failure(failures, 'FAIL_CURRENT_STATE_ISSUE_SCHEMA', STATE_AUTHORITY_PATH)
+        motor_status = state.get('motor_status')
+        if motor_status not in ALLOWED_MOTOR_STATUS:
+            _governance_failure(failures, 'FAIL_MOTOR_STATUS_SCHEMA', STATE_AUTHORITY_PATH)
+        m02_result = state.get('m02_result')
+        m03_result = state.get('m03_result')
+        if not isinstance(m02_result, str) or not M02_RESULT_RE.fullmatch(m02_result):
+            _governance_failure(failures, 'FAIL_M02_RESULT_SCHEMA', STATE_AUTHORITY_PATH)
+        if not isinstance(m03_result, str) or not M03_RESULT_RE.fullmatch(m03_result):
+            _governance_failure(failures, 'FAIL_M03_RESULT_SCHEMA', STATE_AUTHORITY_PATH)
+        if isinstance(issue, str) and ISSUE_TOKEN_RE.fullmatch(issue):
+            suffix = issue.replace('-', '')
+            if isinstance(m02_result, str) and m02_result.startswith('NOT_RECOMPUTED_POST_') and m02_result != f'NOT_RECOMPUTED_POST_{suffix}':
+                _governance_failure(failures, 'FAIL_M02_NOT_RECOMPUTED_ISSUE_BINDING', STATE_AUTHORITY_PATH)
+            if isinstance(m03_result, str) and m03_result.startswith('NOT_RECOMPUTED_POST_') and m03_result != f'NOT_RECOMPUTED_POST_{suffix}':
+                _governance_failure(failures, 'FAIL_M03_NOT_RECOMPUTED_ISSUE_BINDING', STATE_AUTHORITY_PATH)
+
+        physical = _physical_engine_identity(root)
+        engine_change = state.get('engine_change_control')
+        if not isinstance(engine_change, dict):
+            _governance_failure(failures, 'FAIL_CURRENT_ENGINE_IDENTITY_MISSING', STATE_AUTHORITY_PATH)
+        else:
+            for field, suffix in (
+                ('current_engine_tree_sha256', 'TREE_SHA256'),
+                ('current_engine_file_count', 'FILE_COUNT'),
+                ('current_engine_byte_count', 'BYTE_COUNT'),
+            ):
+                physical_field = field.removeprefix('current_engine_')
+                if engine_change.get(field) != physical[physical_field]:
+                    _governance_failure(
+                        failures,
+                        f'FAIL_CURRENT_ENGINE_{suffix}_MISMATCH',
+                        STATE_AUTHORITY_PATH,
+                        {'expected': physical[physical_field], 'actual': engine_change.get(field)},
+                    )
+
+        if m02_result == 'M02_PASS':
+            _validate_bound_evidence('M02', state.get('m02_evidence'), physical, failures)
+        if m03_result == 'M03_PASS':
+            if m02_result != 'M02_PASS':
+                _governance_failure(failures, 'FAIL_M03_PASS_REQUIRES_M02_PASS', STATE_AUTHORITY_PATH)
+            _validate_bound_evidence('M03', state.get('m03_evidence'), physical, failures)
+            m02_evidence = state.get('m02_evidence')
+            m03_evidence = state.get('m03_evidence')
+            if isinstance(m02_evidence, dict) and isinstance(m03_evidence, dict):
+                if any(
+                    m02_evidence.get(field) != m03_evidence.get(field)
+                    for field in ('engine_tree_sha256', 'engine_file_count', 'engine_byte_count')
+                ):
+                    _governance_failure(failures, 'FAIL_M03_EVIDENCE_NOT_SAME_TREE_AS_M02', STATE_AUTHORITY_PATH)
+
+        if motor_status == 'EN_REVISION':
+            revision_interlocks = {
+                'ready_for_project_demo_generation': 'FAIL_EN_REVISION_DEMO_INTERLOCK',
+                'release_authorized': 'FAIL_EN_REVISION_RELEASE_INTERLOCK',
+                'tag_authorized': 'FAIL_EN_REVISION_TAG_INTERLOCK',
+                'productive_closure_authorized': 'FAIL_EN_REVISION_PRODUCTIVE_CLOSURE_INTERLOCK',
+                'oficial_authorized': 'FAIL_EN_REVISION_OFICIAL_INTERLOCK',
+                'agent_load_authorized': 'FAIL_EN_REVISION_AGENT_LOAD_INTERLOCK',
+                'creative_output_certified': 'FAIL_EN_REVISION_CREATIVE_OUTPUT_INTERLOCK',
+            }
+            for field, code in revision_interlocks.items():
+                if state.get(field) is not False:
+                    _governance_failure(failures, code, STATE_AUTHORITY_PATH, {'field': field, 'actual': state.get(field)})
+        if state.get('creative_output_certified') is not False:
+            _governance_failure(failures, 'FAIL_CREATIVE_OUTPUT_FALSE_INTERLOCK', STATE_AUTHORITY_PATH)
+
+        controlled = state.get('controlled_external_demo_execution')
+        if not isinstance(controlled, dict):
+            _governance_failure(failures, 'FAIL_AUD028_CONSUMED_INTERLOCK', STATE_AUTHORITY_PATH)
+        else:
+            aud028_exact = {'status': 'CONSUMED', 'authorized': False, 'consumed': True}
+            if any(controlled.get(field) != expected for field, expected in aud028_exact.items()):
+                _governance_failure(failures, 'FAIL_AUD028_CONSUMED_INTERLOCK', STATE_AUTHORITY_PATH)
+            if controlled.get('generate_executions_allowed') != 0:
+                _governance_failure(failures, 'FAIL_AUD028_GENERATE_EXECUTIONS_ALLOWED_NONZERO', STATE_AUTHORITY_PATH)
+            if controlled.get('validate_executions_allowed') != 0:
+                _governance_failure(failures, 'FAIL_AUD028_VALIDATE_EXECUTIONS_ALLOWED_NONZERO', STATE_AUTHORITY_PATH)
+
+    direct_state_claim = re.compile(r'(?m)^(?:CURRENT_)?M0[23]_RESULT\s*=')
+    required_snapshot_tokens = (
+        f'STATE_AUTHORITY={STATE_AUTHORITY_PATH}',
+        'BUILD_STATE_SNAPSHOT_AUTHORITY=FALSE',
+        f'BUILD_STATE_SNAPSHOT_CLASSIFICATION={BUILD_STATE_SNAPSHOT_CLASSIFICATION}',
+    )
+    for relative in INTERNAL_BUILD_STATE_TEXT_SURFACES:
+        path = root / relative
+        if not path.is_file():
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_SURFACE_MISSING', relative)
+            continue
+        text = path.read_text(encoding='utf-8', errors='replace')
+        if 'BUILD_STATE_SNAPSHOT_AUTHORITY=TRUE' in text:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_AUTHORITY', relative)
+        if not all(token in text for token in required_snapshot_tokens):
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_CONTRACT', relative)
+        if direct_state_claim.search(text):
+            _governance_failure(failures, 'FAIL_INTERNAL_SNAPSHOT_CURRENT_STATE_EQUALITY_CLAIM', relative)
+
+    for relative in INTERNAL_BUILD_STATE_JSON_MANIFESTS:
+        path = root / relative
+        try:
+            snapshot = read_json(path)
+        except Exception:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_SURFACE_MISSING', relative)
+            continue
+        if snapshot.get('build_state_snapshot_authority') is not False:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_AUTHORITY', relative)
+        if snapshot.get('build_state_snapshot_classification') != BUILD_STATE_SNAPSHOT_CLASSIFICATION:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_CLASSIFICATION', relative)
+        if snapshot.get('state_authority') != STATE_AUTHORITY_PATH:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_CONTRACT', relative)
+        if 'm02_result' in snapshot or 'm03_result' in snapshot:
+            _governance_failure(failures, 'FAIL_INTERNAL_SNAPSHOT_CURRENT_STATE_EQUALITY_CLAIM', relative)
+
+    for relative in INTERNAL_BUILD_STATE_JSON_SURFACES:
+        path = root / relative
+        try:
+            snapshot = read_json(path)
+        except Exception:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_SURFACE_MISSING', relative)
+            continue
+        if snapshot.get('build_state_snapshot_authority') is not False:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_AUTHORITY', relative)
+        if snapshot.get('build_state_snapshot_classification') != BUILD_STATE_SNAPSHOT_CLASSIFICATION:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_CLASSIFICATION', relative)
+        if snapshot.get('state_authority') != STATE_AUTHORITY_PATH:
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_CONTRACT', relative)
+        if any(field in snapshot for field in ('m02_result', 'm03_result', 'current_m02_result', 'current_m03_result')):
+            _governance_failure(failures, 'FAIL_INTERNAL_SNAPSHOT_CURRENT_STATE_EQUALITY_CLAIM', relative)
+
+    for relative in INTERNAL_BUILD_STATE_TEXT_MANIFESTS:
+        path = root / relative
+        text = path.read_text(encoding='utf-8', errors='replace') if path.is_file() else ''
+        if not all(token.lower() in text.lower() for token in (
+            f'# state_authority={STATE_AUTHORITY_PATH}',
+            '# build_state_snapshot_authority=false',
+            f'# build_state_snapshot_classification={BUILD_STATE_SNAPSHOT_CLASSIFICATION}',
+        )):
+            _governance_failure(failures, 'FAIL_INTERNAL_BUILD_SNAPSHOT_CONTRACT', relative)
+        if re.search(r'(?m)^#\s*m0[23]_result=', text, re.IGNORECASE):
+            _governance_failure(failures, 'FAIL_INTERNAL_SNAPSHOT_CURRENT_STATE_EQUALITY_CLAIM', relative)
+    return failures
+
 def _registered_lineage_validator_names():
     registry=read_json(SURFACE_REGISTRY)
     surfaces=registry.get('engine_surfaces', {})
@@ -105,38 +451,25 @@ def _active_surface_scope_sync_gate(root: Path):
         blocked_markers = ['READY_FOR_REAUDIT','FAIL_MAX_MATRIX_NOT_EXECUTED_CURRENT_RUN','"SCORE": "BLOCKED"','"SCORE":"BLOCKED"','SCORE=BLOCKED','VALIDATORS_FAIL=1','"VALIDATORS_FAIL": 1','"validators_fail": 1','"validators_fail":1','ACTIVE_BLOCKED_WHILE_MAX_MATRIX_FAIL']
         if score_10 and any(t in tx for t in blocked_markers):
             failures.append({'path':rel,'code':'FAIL_ACTIVE_SCORE_10_WITH_BLOCKED_OR_FAIL_MARKER'})
-    contract=root/'07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json'
-    if contract.is_file():
-        try:
-            d=json.loads(contract.read_text(encoding='utf-8'))
-            state=_current_governance_state()
-            expected=d.get('expected_current_state', {})
-            state_fields={
-                'MOTOR_STATUS': state.get('motor_status'),
-                'M02_RESULT': state.get('m02_result'),
-                'M03_RESULT': state.get('m03_result'),
-                'READY_FOR_PROJECT_DEMO_GENERATION': state.get('ready_for_project_demo_generation'),
-                'RELEASE_AUTHORIZED': state.get('release_authorized'),
-                'PRODUCTIVE_CLOSURE_AUTHORIZED': state.get('productive_closure_authorized'),
-                'TAG_AUTHORIZED': state.get('tag_authorized'),
-                'OFICIAL_AUTHORIZED': state.get('oficial_authorized'),
-                'AGENT_LOAD_AUTHORIZED': state.get('agent_load_authorized'),
-                'CREATIVE_OUTPUT_CERTIFIED': state.get('creative_output_certified'),
-            }
-            historical=d.get('historical_evidence_policy', {})
-            contract_synced=(
-                expected==state_fields
-                and d.get('state_authority')=='governance/CURRENT_STATE.json'
-                and historical.get('may_override_current_state') is False
-                and 'NOT_RECOMPUTED_POST_AUD035' in str(d.get('interlock', ''))
-            )
-            if not contract_synced:
-                failures.append({'path':'07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json','code':'FAIL_MASTER_GOVERNANCE_VALIDATION_CONTRACT_NOT_SYNCED'})
-        except Exception:
-            failures.append({'path':'07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json','code':'FAIL_MASTER_GOVERNANCE_VALIDATION_CONTRACT_UNREADABLE'})
-    else:
-        failures.append({'path':'07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json','code':'FAIL_MASTER_GOVERNANCE_VALIDATION_CONTRACT_MISSING'})
+    failures.extend(_governance_state_boundary_gate(root))
     return not failures, failures
+
+if '--governance-state-contract-only' in sys.argv[2:]:
+    governance_failures = _governance_state_boundary_gate(ROOT)
+    governance_fail_codes = list(dict.fromkeys(row['code'] for row in governance_failures))
+    governance_out = {
+        'validator': 'VALIDATE_IDUNEX_RUNTIME',
+        'scope': 'GOVERNANCE_STATE_CONTRACT_DIAGNOSTIC',
+        'global_closure_capable': False,
+        'result': 'PASS' if not governance_failures else 'FAIL',
+        'validators_fail': len(governance_fail_codes),
+        'blocking_warnings': 0,
+        'fail_codes': governance_fail_codes,
+        'details': {'governance_state_boundary': governance_failures},
+        'creative_output_certified': False,
+    }
+    print(json.dumps(_authority_envelope(governance_out), ensure_ascii=False, indent=2))
+    sys.exit(0 if not governance_failures else 1)
 
 
 
@@ -505,12 +838,14 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
         if low.endswith('.zip') or low.endswith('.log') or '/matrix_chunk_work/' in low or '/tmp_' in low or '.idunex_h160_stage_' in low:
             forbidden_outputs.append(rel)
     addf('NO_TEMP_LOGS_OR_TEST_OUTPUT_ZIPS_IN_ENGINE', forbidden_outputs==[], {'forbidden_outputs':forbidden_outputs[:20]})
-    # Current governance, not superseded matrix evidence, controls active document truthfulness.
+    # Internal documents expose only the stable external authority boundary and a
+    # non-authoritative build snapshot classification. Mutable M02/M03 values are
+    # validated from CURRENT_STATE, never copied into an equality contract here.
     doc_missing={}
-    state=_current_governance_state()
     doc_tokens=[
-        f"MOTOR_STATUS={str(state.get('motor_status', '')).upper()}",
-        f"M02_RESULT={str(state.get('m02_result', '')).upper()}",
+        'STATE_AUTHORITY=governance/CURRENT_STATE.json',
+        'BUILD_STATE_SNAPSHOT_AUTHORITY=FALSE',
+        'BUILD_STATE_SNAPSHOT_CLASSIFICATION=NON_AUTHORITY_BUILD_SNAPSHOT',
         'CREATIVE_OUTPUT_CERTIFIED=FALSE',
     ]
     forbidden_active=['READY_FOR_PROJECT_DEMO_GENERATION=TRUE','RELEASE_AUTHORIZED=TRUE','TAG_AUTHORIZED=TRUE','PRODUCTIVE_CLOSURE_AUTHORIZED=TRUE']
@@ -523,7 +858,12 @@ if os.environ.get('IDUNEX_FORCE_LEGACY_DEEP_RUNTIME') != '1':
 
     try:
         _as_ok, _as_failures = _active_surface_scope_sync_gate(ROOT)
-        addf('DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY', _as_ok, {'failures': _as_failures})
+        checks_fast['DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY'] = bool(_as_ok)
+        details_fast['DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY'] = {'failures': _as_failures}
+        for failure in _as_failures:
+            code = failure.get('code') if isinstance(failure, dict) else None
+            if code and code not in failures:
+                failures.append(code)
     except Exception as e:
         addf('DUPLICATE_GOVERNANCE_AND_ACTIVE_VALIDATOR_PARITY', False, {'error': str(e)})
     lin_ok, lin_detail = validate_internal_manifest_lineage_truthfulness()

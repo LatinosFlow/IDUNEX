@@ -6,7 +6,7 @@ on:
       expected_engine_tree_sha256:
         description: Expected SHA-256 of the current engine/IDUNEX physical tree
         required: true
-        default: c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e
+        default: b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4
         type: string
       timeout_per_case:
         description: Maximum seconds for each generated matrix process
@@ -123,7 +123,7 @@ jobs:
 
           if len(files) != 981:
               failures.append('FAIL_ENGINE_FILE_COUNT')
-          if byte_count != 47_324_981:
+          if byte_count != 47_350_130:
               failures.append('FAIL_ENGINE_BYTE_COUNT')
           if actual_tree != expected:
               failures.append('FAIL_EXPECTED_ENGINE_TREE_SHA256_MISMATCH')
@@ -131,7 +131,7 @@ jobs:
               failures.append('FAIL_BASELINE_MANIFEST_IDENTITY_MISMATCH')
           manifest_contracts = [
               bool(re.search(r'file_count:\s*981\b', repository_manifest)),
-              bool(re.search(r'bytes:\s*47324981\b', repository_manifest)),
+              bool(re.search(r'bytes:\s*47350130\b', repository_manifest)),
               actual_tree in repository_manifest,
           ]
           if not all(manifest_contracts):
@@ -142,10 +142,10 @@ jobs:
               failures.append('FAIL_PYC_OR_PYCACHE_PRESENT')
 
           required_state = {
-              'issue': 'AUD-035',
+              'issue': 'AUD-037',
               'motor_status': 'EN_REVISION',
-              'm02_result': 'NOT_RECOMPUTED_POST_AUD035',
-              'm03_result': 'NOT_RECOMPUTED_POST_AUD035',
+              'm02_result': 'M02_PASS',
+              'm03_result': 'NOT_RECOMPUTED_POST_AUD037',
               'ready_for_project_demo_generation': False,
               'release_authorized': False,
               'tag_authorized': False,
@@ -161,6 +161,23 @@ jobs:
           }
           if governance_mismatches:
               failures.append('FAIL_GOVERNANCE_NON_RELEASE_INTERLOCK')
+
+          m02_evidence = state.get('m02_evidence', {})
+          required_m02_evidence = {
+              'engine_tree_sha256': actual_tree,
+              'engine_file_count': len(files),
+              'engine_byte_count': byte_count,
+          }
+          m02_evidence_valid = (
+              isinstance(m02_evidence, dict)
+              and all(isinstance(m02_evidence.get(field), int) and m02_evidence.get(field) > 0 for field in ('run_id', 'job_id', 'artifact_id'))
+              and isinstance(m02_evidence.get('artifact_name'), str) and bool(m02_evidence.get('artifact_name').strip())
+              and bool(re.fullmatch(r'[0-9a-f]{64}', str(m02_evidence.get('artifact_sha256', ''))))
+              and bool(re.fullmatch(r'[0-9a-f]{40}', str(m02_evidence.get('repository_commit', ''))))
+              and all(m02_evidence.get(field) == value for field, value in required_m02_evidence.items())
+          )
+          if not m02_evidence_valid:
+              failures.append('FAIL_M02_FORMALIZATION_REQUIRED_FOR_M03')
 
           controlled = state.get('controlled_external_demo_execution', {})
           controlled_external_demo_required = {
@@ -203,6 +220,8 @@ jobs:
               'governance_required': required_state,
               'governance_actual': {key: state.get(key) for key in required_state},
               'governance_mismatches': governance_mismatches,
+              'm02_evidence_required': required_m02_evidence,
+              'm02_evidence_valid': m02_evidence_valid,
               'controlled_external_demo_required': controlled_external_demo_required,
               'controlled_external_demo_actual': controlled_external_demo_actual,
               'controlled_external_demo_mismatches': controlled_external_demo_mismatches,
@@ -356,7 +375,7 @@ jobs:
           failures = []
           if identity.get('tree_sha256') != os.environ['EXPECTED_ENGINE_TREE_SHA256'].strip().lower():
               failures.append('FAIL_POSTFLIGHT_ENGINE_TREE_SHA256')
-          if identity.get('file_count') != 981 or identity.get('byte_count') != 47_324_981:
+          if identity.get('file_count') != 981 or identity.get('byte_count') != 47_350_130:
               failures.append('FAIL_POSTFLIGHT_ENGINE_IDENTITY')
           if status.strip():
               failures.append('FAIL_POSTFLIGHT_REPOSITORY_NOT_CLEAN')

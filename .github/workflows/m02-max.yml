@@ -6,7 +6,7 @@ on:
       expected_engine_tree_sha256:
         description: Expected SHA-256 of the current engine/IDUNEX physical tree
         required: true
-        default: c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e
+        default: b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4
         type: string
       timeout_per_case:
         description: Maximum seconds for each generated matrix process
@@ -113,6 +113,10 @@ jobs:
 
           if actual_tree != expected:
               failures.append('FAIL_EXPECTED_ENGINE_TREE_SHA256_MISMATCH')
+          if len(files) != 981:
+              failures.append('FAIL_ENGINE_FILE_COUNT_MISMATCH')
+          if byte_count != 47_350_130:
+              failures.append('FAIL_ENGINE_BYTE_COUNT_MISMATCH')
           if manifest.get('tree_sha256') != actual_tree:
               failures.append('FAIL_BASELINE_MANIFEST_TREE_SHA256_MISMATCH')
           if manifest.get('file_count') != len(files):
@@ -125,11 +129,16 @@ jobs:
               failures.append('FAIL_REPOSITORY_NOT_CLEAN_AT_PREFLIGHT')
 
           required_state = {
+              'issue': 'AUD-037',
               'motor_status': 'EN_REVISION',
+              'm02_result': 'NOT_RECOMPUTED_POST_AUD037',
+              'm03_result': 'NOT_RECOMPUTED_POST_AUD037',
               'ready_for_project_demo_generation': False,
               'release_authorized': False,
               'tag_authorized': False,
               'productive_closure_authorized': False,
+              'oficial_authorized': False,
+              'agent_load_authorized': False,
               'creative_output_certified': False,
           }
           state_mismatches = {
@@ -139,6 +148,22 @@ jobs:
           }
           if state_mismatches:
               failures.append('FAIL_GOVERNANCE_INTERLOCK_MISMATCH')
+
+          controlled = state.get('controlled_external_demo_execution', {})
+          aud028_required = {
+              'status': 'CONSUMED',
+              'authorized': False,
+              'consumed': True,
+              'generate_executions_allowed': 0,
+              'validate_executions_allowed': 0,
+          }
+          aud028_mismatches = {
+              key: {'expected': value, 'actual': controlled.get(key)}
+              for key, value in aud028_required.items()
+              if controlled.get(key) != value
+          }
+          if aud028_mismatches:
+              failures.append('FAIL_AUD028_CONSUMED_INTERLOCK')
 
           result = {
               'schema_version': 1,
@@ -157,6 +182,8 @@ jobs:
               'governance_required': required_state,
               'governance_actual': {key: state.get(key) for key in required_state},
               'governance_mismatches': state_mismatches,
+              'aud028_required': aud028_required,
+              'aud028_mismatches': aud028_mismatches,
               'result': 'PASS' if not failures else 'FAIL',
               'fail_codes': failures,
               'm02_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',

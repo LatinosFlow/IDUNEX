@@ -30,17 +30,17 @@ RECEIPT_REL = Path("governance/baseline/IDUNEX_MOTOR_v1.0.0_BASELINE_RECEIPT.jso
 REMAP_REL = Path("governance/baseline/WINDOWS_PATH_SAFE_REMAP.json")
 MOVEMENT_REL = Path("docs/audits/AUD-008-movement-reversal-manifest.json")
 STATE_REL = Path("governance/CURRENT_STATE.json")
-ROOT_ISSUE = "AUD-035"
-ROOT_M02_RESULT = "NOT_RECOMPUTED_POST_AUD035"
-ROOT_M03_RESULT = "NOT_RECOMPUTED_POST_AUD035"
-PHYSICAL_MANIFEST_M02_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD035"
-PHYSICAL_MANIFEST_M03_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD035"
-PHYSICAL_MANIFEST_STATE_CLASSIFICATION = (
-    "PHYSICAL_TREE_SNAPSHOT_NON_AUTHORITY_FOR_CURRENT_M02"
-)
-CURRENT_TREE_SHA256 = "c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e"
+ROOT_ISSUE = "AUD-037"
+ROOT_M02_RESULT = "NOT_RECOMPUTED_POST_AUD037"
+ROOT_M03_RESULT = "NOT_RECOMPUTED_POST_AUD037"
+STATE_AUTHORITY = "governance/CURRENT_STATE.json"
+BUILD_STATE_SNAPSHOT_AUTHORITY = False
+PHYSICAL_MANIFEST_M02_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD037"
+PHYSICAL_MANIFEST_M03_SNAPSHOT = "NOT_RECOMPUTED_POST_AUD037"
+PHYSICAL_MANIFEST_STATE_CLASSIFICATION = "NON_AUTHORITY_BUILD_SNAPSHOT"
+CURRENT_TREE_SHA256 = "b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4"
 CURRENT_TREE_FILE_COUNT = 981
-CURRENT_TREE_BYTE_COUNT = 47324981
+CURRENT_TREE_BYTE_COUNT = 47350130
 
 INTERNAL_JSON_MANIFESTS = (
     "99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json",
@@ -140,10 +140,16 @@ def _internal_payload(records: list[dict[str, Any]], m02_result: str, m03_result
         "semantic_version": "v1.0.0",
         "version_bump": "NO",
         "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
-        "correction_scope": "AUD-030_EXTERNAL_ARTIFACTS_POST_H410",
+        "correction_scope": "AUD-037_GOVERNANCE_IDENTITY_CYCLE_BREAK",
         "motor_status": "EN_REVISION",
-        "m02_result": m02_result,
-        "m03_result": m03_result,
+        "state_authority": STATE_AUTHORITY,
+        "build_state_snapshot_authority": BUILD_STATE_SNAPSHOT_AUTHORITY,
+        "build_state_snapshot_classification": PHYSICAL_MANIFEST_STATE_CLASSIFICATION,
+        "build_state_snapshot": {
+            "motor_status": "EN_REVISION",
+            "m02_result": m02_result,
+            "m03_result": m03_result,
+        },
         "release_authorized": False,
         "file_count": len(records),
         "byte_count": sum(item["bytes"] for item in records),
@@ -166,8 +172,14 @@ def _external_payload(records: list[dict[str, Any]], m02_result: str, m03_result
         "scope": "engine/IDUNEX",
         "semantic_version": "v1.0.0",
         "motor_status": "EN_REVISION",
-        "m02_result": m02_result,
-        "m03_result": m03_result,
+        "state_authority": STATE_AUTHORITY,
+        "build_state_snapshot_authority": BUILD_STATE_SNAPSHOT_AUTHORITY,
+        "build_state_snapshot_classification": PHYSICAL_MANIFEST_STATE_CLASSIFICATION,
+        "build_state_snapshot": {
+            "motor_status": "EN_REVISION",
+            "m02_result": m02_result,
+            "m03_result": m03_result,
+        },
         "release_authorized": False,
         "coverage": "ALL_PHYSICAL_FILES_IN_SCOPE",
         "file_count": len(repository_records),
@@ -185,10 +197,13 @@ def _internal_text(records: list[dict[str, Any]], m02_result: str, m03_result: s
     header = (
         "# manifest_class=CURRENT_PHYSICAL_ENGINE_INTERNAL_NON_SELF_REFERENTIAL\n"
         "# semantic_version=v1.0.0\n"
-        "# correction_scope=AUD-030_EXTERNAL_ARTIFACTS_POST_H410\n"
-        "# motor_status=EN_REVISION\n"
-        f"# m02_result={m02_result}\n"
-        f"# m03_result={m03_result}\n"
+        "# correction_scope=AUD-037_GOVERNANCE_IDENTITY_CYCLE_BREAK\n"
+        f"# state_authority={STATE_AUTHORITY}\n"
+        "# build_state_snapshot_authority=false\n"
+        f"# build_state_snapshot_classification={PHYSICAL_MANIFEST_STATE_CLASSIFICATION}\n"
+        "# build_motor_status_snapshot=EN_REVISION\n"
+        f"# build_m02_snapshot={m02_result}\n"
+        f"# build_m03_snapshot={m03_result}\n"
         "# release_authorized=false\n"
         "# exclusions=99_MANIFESTS_SHA_LINEAGE/FILE_MANIFEST.json,"
         "99_MANIFESTS_SHA_LINEAGE/FINAL_TREE_MANIFEST.json,"
@@ -299,7 +314,7 @@ def build_diff(root: Path, current_indexable: list[dict[str, Any]]) -> dict[str,
         "modified": modified,
         "missing_after_resolution": missing,
         "added_current": added,
-        "global_conclusion": "AUD030_ENGINE_TREE_REBUILT_M02_M03_NOT_RECOMPUTED_EN_REVISION",
+        "global_conclusion": "AUD037_ENGINE_TREE_REBUILT_WITH_EXTERNAL_MUTABLE_STATE_BOUNDARY",
     }
 
 
@@ -318,7 +333,7 @@ def write_artifacts(root: Path) -> dict[str, Any]:
         or m02_result!=PHYSICAL_MANIFEST_M02_SNAPSHOT
         or m03_result!=PHYSICAL_MANIFEST_M03_SNAPSHOT
     ):
-        raise ValueError("AUD035_BLOCKED_INCOHERENT_RECOMPUTATION_STATE")
+        raise ValueError("AUD037_BLOCKED_INCOHERENT_RECOMPUTATION_STATE")
     indexable = snapshot_tree(engine_root, exclude_internal=True)
     internal_payload = _internal_payload(indexable, m02_result, m03_result)
     for relative in INTERNAL_JSON_MANIFESTS:
@@ -414,8 +429,10 @@ def _verify_internal_manifest(root: Path, relative: str) -> dict[str, Any]:
         "duplicate_path_count": len(observed) - len(observed_paths),
         "declared_file_count_matches": payload.get("file_count") == len(observed),
         "declared_tree_sha256_matches": payload.get("tree_sha256") == aggregate_sha256(observed),
-        "m02_result": payload.get("m02_result"),
-        "m03_result": payload.get("m03_result"),
+        "state_authority": payload.get("state_authority"),
+        "build_state_snapshot_authority": payload.get("build_state_snapshot_authority"),
+        "build_state_snapshot_classification": payload.get("build_state_snapshot_classification"),
+        "build_state_snapshot": payload.get("build_state_snapshot"),
     }
 
 
@@ -465,8 +482,11 @@ def audit_repository(root: Path) -> dict[str, Any]:
     if not declared_tree_ok or not declared_count_ok:
         findings.append("CURRENT_EXTERNAL_SUMMARY_MISMATCH")
     if (
-        current.get("m02_result") != PHYSICAL_MANIFEST_M02_SNAPSHOT
-        or current.get("m03_result") != PHYSICAL_MANIFEST_M03_SNAPSHOT
+        current.get("state_authority") != STATE_AUTHORITY
+        or current.get("build_state_snapshot_authority") is not BUILD_STATE_SNAPSHOT_AUTHORITY
+        or current.get("build_state_snapshot_classification") != PHYSICAL_MANIFEST_STATE_CLASSIFICATION
+        or current.get("build_state_snapshot", {}).get("m02_result") != PHYSICAL_MANIFEST_M02_SNAPSHOT
+        or current.get("build_state_snapshot", {}).get("m03_result") != PHYSICAL_MANIFEST_M03_SNAPSHOT
     ):
         findings.append("CURRENT_EXTERNAL_PHYSICAL_SNAPSHOT_MISMATCH")
 
@@ -487,8 +507,11 @@ def audit_repository(root: Path) -> dict[str, Any]:
             or result["duplicate_path_count"]
             or not result["declared_file_count_matches"]
             or not result["declared_tree_sha256_matches"]
-            or result["m02_result"] != PHYSICAL_MANIFEST_M02_SNAPSHOT
-            or result["m03_result"] != PHYSICAL_MANIFEST_M03_SNAPSHOT
+            or result["state_authority"] != STATE_AUTHORITY
+            or result["build_state_snapshot_authority"] is not BUILD_STATE_SNAPSHOT_AUTHORITY
+            or result["build_state_snapshot_classification"] != PHYSICAL_MANIFEST_STATE_CLASSIFICATION
+            or result["build_state_snapshot"].get("m02_result") != PHYSICAL_MANIFEST_M02_SNAPSHOT
+            or result["build_state_snapshot"].get("m03_result") != PHYSICAL_MANIFEST_M03_SNAPSHOT
         ):
             findings.append(f"INTERNAL_MANIFEST_MISMATCH:{result['path']}")
 
@@ -546,8 +569,8 @@ def audit_repository(root: Path) -> dict[str, Any]:
         "root_issue": state.get("issue"),
         "root_m02_result": state.get("m02_result"),
         "root_m03_result": state.get("m03_result"),
-        "physical_manifest_m02_snapshot": current.get("m02_result"),
-        "physical_manifest_m03_snapshot": current.get("m03_result"),
+        "physical_manifest_m02_snapshot": current.get("build_state_snapshot", {}).get("m02_result"),
+        "physical_manifest_m03_snapshot": current.get("build_state_snapshot", {}).get("m03_result"),
         "physical_manifest_state_classification": PHYSICAL_MANIFEST_STATE_CLASSIFICATION,
         "motor_status": state.get("motor_status"),
         "m02_result": state.get("m02_result"),

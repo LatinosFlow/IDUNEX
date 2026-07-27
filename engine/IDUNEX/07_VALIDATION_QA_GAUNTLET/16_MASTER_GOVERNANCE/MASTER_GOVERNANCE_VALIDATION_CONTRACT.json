@@ -1,7 +1,75 @@
 {
   "contract_id": "MASTER_GOVERNANCE_VALIDATION_CONTRACT",
-  "issue": "AUD-035",
+  "schema_version": 2,
+  "implementation_issue": "AUD-037",
   "state_authority": "governance/CURRENT_STATE.json",
+  "build_state_snapshot_authority": false,
+  "build_state_snapshot_classification": "NON_AUTHORITY_BUILD_SNAPSHOT",
+  "mutable_state_schema": {
+    "issue_pattern": "^AUD-[0-9]{3}$",
+    "motor_status_allowed": [
+      "EN_REVISION",
+      "OFICIAL"
+    ],
+    "m02_result": {
+      "not_recomputed_pattern": "^NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?$",
+      "pass_token": "M02_PASS",
+      "pass_detection": "EXACT_TOKEN_ONLY"
+    },
+    "m03_result": {
+      "not_recomputed_pattern": "^NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?$",
+      "pass_token": "M03_PASS",
+      "pass_detection": "EXACT_TOKEN_ONLY"
+    }
+  },
+  "immutable_interlocks": {
+    "while_motor_status_en_revision": {
+      "ready_for_project_demo_generation": false,
+      "release_authorized": false,
+      "tag_authorized": false,
+      "productive_closure_authorized": false,
+      "oficial_authorized": false,
+      "agent_load_authorized": false,
+      "creative_output_certified": false
+    },
+    "internal_snapshots_may_override_current_state": false,
+    "historical_evidence_may_override_current_state": false
+  },
+  "state_transition_rules": {
+    "not_recomputed_must_bind_current_issue": true,
+    "pass_requires_evidence": true,
+    "state_changes_do_not_require_engine_changes": true,
+    "pass_tokens_are_exact_not_substring_matches": true
+  },
+  "evidence_binding_rules": {
+    "physical_tree_authority": "engine/IDUNEX",
+    "required_identifiers": [
+      "run_id",
+      "job_id",
+      "artifact_id",
+      "artifact_name",
+      "artifact_sha256",
+      "repository_commit"
+    ],
+    "required_engine_identity": [
+      "engine_tree_sha256",
+      "engine_file_count",
+      "engine_byte_count"
+    ],
+    "artifact_sha256_pattern": "^[0-9a-f]{64}$",
+    "repository_commit_pattern": "^[0-9a-f]{40}$",
+    "engine_identity_must_match_physical_tree": true
+  },
+  "M02_before_M03": true,
+  "same_tree_evidence_requirement": true,
+  "AUD028_consumed_interlock": {
+    "status": "CONSUMED",
+    "authorized": false,
+    "consumed": true,
+    "generate_executions_allowed": 0,
+    "validate_executions_allowed": 0
+  },
+  "creative_output_false_interlock": true,
   "required_checks": [
     "stable_family_coverage",
     "rule_id_coverage",
@@ -23,24 +91,8 @@
     "truthfulness",
     "governance_state_consistency"
   ],
-  "expected_current_state": {
-    "MOTOR_STATUS": "EN_REVISION",
-    "M02_RESULT": "NOT_RECOMPUTED_POST_AUD035",
-    "M03_RESULT": "NOT_RECOMPUTED_POST_AUD035",
-    "READY_FOR_PROJECT_DEMO_GENERATION": false,
-    "RELEASE_AUTHORIZED": false,
-    "PRODUCTIVE_CLOSURE_AUTHORIZED": false,
-    "TAG_AUTHORIZED": false,
-    "OFICIAL_AUTHORIZED": false,
-    "AGENT_LOAD_AUTHORIZED": false,
-    "CREATIVE_OUTPUT_CERTIFIED": false
-  },
   "historical_evidence_policy": {
     "authority_status": "REFERENCIA_SUSTITUIDA",
     "may_override_current_state": false
-  },
-  "interlock": "NOT_RECOMPUTED_POST_AUD035 prevents any internal certificate from enabling Demo, release, tag, OFICIAL, agent loading or productive closure; no M02 or M03 PASS is declared.",
-  "last_sync_issue": "AUD-035",
-  "last_sync_source_run": 30189604763,
-  "last_sync_reason": "MASTER_GOVERNANCE_VALIDATION_CONTRACT_POST_AUD034_INTERNAL_SURFACE_PARITY"
+  }
 }

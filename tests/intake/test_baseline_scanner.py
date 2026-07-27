@@ -30,7 +30,7 @@ class BaselineScannerTest(unittest.TestCase):
         report = audit_repository(REPO_ROOT)
         self.assertEqual(report["result"], "PASS", json.dumps(report, indent=2))
         self.assertEqual(report["aud003_scope_result"], "PARTIAL_PASS")
-        self.assertEqual(report["root_issue"], "AUD-035")
+        self.assertEqual(report["root_issue"], "AUD-037")
         self.assertEqual(report["root_m02_result"], ROOT_M02_RESULT)
         self.assertEqual(report["root_m03_result"], ROOT_M03_RESULT)
         self.assertEqual(
@@ -78,7 +78,7 @@ class BaselineScannerTest(unittest.TestCase):
             PHYSICAL_MANIFEST_M02_SNAPSHOT,
         )
 
-    def test_aud035_uses_canonical_manifest_regenerator(self):
+    def test_aud037_uses_canonical_manifest_regenerator(self):
         self.assertEqual(write_artifacts(REPO_ROOT)["tree_sha256"], CURRENT_TREE_SHA256)
 
 
