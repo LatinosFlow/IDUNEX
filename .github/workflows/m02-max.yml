@@ -6,7 +6,7 @@ on:
       expected_engine_tree_sha256:
         description: Expected SHA-256 of the current engine/IDUNEX physical tree
         required: true
-        default: c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e
+        default: 87c0e9e681a3a4995d4f096eaaa73cd5c7a889e9c10a5f0f4b3c9897e80c2346
         type: string
       timeout_per_case:
         description: Maximum seconds for each generated matrix process
@@ -113,6 +113,10 @@ jobs:
 
           if actual_tree != expected:
               failures.append('FAIL_EXPECTED_ENGINE_TREE_SHA256_MISMATCH')
+          if len(files) != 981:
+              failures.append('FAIL_ENGINE_FILE_COUNT_MISMATCH')
+          if byte_count != 47_370_003:
+              failures.append('FAIL_ENGINE_BYTE_COUNT_MISMATCH')
           if manifest.get('tree_sha256') != actual_tree:
               failures.append('FAIL_BASELINE_MANIFEST_TREE_SHA256_MISMATCH')
           if manifest.get('file_count') != len(files):
@@ -125,11 +129,16 @@ jobs:
               failures.append('FAIL_REPOSITORY_NOT_CLEAN_AT_PREFLIGHT')
 
           required_state = {
+              'issue': 'AUD-037',
               'motor_status': 'EN_REVISION',
+              'm02_result': 'NOT_RECOMPUTED_POST_AUD037',
+              'm03_result': 'NOT_RECOMPUTED_POST_AUD037',
               'ready_for_project_demo_generation': False,
               'release_authorized': False,
               'tag_authorized': False,
               'productive_closure_authorized': False,
+              'oficial_authorized': False,
+              'agent_load_authorized': False,
               'creative_output_certified': False,
           }
           state_mismatches = {
@@ -139,6 +148,29 @@ jobs:
           }
           if state_mismatches:
               failures.append('FAIL_GOVERNANCE_INTERLOCK_MISMATCH')
+          if state.get('official_transition_evidence') != {
+              'schema_version': 1,
+              'formalization_status': 'NOT_FORMALIZED',
+              'gates': {},
+          }:
+              failures.append('FAIL_PREMATURE_OFFICIAL_TRANSITION_EVIDENCE')
+
+          controlled = state.get('controlled_external_demo_execution', {})
+          aud028_required = {
+              'status': 'CONSUMED',
+              'authorized': False,
+              'consumed': True,
+              'execution_count': 1,
+              'generate_executions_allowed': 0,
+              'validate_executions_allowed': 0,
+          }
+          aud028_mismatches = {
+              key: {'expected': value, 'actual': controlled.get(key)}
+              for key, value in aud028_required.items()
+              if controlled.get(key) != value
+          }
+          if aud028_mismatches:
+              failures.append('FAIL_AUD028_CONSUMED_INTERLOCK')
 
           result = {
               'schema_version': 1,
@@ -157,9 +189,12 @@ jobs:
               'governance_required': required_state,
               'governance_actual': {key: state.get(key) for key in required_state},
               'governance_mismatches': state_mismatches,
+              'aud028_required': aud028_required,
+              'aud028_mismatches': aud028_mismatches,
               'result': 'PASS' if not failures else 'FAIL',
               'fail_codes': failures,
               'm02_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
+              'workflow_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
               'creative_output_certified': False,
           }
           output = Path(os.environ['EVIDENCE_DIR']) / 'identity' / 'IDENTITY_PREFLIGHT.json'
@@ -346,6 +381,7 @@ jobs:
               'technical_failures': failures,
               'score': '10/10' if technical_result == 'PASS' else 'BLOCKED',
               'm02_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
+              'workflow_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
               'demo_generation_authorized': False,
               'release_authorized': False,
               'tag_authorized': False,

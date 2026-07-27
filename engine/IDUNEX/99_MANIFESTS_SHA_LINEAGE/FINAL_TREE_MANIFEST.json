@@ -4,14 +4,20 @@
   "semantic_version": "v1.0.0",
   "version_bump": "NO",
   "correction_mode": "DIRECT_CANONICAL_NO_PATCH",
-  "correction_scope": "AUD-030_EXTERNAL_ARTIFACTS_POST_H410",
+  "correction_scope": "AUD-037_GOVERNANCE_IDENTITY_CYCLE_BREAK",
   "motor_status": "EN_REVISION",
-  "m02_result": "NOT_RECOMPUTED_POST_AUD035",
-  "m03_result": "NOT_RECOMPUTED_POST_AUD035",
+  "state_authority": "governance/CURRENT_STATE.json",
+  "build_state_snapshot_authority": false,
+  "build_state_snapshot_classification": "NON_AUTHORITY_BUILD_SNAPSHOT",
+  "build_state_snapshot": {
+    "motor_status": "EN_REVISION",
+    "m02_result": "NOT_RECOMPUTED_POST_AUD037",
+    "m03_result": "NOT_RECOMPUTED_POST_AUD037"
+  },
   "release_authorized": false,
   "file_count": 975,
-  "byte_count": 45985509,
-  "tree_sha256": "789ecbdfe49fc41c6d863ed4a3d138f7327d7bfe5b6b6f8e7986c2df0573b605",
+  "byte_count": 46029159,
+  "tree_sha256": "57d3974c9be8b1fe60deb5344c0d9401476a3201bda5378a38e0628ac6c25b15",
   "tree_sha256_algorithm": "SHA256(path_utf8 + NUL + decimal_bytes + NUL + file_sha256 + LF), sorted by path",
   "counts_by_extension": {
     ".csv": 2,
@@ -43,8 +49,8 @@
   "files": [
     {
       "path": "00_INDEX/00_CONTROL_CENTER/ACTIVE_VERSION.md",
-      "bytes": 1142,
-      "sha256": "3ff3c91d6f7428f2798339f87308da392bfc1e3880be7d895195bdcfe03d8895",
+      "bytes": 1119,
+      "sha256": "e6688cd72799a0950f172ff26dc5861a0fa43c483bceabd90516e4bbc3fc98ad",
       "extension": ".md",
       "type": "markdown"
     },
@@ -71,8 +77,8 @@
     },
     {
       "path": "00_INDEX/00_CONTROL_CENTER/ENGINE_PROJECT_AGENT_LEVEL_CONTRACTS.json",
-      "bytes": 3444,
-      "sha256": "106396b3db55e8a877f9cc01b88663c73f28320ff4f720645a03c096003c3163",
+      "bytes": 3610,
+      "sha256": "5a74e06b3f74ae93e3b0b4359e4a1677b6f9c65dbb946393284d9fe7dc0f31af",
       "extension": ".json",
       "type": "json"
     },
@@ -176,8 +182,8 @@
     },
     {
       "path": "00_INDEX/00_CONTROL_CENTER/PRODUCTIVE_BASE_ENGINE_STATUS.json",
-      "bytes": 999,
-      "sha256": "a7087d21d5b822431f70d8a042289cf06a7d19e6b0553a626ed9d39e34eb3486",
+      "bytes": 1189,
+      "sha256": "d8665e587524fa729127ab5a2bc1f3573d4866ed4e113c1ab21ab0c6d65ca610",
       "extension": ".json",
       "type": "json"
     },
@@ -274,15 +280,15 @@
     },
     {
       "path": "00_INDEX/00_CONTROL_CENTER/STATUS.md",
-      "bytes": 861,
-      "sha256": "edecd1cdb4e1c36e6d47aa3511c27de416fa0256d14727e414d08965a430dc7e",
+      "bytes": 1036,
+      "sha256": "ace432718752540c48cbad542039ec5d9a55ea2ae60aad88b071f0f87ccf15ea",
       "extension": ".md",
       "type": "markdown"
     },
     {
       "path": "00_INDEX/00_CONTROL_CENTER/VERSION_MANIFEST.json",
-      "bytes": 1472,
-      "sha256": "d70a02b0d74a04c476e1633af77dfe63f19a2be90e76b247674d436bd0a1a3a0",
+      "bytes": 1503,
+      "sha256": "17261949ccc921a8c2fc4d3f2ff9aaf0488f792026b30526ebf31b606d8a3766",
       "extension": ".json",
       "type": "json"
     },
@@ -295,29 +301,29 @@
     },
     {
       "path": "00_INDEX/ACTIVE_VERSION.txt",
-      "bytes": 925,
-      "sha256": "ea01b1217fc6557ff573f38ee1d7b09ad9377bb9b4db5944f1607593133ec0fe",
+      "bytes": 923,
+      "sha256": "b57979b9375a24265ce35dad61a8afdfdf9c12fc9894ef0d44799b10de57b82b",
       "extension": ".txt",
       "type": "text"
     },
     {
       "path": "00_INDEX/CHANGELOG.md",
-      "bytes": 3892,
-      "sha256": "c60595e0df3940689250e343193bc6e0251c5ccc1e04dba2d2b95fc8d85cf930",
+      "bytes": 4609,
+      "sha256": "42e50930913f37b1f73108ccef1215aa5ec363fcc650cd79e4e8e4873dbbea49",
       "extension": ".md",
       "type": "markdown"
     },
     {
       "path": "00_INDEX/FINAL_AUDIT_REPORT.md",
-      "bytes": 832,
-      "sha256": "ef2e08bae8d2c14af6141b519109b6a9e1eef8fe71b9d985cb3a65c59b261136",
+      "bytes": 1083,
+      "sha256": "77e19b31e058b80fc18d3d9fff258bc570824cea51bebd106a19621370f4e9d4",
       "extension": ".md",
       "type": "markdown"
     },
     {
       "path": "00_INDEX/MASTER_GOVERNANCE_MAP.json",
-      "bytes": 32660,
-      "sha256": "8c669cf27ed5ee5c26391dbe1dc758c15d70c561551e5b4707b247b92fe25453",
+      "bytes": 32905,
+      "sha256": "11738c826a1a28d4ff412657e189093688479669c4151de4a235582435f1b534",
       "extension": ".json",
       "type": "json"
     },
@@ -337,15 +343,15 @@
     },
     {
       "path": "00_INDEX/RELEASE_CERTIFICATE.txt",
-      "bytes": 990,
-      "sha256": "b89b6093bd1a429a5a99d94059522a19bce6732ccabe7640bad3b842880cc505",
+      "bytes": 993,
+      "sha256": "6238ae144b6e2cfda0bacbc95fdea57eef399df0f9ff8d8b2442952b23aba92f",
       "extension": ".txt",
       "type": "text"
     },
     {
       "path": "00_INDEX/SHA256SUMS_POINTER.txt",
-      "bytes": 428,
-      "sha256": "5979eceac74e9af315f73479db93a16c7182a97362c4e053709a93e7b4f26aff",
+      "bytes": 663,
+      "sha256": "04970421b91bc0a8a676a5dc6bf65a79ee93e8e5b4e889f7a49d973ca64ca862",
       "extension": ".txt",
       "type": "text"
     },
@@ -3998,8 +4004,8 @@
     },
     {
       "path": "07_VALIDATION_QA_GAUNTLET/14_POLICIES/VALIDATOR_REGISTRY.json",
-      "bytes": 1712,
-      "sha256": "9553c3b4dd9cdce15d74ca94ee414988e753a48fec35527ab9b4aae30eaf471e",
+      "bytes": 1968,
+      "sha256": "476a286f9232552189474fd757b361d0e4fc5cd863bde5f988d0f30ec0dacd4e",
       "extension": ".json",
       "type": "json"
     },
@@ -4033,15 +4039,15 @@
     },
     {
       "path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
-      "bytes": 1567,
-      "sha256": "b345339f01aaeb8cdd1b771be685f03bcaa72a3271e3a4d77ca9121ec4a96aa0",
+      "bytes": 6112,
+      "sha256": "5945727b0ba9eb4b372e4565a7a81e832a8d0faa041c3c953f315c341ece1250",
       "extension": ".json",
       "type": "json"
     },
     {
       "path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/NO_BLOAT_NO_HISTORY_POLICY.json",
-      "bytes": 1170,
-      "sha256": "c4a8fbfc7c0713ff5b12e79bd9c0468cdec7b94a6bb0488f3c038ec3c413808d",
+      "bytes": 1381,
+      "sha256": "ff1761cf7ae2fedf99ab61aea286e7aa1c4283f0a0f13bae7a3cf54b221e6fd1",
       "extension": ".json",
       "type": "json"
     },
@@ -4061,15 +4067,15 @@
     },
     {
       "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_FINAL_RELEASE_GATE.md",
-      "bytes": 666,
-      "sha256": "1337c17d7f3cddc549f3703cb0682d851bd5882dc8eb65d3f40e1f3be2497e41",
+      "bytes": 697,
+      "sha256": "cfbd1097d0a1be870b89738e1dfe459efbc98f6febf2943b7c8418686105f321",
       "extension": ".md",
       "type": "markdown"
     },
     {
       "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_CANONICAL_INDEX.md",
-      "bytes": 969,
-      "sha256": "68e1df609952801ff5782ab5b0d1c7720a3f2636e204e6fa1db63f6e3ec759f7",
+      "bytes": 1206,
+      "sha256": "e53656f8efa2679ffd3a3a16cda030ed8183e37aa14e634eeee941fa2a2549cf",
       "extension": ".md",
       "type": "markdown"
     },
@@ -4096,15 +4102,15 @@
     },
     {
       "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/QA_GAUNTLET_VALIDATOR_REGISTRY.json",
-      "bytes": 411331,
-      "sha256": "cab3a0c692b0712166defb78c34d8c32b4f6b031a9f1683463dfc70941019533",
+      "bytes": 411587,
+      "sha256": "73ddb94ef215cfb1fb5476b763aa4a74fbee272d5909714a6f878c1d860015a2",
       "extension": ".json",
       "type": "json"
     },
     {
       "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/README_CANONICAL_BRIDGE.md",
-      "bytes": 795,
-      "sha256": "b2137b82ae970bd384e1776ce579771e271dd31ad545d3fe7e63c03ee78baf18",
+      "bytes": 904,
+      "sha256": "e45423c8b786e1adaa8b4759ca78080afbafca1b89bf3daad340fd0c52d46ff2",
       "extension": ".md",
       "type": "markdown"
     },
@@ -4124,8 +4130,8 @@
     },
     {
       "path": "07_VALIDATION_QA_GAUNTLET/22_QA_GAUNTLET_C_a85c6f84/VALIDATORS_PRODUCTIVE_BASE_ENGINE.md",
-      "bytes": 3692,
-      "sha256": "229b3fd6a8edeb82880b368d1b826d6fda8218d7dbe5383e350936aa40bcab72",
+      "bytes": 3929,
+      "sha256": "614783534fd7072de813c6703e9789acd67c9883d94922d351078d9a88209917",
       "extension": ".md",
       "type": "markdown"
     },
@@ -6357,8 +6363,8 @@
     },
     {
       "path": "99_MANIFESTS_SHA_LINEAGE/21_MANIFESTS_LINEAGE/HASH_REGENERATION_POLICY.md",
-      "bytes": 967,
-      "sha256": "4d20a5d7e505003fbde6c60e4bb76bf8674d1e5f72743e2deb49ac4097cc776f",
+      "bytes": 1101,
+      "sha256": "66c178488cc33b9aa6dbe2ec2c6c4d78d7742d20f91ced3fd13fb073dcdd557c",
       "extension": ".md",
       "type": "markdown"
     },
@@ -6497,8 +6503,8 @@
     },
     {
       "path": "99_MANIFESTS_SHA_LINEAGE/FINAL_RELEASE_STATUS.json",
-      "bytes": 3394,
-      "sha256": "33a00aa1ed44c9ee87506a948a02af7b74830750f6cf59f03adf012c9fe94d7f",
+      "bytes": 3617,
+      "sha256": "22cf02c576d6c6c0a18d1feb3d2465ce670cf2a355814825967211c44758d256",
       "extension": ".json",
       "type": "json"
     },
@@ -6784,8 +6790,8 @@
     },
     {
       "path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
-      "bytes": 144373,
-      "sha256": "099a0e607db6f972cd160ec2bed93bcc07259f7f498d9f1748bb06617ea5df35",
+      "bytes": 179796,
+      "sha256": "7d85ef7198d0062c09fc88eb799875e439187dda5722e6d2af91ed222cfbe047",
       "extension": ".py",
       "type": "python"
     },

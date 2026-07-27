@@ -1,7 +1,179 @@
 {
   "contract_id": "MASTER_GOVERNANCE_VALIDATION_CONTRACT",
-  "issue": "AUD-035",
+  "schema_version": 3,
+  "implementation_issue": "AUD-037",
   "state_authority": "governance/CURRENT_STATE.json",
+  "build_state_snapshot_authority": false,
+  "build_state_snapshot_classification": "NON_AUTHORITY_BUILD_SNAPSHOT",
+  "mutable_state_schema": {
+    "issue_pattern": "^AUD-[0-9]{3}$",
+    "motor_status_allowed": [
+      "EN_REVISION",
+      "OFICIAL"
+    ],
+    "m02_result": {
+      "not_recomputed_pattern": "^NOT_RECOMPUTED_POST_AUD[0-9]{3}$",
+      "pass_token": "M02_PASS",
+      "pass_detection": "EXACT_TOKEN_ONLY"
+    },
+    "m03_result": {
+      "not_recomputed_pattern": "^NOT_RECOMPUTED_POST_AUD[0-9]{3}$",
+      "pass_token": "M03_PASS",
+      "pass_detection": "EXACT_TOKEN_ONLY"
+    }
+  },
+  "immutable_interlocks": {
+    "while_motor_status_en_revision": {
+      "ready_for_project_demo_generation": false,
+      "release_authorized": false,
+      "tag_authorized": false,
+      "productive_closure_authorized": false,
+      "oficial_authorized": false,
+      "agent_load_authorized": false,
+      "creative_output_certified": false
+    },
+    "internal_snapshots_may_override_current_state": false,
+    "historical_evidence_may_override_current_state": false
+  },
+  "state_transition_rules": {
+    "not_recomputed_must_bind_current_issue": true,
+    "pass_requires_evidence": true,
+    "state_changes_do_not_require_engine_changes": true,
+    "pass_tokens_are_exact_not_substring_matches": true
+  },
+  "evidence_binding_rules": {
+    "physical_tree_authority": "engine/IDUNEX",
+    "required_identifiers": [
+      "run_id",
+      "job_id",
+      "artifact_id",
+      "artifact_name",
+      "artifact_sha256",
+      "repository_commit"
+    ],
+    "required_engine_identity": [
+      "engine_tree_sha256",
+      "engine_file_count",
+      "engine_byte_count"
+    ],
+    "required_formalization_fields": [
+      "technical_result",
+      "independent_audit_result",
+      "evidence_class",
+      "governance_formalization_status",
+      "workflow_decision"
+    ],
+    "required_formalization_values": {
+      "technical_result": "PASS",
+      "independent_audit_result": "VALIDADO_PASS",
+      "evidence_class": "VALIDATED_CURRENT_TREE_EVIDENCE",
+      "governance_formalization_status": "VALIDADO",
+      "workflow_decision": "NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY"
+    },
+    "workflow_decision_is_not_governance_authority": true,
+    "artifact_sha256_pattern": "^[0-9a-f]{64}$",
+    "repository_commit_pattern": "^[0-9a-f]{40}$",
+    "engine_identity_must_match_physical_tree": true
+  },
+  "M02_before_M03": true,
+  "same_tree_evidence_requirement": true,
+  "official_transition_contract": {
+    "schema_version": 1,
+    "external_evidence_block": "official_transition_evidence",
+    "external_evidence_root": "governance/evidence/official/",
+    "external_evidence_extension": ".json",
+    "state_authority": "governance/CURRENT_STATE.json",
+    "formalization_status_required": "VALIDADO",
+    "required_phase_results": {
+      "m02_result": "M02_PASS",
+      "m03_result": "M03_PASS"
+    },
+    "required_gates": {
+      "motor_audit": [
+        "PASS"
+      ],
+      "project_demo_generation": [
+        "PASS"
+      ],
+      "project_demo_audit": [
+        "PASS"
+      ],
+      "chatgpt_runtime": [
+        "PASS"
+      ],
+      "copilot_runtime": [
+        "PASS",
+        "VENDOR_LIMITATION_NOT_ENGINE_FAIL"
+      ],
+      "agent_runtime_audit": [
+        "PASS"
+      ],
+      "productive_formalization": [
+        "VALIDADO"
+      ]
+    },
+    "gate_required_fields": [
+      "evidence_id",
+      "evidence_path",
+      "evidence_sha256",
+      "result",
+      "independent_audit_result",
+      "evidence_class",
+      "governance_formalization_status",
+      "engine_tree_sha256",
+      "engine_file_count",
+      "engine_byte_count"
+    ],
+    "external_evidence_document_required_fields": [
+      "schema_version",
+      "evidence_id",
+      "gate_name",
+      "result",
+      "independent_audit_result",
+      "evidence_class",
+      "governance_formalization_status",
+      "engine_tree_sha256",
+      "engine_file_count",
+      "engine_byte_count"
+    ],
+    "external_evidence_required_values": {
+      "schema_version": 1,
+      "independent_audit_result": "VALIDADO_PASS",
+      "evidence_class": "VALIDATED_EXTERNAL_EVIDENCE",
+      "governance_formalization_status": "VALIDADO"
+    },
+    "external_evidence_path_rules": {
+      "repository_relative_only": true,
+      "traversal_forbidden": true,
+      "outside_authorized_root_forbidden": true,
+      "engine_paths_forbidden": true,
+      "file_must_exist": true,
+      "sha256_must_match_file": true,
+      "json_content_must_match_gate_link": true
+    },
+    "gate_evidence_ids_must_be_unique": true,
+    "gate_evidence_paths_must_be_unique": true,
+    "every_gate_must_bind_physical_tree": true,
+    "authorization_override_allowed": false,
+    "required_state_flags": {
+      "ready_for_project_demo_generation": true,
+      "release_authorized": true,
+      "tag_authorized": true,
+      "productive_closure_authorized": true,
+      "oficial_authorized": true,
+      "agent_load_authorized": true,
+      "creative_output_certified": false
+    }
+  },
+  "AUD028_consumed_interlock": {
+    "status": "CONSUMED",
+    "authorized": false,
+    "consumed": true,
+    "execution_count": 1,
+    "generate_executions_allowed": 0,
+    "validate_executions_allowed": 0
+  },
+  "creative_output_false_interlock": true,
   "required_checks": [
     "stable_family_coverage",
     "rule_id_coverage",
@@ -23,24 +195,8 @@
     "truthfulness",
     "governance_state_consistency"
   ],
-  "expected_current_state": {
-    "MOTOR_STATUS": "EN_REVISION",
-    "M02_RESULT": "NOT_RECOMPUTED_POST_AUD035",
-    "M03_RESULT": "NOT_RECOMPUTED_POST_AUD035",
-    "READY_FOR_PROJECT_DEMO_GENERATION": false,
-    "RELEASE_AUTHORIZED": false,
-    "PRODUCTIVE_CLOSURE_AUTHORIZED": false,
-    "TAG_AUTHORIZED": false,
-    "OFICIAL_AUTHORIZED": false,
-    "AGENT_LOAD_AUTHORIZED": false,
-    "CREATIVE_OUTPUT_CERTIFIED": false
-  },
   "historical_evidence_policy": {
     "authority_status": "REFERENCIA_SUSTITUIDA",
     "may_override_current_state": false
-  },
-  "interlock": "NOT_RECOMPUTED_POST_AUD035 prevents any internal certificate from enabling Demo, release, tag, OFICIAL, agent loading or productive closure; no M02 or M03 PASS is declared.",
-  "last_sync_issue": "AUD-035",
-  "last_sync_source_run": 30189604763,
-  "last_sync_reason": "MASTER_GOVERNANCE_VALIDATION_CONTRACT_POST_AUD034_INTERNAL_SURFACE_PARITY"
+  }
 }

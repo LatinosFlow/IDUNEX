@@ -31,8 +31,13 @@
   },
   "historical_zone": "14_HISTORICAL_NON_AUTHORITY",
   "movement_reversal_manifest": "docs/audits/AUD-008-movement-reversal-manifest.json",
-  "global_state_authority": "governance/CURRENT_STATE.json",
-  "MOTOR_STATUS": "EN_REVISION",
-  "M02_RESULT": "M02_FAIL",
+  "state_authority": "governance/CURRENT_STATE.json",
+  "build_state_snapshot_authority": false,
+  "build_state_snapshot_classification": "NON_AUTHORITY_BUILD_SNAPSHOT",
+  "build_state_snapshot": {
+    "motor_status": "EN_REVISION",
+    "m02_result": "NOT_RECOMPUTED_POST_AUD037",
+    "m03_result": "NOT_RECOMPUTED_POST_AUD037"
+  },
   "CREATIVE_OUTPUT_CERTIFIED": false
 }

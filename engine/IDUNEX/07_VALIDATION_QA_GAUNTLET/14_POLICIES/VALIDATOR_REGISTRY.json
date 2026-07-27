@@ -7,8 +7,14 @@
   "authoritative_entrypoint": "IDUNEX/99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
   "direct_execution_policy": "BLOCKED_USE_ENTRYPOINT_DELEGATION",
   "m02_decision_authority": false,
-  "current_motor_status": "EN_REVISION",
-  "current_m02_result": "M02_FAIL",
+  "state_authority": "governance/CURRENT_STATE.json",
+  "build_state_snapshot_authority": false,
+  "build_state_snapshot_classification": "NON_AUTHORITY_BUILD_SNAPSHOT",
+  "build_state_snapshot": {
+    "motor_status": "EN_REVISION",
+    "m02_result": "NOT_RECOMPUTED_POST_AUD037",
+    "m03_result": "NOT_RECOMPUTED_POST_AUD037"
+  },
   "validators": [
     {
       "validator_id": "VALIDATE_ACTIVE_SURFACE_HISTORICAL_METADATA_SCRUB",

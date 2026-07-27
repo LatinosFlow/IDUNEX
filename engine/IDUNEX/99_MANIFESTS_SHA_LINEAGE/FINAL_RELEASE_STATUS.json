@@ -1,9 +1,14 @@
 {
   "authority_status": "REFERENCIA_HISTORICA_SUSTITUIDA",
-  "superseded_by": "AUD-030_ENGINE_TREE_CHANGE",
-  "motor_status": "EN_REVISION",
-  "m02_result": "NOT_RECOMPUTED_POST_AUD030",
-  "m03_result": "NOT_RECOMPUTED_POST_AUD030",
+  "superseded_by": "AUD-037_GOVERNANCE_IDENTITY_CYCLE_BREAK",
+  "state_authority": "governance/CURRENT_STATE.json",
+  "build_state_snapshot_authority": false,
+  "build_state_snapshot_classification": "NON_AUTHORITY_BUILD_SNAPSHOT",
+  "build_state_snapshot": {
+    "motor_status": "EN_REVISION",
+    "m02_result": "NOT_RECOMPUTED_POST_AUD037",
+    "m03_result": "NOT_RECOMPUTED_POST_AUD037"
+  },
   "ready_for_project_demo_generation": false,
   "release_authorized": false,
   "productive_closure_authorized": false,
@@ -19,7 +24,7 @@
   "B02_MAX_MATRIX_CURRENT_RUN": "PASS",
   "MAX_MATRIX_CURRENT_RUN": "PASS",
   "N1_TO_N10_X3_MATRIX": "PASS",
-  "result": "NOT_RECOMPUTED_POST_AUD030",
+  "result": "NON_AUTHORITY_BUILD_SNAPSHOT",
   "decision": "BLOCKED_BY_EN_REVISION",
   "VALIDATORS_FAIL": 0,
   "BLOCKING_WARNINGS": 0,

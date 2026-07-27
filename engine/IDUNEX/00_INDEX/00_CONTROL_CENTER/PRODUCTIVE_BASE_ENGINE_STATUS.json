@@ -1,16 +1,21 @@
 {
   "surface_id": "PRODUCTIVE_BASE_ENGINE_STATUS",
   "semantic_version": "v1.0.0",
-  "issue": "AUD-030",
+  "implementation_issue": "AUD-037",
   "state_authority": "governance/CURRENT_STATE.json",
-  "status": "EN_REVISION",
-  "motor_status": "EN_REVISION",
-  "m02_result": "NOT_RECOMPUTED_POST_AUD030",
-  "m03_result": "NOT_RECOMPUTED_POST_AUD030",
-  "result": "NOT_RECOMPUTED_POST_AUD030",
+  "build_state_snapshot_authority": false,
+  "build_state_snapshot_classification": "NON_AUTHORITY_BUILD_SNAPSHOT",
+  "build_state_snapshot": {
+    "motor_status": "EN_REVISION",
+    "m02_result": "NOT_RECOMPUTED_POST_AUD037",
+    "m03_result": "NOT_RECOMPUTED_POST_AUD037"
+  },
   "ready_for_project_demo_generation": false,
   "release_authorized": false,
+  "tag_authorized": false,
   "productive_closure_authorized": false,
+  "oficial_authorized": false,
+  "agent_load_authorized": false,
   "creative_output_certified": false,
   "historical_internal_claim": {
     "authority_status": "REFERENCIA_SUSTITUIDA",
@@ -19,5 +24,5 @@
     "current_governance_effect": "NONE",
     "evidence_pointer": "git history and engine/IDUNEX/11_RELEASE_INTERNAL"
   },
-  "interlock": "EN_REVISION with M02/M03 not recomputed after AUD-030 blocks Demo, release, tag, OFICIAL, agent loading and productive closure regardless of any prior internal result."
+  "interlock": "Mutable state is read only from governance/CURRENT_STATE.json; this build snapshot cannot authorize Demo, release, tag, OFICIAL, agent loading or productive closure."
 }

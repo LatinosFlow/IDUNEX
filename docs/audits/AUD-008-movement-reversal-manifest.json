@@ -1830,16 +1830,16 @@
       "classification": "EVIDENCE_REQUIRED",
       "origin": "07_VALIDATION_QA_GAUNTLET/14_POLICIES/H261_H268_VALIDATOR_REGISTRY.json",
       "destination": "07_VALIDATION_QA_GAUNTLET/14_POLICIES/VALIDATOR_REGISTRY.json",
-      "bytes": 1350,
+      "bytes": 1968,
       "sha256_before": "44045dbf1f566887b8e0bcf36005498c2eae06a470861897d9afe4c217bcfb68",
       "reason": "replace milestone path identity with a stable semantic path",
       "impact": "authority/evidence retained with stable path identity; derived references rewritten",
       "authority_after": "REQUIRED_EVIDENCE",
-      "sha256_after": "9553c3b4dd9cdce15d74ca94ee414988e753a48fec35527ab9b4aae30eaf471e",
+      "sha256_after": "476a286f9232552189474fd757b361d0e4fc5cd863bde5f988d0f30ec0dacd4e",
       "reverse": {
         "from": "07_VALIDATION_QA_GAUNTLET/14_POLICIES/VALIDATOR_REGISTRY.json",
         "to": "07_VALIDATION_QA_GAUNTLET/14_POLICIES/H261_H268_VALIDATOR_REGISTRY.json",
-        "expected_sha256": "9553c3b4dd9cdce15d74ca94ee414988e753a48fec35527ab9b4aae30eaf471e"
+        "expected_sha256": "476a286f9232552189474fd757b361d0e4fc5cd863bde5f988d0f30ec0dacd4e"
       }
     },
     {
