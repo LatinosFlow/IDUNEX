@@ -39,6 +39,8 @@ CONTROLLED_EXTERNAL_DEMO_VALIDATE_ALLOWED=0
 - Las evidencias M02 y M03 deben corresponder al mismo SHA, file count y byte count.
 - Cambiar el estado externo no exige actualizar ninguna superficie de `engine/IDUNEX`.
 - `OFICIAL` exige gates externos separados para motor, Demo, auditoría Demo, runtimes ChatGPT/Copilot, auditoría de carga/runtime y formalización productiva; ninguna capa hereda PASS de otra.
+- Cada gate enlaza un JSON verificable bajo `governance/evidence/official/`: ruta relativa sin traversal, extensión `.json`, archivo existente, SHA-256 recalculado, auditoría `VALIDADO_PASS`, clase `VALIDATED_EXTERNAL_EVIDENCE`, formalización `VALIDADO` e identidad completa del árbol.
+- `CREATIVE_OUTPUT_CERTIFIED=FALSE` aplica globalmente en `MOTOR_LEVEL`, incluso con `MOTOR_STATUS=OFICIAL`; la certificación creativa pertenece al proyecto/output, no al motor.
 
 ## AUD-028
 

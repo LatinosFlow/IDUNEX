@@ -314,8 +314,8 @@
       "received_path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
       "current_path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/MASTER_GOVERNANCE_VALIDATION_CONTRACT.json",
       "received_sha256": "6e1993188d5fa8c28c0babd768b159d90b5d4f1fd6476fb3ab356a25dea116f9",
-      "current_sha256": "a34cd5485f99aa56fd8d3f46d5d601a7ede0f91cc7fd03b1390437c18e5a9d7c",
-      "current_bytes": 4931
+      "current_sha256": "5945727b0ba9eb4b372e4565a7a81e832a8d0faa041c3c953f315c341ece1250",
+      "current_bytes": 6112
     },
     {
       "received_path": "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/NO_BLOAT_NO_HISTORY_POLICY.json",
@@ -769,8 +769,8 @@
       "received_path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "current_path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_IDUNEX_RUNTIME.py",
       "received_sha256": "1c4caff832466eb00ab273aca775198edca7aae01d2c2937e9a0d8ecfeee4176",
-      "current_sha256": "d0356a01dee7a2e9536ea586d3a5fcc3e4789f59208555c409e7a1bcb1a54858",
-      "current_bytes": 172779
+      "current_sha256": "7d85ef7198d0062c09fc88eb799875e439187dda5722e6d2af91ed222cfbe047",
+      "current_bytes": 179796
     },
     {
       "received_path": "99_MANIFESTS_SHA_LINEAGE/VALIDATE_JSON_SCHEMA_CONFORMANCE_ALL.py",

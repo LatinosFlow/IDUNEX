@@ -24,7 +24,9 @@ La frontera introducida por AUD-037 permite formalizar `M02_PASS` o `M03_PASS` e
 
 Cada PASS exige resultado técnico, auditoría independiente, clasificación de evidencia vigente y formalización explícita de gobernanza. La decisión de origen `NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY` se conserva para trazabilidad, pero no constituye autoridad por sí sola.
 
-La transición futura a `OFICIAL` está definida por un contrato estable dentro del motor y evidencia concreta versionada en `CURRENT_STATE`: M02/M03 para el mismo árbol, auditoría del motor, Demo generado y auditado, runtime ChatGPT, runtime Copilot PASS o limitación válida, auditoría de carga/runtime y formalización productiva. Mientras falte una capa, la transición falla cerrada.
+La transición futura a `OFICIAL` está definida por un contrato estable dentro del motor y evidencia concreta versionada enlazada desde `CURRENT_STATE`: M02/M03 para el mismo árbol, auditoría del motor, Demo generado y auditado, runtime ChatGPT, runtime Copilot PASS o limitación válida, auditoría de carga/runtime y formalización productiva. Los siete gates se verifican contra JSON externos bajo `governance/evidence/official/`, incluyendo existencia, SHA-256, contenido auditado e identidad física; mientras falte una capa, la transición falla cerrada.
+
+El motor no certifica outputs creativos. `CREATIVE_OUTPUT_CERTIFIED=FALSE` es un interlock global de nivel motor y permanece falso incluso después de una transición válida a `OFICIAL`.
 
 ## Interlocks
 

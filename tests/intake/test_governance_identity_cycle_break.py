@@ -14,8 +14,17 @@ from typing import Callable
 REPO_ROOT = Path(__file__).resolve().parents[2]
 EXPECTED_IDENTITY = {
     "file_count": 981,
-    "byte_count": 47_361_805,
-    "tree_sha256": "ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3",
+    "byte_count": 47_370_003,
+    "tree_sha256": "87c0e9e681a3a4995d4f096eaaa73cd5c7a889e9c10a5f0f4b3c9897e80c2346",
+}
+OFFICIAL_GATE_RESULTS = {
+    "motor_audit": "PASS",
+    "project_demo_generation": "PASS",
+    "project_demo_audit": "PASS",
+    "chatgpt_runtime": "PASS",
+    "copilot_runtime": "VENDOR_LIMITATION_NOT_ENGINE_FAIL",
+    "agent_runtime_audit": "PASS",
+    "productive_formalization": "VALIDADO",
 }
 
 
@@ -51,6 +60,7 @@ class GovernanceIdentityCycleBreakTest(unittest.TestCase):
             "07_VALIDATION_QA_GAUNTLET/16_MASTER_GOVERNANCE/"
             "MASTER_GOVERNANCE_VALIDATION_CONTRACT.json"
         )
+        cls.official_evidence_root = cls.root / "governance/evidence/official"
         cls.base_state = cls.state_path.read_bytes()
         cls.base_contract = cls.contract_path.read_bytes()
 
@@ -61,6 +71,8 @@ class GovernanceIdentityCycleBreakTest(unittest.TestCase):
     def setUp(self) -> None:
         self.state_path.write_bytes(self.base_state)
         self.contract_path.write_bytes(self.base_contract)
+        if self.official_evidence_root.exists():
+            shutil.rmtree(self.official_evidence_root)
 
     def write_state(self, state: dict) -> None:
         self.state_path.write_text(
@@ -90,6 +102,47 @@ class GovernanceIdentityCycleBreakTest(unittest.TestCase):
             "workflow_decision": "NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY",
         }
 
+    def write_official_evidence(self, gate_name: str, result: str, index: int) -> dict:
+        evidence_id = f"synthetic-{gate_name}-{index}"
+        relative_path = f"governance/evidence/official/{gate_name}-{index}.json"
+        document = {
+            "schema_version": 1,
+            "evidence_id": evidence_id,
+            "gate_name": gate_name,
+            "result": result,
+            "independent_audit_result": "VALIDADO_PASS",
+            "evidence_class": "VALIDATED_EXTERNAL_EVIDENCE",
+            "governance_formalization_status": "VALIDADO",
+            "engine_tree_sha256": EXPECTED_IDENTITY["tree_sha256"],
+            "engine_file_count": EXPECTED_IDENTITY["file_count"],
+            "engine_byte_count": EXPECTED_IDENTITY["byte_count"],
+        }
+        evidence_file = self.root / relative_path
+        evidence_file.parent.mkdir(parents=True, exist_ok=True)
+        evidence_bytes = (json.dumps(document, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+        evidence_file.write_bytes(evidence_bytes)
+        return {
+            "evidence_id": evidence_id,
+            "evidence_path": relative_path,
+            "evidence_sha256": hashlib.sha256(evidence_bytes).hexdigest(),
+            "result": result,
+            "independent_audit_result": "VALIDADO_PASS",
+            "evidence_class": "VALIDATED_EXTERNAL_EVIDENCE",
+            "governance_formalization_status": "VALIDADO",
+            "engine_tree_sha256": EXPECTED_IDENTITY["tree_sha256"],
+            "engine_file_count": EXPECTED_IDENTITY["file_count"],
+            "engine_byte_count": EXPECTED_IDENTITY["byte_count"],
+        }
+
+    def mutate_official_document(self, state: dict, gate_name: str, mutator: Callable[[dict], None]) -> None:
+        gate = state["official_transition_evidence"]["gates"][gate_name]
+        evidence_file = self.root / gate["evidence_path"]
+        document = json.loads(evidence_file.read_text(encoding="utf-8"))
+        mutator(document)
+        evidence_bytes = (json.dumps(document, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+        evidence_file.write_bytes(evidence_bytes)
+        gate["evidence_sha256"] = hashlib.sha256(evidence_bytes).hexdigest()
+
     def valid_official_state(self) -> dict:
         state = self.read_state()
         state["m02_result"] = "M02_PASS"
@@ -104,27 +157,12 @@ class GovernanceIdentityCycleBreakTest(unittest.TestCase):
             "productive_closure_authorized",
             "oficial_authorized",
             "agent_load_authorized",
-            "creative_output_certified",
         ):
             state[field] = True
-        results = {
-            "motor_audit": "PASS",
-            "project_demo_generation": "PASS",
-            "project_demo_audit": "PASS",
-            "chatgpt_runtime": "PASS",
-            "copilot_runtime": "VENDOR_LIMITATION_NOT_ENGINE_FAIL",
-            "agent_runtime_audit": "PASS",
-            "productive_formalization": "VALIDADO",
-        }
+        state["creative_output_certified"] = False
         gates = {}
-        for index, (gate, result) in enumerate(results.items(), start=1):
-            gates[gate] = {
-                "evidence_id": f"synthetic-{gate}-{index}",
-                "result": result,
-                "engine_tree_sha256": EXPECTED_IDENTITY["tree_sha256"],
-                "engine_file_count": EXPECTED_IDENTITY["file_count"],
-                "engine_byte_count": EXPECTED_IDENTITY["byte_count"],
-            }
+        for index, (gate, result) in enumerate(OFFICIAL_GATE_RESULTS.items(), start=1):
+            gates[gate] = self.write_official_evidence(gate, result, index)
         state["official_transition_evidence"] = {
             "schema_version": 1,
             "formalization_status": "VALIDADO",
@@ -238,7 +276,7 @@ class GovernanceIdentityCycleBreakTest(unittest.TestCase):
             ("without_chatgpt", lambda state: state["official_transition_evidence"]["gates"].pop("chatgpt_runtime"), "FAIL_OFFICIAL_CHATGPT_RUNTIME_REQUIRED"),
             ("invalid_copilot", lambda state: state["official_transition_evidence"]["gates"]["copilot_runtime"].update({"result": "UNAVAILABLE"}), "FAIL_OFFICIAL_COPILOT_RUNTIME_REQUIRED"),
             ("without_agent_runtime_audit", lambda state: state["official_transition_evidence"]["gates"].pop("agent_runtime_audit"), "FAIL_OFFICIAL_AGENT_RUNTIME_AUDIT_REQUIRED"),
-            ("other_tree", lambda state: state["official_transition_evidence"]["gates"]["motor_audit"].update({"engine_tree_sha256": "0" * 64}), "FAIL_OFFICIAL_EVIDENCE_CURRENT_TREE_MISMATCH"),
+            ("other_tree", lambda state: state["official_transition_evidence"]["gates"]["motor_audit"].update({"engine_tree_sha256": "0" * 64}), "FAIL_OFFICIAL_EVIDENCE_ENGINE_TREE_SHA256_MISMATCH"),
             ("invented_authorization", lambda state: state["official_transition_evidence"].update({"authorization_override": "INVENTED"}), "FAIL_OFFICIAL_TRANSITION_AUTHORIZATION_INVALID"),
         )
         for label, mutate, failcode in cases:
@@ -259,7 +297,113 @@ class GovernanceIdentityCycleBreakTest(unittest.TestCase):
         self.assertEqual(payload["fail_codes"], [])
         self.assertEqual(engine_identity(self.engine), before)
 
-    def test_06_required_negative_mutations_have_specific_failcodes(self):
+    def test_06_official_evidence_path_guards_have_specific_failcodes(self):
+        def missing_file(state: dict) -> None:
+            gate = state["official_transition_evidence"]["gates"]["motor_audit"]
+            (self.root / gate["evidence_path"]).unlink()
+
+        def absolute_path(state: dict) -> None:
+            gate = state["official_transition_evidence"]["gates"]["motor_audit"]
+            gate["evidence_path"] = str((self.root / gate["evidence_path"]).resolve())
+
+        def non_json_extension(state: dict) -> None:
+            gate = state["official_transition_evidence"]["gates"]["motor_audit"]
+            source = self.root / gate["evidence_path"]
+            target = source.with_suffix(".txt")
+            shutil.copyfile(source, target)
+            gate["evidence_path"] = target.relative_to(self.root).as_posix()
+
+        cases: tuple[tuple[str, Callable[[dict], None], str], ...] = (
+            ("missing_file", missing_file, "FAIL_OFFICIAL_EVIDENCE_FILE_MISSING"),
+            ("absolute_path", absolute_path, "FAIL_OFFICIAL_EVIDENCE_PATH_ABSOLUTE"),
+            ("path_traversal", lambda state: state["official_transition_evidence"]["gates"]["motor_audit"].update({"evidence_path": "governance/evidence/official/../escape.json"}), "FAIL_OFFICIAL_EVIDENCE_PATH_TRAVERSAL"),
+            ("outside_root", lambda state: state["official_transition_evidence"]["gates"]["motor_audit"].update({"evidence_path": "governance/evidence/outside.json"}), "FAIL_OFFICIAL_EVIDENCE_PATH_OUTSIDE_AUTHORIZED_ROOT"),
+            ("engine_path", lambda state: state["official_transition_evidence"]["gates"]["motor_audit"].update({"evidence_path": "engine/IDUNEX/evidence.json"}), "FAIL_OFFICIAL_EVIDENCE_PATH_ENGINE_FORBIDDEN"),
+            ("non_json_extension", non_json_extension, "FAIL_OFFICIAL_EVIDENCE_EXTENSION"),
+        )
+        for label, mutate, failcode in cases:
+            with self.subTest(label=label):
+                self.setUp()
+                state = self.valid_official_state()
+                mutate(state)
+                self.write_state(state)
+                self.assert_failcode(failcode)
+
+    def test_07_official_evidence_integrity_and_content_mutations_have_specific_failcodes(self):
+        def invalid_json(state: dict) -> None:
+            gate = state["official_transition_evidence"]["gates"]["motor_audit"]
+            evidence_bytes = b"{invalid-json\n"
+            (self.root / gate["evidence_path"]).write_bytes(evidence_bytes)
+            gate["evidence_sha256"] = hashlib.sha256(evidence_bytes).hexdigest()
+
+        document_cases: tuple[tuple[str, Callable[[dict], None], str], ...] = (
+            ("wrong_gate_name", lambda document: document.update({"gate_name": "wrong_gate"}), "FAIL_OFFICIAL_EVIDENCE_GATE_NAME_MISMATCH"),
+            ("divergent_result", lambda document: document.update({"result": "FAIL"}), "FAIL_OFFICIAL_EVIDENCE_RESULT_MISMATCH"),
+            ("divergent_tree", lambda document: document.update({"engine_tree_sha256": "0" * 64}), "FAIL_OFFICIAL_EVIDENCE_ENGINE_TREE_SHA256_MISMATCH"),
+            ("divergent_bytes", lambda document: document.update({"engine_byte_count": 1}), "FAIL_OFFICIAL_EVIDENCE_ENGINE_BYTE_COUNT_MISMATCH"),
+            ("audit_missing", lambda document: document.pop("independent_audit_result"), "FAIL_OFFICIAL_EVIDENCE_INDEPENDENT_AUDIT_RESULT"),
+            ("class_invalid", lambda document: document.update({"evidence_class": "DECLARED_ONLY"}), "FAIL_OFFICIAL_EVIDENCE_CLASS"),
+            ("formalization_missing", lambda document: document.pop("governance_formalization_status"), "FAIL_OFFICIAL_EVIDENCE_GOVERNANCE_FORMALIZATION_STATUS"),
+        )
+        for label, mutate, failcode in document_cases:
+            with self.subTest(label=label):
+                self.setUp()
+                state = self.valid_official_state()
+                self.mutate_official_document(state, "motor_audit", mutate)
+                self.write_state(state)
+                self.assert_failcode(failcode)
+
+        direct_cases: tuple[tuple[str, Callable[[dict], None], str], ...] = (
+            ("wrong_sha", lambda state: state["official_transition_evidence"]["gates"]["motor_audit"].update({"evidence_sha256": "0" * 64}), "FAIL_OFFICIAL_EVIDENCE_SHA256_MISMATCH"),
+            ("invalid_json", invalid_json, "FAIL_OFFICIAL_EVIDENCE_JSON_INVALID"),
+        )
+        for label, mutate, failcode in direct_cases:
+            with self.subTest(label=label):
+                self.setUp()
+                state = self.valid_official_state()
+                mutate(state)
+                self.write_state(state)
+                self.assert_failcode(failcode)
+
+    def test_08_official_evidence_uniqueness_and_creative_false_are_enforced(self):
+        def duplicate_id(state: dict) -> None:
+            gates = state["official_transition_evidence"]["gates"]
+            duplicate = gates["motor_audit"]["evidence_id"]
+            gates["project_demo_generation"]["evidence_id"] = duplicate
+            self.mutate_official_document(
+                state,
+                "project_demo_generation",
+                lambda document: document.update({"evidence_id": duplicate}),
+            )
+
+        def duplicate_path(state: dict) -> None:
+            gates = state["official_transition_evidence"]["gates"]
+            gates["project_demo_generation"]["evidence_path"] = gates["motor_audit"]["evidence_path"].replace(
+                "governance/evidence/official/",
+                "governance/evidence/official/./",
+            )
+            gates["project_demo_generation"]["evidence_sha256"] = gates["motor_audit"]["evidence_sha256"]
+
+        cases: tuple[tuple[str, Callable[[dict], None], str], ...] = (
+            ("duplicate_id", duplicate_id, "FAIL_OFFICIAL_EVIDENCE_ID_DUPLICATE"),
+            ("duplicate_path", duplicate_path, "FAIL_OFFICIAL_EVIDENCE_PATH_DUPLICATE"),
+            ("creative_true_official", lambda state: state.update({"creative_output_certified": True}), "FAIL_MOTOR_CREATIVE_OUTPUT_CERTIFICATION_FORBIDDEN"),
+        )
+        for label, mutate, failcode in cases:
+            with self.subTest(label=label):
+                self.setUp()
+                state = self.valid_official_state()
+                mutate(state)
+                self.write_state(state)
+                self.assert_failcode(failcode)
+
+        self.setUp()
+        state = self.read_state()
+        state["creative_output_certified"] = True
+        self.write_state(state)
+        self.assert_failcode("FAIL_MOTOR_CREATIVE_OUTPUT_CERTIFICATION_FORBIDDEN")
+
+    def test_09_required_negative_mutations_have_specific_failcodes(self):
         cases: list[tuple[str, Callable[[], None], str]] = []
 
         def state_case(mutator):
@@ -284,7 +428,7 @@ class GovernanceIdentityCycleBreakTest(unittest.TestCase):
             ("tag_enabled", lambda: state_case(lambda state: state.update({"tag_authorized": True})), "FAIL_EN_REVISION_TAG_INTERLOCK"),
             ("oficial_enabled", lambda: state_case(lambda state: state.update({"oficial_authorized": True})), "FAIL_EN_REVISION_OFICIAL_INTERLOCK"),
             ("agents_enabled", lambda: state_case(lambda state: state.update({"agent_load_authorized": True})), "FAIL_EN_REVISION_AGENT_LOAD_INTERLOCK"),
-            ("creative_enabled", lambda: state_case(lambda state: state.update({"creative_output_certified": True})), "FAIL_CREATIVE_OUTPUT_FALSE_INTERLOCK"),
+            ("creative_enabled", lambda: state_case(lambda state: state.update({"creative_output_certified": True})), "FAIL_MOTOR_CREATIVE_OUTPUT_CERTIFICATION_FORBIDDEN"),
         ])
 
         def snapshot_authority():

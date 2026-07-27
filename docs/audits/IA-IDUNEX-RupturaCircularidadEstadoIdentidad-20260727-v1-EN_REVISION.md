@@ -3,7 +3,7 @@
 **Fecha:** 2026-07-27
 **Estado:** EN_REVISION
 **Control:** Issue #73 — AUD-037
-**Veredicto de implementación:** `AUD037_GOVERNANCE_IDENTITY_CYCLE_BREAK_IMPLEMENTED_PENDING_REVIEW`
+**Veredicto de implementación:** `AUD037_OFFICIAL_EVIDENCE_VERIFIED_AND_CREATIVE_FALSE_PENDING_FINAL_REVIEW`
 
 ## Alcance y restricciones
 
@@ -108,21 +108,26 @@ Los seis manifests internos se regeneraron con `tools/audit/baseline_scanner.py`
 
 ```text
 ENGINE_FILE_COUNT=981
-ENGINE_BYTES=47361805
-ENGINE_TREE_SHA256=ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3
+ENGINE_BYTES=47370003
+ENGINE_TREE_SHA256=87c0e9e681a3a4995d4f096eaaa73cd5c7a889e9c10a5f0f4b3c9897e80c2346
 ```
 
 El file count permanece en `981`; el cambio de bytes está explicado por las superficies AUD-037 modificadas.
 
 La identidad intermedia `981 / 47350130 / b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4`, generada por la primera versión del Draft PR #74, queda sustituida por el hardening del esquema estable, la formalización de evidencia y la transición `OFICIAL` fail-closed.
 
+La identidad posterior `981 / 47361805 / ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3` queda igualmente `SUSTITUIDA`: el cierre de verificabilidad de evidencia oficial externa y la preservación global de `CREATIVE_OUTPUT_CERTIFIED=FALSE` producen la identidad definitiva indicada arriba.
+
 ## Cierre de gaps de la revisión independiente
 
 - `NOT_RECOMPUTED` bare ya no pertenece al esquema; cada fase exige `NOT_RECOMPUTED_POST_AUDnnn` ligado al issue actual o su token PASS exacto.
 - M02/M03 PASS requieren `technical_result=PASS`, `independent_audit_result=VALIDADO_PASS`, `evidence_class=VALIDATED_CURRENT_TREE_EVIDENCE`, `governance_formalization_status=VALIDADO` y preservan `workflow_decision=NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY` como origen no autoritativo.
 - `official_transition_evidence` es un bloque externo versionado. El motor sólo contiene el contrato estable de gates; no fija runs, artifacts, auditorías o Demo futuros.
+- La única raíz autorizada para los siete documentos de evidencia es `governance/evidence/official/`. Cada enlace exige path relativo `.json`, SHA-256 recalculado, auditoría independiente, clasificación `VALIDATED_EXTERNAL_EVIDENCE`, formalización `VALIDADO` e identidad física completa; se rechazan rutas absolutas, traversal, paths internos del motor, archivos ausentes y IDs o paths duplicados.
 - `MOTOR_STATUS=OFICIAL` exige M02 y M03 formalizados para el árbol físico, auditoría del motor, Demo generado y auditado, runtime ChatGPT, runtime Copilot PASS o limitación válida, auditoría de carga/runtime y formalización productiva independiente.
-- Una prueba sintética en `TemporaryDirectory` formaliza el cierre completo modificando únicamente `CURRENT_STATE`; el validator permanece PASS y el SHA de `engine/IDUNEX` no cambia.
+- `CREATIVE_OUTPUT_CERTIFIED=FALSE` es inmutable en `MOTOR_LEVEL`, tanto en `EN_REVISION` como en `OFICIAL`; el motor nunca certifica outputs creativos.
+- Una prueba sintética en `TemporaryDirectory` crea siete JSON externos con SHA-256 real, los enlaza desde `CURRENT_STATE`, formaliza el cierre completo con `creative_output_certified=false` y demuestra que el SHA de `engine/IDUNEX` no cambia. Esos JSON no se guardan en el repositorio real.
+- Las mutaciones negativas cubren ausencia, hash incorrecto, rutas absolutas/traversal/fuera de raíz/dentro del motor, extensión, JSON, gate, resultado, árbol, bytes, auditoría, clase, formalización, duplicidad de ID/path y certificación creativa indebida, todas con failcodes específicos.
 
 ## Estado e interlocks resultantes
 
@@ -142,6 +147,14 @@ CREATIVE_OUTPUT_CERTIFIED=FALSE
 ```
 
 M02 queda listo para una única ejecución manual futura sobre la nueva identidad. M03 exige un M02 formalizado para el mismo árbol y permanece bloqueado.
+
+## Validación
+
+- Runtime global: `result=PASS`, `validators_fail=0`, `blocking_warnings=0`, `fail_codes=[]`.
+- Ocho auditorías y scanners requeridos: PASS/CONSISTENT.
+- Intake: `97` pruebas, `FAILURES=0`, `ERRORS=0`, un skip exclusivo de plataforma.
+- Identidad física calculada dos veces con igualdad exacta: `981 / 47370003 / 87c0e9e681a3a4995d4f096eaaa73cd5c7a889e9c10a5f0f4b3c9897e80c2346`.
+- `git diff --check` limpio y ausencia de ZIP, bytecode, cachés, temporales, outputs y evidencia oficial sintética en el repositorio real.
 
 ## Reversa
 

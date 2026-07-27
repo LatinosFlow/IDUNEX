@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Canonical IDUNEX runtime validator aligned through H189-H196 direct finalizer truthfulness/timeout closure gates."""
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import hashlib, importlib.util, json, re, subprocess, sys, os
 from validator_subcheck_protocol import delegate_subcheck
 sys.dont_write_bytecode = True
@@ -94,6 +94,36 @@ OFFICIAL_GATE_FAIL_CODES = {
     'agent_runtime_audit': 'FAIL_OFFICIAL_AGENT_RUNTIME_AUDIT_REQUIRED',
     'productive_formalization': 'FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED',
 }
+OFFICIAL_EVIDENCE_ROOT = 'governance/evidence/official/'
+OFFICIAL_EVIDENCE_REQUIRED_VALUES = {
+    'independent_audit_result': 'VALIDADO_PASS',
+    'evidence_class': 'VALIDATED_EXTERNAL_EVIDENCE',
+    'governance_formalization_status': 'VALIDADO',
+}
+OFFICIAL_GATE_REQUIRED_FIELDS = (
+    'evidence_id',
+    'evidence_path',
+    'evidence_sha256',
+    'result',
+    'independent_audit_result',
+    'evidence_class',
+    'governance_formalization_status',
+    'engine_tree_sha256',
+    'engine_file_count',
+    'engine_byte_count',
+)
+OFFICIAL_EVIDENCE_DOCUMENT_REQUIRED_FIELDS = (
+    'schema_version',
+    'evidence_id',
+    'gate_name',
+    'result',
+    'independent_audit_result',
+    'evidence_class',
+    'governance_formalization_status',
+    'engine_tree_sha256',
+    'engine_file_count',
+    'engine_byte_count',
+)
 INTERNAL_BUILD_STATE_TEXT_SURFACES = (
     '00_INDEX/RELEASE_CERTIFICATE.txt',
     '00_INDEX/CHANGELOG.md',
@@ -212,6 +242,99 @@ def _validate_bound_evidence(phase, evidence, physical, failures):
                 {'expected': physical[field.removeprefix('engine_')], 'actual': evidence.get(field)},
             )
 
+def _resolve_official_evidence_path(evidence_path, gate_name, failures):
+    path = f'{STATE_AUTHORITY_PATH}:official_transition_evidence.gates.{gate_name}'
+    if not isinstance(evidence_path, str) or not evidence_path.strip():
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_PATH_MISSING', path)
+        return None
+    normalized = evidence_path.replace('\\', '/')
+    pure_path = PurePosixPath(normalized)
+    if pure_path.is_absolute() or PureWindowsPath(evidence_path).is_absolute():
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_PATH_ABSOLUTE', path, {'actual': evidence_path})
+        return None
+    if '..' in pure_path.parts:
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_PATH_TRAVERSAL', path, {'actual': evidence_path})
+        return None
+    normalized = pure_path.as_posix()
+    if normalized == 'engine/IDUNEX' or normalized.startswith('engine/IDUNEX/'):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_PATH_ENGINE_FORBIDDEN', path, {'actual': evidence_path})
+        return None
+    if not normalized.startswith(OFFICIAL_EVIDENCE_ROOT):
+        _governance_failure(
+            failures,
+            'FAIL_OFFICIAL_EVIDENCE_PATH_OUTSIDE_AUTHORIZED_ROOT',
+            path,
+            {'actual': evidence_path},
+        )
+        return None
+    if pure_path.suffix != '.json':
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_EXTENSION', path, {'actual': evidence_path})
+        return None
+    repository_root = ROOT.parent.parent.resolve()
+    evidence_root = (repository_root / OFFICIAL_EVIDENCE_ROOT).resolve()
+    resolved = (repository_root / Path(*pure_path.parts)).resolve()
+    try:
+        resolved.relative_to(evidence_root)
+    except ValueError:
+        _governance_failure(
+            failures,
+            'FAIL_OFFICIAL_EVIDENCE_PATH_OUTSIDE_AUTHORIZED_ROOT',
+            path,
+            {'actual': evidence_path},
+        )
+        return None
+    return resolved
+
+def _validate_official_evidence_file(gate_name, gate, physical, failures):
+    path = f'{STATE_AUTHORITY_PATH}:official_transition_evidence.gates.{gate_name}'
+    evidence_file = _resolve_official_evidence_path(gate.get('evidence_path'), gate_name, failures)
+    if evidence_file is None:
+        return
+    if not evidence_file.is_file():
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_FILE_MISSING', path, {'path': gate.get('evidence_path')})
+        return
+    evidence_bytes = evidence_file.read_bytes()
+    evidence_sha256 = gate.get('evidence_sha256')
+    if not isinstance(evidence_sha256, str) or not SHA256_TOKEN_RE.fullmatch(evidence_sha256):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_SHA256_INVALID', path)
+    elif hashlib.sha256(evidence_bytes).hexdigest() != evidence_sha256:
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_SHA256_MISMATCH', path)
+    try:
+        document = json.loads(evidence_bytes.decode('utf-8'))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_JSON_INVALID', path)
+        return
+    if not isinstance(document, dict):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_JSON_INVALID', path)
+        return
+    missing_fields = [field for field in OFFICIAL_EVIDENCE_DOCUMENT_REQUIRED_FIELDS if field not in document]
+    if missing_fields:
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_DOCUMENT_SCHEMA', path, {'missing_fields': missing_fields})
+    if document.get('schema_version') != 1:
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_SCHEMA_VERSION', path)
+    if document.get('evidence_id') != gate.get('evidence_id'):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_ID_MISMATCH', path)
+    if document.get('gate_name') != gate_name:
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_GATE_NAME_MISMATCH', path)
+    if document.get('result') != gate.get('result'):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_RESULT_MISMATCH', path)
+    for field, expected in OFFICIAL_EVIDENCE_REQUIRED_VALUES.items():
+        fail_code = {
+            'independent_audit_result': 'FAIL_OFFICIAL_EVIDENCE_INDEPENDENT_AUDIT_RESULT',
+            'evidence_class': 'FAIL_OFFICIAL_EVIDENCE_CLASS',
+            'governance_formalization_status': 'FAIL_OFFICIAL_EVIDENCE_GOVERNANCE_FORMALIZATION_STATUS',
+        }[field]
+        if document.get(field) != expected or gate.get(field) != expected or document.get(field) != gate.get(field):
+            _governance_failure(failures, fail_code, path)
+    for field, physical_field, fail_code in (
+        ('engine_tree_sha256', 'tree_sha256', 'FAIL_OFFICIAL_EVIDENCE_ENGINE_TREE_SHA256_MISMATCH'),
+        ('engine_file_count', 'file_count', 'FAIL_OFFICIAL_EVIDENCE_ENGINE_FILE_COUNT_MISMATCH'),
+        ('engine_byte_count', 'byte_count', 'FAIL_OFFICIAL_EVIDENCE_ENGINE_BYTE_COUNT_MISMATCH'),
+    ):
+        expected = physical[physical_field]
+        if gate.get(field) != expected or document.get(field) != expected or document.get(field) != gate.get(field):
+            _governance_failure(failures, fail_code, path, {'expected': expected})
+
 def _validate_official_transition(state, physical, failures):
     path = f'{STATE_AUTHORITY_PATH}:official_transition_evidence'
     if state.get('m02_result') != 'M02_PASS':
@@ -261,13 +384,8 @@ def _validate_official_transition(state, physical, failures):
     if not isinstance(gates, dict):
         gates = {}
     evidence_ids = []
-    allowed_gate_fields = {
-        'evidence_id',
-        'result',
-        'engine_tree_sha256',
-        'engine_file_count',
-        'engine_byte_count',
-    }
+    evidence_paths = []
+    allowed_gate_fields = set(OFFICIAL_GATE_REQUIRED_FIELDS)
     for gate_name, allowed_results in OFFICIAL_GATE_RESULTS.items():
         gate = gates.get(gate_name)
         fail_code = OFFICIAL_GATE_FAIL_CODES[gate_name]
@@ -283,44 +401,36 @@ def _validate_official_transition(state, physical, failures):
             )
         evidence_id = gate.get('evidence_id')
         if not isinstance(evidence_id, str) or not evidence_id.strip():
-            _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE', path, {'gate': gate_name})
+            _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_ID_MISSING', path, {'gate': gate_name})
         else:
             evidence_ids.append(evidence_id)
+        evidence_path = gate.get('evidence_path')
+        if isinstance(evidence_path, str) and evidence_path.strip():
+            evidence_paths.append(PurePosixPath(evidence_path.replace('\\', '/')).as_posix())
         if gate.get('result') not in allowed_results:
             _governance_failure(failures, fail_code, path, {'gate': gate_name, 'actual': gate.get('result')})
-        if any(
-            gate.get(field) != physical[physical_field]
-            for field, physical_field in (
-                ('engine_tree_sha256', 'tree_sha256'),
-                ('engine_file_count', 'file_count'),
-                ('engine_byte_count', 'byte_count'),
-            )
-        ):
-            _governance_failure(
-                failures,
-                'FAIL_OFFICIAL_EVIDENCE_CURRENT_TREE_MISMATCH',
-                path,
-                {'gate': gate_name},
-            )
+        _validate_official_evidence_file(gate_name, gate, physical, failures)
     if len(evidence_ids) != len(set(evidence_ids)):
-        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE', path)
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_ID_DUPLICATE', path)
+    if len(evidence_paths) != len(set(evidence_paths)):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_PATH_DUPLICATE', path)
 
-    required_state_flags = (
-        'ready_for_project_demo_generation',
-        'release_authorized',
-        'tag_authorized',
-        'productive_closure_authorized',
-        'oficial_authorized',
-        'agent_load_authorized',
-        'creative_output_certified',
-    )
-    for field in required_state_flags:
-        if state.get(field) is not True:
+    required_state_flags = {
+        'ready_for_project_demo_generation': True,
+        'release_authorized': True,
+        'tag_authorized': True,
+        'productive_closure_authorized': True,
+        'oficial_authorized': True,
+        'agent_load_authorized': True,
+        'creative_output_certified': False,
+    }
+    for field, expected in required_state_flags.items():
+        if state.get(field) is not expected:
             _governance_failure(
                 failures,
                 'FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED',
                 STATE_AUTHORITY_PATH,
-                {'field': field, 'actual': state.get(field)},
+                {'field': field, 'expected': expected, 'actual': state.get(field)},
             )
 
 def _governance_state_boundary_gate(root: Path):
@@ -407,12 +517,29 @@ def _governance_state_boundary_gate(root: Path):
             isinstance(official, dict)
             and official.get('schema_version') == 1
             and official.get('external_evidence_block') == 'official_transition_evidence'
+            and official.get('external_evidence_root') == OFFICIAL_EVIDENCE_ROOT
+            and official.get('external_evidence_extension') == '.json'
             and official.get('state_authority') == STATE_AUTHORITY_PATH
             and official.get('formalization_status_required') == 'VALIDADO'
             and official.get('required_phase_results') == {'m02_result': 'M02_PASS', 'm03_result': 'M03_PASS'}
             and actual_official_gates == expected_official_gates
-            and official.get('gate_required_fields') == ['evidence_id', 'result', 'engine_tree_sha256', 'engine_file_count', 'engine_byte_count']
+            and official.get('gate_required_fields') == list(OFFICIAL_GATE_REQUIRED_FIELDS)
+            and official.get('external_evidence_document_required_fields') == list(OFFICIAL_EVIDENCE_DOCUMENT_REQUIRED_FIELDS)
+            and official.get('external_evidence_required_values') == {
+                'schema_version': 1,
+                **OFFICIAL_EVIDENCE_REQUIRED_VALUES,
+            }
+            and official.get('external_evidence_path_rules') == {
+                'repository_relative_only': True,
+                'traversal_forbidden': True,
+                'outside_authorized_root_forbidden': True,
+                'engine_paths_forbidden': True,
+                'file_must_exist': True,
+                'sha256_must_match_file': True,
+                'json_content_must_match_gate_link': True,
+            }
             and official.get('gate_evidence_ids_must_be_unique') is True
+            and official.get('gate_evidence_paths_must_be_unique') is True
             and official.get('every_gate_must_bind_physical_tree') is True
             and official.get('authorization_override_allowed') is False
             and official.get('required_state_flags') == {
@@ -422,7 +549,7 @@ def _governance_state_boundary_gate(root: Path):
                 'productive_closure_authorized': True,
                 'oficial_authorized': True,
                 'agent_load_authorized': True,
-                'creative_output_certified': True,
+                'creative_output_certified': False,
             }
         ):
             _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_OFFICIAL_TRANSITION_CONTRACT', contract_rel)
@@ -462,6 +589,13 @@ def _governance_state_boundary_gate(root: Path):
         motor_status = state.get('motor_status')
         if motor_status not in ALLOWED_MOTOR_STATUS:
             _governance_failure(failures, 'FAIL_MOTOR_STATUS_SCHEMA', STATE_AUTHORITY_PATH)
+        if state.get('creative_output_certified') is not False:
+            _governance_failure(
+                failures,
+                'FAIL_MOTOR_CREATIVE_OUTPUT_CERTIFICATION_FORBIDDEN',
+                STATE_AUTHORITY_PATH,
+                {'actual': state.get('creative_output_certified')},
+            )
         m02_result = state.get('m02_result')
         m03_result = state.get('m03_result')
         if not isinstance(m02_result, str) or not M02_RESULT_RE.fullmatch(m02_result):
@@ -537,9 +671,6 @@ def _governance_state_boundary_gate(root: Path):
             for field, code in revision_interlocks.items():
                 if state.get(field) is not False:
                     _governance_failure(failures, code, STATE_AUTHORITY_PATH, {'field': field, 'actual': state.get(field)})
-            if state.get('creative_output_certified') is not False:
-                _governance_failure(failures, 'FAIL_CREATIVE_OUTPUT_FALSE_INTERLOCK', STATE_AUTHORITY_PATH)
-
         controlled = state.get('controlled_external_demo_execution')
         if not isinstance(controlled, dict):
             _governance_failure(failures, 'FAIL_AUD028_CONSUMED_INTERLOCK', STATE_AUTHORITY_PATH)

@@ -80,6 +80,8 @@
   "official_transition_contract": {
     "schema_version": 1,
     "external_evidence_block": "official_transition_evidence",
+    "external_evidence_root": "governance/evidence/official/",
+    "external_evidence_extension": ".json",
     "state_authority": "governance/CURRENT_STATE.json",
     "formalization_status_required": "VALIDADO",
     "required_phase_results": {
@@ -112,12 +114,45 @@
     },
     "gate_required_fields": [
       "evidence_id",
+      "evidence_path",
+      "evidence_sha256",
       "result",
+      "independent_audit_result",
+      "evidence_class",
+      "governance_formalization_status",
       "engine_tree_sha256",
       "engine_file_count",
       "engine_byte_count"
     ],
+    "external_evidence_document_required_fields": [
+      "schema_version",
+      "evidence_id",
+      "gate_name",
+      "result",
+      "independent_audit_result",
+      "evidence_class",
+      "governance_formalization_status",
+      "engine_tree_sha256",
+      "engine_file_count",
+      "engine_byte_count"
+    ],
+    "external_evidence_required_values": {
+      "schema_version": 1,
+      "independent_audit_result": "VALIDADO_PASS",
+      "evidence_class": "VALIDATED_EXTERNAL_EVIDENCE",
+      "governance_formalization_status": "VALIDADO"
+    },
+    "external_evidence_path_rules": {
+      "repository_relative_only": true,
+      "traversal_forbidden": true,
+      "outside_authorized_root_forbidden": true,
+      "engine_paths_forbidden": true,
+      "file_must_exist": true,
+      "sha256_must_match_file": true,
+      "json_content_must_match_gate_link": true
+    },
     "gate_evidence_ids_must_be_unique": true,
+    "gate_evidence_paths_must_be_unique": true,
     "every_gate_must_bind_physical_tree": true,
     "authorization_override_allowed": false,
     "required_state_flags": {
@@ -127,7 +162,7 @@
       "productive_closure_authorized": true,
       "oficial_authorized": true,
       "agent_load_authorized": true,
-      "creative_output_certified": true
+      "creative_output_certified": false
     }
   },
   "AUD028_consumed_interlock": {

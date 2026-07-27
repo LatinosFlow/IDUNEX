@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import subprocess
 import sys
@@ -62,7 +63,7 @@ def current_evidence(seed: int = 1) -> dict:
     }
 
 
-def official_state() -> dict:
+def official_state(repo_root: Path) -> dict:
     state = current_state()
     state["motor_status"] = "OFICIAL"
     state["m02_result"] = "M02_PASS"
@@ -76,9 +77,9 @@ def official_state() -> dict:
         "productive_closure_authorized",
         "oficial_authorized",
         "agent_load_authorized",
-        "creative_output_certified",
     ):
         state[field] = True
+    state["creative_output_certified"] = False
     gate_results = {
         "motor_audit": "PASS",
         "project_demo_generation": "PASS",
@@ -88,16 +89,38 @@ def official_state() -> dict:
         "agent_runtime_audit": "PASS",
         "productive_formalization": "VALIDADO",
     }
-    gates = {
-        gate: {
-            "evidence_id": f"synthetic-{gate}",
+    gates = {}
+    for gate, result in gate_results.items():
+        evidence_id = f"synthetic-{gate}"
+        evidence_path = f"governance/evidence/official/{gate}.json"
+        document = {
+            "schema_version": 1,
+            "evidence_id": evidence_id,
+            "gate_name": gate,
             "result": result,
+            "independent_audit_result": "VALIDADO_PASS",
+            "evidence_class": "VALIDATED_EXTERNAL_EVIDENCE",
+            "governance_formalization_status": "VALIDADO",
             "engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
             "engine_file_count": CURRENT_ENGINE_FILE_COUNT,
             "engine_byte_count": CURRENT_ENGINE_BYTE_COUNT,
         }
-        for gate, result in gate_results.items()
-    }
+        evidence_bytes = (json.dumps(document, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+        evidence_file = repo_root / evidence_path
+        evidence_file.parent.mkdir(parents=True, exist_ok=True)
+        evidence_file.write_bytes(evidence_bytes)
+        gates[gate] = {
+            "evidence_id": evidence_id,
+            "evidence_path": evidence_path,
+            "evidence_sha256": hashlib.sha256(evidence_bytes).hexdigest(),
+            "result": result,
+            "independent_audit_result": "VALIDADO_PASS",
+            "evidence_class": "VALIDATED_EXTERNAL_EVIDENCE",
+            "governance_formalization_status": "VALIDADO",
+            "engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
+            "engine_file_count": CURRENT_ENGINE_FILE_COUNT,
+            "engine_byte_count": CURRENT_ENGINE_BYTE_COUNT,
+        }
     state["official_transition_evidence"] = {
         "schema_version": 1,
         "formalization_status": "VALIDADO",
@@ -193,14 +216,31 @@ class GovernanceStateTest(unittest.TestCase):
                 )
 
     def test_05b_complete_official_transition_is_valid_and_each_gate_is_independent(self):
-        state = official_state()
-        self.assertEqual(validate_current_state_data(state), [])
-        state["official_transition_evidence"]["gates"]["chatgpt_runtime"]["evidence_id"] = (
-            state["official_transition_evidence"]["gates"]["motor_audit"]["evidence_id"]
-        )
-        self.assertTrue(
-            any("FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE" in finding for finding in validate_current_state_data(state))
-        )
+        with tempfile.TemporaryDirectory(prefix="aud037-governance-state-") as temp_dir:
+            root = Path(temp_dir)
+            state = official_state(root)
+            self.assertEqual(validate_current_state_data(state, root), [])
+            state["official_transition_evidence"]["gates"]["chatgpt_runtime"]["evidence_id"] = (
+                state["official_transition_evidence"]["gates"]["motor_audit"]["evidence_id"]
+            )
+            self.assertTrue(
+                any("FAIL_OFFICIAL_EVIDENCE_ID_DUPLICATE" in finding for finding in validate_current_state_data(state, root))
+            )
+
+    def test_05c_creative_output_certification_is_forbidden_at_every_motor_status(self):
+        for motor_status in ("EN_REVISION", "OFICIAL"):
+            with tempfile.TemporaryDirectory(prefix="aud037-creative-false-") as temp_dir:
+                root = Path(temp_dir)
+                state = current_state() if motor_status == "EN_REVISION" else official_state(root)
+                state["motor_status"] = motor_status
+                state["creative_output_certified"] = True
+                with self.subTest(motor_status=motor_status):
+                    self.assertTrue(
+                        any(
+                            "FAIL_MOTOR_CREATIVE_OUTPUT_CERTIFICATION_FORBIDDEN" in finding
+                            for finding in validate_current_state_data(state, root)
+                        )
+                    )
 
     def test_06_aud028_cannot_be_reauthorized_or_recounted(self):
         for field, value in (
@@ -245,7 +285,7 @@ class GovernanceStateTest(unittest.TestCase):
         control = current_state()["engine_change_control"]
         self.assertEqual(control["base_commit"], AUD037_BASE_COMMIT)
         self.assertEqual(control["previous_engine_tree_sha256"], PREVIOUS_ENGINE_TREE_SHA256)
-        self.assertEqual(control["previous_engine_byte_count"], 47_350_130)
+        self.assertEqual(control["previous_engine_byte_count"], 47_361_805)
         self.assertEqual(control["current_engine_tree_sha256"], CURRENT_ENGINE_TREE_SHA256)
         self.assertEqual(control["current_engine_file_count"], CURRENT_ENGINE_FILE_COUNT)
         self.assertEqual(control["current_engine_byte_count"], CURRENT_ENGINE_BYTE_COUNT)
@@ -268,7 +308,11 @@ class GovernanceStateTest(unittest.TestCase):
             contract["mutable_state_schema"]["m03_result"]["not_recomputed_pattern"],
             "^NOT_RECOMPUTED_POST_AUD[0-9]{3}$",
         )
-        self.assertEqual(contract["official_transition_contract"]["external_evidence_block"], "official_transition_evidence")
+        official = contract["official_transition_contract"]
+        self.assertEqual(official["external_evidence_block"], "official_transition_evidence")
+        self.assertEqual(official["external_evidence_root"], "governance/evidence/official/")
+        self.assertTrue(official["gate_evidence_paths_must_be_unique"])
+        self.assertFalse(official["required_state_flags"]["creative_output_certified"])
 
     def test_11_internal_surfaces_are_non_authority_snapshots(self):
         for surface in INTERNAL_STATE_SURFACES:

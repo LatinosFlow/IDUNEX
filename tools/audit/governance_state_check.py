@@ -12,7 +12,7 @@ import hashlib
 import json
 import re
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 
 
@@ -26,12 +26,12 @@ STATE_AUTHORITY = STATE_PATH.as_posix()
 BUILD_STATE_SNAPSHOT_CLASSIFICATION = "NON_AUTHORITY_BUILD_SNAPSHOT"
 M02_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD037"
 M03_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD037"
-CURRENT_ENGINE_TREE_SHA256 = "ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3"
+CURRENT_ENGINE_TREE_SHA256 = "87c0e9e681a3a4995d4f096eaaa73cd5c7a889e9c10a5f0f4b3c9897e80c2346"
 CURRENT_ENGINE_FILE_COUNT = 981
-CURRENT_ENGINE_BYTE_COUNT = 47_361_805
+CURRENT_ENGINE_BYTE_COUNT = 47_370_003
 AUD037_BASE_COMMIT = "f9a2b84415ef53a8602911e39835617575ff3864"
-PREVIOUS_ENGINE_TREE_SHA256 = "b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4"
-PREVIOUS_ENGINE_BYTE_COUNT = 47_350_130
+PREVIOUS_ENGINE_TREE_SHA256 = "ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3"
+PREVIOUS_ENGINE_BYTE_COUNT = 47_361_805
 M02_EVIDENCE_ENGINE_TREE_SHA256 = "c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e"
 M02_EVIDENCE_ENGINE_BYTE_COUNT = 47_324_981
 
@@ -124,6 +124,36 @@ OFFICIAL_GATE_FAIL_CODES = {
     "agent_runtime_audit": "FAIL_OFFICIAL_AGENT_RUNTIME_AUDIT_REQUIRED",
     "productive_formalization": "FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED",
 }
+OFFICIAL_EVIDENCE_ROOT = "governance/evidence/official/"
+OFFICIAL_EVIDENCE_REQUIRED_VALUES = {
+    "independent_audit_result": "VALIDADO_PASS",
+    "evidence_class": "VALIDATED_EXTERNAL_EVIDENCE",
+    "governance_formalization_status": "VALIDADO",
+}
+OFFICIAL_GATE_REQUIRED_FIELDS = (
+    "evidence_id",
+    "evidence_path",
+    "evidence_sha256",
+    "result",
+    "independent_audit_result",
+    "evidence_class",
+    "governance_formalization_status",
+    "engine_tree_sha256",
+    "engine_file_count",
+    "engine_byte_count",
+)
+OFFICIAL_EVIDENCE_DOCUMENT_REQUIRED_FIELDS = (
+    "schema_version",
+    "evidence_id",
+    "gate_name",
+    "result",
+    "independent_audit_result",
+    "evidence_class",
+    "governance_formalization_status",
+    "engine_tree_sha256",
+    "engine_file_count",
+    "engine_byte_count",
+)
 
 
 def _read_text(path: Path) -> str:
@@ -197,7 +227,91 @@ def _validate_evidence(phase: str, evidence: Any, identity: dict[str, Any]) -> l
     return findings
 
 
-def _validate_official_transition(data: dict[str, Any], identity: dict[str, Any]) -> list[str]:
+def _resolve_official_evidence_path(evidence_path: Any, gate_name: str, repo_root: Path) -> tuple[Path | None, list[str]]:
+    prefix = f"{STATE_AUTHORITY}: official_transition_evidence.gates.{gate_name}"
+    if not isinstance(evidence_path, str) or not evidence_path.strip():
+        return None, [f"{prefix} FAIL_OFFICIAL_EVIDENCE_PATH_MISSING"]
+    normalized = evidence_path.replace("\\", "/")
+    pure_path = PurePosixPath(normalized)
+    if pure_path.is_absolute() or PureWindowsPath(evidence_path).is_absolute():
+        return None, [f"{prefix} FAIL_OFFICIAL_EVIDENCE_PATH_ABSOLUTE"]
+    if ".." in pure_path.parts:
+        return None, [f"{prefix} FAIL_OFFICIAL_EVIDENCE_PATH_TRAVERSAL"]
+    normalized = pure_path.as_posix()
+    if normalized == "engine/IDUNEX" or normalized.startswith("engine/IDUNEX/"):
+        return None, [f"{prefix} FAIL_OFFICIAL_EVIDENCE_PATH_ENGINE_FORBIDDEN"]
+    if not normalized.startswith(OFFICIAL_EVIDENCE_ROOT):
+        return None, [f"{prefix} FAIL_OFFICIAL_EVIDENCE_PATH_OUTSIDE_AUTHORIZED_ROOT"]
+    if pure_path.suffix != ".json":
+        return None, [f"{prefix} FAIL_OFFICIAL_EVIDENCE_EXTENSION"]
+    evidence_root = (repo_root / OFFICIAL_EVIDENCE_ROOT).resolve()
+    resolved = (repo_root / Path(*pure_path.parts)).resolve()
+    try:
+        resolved.relative_to(evidence_root)
+    except ValueError:
+        return None, [f"{prefix} FAIL_OFFICIAL_EVIDENCE_PATH_OUTSIDE_AUTHORIZED_ROOT"]
+    return resolved, []
+
+
+def _validate_official_evidence_file(
+    gate_name: str,
+    gate: dict[str, Any],
+    identity: dict[str, Any],
+    repo_root: Path,
+) -> list[str]:
+    prefix = f"{STATE_AUTHORITY}: official_transition_evidence.gates.{gate_name}"
+    evidence_file, findings = _resolve_official_evidence_path(gate.get("evidence_path"), gate_name, repo_root)
+    if evidence_file is None:
+        return findings
+    if not evidence_file.is_file():
+        return findings + [f"{prefix} FAIL_OFFICIAL_EVIDENCE_FILE_MISSING"]
+    evidence_bytes = evidence_file.read_bytes()
+    evidence_sha256 = gate.get("evidence_sha256")
+    if not isinstance(evidence_sha256, str) or not SHA256_RE.fullmatch(evidence_sha256):
+        findings.append(f"{prefix} FAIL_OFFICIAL_EVIDENCE_SHA256_INVALID")
+    elif hashlib.sha256(evidence_bytes).hexdigest() != evidence_sha256:
+        findings.append(f"{prefix} FAIL_OFFICIAL_EVIDENCE_SHA256_MISMATCH")
+    try:
+        document = json.loads(evidence_bytes.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        return findings + [f"{prefix} FAIL_OFFICIAL_EVIDENCE_JSON_INVALID"]
+    if not isinstance(document, dict):
+        return findings + [f"{prefix} FAIL_OFFICIAL_EVIDENCE_JSON_INVALID"]
+    missing_fields = [field for field in OFFICIAL_EVIDENCE_DOCUMENT_REQUIRED_FIELDS if field not in document]
+    if missing_fields:
+        findings.append(f"{prefix} FAIL_OFFICIAL_EVIDENCE_DOCUMENT_SCHEMA")
+    if document.get("schema_version") != 1:
+        findings.append(f"{prefix} FAIL_OFFICIAL_EVIDENCE_SCHEMA_VERSION")
+    if document.get("evidence_id") != gate.get("evidence_id"):
+        findings.append(f"{prefix} FAIL_OFFICIAL_EVIDENCE_ID_MISMATCH")
+    if document.get("gate_name") != gate_name:
+        findings.append(f"{prefix} FAIL_OFFICIAL_EVIDENCE_GATE_NAME_MISMATCH")
+    if document.get("result") != gate.get("result"):
+        findings.append(f"{prefix} FAIL_OFFICIAL_EVIDENCE_RESULT_MISMATCH")
+    fail_codes = {
+        "independent_audit_result": "FAIL_OFFICIAL_EVIDENCE_INDEPENDENT_AUDIT_RESULT",
+        "evidence_class": "FAIL_OFFICIAL_EVIDENCE_CLASS",
+        "governance_formalization_status": "FAIL_OFFICIAL_EVIDENCE_GOVERNANCE_FORMALIZATION_STATUS",
+    }
+    for field, expected in OFFICIAL_EVIDENCE_REQUIRED_VALUES.items():
+        if document.get(field) != expected or gate.get(field) != expected or document.get(field) != gate.get(field):
+            findings.append(f"{prefix} {fail_codes[field]}")
+    for field, identity_field, fail_code in (
+        ("engine_tree_sha256", "tree_sha256", "FAIL_OFFICIAL_EVIDENCE_ENGINE_TREE_SHA256_MISMATCH"),
+        ("engine_file_count", "file_count", "FAIL_OFFICIAL_EVIDENCE_ENGINE_FILE_COUNT_MISMATCH"),
+        ("engine_byte_count", "byte_count", "FAIL_OFFICIAL_EVIDENCE_ENGINE_BYTE_COUNT_MISMATCH"),
+    ):
+        expected = identity[identity_field]
+        if gate.get(field) != expected or document.get(field) != expected or document.get(field) != gate.get(field):
+            findings.append(f"{prefix} {fail_code}")
+    return findings
+
+
+def _validate_official_transition(
+    data: dict[str, Any],
+    identity: dict[str, Any],
+    repo_root: Path,
+) -> list[str]:
     findings: list[str] = []
     if data.get("m02_result") != "M02_PASS":
         findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_REQUIRES_M02_PASS")
@@ -234,13 +348,8 @@ def _validate_official_transition(data: dict[str, Any], identity: dict[str, Any]
 
     gates = envelope.get("gates") if isinstance(envelope.get("gates"), dict) else {}
     evidence_ids: list[str] = []
-    allowed_gate_fields = {
-        "evidence_id",
-        "result",
-        "engine_tree_sha256",
-        "engine_file_count",
-        "engine_byte_count",
-    }
+    evidence_paths: list[str] = []
+    allowed_gate_fields = set(OFFICIAL_GATE_REQUIRED_FIELDS)
     for gate_name, allowed_results in OFFICIAL_GATE_RESULTS.items():
         gate = gates.get(gate_name)
         if not isinstance(gate, dict) or gate.get("result") not in allowed_results:
@@ -250,30 +359,28 @@ def _validate_official_transition(data: dict[str, Any], identity: dict[str, Any]
             findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_AUTHORIZATION_INVALID")
         evidence_id = gate.get("evidence_id")
         if not isinstance(evidence_id, str) or not evidence_id.strip():
-            findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE")
+            findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_ID_MISSING")
         else:
             evidence_ids.append(evidence_id)
-        if any(
-            gate.get(field) != identity[identity_field]
-            for field, identity_field in (
-                ("engine_tree_sha256", "tree_sha256"),
-                ("engine_file_count", "file_count"),
-                ("engine_byte_count", "byte_count"),
-            )
-        ):
-            findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_CURRENT_TREE_MISMATCH")
+        evidence_path = gate.get("evidence_path")
+        if isinstance(evidence_path, str) and evidence_path.strip():
+            evidence_paths.append(PurePosixPath(evidence_path.replace("\\", "/")).as_posix())
+        findings.extend(_validate_official_evidence_file(gate_name, gate, identity, repo_root))
     if len(evidence_ids) != len(set(evidence_ids)):
-        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE")
-    for field in (
-        "ready_for_project_demo_generation",
-        "release_authorized",
-        "tag_authorized",
-        "productive_closure_authorized",
-        "oficial_authorized",
-        "agent_load_authorized",
-        "creative_output_certified",
-    ):
-        if data.get(field) is not True:
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_ID_DUPLICATE")
+    if len(evidence_paths) != len(set(evidence_paths)):
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_PATH_DUPLICATE")
+    required_state_flags = {
+        "ready_for_project_demo_generation": True,
+        "release_authorized": True,
+        "tag_authorized": True,
+        "productive_closure_authorized": True,
+        "oficial_authorized": True,
+        "agent_load_authorized": True,
+        "creative_output_certified": False,
+    }
+    for field, expected in required_state_flags.items():
+        if data.get(field) is not expected:
             findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED {field}")
     return findings
 
@@ -310,7 +417,8 @@ def validate_controlled_external_demo_execution(data: Any) -> list[str]:
     return findings
 
 
-def validate_current_state_data(data: dict[str, Any]) -> list[str]:
+def validate_current_state_data(data: dict[str, Any], repo_root: Path | None = None) -> list[str]:
+    repo_root = (repo_root or Path(__file__).resolve().parents[2]).resolve()
     findings: list[str] = []
     if data.get("authority") != STATE_AUTHORITY:
         findings.append(f"{STATE_AUTHORITY}: authority must be {STATE_AUTHORITY!r}")
@@ -319,6 +427,8 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         findings.append(f"{STATE_AUTHORITY}: issue token is invalid")
     if data.get("motor_status") not in {"EN_REVISION", "OFICIAL"}:
         findings.append(f"{STATE_AUTHORITY}: motor_status is invalid")
+    if data.get("creative_output_certified") is not False:
+        findings.append(f"{STATE_AUTHORITY}: FAIL_MOTOR_CREATIVE_OUTPUT_CERTIFICATION_FORBIDDEN")
     m02_result = data.get("m02_result")
     m03_result = data.get("m03_result")
     if not isinstance(m02_result, str) or not M02_RE.fullmatch(m02_result):
@@ -362,7 +472,7 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_PREMATURE_EVIDENCE")
 
     if data.get("motor_status") == "OFICIAL":
-        findings.extend(_validate_official_transition(data, identity))
+        findings.extend(_validate_official_transition(data, identity, repo_root))
 
     if data.get("motor_status") == "EN_REVISION":
         for field in (
@@ -383,7 +493,7 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         "base_commit": AUD037_BASE_COMMIT,
         "previous_engine_tree_sha256": PREVIOUS_ENGINE_TREE_SHA256,
         "previous_engine_byte_count": PREVIOUS_ENGINE_BYTE_COUNT,
-        "previous_engine_tree_classification": "AUD037_INTERMEDIATE_CYCLE_BREAK_TREE_SUPERSEDED_BY_STABLE_SCHEMA_AND_OFFICIAL_TRANSITION_HARDENING",
+        "previous_engine_tree_classification": "AUD037_INTERMEDIATE_STABLE_SCHEMA_TREE_SUPERSEDED_BY_EXTERNAL_OFFICIAL_EVIDENCE_VERIFIABILITY",
         "current_engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
         "current_engine_file_count": CURRENT_ENGINE_FILE_COUNT,
         "current_engine_byte_count": CURRENT_ENGINE_BYTE_COUNT,
@@ -454,15 +564,53 @@ def validate_master_contract(contract: Any) -> list[str]:
     ):
         findings.append(f"{MASTER_CONTRACT_PATH.as_posix()}: FAIL_MASTER_GOVERNANCE_EVIDENCE_BINDING_RULES")
     official = contract.get("official_transition_contract", {})
+    expected_official_gates = {gate: sorted(results) for gate, results in OFFICIAL_GATE_RESULTS.items()}
+    actual_official_gates = (
+        {
+            gate: sorted(results) if isinstance(results, list) else results
+            for gate, results in official.get("required_gates", {}).items()
+        }
+        if isinstance(official, dict)
+        else {}
+    )
     if not (
         isinstance(official, dict)
         and official.get("schema_version") == 1
         and official.get("external_evidence_block") == "official_transition_evidence"
+        and official.get("external_evidence_root") == OFFICIAL_EVIDENCE_ROOT
+        and official.get("external_evidence_extension") == ".json"
         and official.get("state_authority") == STATE_AUTHORITY
         and official.get("formalization_status_required") == "VALIDADO"
+        and official.get("required_phase_results") == {"m02_result": "M02_PASS", "m03_result": "M03_PASS"}
         and official.get("authorization_override_allowed") is False
         and official.get("every_gate_must_bind_physical_tree") is True
-        and set(official.get("required_gates", {})) == set(OFFICIAL_GATE_RESULTS)
+        and actual_official_gates == expected_official_gates
+        and official.get("gate_required_fields") == list(OFFICIAL_GATE_REQUIRED_FIELDS)
+        and official.get("external_evidence_document_required_fields") == list(OFFICIAL_EVIDENCE_DOCUMENT_REQUIRED_FIELDS)
+        and official.get("external_evidence_required_values") == {
+            "schema_version": 1,
+            **OFFICIAL_EVIDENCE_REQUIRED_VALUES,
+        }
+        and official.get("external_evidence_path_rules") == {
+            "repository_relative_only": True,
+            "traversal_forbidden": True,
+            "outside_authorized_root_forbidden": True,
+            "engine_paths_forbidden": True,
+            "file_must_exist": True,
+            "sha256_must_match_file": True,
+            "json_content_must_match_gate_link": True,
+        }
+        and official.get("gate_evidence_ids_must_be_unique") is True
+        and official.get("gate_evidence_paths_must_be_unique") is True
+        and official.get("required_state_flags") == {
+            "ready_for_project_demo_generation": True,
+            "release_authorized": True,
+            "tag_authorized": True,
+            "productive_closure_authorized": True,
+            "oficial_authorized": True,
+            "agent_load_authorized": True,
+            "creative_output_certified": False,
+        }
     ):
         findings.append(f"{MASTER_CONTRACT_PATH.as_posix()}: FAIL_MASTER_GOVERNANCE_OFFICIAL_TRANSITION_CONTRACT")
     return findings
@@ -520,7 +668,7 @@ def audit_repository(root: Path) -> dict[str, Any]:
     state: dict[str, Any] = {}
     try:
         state = json.loads(_read_text(root / STATE_PATH))
-        findings.extend(validate_current_state_data(state))
+        findings.extend(validate_current_state_data(state, root))
     except FileNotFoundError:
         findings.append(f"Missing state authority: {STATE_PATH.as_posix()}")
     except json.JSONDecodeError as exc:

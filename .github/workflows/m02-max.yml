@@ -6,7 +6,7 @@ on:
       expected_engine_tree_sha256:
         description: Expected SHA-256 of the current engine/IDUNEX physical tree
         required: true
-        default: ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3
+        default: 87c0e9e681a3a4995d4f096eaaa73cd5c7a889e9c10a5f0f4b3c9897e80c2346
         type: string
       timeout_per_case:
         description: Maximum seconds for each generated matrix process
@@ -115,7 +115,7 @@ jobs:
               failures.append('FAIL_EXPECTED_ENGINE_TREE_SHA256_MISMATCH')
           if len(files) != 981:
               failures.append('FAIL_ENGINE_FILE_COUNT_MISMATCH')
-          if byte_count != 47_361_805:
+          if byte_count != 47_370_003:
               failures.append('FAIL_ENGINE_BYTE_COUNT_MISMATCH')
           if manifest.get('tree_sha256') != actual_tree:
               failures.append('FAIL_BASELINE_MANIFEST_TREE_SHA256_MISMATCH')
