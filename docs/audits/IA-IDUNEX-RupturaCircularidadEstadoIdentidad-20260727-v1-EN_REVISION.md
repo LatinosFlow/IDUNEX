@@ -108,11 +108,21 @@ Los seis manifests internos se regeneraron con `tools/audit/baseline_scanner.py`
 
 ```text
 ENGINE_FILE_COUNT=981
-ENGINE_BYTES=47350130
-ENGINE_TREE_SHA256=b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4
+ENGINE_BYTES=47361805
+ENGINE_TREE_SHA256=ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3
 ```
 
 El file count permanece en `981`; el cambio de bytes está explicado por las superficies AUD-037 modificadas.
+
+La identidad intermedia `981 / 47350130 / b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4`, generada por la primera versión del Draft PR #74, queda sustituida por el hardening del esquema estable, la formalización de evidencia y la transición `OFICIAL` fail-closed.
+
+## Cierre de gaps de la revisión independiente
+
+- `NOT_RECOMPUTED` bare ya no pertenece al esquema; cada fase exige `NOT_RECOMPUTED_POST_AUDnnn` ligado al issue actual o su token PASS exacto.
+- M02/M03 PASS requieren `technical_result=PASS`, `independent_audit_result=VALIDADO_PASS`, `evidence_class=VALIDATED_CURRENT_TREE_EVIDENCE`, `governance_formalization_status=VALIDADO` y preservan `workflow_decision=NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY` como origen no autoritativo.
+- `official_transition_evidence` es un bloque externo versionado. El motor sólo contiene el contrato estable de gates; no fija runs, artifacts, auditorías o Demo futuros.
+- `MOTOR_STATUS=OFICIAL` exige M02 y M03 formalizados para el árbol físico, auditoría del motor, Demo generado y auditado, runtime ChatGPT, runtime Copilot PASS o limitación válida, auditoría de carga/runtime y formalización productiva independiente.
+- Una prueba sintética en `TemporaryDirectory` formaliza el cierre completo modificando únicamente `CURRENT_STATE`; el validator permanece PASS y el SHA de `engine/IDUNEX` no cambia.
 
 ## Estado e interlocks resultantes
 

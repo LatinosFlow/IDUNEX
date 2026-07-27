@@ -26,13 +26,14 @@ STATE_AUTHORITY = STATE_PATH.as_posix()
 BUILD_STATE_SNAPSHOT_CLASSIFICATION = "NON_AUTHORITY_BUILD_SNAPSHOT"
 M02_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD037"
 M03_RECOMPUTATION_STATE = "NOT_RECOMPUTED_POST_AUD037"
-CURRENT_ENGINE_TREE_SHA256 = "b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4"
+CURRENT_ENGINE_TREE_SHA256 = "ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3"
 CURRENT_ENGINE_FILE_COUNT = 981
-CURRENT_ENGINE_BYTE_COUNT = 47_350_130
+CURRENT_ENGINE_BYTE_COUNT = 47_361_805
 AUD037_BASE_COMMIT = "f9a2b84415ef53a8602911e39835617575ff3864"
-PREVIOUS_ENGINE_TREE_SHA256 = "c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e"
-PREVIOUS_ENGINE_BYTE_COUNT = 47_324_981
-M02_EVIDENCE_ENGINE_TREE_SHA256 = PREVIOUS_ENGINE_TREE_SHA256
+PREVIOUS_ENGINE_TREE_SHA256 = "b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4"
+PREVIOUS_ENGINE_BYTE_COUNT = 47_350_130
+M02_EVIDENCE_ENGINE_TREE_SHA256 = "c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e"
+M02_EVIDENCE_ENGINE_BYTE_COUNT = 47_324_981
 
 M02_RECOMPUTATION_EVIDENCE = {
     "run_id": 30194513740,
@@ -41,9 +42,9 @@ M02_RECOMPUTATION_EVIDENCE = {
     "artifact_name": "idunex-m02-max-30194513740-attempt-1",
     "artifact_sha256": "797d705d9e75317f0cb8dacebcee22e1376369bfadae05ad453943988ad14dde",
     "repository_commit": "f9a2b84415ef53a8602911e39835617575ff3864",
-    "engine_tree_sha256": PREVIOUS_ENGINE_TREE_SHA256,
+    "engine_tree_sha256": M02_EVIDENCE_ENGINE_TREE_SHA256,
     "engine_file_count": 981,
-    "engine_byte_count": PREVIOUS_ENGINE_BYTE_COUNT,
+    "engine_byte_count": M02_EVIDENCE_ENGINE_BYTE_COUNT,
     "technical_result": "PASS",
     "matrix": "30/30",
     "mutation": "506/506",
@@ -94,10 +95,35 @@ DANGEROUS_PATTERNS = (
 )
 REFERENCE_MARKERS = ("REFERENCIA_SUSTITUIDA", "REFERENCIA_HISTORICA_SUSTITUIDA")
 ISSUE_RE = re.compile(r"^AUD-[0-9]{3}$")
-M02_RE = re.compile(r"^(?:NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?|M02_PASS)$")
-M03_RE = re.compile(r"^(?:NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?|M03_PASS)$")
+M02_RE = re.compile(r"^(?:NOT_RECOMPUTED_POST_AUD[0-9]{3}|M02_PASS)$")
+M03_RE = re.compile(r"^(?:NOT_RECOMPUTED_POST_AUD[0-9]{3}|M03_PASS)$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 GIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+FORMALIZED_EVIDENCE_VALUES = {
+    "technical_result": "PASS",
+    "independent_audit_result": "VALIDADO_PASS",
+    "evidence_class": "VALIDATED_CURRENT_TREE_EVIDENCE",
+    "governance_formalization_status": "VALIDADO",
+    "workflow_decision": "NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY",
+}
+OFFICIAL_GATE_RESULTS = {
+    "motor_audit": {"PASS"},
+    "project_demo_generation": {"PASS"},
+    "project_demo_audit": {"PASS"},
+    "chatgpt_runtime": {"PASS"},
+    "copilot_runtime": {"PASS", "VENDOR_LIMITATION_NOT_ENGINE_FAIL"},
+    "agent_runtime_audit": {"PASS"},
+    "productive_formalization": {"VALIDADO"},
+}
+OFFICIAL_GATE_FAIL_CODES = {
+    "motor_audit": "FAIL_OFFICIAL_MOTOR_AUDIT_REQUIRED",
+    "project_demo_generation": "FAIL_OFFICIAL_DEMO_GENERATION_REQUIRED",
+    "project_demo_audit": "FAIL_OFFICIAL_DEMO_AUDIT_REQUIRED",
+    "chatgpt_runtime": "FAIL_OFFICIAL_CHATGPT_RUNTIME_REQUIRED",
+    "copilot_runtime": "FAIL_OFFICIAL_COPILOT_RUNTIME_REQUIRED",
+    "agent_runtime_audit": "FAIL_OFFICIAL_AGENT_RUNTIME_AUDIT_REQUIRED",
+    "productive_formalization": "FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED",
+}
 
 
 def _read_text(path: Path) -> str:
@@ -145,6 +171,20 @@ def _validate_evidence(phase: str, evidence: Any, identity: dict[str, Any]) -> l
         findings.append(f"{STATE_AUTHORITY}: {prefix}_evidence.artifact_sha256 must be a lowercase SHA-256")
     if not isinstance(evidence.get("repository_commit"), str) or not GIT_SHA_RE.fullmatch(evidence["repository_commit"]):
         findings.append(f"{STATE_AUTHORITY}: {prefix}_evidence.repository_commit must be a lowercase Git SHA")
+    for field, expected in FORMALIZED_EVIDENCE_VALUES.items():
+        if evidence.get(field) != expected:
+            findings.append(
+                f"{STATE_AUTHORITY}: FAIL_{phase.upper()}_EVIDENCE_{field.upper()} "
+                f"{prefix}_evidence.{field} must be {expected!r}"
+            )
+    if (
+        evidence.get("workflow_decision") == "NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY"
+        and evidence.get("governance_formalization_status") != "VALIDADO"
+    ):
+        findings.append(
+            f"{STATE_AUTHORITY}: FAIL_{phase.upper()}_WORKFLOW_EVIDENCE_NOT_FORMALIZED "
+            "workflow evidence is not governance authority without VALIDADO formalization"
+        )
     for evidence_field, identity_field in (
         ("engine_tree_sha256", "tree_sha256"),
         ("engine_file_count", "file_count"),
@@ -154,6 +194,87 @@ def _validate_evidence(phase: str, evidence: Any, identity: dict[str, Any]) -> l
             findings.append(
                 f"{STATE_AUTHORITY}: {prefix}_evidence.{evidence_field} must match physical engine {identity_field}"
             )
+    return findings
+
+
+def _validate_official_transition(data: dict[str, Any], identity: dict[str, Any]) -> list[str]:
+    findings: list[str] = []
+    if data.get("m02_result") != "M02_PASS":
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_REQUIRES_M02_PASS")
+    if data.get("m03_result") != "M03_PASS":
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_REQUIRES_M03_PASS")
+    envelope = data.get("official_transition_evidence")
+    if not isinstance(envelope, dict):
+        return findings + [f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_EVIDENCE_MISSING"]
+
+    allowed_envelope_fields = {
+        "schema_version",
+        "formalization_status",
+        "state_authority",
+        "engine_tree_sha256",
+        "engine_file_count",
+        "engine_byte_count",
+        "gates",
+    }
+    if set(envelope) - allowed_envelope_fields:
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_AUTHORIZATION_INVALID")
+    if envelope.get("schema_version") != 1 or envelope.get("state_authority") != STATE_AUTHORITY:
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_SCHEMA")
+    if envelope.get("formalization_status") != "VALIDADO":
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED")
+    if any(
+        envelope.get(field) != identity[identity_field]
+        for field, identity_field in (
+            ("engine_tree_sha256", "tree_sha256"),
+            ("engine_file_count", "file_count"),
+            ("engine_byte_count", "byte_count"),
+        )
+    ):
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_CURRENT_TREE_MISMATCH")
+
+    gates = envelope.get("gates") if isinstance(envelope.get("gates"), dict) else {}
+    evidence_ids: list[str] = []
+    allowed_gate_fields = {
+        "evidence_id",
+        "result",
+        "engine_tree_sha256",
+        "engine_file_count",
+        "engine_byte_count",
+    }
+    for gate_name, allowed_results in OFFICIAL_GATE_RESULTS.items():
+        gate = gates.get(gate_name)
+        if not isinstance(gate, dict) or gate.get("result") not in allowed_results:
+            findings.append(f"{STATE_AUTHORITY}: {OFFICIAL_GATE_FAIL_CODES[gate_name]}")
+            continue
+        if set(gate) - allowed_gate_fields:
+            findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_AUTHORIZATION_INVALID")
+        evidence_id = gate.get("evidence_id")
+        if not isinstance(evidence_id, str) or not evidence_id.strip():
+            findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE")
+        else:
+            evidence_ids.append(evidence_id)
+        if any(
+            gate.get(field) != identity[identity_field]
+            for field, identity_field in (
+                ("engine_tree_sha256", "tree_sha256"),
+                ("engine_file_count", "file_count"),
+                ("engine_byte_count", "byte_count"),
+            )
+        ):
+            findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_CURRENT_TREE_MISMATCH")
+    if len(evidence_ids) != len(set(evidence_ids)):
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE")
+    for field in (
+        "ready_for_project_demo_generation",
+        "release_authorized",
+        "tag_authorized",
+        "productive_closure_authorized",
+        "oficial_authorized",
+        "agent_load_authorized",
+        "creative_output_certified",
+    ):
+        if data.get(field) is not True:
+            findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED {field}")
     return findings
 
 
@@ -201,15 +322,15 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
     m02_result = data.get("m02_result")
     m03_result = data.get("m03_result")
     if not isinstance(m02_result, str) or not M02_RE.fullmatch(m02_result):
-        findings.append(f"{STATE_AUTHORITY}: m02_result is outside the stable schema")
+        findings.append(f"{STATE_AUTHORITY}: FAIL_M02_RESULT_SCHEMA m02_result is outside the stable schema")
     if not isinstance(m03_result, str) or not M03_RE.fullmatch(m03_result):
-        findings.append(f"{STATE_AUTHORITY}: m03_result is outside the stable schema")
+        findings.append(f"{STATE_AUTHORITY}: FAIL_M03_RESULT_SCHEMA m03_result is outside the stable schema")
     if isinstance(issue, str) and ISSUE_RE.fullmatch(issue):
         suffix = issue.replace("-", "")
-        if isinstance(m02_result, str) and m02_result.startswith("NOT_RECOMPUTED_POST_") and m02_result != f"NOT_RECOMPUTED_POST_{suffix}":
-            findings.append(f"{STATE_AUTHORITY}: m02_result must bind the current issue")
-        if isinstance(m03_result, str) and m03_result.startswith("NOT_RECOMPUTED_POST_") and m03_result != f"NOT_RECOMPUTED_POST_{suffix}":
-            findings.append(f"{STATE_AUTHORITY}: m03_result must bind the current issue")
+        if isinstance(m02_result, str) and m02_result.startswith("NOT_RECOMPUTED") and m02_result != f"NOT_RECOMPUTED_POST_{suffix}":
+            findings.append(f"{STATE_AUTHORITY}: FAIL_M02_NOT_RECOMPUTED_ISSUE_BINDING m02_result must bind the current issue")
+        if isinstance(m03_result, str) and m03_result.startswith("NOT_RECOMPUTED") and m03_result != f"NOT_RECOMPUTED_POST_{suffix}":
+            findings.append(f"{STATE_AUTHORITY}: FAIL_M03_NOT_RECOMPUTED_ISSUE_BINDING m03_result must bind the current issue")
 
     identity = {
         "tree_sha256": CURRENT_ENGINE_TREE_SHA256,
@@ -228,6 +349,21 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
             if any(m02_evidence.get(field) != m03_evidence.get(field) for field in ("engine_tree_sha256", "engine_file_count", "engine_byte_count")):
                 findings.append(f"{STATE_AUTHORITY}: M02 and M03 evidence must bind the same engine tree")
 
+    official_evidence = data.get("official_transition_evidence")
+    if not isinstance(official_evidence, dict):
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_EVIDENCE_MISSING")
+    elif official_evidence.get("schema_version") != 1:
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_SCHEMA")
+    elif data.get("motor_status") != "OFICIAL" and official_evidence != {
+        "schema_version": 1,
+        "formalization_status": "NOT_FORMALIZED",
+        "gates": {},
+    }:
+        findings.append(f"{STATE_AUTHORITY}: FAIL_OFFICIAL_TRANSITION_PREMATURE_EVIDENCE")
+
+    if data.get("motor_status") == "OFICIAL":
+        findings.extend(_validate_official_transition(data, identity))
+
     if data.get("motor_status") == "EN_REVISION":
         for field in (
             "ready_for_project_demo_generation",
@@ -240,9 +376,6 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         ):
             if data.get(field) is not False:
                 findings.append(f"{STATE_AUTHORITY}: {field} must remain false while EN_REVISION")
-    if data.get("creative_output_certified") is not False:
-        findings.append(f"{STATE_AUTHORITY}: creative_output_certified must remain false")
-
     findings.extend(validate_controlled_external_demo_execution(data.get("controlled_external_demo_execution")))
     engine_change = data.get("engine_change_control")
     engine_expected = {
@@ -250,7 +383,7 @@ def validate_current_state_data(data: dict[str, Any]) -> list[str]:
         "base_commit": AUD037_BASE_COMMIT,
         "previous_engine_tree_sha256": PREVIOUS_ENGINE_TREE_SHA256,
         "previous_engine_byte_count": PREVIOUS_ENGINE_BYTE_COUNT,
-        "previous_engine_tree_classification": "AUD035_TREE_SUPERSEDED_BY_AUD037_GOVERNANCE_IDENTITY_CYCLE_BREAK",
+        "previous_engine_tree_classification": "AUD037_INTERMEDIATE_CYCLE_BREAK_TREE_SUPERSEDED_BY_STABLE_SCHEMA_AND_OFFICIAL_TRANSITION_HARDENING",
         "current_engine_tree_sha256": CURRENT_ENGINE_TREE_SHA256,
         "current_engine_file_count": CURRENT_ENGINE_FILE_COUNT,
         "current_engine_byte_count": CURRENT_ENGINE_BYTE_COUNT,
@@ -303,6 +436,35 @@ def validate_master_contract(contract: Any) -> list[str]:
         findings.append(f"{MASTER_CONTRACT_PATH.as_posix()}: stable state_transition_rules are missing")
     if re.search(r"AUD-?[0-9]{3}", json.dumps(rules, sort_keys=True)):
         findings.append(f"{MASTER_CONTRACT_PATH.as_posix()}: future transitions cannot be pinned to one audit")
+    schema = contract.get("mutable_state_schema", {})
+    if not (
+        isinstance(schema, dict)
+        and schema.get("m02_result", {}).get("not_recomputed_pattern") == "^NOT_RECOMPUTED_POST_AUD[0-9]{3}$"
+        and schema.get("m02_result", {}).get("pass_token") == "M02_PASS"
+        and schema.get("m03_result", {}).get("not_recomputed_pattern") == "^NOT_RECOMPUTED_POST_AUD[0-9]{3}$"
+        and schema.get("m03_result", {}).get("pass_token") == "M03_PASS"
+    ):
+        findings.append(f"{MASTER_CONTRACT_PATH.as_posix()}: FAIL_MASTER_GOVERNANCE_MUTABLE_STATE_SCHEMA")
+    evidence_rules = contract.get("evidence_binding_rules", {})
+    if not (
+        isinstance(evidence_rules, dict)
+        and evidence_rules.get("required_formalization_fields") == list(FORMALIZED_EVIDENCE_VALUES)
+        and evidence_rules.get("required_formalization_values") == FORMALIZED_EVIDENCE_VALUES
+        and evidence_rules.get("workflow_decision_is_not_governance_authority") is True
+    ):
+        findings.append(f"{MASTER_CONTRACT_PATH.as_posix()}: FAIL_MASTER_GOVERNANCE_EVIDENCE_BINDING_RULES")
+    official = contract.get("official_transition_contract", {})
+    if not (
+        isinstance(official, dict)
+        and official.get("schema_version") == 1
+        and official.get("external_evidence_block") == "official_transition_evidence"
+        and official.get("state_authority") == STATE_AUTHORITY
+        and official.get("formalization_status_required") == "VALIDADO"
+        and official.get("authorization_override_allowed") is False
+        and official.get("every_gate_must_bind_physical_tree") is True
+        and set(official.get("required_gates", {})) == set(OFFICIAL_GATE_RESULTS)
+    ):
+        findings.append(f"{MASTER_CONTRACT_PATH.as_posix()}: FAIL_MASTER_GOVERNANCE_OFFICIAL_TRANSITION_CONTRACT")
     return findings
 
 

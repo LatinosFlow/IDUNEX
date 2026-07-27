@@ -65,10 +65,35 @@ STATE_AUTHORITY_PATH = 'governance/CURRENT_STATE.json'
 BUILD_STATE_SNAPSHOT_CLASSIFICATION = 'NON_AUTHORITY_BUILD_SNAPSHOT'
 ALLOWED_MOTOR_STATUS = {'EN_REVISION', 'OFICIAL'}
 ISSUE_TOKEN_RE = re.compile(r'^AUD-[0-9]{3}$')
-M02_RESULT_RE = re.compile(r'^(?:NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?|M02_PASS)$')
-M03_RESULT_RE = re.compile(r'^(?:NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?|M03_PASS)$')
+M02_RESULT_RE = re.compile(r'^(?:NOT_RECOMPUTED_POST_AUD[0-9]{3}|M02_PASS)$')
+M03_RESULT_RE = re.compile(r'^(?:NOT_RECOMPUTED_POST_AUD[0-9]{3}|M03_PASS)$')
 SHA256_TOKEN_RE = re.compile(r'^[0-9a-f]{64}$')
 GIT_SHA_TOKEN_RE = re.compile(r'^[0-9a-f]{40}$')
+FORMALIZED_EVIDENCE_VALUES = {
+    'technical_result': 'PASS',
+    'independent_audit_result': 'VALIDADO_PASS',
+    'evidence_class': 'VALIDATED_CURRENT_TREE_EVIDENCE',
+    'governance_formalization_status': 'VALIDADO',
+    'workflow_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY',
+}
+OFFICIAL_GATE_RESULTS = {
+    'motor_audit': {'PASS'},
+    'project_demo_generation': {'PASS'},
+    'project_demo_audit': {'PASS'},
+    'chatgpt_runtime': {'PASS'},
+    'copilot_runtime': {'PASS', 'VENDOR_LIMITATION_NOT_ENGINE_FAIL'},
+    'agent_runtime_audit': {'PASS'},
+    'productive_formalization': {'VALIDADO'},
+}
+OFFICIAL_GATE_FAIL_CODES = {
+    'motor_audit': 'FAIL_OFFICIAL_MOTOR_AUDIT_REQUIRED',
+    'project_demo_generation': 'FAIL_OFFICIAL_DEMO_GENERATION_REQUIRED',
+    'project_demo_audit': 'FAIL_OFFICIAL_DEMO_AUDIT_REQUIRED',
+    'chatgpt_runtime': 'FAIL_OFFICIAL_CHATGPT_RUNTIME_REQUIRED',
+    'copilot_runtime': 'FAIL_OFFICIAL_COPILOT_RUNTIME_REQUIRED',
+    'agent_runtime_audit': 'FAIL_OFFICIAL_AGENT_RUNTIME_AUDIT_REQUIRED',
+    'productive_formalization': 'FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED',
+}
 INTERNAL_BUILD_STATE_TEXT_SURFACES = (
     '00_INDEX/RELEASE_CERTIFICATE.txt',
     '00_INDEX/CHANGELOG.md',
@@ -154,6 +179,26 @@ def _validate_bound_evidence(phase, evidence, physical, failures):
     repository_commit = evidence.get('repository_commit')
     if not isinstance(repository_commit, str) or not GIT_SHA_TOKEN_RE.fullmatch(repository_commit):
         _governance_failure(failures, f'FAIL_{prefix}_EVIDENCE_REPOSITORY_COMMIT_INVALID', path)
+    for field, expected in FORMALIZED_EVIDENCE_VALUES.items():
+        if evidence.get(field) != expected:
+            suffix = {
+                'technical_result': 'TECHNICAL_RESULT',
+                'independent_audit_result': 'INDEPENDENT_AUDIT_RESULT',
+                'evidence_class': 'CLASS',
+                'governance_formalization_status': 'GOVERNANCE_FORMALIZATION_STATUS',
+                'workflow_decision': 'WORKFLOW_DECISION',
+            }[field]
+            _governance_failure(
+                failures,
+                f'FAIL_{prefix}_EVIDENCE_{suffix}',
+                path,
+                {'expected': expected, 'actual': evidence.get(field)},
+            )
+    if (
+        evidence.get('workflow_decision') == 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY'
+        and evidence.get('governance_formalization_status') != 'VALIDADO'
+    ):
+        _governance_failure(failures, f'FAIL_{prefix}_WORKFLOW_EVIDENCE_NOT_FORMALIZED', path)
     for field, suffix in (
         ('engine_tree_sha256', 'ENGINE_TREE_SHA256_MISMATCH'),
         ('engine_file_count', 'ENGINE_FILE_COUNT_MISMATCH'),
@@ -165,6 +210,117 @@ def _validate_bound_evidence(phase, evidence, physical, failures):
                 f'FAIL_{prefix}_EVIDENCE_{suffix}',
                 path,
                 {'expected': physical[field.removeprefix('engine_')], 'actual': evidence.get(field)},
+            )
+
+def _validate_official_transition(state, physical, failures):
+    path = f'{STATE_AUTHORITY_PATH}:official_transition_evidence'
+    if state.get('m02_result') != 'M02_PASS':
+        _governance_failure(failures, 'FAIL_OFFICIAL_REQUIRES_M02_PASS', STATE_AUTHORITY_PATH)
+    if state.get('m03_result') != 'M03_PASS':
+        _governance_failure(failures, 'FAIL_OFFICIAL_REQUIRES_M03_PASS', STATE_AUTHORITY_PATH)
+
+    envelope = state.get('official_transition_evidence')
+    if not isinstance(envelope, dict):
+        _governance_failure(failures, 'FAIL_OFFICIAL_TRANSITION_EVIDENCE_MISSING', path)
+        for code in OFFICIAL_GATE_FAIL_CODES.values():
+            _governance_failure(failures, code, path)
+        return
+
+    allowed_envelope_fields = {
+        'schema_version',
+        'formalization_status',
+        'state_authority',
+        'engine_tree_sha256',
+        'engine_file_count',
+        'engine_byte_count',
+        'gates',
+    }
+    unknown_fields = sorted(set(envelope) - allowed_envelope_fields)
+    if unknown_fields:
+        _governance_failure(
+            failures,
+            'FAIL_OFFICIAL_TRANSITION_AUTHORIZATION_INVALID',
+            path,
+            {'unknown_fields': unknown_fields},
+        )
+    if envelope.get('schema_version') != 1 or envelope.get('state_authority') != STATE_AUTHORITY_PATH:
+        _governance_failure(failures, 'FAIL_OFFICIAL_TRANSITION_SCHEMA', path)
+    if envelope.get('formalization_status') != 'VALIDADO':
+        _governance_failure(failures, 'FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED', path)
+    if any(
+        envelope.get(field) != physical[physical_field]
+        for field, physical_field in (
+            ('engine_tree_sha256', 'tree_sha256'),
+            ('engine_file_count', 'file_count'),
+            ('engine_byte_count', 'byte_count'),
+        )
+    ):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_CURRENT_TREE_MISMATCH', path)
+
+    gates = envelope.get('gates')
+    if not isinstance(gates, dict):
+        gates = {}
+    evidence_ids = []
+    allowed_gate_fields = {
+        'evidence_id',
+        'result',
+        'engine_tree_sha256',
+        'engine_file_count',
+        'engine_byte_count',
+    }
+    for gate_name, allowed_results in OFFICIAL_GATE_RESULTS.items():
+        gate = gates.get(gate_name)
+        fail_code = OFFICIAL_GATE_FAIL_CODES[gate_name]
+        if not isinstance(gate, dict):
+            _governance_failure(failures, fail_code, path, {'gate': gate_name})
+            continue
+        if set(gate) - allowed_gate_fields:
+            _governance_failure(
+                failures,
+                'FAIL_OFFICIAL_TRANSITION_AUTHORIZATION_INVALID',
+                path,
+                {'gate': gate_name, 'unknown_fields': sorted(set(gate) - allowed_gate_fields)},
+            )
+        evidence_id = gate.get('evidence_id')
+        if not isinstance(evidence_id, str) or not evidence_id.strip():
+            _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE', path, {'gate': gate_name})
+        else:
+            evidence_ids.append(evidence_id)
+        if gate.get('result') not in allowed_results:
+            _governance_failure(failures, fail_code, path, {'gate': gate_name, 'actual': gate.get('result')})
+        if any(
+            gate.get(field) != physical[physical_field]
+            for field, physical_field in (
+                ('engine_tree_sha256', 'tree_sha256'),
+                ('engine_file_count', 'file_count'),
+                ('engine_byte_count', 'byte_count'),
+            )
+        ):
+            _governance_failure(
+                failures,
+                'FAIL_OFFICIAL_EVIDENCE_CURRENT_TREE_MISMATCH',
+                path,
+                {'gate': gate_name},
+            )
+    if len(evidence_ids) != len(set(evidence_ids)):
+        _governance_failure(failures, 'FAIL_OFFICIAL_EVIDENCE_LAYER_INDEPENDENCE', path)
+
+    required_state_flags = (
+        'ready_for_project_demo_generation',
+        'release_authorized',
+        'tag_authorized',
+        'productive_closure_authorized',
+        'oficial_authorized',
+        'agent_load_authorized',
+        'creative_output_certified',
+    )
+    for field in required_state_flags:
+        if state.get(field) is not True:
+            _governance_failure(
+                failures,
+                'FAIL_OFFICIAL_PRODUCTIVE_FORMALIZATION_REQUIRED',
+                STATE_AUTHORITY_PATH,
+                {'field': field, 'actual': state.get(field)},
             )
 
 def _governance_state_boundary_gate(root: Path):
@@ -186,6 +342,8 @@ def _governance_state_boundary_gate(root: Path):
             )
 
     if isinstance(contract, dict):
+        if contract.get('schema_version') != 3:
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_SCHEMA_VERSION', contract_rel)
         if 'expected_current_state' in contract:
             _governance_failure(
                 failures,
@@ -203,9 +361,9 @@ def _governance_state_boundary_gate(root: Path):
             isinstance(schema, dict)
             and schema.get('issue_pattern') == '^AUD-[0-9]{3}$'
             and schema.get('motor_status_allowed') == ['EN_REVISION', 'OFICIAL']
-            and schema.get('m02_result', {}).get('not_recomputed_pattern') == '^NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?$'
+            and schema.get('m02_result', {}).get('not_recomputed_pattern') == '^NOT_RECOMPUTED_POST_AUD[0-9]{3}$'
             and schema.get('m02_result', {}).get('pass_token') == 'M02_PASS'
-            and schema.get('m03_result', {}).get('not_recomputed_pattern') == '^NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?$'
+            and schema.get('m03_result', {}).get('not_recomputed_pattern') == '^NOT_RECOMPUTED_POST_AUD[0-9]{3}$'
             and schema.get('m03_result', {}).get('pass_token') == 'M03_PASS'
         )
         if not schema_ok:
@@ -227,17 +385,53 @@ def _governance_state_boundary_gate(root: Path):
             and evidence_rules.get('physical_tree_authority') == 'engine/IDUNEX'
             and evidence_rules.get('required_identifiers') == ['run_id', 'job_id', 'artifact_id', 'artifact_name', 'artifact_sha256', 'repository_commit']
             and evidence_rules.get('required_engine_identity') == ['engine_tree_sha256', 'engine_file_count', 'engine_byte_count']
+            and evidence_rules.get('required_formalization_fields') == list(FORMALIZED_EVIDENCE_VALUES)
+            and evidence_rules.get('required_formalization_values') == FORMALIZED_EVIDENCE_VALUES
+            and evidence_rules.get('workflow_decision_is_not_governance_authority') is True
         ):
             _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_EVIDENCE_BINDING_RULES', contract_rel)
         if contract.get('M02_before_M03') is not True:
             _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_M02_BEFORE_M03_RULE', contract_rel)
         if contract.get('same_tree_evidence_requirement') is not True:
             _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_SAME_TREE_EVIDENCE_RULE', contract_rel)
+        official = contract.get('official_transition_contract', {})
+        expected_official_gates = {
+            gate: sorted(results)
+            for gate, results in OFFICIAL_GATE_RESULTS.items()
+        }
+        actual_official_gates = {
+            gate: sorted(results) if isinstance(results, list) else results
+            for gate, results in official.get('required_gates', {}).items()
+        } if isinstance(official, dict) else {}
+        if not (
+            isinstance(official, dict)
+            and official.get('schema_version') == 1
+            and official.get('external_evidence_block') == 'official_transition_evidence'
+            and official.get('state_authority') == STATE_AUTHORITY_PATH
+            and official.get('formalization_status_required') == 'VALIDADO'
+            and official.get('required_phase_results') == {'m02_result': 'M02_PASS', 'm03_result': 'M03_PASS'}
+            and actual_official_gates == expected_official_gates
+            and official.get('gate_required_fields') == ['evidence_id', 'result', 'engine_tree_sha256', 'engine_file_count', 'engine_byte_count']
+            and official.get('gate_evidence_ids_must_be_unique') is True
+            and official.get('every_gate_must_bind_physical_tree') is True
+            and official.get('authorization_override_allowed') is False
+            and official.get('required_state_flags') == {
+                'ready_for_project_demo_generation': True,
+                'release_authorized': True,
+                'tag_authorized': True,
+                'productive_closure_authorized': True,
+                'oficial_authorized': True,
+                'agent_load_authorized': True,
+                'creative_output_certified': True,
+            }
+        ):
+            _governance_failure(failures, 'FAIL_MASTER_GOVERNANCE_OFFICIAL_TRANSITION_CONTRACT', contract_rel)
         aud028 = contract.get('AUD028_consumed_interlock', {})
         if aud028 != {
             'status': 'CONSUMED',
             'authorized': False,
             'consumed': True,
+            'execution_count': 1,
             'generate_executions_allowed': 0,
             'validate_executions_allowed': 0,
         }:
@@ -276,9 +470,9 @@ def _governance_state_boundary_gate(root: Path):
             _governance_failure(failures, 'FAIL_M03_RESULT_SCHEMA', STATE_AUTHORITY_PATH)
         if isinstance(issue, str) and ISSUE_TOKEN_RE.fullmatch(issue):
             suffix = issue.replace('-', '')
-            if isinstance(m02_result, str) and m02_result.startswith('NOT_RECOMPUTED_POST_') and m02_result != f'NOT_RECOMPUTED_POST_{suffix}':
+            if isinstance(m02_result, str) and m02_result.startswith('NOT_RECOMPUTED') and m02_result != f'NOT_RECOMPUTED_POST_{suffix}':
                 _governance_failure(failures, 'FAIL_M02_NOT_RECOMPUTED_ISSUE_BINDING', STATE_AUTHORITY_PATH)
-            if isinstance(m03_result, str) and m03_result.startswith('NOT_RECOMPUTED_POST_') and m03_result != f'NOT_RECOMPUTED_POST_{suffix}':
+            if isinstance(m03_result, str) and m03_result.startswith('NOT_RECOMPUTED') and m03_result != f'NOT_RECOMPUTED_POST_{suffix}':
                 _governance_failure(failures, 'FAIL_M03_NOT_RECOMPUTED_ISSUE_BINDING', STATE_AUTHORITY_PATH)
 
         physical = _physical_engine_identity(root)
@@ -315,6 +509,21 @@ def _governance_state_boundary_gate(root: Path):
                 ):
                     _governance_failure(failures, 'FAIL_M03_EVIDENCE_NOT_SAME_TREE_AS_M02', STATE_AUTHORITY_PATH)
 
+        official_evidence = state.get('official_transition_evidence')
+        if not isinstance(official_evidence, dict):
+            _governance_failure(failures, 'FAIL_OFFICIAL_TRANSITION_EVIDENCE_MISSING', STATE_AUTHORITY_PATH)
+        elif official_evidence.get('schema_version') != 1:
+            _governance_failure(failures, 'FAIL_OFFICIAL_TRANSITION_SCHEMA', STATE_AUTHORITY_PATH)
+        elif motor_status != 'OFICIAL' and official_evidence != {
+            'schema_version': 1,
+            'formalization_status': 'NOT_FORMALIZED',
+            'gates': {},
+        }:
+            _governance_failure(failures, 'FAIL_OFFICIAL_TRANSITION_PREMATURE_EVIDENCE', STATE_AUTHORITY_PATH)
+
+        if motor_status == 'OFICIAL':
+            _validate_official_transition(state, physical, failures)
+
         if motor_status == 'EN_REVISION':
             revision_interlocks = {
                 'ready_for_project_demo_generation': 'FAIL_EN_REVISION_DEMO_INTERLOCK',
@@ -328,14 +537,14 @@ def _governance_state_boundary_gate(root: Path):
             for field, code in revision_interlocks.items():
                 if state.get(field) is not False:
                     _governance_failure(failures, code, STATE_AUTHORITY_PATH, {'field': field, 'actual': state.get(field)})
-        if state.get('creative_output_certified') is not False:
-            _governance_failure(failures, 'FAIL_CREATIVE_OUTPUT_FALSE_INTERLOCK', STATE_AUTHORITY_PATH)
+            if state.get('creative_output_certified') is not False:
+                _governance_failure(failures, 'FAIL_CREATIVE_OUTPUT_FALSE_INTERLOCK', STATE_AUTHORITY_PATH)
 
         controlled = state.get('controlled_external_demo_execution')
         if not isinstance(controlled, dict):
             _governance_failure(failures, 'FAIL_AUD028_CONSUMED_INTERLOCK', STATE_AUTHORITY_PATH)
         else:
-            aud028_exact = {'status': 'CONSUMED', 'authorized': False, 'consumed': True}
+            aud028_exact = {'status': 'CONSUMED', 'authorized': False, 'consumed': True, 'execution_count': 1}
             if any(controlled.get(field) != expected for field, expected in aud028_exact.items()):
                 _governance_failure(failures, 'FAIL_AUD028_CONSUMED_INTERLOCK', STATE_AUTHORITY_PATH)
             if controlled.get('generate_executions_allowed') != 0:

@@ -15,9 +15,10 @@ WORKFLOW_PATH = REPO_ROOT / ".github/workflows/m03-adversarial.yml"
 HARNESS_PATH = REPO_ROOT / "tests/m03/test_adversarial_harness.py"
 
 FILE_COUNT = 981
-BYTE_COUNT = 47_350_130
-TREE_SHA256 = "b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4"
+BYTE_COUNT = 47_361_805
+TREE_SHA256 = "ff6a3a6d376206bd052d124031a72ca55c90827f5f69e3d3c851033128028ea3"
 SUPERSEDED_TREE_SHA256 = "c5cb2f4bd63bc8116ad806ebffa31b135a5e61441594cbb07acf4bf7f0fe469e"
+INTERMEDIATE_TREE_SHA256 = "b516c1f08682aba94ebb771578d727361ab71b406406d30fc442f27458b1fda4"
 
 
 def physical_identity() -> dict[str, object]:
@@ -49,18 +50,25 @@ def contract_failures(workflow: str, harness: str) -> list[str]:
         "FAIL_AUD037_WORKFLOW_DISPATCH_ONLY": "on:\n  workflow_dispatch:",
         "FAIL_AUD037_WORKFLOW_SHA": f"default: {TREE_SHA256}",
         "FAIL_AUD037_WORKFLOW_FILE_COUNT": "if len(files) != 981:",
-        "FAIL_AUD037_WORKFLOW_BYTE_COUNT": "if byte_count != 47_350_130:",
-        "FAIL_AUD037_WORKFLOW_POSTFLIGHT_BYTE_COUNT": "identity.get('byte_count') != 47_350_130",
-        "FAIL_AUD037_WORKFLOW_MANIFEST_BYTES": "r'bytes:\\s*47350130\\b'",
+        "FAIL_AUD037_WORKFLOW_BYTE_COUNT": "if byte_count != 47_361_805:",
+        "FAIL_AUD037_WORKFLOW_POSTFLIGHT_BYTE_COUNT": "identity.get('byte_count') != 47_361_805",
+        "FAIL_AUD037_WORKFLOW_MANIFEST_BYTES": "r'bytes:\\s*47361805\\b'",
         "FAIL_AUD037_WORKFLOW_ISSUE": "'issue': 'AUD-037'",
         "FAIL_AUD037_WORKFLOW_M02_GATE": "'m02_result': 'M02_PASS'",
         "FAIL_AUD037_WORKFLOW_M03": "'m03_result': 'NOT_RECOMPUTED_POST_AUD037'",
         "FAIL_AUD037_WORKFLOW_M02_EVIDENCE_GATE": "FAIL_M02_FORMALIZATION_REQUIRED_FOR_M03",
+        "FAIL_AUD037_WORKFLOW_M02_TECHNICAL": "'technical_result': 'PASS'",
+        "FAIL_AUD037_WORKFLOW_M02_AUDIT": "'independent_audit_result': 'VALIDADO_PASS'",
+        "FAIL_AUD037_WORKFLOW_M02_CLASS": "'evidence_class': 'VALIDATED_CURRENT_TREE_EVIDENCE'",
+        "FAIL_AUD037_WORKFLOW_M02_FORMALIZATION": "'governance_formalization_status': 'VALIDADO'",
+        "FAIL_AUD037_WORKFLOW_M02_DECISION": "'workflow_decision': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY'",
+        "FAIL_AUD037_WORKFLOW_OFFICIAL_EVIDENCE_INTERLOCK": "FAIL_PREMATURE_OFFICIAL_TRANSITION_EVIDENCE",
         "FAIL_AUD037_WORKFLOW_OFICIAL_INTERLOCK": "'oficial_authorized': False",
         "FAIL_AUD037_WORKFLOW_AGENT_LOAD_INTERLOCK": "'agent_load_authorized': False",
         "FAIL_AUD037_WORKFLOW_AUD028_STATUS": "'status': 'CONSUMED'",
         "FAIL_AUD037_WORKFLOW_AUD028_AUTHORIZED": "'authorized': False",
         "FAIL_AUD037_WORKFLOW_AUD028_CONSUMED": "'consumed': True",
+        "FAIL_AUD037_WORKFLOW_AUD028_EXECUTION_COUNT": "'execution_count': 1",
         "FAIL_AUD037_WORKFLOW_AUD028_GENERATE": "'generate_executions_allowed': 0",
         "FAIL_AUD037_WORKFLOW_AUD028_VALIDATE": "'validate_executions_allowed': 0",
         "FAIL_AUD037_WORKFLOW_DECISION": "'M03_DECISION': 'NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY'",
@@ -68,7 +76,7 @@ def contract_failures(workflow: str, harness: str) -> list[str]:
     }
     required_harness = {
         "FAIL_AUD037_HARNESS_FILE_COUNT": "EXPECTED_FILE_COUNT = 981",
-        "FAIL_AUD037_HARNESS_BYTE_COUNT": "EXPECTED_BYTE_COUNT = 47_350_130",
+        "FAIL_AUD037_HARNESS_BYTE_COUNT": "EXPECTED_BYTE_COUNT = 47_361_805",
         "FAIL_AUD037_HARNESS_SHA": f'EXPECTED_ENGINE_TREE_SHA256 = "{TREE_SHA256}"',
         "FAIL_AUD037_HARNESS_DECISION": 'M03_DECISION = "NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY"',
         "FAIL_AUD037_HARNESS_CREATIVE": '"CREATIVE_OUTPUT_CERTIFIED": False',
@@ -94,6 +102,8 @@ class M03WorkflowContractTest(unittest.TestCase):
         self.assertEqual(state["m03_result"], "NOT_RECOMPUTED_POST_AUD037")
         self.assertEqual(state["prior_m02_recomputation_evidence"]["engine_tree_sha256"], SUPERSEDED_TREE_SHA256)
         self.assertFalse(state["prior_m02_recomputation_evidence"]["current_tree_applicability"])
+        self.assertEqual(state["engine_change_control"]["previous_engine_tree_sha256"], INTERMEDIATE_TREE_SHA256)
+        self.assertIn("INTERMEDIATE", state["engine_change_control"]["previous_engine_tree_classification"])
 
     def test_m03_workflow_is_static_and_blocked_until_formalized_m02(self):
         workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
@@ -108,10 +118,11 @@ class M03WorkflowContractTest(unittest.TestCase):
         harness = HARNESS_PATH.read_text(encoding="utf-8")
         cases = (
             (workflow.replace(f"default: {TREE_SHA256}", "default: " + "0" * 64, 1), harness, "FAIL_AUD037_WORKFLOW_SHA"),
-            (workflow.replace("if byte_count != 47_350_130:", "if byte_count != 1:", 1), harness, "FAIL_AUD037_WORKFLOW_BYTE_COUNT"),
+            (workflow.replace("if byte_count != 47_361_805:", "if byte_count != 1:", 1), harness, "FAIL_AUD037_WORKFLOW_BYTE_COUNT"),
             (workflow.replace("if len(files) != 981:", "if len(files) != 1:", 1), harness, "FAIL_AUD037_WORKFLOW_FILE_COUNT"),
             (workflow.replace("'issue': 'AUD-037'", "'issue': 'AUD-030'", 1), harness, "FAIL_AUD037_WORKFLOW_ISSUE"),
             (workflow.replace("'m02_result': 'M02_PASS'", "'m02_result': 'NOT_RECOMPUTED_POST_AUD037'", 1), harness, "FAIL_AUD037_WORKFLOW_M02_GATE"),
+            (workflow.replace("'governance_formalization_status': 'VALIDADO'", "'governance_formalization_status': 'PENDING'", 1), harness, "FAIL_AUD037_WORKFLOW_M02_FORMALIZATION"),
             (workflow.replace("workflow_dispatch:", "push:", 1), harness, "FAIL_AUD037_M03_PUSH_TRIGGER"),
             (workflow, harness.replace(f'EXPECTED_ENGINE_TREE_SHA256 = "{TREE_SHA256}"', 'EXPECTED_ENGINE_TREE_SHA256 = "' + "0" * 64 + '"', 1), "FAIL_AUD037_HARNESS_SHA"),
         )

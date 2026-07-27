@@ -33,11 +33,12 @@ CONTROLLED_EXTERNAL_DEMO_VALIDATE_ALLOWED=0
 
 ## Reglas de transición
 
-- Sólo se aceptan tokens exactos del esquema estable; no se busca la subcadena `PASS`.
+- Sólo se aceptan `NOT_RECOMPUTED_POST_AUDnnn` ligados al issue vigente o tokens PASS exactos; no se acepta `NOT_RECOMPUTED` bare ni se busca la subcadena `PASS`.
 - `M03_PASS` exige `M02_PASS`.
-- Cada PASS exige run, job, artifact, artifact SHA, commit e identidad completa del árbol físico.
+- Cada PASS exige run, job, artifact, artifact SHA, commit, identidad completa del árbol físico, resultado técnico PASS, auditoría independiente y formalización de gobernanza `VALIDADO`.
 - Las evidencias M02 y M03 deben corresponder al mismo SHA, file count y byte count.
 - Cambiar el estado externo no exige actualizar ninguna superficie de `engine/IDUNEX`.
+- `OFICIAL` exige gates externos separados para motor, Demo, auditoría Demo, runtimes ChatGPT/Copilot, auditoría de carga/runtime y formalización productiva; ninguna capa hereda PASS de otra.
 
 ## AUD-028
 

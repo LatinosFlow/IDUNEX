@@ -1,6 +1,6 @@
 {
   "contract_id": "MASTER_GOVERNANCE_VALIDATION_CONTRACT",
-  "schema_version": 2,
+  "schema_version": 3,
   "implementation_issue": "AUD-037",
   "state_authority": "governance/CURRENT_STATE.json",
   "build_state_snapshot_authority": false,
@@ -12,12 +12,12 @@
       "OFICIAL"
     ],
     "m02_result": {
-      "not_recomputed_pattern": "^NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?$",
+      "not_recomputed_pattern": "^NOT_RECOMPUTED_POST_AUD[0-9]{3}$",
       "pass_token": "M02_PASS",
       "pass_detection": "EXACT_TOKEN_ONLY"
     },
     "m03_result": {
-      "not_recomputed_pattern": "^NOT_RECOMPUTED(?:_POST_AUD[0-9]{3})?$",
+      "not_recomputed_pattern": "^NOT_RECOMPUTED_POST_AUD[0-9]{3}$",
       "pass_token": "M03_PASS",
       "pass_detection": "EXACT_TOKEN_ONLY"
     }
@@ -56,16 +56,85 @@
       "engine_file_count",
       "engine_byte_count"
     ],
+    "required_formalization_fields": [
+      "technical_result",
+      "independent_audit_result",
+      "evidence_class",
+      "governance_formalization_status",
+      "workflow_decision"
+    ],
+    "required_formalization_values": {
+      "technical_result": "PASS",
+      "independent_audit_result": "VALIDADO_PASS",
+      "evidence_class": "VALIDATED_CURRENT_TREE_EVIDENCE",
+      "governance_formalization_status": "VALIDADO",
+      "workflow_decision": "NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY"
+    },
+    "workflow_decision_is_not_governance_authority": true,
     "artifact_sha256_pattern": "^[0-9a-f]{64}$",
     "repository_commit_pattern": "^[0-9a-f]{40}$",
     "engine_identity_must_match_physical_tree": true
   },
   "M02_before_M03": true,
   "same_tree_evidence_requirement": true,
+  "official_transition_contract": {
+    "schema_version": 1,
+    "external_evidence_block": "official_transition_evidence",
+    "state_authority": "governance/CURRENT_STATE.json",
+    "formalization_status_required": "VALIDADO",
+    "required_phase_results": {
+      "m02_result": "M02_PASS",
+      "m03_result": "M03_PASS"
+    },
+    "required_gates": {
+      "motor_audit": [
+        "PASS"
+      ],
+      "project_demo_generation": [
+        "PASS"
+      ],
+      "project_demo_audit": [
+        "PASS"
+      ],
+      "chatgpt_runtime": [
+        "PASS"
+      ],
+      "copilot_runtime": [
+        "PASS",
+        "VENDOR_LIMITATION_NOT_ENGINE_FAIL"
+      ],
+      "agent_runtime_audit": [
+        "PASS"
+      ],
+      "productive_formalization": [
+        "VALIDADO"
+      ]
+    },
+    "gate_required_fields": [
+      "evidence_id",
+      "result",
+      "engine_tree_sha256",
+      "engine_file_count",
+      "engine_byte_count"
+    ],
+    "gate_evidence_ids_must_be_unique": true,
+    "every_gate_must_bind_physical_tree": true,
+    "authorization_override_allowed": false,
+    "required_state_flags": {
+      "ready_for_project_demo_generation": true,
+      "release_authorized": true,
+      "tag_authorized": true,
+      "productive_closure_authorized": true,
+      "oficial_authorized": true,
+      "agent_load_authorized": true,
+      "creative_output_certified": true
+    }
+  },
   "AUD028_consumed_interlock": {
     "status": "CONSUMED",
     "authorized": false,
     "consumed": true,
+    "execution_count": 1,
     "generate_executions_allowed": 0,
     "validate_executions_allowed": 0
   },

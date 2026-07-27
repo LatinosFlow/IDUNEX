@@ -20,7 +20,11 @@ AGENT_LOAD_AUTHORIZED=FALSE
 CREATIVE_OUTPUT_CERTIFIED=FALSE
 ```
 
-La frontera introducida por AUD-037 permite formalizar `M02_PASS` o `M03_PASS` en la autoridad externa, con evidencia ligada al árbol físico, sin modificar posteriormente el SHA de `engine/IDUNEX`. Los tokens PASS son exactos; una cadena que sólo contenga la palabra `PASS` no es válida.
+La frontera introducida por AUD-037 permite formalizar `M02_PASS` o `M03_PASS` en la autoridad externa, con evidencia ligada al árbol físico, sin modificar posteriormente el SHA de `engine/IDUNEX`. `NOT_RECOMPUTED` debe llevar siempre el sufijo `POST_AUDnnn` del issue vigente y los tokens PASS son exactos; una cadena que sólo contenga la palabra `PASS` no es válida.
+
+Cada PASS exige resultado técnico, auditoría independiente, clasificación de evidencia vigente y formalización explícita de gobernanza. La decisión de origen `NOT_DECLARED_WORKFLOW_EVIDENCE_ONLY` se conserva para trazabilidad, pero no constituye autoridad por sí sola.
+
+La transición futura a `OFICIAL` está definida por un contrato estable dentro del motor y evidencia concreta versionada en `CURRENT_STATE`: M02/M03 para el mismo árbol, auditoría del motor, Demo generado y auditado, runtime ChatGPT, runtime Copilot PASS o limitación válida, auditoría de carga/runtime y formalización productiva. Mientras falte una capa, la transición falla cerrada.
 
 ## Interlocks
 
